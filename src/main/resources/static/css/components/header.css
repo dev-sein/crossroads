@@ -115,8 +115,12 @@ header.header .header-section .main-logo {
     background: url("https://www.wishket.com/static/renewal/img/global/logo_black.svg?2c532611cefc") 10px 22px/80px 20px no-repeat;
 }
 
+header.header .header-section .left-nav .menu:first-child {
+    margin-left: 16px;
+}
+
 /* header-menu */
-element {
+.element {
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -180,4 +184,134 @@ header.header .header-section .right-nav {
 /* 로그인 회원가입 간격 */
 header.header .header-section .right-nav .btn+.btn {
     margin-left: 8px;
+}
+
+/* ===============================main-client=================================== */
+header.header .nav-client:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+header.header .nav-client {
+    background-color: #242933;
+}
+
+header.header .base-nav-client .main-logo {
+    float: left;
+    padding: 22px 12px;
+    font-size: 18px;
+    line-height: 20px;
+    width: 100px;
+    text-indent: -9999em;
+    box-sizing: border-box;
+    background-size: 80px 20px;
+}
+
+header.header .nav-client .main-logo {
+    background: url('https://www.wishket.com/static/renewal/img/global/logo_white.svg?2c532611cefc') 10px 22px/80px 20px no-repeat;
+}
+
+header.header .nav-client .main-logo.active {
+    background-color: #2e6baa;
+}
+
+header.header .nav-client .left-nav .gnb-menu:first-child {
+    margin-left: 16px;
+}
+
+/* 로그인 후 왼쪽 메뉴 */
+header.header .nav-client .left-nav {
+    float: left;
+}
+
+header.header .nav-client .left-nav .menu {
+    padding: 20px 16px;
+    display: block;
+    float: left;
+    color: #fff;
+}
+
+header.header .nav-client .left-nav .nav-divider {
+    border-left: 1px solid #4d525c;
+}
+
+header.header .nav-client .left-nav .sub-menu.alert {
+    position: relative;
+    border: none;
+}
+
+/* 로그인 후 오른쪽 메뉴 */
+header.header .nav-client .right-nav .right-nav-list {
+    height: 100%;
+    font-size: 16px;
+}
+
+header.header .nav-client .right-nav .right-nav-list .right-nav-item {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+}
+
+header.header .nav-client .right-nav .right-nav-list .right-nav-item:first-of-type {
+    margin-right: 16px;
+}
+
+header.header .nav-client .right-nav .right-nav-list .right-nav-item:last-of-type {
+    margin-left: 20px;
+}
+
+header.header .nav-client .right-nav .right-nav-list .right-nav-item .user-img {
+    border-radius: 16px;
+}
+
+header.header .nav-client .right-nav .right-nav-list .nav-dropdown {
+    right: 0;
+    left: auto;
+    position: absolute;
+    top: 100%;
+    z-index: 1001;
+    float: left;
+    margin: 0;
+    min-width: 200px;
+    padding: 8px 0;
+    background-color: #1c2029;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+}
+
+header.header .nav-client .right-nav .right-nav-list .nav-dropdown .nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    color: #fff;
+}
+
+header.header .nav-client .right-nav .right-nav-list .nav-dropdown .nav-dropdown-item img {
+    margin-right: 12px;
+    width: 16px;
+}
+
+header.header .nav-client .right-nav .right-nav-list .nav-dropdown .nav-divider {
+    border-bottom: 1px solid #0d0f14;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+header.header .sub-nav-client {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header.header .sub-nav-client .left-nav .snb-menu+.snb-menu {
+    margin-left: 8px;
+}
+
+header.header .nav-client .left-nav .snb-menu {
+    padding: 12px 20px;
+    display: block;
+    float: left;
+    color: #616161;
 }
