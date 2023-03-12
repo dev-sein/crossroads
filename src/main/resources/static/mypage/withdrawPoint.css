@@ -1,0 +1,544 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+
+html {
+    height: 100%;
+    font-size: 16px;
+}
+
+
+* {
+    font-family: "Noto Sans KR", 'Sans-serif';
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+html {
+    display: block;
+}
+
+body {
+    height: 100%;
+   /*  background-color: #f5f5f5; */
+}
+
+body {
+    display: block;
+}
+
+
+body.wishket-member .header {
+    min-width: 1080px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+body.wishket-member .header .base-nav {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+body.wishket-member .header .base-nav .container {
+    display: flex;
+    align-items: center;
+}
+
+body.wishket-member .header .base-nav .container {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 1080px;
+    margin: 0px 218px;
+}
+
+
+.base-nav .container {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+}
+
+body.wishket-member .header .base-nav .nav-logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    color: #212121;
+}
+
+.base-nav{
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    color: #212121;
+    font-weight: 500;
+}
+
+.right-nav {
+    display: flex;
+    margin-left: auto;
+    height: 24px;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.service-nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+.service-nav-title {
+    padding-top: 40px;
+    font-size:14px;
+    color: #424242;
+}
+
+body.wishket-member .header .base-nav .nav-logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    color: #212121;
+}
+
+.input-box .title {
+    color: #212121;
+    margin-bottom: 16px;
+}
+
+.body-1-medium, body.wishket-member .message-info-box .title, body.wishket-member .input-box .title, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-action, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-name, body.wishket-member .header .base-nav .nav-logo {
+    font-weight: 500;
+}
+
+.body-1, .body-1-bold, .body-1-medium, body.wishket-member .message-info-box .title, body.wishket-member .input-box .title, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-action, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-name, body.wishket-member .header .base-nav .nav-logo, .body-1-light {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+a {
+    text-decoration: none;
+}
+
+body.wishket-member .header .base-nav .right-nav {
+    display: flex;
+    margin-left: auto;
+    height: 24px;
+}
+
+header.header .base-nav .right-nav, header.header .base-nav-guest .right-nav, header.header .base-nav-landing .right-nav, header.header .base-nav-partner .right-nav, header.header .base-nav-client .right-nav {
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+body.wishket-member .header .base-nav .service-nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 0;
+}
+
+.service-nav-title{
+    color: #424242;
+    font-weight: 400;
+    padding-right: 19px;
+    line-height: 24px;
+}
+
+.body-2, body.wishket-member .wishket-member-privacy .wishket-member-privacy-content-group ul.base-number-list>li, body.wishket-member .wishket-member-privacy .wishket-member-privacy-content-group ul.base-dot-list>li, body.wishket-member .wishket-member-privacy .wishket-member-privacy-content-group ul.privacy-number-list>li, body.wishket-member .wishket-member-tos .wishket-member-tos-content-group ul.base-number-list>li, body.wishket-member .wishket-member-tos .wishket-member-tos-content-group ul.base-dot-list>li, body.wishket-member .wishket-member-tos .wishket-member-tos-content-group ul.privacy-number-list>li, body.wishket-member .sub-action, body.wishket-member .list-phase, body.wishket-member .menu-modal-box .menu .menu-wrapper, body.wishket-member .message-info-box .description, body.wishket-member .message-info-box .help-link, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .content, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-name.info, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-title.detail, body.wishket-member .box-in-container .box .box-content.no-header .description, body.wishket-member .box-in-container .box .box-content .description, body.wishket-member .header .base-nav .service-nav .service-nav-title, .body-2-bold, .body-2-medium, body.wishket-member .wishket-member-privacy .wishket-member-privacy-content-layer .wishket-member-privacy-content-layer-nav .layer-nav-item.active, body.wishket-member .wishket-member-tos .wishket-member-tos-content-layer .wishket-member-tos-content-layer-nav .layer-nav-item.active, body.wishket-member .link-href, body.wishket-member .menu-view .nav-header a, .body-2-light {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.container::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+header.header .base-nav:after, header.header .base-nav-guest:after, header.header .base-nav-landing:after, header.header .base-nav-partner:after, header.header .base-nav-client:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+
+/* 본문 시작 */
+
+body.wishket-member .body-container {
+    min-height: 436px;
+    background-color: #fff;
+}
+
+.body-container {
+    min-width: 1080px;
+    height: auto;
+    min-height: 70%;
+}
+
+div {
+    display: block;
+}
+
+.body-container:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.menu-view{
+    padding-top: 48px;
+}
+
+body.wishket-member .menu-view {
+    padding-top: 48px;
+}
+
+body.wishket-member .menu-view .nav-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.nav-header span{
+    color: #616161;
+    font-size: 14px;
+    font-weight: 500px;
+}
+
+.nav-header img{
+    margin: 0 8px;
+}
+
+body.wishket-member .menu-view .nav-header a {
+    color: #616161;
+}
+
+.body-2-medium, body.wishket-member .wishket-member-privacy .wishket-member-privacy-content-layer .wishket-member-privacy-content-layer-nav .layer-nav-item.active, body.wishket-member .wishket-member-tos .wishket-member-tos-content-layer .wishket-member-tos-content-layer-nav .layer-nav-item.active, body.wishket-member .link-href, body.wishket-member .menu-view .nav-header a {
+    font-weight: 500;
+}
+
+.menu-view-wrapper {
+    display: flex;
+    padding-bottom: 160px;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper {
+    display: flex;
+    padding-bottom: 160px;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper .content-view {
+    width: 720px;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-title {
+    color: #212121;
+}
+
+.menu-title{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+.menu-row {
+    display: flex;
+    flex-direction: column;
+}
+.menu-name {
+    color: #212121;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.menu-name+.content {
+    margin-top: 4px;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .content {
+    display: flex;
+    align-items: center; 
+    color: #616161;
+}
+
+.content{
+    color: #616161;
+}
+
+.border-line {
+    display: block;  
+}
+
+#menu-content {
+    border-top: solid 1px #e0e0e0;
+    padding-top: 32px;
+    margin-top: 32px;
+    width: 450px;
+}
+
+.menu-title-detail{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #616161;
+    margin-top: 6px;
+}
+
+.subtitle-1, body.wishket-member-signin .title-header, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-title, body.wishket-member .box-in-container .box .box-header, .subtitle-1-bold, .subtitle-1-medium, .subtitle-1-light {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-title.detail {
+    color: #616161;
+    margin-top: 6px;
+}
+
+body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .input-box-group {
+    margin-top: 32px;
+}
+
+.pw {
+    display:none;
+    margin-bottom: 24px;
+}
+
+element.style {
+    width: 400px;
+}
+
+.default-input-whisket{
+    position: relative;
+}
+
+body.wishket-member .input-box .title {
+    color: #212121;
+    margin-bottom: 16px;
+}
+
+i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 0;
+    right: 12px;
+}
+
+.default-input-wishket.icon-right:after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+#passwordForm{
+    padding-top: 32px;
+
+}
+
+.default-input-wishket.icon-right>input[type=password] {
+    min-height: 42px;
+    padding-right: 40px;
+}
+
+body.wishket-member input[type=password] {
+    font-family: "NotoSansKR","Sans-serif" !important;
+    font-size: 14px !important;
+}
+
+
+#password-input {
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    line-height: 24px;
+    color: #616161;
+    font-weight: 400;
+    background: #fff;
+    width: 100%;
+    height: inherit;
+    padding: 8px 38px 8px 12px;
+}
+
+input::placeholder {color:#CCCCCC;}
+
+body.wishket-member .input-box .icon {
+    cursor: pointer;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+i {
+    font-style: italic;
+}
+
+.icon-eyes-off{
+    display: none;
+}
+
+body.wishket-member .input-box .icon.icon-eyes-off {
+    display: none;
+}
+
+body.wishket-member .input-box .icon {
+    cursor: pointer;
+}
+
+.default-input-wishket.icon-right:after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+.error-text {
+    display: none;
+}
+
+element.style {
+    width: 120px;
+    
+}
+
+.btn-wishket {
+    background-color: #2099bb;
+    color: #fff;
+    border: #2099bb;
+}
+
+.btn-01 {
+    padding: 11px 24px;
+}
+
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border-radius: 4px;
+    margin-top: 24px;
+}
+
+.body-1, .btn-01, .body-1-bold, .form-input-label, .btn-lg, .body-1-medium, .meeting-apply-modal .modal-inner .modal-body .modal-main-content .modal-main-content-pick .modal-main-content-pick-date .pick-date-set .pick-date-set-day, .body-1-light {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+
+button {
+    background: none;
+}
+
+
+button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    align-items: flex-start;
+}
+
+.right-side {
+    margin-left: 390px;
+    width: 280px;
+}   
+
+.message-info-box {
+    border-radius: 12px;
+    border: solid 1px #e0e0e0;
+}
+
+.help-link{
+    color: #616161;
+    font-size: 14px;
+    font-weight: 400;
+}
+.help-link-second{
+    margin-top: 18px;
+    display: flex;
+    font-size: 14px;
+    color: #616161;
+    font-weight: 400;
+}
+.message-info-box-wrapper{
+    padding: 19px 24px;
+}
+
+.message-info-box-wrapper+.message-info-box-wrapper {
+    border-top: solid 1px #e0e0e0;
+}
+
+.icon-info{
+    margin-bottom: 16px;
+}
+
+.icon{
+   margin: 0 0 0 15.3125px;
+}
+
+.icon-second{
+    margin: 0 0 0 48px;
+}
+
+.title {
+    color: #212121;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+body.wishket-member .message-info-box .help-link {
+    display: flex;
+    color: #616161;
+}
+
+body.wishket-member .message-info-box .help-link .icon {
+    display: flex;
+    margin-left: auto;
+    align-self: center;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
