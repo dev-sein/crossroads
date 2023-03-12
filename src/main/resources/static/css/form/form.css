@@ -1,0 +1,356 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+* {
+    font-family: "NotoSansKR", "Sans-serif";
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+div {
+    display: block;
+}
+
+html {
+    height: 100%;
+    font-size: 16px;
+}
+
+.gaia:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+
+.gaia {
+    min-width: 1080px;
+    height: auto;
+    min-height: 70%;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+/* 프로젝트 등록 */
+
+.submit-progress {
+    margin-right: 24px;
+    float: left;
+    width: 256px;
+    padding: 16px;
+}
+
+.project-status-box {
+    margin-bottom: 50px;
+}
+
+.back-to-before {
+    color: #3ba3c7;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.back-to-before-img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.back-to-before-title {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.body-1-medium {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.menu-title {
+    color: #212121;
+}
+
+.subtitle-1-medium {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+ .status-main-menu {
+    color: #616161;
+}
+
+.status-sub-menu {
+    border-left: 2px solid #e0e0e0;
+    margin: 18px 0 26px 8px;
+}
+
+.completed {
+    color: #212121;
+}
+
+.status-sub-menu-title {
+    margin-top: 16px;
+    padding-left: 20px;
+    color: #616161;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+/* 메인시작 */
+.project-create-form-section {
+    background-color: #ffffff;
+    width: 800px;
+    float: left;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+}
+
+.select-card.client-input.checked {
+    border: 1px solid #2e6baa;
+    background-color: #f5f9ff;
+}
+.form-section-header {
+    padding: 26px 32px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.subtitle-1 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+.form-input-section {
+    padding: 32px;
+    padding-bottom: 60px;
+}
+
+.form-group-light {
+    display: block;
+    margin-bottom: 48px;
+}
+
+.form-group-title {
+    margin-bottom: 4px;
+    display: block;
+}
+
+.body-1-bold {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.form-content {
+    margin-top: 16px;
+}
+
+.mb16 {
+    margin-bottom: 16px;
+}
+
+.text-input-client {
+    position: relative;
+}
+
+.wishket-textarea.error{
+    border: solid 1px #e52929;
+}
+
+.text-input-client>div>input {
+    display: block;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #616161;
+    font-weight: 400;
+    background: #fff;
+    width: 100%;
+    height: inherit;
+    padding: 8px 12px 8px 12px;
+}
+
+.text-input-client>span.helper-text, .text-input-client>span.error-text {
+    float: left;
+    padding: 8px 12px 0 12px;
+}
+
+.text-input-client>span {
+    font-size: 13px;
+    font-weight: 400;
+    bottom: 0;
+    color: #ff0000;
+}
+
+ .form-group-title {
+    margin-bottom: 4px;
+    display: block;
+}
+
+ .form-group-guide {
+    margin-bottom: 24px;
+}
+
+.text900 {
+    color: #212121;
+}
+
+.body-2 {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.select-card {
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    padding: 24px 0;
+    display: inline-block;
+    position: relative;
+}
+
+.select-card input[type="checkbox"], .select-card input[type="radio"] {
+    border-radius: 50%;
+    display: none;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+}
+
+body.project-create .project-create-formview .select-card > input[type=checkbox].error + .input-replacer, body.project-create .project-create-formview .select-card-wide > input[type=checkbox].error + .input-replacer, body.project-create .project-create-formview .select-card-medium > input[type=checkbox].error + .input-replacer {
+    background-image: -webkit-image-set(url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@.png) 1x, url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@2x.png) 2x, url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@3x.png) 3x);
+}
+
+.select-card.client-input input[type="checkbox"]+.input-replacer {
+    background: url(https://www.wishket.com/static/renewal/img/component/input_checkbox_off.png) no-repeat;
+}
+
+.input-replacer  {
+    cursor: pointer;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+}
+
+.select-card-content {
+    text-align: center;
+    color: #212121;
+}
+
+.select-card .inherit-select-card-img {
+    display: inline-block;
+}
+
+.select-card .select-card-img {
+    margin-bottom: 8px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+}
+
+.select-card .active-select-card-img {
+    display: none;
+}
+
+.body-2-medium {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.form-section-footer {
+    padding: 16px 32px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-client, .btn-client-not-active {
+    background-color: #2e6baa;
+    color: #fff;
+    border: #2e6baa;
+}
+
+.btn-11-24 {
+    padding: 11px 24px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.btn-right {
+    float: right;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border-radius: 4px;
+    border: none;
+}
+
+.error-text{
+    float: left;
+    padding: 8px 12px 0 12px;
+    font-size: 13px;
+    font-weight: 400;
+    bottom: 0;
+    color: #ff0000;
+}
+
+.select{
+    border: 1px solid rgb(228, 230, 240);
+    border-radius: 9px;
+    padding: 6px 17px 5px 17px;
+    margin: 10 10 10 10px;
+    /* border-top: 0px; */
+    height: 49px;
+    font-size: 16px;
+    font-weight: 530;
+    
+}
+
+.form-group-light .form-group-title+.form-content {
+    margin-top: 16px;
+}
+
+ul{
+    list-style:none;
+    }
+
+li{
+    padding: 6px;
+}
+
+.date-select{
+    border: 1px solid rgb(228, 230, 240);
+    border-radius: 9px;
+    padding: 5px 2px 5px 17px;
+    margin: 10 10 10 10px;
+    /* border-top: 0px; */
+    height: 43px;
+    font-size: 16px;
+    font-weight: 550;
+    width: 114px;
+}
