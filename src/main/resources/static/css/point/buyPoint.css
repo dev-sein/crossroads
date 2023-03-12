@@ -1,0 +1,138 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Nanum Gothic","Apple SD Gothic Neo","맑은 고딕","Malgun Gothic","AppleGothic","돋움",Dotum,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    background-color: #f5f5f5;
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -250px;
+    padding: 0 0 250px;
+    min-width: 1080px;
+}
+
+div {
+    display: block;
+}
+
+
+ .page {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1080px;
+}
+
+ .content {
+    border-radius: 3px;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 1060px;
+}
+
+.contents-header-addon {
+    width: 1080px;
+    height: 119px;
+    border-radius: 2px !important;
+}
+
+.content-header {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 30px;
+    background-color: #fff;
+    border-bottom-width: 2px;
+    border: 1px solid #dedede;
+}
+
+.contents-header-addon .store-header-box {
+    display: inline-block;
+}
+
+.store-big-text {
+    height: 29px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #555;
+    margin-top: 0;
+}
+
+h3{
+    margin: 1em 0;
+    display: block;
+    font-family: inherit;
+    margin-bottom: 10px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-rendering: optimizelegibility;
+}
+
+.store-small-text {
+    height: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 20px;
+    color: #999;
+}
+
+p {
+    display: block;
+    margin: 0 0 10px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.box{
+    box-sizing: border-box;
+    word-spacing: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid #A8ABB4;
+    border-radius: 10px;
+}
+
+
+.rank-top {
+    background-color: var(--yellow-20);
+    border-color: var(--yellow-100);
+}
+
+.point-charge {
+    font-size: 20px;
+    line-height: 160%;
+    letter-spacing: -0.5px;
+    color: #444;
+}
+
+.p2{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
