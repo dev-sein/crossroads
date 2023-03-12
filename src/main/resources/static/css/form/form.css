@@ -136,7 +136,7 @@ html {
 
 .form-input-section {
     padding: 32px;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }
 
 .form-group-light {
@@ -341,6 +341,11 @@ ul{
 
 li{
     padding: 6px;
+}
+
+ul li {
+    padding: 3px;
+    margin: 0;
 }
 
 .date-select{

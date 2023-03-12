@@ -118,8 +118,23 @@
                         </div>
 
                         <div class="form-group-light">
-                            <label class="form-group-title body-1-bold">결제 방법</label>
-                            <p class="body-2 text900 form-group-guide">원하시는 결제를 선택해 주세요.</p>
+                            <label class="form-group-title body-1-bold">계좌 번호</label>
+                            <div class="form-content mb16">
+                                <div>
+                                    <div class="text-input-client  ">
+                                        <div>
+                                            <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="ex) 110901111111" type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="error-text">계좌번호를 입력해주세요!</span>
+                            </div>  
+                        </div>
+                        
+
+                        <div class="form-group-light">
+                            <label class="form-group-title body-1-bold">환전 방법</label>
+                            <p class="body-2 text900 form-group-guide">원하시는 환전 방법을 선택해 주세요.</p>
                             <div class="form-content">
                                 <!-- 코스 -->
                                 <div class="select-card client-input" style="width: 232px; margin-right: 20px;">
@@ -137,17 +152,18 @@
                                     <div class="select-card-content">
                                         <img class="select-card-img inherit-select-card-img" src="https://www.wishket.com/static/renewal/img/project/submit/select_card_icon_job_category_1_d.png">
                                         <img class="select-card-img active-select-card-img" src="https://www.wishket.com/static/renewal/img/project/submit/select_card_icon_job_category_1_c.png">
-                                        <p class="body-2-medium">카드결제</p>
+                                        <p class="body-2-medium">현금(서비스 종료)</p>
                                     </div>
                                 </div>
 
                             </div>
+                            <span class="error-text">※수수료는 10% 입니다※</span>
                         </div>
                     </div>
 
                     <!-- 다음 -->
                     <div class="form-section-footer" style="position: relative">
-                        <button class="btn btn-client btn-11-24 btn-right" name="can_submit" type="submit" value="False">결제하기</button>
+                        <button class="btn btn-client btn-11-24 btn-right" name="can_submit" type="submit" value="False">환전하기</button>
                         <div style="clear:both;">
                         </div>
                     </div>
