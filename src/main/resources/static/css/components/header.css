@@ -197,9 +197,9 @@ header.header .nav-client {
     background-color: #242933;
 }
 
-header.header .base-nav-client .main-logo {
+header.header .nav-client .main-logo {
     float: left;
-    padding: 22px 12px;
+    padding: 32px 12px;
     font-size: 18px;
     line-height: 20px;
     width: 100px;
@@ -216,14 +216,14 @@ header.header .nav-client .main-logo.active {
     background-color: #2e6baa;
 }
 
-header.header .nav-client .left-nav .gnb-menu:first-child {
+header.header .nav-client .left-nav .menu:first-child {
     margin-left: 16px;
 }
 
 /* 로그인 후 왼쪽 메뉴 */
-header.header .nav-client .left-nav {
+/* header.header .nav-client .left-nav {
     float: left;
-}
+} */
 
 header.header .nav-client .left-nav .menu {
     padding: 20px 16px;
@@ -236,12 +236,21 @@ header.header .nav-client .left-nav .nav-divider {
     border-left: 1px solid #4d525c;
 }
 
-header.header .nav-client .left-nav .sub-menu.alert {
+
+header.header .nav-client .left-nav .menu.alert {
     position: relative;
     border: none;
 }
 
 /* 로그인 후 오른쪽 메뉴 */
+header.header .nav-client .right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 64px;
+    position: relative;
+}
+
 header.header .nav-client .right-nav .right-nav-list {
     height: 100%;
     font-size: 16px;
@@ -299,17 +308,18 @@ header.header .nav-client .right-nav .right-nav-list .nav-dropdown .nav-divider 
     margin-bottom: 4px;
 }
 
+/* header sub 시작 */
 header.header .sub-nav-client {
     margin-bottom: 20px;
     background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
 }
 
-header.header .sub-nav-client .left-nav .snb-menu+.snb-menu {
+header.header .sub-nav-client .left-nav .sub-menu+.sub-menu {
     margin-left: 8px;
 }
 
-header.header .nav-client .left-nav .snb-menu {
+header.header .sub-nav-client .left-nav .sub-menu {
     padding: 12px 20px;
     display: block;
     float: left;
