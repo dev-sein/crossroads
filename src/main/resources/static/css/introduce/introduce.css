@@ -1,0 +1,325 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+}
+
+main{
+    font-size: 16px;
+    min-width: 1080px;
+    height: auto;
+    min-height: 70%;
+    width: 1080px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.whole-wrapper{
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.inner-header{
+    margin-top: 48px;
+}
+
+.header-title{
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    color: #212121;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+nav{
+    margin-bottom: 32px;
+}
+
+.home-img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    vertical-align: text-bottom;
+}
+
+.nav-ul{
+    list-style: none;
+    display: inline-block;
+}
+
+.ul-list{
+
+}
+
+ul li{
+    padding: 0;
+    margin: 0;
+    display: inline;
+    list-style: none;
+    text-decoration: none;
+    /* margin: 0 8px; */
+}
+
+ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: #616161;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.ul-list a::after{
+    content: "";
+    display: inline-block;
+    background-size: 12px 12px;
+    height: 12px;
+    width: 12px;
+    background-image: url(https://www.wishket.com/static/renewal/img/acquisition/cs/faq-icon-right-2@2x.png);
+    margin: 0 8px;
+}
+
+.inner-wrapper{
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+    margin-bottom: 40px;
+}
+
+.inner{
+    font-size: 16px;
+
+}
+
+.inner-top-wrapper{
+
+}
+
+.inner-top{
+    padding: 80px 0;
+}
+
+.inner-top-title{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+    text-align: center;
+    color: #212121;
+    margin-bottom: 12px;
+}
+
+.inner-top-subtitle{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+.inner-top-link{
+    margin: 24px 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-top-link a {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #3ba3c7;
+}
+
+.inner-top-link::after {
+    content: "";
+    display: inline-block;
+    margin-left: 4px;
+    background-size: 14px 14px;
+    height: 14px;
+    width: 14px;
+    background-image: url(https://www.wishket.com/static/renewal/img/acquisition/cs/btn-icon-go@2x.png);
+}
+
+.guide-wrapper{
+    display: flex;
+    align-items: center;
+    margin-left: 140px;
+}
+
+.guide-wrapper2{
+    margin-top: 32px;
+}
+
+.guide-wrapper img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    width: 60px;
+    height: 60px;
+}
+
+.guide-contents{
+    margin-left: 24px;
+}
+
+.contents-question {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #212121;
+}
+
+.contents-answer {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #424242;
+}
+
+
+/* .inner-middle-wrapper {
+
+} */
+
+.inner-middle{
+    padding: 80px 0;
+}
+
+.middle-title{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+    text-align: center;
+    color: #212121;
+    margin-bottom: 12px;
+}
+
+.middle-subtitle{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+.middle-guide {
+    padding: 64px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.guide-item {
+    text-align: center;
+    width: 296px;
+}
+
+.guide-item-img {
+    width: 80px;
+    height: 80px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    margin-bottom: 24px;
+}
+
+.guide-item-title{
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 4px;
+}
+
+.guide-item-contents{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #424242;
+    word-break: keep-all;
+}
+
+.inner-bottom-wrapper{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'NotoSansKR',Sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.inner-bottom {
+    padding: 80px 0;
+}
+
+.inner-bottom-title{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+    text-align: center;
+    color: #212121;
+    margin-bottom: 12px;
+}
+
+.inner-bottom-subtitle{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    text-align: center;
+    color: #212121;
+}
+
+.inner-bottom-guide{
+    padding: 64px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-guide-item {
+    text-align: center;
+    width: 296px;
+}
+
+.bottom-guide-img {
+    margin-bottom: 24px;
+    width: 80px;
+    height: 80px;
+}
+
+.bottom-guide-contents{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #212121;
+    word-break: keep-all;
+}
+
+
+

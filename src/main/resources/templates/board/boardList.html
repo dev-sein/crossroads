@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록 페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/board/boardList.css">
+    
+</head>
+<body>
+    <main>
+        <div class="whole-contents-wrapper">
+            <div class="contents-inner-wrapper">
+                <div class="contents-inner">
+                    <div class="sub-title">
+                        리뷰
+                    </div>
+                    <div class="boardList-count">5개</div>
+                    <div class="board-box-wrapper">
+                        <div class="board-box">
+                            <div class="board-box-top">
+                                <img src="https://www.wishket.com/static/img/default_avatar_c.png" class="user-profile-image">
+                                <div class="user-detail-wrapper">
+                                    <div class="user-detail-top">
+                                        <div class="user-type">
+                                            클라이언트
+                                        </div>
+                                        유저명<!-- userName여기에 써야함 -->
+                                        <div class="seperator"></div>
+                                        <div class="service-region"> <!-- 연수받은 지역? -->
+                                            대보정보통신 주식회사
+                                        </div>
+                                        <!-- <div class="update-buttons-wrapper">
+                                            <div class="update-button">수정</div>
+                                            <div class="delete-button">삭제</div>
+                                        </div> -->
+                                    </div>
+                                    <div class="user-detail-bottom">
+                                        <div class="star-score-box">
+                                            <div class="review-star">
+                                                <div class="stars star0"></div>
+                                                <div class="stars star1"></div>
+                                                <div class="stars star2"></div>
+                                                <div class="stars star3"></div>
+                                                <div class="stars star4"></div>
+                                            </div>
+                                            <div class="review-score">
+                                                5.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 수정 삭제 버튼 -->
+                                <div class="update-buttons-wrapper">
+                                    <a href="#" class="buttons-wrapper">
+                                        <div class="update-button">수정</div>
+                                    </a>
+                                    <a href="#" class="buttons-wrapper">
+                                        <div class="delete-button">삭제</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="board-box-middle">
+                                <div class="box-middle-inner">
+                                    <a href="" class="middle-title">
+                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                    </a>
+                                    <div class="middle-middle">
+                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <div class="seperator"></div>
+                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                    </div>
+                                    <div class="middle-bottom">
+                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-first-value">67,000,000원</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">프로젝트 기간</span>
+                                        <span class="detail-second-value">73일</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">최초 계약일</span>
+                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-bottom">
+                                <div class="bottom-inner">
+                                    <div class="bottom-title">
+                                        함께 일한 소감
+                                        <span class="date">2023.03.03</span>
+                                    </div>
+                                    <div class="bottom-content">
+                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        <br>
+                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        <br>
+                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        <br>
+                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 1개 추가 -->
+                        <div class="board-box">
+                            <div class="board-box-top">
+                                <img src="https://www.wishket.com/static/img/default_avatar_c.png" class="user-profile-image">
+                                <div class="user-detail-wrapper">
+                                    <div class="user-detail-top">
+                                        <div class="user-type">
+                                            클라이언트
+                                        </div>
+                                        유저명<!-- userName여기에 써야함 -->
+                                        <div class="seperator"></div>
+                                        <div class="service-region"> <!-- 연수받은 지역? -->
+                                            대보정보통신 주식회사
+                                        </div>
+                                    </div>
+                                    <div class="user-detail-bottom">
+                                        <div class="star-score-box">
+                                            <div class="review-star">
+                                                <div class="stars star0"></div>
+                                                <div class="stars star1"></div>
+                                                <div class="stars star2"></div>
+                                                <div class="stars star3"></div>
+                                                <div class="stars star4"></div>
+                                            </div>
+                                            <div class="review-score">
+                                                5.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-middle">
+                                <div class="box-middle-inner">
+                                    <a href="" class="middle-title">
+                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                    </a>
+                                    <div class="middle-middle">
+                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <div class="seperator"></div>
+                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                    </div>
+                                    <div class="middle-bottom">
+                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-first-value">67,000,000원</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">프로젝트 기간</span>
+                                        <span class="detail-second-value">73일</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">최초 계약일</span>
+                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-bottom">
+                                <div class="bottom-inner">
+                                    <div class="bottom-title">
+                                        함께 일한 소감
+                                        <span class="date">2023.03.03</span>
+                                    </div>
+                                    <div class="bottom-content">
+                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        <br>
+                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        <br>
+                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        <br>
+                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2개추가 -->
+                        <div class="board-box">
+                            <div class="board-box-top">
+                                <img src="https://www.wishket.com/static/img/default_avatar_c.png" class="user-profile-image">
+                                <div class="user-detail-wrapper">
+                                    <div class="user-detail-top">
+                                        <div class="user-type">
+                                            클라이언트
+                                        </div>
+                                        유저명<!-- userName여기에 써야함 -->
+                                        <div class="seperator"></div>
+                                        <div class="service-region"> <!-- 연수받은 지역? -->
+                                            대보정보통신 주식회사
+                                        </div>
+                                    </div>
+                                    <div class="user-detail-bottom">
+                                        <div class="star-score-box">
+                                            <div class="review-star">
+                                                <div class="stars star0"></div>
+                                                <div class="stars star1"></div>
+                                                <div class="stars star2"></div>
+                                                <div class="stars star3"></div>
+                                                <div class="stars star4"></div>
+                                            </div>
+                                            <div class="review-score">
+                                                5.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-middle">
+                                <div class="box-middle-inner">
+                                    <a href="" class="middle-title">
+                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                    </a>
+                                    <div class="middle-middle">
+                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <div class="seperator"></div>
+                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                    </div>
+                                    <div class="middle-bottom">
+                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-first-value">67,000,000원</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">프로젝트 기간</span>
+                                        <span class="detail-second-value">73일</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">최초 계약일</span>
+                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-bottom">
+                                <div class="bottom-inner">
+                                    <div class="bottom-title">
+                                        함께 일한 소감
+                                        <span class="date">2023.03.03</span>
+                                    </div>
+                                    <div class="bottom-content">
+                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        <br>
+                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        <br>
+                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        <br>
+                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3개 추가 -->
+                        <div class="board-box">
+                            <div class="board-box-top">
+                                <img src="https://www.wishket.com/static/img/default_avatar_c.png" class="user-profile-image">
+                                <div class="user-detail-wrapper">
+                                    <div class="user-detail-top">
+                                        <div class="user-type">
+                                            클라이언트
+                                        </div>
+                                        유저명<!-- userName여기에 써야함 -->
+                                        <div class="seperator"></div>
+                                        <div class="service-region"> <!-- 연수받은 지역? -->
+                                            대보정보통신 주식회사
+                                        </div>
+                                    </div>
+                                    <div class="user-detail-bottom">
+                                        <div class="star-score-box">
+                                            <div class="review-star">
+                                                <div class="stars star0"></div>
+                                                <div class="stars star1"></div>
+                                                <div class="stars star2"></div>
+                                                <div class="stars star3"></div>
+                                                <div class="stars star4"></div>
+                                            </div>
+                                            <div class="review-score">
+                                                5.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-middle">
+                                <div class="box-middle-inner">
+                                    <a href="" class="middle-title">
+                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                    </a>
+                                    <div class="middle-middle">
+                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <div class="seperator"></div>
+                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                    </div>
+                                    <div class="middle-bottom">
+                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-first-value">67,000,000원</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">프로젝트 기간</span>
+                                        <span class="detail-second-value">73일</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">최초 계약일</span>
+                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-bottom">
+                                <div class="bottom-inner">
+                                    <div class="bottom-title">
+                                        함께 일한 소감
+                                        <span class="date">2023.03.03</span>
+                                    </div>
+                                    <div class="bottom-content">
+                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        <br>
+                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        <br>
+                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        <br>
+                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 4개 추가 -->
+                        <div class="board-box">
+                            <div class="board-box-top">
+                                <img src="https://www.wishket.com/static/img/default_avatar_c.png" class="user-profile-image">
+                                <div class="user-detail-wrapper">
+                                    <div class="user-detail-top">
+                                        <div class="user-type">
+                                            클라이언트
+                                        </div>
+                                        유저명<!-- userName여기에 써야함 -->
+                                        <div class="seperator"></div>
+                                        <div class="service-region"> <!-- 연수받은 지역? -->
+                                            대보정보통신 주식회사
+                                        </div>
+                                    </div>
+                                    <div class="user-detail-bottom">
+                                        <div class="star-score-box">
+                                            <div class="review-star">
+                                                <div class="stars star0"></div>
+                                                <div class="stars star1"></div>
+                                                <div class="stars star2"></div>
+                                                <div class="stars star3"></div>
+                                                <div class="stars star4"></div>
+                                            </div>
+                                            <div class="review-score">
+                                                5.00
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-middle">
+                                <div class="box-middle-inner">
+                                    <a href="" class="middle-title">
+                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                    </a>
+                                    <div class="middle-middle">
+                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <div class="seperator"></div>
+                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                    </div>
+                                    <div class="middle-bottom">
+                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-first-value">67,000,000원</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">프로젝트 기간</span>
+                                        <span class="detail-second-value">73일</span>
+                                        <div class="seperator"></div>
+                                        <span class="detail-title">최초 계약일</span>
+                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-box-bottom">
+                                <div class="bottom-inner">
+                                    <div class="bottom-title">
+                                        함께 일한 소감
+                                        <span class="date">2023.03.03</span>
+                                    </div>
+                                    <div class="bottom-content">
+                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        <br>
+                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        <br>
+                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        <br>
+                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 5개 추가 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="write-button-wrapper">
+            <div class="write-button">
+                <div class="write-button-text">
+                    <a href="#" class="buttons-wrapper">
+                        <div class="inner-text">
+                            후기<br class="next-line">작성
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
