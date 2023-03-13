@@ -1,0 +1,462 @@
+/* @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');} */
+
+/* @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');} */
+
+/* @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);  */
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+    background-color: #f5f5f5;
+
+}
+
+main{
+    min-width: 1080px;
+    height: auto;
+    background-color: #f5f5f5;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    /* width: 1080px; */
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.whole-contents-wrapper {
+    /* box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 60px;
+    float: right;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+    min-height: 420px;
+    margin-top: 40px; */
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 60px;
+    max-width: 1080px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+    min-height: 420px;
+}
+
+.contents-inner-wrapper{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.contents-inner{
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 32px 40px 32px;
+    margin-bottom: 40px;
+}
+
+.sub-title{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #212121;
+    margin-bottom: 32px;
+    display: inline-block;
+}
+
+.boardList-count{
+    font-weight: 500;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    float: right;
+    margin-top: 2px;
+    color: #3ba3c7;
+    cursor: pointer;
+}
+
+.board-box-wrapper{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.board-box{
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px 24px 24px 24px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px 0 rgb(230 235 240 / 80%);
+    border: solid 1px #e6ebf0;
+    background-color: #fff; 
+    margin-top: 20px;
+}
+
+.board-box-top{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.user-profile-image{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    margin-right: 16px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+
+.user-detail-wrapper{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.user-detail-top{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #424242;
+    margin-bottom: 2px;
+}
+
+.user-type{
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    background-color: #e3edfa;
+    color: #2e6baa;
+    margin-right: 8px;
+}
+
+.seperator{
+    font-size: 14px;
+    font-weight: 500;
+    color: #424242;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background-color: #e0e0e0;
+    margin: 0 8px;
+    position: relative;
+    top: 2px;
+}
+
+.service-region{
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #9e9e9e;
+    display: inline-block;
+}
+
+.user-detail-bottom{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.star-score-box {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.stars {
+    color: #ff6b21;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+    background-repeat: no-repeat;
+    background-image: url(https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star.png);
+}
+
+.review-score{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight : 700;
+    color: #212121;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.board-box-middle{
+    margin-bottom: 32px;
+    border-radius: 8px;
+    border: solid 1px #e6ebf0;
+    background-color: #fff;
+}
+
+.box-middle-inner{
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    padding: 16px 20px;
+    border-radius: 0px 0px 8px 8px;
+    background-color: #f7fafc;
+}
+
+.middle-title{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    width: 100%;
+    display: block;
+    color: #3ba3c7;
+}
+
+.middle-middle{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #9e9e9e;
+    margin-bottom: 8px;
+}
+
+.catergory-first {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #9e9e9e;
+}
+
+.category-second {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #9e9e9e;
+}
+
+.middle-bottom {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #9e9e9e;
+}
+
+.detail-title{
+    font-size: 13px;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    display: inline-block;
+    color: #616161;
+    margin-right: 6px;
+}
+
+.bottom-title{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #424242;
+    margin-bottom: 4px;
+}
+
+.date{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #bdbdbd;
+    margin-left: 8px;
+}
+
+.bottom-content{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    display: block;
+    color: #616161;
+}
+
+.write-button-wrapper {
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    position: fixed;
+    z-index: 10000000;
+    display: block;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    bottom: 24px;
+    right: 24px;
+}
+
+.write-button{
+    color-scheme: normal !important;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    width: 60px;
+    height: 60px;
+    overflow: initial;
+    cursor: pointer;
+    box-shadow: rgb(255 255 255 / 12%) 0px 0px 2px 0px inset, rgb(0 0 0 / 5%) 0px 0px 2px 1px, rgb(0 0 0 / 22%) 0px 4px 20px;
+    backdrop-filter: blur(30px);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 26px;
+    transition: box-shadow 0.2s ease-out 0s;
+    animation: 0.2s cubic-bezier(0.1, 0, 0.6, 1) 0.35s 1 normal backwards running fcEaNs;
+    display: table;
+}
+
+.write-button-text{
+    /* position: relative;
+    top: 10px;
+    bottom: 10px;
+    margin: 0 auto; */
+    /* line-height: 60px; */
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 700;
+}
+
+.inner-text{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.update-buttons-wrapper{
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #9e9e9e;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+.update-button{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.update-button:hover{
+    color: #000;
+}
+
+.delete-button{
+    display: inline-block;
+}
+
+.delete-button:hover{
+    color: #000;
+}
+
+.buttons-wrapper{
+    list-style: none;
+    color: inherit;
+    text-decoration: none;
+}
