@@ -167,9 +167,6 @@ html {
     position: relative;
 }
 
-.wishket-textarea.error{
-    border: solid 1px #e52929;
-}
 
 .text-input-client>div>input {
     display: block;
@@ -227,19 +224,14 @@ html {
 
 .select-card input[type="checkbox"], .select-card input[type="radio"] {
     border-radius: 50%;
-    display: none;
     position: absolute;
     left: 16px;
     top: 16px;
 }
 
-body.project-create .project-create-formview .select-card > input[type=checkbox].error + .input-replacer, body.project-create .project-create-formview .select-card-wide > input[type=checkbox].error + .input-replacer, body.project-create .project-create-formview .select-card-medium > input[type=checkbox].error + .input-replacer {
-    background-image: -webkit-image-set(url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@.png) 1x, url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@2x.png) 2x, url(https://www.wishket.com/static/renewal/img/global/input-checkbox-error@3x.png) 3x);
-}
 
-.select-card.client-input input[type="checkbox"]+.input-replacer {
-    background: url(https://www.wishket.com/static/renewal/img/component/input_checkbox_off.png) no-repeat;
-}
+
+
 
 .input-replacer  {
     cursor: pointer;
@@ -359,3 +351,5 @@ ul li {
     font-weight: 550;
     width: 114px;
 }
+
+/* 버튼 클릭시 색입히기 */
