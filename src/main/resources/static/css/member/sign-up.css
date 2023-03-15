@@ -35,7 +35,7 @@ body {
 /* 좌측 logo-section */
 
 .logo-section {
-    width: 43%;
+    width: 50%;
     margin: 0 auto;
     height: 100%;
     background-color: #fafafa;
@@ -64,14 +64,13 @@ body {
     margin-bottom: 32px;
 }
 
-
 /* 우측 input-section */
 
 .input-section {
     position: relative;
     padding: 120px 180px 120px 0;
-    /* overflow-x: hidden;
-    overflow-y: scroll; */
+    overflow-x: hidden;
+    overflow-y: scroll;
     flex-basis: 57%;
     /* align-items: center; */
     /* display: flex; */
@@ -84,9 +83,9 @@ body {
     max-width: 460px;
     margin: auto;
     position: absolute;
-    left: 43%;
-    top: 52%;
-    transform: translate(-50%, -50%);
+    left: 25%;
+    top: 4%;
+    /* transform: translate(-50%, -50%); */
 }
 
 .login-title {
@@ -320,6 +319,7 @@ a {
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
+    margin-bottom: 17px;
 }
 
 .checkbox-crossroads:hover>span:first-child>span {

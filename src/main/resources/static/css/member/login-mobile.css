@@ -1,0 +1,250 @@
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+@media all and (max-width:479px) { 
+    /*스타일입력*/
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'NotoSansKR',Sans-serif;
+        line-height: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        height: 100vh;
+    }
+    .input-section {
+        height: 100%;
+    }
+    .input-wrapper {
+        height: 100%;
+    }
+    .login-title{
+        height: 61px;
+    }
+    .login-title .header-margin {
+        padding: 16px 0;
+        background-color: #fff;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .login-title .navigation-center {
+        display: block;
+        text-align: center;
+        color: #212121;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .mobile-container {
+        width: 100%;
+        background-color: #fff;
+        /* margin: 24px 24px 32px; */
+    }
+    .mobile-inner {
+        padding: 24px 24px 32px;
+    }
+
+    .input-box .input-title {
+        margin-bottom: 16px;
+        color: #212121;
+    }
+
+    .margin-top-16 {
+        margin-top: 16px;
+    }
+
+    .input-text-wrapper {
+        position: relative;
+    }
+
+    .input-text-wrapper>input {
+        display: block;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        font-size: 14px;
+        line-height: 24px;
+        color: #616161;
+        font-weight: 400;
+        background: #fff;
+        width: 100%;
+        height: inherit;
+        padding: 8px 12px 8px 12px;
+        /* 에러 시 , 정규식 후 */
+        /* color: #e52929; */
+        /* border-color: #e52929; */
+    }
+    .error-text {
+        color: #e52929;
+        padding: 8px 12px 0 12px;
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    .input-text-wrapper>input:disabled {
+        background-color: #fafafa;
+        color: #bdbdbd
+    }
+    /* focus 시 기본 테두리 삭제 */
+    input:focus {
+        outline: none;
+    }
+    /* 포커스 시 테두리 색 */
+    .input-text-wrapper>input:focus {
+        border-color: #3ba3c7
+    }
+    
+    .input-text-wrapper>input:hover {
+        border-color: #3ba3c7
+    }
+    
+    .input-text-wrapper>input:hover:disabled:hover,.input-text-wrapper>input:hover:disabled:focus {
+        border-color: #e0e0e0
+    }
+    
+    .input-text-wrapper>input::placeholder {
+        color: #bdbdbd;
+        line-height: inherit
+    }
+
+    /* 비밀번호 표시 가리기 눈 */
+    .icon-right>i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 0;
+        right: 12px;
+        cursor: pointer;
+    }
+    .checkbox-crossroads {
+        padding: 0;
+        color: rgba(0,0,0,0.65);
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .checkbox-crossroads>span:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .checkbox-crossroads>span>input[type='checkbox'] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+    .arrow {
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        top: 3px;
+        left: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        background: #fff;
+    }
+    
+    .crossroads-checkbox>span:first-child>span.arrow .checked-icon {
+        transition: stroke-dashoffset 0.18s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+        stroke-dashoffset: 29.7833385;
+        stroke-dasharray: 29.7833385;
+    }
+
+    .checkbox-crossroads>span:last-child {
+        user-select: none;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        color: #212121;
+        line-height: 1.5rem;
+        padding-left: 28px;
+        display: inline-block;
+        word-break: keep-all;
+    }
+
+    .sub-action {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        color: #0d0f14;
+        margin-left: auto;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+        margin-bottom: 24px;
+    }
+    .sub-action .input-box {
+        margin: 0;
+    }
+    .sub-action .sub-action-link {
+        /* display: flex; */
+        margin-left: auto;
+    }
+
+    .sub-action .sub-action-link .link-href {
+        color: #3ba3c7;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #submit-btn {
+        padding: 11px 24px;
+        background-color: #2099bb;
+        color: #fff;
+        border: none;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: normal;
+    }
+
+    .border-sub-action {
+        padding-top: 16px;
+        margin-top: 24px;
+        border-top: solid 1px #e0e0e0;
+        text-align: center;
+        color: #616161;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+    .border-sub-action .link-href {
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #3ba3c7;
+    }
+
+
+
+
+
+
+
+
+
+}
