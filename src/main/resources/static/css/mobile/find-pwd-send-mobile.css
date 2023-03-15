@@ -1,0 +1,131 @@
+@media all and (max-width:479px) {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'NotoSansKR',Sans-serif;
+        line-height: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        height: 100%;
+    }
+    html {
+        height: 100%;
+        font-size: 16px;
+    }
+
+    header {
+        height: 61px;
+    }
+    .header {
+        padding: 16px 0;
+        background-color: #fff;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .navigation-center {
+        text-align: center;
+        color: #212121;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        display: block;
+        margin: 0 auto;
+        max-width: calc(100% - 80px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .main-wrap {
+        min-height: 32%;
+        padding-bottom: 8px;
+        height: auto;
+    }
+    .main-container {
+        width: 100%;
+    }
+    .box-in-container {
+        background-color: #fff;
+        padding: 24px 24px 32px;
+    }
+    /* ========여기까지 동일========= */
+
+
+    .box-content{
+        text-align: center;
+    }
+    .mb24{
+        margin-bottom: 24px;
+    }
+    .description{
+        color: #212121;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+        text-align: center;
+    }
+    .text-medium{
+        font-weight: 500;
+    }
+    .info-more-box{
+        text-align: left;
+        padding: 16px 20px;
+        border-radius: 8px;
+        background-color: #fafafa;
+    }
+    .info-title {
+        color: #616161;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 20px;
+    }
+    .info-description{
+        margin-top: 6px;
+        color: #616161;
+        font-size: 13px;
+        line-height: 20px;
+        font-weight: normal;
+    }
+
+
+    
+
+
+    /* 버튼 */
+    a {
+        text-decoration: none;
+    }
+    .send-email{
+        padding: 11px 24px;
+        background-color: #2099bb;
+        color: #fff;
+        border: none;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: normal;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* input태그 border focus,hover,placeholder 색상 및 inherit */
+    :focus {
+        outline: none;
+    }
+    /* 포커스, 마우스 오버 시 테두리 색 */
+    .input-text-wrapper>input:focus, .input-text-wrapper>input:hover {
+        border-color: #3ba3c7
+    }
+
+    .input-text-wrapper>input::placeholder {
+        color: #bdbdbd;
+        line-height: inherit
+    }
+}
