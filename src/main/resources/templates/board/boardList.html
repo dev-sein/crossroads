@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>게시글 목록 페이지</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/board/boardList.css">
-    
 </head>
 <body>
+<header th:replace="/components/header-main.html :: .header-container"></header>
     <main>
         <div class="whole-contents-wrapper">
             <div class="contents-inner-wrapper">
@@ -29,10 +30,10 @@
                                         <div class="user-type">
                                             클라이언트
                                         </div>
-                                        유저명<!-- userName여기에 써야함 -->
-                                        <div class="seperator"></div>
-                                        <div class="service-region"> <!-- 연수받은 지역? -->
-                                            대보정보통신 주식회사
+                                        김욱성<!-- userName여기에 써야함 -->
+                                        <!-- <div class="seperator"></div> -->
+                                        <div class="service-region">
+                                            수강생
                                         </div>
                                         <!-- <div class="update-buttons-wrapper">
                                             <div class="update-button">수정</div>
@@ -67,40 +68,58 @@
                             <div class="board-box-middle">
                                 <div class="box-middle-inner">
                                     <a href="" class="middle-title">
-                                        고장/부품/인원 유지관리 정보 시스템 구축
+                                        연수 정보
                                     </a>
                                     <div class="middle-middle">
-                                        <span class="category-first">개발 · 디자인 · 기획</span>
+                                        <span class="category-first">연수 지역</span>
                                         <div class="seperator"></div>
-                                        <span class="category-second">웹 · 퍼블리싱</span>
+                                        <span class="category-second">서울특별시 송파구 잠실동</span>
                                     </div>
                                     <div class="middle-bottom">
-                                        <span class="detail-title">계약금액</span>
+                                        <span class="detail-title">지불 금액</span>
                                         <span class="detail-first-value">67,000,000원</span>
                                         <div class="seperator"></div>
-                                        <span class="detail-title">프로젝트 기간</span>
-                                        <span class="detail-second-value">73일</span>
+                                        <span class="detail-title">수강 코스</span>
+                                        <span class="detail-second-value">B 코스</span>
                                         <div class="seperator"></div>
-                                        <span class="detail-title">최초 계약일</span>
-                                        <span class="detail-third-value">2022년 07월 18일</span>
+                                        <span class="detail-title">수강일</span>
+                                        <span class="detail-third-value">2023년 03월 14일</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="board-box-bottom">
                                 <div class="bottom-inner">
                                     <div class="bottom-title">
-                                        함께 일한 소감
+                                        함께 해본 소감
                                         <span class="date">2023.03.03</span>
                                     </div>
                                     <div class="bottom-content">
-                                        새롭게 진행하는 프로젝트를 함께해주셔서 감사합니다.
+                                        건물에 차를 들이박고 운전대를 다시 잡을 수 있을까.. 걱정도 되고
                                         <br>
-                                        프로젝트 진행과정에서 친절한 응대와 신속한 피드백을 해주셔서 순조롭게 진행되었습니다.
+                                        자신감이 많이 떨어졌었는데 친절하신 강사님께서 열심히 가르쳐주신 덕분에
                                         <br>
-                                        현재 A/S 기간 중에도 오류 수정 및 피드백을 신속하게 해주셨고
+                                        자신감도 되찾고 다시 운전대를 잡을 수 있게 되었습니다ㅠㅠ
                                         <br>
-                                        이번 프로젝트 진행을 같이 고민해주셔셔 감사합니다.
+                                        감사합니다 강사님!
                                         <br>
+                                    </div>
+                                </div>
+                                <div class="image-wrapper">
+                                    <!-- <div class="review-image" style="background-color: black;"></div> -->
+                                    <div class="review-image" style="background-image: url(http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg);"></div>
+                                </div>
+                                <!-- 댓글 -->
+                            </div>
+                            <div class="review-wrapper">
+                                <div class="review">
+                                    <div class="bar"></div>
+                                    <div class="review-content-wrapper">
+                                        <div class="review-detail">
+                                            강사명 <span class="review-date">2021.10.04</span>
+                                        </div>
+                                        <div class="review-content">
+                                            감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^~
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +417,7 @@
                 </div>
             </div>
         </div>
-        <div class="write-button-wrapper">
+        <!-- <div class="write-button-wrapper">
             <div class="write-button">
                 <div class="write-button-text">
                     <a href="#" class="buttons-wrapper">
@@ -408,7 +427,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 </body>
 </html>
