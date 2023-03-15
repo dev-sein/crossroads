@@ -274,6 +274,11 @@ header.header .nav-client .right-nav .right-nav-list .right-nav-item .user-img {
     border-radius: 16px;
 }
 
+/* 숨기기 */
+.nav-dropdown {
+    display: none;
+}
+
 header.header .nav-client .right-nav .right-nav-list .nav-dropdown {
     right: 0;
     left: auto;
