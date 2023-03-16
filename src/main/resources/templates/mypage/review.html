@@ -11,13 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="advertisement" id="nav_advertisement"></a>
     <div id="wrap">
         <div class="container">
-        <div id="message"></div>
-        </div><a class="advertisement no_message" id="message_advertisement"></a>
+            <a class="advertisement no_message" id="message_advertisement"></a>
+        <div id="message">
+            <div class="alert alert-success fade in" name="message_content">프로필 업데이트 성공</div>
+        </div>
+        </div>
 
         <div class="page">
-            <div class="page-ineer">
+            <div class="page-inner">
 
                 <!-- 좌측 사이드바 시작 -->
                 <div class="sidebar">
@@ -36,9 +40,9 @@
                                 <div class="sidebar-nav">
                                     <ul>
                                         <li><a href="/accounts/settings/profile/">프로필 정보 설정</a></li>
-                                        <li class="active"><a class="active-text" href="/client/project-history/"><span>나의 후기</span></a></li>
+                                        <li class="active"><a class="active-text" href="/client/project-history/"><span>연수 내역</span></a></li>
                                         <li><a href="/accounts/settings/verify_identity/">포인트 조회</a></li>
-                                        <li><a href="/accounts/settings/manage_seal/active/">연수 내역</a></li>
+                                        <li><a href="/accounts/settings/manage_seal/active/">나의 후기</a></li>
                                         <a class="advertisement" id="left_sidebar_advertisement"></a>   
                                         <!-- <li><a href="/accounts/settings/bank_account/">계좌 관리</a></li></ul></div>  -->          
 
@@ -87,76 +91,75 @@
         <!-- 본문 -->
             <div class="content">
                 <div class="content-header action">
-                    <h3 class="header-text">운전연수 히스토리
+                    <h3 class="header-text">운전연수 내역
                         <br>
-                <small class="small-text">운전연수 히스토리를 확인할 수 있습니다.</small></h3></div>
-
+                <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small></h3></div>
                 <div class="content-inner">
-
-                    <!-- 본문 1번 -->
-                    <section class="review-summary">
+                    <section class="history-review-summary">
                         <section class="history-summary">
                             <div class="history-summary-body-fix history-summary-body">
                                 <div class="client-history-body">
                                     <div class="project">
                                         <div class="history-body-title">운전연수 신청</div>
                                         <div class="pull-right history-body-data more-size">0 건</div></div>
-                                        
                                         <div class="contract">
                                             <div class="contract-title">
-                                                <div class="history-body-title">진행한 운전연수</div>
+                                                <div class="history-body-title">진행한 프로젝트</div>
                                                 <div class="pull-right history-body-data more-size">0 건</div></div>
-                                                <div class="contract-data">
-                                                    <div class="contract-data-box">
-                                                        <div class="history-body-subtitle">진행중</div>
-                                                        <div class="pull-right history-body-data"><span>0</span> 건</div></div>
+                                                <div class="contract-data"><div class="contract-data-box">
+                                                    <div class="history-body-subtitle">진행중</div>
+                                                    <div class="pull-right history-body-data"><span>0</span> 건</div></div>
+                                                     <div class="contract-data-box">
+                                                       <!--  <div class="history-body-subtitle">진행중인 프로젝트</div>
+                                                        <div class="pull-right history-body-data"><span>0</span> 건</div> --></div>
                                                         <div class="contract-data-box">
-                                                           <!--  <div class="history-body-subtitle">진행중인 프로젝트</div> -->
-                                                            <!-- <div class="pull-right history-body-data"><span>0</span> 건</div> --></div>
-                                                            <div class="contract-data-box">
-                                                                <div class="history-body-subtitle">완료한 운전연수</div>
-                                                                <div class="pull-right history-body-data"><span>0</span> 건</div></div></div></div>
+                                                            <div class="history-body-subtitle">완료한 운전연수</div>
+                                                            <div class="pull-right history-body-data"><span>0</span> 건</div></div></div></div>
+                                                            <div class="client-history-budget-body"><div class="budget-body-title">누적 완료 연수</div>
+                                                            <div class="pull-right budget-body-data">0 <span class="budget-body-clo">원</span></div></div></div></div></section></section>
+                                                            
+
+                                                            <section class="history-summary">
+                                                                <div class="history-summary-body-fix history-summary-body">
+                                                           <!--      <table>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목입니다 후기제목입니다</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                </table> -->
+                                                                <table>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">경기도 파주시+A코스</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
+                                                                    </tr>
                                                                 
-                                                                
-                                                                <div class="client-history-budget-body">
-                                                                    <div class="budget-body-title">누적 완료 연수</div>
-                                                                    <div class="pull-right budget-body-data">0 
-                                                                        <span class="budget-body-clo">건</span></div></div></div></div></section>
-                                                                        
-                                                                        <!-- 본문 2번 -->
-                                                                        <section class="total-review-summary">
-                                                                            <div class="total-review-summary-body">
-                                                                                <div class="total-average-rating">
-                                                                                    <div class="rating-wrapper">
-                                                                                        <div class="data-column">
-                                                                            <span class="avg-star-title">평균 평점</span><div class="avg-star-box">
-                                                                                <img src="https://www.wishket.com/static/img/review/review-empty-star.svg">
-                                                                                <img src="https://www.wishket.com/static/img/review/review-empty-star.svg">
-                                                                                <img src="https://www.wishket.com/static/img/review/review-empty-star.svg">
-                                                                                <img src="https://www.wishket.com/static/img/review/review-empty-star.svg">
-                                                                                <img src="https://www.wishket.com/static/img/review/review-empty-star.svg"></div>
-                                                                                <div class="avg-value"><span>0.00</span> <span class="num-total-review">/ 평가 0개</span></div></div></div></div></div></section>
-                                                                                
-                                                                                
-                                                                                
-                                                                                <section class="chart-section" id="chart-section">
-                                                                                    <div class="history-chart-radar">
-                                                                                        <div class="radar-score-set client" style="vertical-align: top;"><ul><li><span>전문성</span> <span style="padding-left: 29px;">0.00점</span></li>
-                                                                                            <li><span>사전 준비</span>
-                                                                                                <span style="padding-left: 10px;">0.00점</span></li>
-                                                                                                <li><span>의사소통</span>
-                                                                                                    <span style="padding-left: 14px;">0.00점</span></li>
-                                                                                                    <li><span>일정 준수</span><span style="padding-left: 15px;">0.00점</span></li>
-                                                                                                    <li><span>적극성</span> <span style="padding-left: 29px;">0.00점</span></li></ul></div>
-                                                                                                    </section>
-                                                                                                   
-                                                                                                    <!-- 본문 3번 -->
-                                                                                                        <div class="empty-component" style="padding-bottom: 30px;padding-top: 40px;">
-                                                                                                            <img id="star" src="https://www.wishket.com/static/img/profile_evaluation.png">
-                                                                                                            <p class="p5-no-partners-info-text" style="margin-bottom: 0;">등록된<span class="text-center p5-bold">'평가'</span>가 없습니다.</p></div></div> 
-            
-                                                                                                        </div>
-                                                                                                    </section></div>
+                                                                </table>
+                                                            </div>
+                                                            </section>
+                                                                                                    </section> 
+                                                                                                </div>
             </div> <!-- content -->
             </div>
         </div><!--page  -->
