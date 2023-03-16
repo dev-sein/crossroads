@@ -102,17 +102,18 @@ header.header .header-section .left-nav {
 header.header .header-section .main-logo {
     float: left;
     padding: 22px 12px;
-    font-size: 18px;
     line-height: 20px;
     width: 100px;
-    text-indent: -9999em;
+    /* text-indent: -9999em; */
     box-sizing: border-box;
     background-size: 80px 20px;
+    font-size: 750 !important;
+    font-weight: 27px !important;
 }
 
 /* main-logo */
 header.header .header-section .main-logo {
-    background: url("https://www.wishket.com/static/renewal/img/global/logo_black.svg?2c532611cefc") 10px 22px/80px 20px no-repeat;
+    background: url("") 10px 22px/80px 20px no-repeat;
 }
 
 header.header .header-section .left-nav .menu:first-child {
