@@ -155,6 +155,10 @@ a {
 
 }
 
+.user-nameemail{
+    margin-left:5px;
+}
+
 .sidebar .activity, .sidebar .partners-summary, .sidebar .application-status, .sidebar .partners-activity-summary, .sidebar .partners-history, .sidebar .client-history, .sidebar .partners-name-tag, .sidebar .client-info-box, .sidebar .client-name-tag, .sidebar .user-name-tag {
     width: 250px;
   /*   padding: 15px 15px 19px; */
@@ -241,29 +245,26 @@ a {
     cursor: pointer;
 }
 
-.sidebar .user-name-tag .username .email{
+.sidebar .user-name-tag .username{
     margin-top: 8px;
     line-height: 16px;
     font-size: 14px;
     display: block;
     float: left;
     margin: 0;
-    padding-left: 10px;
+    padding-left: 13px;
     width: 165px;
-    font-weight: bold;
+   /*  font-weight: bold; */
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.email {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 5px;
-    font-weight: initial;
-    line-height: 15px;
-    font-size: 13px;
-}
+.username{
+    padding-left:25px;
+    font-size: 16px;
+    padding-top: 15px;
 
+}
 
 .sidebar .partners-summary .partners-summary-body:after, .sidebar .application-status .application-status-body:after, .sidebar .partners-activity-summary .partners-activity-summary-body:after, .sidebar .partners-history .partners-history-body:after, .sidebar .client-history .client-history-body:after, .sidebar .partners-name-tag .partners-name-tag-body-img:after, .sidebar .partners-name-tag .partners-name-tag-body:after, .sidebar .client-name-tag .client-name-tag-body:after, .sidebar .user-name-tag .user-name-tag-body:after {
     clear: both;
@@ -327,9 +328,19 @@ li {
     width: 100%;
 }
 
+.sidemenu{
+    margin-top:10px;
+}
+
+.sidemenu2{
+    margin-bottom: 10px;
+}
+
 .active {
     color: #fff;
     background-color: #446eab;
+    line-height: 10px;
+    margin-top:10px;
 }
 
 .active span{
