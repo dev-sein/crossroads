@@ -548,16 +548,14 @@ main{
     width: 100%;
     height: 40px;
     padding: 10px;
+    background-color: #fdfcfc;
 }
 
 textarea{
     border: solid 1px #a29f9f;
     border-radius: 5px;
     width: 100%;
-    height: 500px;
-    padding: 10px;
 }
-
 input::placeholder{
     font-family: inherit;
     /* text-indent: 10px; */
@@ -942,4 +940,3 @@ section{
 }
 
 /* 테스트 */
-

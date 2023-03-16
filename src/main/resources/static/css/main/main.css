@@ -140,7 +140,7 @@ body.main .introduction .introduction-guide .guide-body {
 }
 
 /* 메인배너 버튼 */
-.btn {
+.btn-btn {
     cursor: pointer;
     display: inline-block;
     text-align: center;
