@@ -591,6 +591,13 @@ a:-webkit-any-link {
     transition: transform .2s ease-in-out;
 }
 
+.menu-box:hover{
+    border: solid 1px #2099bb;
+    box-shadow: 1px 1px 20px #ddd;
+    transition: all 0.5s;
+    transform: translate(0px, -5px);
+}
+
 a {
     text-decoration: none;
     color: #212121;
@@ -612,4 +619,21 @@ a {
     line-height: 24px;
     font-weight: 400;
 
+}
+
+/* withdraw-agree */
+.cancel {
+    width: 185px;
+}
+
+.btn-gray {
+    background-color: #a1a6ad;
+    color: #fff;
+}
+
+.button1 {
+    padding: 11px 24px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
 }
