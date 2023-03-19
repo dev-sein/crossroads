@@ -556,6 +556,7 @@ main{
 }
 
 textarea{
+    padding: 10px;
     border: solid 1px #a29f9f;
     border-radius: 5px;
     width: 100%;
@@ -904,7 +905,7 @@ section{
 
 .helper_ImageFormField{
     line-height: 18px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     color: #90949c;
     display: block;
@@ -917,6 +918,7 @@ section{
     --vh: 7.46px;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
+    text-align: center;
 }
 
 #image{
@@ -938,9 +940,12 @@ section{
 }
 
 #review-image{
-    margin: 10px;
-    width: 180px;
-    height: 180px;
+    margin: 0px;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+    /* width: 180px;
+    height: 180px; */
 }
 
 /* 테스트 */
