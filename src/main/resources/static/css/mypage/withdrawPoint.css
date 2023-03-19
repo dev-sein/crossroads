@@ -359,6 +359,7 @@ i {
     transform: translateY(-50%);
     line-height: 0;
     right: 12px;
+    cursor: pointer;
 }
 
 .default-input-wishket.icon-right:after {
@@ -396,6 +397,39 @@ body.wishket-member input[type=password] {
     padding: 8px 38px 8px 12px;
 }
 
+#password-input-confirm {
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    line-height: 24px;
+    color: #616161;
+    font-weight: 400;
+    background: #fff;
+    width: 100%;
+    height: inherit;
+    padding: 8px 38px 8px 12px;
+}
+
+#password-input-confirm:hover{
+    border: 1px solid #2099bb;
+    outline: none;
+}
+
+#password-input:hover{
+    border: 1px solid #2099bb;
+    outline: none;
+}
+
+#password-input:focus{
+    border: 1px solid #2099bb;
+    outline: none;
+}
+
+#password-input-confirm:focus{
+    border: 1px solid #2099bb;
+    outline: none;
+}
+
 input::placeholder {color:#CCCCCC;}
 
 body.wishket-member .input-box .icon {
@@ -431,6 +465,10 @@ body.wishket-member .input-box .icon {
 
 .error-text {
     display: none;
+    color: #e52929;
+    padding: 8px 12px 0 12px;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 element.style {
@@ -460,6 +498,7 @@ element.style {
     margin-top: 24px;
 }
 
+
 .body-1, .btn-01, .body-1-bold, .form-input-label, .btn-lg, .body-1-medium, .meeting-apply-modal .modal-inner .modal-body .modal-main-content .modal-main-content-pick .modal-main-content-pick-date .pick-date-set .pick-date-set-day, .body-1-light {
     font-size: 16px;
     line-height: 26px;
@@ -485,7 +524,7 @@ button {
 }
 
 .right-side {
-    margin-left: 390px;
+    margin-left: 80px;
     width: 280px;
 }   
 
@@ -499,12 +538,14 @@ button {
     font-size: 14px;
     font-weight: 400;
 }
+
 .help-link-second{
     margin-top: 18px;
     display: flex;
     font-size: 14px;
     color: #616161;
     font-weight: 400;
+    margin-bottom: -10px;
 }
 .message-info-box-wrapper{
     padding: 19px 24px;
@@ -636,4 +677,184 @@ a {
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
+}
+
+.body-1, .body-1-bold, .body-1-medium, body.wishket-member .message-info-box .title, body.wishket-member .input-box .title, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-action, body.wishket-member .menu-view .menu-view-wrapper .content-view .menu-content .menu-name, body.wishket-member .header .base-nav .nav-logo, .body-1-light {
+    font-size: 16px;
+    line-height: 26px;
+    color: #212121;
+}
+
+.margin{
+    margin-bottom: 32px;
+}
+
+.list-group{
+    margin-bottom: 16px;
+}
+
+.list-phase {
+    position: relative;
+    padding-left: 8px;
+    color: #616161;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.list-phase:before {
+    content: "·";
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 20px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.row-header {
+    border-bottom: solid 1px #212121;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+
+.col{
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    width: 480px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: solid 1px #e0e0e0;
+}
+
+.col.left-col {
+    width: 480px;
+}
+
+.input-box{
+    margin-bottom: 32px;
+    margin-top: 32px;
+}
+
+.checkbox-crossroads {
+    padding: 0;
+    color: rgba(0,0,0,0.65);
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-crossroads>span:first-child>input[type='checkbox'] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.input-first{
+        position: absolute;
+        top: 1px;
+        left: 0;
+    }
+
+
+.checkbox-crossroads>span:first-child>input:checked+span {
+    background: #3ba3c7 !important;
+    border-color: #3ba3c7 !important;
+    }
+
+.checkbox-crossroads>span:first-child>input:checked+span .checked-icon, .checkbox-crossroads>span:first-child>input:checked+span .indeterminate-icon {
+        stroke-dashoffset: 0;
+    }
+
+.checkbox-crossroads>span:first-child>span {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    top: 3px;
+    left: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #fff;
+}
+
+input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+.checked-icon {
+    transition: stroke-dashoffset 0.18s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    stroke-dashoffset: 29.7833385;
+    stroke-dasharray: 29.7833385;
+}
+
+.checkbox-crossroads>span:last-child {
+    user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    color: #212121;
+    line-height: 1.5rem;
+    padding-left: 28px;
+    display: inline-block;
+    word-break: keep-all;
+}
+
+.checkbox-crossroads:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.error-text-custom {
+    display: none;
+    margin: 4px 0 0 28px;
+    color: #e52929;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+#withdraw{
+    width: 185px;
+    margin-left: 16px;
+    background-color: #2099bb;
+    color: #fff;
+    border: #2099bb;
+    padding: 11px 24px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.content-view {
+    width: 720px;
+}
+
+#passwordeye-confirm{
+    top:35%;
 }
