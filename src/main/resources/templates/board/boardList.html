@@ -12,6 +12,18 @@
     <link rel="stylesheet" href="../../static/css/board/boardList.css">
 </head>
 <body>
+            <!-- 모달 -->
+            <div class="modal" style="visibility: hidden;">
+                <div class="modal-wrapper">
+                    <div class="modal-image-wrapper">
+                        <div class="inner-wrapper">
+                            <img src="http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg" class="modal-image">
+                            <img src="../../static/img/close.png" id="close-button" onclick="closeModal()">
+                        </div>
+                    </div>
+                </div>
+            </div>	
+            <!-- 모달 -->
 <header th:replace="/components/header-main.html :: .header-container"></header>
     <main>
         <div class="whole-contents-wrapper">
@@ -106,7 +118,7 @@
                                 </div>
                                 <div class="image-wrapper">
                                     <!-- <div class="review-image" style="background-color: black;"></div> -->
-                                    <div class="review-image" style="background-image: url(http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg);"></div>
+                                    <div class="review-image" style="background-image: url(http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg);" onclick="showModal()"></div>
                                 </div>
                                 <!-- 댓글 -->
                             </div>
@@ -430,4 +442,6 @@
         </div> -->
     </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/board/boardList.js"></script>
 </html>
