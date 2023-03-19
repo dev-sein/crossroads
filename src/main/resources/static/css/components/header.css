@@ -69,21 +69,49 @@ header.header .header-section .left-nav {
     float: left;
 }
 
-header.header .header-section .main-logo {
+/* main-logo b-big*/
+/* header.header .header-section .main-logo {
     float: left;
-    padding: 22px 16px;
+    padding: 32px 16px;
     line-height: 20px;
     width: 100px;
-    /* text-indent: -9999em; */
     box-sizing: border-box;
-    background-size: 80px 20px;
     font-size: 750 !important;
     font-weight: 27px !important;
 }
 
-/* main-logo */
 header.header .header-section .main-logo {
-    background: url("") 10px 22px/80px 20px no-repeat;
+    background: url('../../images/b-big.png') 10px 8px/80px 50px no-repeat;
+} */
+
+/* main-logo-img p-big */
+/* header.header .header-section .main-logo {
+    background: url('../../images/p-big.png') 10px 8px/80px 50px no-repeat;
+}
+
+header.header .header-section .main-logo {
+    float: left;
+    padding: 32px 16px;
+    line-height: 20px;
+    width: 100px;
+    box-sizing: border-box;
+    font-size: 750 !important;
+    font-weight: 27px !important;
+} */
+
+/* main-logo-img font-logo */
+header.header .header-section .main-logo {
+    background: url('../../images/header-logo.png') 10px 10px/80px 50px no-repeat;
+}
+
+header.header .header-section .main-logo {
+    float: left;
+    padding: 32px 16px;
+    line-height: 20px;
+    width: 100px;
+    box-sizing: border-box;
+    font-size: 750 !important;
+    font-weight: 27px !important;
 }
 
 header.header .header-section .left-nav .menu:first-child {
