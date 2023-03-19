@@ -165,8 +165,19 @@ main{
     -webkit-font-smoothing: antialiased;
     float: right;
     margin-top: 2px;
-    color: #3ba3c7;
+    color: #fff;
     cursor: pointer;
+    width: 110px;
+    height: 35px;
+    border-radius: 5px;
+    background: #3ba3c7;
+    text-align: center;
+    padding: 8px;
+    align-items: center;
+    top: -8px;
+    position: relative;
+    /* background-color: #e3edfa; */
+    /* color: #2e6baa;*/
 }
 
 .board-box-wrapper{
@@ -353,6 +364,7 @@ main{
     width: 100%;
     display: block;
     color: #3ba3c7;
+    cursor: text;
 }
 
 .middle-middle{
@@ -581,4 +593,5 @@ main{
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
 }
