@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>관리자 홈</title>
+	<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
+	<!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
+</head>
+<body>
+	<aside class="sidebar">
+		<header class="sidebar-header">
+			<h1>교차로<br>관리자페이지</h1>
+		</header>
+		<nav>
+			<ul>
+				<label> 
+					<a href="">
+						<li>
+							<details>
+								<summary class="nav-menu menu--current">
+									<h2 class="menu__title">관리자 홈</h2>
+									</summary> 
+							</details>
+						</li> 
+					</a>
+				</label>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">회원</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">회원정보</li>
+								</span>
+							</a>
+							<!-- <li class="submenu__item"><a href="./user.html">
+							<li class="submenu__item">
+								<a href="${pageContext.request.contextPath}/admin/user.admin">
+									<span id="sidelist">탈퇴회원</span>
+								</a>
+							</li> -->
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">연수신청 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">초보자 신청</li>
+								</span>
+							</a>
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">베테랑 신청</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">포인트 결제 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">결제</li>
+								</span>
+							</a>
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">홍보</li>
+								</span>
+							</a>
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">결제</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li><details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">후기</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">후기 관리</li>
+								</span>
+							</a>
+						</ul>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">댓글 관리</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+</body>
+</html>
+
