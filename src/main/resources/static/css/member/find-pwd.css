@@ -118,7 +118,7 @@ body {
     padding: 8px 12px 0 12px;
     font-size: 13px;
     font-weight: 400;
-    display: block;
+    display: none;
 }
 
 .send-email {
