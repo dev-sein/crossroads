@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet"
         />
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -132,8 +133,8 @@
                 />
                 <!-- <img class="status-mark" src="https://www.wishket.com/static/renewal/img/project/submit/tab_icon_check_on_c.png" > -->
               </p>
-              <p class="status-sub-menu-title">
-                2. 연수시간 및 지역
+              <p class="status-sub-menu-title" style="background-color: #95abee26;">
+                2. 지역 및 요일 선택
                 <img class="status-mark" src="" />
               </p>
               <p class="status-sub-menu-title">
@@ -146,73 +147,33 @@
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
+        <form>
         <div class="project-create-form-section">
           <div class="form-section-header">
-            <p class="form-section-title subtitle-1">연수시간 및 지역 선택</p>
+            <p class="form-section-title subtitle-1">지역 및 요일 선택</p>
           </div>
           <div class="form-input-section">
-            <div class="form-group-light">
-              <label class="form-group-title body-1-bold">운전연수 시간</label>
-              <div class="form-content">
-                <ul class="radio-group">
-                  <li style="padding: 3px">
-                    <label class="radio-client">
-                      <span>
-                        <input
-                          class="theme-client wishket-radio"
-                          id="purposeNew"
-                          name="project_purpose"
-                          type="radio"
-                          value="new"
-                        />
-                        <span>
-                          <span class="dot"></span>
-                        </span>
-                      </span>
-                      <span>5시간</span>
-                    </label>
-                  </li>
-                  <li style="padding: 3px">
-                    <label class="radio-client"
-                      ><span
-                        ><input
-                          class="theme-client wishket-radio"
-                          id="purposeRenewal"
-                          name="project_purpose"
-                          type="radio"
-                          value="renewal"
-                        />
-                        <span>
-                          <span class="dot"></span>
-                        </span>
-                      </span>
-                      <span>10시간</span></label
-                    >
-                  </li>
-                </ul>
-              </div>
-              <span class="error-text">시간을 선택해주세요.</span>
-            </div>
 
             <div class="form-group-light">
               <label class="form-group-title body-1-bold">연수 지역</label>
               <p class="body-2 text900 form-group-guide">원하시는 연수지역을 선택해 주세요.</p>
-              <div class="form-content">
+              <div class="form-content selectBox">
                 <!-- 지역 선택 -->
-                <select class="select" name="sido1" id="sido1"></select>
-                <select class="select" name="gugun1" id="gugun1"></select>
+                <select  class="select" name="sido1" id="sido1"></select>
+                <select  class="select" name="gugun1" id="gugun1"></select>
                 <!-- 지역 선택 끝 -->
               </div>
-              <span class="error-text">지역을 선택해주세요.</span>
+              <span class="error-text1" style="margin: 10px 0px 0px -11px;" >지역을 선택해주세요.</span>
             </div>
+
             <!-- 달력 -->
             <div class="form-group-light">
                 <div class="form-content">
-                <label class="form-group-title body-1-bold">신청 요일</label>
+                <label class="form-group-title body-1-bold" style="padding: 20px 0 0 0px;">신청 요일</label>
                 날짜 선택 :&nbsp;<input type="text" id="startDate" placeholder="20230314" class="date-select">&nbsp;~
                 <input type="text" id="endDate" class="date-select" placeholder="20230314">
                 </div>
-                <span class="error-text">날짜를 선택해주세요.</span>
+                <span class="error-text2" style="margin: 10px 0px 0px -11px;">날짜를 선택해주세요.</span>
             </div>
 
           </div>
@@ -223,6 +184,9 @@
           <div class="form-section-footer" style="position: relative">
             <button
               class="btn btn-client btn-11-24 btn-right"
+              style="pointer-events: none;
+                cursor: default;
+                opacity: 0.45;"
               name="can_submit"
               type="submit"
               value="False"
@@ -232,10 +196,12 @@
             <div style="clear: both"></div>
           </div>
         </div>
+      </form>
         <!-- 메인 끝  -->
       </div>
     </div>
 
   </body>
-  <script src="../../static/js/form/form.js"></script>
+  <script src="../../static/js/form/Form.js"></script>
+  <script src="../../static/js/form/Form2.js"></script>
 </html>

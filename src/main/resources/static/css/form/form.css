@@ -302,7 +302,7 @@ html {
     border: none;
 }
 
-.error-text{
+.error-text1, .error-text2{
     float: left;
     padding: 8px 12px 0 12px;
     font-size: 13px;
@@ -352,4 +352,40 @@ ul li {
     width: 114px;
 }
 
-/* 버튼 클릭시 색입히기 */
+/* 에러 메시지 */
+.error-message {
+    /* ===== 에러 메시지 기본값 초기화 시작 ====== */
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+    /* ===== 에러 메시지 기본값 초기화 끝 =====*/
+    
+    color: #e54545;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 12px;
+    font-weight: 400;
+    display: none; /* 기본값 */
+    margin-top: 4px;
+    font-style: normal;
+}
+
+.name-input{
+    height: 48px;
+    min-height: 44.67px;
+    display: block;
+    outline: none;
+    border: 2px solid #616161;
+    border-radius: 3px;
+    padding-right: 140px;
+    padding-left: 16px;
+    height: auto;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Noto Sans KR';
+}
