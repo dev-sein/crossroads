@@ -5,19 +5,156 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>관리자 홈</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/css/components/sanitize.css" />
+<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
 <!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/css/admin/admin_home.css" />
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png">	
+<link rel="stylesheet" href="../../static/css/admin/admin-home.css" />
+<link rel="stylesheet" href="../../static/css/components/user-modal.css" />
+<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
+<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page="/dhouse/components/adminHeader.jsp"></jsp:include>
+	<header id="admin-header" class="page">
+		<div class="page-info">
+			<img src="../../static/images/admin/menubar.png" alt="icon" class="page-info__icon" />
+			<ul>
+				<a href="">
+						<span>
+							<li class="page-info__detail page-info--current">관리자 홈</li>
+						</span>
+				</a>
+			</ul>
+		</div>
+		<div class="page-language">
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+				<div class="AnnouncementButton_container__1p1gr" role="button">
+					<a href="">
+						<strong>홈페이지</strong>
+					</a>
+				</div>
+				<!-- <span class="Badge_container__3mdFR AnnouncementButton_badge__2Jq25">
+				</span> -->
+			</button>
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+					<span>
+						<span class="Button_children__q9VCZ">
+							<a href="">
+								<strong>LOGOUT</strong>
+							</a>
+						</span>
+					</span>
+			</button>
+		</div>
+	</header>
 	<!-- -------------- header end --------------  -->
 	<!-- aside -->
-	<jsp:include page="/dhouse/components/adminAside.jsp"></jsp:include>
+	<aside id="admin-aside" class="sidebar">
+		<header class="sidebar-header">
+			<h1>교차로<br>관리자페이지</h1>
+		</header>
+		<nav>
+			<ul>
+				<label>
+					<a href="">
+						<li>
+							<details>
+								<summary class="nav-menu menu--current">
+									<h2 class="menu__title">관리자 홈</h2>
+								</summary>
+							</details>
+						</li>
+					</a>
+				</label>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">회원</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">회원정보</li>
+									</span>
+							</a>
+							<!-- <li class="submenu__item"><a href="./user.html">
+							<li class="submenu__item">
+								<a href="${pageContext.request.contextPath}/admin/user.admin">
+									<span id="sidelist">탈퇴회원</span>
+								</a>
+							</li> -->
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">연수신청 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">초보자 신청</li>
+									</span>
+							</a>
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">베테랑 신청</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">포인트 결제 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">결제</li>
+									</span>
+							</a>
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">홍보</li>
+									</span>
+							</a>
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">결제</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li><details>
+					<summary class="nav-menu">
+						<h2 class="menu__title">후기</h2>
+						<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+					</summary>
+					<ul class="nav-menu-submenu">
+						<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">후기 관리</li>
+									</span>
+						</a>
+					</ul>
+					<ul class="nav-menu-submenu">
+						<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">댓글 관리</li>
+									</span>
+						</a>
+					</ul>
+				</details>
+				</li>
+			</ul>
+		</nav>
+	</aside>
 	<!-- -------------- header end --------------  -->
 	<!-- 페이지별로 class 이름 기능에 맞게 재설정 -->
 	<main class="module-container">
@@ -57,7 +194,7 @@
 				</div>
 			</div>
 		</article>
-		<article class="module module--todo-today">
+		<!-- <article class="module module--todo-today">
 			<p class="module__title">홍보글 현황</p>
 			<div class="mBoardList notice">
 				<ul>
@@ -69,7 +206,6 @@
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[홍보게시판] 김세윤이 좋아하는 부어치킨 8000원에서 7000원으로 할인중!! </a> <span class="date">2023-02-21</span>
 					</li>
-					<!-- 스크롤 실험 지워도됨  -->
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[홍보게시판] 스크롤 실험 </a> <span class="date">2023-02-21</span>
 					</li>
@@ -82,18 +218,17 @@
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[홍보게시판] 스크롤 실험 </a> <span class="date">2023-02-21</span>
 					</li>
-					<!-- 여기까지 지워도됨! -->
 					
 
 				</ul>
 			</div>
-		</article>
+		</article> -->
 		<article class="module module--monthly-statistics">
-			<p class="module__title">배너 신청 현황 <span class="text-default-bright header-badge badge-danger">new</span>
+			<p class="module__title">연수 신청 현황 <span class="text-default-bright header-badge badge-danger">new</span>
 			</p>
 			<div class="card-body border-top today-table">
 				<div class="tt-list">
-					전체 배너 
+					전체 
 					<span class="text-danger">3</span> 
 					신청수 
 					<span class="text-danger">1</span> 
@@ -101,39 +236,34 @@
 			</div>
 		</article>
 		<article class="module module--new-dispute">
-			<p class="module__title">식품기부 게시판</p>
+			<p class="module__title">후기 게시판</p>
 			<div class="mBoardList notice">
 				<ul>
 					<li><a data-gtm="DATA_notice_contents" href="#none"> <strong>[공지사항]
 								이용 주의사항</strong></a> <span class="date">2023-01-31</span>
 					</li>
 					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] 막 돈까스 기부합니다.</a> <span class="date">2023-02-17</span>
+							[후기] test01</a> <span class="date">2023-03-17</span>
 					</li>
 					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] 1교시 끝나고 믹스커피 드실분? </a> <span class="date">2023-02-22</span>
+							[후기] test02 </a> <span class="date">2023-03-22</span>
 					</li>
 					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] 바나프레소 차가운 아이스아메리카노 기부합니다. </a> <span class="date">2023-02-22</span>
-					</li>
-					<!-- 스크롤 되나 안되나 연습 지워도 됨! -->
-					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] test</a> <span class="date">2023-02-17</span>
+							[후기] test03 </a> <span class="date">2023-03-22</span>
 					</li>
 					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] 1교시 끝나고 믹스커피 드실분? </a> <span class="date">2023-02-16</span>
+							[후기] test02 </a> <span class="date">2023-03-22</span>
 					</li>
 					<li><a data-gtm="DATA_notice_contents" href="#none">
-							[식품] 1교시 끝나고 믹스커피 드실분? </a> <span class="date">2023-02-15</span>
+							[후기] test03 </a> <span class="date">2023-03-22</span>
 					</li>
-					<!-- 주석부터 여기까지 지워도됨!  -->
 				</ul>
 			</div>
 		</article>
 		<article class="module module--closed-qna">
 			<p class="module__title">추가하기</p>
 		</article>
-		<article class="module module--new-articles">
+		<!-- <article class="module module--new-articles">
 			<p class="module__title">가전기부 게시판</p>
 			<div class="mBoardList notice">
 				<ul>
@@ -149,7 +279,6 @@
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[가전] 무선 마우스 기부합니다. </a> <span class="date">2023-02-22</span>
 					</li>
-					<!-- 스크롤 되나 안되나 연습 지워도 됨! -->
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[가전] IT코리아 컴퓨터 전부 기부합니다.</a> <span class="date">2023-02-17</span>
 					</li>
@@ -159,12 +288,11 @@
 					<li><a data-gtm="DATA_notice_contents" href="#none">
 							[가전] test </a> <span class="date">2023-02-15</span>
 					</li>
-					<!-- 주석부터 여기까지 지워도됨!  -->
 					
 					
 				</ul>
 			</div>
-		</article>
+		</article> -->
 	</main>
 </body>
 </html>

@@ -275,10 +275,7 @@ header.header .nav-client .right-nav .right-nav-list .right-nav-item .user-img {
     border-radius: 16px;
 }
 
-/* 숨기기 */
-.nav-dropdown {
-    display: none;
-}
+
 
 header.header .nav-client .right-nav .right-nav-list .nav-dropdown {
     right: 0;
@@ -294,6 +291,11 @@ header.header .nav-client .right-nav .right-nav-list .nav-dropdown {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+}
+
+/* 숨기기 */
+#dropdown {
+    display: none;
 }
 
 header.header .nav-client .right-nav .right-nav-list .nav-dropdown .nav-dropdown-item {

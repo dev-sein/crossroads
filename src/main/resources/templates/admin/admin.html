@@ -4,12 +4,11 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>홍보 목록</title>
-<link rel="stylesheet" href="../static/css/components/sanitize.css" />
+<title>후기 목록</title>
+<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
 <!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
-<link rel="stylesheet" href="../static/css/admin/ad.css" />
-<link rel="stylesheet" href="../static/css/components/ad_modal.css" />
-<link rel="shortcut icon" href="../static/images/logo.png">
+<link rel="stylesheet" href="../../static/css/admin/admin.css" />
+<link rel="stylesheet" href="../../static/css/components/admin-modal.css" />
 </head>
 <body>
 	<!-- header -->
@@ -26,7 +25,7 @@
 					<input id="searchbox" type="text" placeholder="원하시는 키워드로 찾아보세요" />
 					<button type="button" class="search__searchbox__button">
 						<img
-							src="${pageContext.request.contextPath}/static/images/user/search.png"
+							src="../../static/images/admin/search.png"
 							alt="" />
 					</button>
 				</form>
@@ -80,8 +79,6 @@
 						</label>
 					</div>
 				</div> -->
-
-
 				<div class="support-list__info-container">
 					<div class="support-list__info-unit">
 						<input type="checkbox" class="support__checkbox" id="kus"
@@ -89,14 +86,12 @@
 							class="support__checkbox--label">
 							<ul class="support-list__info">
 								<li class="support__id">00001</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">ksy</li>
-								<li class="support__title">부어치킨</li>
-								<li class="support__content">부어치킨에서 한끼당 7000원으로 행사</li>
-								<li class="support__date-post">2023.02.22</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세
-										정보</button></li>
+								<li class="support__type">후기</li>
+								<li class="support__user-id">정세인</li>
+								<li class="support__title">초보운전에서 벗어났어요!</li>
+								<li class="support__content">강사님의 친절한 지도 덕분에 장롱면허 5년만에 고속도로에 나갔습니다.</li>
+								<li class="support__date-post">2023.03.22</li>
+								<li class="user__detail" name="userDetail"><button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button></li>
 							</ul>
 						</label>
 					</div>
@@ -238,6 +233,6 @@
 	<!-- modal fin. -->
 
 </body>
-<script src="../static/js/admin/ad.js"></script>
-<script src="../static/js/components/admin-modal.js"></script>
+<script src="../../static/js/admin/admin.js"></script>
+<script src="../../static/js/components/admin-modal.js"></script>
 </html>
