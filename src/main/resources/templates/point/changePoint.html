@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,7 +13,6 @@
     />
     <title>포인트 환전</title>
     <link rel="stylesheet" href="../../static/css/form/form.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
@@ -99,6 +99,7 @@
     <div class="gaia">
         <div class="container">
                  <!-- 메인시작  -->
+                 <form method ="post" name="changepoint" id="changepoint">
                  <div class="project-create-form-section" style="margin: 0 0 0 13.5%">
                     <div class="form-section-header">
                         <p class="form-section-title subtitle-1">포인트 환전하기</p>
@@ -123,11 +124,11 @@
                                 <div>
                                     <div class="text-input-client  ">
                                         <div>
-                                            <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="ex) 110901111111" type="text" value="">
+                                            <input id="account-number" class="theme-client wishket-text name-input" data-type="text" maxlength="15" name="title" placeholder="ex) 1100-0111-1111" type="text" value="">
                                         </div>
                                     </div>
                                 </div>
-                                <span class="error-text">계좌번호를 입력해주세요!</span>
+                                <em class="account-error error-message">계좌번호를 입력해주세요.</em>
                             </div>  
                         </div>
                         
@@ -139,18 +140,18 @@
                                 <!-- 코스 -->
                                 <div class="select-card client-input" style="width: 200px; margin-right: 20px;">
                                     <label >
-                                    <input id="category_develop" name="category" type="radio" value="develop" class="error">
+                                    <input id="category_develop" name="category" type="radio" value="develop" class="error" checked="checked">
                                     <div class="select-card-content">
-                                        <img class="select-card-img inherit-select-card-img" src="https://www.wishket.com/static/renewal/img/project/submit/select_card_icon_job_category_1_d.png">
+                                        <img class="select-card-img inherit-select-card-img" src="../../static/img/account.png">
                                         <p class="body-2-medium">계좌이체</p>
                                     </div>
                                 </label>
                                 </div>
                                 <div class="select-card client-input div2" style="width: 200px; margin-right: 20px;">
                                     <label >
-                                    <input id="category_develop" name="category" type="radio" value="develop" class="error">
+                                    <input id="category_develop" name="category" type="radio" value="" class="error" onclick="return false">
                                     <div class="select-card-content">
-                                        <img class="select-card-img inherit-select-card-img" src="https://www.wishket.com/static/renewal/img/project/submit/select_card_icon_job_category_1_d.png">
+                                        <img class="select-card-img inherit-select-card-img" src="../../static/img/money.png">
                                         <p class="body-2-medium">현금 환전(서비스 종료)</p>
                                     </div>
                                 </label>
@@ -163,15 +164,18 @@
 
                     <!-- 다음 -->
                     <div class="form-section-footer" style="position: relative">
-                        <button class="btn btn-client btn-11-24 btn-right" name="can_submit" type="submit" value="False">환전하기</button>
+                        <button class="signup-submit-button btn btn-client btn-11-24 btn-right signup-submit-button" name="can_submit" style="pointer-events: none; cursor: default; opacity: 0.45;" type="button" onclick="send()" >
+                        환전하기 </button>
                         <div style="clear:both;">
                         </div>
                     </div>
                     
                  </div>
+                </form>
                  <!-- 메인 끝  -->
 
         </div>
      </div>   
-</body
+    </body>
+    <script src="../../static/js/point/changePoint.js"></script>
 </html>
