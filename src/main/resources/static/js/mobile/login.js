@@ -100,5 +100,3 @@ $checkbox.on("click", function(){
         checkbox = false;
     }
 });
-
-

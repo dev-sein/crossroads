@@ -1,32 +1,3 @@
-// 아이디 변수
-const $idInput = $('.id .input-text');
-// 아이디 에러 변수
-let $idWarning = $("#id-error");
-$idInput.on("blur", function() {
-    var $idInputValue = $idInput.val();
-	var idInputValue = $idInput.val();
-
-    if ($idInputValue.length < 1) {
-		$idWarning.text("아이디를 입력해 주세요.");
-		$idWarning.css("display", "block");
-		$idInput.css("border-color", "#e52929");
-
-	} else if ($idInputValue.length < 6) {
-		$idWarning.text("6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다.");
-		$idWarning.css("display", "block");
-		$idInput.css("border-color", "#e52929");
-
-	} else {
-		$idWarning.css("display", "none");
-		$idInput.css("border-color", "#e0e0e0");
-	}
-
-
-})
-
-
-
-
 // 비밀번호 변수
 const $passwordInput = $("#password-input");
 // 비밀번호 에러 변수
@@ -64,6 +35,32 @@ $passwordInput.on("blur", function() {
 	}
 });
 
+// 비밀번호 변수
+const $passwordCheckInput = $("#re-password-input");
+// 비밀번호 에러 변수
+let $passwordCheckWarning = $(".re-pwd .error-text");
+
+// 비밀번호 확인 정규식 이벤트 사용 및 함수
+$passwordCheckInput.on("blur", function() {
+	var $passwordInputValue = $passwordInput.val();
+	var $passwordCheckInputValue = $passwordCheckInput.val();
+
+	if ($passwordCheckInputValue.length < 1) {
+		$passwordCheckWarning.text("비밀번호를 한 번 더 입력해 주세요.");
+		$passwordCheckWarning.css("display", "block");
+		$passwordCheckInput.css("border-color", "#e52929");
+        
+	} else if ($passwordCheckInputValue == $passwordInputValue) {
+		$passwordCheckWarning.css("display", "none");
+		$passwordCheckInput.css("border-color", "#e0e0e0");
+
+	} else {
+		$passwordCheckWarning.text("동일한 비밀번호를 입력해 주세요.");
+		$passwordCheckWarning.css("display", "block");
+		$passwordCheckInput.css("border-color", "#e52929");
+	}
+});
+
 const $pwdEye = $(".pwd i");
 let checkPwd = false;
 $pwdEye.on('click', function(){
@@ -80,25 +77,18 @@ $pwdEye.on('click', function(){
     }
 });
 
-
-/* 로그인 상태 유지 */
-let checkbox = false;
-const $checkbox = $(".crossroads-checkbox");
-const $arrow = $(".arrow");
-const $icon = $(".checked-icon");
-
-$checkbox.on("click", function(){
-    if (!checkbox) {
-        $arrow.css("background", "#3ba3c7");
-        $arrow.css("border-color", "#3ba3c7");
-        $icon.css("stroke-dashoffset", "1");
-        checkbox = true;
+const $rePwdEye = $(".re-pwd i");
+let checkRePwd = false;
+$rePwdEye.on('click', function(){
+    var $pwdInput = $('.re-pwd input');
+    var $pwdImg = $('.re-pwd img');
+    if (!checkPwd) {
+        $pwdInput.attr('type', 'text');
+        $pwdImg.attr('src', '../../static/img/icon_input_slash.png');
+        checkPwd = true;
     } else {
-        $arrow.css("background", "#fff");
-        $arrow.css("border-color", "#e0e0e0");
-        $icon.css("stroke-dashoffset", "29.7833385");
-        checkbox = false;
+        $pwdInput.attr('type', 'password');
+        $pwdImg.attr('src', '../../static/img/icon_input_eye.png');
+        checkPwd = false;
     }
 });
-
-
