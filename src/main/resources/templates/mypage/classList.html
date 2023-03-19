@@ -4,41 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>연수 목록</title>
+    <title>연수 내역</title>
     <link rel="stylesheet" href="../../static/mypage/review.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="advertisement" id="nav_advertisement"></a>
     <div id="wrap">
         <div class="container">
-        <div id="message"></div>
-        </div><a class="advertisement no_message" id="message_advertisement"></a>
+            <a class="advertisement no_message" id="message_advertisement"></a>
+        <div id="message">
+            <div class="alert alert-success fade in" name="message_content">프로필 업데이트 성공</div>
+        </div>
+        </div>
 
         <div class="page">
-            <div class="page-ineer">
+            <div class="page-inner">
 
-                <!-- 좌측 사이드바 시작 -->
-                <div class="sidebar">
+                  <!-- 좌측 사이드바 시작 -->
+                  <div class="sidebar">
                     <div class="user-name-tag">
                         <h3 class="user-name-tag-heading">클라이언트</h3>
-                        <a class="profile-setting" href="/accounts/settings/profile/">클라이언트 정보</a>
+                        <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
                         <div class="user-name-tag-body">
                             <div class="user-img-box">
                                 <img alt="seinee114 사진" class="img-circle user-img" onclick="show_img_edit_modal()" src="https://www.wishket.com/static/img/default_avatar_c.png">
                                 <img class="user-img-edit-icon off" src="https://www.wishket.com/static/renewal/img/profile/icon_edit_s.png">
                                 <img class="user-img-edit-icon on" src="https://www.wishket.com/static/renewal/img/profile/icon_edit_s_hover.png"></div>
-                                <div class="username">seinee114</div><div class="email">seinee114@gmail.com</div></div>
+                                <div class="userid">
+                                <div class="username">seinee114<br></div></div></div>
                                 </div>
 
                                 <!-- 사이드바 메뉴 -->
                                 <div class="sidebar-nav">
                                     <ul>
-                                        <li><a href="/accounts/settings/profile/">프로필 정보 설정</a></li>
-                                        <li><a href="/client/project-history/"><span>나의 후기</span></a></li>
+                                        <li class="sidemenu"><a href="/accounts/settings/profile/">프로필 정보 설정</a></li>
                                         <li><a href="/accounts/settings/verify_identity/">포인트 조회</a></li>
-                                        <li class="active"><a class="active-text" href="/accounts/settings/manage_seal/active/"><span>연수 내역</span></a></li>
+                                        <li class="active"><a href="/client/project-history/"><span>연수 내역</span></a></li>
+                                        <li class="sidemenu2"><a href="/accounts/settings/manage_seal/active/">나의 후기</a></li>
                                         <a class="advertisement" id="left_sidebar_advertisement"></a>   
                                         <!-- <li><a href="/accounts/settings/bank_account/">계좌 관리</a></li></ul></div>  -->          
 
@@ -87,104 +92,75 @@
         <!-- 본문 -->
             <div class="content">
                 <div class="content-header action">
-                    <h3 class="header-text">연수 내역
+                    <h3 class="header-text">운전연수 내역
                         <br>
-                <small class="small-text">나의 운전 연수 내역을 확인할 수 있습니다.</small></h3></div>
-
+                <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small></h3></div>
                 <div class="content-inner">
+                    <section class="history-review-summary">
+                        <section class="history-summary">
+                            <div class="history-summary-body-fix history-summary-body">
+                                <div class="client-history-body">
+                                    <div class="project">
+                                        <div class="history-body-title">운전연수 신청</div>
+                                        <div class="pull-right history-body-data more-size">0 건</div></div>
+                                        <div class="contract">
+                                            <div class="contract-title">
+                                                <div class="history-body-title">진행한 프로젝트</div>
+                                                <div class="pull-right history-body-data more-size">0 건</div></div>
+                                                <div class="contract-data"><div class="contract-data-box">
+                                                    <div class="history-body-subtitle">진행중</div>
+                                                    <div class="pull-right history-body-data"><span>0</span> 건</div></div>
+                                                     <div class="contract-data-box">
+                                                       <!--  <div class="history-body-subtitle">진행중인 프로젝트</div>
+                                                        <div class="pull-right history-body-data"><span>0</span> 건</div> --></div>
+                                                        <div class="contract-data-box">
+                                                            <div class="history-body-subtitle">완료한 운전연수</div>
+                                                            <div class="pull-right history-body-data"><span>0</span> 건</div></div></div></div>
+                                                            <div class="client-history-budget-body"><div class="budget-body-title">누적 완료 연수</div>
+                                                            <div class="pull-right budget-body-data">0 <span class="budget-body-clo">원</span></div></div></div></div></section></section>
+                                                            
 
-                    <!-- 본문 1번 -->
-                    <div class="process-guide-box" style="margin-bottom: 10px;">
-                        <img src="https://www.wishket.com/static/img/process-guide-success.png" style="margin-right: 15px;">
-                        <div class="process-guide-up"><div class="process-guide-up-content" style="padding-top: 10px;">나의 운전연수 내역입니다.</div>
-                                <div style="clear:both;"></div></div><div style="clear:both;"></div></div>
-                                        
-                                <div class="store-interest-list-box" style="border: 1px solid #dedede; margin-bottom: 10px; background-color: #fff; box-shadow: 0 1px 0 0 #dedede; border-radius: 2px;">
-                                    <div style="float:left; width: 514px; position: relative;">
-                                        <div style="float:left;">
-                                            <a href="/store/41/">
-                                                <img src="https://cdn.wishket.com/thumbnail/None/%EB%B9%8C%EA%B2%8C%EC%9D%B4%ED%8A%B8%20%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="width: 120px; height: 120px;"></a></div>
-                                                <div style="float:left; margin-left: 20px;">
-                                                    <a class="product-name-link" href="/store/41/">갤럭시아머니트리(주) - 통합전자결제 PG 서비스</a>
-                                                    <p style="margin-top: 3px;"><span class="product-category">전자결제(PG)</span><span class="base-info-splitter">|</span>
-                                                        <span class="product-alliance">갤럭시아머니트리(주)</span></p>
-                                                        <p class="product-short-description-text" style="margin-bottom: 0;">- 업계 최저 수수료 제공(휴대폰 2.35%, 신용카드 2.8%)
-                                                            <br>- 빠른 정산 주기: D+3(휴대폰 제외)<br>- 연 관리비 평생 무료 혜택까지!</p></div></div>
-                                                            <div style="float:right; width:190px; height: 160px; margin-top: -20px; margin-bottom: -20px; margin-right: -20px; padding: 20px; border-left: 2px dashed #dedede; position: relative;"><div style="width: 100%; height: 25px; position:relative;">
-                                                                <form method="POST" class="has-validation-callback">
-                                                                    <input name="csrfmiddlewaretoken" type="hidden" value="gImkEX9RUxQmzVAQui1tdSzOJv4CzF7YfRqpr6ykQiVFm8HBjqwlsqIy8Z76WT0Z">
-                                                                    <input name="interest_id" type="hidden" value="158">
-                                                                    <i class="fa fa-heart active-heart" onclick="this.parentNode.submit()" title="'관심 상품'에서 삭제하기"></i></form>
-                                                                    
-                                                                    <div style="clear:both;"></div></div><div style="width: 100%; height: 62px; position:relative;">
-                                                                        <div style="position:absolute; top: 2px; height: 30px; display: table; width: 100%;">
-                                                                            <p style="line-height: 1.6; display: table-cell; vertical-align: middle; text-align: left; width: 100%; font-size: 14px; font-weight: bold; color: #454545;">휴대폰 2.35%<br>신용카드 2.8%</p></div></div>
-                                                                            <a class="btn btn-wishket" href="/store/41/" style="width: 100%;">
-                                                                                <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>구매 신청하기</a></div>
-                                                                                <div style="clear:both;"></div></div>
-
-
-
-                                                                            </div><!-- 2번 -->
-                                                                            <div class="store-interest-list-box" style="border: 1px solid #dedede; margin-bottom: 10px; background-color: #fff; box-shadow: 0 1px 0 0 #dedede; border-radius: 2px;">
-                                                                                <div style="float:left; width: 514px; position: relative;">
-                                                                                    <div style="float:left;">
-                                                                                        <a href="/store/46/"><img src="https://cdn.wishket.com/thumbnail/None/%EB%82%98%EC%9D%B4%EC%8A%A4%ED%8E%98%EC%9D%B4%EB%A8%BC%EC%B8%A0-%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="width: 120px; height: 120px;"></a></div>
-                                                                                        <div style="float:left; margin-left: 20px;">
-                                                                                            <a class="product-name-link" href="/store/46/">나이스페이 for startups</a>
-                                                                                            <p style="margin-top: 3px;">
-                                                                                                <span class="product-category">전자결제(PG)</span>
-                                                                                                <span class="base-info-splitter">|</span>
-                                                                                                <span class="product-alliance">나이스페이먼츠(주)</span></p>
-                                                                                                <p class="product-short-description-text" style="margin-bottom: 0;">
-                                                                                                    - 신청 당일 오픈 가능<br>- 불필요한 개발과정 최소화<br>- 연 관리비 평생 무료</p></div></div>
-                                                                                                    <div style="float:right; width:190px; height: 160px; margin-top: -20px; margin-bottom: -20px; margin-right: -20px; padding: 20px; border-left: 2px dashed #dedede; position: relative;">
-                                                                                                        <div style="width: 100%; height: 25px; position:relative;">
-                                                                                                            <form method="POST" class="has-validation-callback">
-                                                                                                                <input name="csrfmiddlewaretoken" type="hidden" value="gImkEX9RUxQmzVAQui1tdSzOJv4CzF7YfRqpr6ykQiVFm8HBjqwlsqIy8Z76WT0Z">
-                                                                                                                <input name="interest_id" type="hidden" value="157">
-                                                                                                                <i class="fa fa-heart active-heart" onclick="this.parentNode.submit()" title="'관심 상품'에서 삭제하기"></i></form>
-                                                                                                                <div style="clear:both;"></div></div>
-                                                                                                                <div style="width: 100%; height: 62px; position:relative;">
-                                                                                                                    <div style="position:absolute; top: 2px; height: 30px; display: table; width: 100%;">
-                                                                                                                        <p style="line-height: 1.6; display: table-cell; vertical-align: middle; text-align: left; width: 100%; font-size: 14px; font-weight: bold; color: #454545;">
-                                                                                                                            신용카드 3.0%
-                                                                                                                            <br>가입비 무료 프로모션</p></div></div>
-                                                                                                                            <a class="btn btn-wishket" href="/store/46/" style="width: 100%;">
-                                                                                                                                <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>
-                                                                                                                                구매 신청하기</a></div><div style="clear:both;"></div></div>
-                                                                                                                                
-                                                                                                                                
-                                                                                                                                <!-- 3번 -->
-                                                                                                                                <div class="store-interest-list-box" style="border: 1px solid #dedede; margin-bottom: 10px; background-color: #fff; box-shadow: 0 1px 0 0 #dedede; border-radius: 2px;"><div style="float:left; width: 514px; position: relative;">
-                                                                                                                                    <div style="float:left;"><a href="/store/44/">
-                                                                                                                                        <img src="https://cdn.wishket.com/thumbnail/None/%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8-%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="width: 120px; height: 120px;"></a></div>
-                                                                                                                                        <div style="float:left; margin-left: 20px;">
-                                                                                                                                            <a class="product-name-link" href="/store/44/">아임포트 - 결제 통합관리 서비스</a>
-                                                                                                                                            <p style="margin-top: 3px;"><span class="product-category">전자결제(PG)</span>
-                                                                                                                                                <span class="base-info-splitter">|</span><span class="product-alliance">(주)아임포트</span></p>
-                                                                                                                                                <p class="product-short-description-text" style="margin-bottom: 0;">- 국내외 모든 결제 한 번에 연동<br>- 불필요한 개발과정 최소화<br>- 신용카드 수수료 3.0%(연 매출 규모에 따라 1%대부터 이용)</p></div></div>
-                                                                                                                                                <div style="float:right; width:190px; height: 160px; margin-top: -20px; margin-bottom: -20px; margin-right: -20px; padding: 20px; border-left: 2px dashed #dedede; position: relative;">
-                                                                                                                                                    <div style="width: 100%; height: 25px; position:relative;">
-                                                                                                                                                        <form method="POST" class="has-validation-callback">
-                                                                                                                                                            <input name="csrfmiddlewaretoken" type="hidden" value="gImkEX9RUxQmzVAQui1tdSzOJv4CzF7YfRqpr6ykQiVFm8HBjqwlsqIy8Z76WT0Z">
-                                                                                                                                                            <input name="interest_id" type="hidden" value="156">
-                                                                                                                                                            <i class="fa fa-heart active-heart" onclick="this.parentNode.submit()" title="'관심 상품'에서 삭제하기"></i></form>
-                                                                                                                                                            <div style="clear:both;"></div></div><div style="width: 100%; height: 62px; position:relative;">
-                                                                                                                                                                <div style="position:absolute; top: 2px; height: 30px; display: table; width: 100%;">
-                                                                                                                                                                    <p style="line-height: 1.6; display: table-cell; vertical-align: middle; text-align: left; width: 100%; font-size: 14px; font-weight: bold; color: #454545;">
-                                                                                                                                                                        신용카드 3%<br>가입비 무료</p></div></div>
-                                                                                                                                                                        <a class="btn btn-wishket" href="/store/44/" style="width: 100%;">
-                                                                                                                                                                            <i class="fa fa-shopping-cart" style="margin-right: 8px;"></i>구매 신청하기</a></div><div style="clear:both;"></div></div>
-                                                                                                                                                                        </div>                     <div class="pagination-wrapper" style="clear: both">
-                                                                                                                                                                                                     <ul class="pagination" id="pagination_box"><li class="active">
-                                                                                                                                                                                                    <span class="current">1</span></li></ul></div>
-                                                                                                                                                    </div>        
-
-
-
-
-                                                                                    
+                                                            <section class="history-summary">
+                                                                <div class="history-summary-body-fix history-summary-body">
+                                                           <!--      <table>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목입니다 후기제목입니다</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td>후기 제목</td>
+                                                                    </tr>
+                                                                    <tr class="tablecontent">
+                                                                        <td>후기 내용</td>
+                                                                    </tr>
+                                                                </table> -->
+                                                                <table>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">경기도 파주시+A코스</td>
+                                                                    </tr>
+                                                                    <tr class="tabletitle">
+                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
+                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
+                                                                    </tr>
+                                                                
+                                                                </table>
+                                                            </div>
+                                                            </section>
+                                                                                                    </section> 
+                                                                                                </div>
             </div> <!-- content -->
             </div>
         </div><!--page  -->

@@ -347,6 +347,12 @@ body.wishket-member .input-box .title {
     margin-bottom: 16px;
 }
 
+
+#titlesecond{
+    margin-top:20px;
+    color:#212121;
+}
+
 i {
     position: absolute;
     top: 50%;
@@ -542,3 +548,92 @@ a:-webkit-any-link {
     cursor: pointer;
 }
 
+/* 마이페이지 메인 */
+.main-view {
+    padding: 48px 0 200px;
+}
+
+.main-view-header {
+    display: flex;
+    align-items: center;
+}
+
+.subtitle{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+.welcome{
+    color: #212121;
+}
+
+.title+.description {
+    margin-top: 6px;
+}
+
+.welcome2{
+    color: #616161;
+}
+
+.menu-box-list {
+    display: flex;
+    padding-top: 48px;
+    justify-content: space-around;
+}
+
+.menu-box {
+    width: 344px;
+    padding: 16px 24px 24px;
+    border-radius: 12px;
+    border: solid 1px #e0e0e0;
+    background-color: #fff;
+    transition: transform .2s ease-in-out;
+}
+
+.menu-box:hover{
+    border: solid 1px #2099bb;
+    box-shadow: 1px 1px 20px #ddd;
+    transition: all 0.5s;
+    transform: translate(0px, -5px);
+}
+
+a {
+    text-decoration: none;
+    color: #212121;
+}
+
+.body-1-medium{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 24px;
+}
+
+.title+.description2 {
+    margin-top: 4px;
+}
+
+.body-2{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+
+}
+
+/* withdraw-agree */
+.cancel {
+    width: 185px;
+}
+
+.btn-gray {
+    background-color: #a1a6ad;
+    color: #fff;
+}
+
+.button1 {
+    padding: 11px 24px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}

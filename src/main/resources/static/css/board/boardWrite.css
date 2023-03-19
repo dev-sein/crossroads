@@ -525,3 +525,418 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* form 안  */
+.board-box{
+    font-size: 20px;
+}
+
+.board-title-wrapper{
+    width: 100%;
+    font-family: inherit;
+}
+
+.board-contents-text {
+    margin-bottom: 15px;
+}
+
+.inputs{
+    border: solid 1px #a29f9f;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    background-color: #fdfcfc;
+}
+
+textarea{
+    border: solid 1px #a29f9f;
+    border-radius: 5px;
+    width: 100%;
+}
+input::placeholder{
+    font-family: inherit;
+    /* text-indent: 10px; */
+    font-size: 15px;
+}
+
+textarea::placeholder{
+    font-family: inherit;
+    /* text-indent: 10px; */
+    font-size: 15px;
+}
+
+.boardForm{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.board-box-bottom {
+    font-family: "Nanum Gothic","Apple SD Gothic Neo","맑은 고딕","Malgun Gothic","AppleGothic","돋움",Dotum,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    margin-bottom: 0;
+    margin-top: 30px;
+    padding-top: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+.button-wrapper{
+    font-family: "Nanum Gothic","Apple SD Gothic Neo","맑은 고딕","Malgun Gothic","AppleGothic","돋움",Dotum,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    float: right;
+    width: 100%;
+}
+
+.submit-button{
+    font-family: inherit;
+    overflow: visible;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid rgba(0,0,0,0);
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.428571429;
+    border-radius: 2px;
+    display: inline-block;
+    color: #fff;
+    background-color: #446eab;
+    border-color: #3d6299;
+    height: 40px;
+    width: 120px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+/* 테스트 */
+
+
+/* 사진 추가 */
+
+section{
+    margin-top: 30px;
+}
+
+.photo_submit_section{
+    display: none;
+    position: absolute;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+    opacity: .8;
+    z-index: 100;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.Section_container__photo{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.Section_photo_header{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.ImageField{
+    max-width: 343px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageFormField{
+    margin-bottom: 40px;
+    margin: 24px 0;
+    max-width: 850px;
+    margin-top: 16px!important;
+    padding-left: 34px;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: block;
+    line-height: 1.3;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageFormField_buttonWrapper{
+    display: inline-block;
+    margin-top: 8px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.ImageFileButton_label{
+    display: inline-block!important;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    cursor: default;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.Section_title{
+    font-size: 20px;
+    color: #000;
+}
+
+
+.ImageFileButton{
+    background-color: #90949c;
+    color: #fff;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .2s;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0 1.41176em;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 17px;
+    font-weight: 400;
+    box-sizing: border-box!important;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+    font-family: inherit;
+    margin: 0;
+    writing-mode: horizontal-tb !important;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+#photosubmit:hover{
+   background-color:#60656A;
+}
+
+
+.icon-camera-o{
+    margin-right: 4px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: inherit;
+    word-break: keep-all;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+}
+
+.icon.camera::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-family: "wadizicon"!important;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 17px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    --vh: 7.46px;
+}
+
+.ImageFileButton_input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 17px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    color: #343a40;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.helper_error{
+    color: #f25555;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+.helper_ImageFormField{
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #90949c;
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    box-sizing: border-box;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    font-family: roboto,"Noto Sans KR",-apple-system,dotum,sans-serif;
+    --vh: 7.46px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+#image{
+    width: 100%;
+    height: 100%;
+}
+
+#title-warning{
+   display: none;
+}
+#content-warning{
+   display: none;
+}
+
+
+#inner-image {
+    margin-top: 30px;
+    width: 90%;
+}
+
+#review-image{
+    margin: 10px;
+    width: 180px;
+    height: 180px;
+}
+
+/* 테스트 */

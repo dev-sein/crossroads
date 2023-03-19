@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 html{
         font-size: 62.5%;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -26,6 +28,27 @@ body {
     margin: 0 auto -250px;
     padding: 0 0 250px;
     min-width: 1080px;
+    position:relative;
+}
+
+.advertisement {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    padding: 0;
+    display: none;
+}
+
+#nav_advertisement {
+    width: 100%;
+    height: 80px;
+    margin: -20px 0 10px 0;
+}
+
+.account-setting .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1080px;
 }
 
 .client-management .container, .client-setting .container {
@@ -47,6 +70,28 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     width: 1060px;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.alert-success {
+    background-color: #e0f4fa;
+    border-color: #caecf6;
+    color: #2099bb;
+    display:none;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 2px;
+}
+
+.fade{
+    transition: opacity .15s linear;
 }
 
 .client-management .container:after, .client-setting .container:after .container:after {
@@ -92,7 +137,8 @@ a {
 }
 
 .page{
-    margin: 0 219.6px;
+    position: absolute;
+    left: 21%;
 }
 
 
@@ -107,6 +153,10 @@ a {
 .user-name-tag{
     width:250px !important;
 
+}
+
+.user-nameemail{
+    margin-left:5px;
 }
 
 .sidebar .activity, .sidebar .partners-summary, .sidebar .application-status, .sidebar .partners-activity-summary, .sidebar .partners-history, .sidebar .client-history, .sidebar .partners-name-tag, .sidebar .client-info-box, .sidebar .client-name-tag, .sidebar .user-name-tag {
@@ -195,29 +245,26 @@ a {
     cursor: pointer;
 }
 
-.sidebar .user-name-tag .username .email{
+.sidebar .user-name-tag .username{
     margin-top: 8px;
     line-height: 16px;
     font-size: 14px;
     display: block;
     float: left;
     margin: 0;
-    padding-left: 10px;
+    padding-left: 13px;
     width: 165px;
-    font-weight: bold;
+   /*  font-weight: bold; */
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.email {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 5px;
-    font-weight: initial;
-    line-height: 15px;
-    font-size: 13px;
-}
+.username{
+    padding-left:25px;
+    font-size: 16px;
+    padding-top: 15px;
 
+}
 
 .sidebar .partners-summary .partners-summary-body:after, .sidebar .application-status .application-status-body:after, .sidebar .partners-activity-summary .partners-activity-summary-body:after, .sidebar .partners-history .partners-history-body:after, .sidebar .client-history .client-history-body:after, .sidebar .partners-name-tag .partners-name-tag-body-img:after, .sidebar .partners-name-tag .partners-name-tag-body:after, .sidebar .client-name-tag .client-name-tag-body:after, .sidebar .user-name-tag .user-name-tag-body:after {
     clear: both;
@@ -260,7 +307,7 @@ ul {
 }
 
 .sidebar-nav ul li {
-    height: 48px;
+    height: 32px;
     padding: 4px 0;
 }
 
@@ -281,9 +328,19 @@ li {
     width: 100%;
 }
 
+.sidemenu{
+    margin-top:10px;
+}
+
+.sidemenu2{
+    margin-bottom: 10px;
+}
+
 .active {
     color: #fff;
     background-color: #446eab;
+    line-height: 10px;
+    margin-top:10px;
 }
 
 .active span{
@@ -963,3 +1020,157 @@ p {
 #star{
     padding-left: 320px;
 }
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.odd{
+    width: 31%;
+    font-weight: bold;
+    background: #f5f5f5;
+    font-size:12px;
+    padding-left: 17px;
+    padding-bottom: 32px;
+    padding-right: 7px;
+    padding-top: 25px;
+}
+
+.date{
+    margin-left: -9px;
+}
+
+.even{
+    font-size:14px;
+    margin-left:10px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    line-height: 1;
+}
+
+
+.tabletitle{
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    font-size:18px;
+    text-align: center;
+}
+
+.tablecontent{
+    font-size:14px;
+}
+
+/* profile-modify */
+
+h4{
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    margin: 1.33em 0;
+}
+
+.modify-btn{
+    float:right;
+    color: #fff;
+    background-color: #94a2af;
+    border-color: #8595a4;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid rgba(0,0,0,0);
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 2px;
+    user-select: none;
+    overflow: visible;
+}
+
+.account-setting-basic-block-basic {
+    margin-bottom: 24px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #dedede;
+}
+
+.account-setting-row{
+/*     margin-bottom: 21px; */
+    line-height: 1;
+}
+
+.account-setting-row:first-child {
+    margin-top: 25px;
+}
+
+.account-setting-row:before, .account-setting-row:after {
+    content: " ";
+    display: table;
+    line-height: 0;
+}
+
+.account-setting-category {
+    width: 250px;
+    padding-bottom: 30px;
+    margin-right: 17px;
+    padding-bottom: 14px;
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.account-setting-content {
+    display: inline-block;
+}
+
+.account-setting-row:after {
+    clear: both;
+}
+
+.account-setting-row:before, .account-setting-row:after {
+    content: " ";
+    display: table;
+    line-height: 0;
+}
+
+.account-setting-content-detail-data{
+    color: #2099bb;
+    cursor: pointer;
+}
+
+.first{
+    padding-top: 52px;
+}
+
+
+#base_edit_form{
+
+    display: block;
+    border-bottom: 1px dashed rgb(222, 222, 222);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    margin:0;
+}
+
+input{
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin:0;
+}
+
