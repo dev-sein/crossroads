@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>포인트 조회</title>
-    <link rel="stylesheet" href="../../static/mypage/review.css">
+    <link rel="stylesheet" href="../../static/css/mypage/review.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -41,11 +41,10 @@
                                 <div class="sidebar-nav">
                                     <ul>
                                         <li class="sidemenu"><a href="/accounts/settings/profile/">프로필 정보 설정</a></li>
-                                        <li class="active"><a href="/client/project-history/"><span>연수 내역</span></a></li>
-                                        <li><a href="/accounts/settings/verify_identity/">포인트 조회</a></li>
-                                        <li class="sidemenu2"><a href="/accounts/settings/manage_seal/active/">나의 후기</a></li>
+                                        <li class="active"><a class="active-text"  href="/client/project-history/"><span>포인트 조회</span></a></li>
+                                        <li><a href="/client/project-history/"><span>연수 내역</span></a></li>
+                                        <li class="sidemenu2"><a href="/client/project-history/"><span>나의 후기</a></li>
                                         <a class="advertisement" id="left_sidebar_advertisement"></a>   
-                                        <!-- <li><a href="/accounts/settings/bank_account/">계좌 관리</a></li></ul></div>  -->          
 
                       <!--   <div class="profile-container modal fade" id="profile_image_edit_modal"></div>
                         <div id="cropper-img-box">
@@ -92,75 +91,62 @@
         <!-- 본문 -->
             <div class="content">
                 <div class="content-header action">
-                    <h3 class="header-text">운전연수 내역
+                    <h3 class="header-text">포인트 조회
                         <br>
-                <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small></h3></div>
+                <small class="small-text">나의 잔여 포인트를 확인할 수 있습니다.</small></h3></div>
                 <div class="content-inner">
-                    <section class="history-review-summary">
-                        <section class="history-summary">
-                            <div class="history-summary-body-fix history-summary-body">
-                                <div class="client-history-body">
-                                    <div class="project">
-                                        <div class="history-body-title">운전연수 신청</div>
-                                        <div class="pull-right history-body-data more-size">0 건</div></div>
-                                        <div class="contract">
-                                            <div class="contract-title">
-                                                <div class="history-body-title">진행한 프로젝트</div>
-                                                <div class="pull-right history-body-data more-size">0 건</div></div>
-                                                <div class="contract-data"><div class="contract-data-box">
-                                                    <div class="history-body-subtitle">진행중</div>
-                                                    <div class="pull-right history-body-data"><span>0</span> 건</div></div>
-                                                     <div class="contract-data-box">
-                                                       <!--  <div class="history-body-subtitle">진행중인 프로젝트</div>
-                                                        <div class="pull-right history-body-data"><span>0</span> 건</div> --></div>
-                                                        <div class="contract-data-box">
-                                                            <div class="history-body-subtitle">완료한 운전연수</div>
-                                                            <div class="pull-right history-body-data"><span>0</span> 건</div></div></div></div>
-                                                            <div class="client-history-budget-body"><div class="budget-body-title">누적 완료 연수</div>
-                                                            <div class="pull-right budget-body-data">0 <span class="budget-body-clo">원</span></div></div></div></div></section></section>
-                                                            
 
-                                                            <section class="history-summary">
-                                                                <div class="history-summary-body-fix history-summary-body">
-                                                           <!--      <table>
-                                                                    <tr class="tabletitle">
-                                                                        <td>후기 제목입니다 후기제목입니다</td>
-                                                                    </tr>
-                                                                    <tr class="tablecontent">
-                                                                        <td>후기 내용</td>
-                                                                    </tr>
-                                                                    <tr class="tabletitle">
-                                                                        <td>후기 제목</td>
-                                                                    </tr>
-                                                                    <tr class="tablecontent">
-                                                                        <td>후기 내용</td>
-                                                                    </tr>
-                                                                    <tr class="tabletitle">
-                                                                        <td>후기 제목</td>
-                                                                    </tr>
-                                                                    <tr class="tablecontent">
-                                                                        <td>후기 내용</td>
-                                                                    </tr>
-                                                                </table> -->
-                                                                <table>
-                                                                    <tr class="tabletitle">
-                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
-                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
-                                                                    </tr>
-                                                                    <tr class="tabletitle">
-                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
-                                                                        <td class="even" style="border-right: unset;">경기도 파주시+A코스</td>
-                                                                    </tr>
-                                                                    <tr class="tabletitle">
-                                                                        <td class="odd"><span class="date">2023-03-16</span></td>
-                                                                        <td class="even" style="border-right: unset;">지역+코스</td>
-                                                                    </tr>
-                                                                
-                                                                </table>
-                                                            </div>
-                                                            </section>
-                                                                                                    </section> 
-                                                                                                </div>
+                     <div class="content-header action report">
+                        <div class="history-body-title">나의 현재 포인트</div>
+                        <div class="history-body-content"><strong>100,000점</strong></div></div>
+                            <br> 
+
+                            <!-- 상세 내역 -->
+                            <div class="drive-subtitle">
+                                <img class="listicon" src="../../static/img/list.png">
+                                <h4 class="header-text iconnext">포인트 상세 내역</h4>
+                            </div>
+                        
+                                <!-- 상세내역 표  -->
+                                <table>
+                            <tr class="tabletitle">
+                                <th class="date">날짜</th>
+                                <th colspan="2" class="status">상태</th>
+                                <th class="point">포인트</th>
+                            </tr>
+                            <tr>
+                                <td>2023-03-16</td>
+                                <td>충전</td>
+                                <td></td>
+                                <td>50,000</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-17</td>
+                                <td>충전</td>
+                                <td></td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-17</td>
+                                <td></td>
+                                <td>환전</td>
+                                <td>100,000</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-17</td>
+                                <td></td>
+                                <td>환전</td>
+                                <td>50,000</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-17</td>
+                                <td>충전</td>
+                                <td></td>
+                                <td>50,000</td>
+                            </tr>
+
+                        </table>
+                </div>
             </div> <!-- content -->
             </div>
         </div><!--page  -->

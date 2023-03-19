@@ -16,9 +16,7 @@
 <body>
     <div id="wrap">
         <div class="container">
-            <div id="message">
-                <div class="alert alert-success fade in" name="message_content">프로필 업데이트 성공</div>
-            </div>
+            <div id="message"></div>
         </div><a class="advertisement no_message" id="message_advertisement"></a>
 
         <div class="page">
@@ -108,14 +106,53 @@
                     </div>
 
                     <div class="content-inner">
-                        <h4>회원 정보<button class="btn btn-default modify-btn" id="modifybutton">수정</button></h4>
+                        <h4>회원 정보
+                            <button class="btn btn-default modify-btn" id="modifybutton">수정</button>
+                        </h4>
 
                         <!-- 수정폼 -->
                         <div class="account-setting" id="base_show_form">
-                         <!--     <form action="/accounts/settings/profile/" class="form-horizontal has-validation-callback"
-                                enctype="multipart/form-data" id="base_edit_form" method="POST"> -->
-                             <form id="base_edit_form"> <!-- JS 테스트 -->
+                            <form action="/accounts/settings/profile/" class="form-horizontal has-validation-callback"
+                                enctype="multipart/form-data" id="base_edit_form" method="POST">
                                 <input name="submit_type" type="hidden" value="base">
+
+
+                                <!-- 회원 이름 -->
+                                <!--  <div class="form-group">
+                        <label class="control-label required" id="full_name_label"><span>*</span> 회원 이름</label>
+                            <div class="control-wrapper">
+                                <input class="form-control" id="full_name" name="full_name" type="text" value="정세인"><div class="error-message">
+                                    <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.</div></div></div> -->
+
+                                <!-- 휴대폰 번호 -->
+                                <!--                     <div class="form-group">
+                         <label class="control-label required">
+                             <span>*</span> 휴대폰 번호</label>
+                                <div class="control-wrapper">
+                                    <span>010 - </span>
+                                                <span id="cell_phone_global_box" style="display:none;">
+                                                    <input class="form-control-phone-noncell" id="cell_phone_global" name="cell_phone_global" style="display:none; width: 247px; *width:208px;" type="text" value="01024283742"></span> <span id="cell_phone_local_box" style="display:inline;">
+                                                            <input class="form-control-phone" data-min-length="3" id="cell_phone_number_middle" name="cell_phone_number_middle" type="text" value="2428" style="display: inline;">
+                                                            <span class="form-phone-liner" style="display: inline;">-</span><input class="form-control-phone" data-min-length="4" id="cell_phone_number_end" name="cell_phone_number_end" type="text" value="3742" style="display: inline;"></span>
+                                                            <div class="error-message"><i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.</div></div></div> -->
+
+                                <!-- 회원 이메일 -->
+                                <!--                                         <div class="form-group">
+                                <label class="control-label required" id="full_name_label"><span>*</span> 회원 이메일 </label>
+                                <div class="control-wrapper">
+                                    <input class="form-control" id="full_name" name="full_name" type="text" value="운전 경력"><div class="error-message">
+                                        <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.</div></div></div> -->
+
+                                <!-- 운전 경력 -->
+                                <!--                <div class="form-group">
+                                <label class="control-label required" id="full_name_label"><span>*</span> 운전 경력 </label>
+                                <div class="control-wrapper">
+                                    <input class="form-control" id="full_name" name="full_name" type="text" value="운전 경력"><div class="error-message">
+                                        <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.</div></div></div> -->
+
+
+
+
                                 <div class="acoount-setting-row profile-setting-row">
                                     <div class="account-setting-box first">
                                         <span class="account-setting-category">
@@ -141,14 +178,14 @@
                                 <span class="blank" style="display: none;"><br><br></span>
                                 <div class="control-wrapper" style="display: none;">
                                     <input class="form-control" id="full_name" name="full_name" type="text" value="정세인">
-                                    <div class="error-message namemsg">
+                                    <div class="error-message">
                                         <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                     </div>
                                 </div>
 
 
 
-                                <!-- 회원 휴대폰 -->
+
                                 <div class="acoount-setting-row profile-setting-row">
                                     <div class="account-setting-box">
                                         <span class="account-setting-category">
@@ -167,22 +204,22 @@
                                             name="cell_phone_global" style="display:none; width: 247px; *width:208px;"
                                             type="text" value="01024283742"></span> <span id="cell_phone_local_box"
                                         style="display:inline;">
-                                        <input class="form-control-phone" data-min-length="3" maxlength="4" 
+                                        <input class="form-control-phone" data-min-length="3"
                                             id="cell_phone_number_middle" name="cell_phone_number_middle" type="text"
                                             value="2428" style="display: inline;">
                                         <span class="form-phone-liner" style="display: inline;">&nbsp;-&nbsp;</span>
-                                        <input class="form-control-phone"  maxlength="4" id="cell_phone_number_end"
+                                        <input class="form-control-phone" data-min-length="4" id="cell_phone_number_end"
                                             name="cell_phone_number_end" type="text" value="3742" style="display: inline;"></span>
-                                    <div class="error-message phonemsg"><i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
+                                    <div class="error-message"><i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                     </div>
                                 </div>
 
 
-                                <!-- 이메일 -->
+
                                 <div class="acoount-setting-row profile-setting-row">
                                     <div class="account-setting-box">
                                         <span class="account-setting-category">
-                                            <label class="control-label required" id="email-input">
+                                            <label class="control-label required" id="email">
                                                 <span class="essential" style="display: none;">*</span>
                                                 <span>회원 이메일</span></label></span>
                                         <span class="account-setting-content account-setting-content-detail-data">정보를
@@ -191,9 +228,9 @@
                                 </div> <!-- acoount-setting-row profile-setting-row -->
                                 <span class="blank" style="display: none;"><br><br></span>
                                 <div class="control-wrapper" style="display: none;">
-                                    <input class="form-control" id="email" name="full_name" type="text" onclick="checkEmail()"
+                                    <input class="form-control" id="full_name" name="full_name" type="text"
                                         value="이메일 주소">
-                                    <div class="error-message emailmsg">
+                                    <div class="error-message">
                                         <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                     </div>
                                 </div>
@@ -203,7 +240,7 @@
                                 <div class="acoount-setting-row profile-setting-row">
                                     <div class="account-setting-box">
                                         <span class="account-setting-category">
-                                            <label class="control-label required" id="drive"><span
+                                            <label class="control-label required" id="drive-period"><span
                                                     class="essential" style="display: none;">*</span>
                                                 <span>운전 경력</span></label>
                                         </span>
@@ -213,15 +250,17 @@
                                 </div> <!-- acoount-setting-row profile-setting-row -->
                                 <span class="blank" style="display: none;"><br><br></span>
                                 <div class="control-wrapper" style="display: none;">
-                                    <input class="form-control" id="drive-period" name="full_name" type="text"
+                                    <input class="form-control" id="full_name" name="full_name" type="text"
                                         value="운전 경력">
-                                    <div class="error-message periodmsg">
+                                    <div class="error-message">
                                         <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                     </div>
                                 </div>
                                 <div class="form-group last-form-group">
                                     <div class="last-form-container">
-                                        <input class="btn account-btn btn-dark-gray" id="base_submit_btn"type="submit" value="수정 완료"></div></div>
+                                        <input class="btn account-btn btn-dark-gray" id="base_submit_btn" style="margin-right: 10px;" type="submit" value="수정 완료"></div></div>
+
+
                             </form>
 
 
