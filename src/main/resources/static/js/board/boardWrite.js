@@ -8,20 +8,12 @@ function setThumbnail(event) {
         img.setAttribute("src", event.target.result);
         img.setAttribute("id", "review-image");
         document.querySelector("div#image_container").appendChild(img);
-        // document.querySelector("#button-label").style.display = "none";
-        // document.querySelector("#photosubmit").style.display = "none";
-        // document.querySelector(".ImageFileButton_input").style.display = "none";
       } else {
         var child = document.querySelector("div#image_container img");
         document.querySelector("div#image_container").removeChild(child);
         img.setAttribute("src", event.target.result);
         img.setAttribute("id", "review-image");
         document.querySelector("div#image_container").appendChild(img);
-        // document.querySelector("#button-label").style.display = "inline-block !important";
-        // document.querySelector("#photosubmit").style.display = "block";
-        // document.querySelector(".ImageFileButton_input").style.display = "block";
-        // alert("이미지는 1개만 등록 가능합니다.");
-        // console.log(document.querySelector("#image").value);
       }
     };
 
