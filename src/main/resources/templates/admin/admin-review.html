@@ -4,17 +4,12 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>가전 기부</title>
-
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/css/components/sanitize.css" />
+<title>후기 목록</title>
+<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
 <!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/css/admin/equipment_board.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/css/components/equipment_modal.css" />
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/static/images/logo.png">
+<link rel="stylesheet" href="../../static/css/admin/equipment-board.css" />
+<link rel="stylesheet" href="../../static/css/components/equipment-modal.css" />
+<link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
 	<!-- header -->
@@ -55,7 +50,7 @@
 						<li class="title__contents">글 내용</li>
 						<li class="title__user">작성자</li>
 						<li class="title__date">등록일</li>
-						<li class="title__type">댓글 수</li>
+						<li class="title__type">댓글</li>
 						<li class="title__detail">상세</li>
 
 					</ul>
@@ -71,16 +66,16 @@
 							name="checkbox" /> <label for="kus"
 							class="content__checkbox--label">
 							<ul class="content-list__info">
-								<li class="content__id">00007</li>
-								<li class="content__title">컴퓨터 가져가실분?</li>
-								<li class="content__contents">역삼역에서 빠르게..</li>
+								<li class="content__id">00001</li>
+								<li class="content__title">후기제목1</li>
+								<li class="content__contents">처음으로 고속도로 달려봤어요!</li>
 								<li class="content__user">hds</li>
 								<!--2개월 ,4개월  -->
-								<li class="content__date">2023-02-23</li>
-								<li class="content__type">11</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세
-										정보</button></li>
+								<li class="content__date">2023-03-23</li>
+								<li class="content__type">1</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+								</li>
 							</ul>
 						</label>
 					</div>
@@ -88,50 +83,44 @@
 				<!-- 배너 추가 -->
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ksy"
-							name="checkbox" />
+						<input type="checkbox" class="content__checkbox" id="ksy" name="checkbox" />
 						<ul class="content-list__info">
 							<li class="content__id">00002</li>
-							<li class="content__title">마우스 남는거 가져가셔요~</li>
-							<li class="content__contents">수원역근처에 삽니다.가져가실분은 댓글 부탁드려요</li>
+							<li class="content__title">후기 제목2</li>
+							<li class="content__contents">강사님 진짜 너무 좋았어요</li>
 							<li class="content__user">김세윤</li>
 							<!--2개월 ,4개월  -->
 							<li class="content__date">2022-10-23</li>
-							<li class="content__type">03</li>
-							<li class="user__detail" name="userDetail"><button
-									class="custom-btn btn-16 show" style="font-weight: 10px;">상세
-									정보</button></li>
+							<li class="content__type">1</li>
+							<li class="user__detail" name="userDetail">
+								<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
+							</li>
 						</ul>
-
 					</div>
 				</div>
-
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw"
-							name="checkbox" /> <label for="ymw"
-							class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox"/>
+						<label for="ymw" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00004</li>
-								<li class="content__title">진궁에서 의자 나눔 합니다.</li>
-								<li class="content__contents">할리스 커피에 둘게요.연락주세요.</li>
+								<li class="content__title">후기제목3</li>
+								<li class="content__contents">평생 운전 못할줄 알았는데 제가 운전을 하다니...!</li>
 								<li class="content__user">윤민우</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">2023-01-23</li>
-								<li class="content__type">03</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">상세
-										정보</button></li>
+								<li class="content__type">0</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
+								</li>
 							</ul>
 						</label>
 					</div>
 				</div>
-
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw"
-							name="checkbox" /> <label for="ymw"
-							class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox" />
+						<label for="ymw" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">test</li>
 								<li class="content__title">test</li>
@@ -139,20 +128,19 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
 				</div>
-
 				<!-- 목록 테스트 추가 -->
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw"
-							name="checkbox" /> <label for="ymw"
-							class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox" />
+						<label for="ymw" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">test</li>
 								<li class="content__title">test</li>
@@ -160,18 +148,18 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
 				</div>
 				<div class="custom-btn btn-16 shownfo-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw"
-							name="checkbox" /> <label for="ymw"
-							class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox" />
+						<label for="ymw" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">test</li>
 								<li class="content__title">test</li>
@@ -179,9 +167,10 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
@@ -198,9 +187,10 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
@@ -217,9 +207,10 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
@@ -236,9 +227,10 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
@@ -255,20 +247,19 @@
 								<li class="content__user">test</li>
 								<!--2개월 ,4개월  -->
 								<li class="content__date">yyyy-mm-dd</li>
-								<li class="content__type">nn</li>
-								<li class="user__detail" name="userDetail"><button
-										class="custom-btn btn-16 show" style="font-weight: 10px;">test</button></li>
+								<li class="content__type">n</li>
+								<li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16 show" style="font-weight: 10px;">test</button>
+								</li>
 							</ul>
 						</label>
 					</div>
 				</div>
-
 				<!-- 목록 테스트 추가  -->
 			</div>
 			<div class="desktop-only">
 				<!-- 데스크탑용 버튼 -->
-				<button class="prev-page icon-chevron-left" onclick="movePage(0)"
-					disabled="">
+				<button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
 					<span class="text-hidden">이전</span>
 				</button>
 
@@ -280,8 +271,6 @@
 				<a href="#" onclick="movePage(4)">4</a> <a href="#"
 					onclick="movePage(5)">5</a> <a href="#" onclick="movePage(6)">6</a>
 
-
-
 				<!-- 데스크탑용 버튼 -->
 				<button class="next-page icon-chevron-right" onclick="movePage(7)">
 					<span class="text-hidden">다음</span>
@@ -290,17 +279,10 @@
 
 		</article>
 	</main>
-	
 	<!-- modal -->
-	<jsp:include page="/dhouse/components/equipment_modal.jsp"></jsp:include>
+	<jsp:include page="../../components/equipment-modal.html"></jsp:include>
 	<!-- modal fin. -->
-	
-	
 </body>
-<script
-	src="${pageContext.request.contextPath}/static/js/admin/banner.js"></script>
-
-<script src="${pageContext.request.contextPath}/static/js/components/equipment_modal.js"></script>
-
-
+<script src="../../static/js/admin/banner.js"></script>
+<script src="../../static/js/components/equipment-modal.js"></script>
 </html>

@@ -184,43 +184,51 @@ body {
   margin: 0.6em 0 0.4em;
 }
 
-.title__id {
+.title-id {
   flex: 0.5;
 }
 
-.title__title {
-  flex: 1.5;
-}
-
-.title__user-id {
+.title-user-id {
   flex: 1;
 }
 
-.title__status {
+.title-course {
+  flex: 1; 
+}
+
+.title-location {
+  flex: 1; 
+}
+
+.title-date-detail {
   flex: 0.5;
 }
 
-.title__date-detail {
-  flex: 0.5;
-}
-
-.title__date {
+.title-date {
   flex: 1;
 }
 
-.title__date-post {
+.title-status {
+  flex: 0.5;
+}
+
+.title-veteran-id {
+  flex: 1;
+}
+
+.title-date-post {
   flex: 1.5;
 }
 
-.title__date-update {
+.title-date-update {
   flex: 1.5;
 }
 
-.title__date-delete {
+.title-date-delete {
   flex: 1.5;
 }
 
-.title__detail {
+.title-detail {
   flex: 1;
 }
 
