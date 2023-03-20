@@ -15,6 +15,7 @@ body {
 }
 
 .main-wrap {
+    position: relative;
     height: auto;
     min-height: 70%;
     min-height: 436px;
@@ -329,13 +330,17 @@ a {
 
 
 
-/* driver license modal */
+/* driver license modal 모달 */
 .license-modal {
     display: none;
-    position: relative;
     width: 100%;
     height: 100%;
     z-index: 1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0009;
 
     /* background-color: rgba(0, 0, 0, 0.4); */
 }
@@ -348,7 +353,7 @@ a {
     width: 380px;
     height: 150px;
 
-    padding: 40px;
+    padding: 25px 40px 40px;
 
     text-align: center;
 
@@ -365,6 +370,9 @@ a {
 .btn-wrapper {
     display: flex;
 }
+.modal {
+    line-height: 25px;
+}
 .btn-modal {
     width: 100%;
     border-radius: 4px;
@@ -380,6 +388,7 @@ a {
     
     padding: 8px 24px;
     margin: 16px;
+    cursor: pointer;
 }
 #upload-name-wrapper {
     display: flex;
