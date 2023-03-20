@@ -171,15 +171,15 @@ body {
 }
 
 .title__id {
-	flex: 0.6;
+	flex: 0.5;
 }
 
 .title__type {
-	flex: 0.8;
+	flex: 0.5;
 }
 
 .title__user-id {
-	flex: 0.6;
+	flex: 0.5;
 }
 
 .title__title {
@@ -187,7 +187,7 @@ body {
 }
 
 .title__content {
-	flex: 1.7;
+	flex: 1.5;
 }
 
 .title__date-post {
@@ -243,15 +243,15 @@ body {
 }
 
 .support__id {
-	flex: 0.6;
+	flex: 0.5;
 }
 
 .support__type {
-	flex: 0.8;
+	flex: 0.5;
 }
 
 .support__user-id {
-	flex: 0.6;
+	flex: 0.5;
 }
 
 .support__title {
@@ -262,7 +262,7 @@ body {
 }
 
 .support__content {
-	flex: 1.7;
+	flex: 1.5;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
