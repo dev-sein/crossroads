@@ -75,11 +75,11 @@
                                                         <div class="sk-circle11 sk-circle"></div>
                                                         <div class="sk-circle12 sk-circle"></div></div></div>
                                                 <div class="body-btn-group">
-                                                    <input accept=".jpg, .jpeg, .png, .gif" class="img-temp-file" hidden="" type="file">
+                                                    <input accept=".jpg, .jpeg, .png, .gif" id="fileupload" class="img-temp-file" hidden="" type="file" onchange="readURL(this);">
                                                     <input hidden="" id="profile_remove_image_file" name="remove_image_file" type="checkbox">
                                                     <button class="body-btn upload" onclick="upload_image()" type="button">
                                                         <img src="https://www.wishket.com/static/renewal/img/profile/icon_profile_upload.png">사진 올리기</button>
-                                                        <button class="body-btn" onclick="remove_image()" type="button">
+                                                    <button class="body-btn" id="remove-button" type="button">
                                                         <img src="https://www.wishket.com/static/renewal/img/profile/icon_profile_delete.png">사진 지우기</button></div>
                                             </div>
                                             <div class="modal-info-body">
@@ -248,6 +248,6 @@
     </div> <!-- wrap -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="../../static/js/mypage/profile-modify.js"></script>
+<script src="../../static/js/mypage/mypage-select.js"></script>
 
 </html>
