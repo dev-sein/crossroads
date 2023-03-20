@@ -1,16 +1,17 @@
-
+/* 모달 */
 const btnOpenPopup = document.querySelector('#modal-back');
 const modal = document.querySelector('#modal-background');
 const closeBtn = modal.querySelector(".modal-close-image-button")
 const closegrayBtn = modal.querySelector("#btn_modal_close")
 
+/* 모달 열기 */
 btnOpenPopup.addEventListener('click', () => {
-  alert('들어옴');
   modal.style.display = 'block';
   modal.style.zIndex = "1000";
   modal.style.opcity = "1";
 });
 
+/* 모달 닫기 */
 closeBtn.addEventListener("click", e => {
   modal.style.display = "none"
 });
@@ -26,141 +27,173 @@ modal.addEventListener("click", e => {
   }
 });
 
+/* button으로 파일 첨부 */
 function upload_image() {
-  alert('들어옴');
-  let myInput = document.querySelector("#img-temp-file");
+  let myInput = document.querySelector(".img-temp-file");
   myInput.click();
 }
 
-
-
-
-
-
-
-/* 
-var $profile_modal;
-var cropper;
-var blob_file;
-
-$(document).ready(function () {
-  $profile_modal = $('#profile_image_edit_modal');
-  $(document).click(function (e) {
-    if ($(e.target).hasClass('in') && $('body').hasClass('modal-open')) {
-      close_modal();
-    }
-  });
-  $('#btn_profile_img_modal_close').on('click', function(){
-    close_modal();
-  });
+/* button으로 파일 삭제 */
+$(document).ready(function() {
+  $('#remove-button').click(function() {
+  $('#fileupload').empty();
+  $('#modal_user_img').attr('src',"https://www.wishket.com/static/img/default_avatar_c.png");
+}) 
 });
 
-function show_img_edit_modal() {
-  $('.user-profile-img').removeClass('active');
-  $('#modal_user_img').attr('src', $('.user-img').attr('src'));
-  $('#modal_user_img').addClass('active');
-  $profile_modal.modal('show');
-}
 
-function upload_image() {
-  $('.img-temp-file').click();
-}
-
-function remove_image() {
-  $('.user-profile-img').removeClass('active');
-  $('.user-img-default').addClass('active');
-  $('#profile_remove_image_file').prop('checked', true);
-  $('.img-temp-file').val('').clone(true);
-  blob_file = '';
-}
-
-function isValidImage(file) {
-  const acceptFileTypes = ['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'webp',];
-  const fileType = file.name.split('.').pop().toLowerCase();
-  return acceptFileTypes.indexOf(fileType) !== -1;
-}
-
-function close_modal() {
-  blob_file = '';
-  $profile_modal.modal('hide');
-}
-
-function submit_form(url){
-  const $targetForm = $('#profile_image_edit_form');
-  const formData = new FormData($targetForm[0]);
-  if (blob_file) {
-    formData.append('cropped_image', blob_file);
+/*사진 첨부*/
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('modal_user_img').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('modal_user_img').src = "";
   }
-  $.ajax({
-    method: 'POST',
-    url: url,
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function (data) {
-      close_modal();
-      $('.user-img').attr('src', data['profile_image_url']);
-      $('#modal_user_img').attr('src', data['profile_image_url']);
-    },
-    error: function () {},
-  });
 }
 
-function start_cropper() {
-  return new Promise(function (resolve, reject) {
-    const image = document.getElementsByClassName('cropper-img')[0];
-    if (cropper) {
-      cropper.destroy();
+
+/* 수정 버튼 눌렀을 때 프로필 변경 */
+
+$(document).ready(function() {
+  $('#modifybutton').click(function() { 
+    $('.essential').show(); /* 필수 * 표시 */
+    $('.control-wrapper').show(); /* 수정 항목 */
+    $('.account-setting-content').hide(); /* 원 화면 정보 */
+    $('.blank').show(); /* 공백 */
+    $('#base_submit_btn').show(); /* 수정 완료 버튼 */
+    $('#modifybutton').hide(); /* 수정 버튼 숨김 */
+  })
+});
+
+
+
+// 저장하기 버튼 필수 입력 공백 확인 
+const formSubmit = document.querySelector('#base_submit_btn');
+const nameInput = document.querySelector('#full_name'); //이름
+const phoneMidldle = document.querySelector('#cell_phone_number_middle'); //휴대폰 중간자리
+const phoneEnd = document.querySelector('#cell_phone_number_end'); //휴대폰 뒷자리
+const email = document.querySelector('#email'); //이메일
+const drivePeriod = document.querySelector('#drive-period'); //기간
+const namemsg = document.querySelector('.namemsg'); //이름 에러
+const phonemsg = document.querySelector('.phonemsg'); //휴대폰 에러
+const emailmsg = document.querySelector('.emailmsg'); //이메일 에러
+const periodmsg = document.querySelector('.periodmsg'); //기간 에러
+
+const check = false;
+
+
+formSubmit.addEventListener("click", function(e){
+    var contentInputValue = document.querySelector("#full_name").value;
+    if(contentInputValue.length < 1){
+		nameInput.style.borderColor = "red";
+    	namemsg.style.display = "block";
+        namemsg.innerHTML = "이 항목을 채워주십시오.";
+        namemsg.style.color = "red";
+        e.preventDefault();
     }
-    cropper = new Cropper(image, {
-      minCropBoxWidth: 300,
-      minCropBoxHeight: 300,
-      viewMode: 1,
-      aspectRatio: 1,
-    });
-    resolve();
-  });
-}
+});
 
-$(document).on('change', '.img-temp-file', function () {
-  const file = this.files[0];
-  const $cropper_img = $('.cropper-img');
-  const $img = $('.temp-user-img');
-  const MAX_WIDTH = 300;
-  const MAX_HEIGHT = 300;
-  if (file) {
-    const isAcceptFileType = isValidImage(file);
-    if (isAcceptFileType) {
-      $('.user-profile-img').removeClass('active');
-      $('.loading-circle').addClass('active');
+/* 휴대폰 */
+formSubmit.addEventListener("click", function(e){
+    var contentInputValue = document.querySelector("#cell_phone_number_middle").value;
+    if(contentInputValue.length < 1){
+		phoneMidldle.style.borderColor = "red";
+    	phonemsg.style.display = "block";
+        phonemsg.innerHTML = "이 항목을 채워주십시오.";
+        phonemsg.style.color = "red";
+        e.preventDefault();
+    }
+});
 
-      const reader = new FileReader();
-      reader.onload = function(e){
-        $cropper_img.attr('src', e.target.result);
-      };
-      reader.readAsDataURL(file);
-      setTimeout(function () {
-        start_cropper().then(function () {
-          setTimeout(function(){
-            let crop_img = cropper.getCroppedCanvas({
-            width: MAX_WIDTH,
-            height: MAX_HEIGHT,
-          });
-            crop_img.toBlob(function(blob){
-              blob_file = blob;
-              const reader = new FileReader();
-              reader.onload = function() {
-                $img.attr('src', reader.result);
-              };
-              reader.readAsDataURL(blob);
-              $img.addClass('active');
-              $('.loading-circle').removeClass('active');
-            });
-          },200);
-        });
-      }, 100);
+formSubmit.addEventListener("click", function(e){
+    var contentInputValue = document.querySelector("#cell_phone_number_end").value;
+    if(contentInputValue.length < 1){
+		phoneEnd.style.borderColor = "red";
+    	phonemsg.style.display = "block";
+        phonemsg.innerHTML = "이 항목을 채워주십시오.";
+        phonemsg.style.color = "red";
+        e.preventDefault();
+    }
+});
+
+/* 이메일  */
+formSubmit.addEventListener("click", function(e){
+    var contentInputValue = document.querySelector("#email").value;
+    var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    if(contentInputValue.length < 1){
+		email.style.borderColor = "red";
+    	emailmsg.style.display = "block";
+        emailmsg.innerHTML = "이 항목을 채워주십시오.";
+        emailmsg.style.color = "red";
+        e.preventDefault();
+    }else if((emailPattern.test(contentInputValue))){
+        emailmsg.style.display = "none"; 
     } else {
-      alert('이미지 파일만 등록 가능합니다.');
+        e.preventDefault();
+        emailmsg.style.display = "block";
+        emailmsg.innerHTML = "올바른 이메일 주소를 입력해주세요.";
+        emailmsg.style.color = "red";
     }
-  }
-}); */
+});
+
+/* 운전 경력 */
+formSubmit.addEventListener("click", function(e){
+    var contentInputValue = document.querySelector("#drive-period").value;
+    if(contentInputValue.length < 1){
+		drivePeriod.style.borderColor = "red";
+    	periodmsg.style.display = "block";
+        periodmsg.innerHTML = "이 항목을 채워주십시오.";
+        periodmsg.style.color = "red";
+        e.preventDefault();
+    }
+});
+
+
+// 공백 -> 문자열 입력 시 인풋 속성 변경
+/* 이름 */
+nameInput.addEventListener("blur", function(){
+    const nameInputValue = nameInput.value;
+    if(nameInputValue.length > 1){
+		nameInput.style.borderColor = "#dadada";
+    	namemsg.style.display = "none";
+    }
+});
+
+/* 휴대폰 */
+phoneMidldle.addEventListener("blur", function(){
+    const phoneMiddleValue = phoneMidldle.value;
+    if(phoneMiddleValue.length > 1){
+		phoneMidldle.style.borderColor = "#dadada";
+    	phonemsg.style.display = "none";
+    }
+});
+
+phoneEnd.addEventListener("blur", function(){
+    const phoneEndValue = phoneEnd.value;
+    if(phoneEndValue.length > 1){
+		phoneEnd.style.borderColor = "#dadada";
+    	phonemsg.style.display = "none";
+    }
+});
+
+/* 이메일 */
+email.addEventListener("blur", function(){
+    const emailValue = email.value;
+    if(emailValue.length > 1){
+		email.style.borderColor = "#dadada";
+    	emailmsg.style.display = "none";
+    }
+});
+
+/* 경력 */
+drivePeriod.addEventListener("blur", function(){
+    const drivePeriodValue = drivePeriod.value;
+    if(drivePeriodValue.length > 1){
+		drivePeriod.style.borderColor = "#dadada";
+    	periodmsg.style.display = "none";
+    }
+});
