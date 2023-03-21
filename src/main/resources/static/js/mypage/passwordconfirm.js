@@ -12,7 +12,6 @@ $(function(){
   $(this).attr("src","https://account.wishket.com/static/renewal/img/news/icon_input_eye.png");
 }
 });
-
 });
 
 /* 비밀번호 확인 input type 변경 */
@@ -88,7 +87,7 @@ $(document).ready(function() {
       blank2.innerHTML = "동일한 비밀번호를 입력해주세요.";
       blank2.style.color = "red";
     } else{
+      test=(btoa(p1));
       return true;
     }
-
   }
