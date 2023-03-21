@@ -88,6 +88,9 @@ $(document).ready(function() {
       blank2.style.color = "red";
     } else{
       test=(btoa(p1));
+     /*  blank2.style.display = "block";
+      blank2.innerHTML=test; */ /* 암호화 확인 */
+      alert('비밀번호가 변경되었습니다.')
       return true;
     }
   }
