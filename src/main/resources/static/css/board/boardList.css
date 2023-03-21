@@ -155,6 +155,7 @@ main{
     color: #212121;
     margin-bottom: 32px;
     display: inline-block;
+    cursor: default;
 }
 
 .boardList-count{
@@ -165,9 +166,23 @@ main{
     -webkit-font-smoothing: antialiased;
     float: right;
     margin-top: 2px;
+    color: #3ba3c7;
+    cursor: default;
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+.write-button-top{
+    font-weight: 500;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    /* float: right; */
+    margin-top: 2px;
     color: #fff;
     cursor: pointer;
-    width: 110px;
+    width: 1080px;
     height: 35px;
     border-radius: 5px;
     background: #3ba3c7;
@@ -595,3 +610,8 @@ main{
     background-size: cover;
     cursor: pointer;
 }
+
+/* .review-image:hover{
+    transform: scale(1.02);
+    transition: transform .4s ease-in-out;
+} */
