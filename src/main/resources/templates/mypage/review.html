@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../../static/images/logo.png">
+    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
     <a class="advertisement" id="nav_advertisement"></a>
@@ -52,9 +52,9 @@
                                 <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
                                 <div class="user-name-tag-body">
                                     <div class="user-img-box">
-                                        <img alt="seinee114 사진" id="modal-back" class="img-circle user-img" onclick="show_img_edit_modal()" src="https://www.wishket.com/static/img/default_avatar_c.png">
-                                        <img class="user-img-edit-icon off" src="https://www.wishket.com/static/renewal/img/profile/icon_edit_s.png">
-                                        <img class="user-img-edit-icon on" src="https://www.wishket.com/static/renewal/img/profile/icon_edit_s_hover.png"></div>
+                                        <img alt="seinee114 사진" id="modal-back" class="img-circle user-img" onclick="show_img_edit_modal()" src="../../static/images/mypage/default_avatar_c.png">
+                                        <img class="user-img-edit-icon off" src="../../static/images/mypage/icon_edit_s.png">
+                                        <img class="user-img-edit-icon on" src="../../static/images/mypage/icon_edit_s_hover.png"></div>
                                         <div class="userid">
                                         <div class="username">seinee114<br></div></div></div>
                                         </div>
@@ -67,7 +67,7 @@
                                                     <form enctype="multipart/form-data" id="profile_image_edit_form">
                                                         <div class="modal__title">프로필 사진 등록
                                                         <div class="close_modal">
-                                                            <img class="modal-close-image-button" src="https://www.wishket.com/static/renewal/img/profile/icon_modal_close.png">
+                                                            <img class="modal-close-image-button" src="../../static/images/mypage/icon_modal_close.png">
                                                         </div>
                                                     </div>
                     
@@ -76,7 +76,7 @@
                                                             <div class="modal-content">
                                                                 나를 표현하는 사진을 등록해주세요
                                                                 </div>
-                                                                <img class="user-profile-img upload" id="modal_user_img" src="	https://www.wishket.com/static/img/default_avatar_c.png">
+                                                                <img class="user-profile-img upload" id="modal_user_img" src="../../static/images/mypage/default_avatar_c.png">
                                                            <!--      <img class="temp-user-img user-profile-img"> -->
                     
                                                             <div class="loading-circle user-profile-img">
@@ -97,9 +97,9 @@
                                                                 <input accept=".jpg, .jpeg, .png, .gif" id="fileupload" class="img-temp-file" hidden="" type="file" onchange="readURL(this);">
                                                                 <input hidden="" id="profile_remove_image_file" name="remove_image_file" type="checkbox">
                                                                 <button class="body-btn upload" onclick="upload_image()" type="button">
-                                                                    <img src="https://www.wishket.com/static/renewal/img/profile/icon_profile_upload.png">사진 올리기</button>
+                                                                    <img src="../../static/images/mypage/icon_profile_upload.png">사진 올리기</button>
                                                                 <button class="body-btn" id="remove-button" type="button">
-                                                                    <img src="https://www.wishket.com/static/renewal/img/profile/icon_profile_delete.png">사진 지우기</button></div>
+                                                                    <img src="../../static/images/mypage/icon_profile_delete.png">사진 지우기</button></div>
                                                         </div>
                                                         <div class="modal-info-body">
                                                             <div class="base-dot-list">
@@ -141,10 +141,101 @@
                                     <div style="clear:both;"></div></div>
                                     
                                     <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
                                         <div class="review-list">
                                             <div class="review-container">
                                                 <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
+                                                <img class="review-photo" src="../../static/images/mypage/review1.png"></a></div>
+                                                <div class="review-content-box">
+                                                    <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                                        <p class="pcontent">
+                                                            <span class="review-date">2023-03-16</span>
+                                                            <span class="base-info-splitter">|</span>
+                                                            <span class="review-location">경기도 군포시</span></p>
+                                                            <p class="review-description-text">
+                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
+                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
+                                                                            <div style="clear:both;"></div></div>
+                                    <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
+                                        <div class="review-list">
+                                            <div class="review-container">
+                                                <a href="/store/41/">
+                                                <img class="review-photo" src="../../static/images/mypage/review1.png"></a></div>
+                                                <div class="review-content-box">
+                                                    <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                                        <p class="pcontent">
+                                                            <span class="review-date">2023-03-16</span>
+                                                            <span class="base-info-splitter">|</span>
+                                                            <span class="review-location">경기도 군포시</span></p>
+                                                            <p class="review-description-text">
+                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
+                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
+                                                                            <div style="clear:both;"></div></div>
+                                    <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
+                                        <div class="review-list">
+                                            <div class="review-container">
+                                                <a href="/store/41/">
+                                                <img class="review-photo" src="../../static/images/mypage/review1.png"></a></div>
+                                                <div class="review-content-box">
+                                                    <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                                        <p class="pcontent">
+                                                            <span class="review-date">2023-03-16</span>
+                                                            <span class="base-info-splitter">|</span>
+                                                            <span class="review-location">경기도 군포시</span></p>
+                                                            <p class="review-description-text">
+                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
+                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
+                                                                            <div style="clear:both;"></div></div>
+                                    <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
+                                        <div class="review-list">
+                                            <div class="review-container">
+                                                <a href="/store/41/">
+                                                <img class="review-photo" src="../../static/images/mypage/review1.png"></a></div>
+                                                <div class="review-content-box">
+                                                    <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                                        <p class="pcontent">
+                                                            <span class="review-date">2023-03-16</span>
+                                                            <span class="base-info-splitter">|</span>
+                                                            <span class="review-location">경기도 군포시</span></p>
+                                                            <p class="review-description-text">
+                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
+                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
+                                                                            <div style="clear:both;"></div></div>
+                                    <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
+                                        <div class="review-list">
+                                            <div class="review-container">
+                                                <a href="/store/41/">
+                                                <img class="review-photo" src="../../static/images/mypage/review1.png"></a></div>
+                                                <div class="review-content-box">
+                                                    <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                                        <p class="pcontent">
+                                                            <span class="review-date">2023-03-16</span>
+                                                            <span class="base-info-splitter">|</span>
+                                                            <span class="review-location">경기도 군포시</span></p>
+                                                            <p class="review-description-text">
+                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
+                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
+                                                                            <div style="clear:both;"></div></div>
+                       
+                          
+                  
+                               
+                                    <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
+                                        <div class="review-list">
+                                            <div class="review-container">
+                                                <a href="/store/41/">
+                                                    <img class="review-photo" src="../../static/images/mypage/review2.jpg"></a></div>
                                                 <div class="review-content-box">
                                                         <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
                                                         <p class="pcontent">
@@ -156,100 +247,12 @@
                                                                 <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
                                                                             <div style="clear:both;"></div></div>
                                     <div class="review-box">
+                                        <a class="review-modify" href="/store/41">수정</a>
+                                        <a class="review-delete" href="/store/41">삭제</a>
                                         <div class="review-list">
                                             <div class="review-container">
                                                 <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://post-phinf.pstatic.net/MjAyMjA4MDJfMTA3/MDAxNjU5NDI1MDM3Njg5.AHmMqk-ofnA-Fj3LSgJkSXXnGLCNUJ75Q7Z0fNz0lMsg.KBoPllJVVGdgxspYbL7z3_4X4_wE3VCobyj8UM8HPO4g.PNG/image_%282%29.png?type=w1200"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Korean_National_route_No_21_through_Boryeong.jpg/280px-Korean_National_route_No_21_through_Boryeong.jpg"></a></div>
-                                                <div class="review-content-box">
-                                                        <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
-                                                        <p class="pcontent">
-                                                            <span class="review-date">2023-03-16</span>
-                                                            <span class="base-info-splitter">|</span>
-                                                            <span class="review-location">경기도 군포시</span></p>
-                                                            <p class="review-description-text">
-                                                                후기 내용입니다. 어려웠는데도 강사님이 아주 잘 가르쳐주셨어요. <br> 다시 국내 여행 가기 전에 연수를 또 받고 싶어요.
-                                                                <br>아주 만족스럽습니다! 교차로 짱짱짱</p></div></div>
-                                                                            <div style="clear:both;"></div></div>
-                                    <div class="review-box">
-                                        <div class="review-list">
-                                            <div class="review-container">
-                                                <a href="/store/41/">
-                                                <img class="review-photo" src="https://img.etnews.com/photonews/2101/1379263_20210128130842_475_0003.jpg"></a></div>
+                                                    <img class="review-photo" src="../../static/images/mypage/review3.jpg"></a></div>
                                                 <div class="review-content-box">
                                                         <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
                                                         <p class="pcontent">

@@ -37,7 +37,7 @@ function upload_image() {
 $(document).ready(function() {
   $('#remove-button').click(function() {
   $('#fileupload').empty();
-  $('#modal_user_img').attr('src',"https://www.wishket.com/static/img/default_avatar_c.png");
+  $('#modal_user_img').attr('src',"../../static/images/mypage/default_avatar_c.png");
 }) 
 });
 
