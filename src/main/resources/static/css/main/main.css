@@ -336,6 +336,7 @@ body.main .main-review .review-list .review-card .card-info .user-icon, body.mai
     top: 4px;
     margin-right: 8px;
     font-size: 16px;
+    margin-bottom: 4px;
 }
 
 .stars {
@@ -422,10 +423,6 @@ body.main .main-review .review-list .review-card .card-info .user-icon, body.mai
 
 .process-line.line-4 {
     width: 220px;
-}
-
-.process-line.active {
-    border-color: #2099bb;
 }
 
 .process-text-group {
@@ -618,6 +615,30 @@ ul li {
 .process-guide-content+.process-guide-content {
     margin-left: 49px;
 }
+
+/* 연수신청 진행배너 */
+.apply-btn {
+    float: right;
+    background-color: #2099bb;
+    color: #fff;
+    border: #2099bb;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border-radius: 4px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+    margin-right: -12px;
+    padding: 6px 13px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+
+
 
 .appeal-point {
     background-color: #fff;

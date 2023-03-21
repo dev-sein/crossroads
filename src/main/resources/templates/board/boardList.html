@@ -10,15 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/board/boardList.css">
+    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
             <!-- 모달 -->
-            <div class="modal" style="visibility: hidden;">
+            <div class="modal" style="visibility: hidden;" onclick="closeModal()">
                 <div class="modal-wrapper">
                     <div class="modal-image-wrapper">
                         <div class="inner-wrapper">
                             <img src="http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg" class="modal-image">
-                            <img src="../../static/img/close.png" id="close-button" onclick="closeModal()">
+                            <!-- <img src="../../static/img/close.png" id="close-button" onclick="closeModal()"> -->
                         </div>
                     </div>
                 </div>
@@ -26,13 +27,18 @@
             <!-- 모달 -->
 <header th:replace="/components/header-main.html :: .header-container"></header>
     <main>
+        <!-- 추가 -->
+        <div class="write-button-top">후기 작성하기</div>
+        <!-- 추가 -->
         <div class="whole-contents-wrapper">
             <div class="contents-inner-wrapper">
                 <div class="contents-inner">
                     <div class="sub-title">
                         후기
                     </div>
-                    <div class="boardList-count">후기 작성하기</div>
+                    <!-- 후기 작성 버튼 -->
+                    <div class="boardList-count">5개</div>
+                    <!-- 후기 작성 버튼 -->
                     <div class="board-box-wrapper">
                         <div class="board-box">
                             <div class="board-box-top">
