@@ -106,6 +106,8 @@ ul li a{
 
 .inner{
     font-size: 16px;
+    padding-bottom: 50px;
+    background: #f7fafc;
 }
 
 .faq-box{
@@ -140,7 +142,8 @@ ul li a{
 }
 
 .faq-wrapper{
-
+    margin-bottom: 20px;
+    padding: 10px 0;
 }
 
 .question{
@@ -185,6 +188,7 @@ ul li a{
     height: 24px;
     width: 24px;
     background-image: url(https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-up@2x.png);
+    /* transform: rotate(180deg); */
 }
 
 .answer{
@@ -196,9 +200,56 @@ ul li a{
     /* display: none; */
     color: #424242;
     word-break: keep-all;
-    margin-bottom: 48px;
+    /* margin-bottom: 48px; */
+    /* display: none; */
 }
 
 .faq-box-next {
     padding-top: 0px;
 }
+
+.question-changed{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #212121;
+}
+
+.question-changed::after{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #212121;
+    content: "";
+    display: inline-block;
+    float: right;
+    background-size: 24px 24px;
+    height: 24px;
+    width: 24px;
+    background-image: url(https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-up@2x.png);
+    transform: rotate(180deg);
+}
+
+.question-changed::before{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #212121;
+    content: "";
+    display: inline-block;
+    margin-right: 12px;
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+    vertical-align: text-bottom;
+    background-image: url(https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-question-w@2x.png);
+}
+
