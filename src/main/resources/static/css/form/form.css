@@ -142,11 +142,13 @@ html {
 .form-group-light {
     display: block;
     margin-bottom: 48px;
+    margin-top: 16px;
 }
 
 .form-group-title {
     margin-bottom: 4px;
     display: block;
+    margin-top: 16px;
 }
 
 .body-1-bold {
@@ -193,10 +195,6 @@ html {
     color: #ff0000;
 }
 
- .form-group-title {
-    margin-bottom: 4px;
-    display: block;
-}
 
  .form-group-guide {
     margin-bottom: 24px;
