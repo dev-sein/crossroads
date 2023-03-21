@@ -86,7 +86,7 @@ header.header .header-section .main-logo {
 
 /* main-logo-img p-big */
 header.header .header-section .main-logo {
-    background: url('../../images/components/p-big.png') 10px 8px/80px 50px no-repeat;
+    background: url('../../images/components/main-logo.png')  0px 20px/90px 25px no-repeat;
 }
 
 header.header .header-section .main-logo {
@@ -98,6 +98,20 @@ header.header .header-section .main-logo {
     font-size: 750 !important;
     font-weight: 27px !important;
 }
+
+/* header.header .header-section .main-logo {
+    background: url('../../images/components/p-big.png') 10px 8px/80px 50px no-repeat;
+}
+
+header.header .header-section .main-logo {
+    float: left;
+    padding: 32px 16px;
+    line-height: 20px;
+    width: 100px;
+    box-sizing: border-box;
+    font-size: 750 !important;
+    font-weight: 27px !important;
+} */
 
 /* main-logo-img font-logo */
 /* header.header .header-section .main-logo {
