@@ -9,7 +9,7 @@ body {
 
 /* main */
 .module-container {
-	min-height: 750px;
+	min-height: 660px;
 	min-width: 1250px;
 	margin-left: 2.5vw;
 	padding: 2.5rem 18rem;
@@ -19,10 +19,11 @@ body {
 	column-gap: 1rem;
 	row-gap: 1rem;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-areas: "w w w w" "a a b b" "e e c c" "h h d g" "k k j j"
+	grid-template-areas: "w w w w" "b b d g" "e e c c" "k k j j"
 }
 
 .module {
+	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
@@ -172,14 +173,15 @@ div {
 /* 접속정보,등 타이틀 */
 .header-badge {
 	width: 31px;
-	height: 18px;
-	display: inline-block;
-	text-align: center;
-	border-radius: 15px;
-	font-size: 12px;
-	line-height: 18px;
-	margin-left: 2px;
-	font-weight: bold;
+    height: 15px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 10px;
+    line-height: 14px;
+    margin-left: 5px;
+    font-weight: 400;
+
 }
 
 .header-badge.badge-danger {
@@ -218,7 +220,7 @@ div {
 	min-height: 100px;
 	max-height: 100px;
 	line-height: 18px;
-	background-color: #fbfbfb;
+	/* background-color: #fbfbfb; */
 	box-sizing: content-box;
 	/* overflow-y: scroll; */
 	overflow: auto;
