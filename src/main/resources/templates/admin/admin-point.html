@@ -4,20 +4,135 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>후기 목록</title>
+<title>포인트 내역</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="../../static/css/components/sanitize.css" />
-<!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
+<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
+<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
 <link rel="stylesheet" href="../../static/css/admin/admin.css" />
-<link rel="stylesheet" href="../../static/css/components/admin-modal.css" />
 <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page="/dhouse/components/adminHeader.jsp"></jsp:include>
+	<header id="admin-header" class="page">
+		<div class="page-info">
+			<img src="../../static/images/admin/menubar.png" alt="icon" class="page-info__icon" />
+			<ul>
+				<a href="">
+						<span>
+							<li class="page-info__detail page-info--current">관리자 홈</li>
+						</span>
+				</a>
+			</ul>
+		</div>
+		<div class="page-language">
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+				<div class="AnnouncementButton_container__1p1gr" role="button">
+					<a href="">
+						<strong>홈페이지</strong>
+					</a>
+				</div>
+			</button>
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+					<span>
+						<span class="Button_children__q9VCZ">
+							<a href="">
+								<strong>LOGOUT</strong>
+							</a>
+						</span>
+					</span>
+			</button>
+		</div>
+	</header>
 	<!-- -------------- header end --------------  -->
 	<!-- aside -->
-	<jsp:include page="/dhouse/components/adminAside.jsp"></jsp:include>
-	<!-- -------------- header end --------------  -->
+	<aside id="admin-aside" class="sidebar">
+		<header class="sidebar-header">
+			<h1>교차로<br>관리자페이지</h1>
+		</header>
+		<nav>
+			<ul>
+				<label>
+					<a href="">
+						<li>
+							<details>
+								<summary class="nav-menu menu--current">
+									<h2 class="menu__title">관리자 홈</h2>
+								</summary>
+							</details>
+						</li>
+					</a>
+				</label>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">회원</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">회원정보</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">연수신청 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">초보자 신청</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">포인트 결제 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">결제</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">후기</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">후기 관리</li>
+								</span>
+							</a>
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">댓글 관리</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+			</ul>
+		</nav>
+	</aside>
 	<!-- 페이지별로 class 이름 기능에 맞게 재설정 -->
 	<main class="module-container">
 		<article class="module--search">
@@ -42,13 +157,14 @@
 				<div class="support-list__title-unit">
 					<input type="checkbox" id="title__checkbox" name="checkbox-all" />
 					<ul class="support-list__title">
-						<li class="title__id">게시글번호</li>
-						<li class="title__type">글유형</li>
-						<li class="title__user-id">회원 이름</li>
-						<li class="title__title">제목</li>
-						<li class="title__content">내용</li>
-						<li class="title__date-post">등록시간</li>
-						<li class="title__detail">상세</li>
+						<li class="title__id">번호</li>
+						<li class="title__type">회원타입</li>
+						<li class="title__user-id">회원ID</li>
+						<li class="title__user-name">회원이름</li>
+						<li class="title__money">금액</li>
+						<li class="title__status">상태</li>
+						<li class="title__date-post">결제일</li>
+						<!-- <li class="title__detail">상세</li> -->
 						<!--   <li class="title__answer-check">답변여부</li>
               <li class="title__answer-date">답변시간</li>
               <li class="title__admin-id">관리자 ID</li>
@@ -81,110 +197,119 @@
 						<label for="kus" class="support__checkbox--label">
 							<ul class="support-list__info">
 								<li class="support__id">00001</li>
-								<li class="support__type">후기</li>
-								<li class="support__user-id">정세인</li>
-								<li class="support__title">초보운전에서 벗어났어요!</li>
-								<li class="support__content">강사님의 친절한 지도 덕분에 장롱면허 5년만에 고속도로에 나갔습니다.</li>
+								<li class="support__type">초보자</li>
+								<li class="support__user-id">jsi</li>
+								<li class="support__user-name">정세인</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">결제</li>
 								<li class="support__date-post">2023.03.22</li>
-								<li class="user__detail" name="userDetail">
+								<!-- <li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
-								</li>
+								</li> -->
 							</ul>
 						</label>
 					</div>
 				</div>
-				<!-- 스크롤 테스트  -->
+			</div>
 				<div class="support-list__info-container">
 					<div class="support-list__info-unit">
 						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
 						<label for="kus" class="support__checkbox--label">
 							<ul class="support-list__info">
-								<li class="support__id">test</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">testId</li>
-								<li class="support__title">title</li>
-								<li class="support__content">test</li>
-								<li class="support__date-post">yyyy-mm-dd</li>
-								<li class="user__detail" name="userDetail">
-									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show" >상세 정보</button>
-								</li>
+								<li class="support__id">00001</li>
+								<li class="support__type">초보자</li>
+								<li class="support__user-id">jsi</li>
+								<li class="support__user-name">정세인</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">결제</li>
+								<li class="support__date-post">2023.03.22</li>
+								<!-- <li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
+								</li> -->
 							</ul>
 						</label>
 					</div>
 				</div>
+			</div>
 				<div class="support-list__info-container">
 					<div class="support-list__info-unit">
 						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
 						<label for="kus" class="support__checkbox--label">
 							<ul class="support-list__info">
-								<li class="support__id">test</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">testId</li>
-								<li class="support__title">title</li>
-								<li class="support__content">test</li>
-								<li class="support__date-post">yyyy-mm-dd</li>
-								<li class="user__detail" name="userDetail">
-									<button class="custom-btn btn-16" style="font-weight: 10px;" >상세 정보</button>
-								</li>
+								<li class="support__id">00001</li>
+								<li class="support__type">초보자</li>
+								<li class="support__user-id">jsi</li>
+								<li class="support__user-name">정세인</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">결제</li>
+								<li class="support__date-post">2023.03.22</li>
+								<!-- <li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
+								</li> -->
 							</ul>
 						</label>
 					</div>
 				</div>
-				<div class="support-list__info-container">
-					<div class="support-list__info-unit">
-						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
-							<label for="kus" class="support__checkbox--label">
-							<ul class="support-list__info">
-								<li class="support__id">test</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">testId</li>
-								<li class="support__title">title</li>
-								<li class="support__content">test</li>
-								<li class="support__date-post">yyyy-mm-dd</li>
-								<li class="user__detail" name="userDetail">
-									<button class="custom-btn btn-16" style="font-weight: 10px;" >상세 정보</button>
-								</li>
-							</ul>
-						</label>
-					</div>
-				</div>
-				<div class="support-list__info-container">
-					<div class="support-list__info-unit">
-						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
-							<label for="kus" class="support__checkbox--label">
-							<ul class="support-list__info">
-								<li class="support__id">test</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">testId</li>
-								<li class="support__title">title</li>
-								<li class="support__content">test</li>
-								<li class="support__date-post">yyyy-mm-dd</li>
-								<li class="user__detail" name="userDetail">
-									<button class="custom-btn btn-16" style="font-weight: 10px;" >상세 정보</button>
-								</li>
-							</ul>
-						</label>
-					</div>
-				</div>
+			</div>
 				<div class="support-list__info-container">
 					<div class="support-list__info-unit">
 						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
 						<label for="kus" class="support__checkbox--label">
 							<ul class="support-list__info">
-								<li class="support__id">test</li>
-								<li class="support__type">홍보</li>
-								<li class="support__user-id">testId</li>
-								<li class="support__title">title</li>
-								<li class="support__content">test</li>
-								<li class="support__date-post">yyyy-mm-dd</li>
-								<li class="user__detail" name="userDetail">
-									<button class="custom-btn btn-16" style="font-weight: 10px;" >상세 정보</button>
-								</li>
+								<li class="support__id">00001</li>
+								<li class="support__type">초보자</li>
+								<li class="support__user-id">jsi</li>
+								<li class="support__user-name">정세인</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">결제</li>
+								<li class="support__date-post">2023.03.22</li>
+								<!-- <li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
+								</li> -->
 							</ul>
 						</label>
 					</div>
 				</div>
-				<!-- 스크롤 테스트 끝  -->
+			</div>
+				<div class="support-list__info-container">
+					<div class="support-list__info-unit">
+						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
+						<label for="kus" class="support__checkbox--label">
+							<ul class="support-list__info">
+								<li class="support__id">00001</li>
+								<li class="support__type">베테랑</li>
+								<li class="support__user-id">hds</li>
+								<li class="support__user-name">한동석</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">환전</li>
+								<li class="support__date-post">2023.03.22</li>
+								<!-- <li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
+								</li> -->
+							</ul>
+						</label>
+					</div>
+				</div>
+			</div>
+				<div class="support-list__info-container">
+					<div class="support-list__info-unit">
+						<input type="checkbox" class="support__checkbox" id="kus" name="checkbox" />
+						<label for="kus" class="support__checkbox--label">
+							<ul class="support-list__info">
+								<li class="support__id">00001</li>
+								<li class="support__type">초보자</li>
+								<li class="support__user-id">jsi</li>
+								<li class="support__user-name">정세인</li>
+								<li class="support__money">50000</li>
+								<li class="support__status">환전</li>
+								<li class="support__date-post">2023.03.22</li>
+								<!-- <li class="user__detail" name="userDetail">
+									<button class="custom-btn btn-16" style="font-weight: 10px;"  id="show">상세 정보</button>
+								</li> -->
+							</ul>
+						</label>
+					</div>
+				</div>
 			</div>
 			<div class="desktop-only">
               <!-- 데스크탑용 버튼 -->
@@ -204,7 +329,7 @@
               
                 <a href="#" onclick="movePage(5)">5</a>
               
-                <a href="#" onclick="movePage(6)">6</a>
+                <a href="#" onclick="movePage(6)"></a>
 
               <!-- 데스크탑용 버튼 -->
               <button class="next-page icon-chevron-right" onclick="movePage(7)">
@@ -213,11 +338,6 @@
             </div>
 		</article>
 	</main>
-	<!-- modal -->
-	<jsp:include page="/dhouse/components/ad_modal.jsp"></jsp:include>
-	<!-- modal fin. -->
-
 </body>
-<script src="../../static/js/admin/admin.js"></script>
-<script src="../../static/js/components/admin-modal.js"></script>
+<script src="../../static/js/admin/admin-checkbox.js"></script>
 </html>

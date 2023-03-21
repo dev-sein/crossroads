@@ -6,12 +6,14 @@
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>회원관리</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
 	<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
-	<!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
-	<link rel="stylesheet" href="../../static/css/admin/admin-user.css" />
-	<link rel="stylesheet" href="../../static/css/components/admin-user-modal.css" />
 	<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
 	<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-member-modal.css" />
+	<link rel="stylesheet" href="../../static/css/admin/admin-member.css" />
 	<link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
@@ -139,7 +141,7 @@
 		<div class="search__searchbox">
 			<form action="" class="search__searchbox__form">
 				<input id="searchbox" type="text" placeholder="이름, 전화번호, 이메일로 검색해보세요" />
-				<button type="button" class="search__searchbox__button" style="position: relative; /* right: 0px; */ left: 410px;">
+				<button type="button" class="search__searchbox__button">
 					<img src="../../static/images/admin/search.png" alt="" />
 				</button>
 			</form>
@@ -157,14 +159,15 @@
 	<article class="module module--user-list">
 		<div class="user-list__title-container">
 			<div class="user-list__title-unit">
-				<input type="checkbox" id="title__checkbox" name="checkbox-all" />
+				<input type="checkbox" id="title__checkbox" name="checkbox-all"/>
 				<ul class="user-list__title">
 					<li class="title__id">고객번호</li>
 					<li class="title__type">회원 타입</li>
-					<li class="title__name">이름</li>
 					<li class="title__user-id">회원 ID</li>
+					<li class="title__name">이름</li>
 					<li class="title__email">이메일</li>
 					<li class="title__phone">핸드폰 번호</li>
+					<li class="title__point">포인트</li>
 					<li class="title__join">가입일</li>
 					<li class="title__detail">상세</li>
 				</ul>
@@ -179,10 +182,11 @@
 						<!-- <li>등록된 회원이 없습니다.</li> -->
 						<li class="user__id" name="userId">00005</li>
 						<li class="user__type" name="userType">초보자</li>
-						<li class="user__name" name="userName">김욱성</li>
 						<li class="user__user-id" name="userNickname">dev_luk</li>
+						<li class="user__name" name="userName">김욱성</li>
 						<li class="user__email" name="userEmail">kus1234@naver.com</li>
 						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__point" name="userPoint">500,000</li>
 						<li class="user__join" name="userDateJoin">2023.02.22</li>
 						<li class="user__detail" name="userDetail">
 							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
@@ -200,52 +204,11 @@
 						<!-- <li>등록된 회원이 없습니다.</li> -->
 						<li class="user__id" name="userId">00004</li>
 						<li class="user__type" name="userType">초보자</li>
-						<li class="user__name" name="userName">윤민우</li>
 						<li class="user__user-id" name="userNickname">dev_wmin</li>
+						<li class="user__name" name="userName">윤민우</li>
 						<li class="user__email" name="userEmail">ymw1234@naver.com</li>
 						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
-						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__detail" name="userDetail">
-							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
-						</li>
-					</ul>
-				</label>
-				</div>
-			</div>
-			<div class="user-list__info-container">
-				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="kus"
-						   name="checkbox" /> <label for="kus"
-													 class="user__checkbox--label">
-					<ul class="user-list__info">
-						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00003</li>
-						<li class="user__type" name="userType">초보자</li>
-						<li class="user__name" name="userName">김세윤</li>
-						<li class="user__user-id" name="userNickname">dev_ksy</li>
-						<li class="user__email" name="userEmail">ksy1234@naver.com</li>
-						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
-						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__detail" name="userDetail">
-							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
-						</li>
-					</ul>
-				</label>
-				</div>
-			</div>
-			<div class="user-list__info-container">
-				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="kus"
-						   name="checkbox" /> <label for="kus"
-													 class="user__checkbox--label">
-					<ul class="user-list__info">
-						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00002</li>
-						<li class="user__type" name="userType">초보자</li>
-						<li class="user__name" name="userName">박다예</li>
-						<li class="user__user-id" name="userNickname">dev_pdy</li>
-						<li class="user__email" name="userEmail">pdy1234@naver.com</li>
-						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__point" name="userPoint">100,000</li>
 						<li class="user__join" name="userDateJoin">2023.02.22</li>
 						<li class="user__detail" name="userDetail">
 							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
@@ -258,14 +221,57 @@
 				<div class="user-list__info-unit">
 					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" />
 					<label for="kus" class="user__checkbox--label">
+					<ul class="user-list__info">
+						<!-- <li>등록된 회원이 없습니다.</li> -->
+						<li class="user__id" name="userId">00003</li>
+						<li class="user__type" name="userType">초보자</li>
+						<li class="user__user-id" name="userNickname">dev_ksy</li>
+						<li class="user__name" name="userName">김세윤</li>
+						<li class="user__email" name="userEmail">ksy1234@naver.com</li>
+						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__point" name="userPoint">50,000</li>
+						<li class="user__join" name="userDateJoin">2023.02.22</li>
+						<li class="user__detail" name="userDetail">
+							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
+						</li>
+					</ul>
+				</label>
+				</div>
+			</div>
+			<div class="user-list__info-container">
+				<div class="user-list__info-unit">
+					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" />
+					<label for="kus" class="user__checkbox--label">
+					<ul class="user-list__info">
+						<!-- <li>등록된 회원이 없습니다.</li> -->
+						<li class="user__id" name="userId">00002</li>
+						<li class="user__type" name="userType">초보자</li>
+						<li class="user__user-id" name="userNickname">dev_pdy</li>
+						<li class="user__name" name="userName">박다예</li>
+						<li class="user__email" name="userEmail">pdy1234@naver.com</li>
+						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__point" name="userPoint">0</li>
+						<li class="user__join" name="userDateJoin">2023.02.22</li>
+						<li class="user__detail" name="userDetail">
+							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
+						</li>
+					</ul>
+				</label>
+				</div>
+			</div>
+			<div class="user-list__info-container">
+				<div class="user-list__info-unit">
+					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox"/>
+					<label for="kus" class="user__checkbox--label">
 						<ul class="user-list__info">
 							<!-- <li>등록된 회원이 없습니다.</li> -->
 							<li class="user__id" name="userId">00001</li>
 							<li class="user__type" name="userType">초보자</li>
-							<li class="user__name" name="userName">정세인</li>
 							<li class="user__user-id" name="userNickname">dev_jsi</li>
+							<li class="user__name" name="userName">정세인</li>
 							<li class="user__email" name="userEmail">jsi1234@naver.com</li>
 							<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+							<li class="user__point" name="userPoint">150,000</li>
 							<li class="user__join" name="userDateJoin">2023.02.22</li>
 							<li class="user__detail" name="userDetail">
 								<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
@@ -276,16 +282,17 @@
 			</div>
 			<div class="user-list__info-container">
 				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" />
+					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox"/>
 					<label for="kus" class="user__checkbox--label">
 						<ul class="user-list__info">
 							<!-- <li>등록된 회원이 없습니다.</li> -->
 							<li class="user__id" name="userId">00000</li>
 							<li class="user__type" name="userType">베테랑</li>
-							<li class="user__name" name="userName">한동석</li>
 							<li class="user__user-id" name="userNickname">dev-tedhan</li>
+							<li class="user__name" name="userName">한동석</li>
 							<li class="user__email" name="userEmail">tedhan4@gmail.com</li>
 							<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+							<li class="user__point" name="userPoint">5,000,000</li>
 							<li class="user__join" name="userDateJoin">2023.02.22</li>
 							<li class="user__detail" name="userDetail">
 								<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
@@ -314,7 +321,7 @@
 
 			<a href="#" onclick="movePage(5)">5</a>
 
-			<a href="#" onclick="movePage(6)">6</a>
+			<a href="#" onclick="movePage(6)"></a>
 
 			<!-- 데스크탑용 버튼 -->
 			<button class="next-page icon-chevron-right" onclick="movePage(7)">
@@ -363,13 +370,17 @@
 							<div class="input-text">핸드폰번호</div>
 							<input type="text" id="user-phone-number" value="01012345678" class="user-input" readonly>
 						</div>
-						<div class="input-wrapper">
-							<div class="input-text">운전면허</div>
-							<input type="text" id="user-adress" value="송파구~~~" class="user-input" readonly>
+						<div id="image">
+							<div class="input-wrapper detail-img">
+								<div class="input-text">운전면허증</div>
+								<span> 이미지가 없습니다.</span>
+							</div>
 						</div>
-						<div class="input-wrapper">
-							<div class="input-text">프로필 사진</div>
-							<input type="text" id="user-adress" value="송파구~~~" class="user-input" readonly>
+						<div id="image">
+							<div class="input-wrapper detail-img">
+								<div class="input-text">프로필</div>
+								<span> 이미지가 없습니다.</span>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -382,6 +393,6 @@
 </div>
 <!-- modal fin. -->
 </body>
-<script src="../../static/js/admin/user.js"></script>
-<script src="../../static/js/components/admin-user-modal.js"></script>
+<script src="../../static/js/admin/admin-member.js"></script>
+<script src="../../static/js/components/admin-modal.js"></script>
 </html>

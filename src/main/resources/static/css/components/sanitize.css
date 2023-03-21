@@ -1,25 +1,5 @@
 @charset "UTF-8";
-/* https://blog.tommyzip.co.kr/?p=2289 */
 
-@charset "utf-8";
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://cdn.jsdelivr.net/npm/@openfonts/noto-sans-kr_korean@1.44.1/files/noto-sans-kr-korean-400.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/npm/@openfonts/noto-sans-kr_korean@1.44.1/files/noto-sans-kr-korean-400.woff")
-      format("woff");
-}
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 700;
-  src: url("https://cdn.jsdelivr.net/npm/@openfonts/noto-sans-kr_korean@1.44.1/files/noto-sans-kr-korean-700.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/npm/@openfonts/noto-sans-kr_korean@1.44.1/files/noto-sans-kr-korean-700.woff")
-      format("woff");
-}
 *,
 ::before,
 ::after {
@@ -84,9 +64,7 @@ textarea {
   font-size: 13px;
   line-height: 1.5;
   color: #101010;
-  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", arial, dotum,
-    돋움, sans-serif;
+  font-family: "Noto Sans KR" !important;
 }
 h1,
 h2,
@@ -135,10 +113,10 @@ abbr[title] {
   text-decoration: underline;
   text-decoration: underline dotted;
 }
-b,
+/* b,
 strong {
   font-weight: bolder;
-}
+} */
 small {
   font-size: 80%;
 }
