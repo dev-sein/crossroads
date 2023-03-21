@@ -389,3 +389,20 @@ ul li {
     font-weight: 400;
     font-family: 'Noto Sans KR';
 }
+
+.select-input{
+    height: 48px;
+    min-height: 44.67px;
+    display: block;
+    outline: none;
+    border: 2px solid #616161;
+    border-radius: 3px;
+    padding-right: 140px;
+    padding-left: 16px;
+    height: auto;
+    line-height: 28px;
+    letter-spacing: -.3px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Noto Sans KR';
+}

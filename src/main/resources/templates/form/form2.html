@@ -16,15 +16,17 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
         <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <title>신청하기</title>
-    <link rel="stylesheet" href="../../static/css/form/form.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/point/buyPoint.css">
     <link rel="stylesheet" href="../../static/font/NotoSansKR-Regular.woff">
     <link rel="stylesheet" href="../../static/css/components/header.css">
     <link rel="shortcut icon" href="../../static/images/logo.png">
-
+    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    
+    
+    <link rel="stylesheet" href="../../static/css/form/form.css" />
+    <link rel="stylesheet" href="../../static/css/point/buyPoint.css">
 </head>
 <body>
     <!-- header -->
@@ -159,44 +161,43 @@
               <p class="body-2 text900 form-group-guide">원하시는 연수지역을 선택해 주세요.</p>
               <div class="form-content selectBox">
                 <!-- 지역 선택 -->
-                <select  class="select" name="sido1" id="sido1"></select>
-                <select  class="select" name="gugun1" id="gugun1"></select>
+                <select  class="select" class="selectbox" name="sido1" id="sido1"></select>
+                <select  class="select" class="selectbox" name="gugun1" id="gugun1"></select>
                 <!-- 지역 선택 끝 -->
               </div>
-              <span class="error-text1" style="margin: 10px 0px 0px -11px;" >지역을 선택해주세요.</span>
+              <em class="select-error error-message" style="padding: 5px 0 0 0px;">주소를 선택해주세요.</em>
             </div>
 
             <!-- 달력 -->
             <div class="form-group-light">
                 <div class="form-content">
-                <label class="form-group-title body-1-bold" style="padding: 20px 0 0 0px;">신청 요일</label>
-                날짜 선택 :&nbsp;<input type="text" id="startDate" placeholder="20230314" class="date-select">&nbsp;~
-                <input type="text" id="endDate" class="date-select" placeholder="20230314">
+                <label class="form-group-title body-1-bold" style="padding: 5px 0 0 0px;">신청 요일</label>
+                날짜 선택 :&nbsp;&nbsp;&nbsp;<input type="text" id="startDate" placeholder="20230314" class="date-select" autocomplete="off">
                 </div>
-                <span class="error-text2" style="margin: 10px 0px 0px -11px;">날짜를 선택해주세요.</span>
+                <em class="date-error error-message" style="padding: 5px 0 0 0px;">주소를 선택해주세요.</em>
             </div>
 
           </div>
 
           
 
-          <!-- 다음 -->
-          <div class="form-section-footer" style="position: relative">
-            <button
-              class="btn btn-client btn-11-24 btn-right"
-              style="pointer-events: none;
-                cursor: default;
-                opacity: 0.45;"
-              name="can_submit"
-              type="submit"
-              value="False"
-            >
-             제출하기
-            </button>
-            <div style="clear: both"></div>
-          </div>
-        </div>
-      </form>
+         <!-- 다음 -->
+         <div class="form-section-footer" style="position: relative">
+          <button
+          class="signup-submit-button btn btn-client btn-11-24 btn-right"
+          name="can_submit"
+          style="pointer-events: none;
+          cursor: default;
+          opacity: 0.45;"
+          type="button"
+          onclick="send()"
+          >
+          제출하기
+      </button>
+      <div style="clear: both"></div>
+  </div>
+</div>
+</form>
         <!-- 메인 끝  -->
       </div>
     </div>
