@@ -146,6 +146,7 @@ body {
     line-height: 2em;
     white-space: nowrap;
     text-overflow: ellipsis;
+    background-color: #fff;
 }
 
 /* content-title */

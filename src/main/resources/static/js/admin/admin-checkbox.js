@@ -29,3 +29,4 @@ checkBox.forEach((e) => {
 });
 
 console.log(checkBoxChecked);
+
