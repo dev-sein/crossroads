@@ -1,9 +1,9 @@
 /* selectbox  */
-const $selectChange = $('#sido1');
-const $selectWarning = $('.error-text1');
+const $selectInput = $('#sido1');
+const $selectWarning = $('.select-error');
 let selectFlag = false;
 
-    $selectChange.on("change", "select[name=sido1]" , function (){
+    $selectInput.on("change", function (){
         var value = $(this).find("option:selected").val();
 
         if ( value == "시/도 선택"){
@@ -14,10 +14,35 @@ let selectFlag = false;
             $selectWarning.css("display", "none");
 		    selectFlag = true;
         }
-        completeAllCheck();
+         completeAllCheck();
+    })
+
+	/* 달력 박스  */
+const $dateInput = $('#startDate');
+const $dateWarning = $('.date-error');
+let dateFlag = false;
+
+    $dateInput.on("change", function (){
+		var $dateInputVal = $dateInput.val();
+		var isDateNum = /^\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/;
+		if ( $dateInputVal.length < 1){
+            $dateWarning.text("날짜를 선택해주세요.")
+            $dateWarning.css("display", "block");
+            dateFlag = false;
+        } else if (!isDateNum.test($dateInputVal)) {
+			$dateWarning.text("잘못된 형식입니다. 다시 입력해주세요.");
+			$dateWarning.css("display", "block");
+			$dateInput.css("border-color", "#f66");
+			dateFlag = false;
+		}else {
+            $dateWarning.css("display", "none");
+		    dateFlag = true;
+        }
+        completeAllCheck(); 
     })
 
 
+	//핸드폰 변수
 const $phoneInput = $('#input-phone-number');
 //핸드폰 에러 변수
 const $phoneWarning = $('.phone-error');
@@ -51,7 +76,6 @@ $phoneInput.on("blur", function() {
 });
 
 
-
   const $completeButton = $(".signup-submit-button");
 /* 모든 정규식 완료 및 전체 동의 체크 시 버튼 활성화 */
 function completeAllCheck() {
@@ -64,7 +88,7 @@ function completeAllCheck() {
 	// let nameFlag = false; // 이름
 	// let phoneCheck = false; // 핸드폰
 
-	if (selectFlag) {
+	if (selectFlag && dateFlag) {
 		console.log("완료");
 		$completeButton.css("pointer-events", "auto");
 		$completeButton.css("cursor", "pointer");
@@ -82,42 +106,3 @@ function completeAllCheck() {
 		$completeButton.css("color", "#fff");
 	}
 }
-
-const $nameInput = $("#name-input");
-const $nameWarning = $(".name-error");
-let nameFlag = false;
-// 이름 정규식 이벤트 사용 및 함수
-$nameInput.on("blur", function() {
-	const $nameInputValue = $nameInput.val();
-	const nameInputValue = $nameInput.val();
-	var name = nameInputValue.search(/^[가-힣a-zA-Z]{2,20}$/);
-
-	// $nameInput.css("border-color", "#f66");
-	// $nameInput.css("border-color", "#dde2e6");
-	if ($nameInputValue.length < 1) {
-		$nameWarning.text("이름을 입력해주세요.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#f66");
-		nameFlag = false;
-	} else if ($nameInputValue.length < 2) {
-		$nameWarning.text("최소 2자입니다.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#f66");
-		nameFlag = false;
-	} else if (nameInputValue.search(/\s/) != -1) {
-		$nameWarning.text("다시 확인해주세요.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#f66");
-		nameFlag = false;
-	} else if (name < 0) {
-		$nameWarning.text("다시 확인해주세요.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#f66");
-		nameFlag = false;
-	} else {
-		$nameWarning.css("display", "none");
-		$nameInput.css("border-color", "#616161");
-		nameFlag = true;
-	}
-	completeAllCheck();
-});
