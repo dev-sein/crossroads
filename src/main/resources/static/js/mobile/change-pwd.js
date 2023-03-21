@@ -117,8 +117,8 @@ function changePassword(object){
 };
 
 /* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
-function checkPassword(object){
-	var link = '#';
+function checkAccount(object){
+	var link = 'mypage-cancel-account-mobile.html';
 	if(completePwd) {
 		$("object").attr("type", "submit");
 		location.replace(link);

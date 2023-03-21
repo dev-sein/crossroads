@@ -253,6 +253,11 @@ $("#file").on('change', function(){
     }
 });
 
+// // 이용약관 동의
+// const $checkbox = $(".crossroads-checkbox");
+// const $arrow = $(".arrow");
+// const $icon = $(".checked-icon");
+// let checkbox = false;
 /* 이용약관 동의 */
 $checkbox.on("click", function(){
     if (!checkbox) {

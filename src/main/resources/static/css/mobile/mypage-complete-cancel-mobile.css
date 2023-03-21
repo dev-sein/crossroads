@@ -228,217 +228,48 @@
         font-weight: normal;
     }
 
-    .message-info-box .message-info-box-wrapper+.message-info-box-wrapper {
-        border-top: solid 1px #e0e0e0;
+    .message-info-box .title+.description {
+        margin-top: 6px;
     }
 
-    .message-info-box .help-link {
-        display: flex;
+    .message-info-box .description {
         color: #616161;
-        font-size: 14px;
-        line-height: 24px;
-        font-weight: normal;
-    }
-    .message-info-box .help-link .icon {
-        display: flex;
-        margin-left: auto;
-        align-self: center;
-    }
-
-    .message-info-box .help-link+.help-link {
-        margin-top: 8px;
-    }
-
-
-    /* 탈퇴 시 유의사항 */
-    .main-view .title-medium {
-        color: #212121;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 26px;
-    }
-
-    .list-phase {
-        position: relative;
-        padding-left: 9px;
-        color: #616161;
-        word-break: keep-all;
-        font-size: 14px;
-        line-height: 24px;
-        font-weight: normal;
-    }
-
-    .list-phase:before {
-        content: "•";
-        position: absolute;
-        top: 0;
-        left: -4px;
-    }
-
-    .list-phase+.list-phase {
-        margin-top: 16px;
-    }
-
-    /* div테이블 */
-    .table {
-        display: flex;
-        flex-direction: column;
-    }
-    .table .col.left-col {
-        width: 244px;
-    }
-    .table .col {
-        padding: 12px 8px;
-        color: #616161;
-    }
-
-    .table .row.row-header {
-        border-bottom: solid 1px #212121;
-    }
-    .table .row {
-        width: 100%;
         display: flex;
         align-items: center;
-        border-bottom: solid 1px #e0e0e0;
-    }
-    .table .row.row-header div {
-        color: #212121;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 20px;
-    }
-    .table .col.left-col+.col {
-        width: 48px;
-        display: flex;
-        margin-left: auto;
-    }
-    .table .col {
-        font-size: 13px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 24px;
         font-weight: normal;
     }
-    
-    /* 탈퇴 시 유의사항 체크박스 */
-    label, input {
+
+    /* 회원 탈퇴 버튼 */
+    button, input {
         -webkit-tap-highlight-color: transparent;
-    }
-    input {
         appearance: none;
     }
-    .checkbox-crossroads {
-        padding: 0;
-        color: rgba(0,0,0,0.65);
-        display: inline-block;
-        cursor: pointer;
-        position: relative;
-    }
-    .checkbox-crossroads>span:first-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .checkbox-crossroads>span:first-child>input[type='checkbox'] {
-        box-sizing: border-box;
-        padding: 0;
-    }
-    .checkbox-crossroads>span:first-child>input {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-    }
 
-    .checkbox-crossroads:hover>span:first-child>span {
-        border-color: #e0e0e0;
-    }
-    .checkbox-crossroads>span:first-child>span {
-            position: relative;
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        top: 3px;
-        left: 0;
-        border: 1px solid #e0e0e0;
-        border-radius: 2px;
-        background: #fff;
-    }
-    .checkbox-crossroads>span:first-child>span.arrow .checked-icon {
-        transition: stroke-dashoffset 0.18s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-        stroke-dashoffset: 29.7833385;
-        stroke-dasharray: 29.7833385;
-    }
-
-    .checkbox-crossroads>span:last-child {
-        user-select: none;
-        cursor: pointer;
-        font-weight: 400;
-        font-size: 14px;
-        color: #212121;
-        line-height: 1.5rem;
-        padding-left: 28px;
-        display: inline-block;
-        word-break: keep-all;
-    }
-
-    /* 에러메시지 */
-    .error-text-custom {
-        display: none;
-        margin: 4px 0 0 28px;
-        color: #e52929;
-        font-size: 13px;
-        line-height: 20px;
-        font-weight: normal;
-    }
-
-    /* form태그 */
-    #cancel-form {
-        display: flex;
-    }
-    /* 취소 버튼 */
-    .btn-rollback {
-        font-size: 16px;
-        line-height: 26px;
-        font-weight: normal;
-        display: inline-block;
-        cursor: pointer;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        user-select: none;
-        border-radius: 4px;
-
-        width: calc((100% - 16px)/2);
-        padding: 11px 24px;
-        background-color: #a1a6ad;
-        color: #fff;
-        border: none;
-    }
-    /* 회원 탈퇴 신청 버튼 */
     .btn-cancel {
         font-size: 16px;
         line-height: 26px;
         font-weight: normal;
-        display: inline-block;
+
         cursor: pointer;
         text-align: center;
         white-space: nowrap;
         vertical-align: middle;
         user-select: none;
+
+        display: block;
+        width: 100%;
         border-radius: 4px;
 
-        background-color: #2099bb;
+        background-color: #a1a6ad;
         color: #fff;
         border: none;
-
+        
         padding: 11px 24px;
-
-        width: calc((100% - 16px)/2);
-        margin-left: 16px;
     }
+
+
 
 
 
