@@ -1,0 +1,19 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@media all and (max-width:479px) {
+    .search-modal {
+        background-color: #f7f7f7;
+        transition: background-color 0.5s ease;
+        bottom: 0;
+        color: #222222;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
+        font-size: 14px;
+        line-height: 1.43;
+    }
+}

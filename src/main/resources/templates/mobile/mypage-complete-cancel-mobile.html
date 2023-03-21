@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/mobile/mypage-complete-cancel-mobile.css">
+    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+</head>
+<body>
+    <header>
+        <nav class="header">
+            <span class="navigation-center">교차로 회원 계정 설정</span>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="container">
+            <div class="main-view">
+                <div class="content-nav">
+                    <a href="mypage-mobile.html">계정 설정</a>
+                    <img src="../../static/images/mobile/icon_go.png" alt="">
+                    <a href="#">회원 탈퇴</a>
+                </div>
+                <div class="main-view-wrapper">
+                    <div class="title mb32">회원 탈퇴 신청이 완료되었습니다.</div>
+                    <img class="content-img mb32" src="../../static/images/mobile/img_account_leave.png">
+                    <div class="description mb32">
+                        2023년 03월 23일 계정 탈퇴 처리가 완료됩니다.<br>
+                        탈퇴 처리가 완료되면, 사용 중인 아이디 및 이메일로는 서비스 이용이 불가합니다.
+                    </div>
+                    <form method="post">
+                        <input name="user_id" type="hidden" value="">
+                        <button class="btn-cancel" type="submit" >회원 탈퇴 신청 취소</button>
+                    </form>
+                    <div class="mb32"></div>
+                    <div class="message-info-box">
+                        <div class="message-info-box-wrapper">
+                            <img src="../../static/images/mobile/icon_account_service.png" alt="" class="icon-info">
+                            <div class="title">
+                                탈퇴는 언제 처리될까요?
+                            </div>
+                            <div class="description">
+                                영업일 기준 최대 24시간 이내로 탈퇴가 완료되었음을 이메일로 알려드립니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-logout">
+        <a href="login-mobile.html" class="logout-btn">로그아웃</a>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="../../static/js/mobile/change-pwd.js"></script>
+</html>
