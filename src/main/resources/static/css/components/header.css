@@ -228,7 +228,8 @@ header.header .nav-client .main-logo {
 }
 
 header.header .nav-client .main-logo.active {
-    background-color: #2e6baa;
+    /* background-color: #2e6baa; */
+    background-color: #99D9EA;;
 }
 
 header.header .nav-client .left-nav .menu:first-child {
