@@ -8,18 +8,131 @@
 	<title>회원관리</title>
 	<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
 	<!-- 아레에 페이지별로 갈아 끼워야할 CSS -->
-	<link rel="stylesheet" href="../../static/css/admin/user.css" />
-	<link rel="stylesheet" href="../../static/css/components/user-modal.css" />
+	<link rel="stylesheet" href="../../static/css/admin/admin-user.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-user-modal.css" />
 	<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
 	<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
+	<link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
-<!-- header -->
-<th:block th:replace="~{/components/admin-header.html :: #admin-header}"/>
-<!-- -------------- header end --------------  -->
-<!-- aside -->
-<th:block th:replace="~{/components/admin-aside.html :: #admin-aside}"/>
-<!-- -------------- header end --------------  -->
+	<!-- header -->
+	<header id="admin-header" class="page">
+		<div class="page-info">
+			<img src="../../static/images/admin/menubar.png" alt="icon" class="page-info__icon" />
+			<ul>
+				<a href="">
+						<span>
+							<li class="page-info__detail page-info--current">관리자 홈</li>
+						</span>
+				</a>
+			</ul>
+		</div>
+		<div class="page-language">
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+				<div class="AnnouncementButton_container__1p1gr" role="button">
+					<a href="">
+						<strong>홈페이지</strong>
+					</a>
+				</div>
+			</button>
+			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
+					<span>
+						<span class="Button_children__q9VCZ">
+							<a href="">
+								<strong>LOGOUT</strong>
+							</a>
+						</span>
+					</span>
+			</button>
+		</div>
+	</header>
+	<!-- -------------- header end --------------  -->
+	<!-- aside -->
+	<aside id="admin-aside" class="sidebar">
+		<header class="sidebar-header">
+			<h1>교차로<br>관리자페이지</h1>
+		</header>
+		<nav>
+			<ul>
+				<label>
+					<a href="">
+						<li>
+							<details>
+								<summary class="nav-menu menu--current">
+									<h2 class="menu__title">관리자 홈</h2>
+								</summary>
+							</details>
+						</li>
+					</a>
+				</label>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">회원</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">회원정보</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">연수신청 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">초보자 신청</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">포인트 결제 관리</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+									<span id="sidelist">
+										<li class="submenu__item">결제</li>
+									</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+				<li>
+					<details>
+						<summary class="nav-menu">
+							<h2 class="menu__title">후기</h2>
+							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
+						</summary>
+						<ul class="nav-menu-submenu">
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">후기 관리</li>
+								</span>
+							</a>
+							<a href="">
+								<span id="sidelist">
+									<li class="submenu__item">댓글 관리</li>
+								</span>
+							</a>
+						</ul>
+					</details>
+				</li>
+			</ul>
+		</nav>
+	</aside>
 <!-- 페이지별로 class 이름 기능에 맞게 재설정 -->
 <main class="module-container">
 	<article class="module--search">
@@ -47,12 +160,12 @@
 				<input type="checkbox" id="title__checkbox" name="checkbox-all" />
 				<ul class="user-list__title">
 					<li class="title__id">고객번호</li>
+					<li class="title__type">회원 타입</li>
 					<li class="title__name">이름</li>
 					<li class="title__user-id">회원 ID</li>
 					<li class="title__email">이메일</li>
 					<li class="title__phone">핸드폰 번호</li>
 					<li class="title__join">가입일</li>
-					<li class="title__status">상태</li>
 					<li class="title__detail">상세</li>
 				</ul>
 			</div>
@@ -60,18 +173,17 @@
 		<div id="scroll">
 			<div class="user-list__info-container">
 				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="kus"
-						   name="checkbox" /> <label for="kus"
-													 class="user__checkbox--label">
+					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" /> 
+						   <label for="kus" class="user__checkbox--label">
 					<ul class="user-list__info">
 						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00000</li>
+						<li class="user__id" name="userId">00005</li>
+						<li class="user__type" name="userType">초보자</li>
 						<li class="user__name" name="userName">김욱성</li>
 						<li class="user__user-id" name="userNickname">dev_luk</li>
 						<li class="user__email" name="userEmail">kus1234@naver.com</li>
 						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
 						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__status" name="">방금 전</li>
 						<li class="user__detail" name="userDetail">
 							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
 						</li>
@@ -83,38 +195,37 @@
 			<div class="user-list__info-container">
 				<div class="user-list__info-unit">
 					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" />
-					<label for="kus"
+					<label for="kus" class="user__checkbox--label">
+					<ul class="user-list__info">
+						<!-- <li>등록된 회원이 없습니다.</li> -->
+						<li class="user__id" name="userId">00004</li>
+						<li class="user__type" name="userType">초보자</li>
+						<li class="user__name" name="userName">윤민우</li>
+						<li class="user__user-id" name="userNickname">dev_wmin</li>
+						<li class="user__email" name="userEmail">ymw1234@naver.com</li>
+						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__join" name="userDateJoin">2023.02.22</li>
+						<li class="user__detail" name="userDetail">
+							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
+						</li>
+					</ul>
+				</label>
+				</div>
+			</div>
+			<div class="user-list__info-container">
+				<div class="user-list__info-unit">
+					<input type="checkbox" class="user__checkbox" id="kus"
+						   name="checkbox" /> <label for="kus"
 													 class="user__checkbox--label">
 					<ul class="user-list__info">
 						<!-- <li>등록된 회원이 없습니다.</li> -->
 						<li class="user__id" name="userId">00003</li>
-						<li class="user__name" name="userName">윤민우</li>
-						<li class="user__user-id" name="userNickname">dev_umin</li>
-						<li class="user__email" name="userEmail">ymu1234@naver.com</li>
-						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
-						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__status" name="">5분 전</li>
-						<li class="user__detail" name="userDetail">
-							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
-						</li>
-					</ul>
-				</label>
-				</div>
-			</div>
-			<div class="user-list__info-container">
-				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="kus"
-						   name="checkbox" /> <label for="kus"
-													 class="user__checkbox--label">
-					<ul class="user-list__info">
-						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00001</li>
+						<li class="user__type" name="userType">초보자</li>
 						<li class="user__name" name="userName">김세윤</li>
-						<li class="user__user-id" name="userNickname">dev_ksu</li>
-						<li class="user__email" name="userEmail">ksu1234@naver.com</li>
+						<li class="user__user-id" name="userNickname">dev_ksy</li>
+						<li class="user__email" name="userEmail">ksy1234@naver.com</li>
 						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
 						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__status" name="">1시간 전</li>
 						<li class="user__detail" name="userDetail">
 							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
 						</li>
@@ -129,13 +240,13 @@
 													 class="user__checkbox--label">
 					<ul class="user-list__info">
 						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00004</li>
+						<li class="user__id" name="userId">00002</li>
+						<li class="user__type" name="userType">초보자</li>
 						<li class="user__name" name="userName">박다예</li>
 						<li class="user__user-id" name="userNickname">dev_pdy</li>
 						<li class="user__email" name="userEmail">pdy1234@naver.com</li>
 						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
 						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__status" name="">1주 전</li>
 						<li class="user__detail" name="userDetail">
 							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
 						</li>
@@ -149,13 +260,33 @@
 					<label for="kus" class="user__checkbox--label">
 						<ul class="user-list__info">
 							<!-- <li>등록된 회원이 없습니다.</li> -->
-							<li class="user__id" name="userId">00003</li>
+							<li class="user__id" name="userId">00001</li>
+							<li class="user__type" name="userType">초보자</li>
 							<li class="user__name" name="userName">정세인</li>
-							<li class="user__user-id" name="userNickname">dev_jsy</li>
-							<li class="user__email" name="userEmail">jsy1234@naver.com</li>
+							<li class="user__user-id" name="userNickname">dev_jsi</li>
+							<li class="user__email" name="userEmail">jsi1234@naver.com</li>
 							<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
 							<li class="user__join" name="userDateJoin">2023.02.22</li>
-							<li class="user__status" name="">1달 전</li>
+							<li class="user__detail" name="userDetail">
+								<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
+							</li>
+						</ul>
+					</label>
+				</div>
+			</div>
+			<div class="user-list__info-container">
+				<div class="user-list__info-unit">
+					<input type="checkbox" class="user__checkbox" id="kus" name="checkbox" />
+					<label for="kus" class="user__checkbox--label">
+						<ul class="user-list__info">
+							<!-- <li>등록된 회원이 없습니다.</li> -->
+							<li class="user__id" name="userId">00000</li>
+							<li class="user__type" name="userType">베테랑</li>
+							<li class="user__name" name="userName">한동석</li>
+							<li class="user__user-id" name="userNickname">dev-tedhan</li>
+							<li class="user__email" name="userEmail">tedhan4@gmail.com</li>
+							<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+							<li class="user__join" name="userDateJoin">2023.02.22</li>
 							<li class="user__detail" name="userDetail">
 								<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
 							</li>
@@ -185,8 +316,6 @@
 
 			<a href="#" onclick="movePage(6)">6</a>
 
-
-
 			<!-- 데스크탑용 버튼 -->
 			<button class="next-page icon-chevron-right" onclick="movePage(7)">
 				<span class="text-hidden">다음</span>
@@ -194,10 +323,65 @@
 		</div>
 	</article>
 </main>
-<!-- modal -->
-<th:block th:replace="~{/components/admin-user-modal.html :: #admin-user-modal}"></th:block>
+<!-- 상세페이지 modal -->
+<div id="admin-user-modal" class="background modal-custom">
+	<div class="window">
+		<div class="modal">
+			<div class="modal-wrapper">
+				<div id="modal-top">
+					<div id="modal-title">
+						사용자 정보
+						<label>
+							<img id="exit" src="../../static/images/admin/exit.png">
+							<button id="close"></button>
+						</label>
+					</div>
+				</div>
+				<div id="modal-main">
+					<form>
+						<div class="input-wrapper">
+							<div class="input-text">회원 타입</div>
+							<input type="text" id="user-type" value="초보자" class="user-input user-input2" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">이름</div>
+							<input type="text" id="user-name" value="김욱성" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">아이디</div>
+							<input type="text" id="user-name" value="rladnrtjdsla" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">이메일</div>
+							<input type="text" id="user-email" value="kus1234@google.com" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">비밀번호</div>
+							<input type="text" id="user-password" value="Asdf1234@" class="user-input user-input2" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">핸드폰번호</div>
+							<input type="text" id="user-phone-number" value="01012345678" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">운전면허</div>
+							<input type="text" id="user-adress" value="송파구~~~" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">프로필 사진</div>
+							<input type="text" id="user-adress" value="송파구~~~" class="user-input" readonly>
+						</div>
+					</form>
+				</div>
+				<div id="modal-bottom">
+					<button id="edit-button1" onclick="changeButton()">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- modal fin. -->
 </body>
 <script src="../../static/js/admin/user.js"></script>
-<script src="../../static/js/components/user-modal.js"></script>
+<script src="../../static/js/components/admin-user-modal.js"></script>
 </html>
