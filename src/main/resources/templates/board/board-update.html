@@ -14,6 +14,15 @@
     <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
+    <!-- 모달 창 -->
+    <div class="modal-wrapper">
+        <div class="modal-content">
+          <!-- <h2 class="modal-title">경고</h2> -->
+          <p class="modal-message">제목과 내용을 입력해주세요.</p>
+          <button class="modal-close-btn">확인</button>
+        </div>
+      </div>
+    <!-- 모달 창 -->
     <div id="header"></div>
     <div class="SectionWrapper">
         <div class="makeSection_wrapper">
@@ -27,7 +36,7 @@
                             <div class="formTitle_wrapper">
                                 <div class="formTitle" style="align-items: center !important;">
                                     <legend class="formTitle_legend">
-                                        <span>별점</span>
+                                        <span>만족도</span>
                                     </legend>
                                     <!-- 별점  -->
                                     <div class="rating">
@@ -42,7 +51,7 @@
                                         <input type="radio" id="star1" name="rating" value="1" />
                                         <label for="star1" id="label1"></label>
                                     </div>
-                                    <div class="score">0점</div>
+                                    <!-- <div class="score">0점</div> -->
                                 </div>
                             </div>
                         </div>
