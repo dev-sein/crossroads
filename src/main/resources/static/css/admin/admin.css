@@ -133,6 +133,7 @@ body {
 	line-height: 2em;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	background-color: #fff;
 }
 
 /* support-title */
@@ -182,6 +183,18 @@ body {
 	flex: 0.5;
 }
 
+.title__user-name {
+	flex: 0.5;
+}
+
+.title__money {
+	flex: 0.5;
+}
+
+.title__status {
+	flex: 0.5;
+}
+
 .title__title {
 	flex: 1;
 }
@@ -191,7 +204,7 @@ body {
 }
 
 .title__date-post {
-	flex: 1;
+	flex: 0.5;
 }
 /* .title__answer-check {
   flex: 1;
@@ -250,7 +263,19 @@ body {
 	flex: 0.5;
 }
 
+.support__user-name {
+	flex: 0.5;
+}
+
 .support__user-id {
+	flex: 0.5;
+}
+
+.support__money {
+	flex: 0.5;
+}
+
+.support__status {
 	flex: 0.5;
 }
 
@@ -269,7 +294,7 @@ body {
 }
 
 .support__date-post {
-	flex: 1;
+	flex: 0.5;
 }
 
 .title__detail {

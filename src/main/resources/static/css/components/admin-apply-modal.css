@@ -65,8 +65,7 @@ body {
 	font-size: 12px;
 	background-color: rgb(244, 245, 248);
 	color: rgb(27, 30, 38);
-	font-family: 돋움, dotum, "맑은 고딕", "malgun gothic", helvetica,
-		"Apple SD Gothic Neo", sans-serif;
+	font-family: "Noto Sans KR" !important;
 	font-size: 12px;
 	text-size-adjust: none;
 }

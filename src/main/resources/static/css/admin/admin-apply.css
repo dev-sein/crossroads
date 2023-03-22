@@ -189,23 +189,23 @@ body {
 }
 
 .title-user-id {
-  flex: 1;
+  flex: 0.5;
 }
 
 .title-course {
-  flex: 1; 
+  flex: 0.5; 
 }
 
 .title-location {
   flex: 1; 
 }
 
-.title-date-detail {
+.title-date {
   flex: 0.5;
 }
 
-.title-date {
-  flex: 1;
+.title-register_date {
+  flex: 0.5;
 }
 
 .title-status {
@@ -213,7 +213,7 @@ body {
 }
 
 .title-veteran-id {
-  flex: 1;
+  flex: 0.5;
 }
 
 .title-date-post {
@@ -286,19 +286,31 @@ body {
 }
 
 .content__user-id {
+  flex: 0.5;
+}
+
+.content__course{
+  flex: 0.5;
+}
+
+.content__location {
   flex: 1;
+}
+
+.content__date {
+  flex: 0.5;
+}
+
+.content__register_date {
+  flex: 0.5;
 }
 
 .content__status {
   flex: 0.5;
 }
 
-.content__date-detail {
+.content__veteran-id {
   flex: 0.5;
-}
-
-.content__date {
-  flex: 1;
 }
 
 .content__date-post {
@@ -315,9 +327,6 @@ body {
 
 .content__detail {
   flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* 스크롤 바*/

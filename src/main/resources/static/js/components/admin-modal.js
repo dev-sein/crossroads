@@ -1,6 +1,4 @@
-/**
- * 
- */
+/* 클릭 이벤트 */
 function show () {
   document.querySelector(".background").className = "background show";
 }
@@ -11,8 +9,3 @@ function close () {
 
 document.querySelector("#show").addEventListener('click', show);
 document.querySelector("#close").addEventListener('click', close);
-
-
-
-
-

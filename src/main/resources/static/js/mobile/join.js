@@ -253,6 +253,11 @@ $("#file").on('change', function(){
     }
 });
 
+// // 이용약관 동의
+// const $checkbox = $(".crossroads-checkbox");
+// const $arrow = $(".arrow");
+// const $icon = $(".checked-icon");
+// let checkbox = false;
 /* 이용약관 동의 */
 $checkbox.on("click", function(){
     if (!checkbox) {
@@ -272,6 +277,9 @@ $checkbox.on("click", function(){
 // 회원가입 버튼 활성화
 $submitBtn.on("click", function(){
     var flag = false;
+    // var link = 'login-mobile.html'
+
+    
     if(checkbox) {
         for (let i = 0; i < checkAll.length; i++) {
             var check = checkAll[i];
@@ -288,6 +296,7 @@ $submitBtn.on("click", function(){
         $passwordCheckInput.val(btoa($passwordCheckInput.val()));
 
         $submitBtn.attr("type", "submit");
+        // location.replace(link);
     } else {
         $submitBtn.attr("type", "button");
     }
