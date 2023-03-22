@@ -115,7 +115,7 @@
     .result-header {
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
+        /* padding: 10px 16px; */
         height: 55px;
     }
     .title-wrap {
@@ -126,11 +126,19 @@
     }
     .result-header .result-people {
         line-height: 30px;
+        padding: 10px 16px;
     }
     .search-result {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 0px;
+        padding: 0px 20px;
+        background-color: #99D9EA;
+    }
+    
+    .search-result .title-wrap {
+        color: #fff;
     }
 
     /* 신청자 목록 마지막 제외 */
