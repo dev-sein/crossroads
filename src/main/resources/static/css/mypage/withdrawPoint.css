@@ -672,6 +672,10 @@ a {
     color: #fff;
 }
 
+.withdraw-cancel{
+    color: #616161;
+}
+
 .button1 {
     padding: 11px 24px;
     font-size: 16px;
@@ -858,3 +862,23 @@ svg:not(:root) {
 #passwordeye-confirm{
     top:35%;
 }
+
+.withdraw-notice{
+    color: #616161;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.content-img{
+    margin-bottom: 32px;
+    margin-top: 33px;
+}
+
+.help-link-withdraw{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #616161
+}
+
