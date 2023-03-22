@@ -39,9 +39,9 @@ function setThumbnail(event) {
 const rating = document.querySelector('.rating');
 const score = document.querySelector('.score');
 
-rating.addEventListener('change', function(e) {
-  score.textContent = `${e.target.value}점`;
-});
+// rating.addEventListener('change', function(e) {
+//   score.textContent = `${e.target.value}점`;
+// });
 
 // 리뷰 작성 확인 및 제출
 $(".registButton_button").on('click', function(){
@@ -55,22 +55,37 @@ $(".registButton_button").on('click', function(){
 
   console.log("star : " + $star.val());
   if($title.val().length < 1){
-    alert("제목을 작성해주세요.");
+    // alert("제목을 작성해주세요.");
+    $(".modal-wrapper").css('display', 'block');
+    $(".modal-message").text("제목을 작성해주세요.");
     $("#input-title").focus();
     flag1 = false;
   } else if($content.val().length < 1){
-    alert("내용을 작성해주세요.");
+    // alert("내용을 작성해주세요.");
+    $(".modal-wrapper").css('display', 'block');
+    $(".modal-message").text("내용을 작성해주세요.");
     $("#input-content").focus();
     flag2 = false;
   } else if($star.val() < 1 || $star.val() == null){
-    alert("만족도를 체크해주세요.");
+    // alert("만족도를 체크해주세요.");
+    $(".modal-wrapper").css('display', 'block');
+    $(".modal-message").text("만족도를 체크해주세요.");
     $star.focus();
     flag3 = false;
   }
   
   if(flag1 && flag2 && flag3){
-    alert("완료");
+    // alert("완료");
     document.reviewForm.submit();
   }
 
 })
+
+$(".modal-close-btn").on("click", function(){
+  $(".modal-wrapper").css('display', 'none');
+})
+
+
+
+/* 모달 창 띄우기, 끄기 */
+
