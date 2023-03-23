@@ -17,24 +17,73 @@
         height: 100%;
         font-size: 16px;
     }
+    a {
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #212121;
+    }
 
     header {
         height: 61px;
     }
+    /* 헤더 버튼 추가사항 */
     .header {
         padding: 16px 0;
-        background-color: #fff;
+        background-color: #2099bb;
         border-bottom: solid 1px #e0e0e0;
     }
+    .flex {
+        display: flex;
+    }
+    .between {
+        justify-content: space-between;
+    }
+    .header-btn{
+        height: 30px;
+        padding: 6px 26px 6px 24px;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .header-btn a {
+        background-color: #fff;
+        color: #2099bb;
+    }
+    .top {
+        line-height: 0px;
+    }
+    .bottom {
+        line-height: 0px;
+    }
+    .relative {
+        position: relative;
+    }
+    
+    /* 뒤로가기 버튼 */
+    .header .go-back svg {
+        position: absolute;
+        width: 30px;
+        top: 8px;
+        left: 18px;
+    }
+    header .header .back-or-logout {
+        position: absolute;
+        display: inline-block;
+        width: 68px;
+        height: 61px;
+        top: 0px;
+    }
+
+    /* 헤더 글씨 */
     .navigation-center {
         text-align: center;
-        color: #212121;
+        color: #fff;
         font-weight: 500;
         font-size: 18px;
         line-height: 28px;
         display: block;
+        /* margin, max-width준 이유를 모름 */
         margin: 0 auto;
         max-width: calc(100% - 80px);
+        /* overflow, white-space, text-overflow준 이유를 모름 */
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
