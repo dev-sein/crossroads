@@ -1,140 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>후기 목록</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
-<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
-<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
-<link rel="stylesheet" href="../../static/css/components/admin-review-modal.css" />
-<link rel="stylesheet" href="../../static/css/admin/admin-review.css" />
-<link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>후기 목록</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+	<link rel="stylesheet" href="../../static/css/components/sanitize.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-header.css" />
+	<link rel="stylesheet" href="../../static/css/components/admin-review-modal.css" />
+	<link rel="stylesheet" href="../../static/css/admin/admin-review.css" />
+	<link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
-	<!-- header -->
-	<header id="admin-header" class="page">
-		<div class="page-info">
-			<img src="../../static/images/admin/menubar.png" alt="icon" class="page-info__icon" />
-			<ul>
-				<a href="">
-						<span>
-							<li class="page-info__detail page-info--current">관리자 홈</li>
-						</span>
-				</a>
-			</ul>
-		</div>
-		<div class="page-language">
-			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
-				<div class="AnnouncementButton_container__1p1gr" role="button">
-					<a href="">
-						<strong>홈페이지</strong>
-					</a>
-				</div>
-			</button>
-			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
-					<span>
-						<span class="Button_children__q9VCZ">
-							<a href="">
-								<strong>LOGOUT</strong>
-							</a>
-						</span>
-					</span>
-			</button>
-		</div>
-	</header>
+	<!-- -------------- header -------------- -->
+
 	<!-- -------------- header end --------------  -->
-	<!-- aside -->
-	<aside id="admin-aside" class="sidebar">
-		<header class="sidebar-header">
-			<h1>교차로<br>관리자페이지</h1>
-		</header>
-		<nav>
-			<ul>
-				<label>
-					<a href="">
-						<li>
-							<details>
-								<summary class="nav-menu menu--current">
-									<h2 class="menu__title">관리자 홈</h2>
-								</summary>
-							</details>
-						</li>
-					</a>
-				</label>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">회원</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-									<span id="sidelist">
-										<li class="submenu__item">회원정보</li>
-									</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">연수신청 관리</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">초보자 신청</li>
-								</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">포인트 결제 관리</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-									<span id="sidelist">
-										<li class="submenu__item">결제</li>
-									</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">후기</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">후기 관리</li>
-								</span>
-							</a>
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">댓글 관리</li>
-								</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-			</ul>
-		</nav>
-	</aside>
-	<!-- 페이지별로 class 이름 기능에 맞게 재설정 -->
+	<!-- -------------- aside -------------- -->
+
+	<!-- -------------- aside end --------------  -->
 	<main class="module-container">
 		<article class="module--search">
 			<div class="search__searchbox">
@@ -146,10 +33,6 @@
 				</form>
 			</div>
 		</article>
-		<!-- <article class="module module--content-controller" id="show">
-			<button type="button"
-				style="font-size: 16px; margin: -3px 0 0 -26px;">글 수정</button>
-		</article> -->
 		<article class="module module--content-summary">
 			<button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px;">선택 삭제</button>
 		</article>
@@ -163,7 +46,6 @@
 						<li class="title__title">제목</li>
 						<li class="title__contents">글 내용</li>
 						<li class="title__date">등록일</li>
-						<li class="title__type">댓글</li>
 						<li class="title__detail">상세</li>
 					</ul>
 				</div>
@@ -174,15 +56,14 @@
 							<li>등록된 가이드가 없습니다.</li>
 						</ul> -->
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-						<label for="kus" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00030</li>
 								<li class="content__user">교차로</li>
 								<li class="content__title">추천합니다</li>
 								<li class="content__contents">처음으로 고속도로 달려봤어요!</li>
 								<li class="content__date">2023-03-23</li>
-								<li class="content__type">대기중</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
 								</li>
@@ -195,15 +76,14 @@
 							<li>등록된 가이드가 없습니다.</li>
 						</ul> -->
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-						<label for="kus" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00029</li>
 								<li class="content__user">정세인</li>
 								<li class="content__title">강사님 최고</li>
 								<li class="content__contents">한동석 강사님 너무 좋았어요</li>
 								<li class="content__date">2023-03-20</li>
-								<li class="content__type">완료</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 								</li>
@@ -213,15 +93,14 @@
 				</div>
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox"/>
-						<label for="ymw" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox"/>
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00028</li>
 								<li class="content__user">윤민우</li>
 								<li class="content__title">너무 좋아요</li>
 								<li class="content__contents">평생 운전 못할줄 알았는데 제가 운전을 하다니...!</li>
 								<li class="content__date">2023-01-23</li>
-								<li class="content__type">완료</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 								</li>
@@ -231,15 +110,14 @@
 				</div>
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox"/>
-						<label for="ymw" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox"/>
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00027</li>
 								<li class="content__user">김세윤</li>
 								<li class="content__title">이제 속초로 떠날게요</li>
 								<li class="content__contents">교통편이 불편했는데 운전해서 갈 수 있을 것 같아요!</li>
 								<li class="content__date">2023-01-23</li>
-								<li class="content__type">완료</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 								</li>
@@ -249,15 +127,14 @@
 				</div>
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox"/>
-						<label for="ymw" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox"/>
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00026</li>
 								<li class="content__user">박다예</li>
 								<li class="content__title">아빠한테 배우다가 안되겠어서 추천받았는데...</li>
 								<li class="content__contents">만족합니다. 가족들한테는 되도록 연수받지 맙시다.</li>
 								<li class="content__date">2023-01-23</li>
-								<li class="content__type">완료</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 								</li>
@@ -267,15 +144,14 @@
 				</div>
 				<div class="content-list__info-container">
 					<div class="content-list__info-unit">
-						<input type="checkbox" class="content__checkbox" id="ymw" name="checkbox"/>
-						<label for="ymw" class="content__checkbox--label">
+						<input type="checkbox" class="content__checkbox" id="" name="checkbox"/>
+						<label for="" class="content__checkbox--label">
 							<ul class="content-list__info">
 								<li class="content__id">00025</li>
 								<li class="content__user">김욱성</li>
 								<li class="content__title">브레이크랑 엑셀이랑 헷갈려요ㅠ</li>
 								<li class="content__contents">강사님이 무서워하셨지만 연수 잘 마쳤습니다</li>
 								<li class="content__date">2023-01-23</li>
-								<li class="content__type">완료</li>
 								<li class="user__detail" name="userDetail">
 									<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 								</li>
@@ -283,7 +159,6 @@
 						</label>
 					</div>
 				</div>
-
 				<!-- 목록 테스트 추가  -->
 			</div>
 			<div class="desktop-only">
@@ -291,28 +166,18 @@
 				<button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
 					<span class="text-hidden">이전</span>
 				</button>
-
 				<!-- 데스크탑용 페이지 리스트 -->
-
-
 				<a class="current" href="#" onclick="movePage(1)">1</a>
-
 				<a href="#" onclick="movePage(2)">2</a>
-	
 				<a href="#" onclick="movePage(3)">3</a>
-	
 				<a href="#" onclick="movePage(4)">4</a>
-	
 				<a href="#" onclick="movePage(5)">5</a>
-	
 				<a href="#" onclick="movePage(6)"></a>
-
 				<!-- 데스크탑용 버튼 -->
 				<button class="next-page icon-chevron-right" onclick="movePage(7)">
 					<span class="text-hidden">다음</span>
 				</button>
 			</div>
-
 		</article>
 	</main>
 	<!-- 후기작성 상세 modal -->
@@ -351,19 +216,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- <div class="input-wrapper">
-									<div class="input-text">연수날짜</div>
-									<input type="text" id="pickUp-date" value="2023-02-25" class="user-input" readonly>
-								</div>
-								<div class="input-wrapper">
-									<div class="input-text">상태</div>
-									<div class="ColumnLayoutCell css-r24zef e3j22xw1"
-										style="letter-spacing: 2px;">
-										<label><input type="radio" name="processStatus">대기</label>
-										<label><input type="radio" name="processStatus" value="I">승인</label>
-										<label><input type="radio" name="processStatus" value="E">거절</label>
-									</div>
-								</div> -->
 								<div id="image">
 									<div class="input-wrapper">
 										<div class="input-text">사진 확인</div>
