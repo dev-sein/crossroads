@@ -1,61 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>후기 상세 정보</title>
 </head>
 <body>
-	<div class="background modal-custom">
-		<div class="window">
-			<div class="modal">
-				<div class="modal-wrapper">
-					<div id="modal-top">
-						<div id="modal-title">
-							후기 상세정보
-							<label>
-								<img id="exit" src="../../static/images/admin/exit.png">
-								<button id="close"></button>
-							</label>
+<div th:fragment="admin-review-modal" class="background modal-custom">
+	<div class="window">
+		<div class="modal">
+			<div class="modal-wrapper">
+				<div id="modal-top">
+					<div id="modal-title">
+						후기 상세정보
+						<label>
+							<img id="exit" src="/images/admin/exit.png">
+							<button id="close"></button>
+						</label>
+					</div>
+				</div>
+				<div id="modal-main">
+					<form>
+						<div class="input-wrapper">
+							<div class="input-text">후기 제목</div>
+							<input type="text" id="text-title" value="꿀팁 공유부탁드려요!" class="user-input" readonly>
 						</div>
-					</div>
-					<div id="modal-main">
-						<form>
-							<div class="input-wrapper">
-								<div class="input-text">글 제목</div>
-								<input type="text" id="text-title" value="추천합니다" class="user-input" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">글 내용</div>
-								<input type="text" id="text-content" value="처음으로 고속도로 달려봤어요!" class="user-input" readonly >
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">별점</div>
-								<div class="star-score-box">
-									<div class="review-star">
-										<div class="stars star0"></div>
-										<div class="stars star1"></div>
-										<div class="stars star2"></div>
-										<div class="stars star3"></div>
-										<div class="stars star4"></div>
-									</div>
+						<div class="input-wrapper">
+							<div class="input-text">후기 내용</div>
+							<input type="text" id="text-content" value="눈길 운전은 어떻게 하나요?" class="user-input" readonly >
+						</div>
+						<div class="input-wrapper" style="margin-bottom: 20px;">
+							<div class="input-text">별점</div>
+							<div class="star-score-box">
+								<div class="review-star">
+									<div class="stars star0"></div>
+									<div class="stars star1"></div>
+									<div class="stars star2"></div>
+									<div class="stars star3"></div>
+									<div class="stars star4"></div>
 								</div>
+								<span class="review-score"></span>
 							</div>
-							<div id="image">
-								<div class="input-wrapper">
-									<div class="input-text">사진 확인</div>
-									<span> 이미지가 없습니다.</span>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div id="modal-bottom">
-						<button id="edit-button1" onclick="changeButton()">확인</button>
-					</div>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">사진</div>
+							<img src="/images/main/review01.jpeg" class="review-image">
+						</div>
+					</form>
+				</div>
+				<div id="modal-bottom">
+					<button id="edit-button1" onclick="changeButton()">확인</button>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
