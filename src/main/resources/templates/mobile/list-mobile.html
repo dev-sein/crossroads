@@ -12,13 +12,29 @@
     <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
 </head>
 <body>
+
+    
+
+
     <header>
-        <nav class="header">
-            <!-- <span class="navigation-left">로그아웃</span> -->
+        <nav class="header relative flex between">
+            <a class="back-or-logout" href="login-mobile.html">
+                <span class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="48px" id="Layer_1" style="enable-background:new 0 0 48 48;" version="1.1" viewBox="0 0 512 512" width="48px" xml:space="preserve">
+                        <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " style="     fill: #fff; "/>
+                    </svg>
+                </span>
+            </a>
             <span class="navigation-center">연수자 찾기</span>
-            <!-- <span class="navigation-right">MY</span> -->
+            <div></div>
         </nav>
     </header>
+    <div class="header-btn bottom flex between">
+        <div><a href="change-point-mobile.html">환전</a></div>
+        <div><a href="list-mobile.html">홈</a></div>
+        <div><a href="mypage-mobile.html">MY</a> </div>
+    </div>
+
     <div class="container">
         <div class="inner-container">
             <form action="" id="serach">
@@ -37,14 +53,6 @@
                         <p class="title-wrap result-people">
                             47,822명의 연수 신청자
                         </p>
-                        <div class="search-result">
-                            <p class="title-wrap result-date">
-                                2023.03.20(월)
-                            </p>
-                            <p class="title-wrap result-location">
-                                서울특별시
-                            </p>
-                        </div>
                     </div>
                     <!-- 연수자 목록 -->
                     <div class="result-beginners">

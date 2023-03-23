@@ -1,5 +1,4 @@
 function acceptOrReject(object) {
-    console.log("들어옴");
     var check = object.innerText == "거절" ? true : false;
 
     if (check) {
