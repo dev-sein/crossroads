@@ -12,131 +12,17 @@
   <link rel="stylesheet" href="../../static/css/components/admin-aside.css" />
   <link rel="stylesheet" href="../../static/css/components/admin-header.css" />
   <link rel="stylesheet" href="../../static/css/admin/admin-apply.css" />
-  <link rel="stylesheet" href="../../static/css/admin/admin-review.css" />
-  <!-- <link rel="stylesheet" href="../../static/css/components/admin-apply-modal.css" /> -->
   <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png" />
 </head>
 <body>
-	<!-- header -->
-	<header id="admin-header" class="page">
-		<div class="page-info">
-			<img src="../../static/images/admin/menubar.png" alt="icon" class="page-info__icon" />
-			<ul>
-				<a href="">
-						<span>
-							<li class="page-info__detail page-info--current">관리자 홈</li>
-						</span>
-				</a>
-			</ul>
-		</div>
-		<div class="page-language">
-			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
-				<div class="AnnouncementButton_container__1p1gr" role="button">
-					<a href="">
-						<strong>홈페이지</strong>
-					</a>
-				</div>
-			</button>
-			<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
-					<span>
-						<span class="Button_children__q9VCZ">
-							<a href="">
-								<strong>LOGOUT</strong>
-							</a>
-						</span>
-					</span>
-			</button>
-		</div>
-	</header>
+	<!-- -------------- header -------------- -->
+
 	<!-- -------------- header end --------------  -->
-	<!-- aside -->
-	<aside id="admin-aside" class="sidebar">
-		<header class="sidebar-header">
-			<h1>교차로<br>관리자페이지</h1>
-		</header>
-		<nav>
-			<ul>
-				<label>
-					<a href="">
-						<li>
-							<details>
-								<summary class="nav-menu menu--current">
-									<h2 class="menu__title">관리자 홈</h2>
-								</summary>
-							</details>
-						</li>
-					</a>
-				</label>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">회원</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-									<span id="sidelist">
-										<li class="submenu__item">회원정보</li>
-									</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">연수신청 관리</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">초보자 신청</li>
-								</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">포인트 결제 관리</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-									<span id="sidelist">
-										<li class="submenu__item">결제</li>
-									</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<details>
-						<summary class="nav-menu">
-							<h2 class="menu__title">후기</h2>
-							<img src="../../static/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
-						</summary>
-						<ul class="nav-menu-submenu">
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">후기 관리</li>
-								</span>
-							</a>
-							<a href="">
-								<span id="sidelist">
-									<li class="submenu__item">댓글 관리</li>
-								</span>
-							</a>
-						</ul>
-					</details>
-				</li>
-			</ul>
-		</nav>
-	</aside>
-	<!-- 페이지별로 class 이름 기능에 맞게 재설정 -->
+	<!-- -------------- aside -------------- -->
+
+	<!-- -------------- aside end --------------  -->
   <main class="module-container">
+    <!-- 검색란 -->
     <article class="module--search">
       <div class="search__searchbox">
         <form class="search__searchbox__form">
@@ -147,13 +33,13 @@
         </form>
       </div>
     </article>
-    <!-- <article class="module module--content-controller" id="show">
-      <button type="button" style="margin: 0 0 0 -33px; font-size: 16px">배너 설정</button>
-    </article> -->
+    <!-- 선택삭제 -->
     <article class="module module--content-summary">
       <button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px">선택 삭제</button>
     </article>
+    <!-- 목록 리스트 -->
     <article class="module module--content-list">
+      <!-- 검색 타이틀 시작 -->
       <div class="content-list__title-container">
         <div class="content-list__title-unit">
         <input type="checkbox" id="title__checkbox" name="checkbox-all"/>
@@ -165,144 +51,129 @@
             <li class="title-date">날짜</li>
             <li class="title-register_date">등록일</li>
             <li class="title-status">상태</li>
+            <!-- status : 대기중, 수락, 진행완료 -->
             <li class="title-veteran-id">베테랑 id</li>
             <!-- <li class="title-detail">상세</li> -->
           </ul>
         </div>
       </div>
-        <div id="scroll">
-          <div class="content-list__info-container">
-            <!-- <ul class="user-list__info">
-                <li>등록된 가이드가 없습니다.</li>
-              </ul> -->
-            <div class="content-list__info-unit">
-              <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-              <label for="kus" class="content__checkbox--label">
-                <ul class="content-list__info">
-                  <li class="content__id">00030</li>
-                  <li class="content__user-id">교차로</li>
-                  <li class="content__course">A</li>
-                  <li class="content__location">경기도 평택시</li>
-                  <li class="content__date">2023-03-23</li>
-                  <li class="content__register_date">2023-03-20</li>
-                  <li class="content__status">대기중</li>
-                  <li class="content__veteran-id">미정</li>
-                  <!-- <li class="content__detail" name="userDetail">
-                    <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
-                  </li> -->
-                </ul>
-              </label>
-            </div>
-            </div>
-          <div class="content-list__info-container">
-            <!-- <ul class="user-list__info">
-                <li>등록된 가이드가 없습니다.</li>
-              </ul> -->
-            <div class="content-list__info-unit">
-              <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-              <label for="kus" class="content__checkbox--label">
-                <ul class="content-list__info">
-                  <li class="content__id">00030</li>
-                  <li class="content__user-id">교차로</li>
-                  <li class="content__course">A</li>
-                  <li class="content__location">경기도 평택시</li>
-                  <li class="content__date">2023-03-23</li>
-                  <li class="content__register_date">2023-03-20</li>
-                  <li class="content__status">대기중</li>
-                  <li class="content__veteran-id">미정</li>
-                  <!-- <li class="content__detail" name="userDetail">
-                    <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
-                  </li> -->
-                </ul>
-              </label>
-            </div>
-            </div>
-          <div class="content-list__info-container">
-            <!-- <ul class="user-list__info">
-                <li>등록된 가이드가 없습니다.</li>
-              </ul> -->
-            <div class="content-list__info-unit">
-              <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-              <label for="kus" class="content__checkbox--label">
-                <ul class="content-list__info">
-                  <li class="content__id">00030</li>
-                  <li class="content__user-id">교차로</li>
-                  <li class="content__course">A</li>
-                  <li class="content__location">경기도 평택시</li>
-                  <li class="content__date">2023-03-23</li>
-                  <li class="content__register_date">2023-03-20</li>
-                  <li class="content__status">대기중</li>
-                  <li class="content__veteran-id">미정</li>
-                  <!-- <li class="content__detail" name="userDetail">
-                    <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
-                  </li> -->
-                </ul>
-              </label>
-            </div>
-            </div>
-          <div class="content-list__info-container">
-            <!-- <ul class="user-list__info">
-                <li>등록된 가이드가 없습니다.</li>
-              </ul> -->
-            <div class="content-list__info-unit">
-              <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-              <label for="kus" class="content__checkbox--label">
-                <ul class="content-list__info">
-                  <li class="content__id">00030</li>
-                  <li class="content__user-id">교차로</li>
-                  <li class="content__course">A</li>
-                  <li class="content__location">경기도 평택시</li>
-                  <li class="content__date">2023-03-23</li>
-                  <li class="content__register_date">2023-03-20</li>
-                  <li class="content__status">대기중</li>
-                  <li class="content__veteran-id">미정</li>
-                  <!-- <li class="content__detail" name="userDetail">
-                    <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
-                  </li> -->
-                </ul>
-              </label>
-            </div>
-            </div>
-          <div class="content-list__info-container">
-            <!-- <ul class="user-list__info">
-                <li>등록된 가이드가 없습니다.</li>
-              </ul> -->
-            <div class="content-list__info-unit">
-              <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-              <label for="kus" class="content__checkbox--label">
-                <ul class="content-list__info">
-                  <li class="content__id">00030</li>
-                  <li class="content__user-id">교차로</li>
-                  <li class="content__course">A</li>
-                  <li class="content__location">경기도 평택시</li>
-                  <li class="content__date">2023-03-23</li>
-                  <li class="content__register_date">2023-03-20</li>
-                  <li class="content__status">대기중</li>
-                  <li class="content__veteran-id">미정</li>
-                  <!-- <li class="content__detail" name="userDetail">
-                    <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
-                  </li> -->
-                </ul>
-              </label>
-            </div>
+      <!-- 검색 타이틀 끝 -->
+      <!-- 작성 목록 시작 -->
+      <div id="scroll">
+        <div class="content-list__info-container">
+          <div class="content-list__info-unit">
+            <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
+            <label for="kus" class="content__checkbox--label">
+              <ul class="content-list__info">
+                <li class="content__id">00030</li>
+                <li class="content__user-id">교차로</li>
+                <li class="content__course">A</li>
+                <li class="content__location">경기도 평택시</li>
+                <li class="content__date">2023-03-23</li>
+                <li class="content__register_date">2023-03-20</li>
+                <li class="content__status">대기중</li>
+                <li class="content__veteran-id">미정</li>
+                <!-- <li class="content__detail" name="userDetail">
+                  <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+                </li> -->
+              </ul>
+            </label>
           </div>
         </div>
-  
+        <div class="content-list__info-container">
+          <div class="content-list__info-unit">
+            <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
+            <label for="kus" class="content__checkbox--label">
+              <ul class="content-list__info">
+                <li class="content__id">00030</li>
+                <li class="content__user-id">교차로</li>
+                <li class="content__course">A</li>
+                <li class="content__location">경기도 평택시</li>
+                <li class="content__date">2023-03-23</li>
+                <li class="content__register_date">2023-03-20</li>
+                <li class="content__status">대기중</li>
+                <li class="content__veteran-id">미정</li>
+                <!-- <li class="content__detail" name="userDetail">
+                  <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+                </li> -->
+              </ul>
+            </label>
+          </div>
+        </div>
+        <div class="content-list__info-container">
+          <div class="content-list__info-unit">
+            <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
+            <label for="kus" class="content__checkbox--label">
+              <ul class="content-list__info">
+                <li class="content__id">00030</li>
+                <li class="content__user-id">교차로</li>
+                <li class="content__course">A</li>
+                <li class="content__location">경기도 평택시</li>
+                <li class="content__date">2023-03-23</li>
+                <li class="content__register_date">2023-03-20</li>
+                <li class="content__status">대기중</li>
+                <li class="content__veteran-id">미정</li>
+                <!-- <li class="content__detail" name="userDetail">
+                  <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+                </li> -->
+              </ul>
+            </label>
+          </div>
+        </div>
+        <div class="content-list__info-container">
+          <div class="content-list__info-unit">
+            <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
+            <label for="kus" class="content__checkbox--label">
+              <ul class="content-list__info">
+                <li class="content__id">00030</li>
+                <li class="content__user-id">교차로</li>
+                <li class="content__course">A</li>
+                <li class="content__location">경기도 평택시</li>
+                <li class="content__date">2023-03-23</li>
+                <li class="content__register_date">2023-03-20</li>
+                <li class="content__status">대기중</li>
+                <li class="content__veteran-id">미정</li>
+                <!-- <li class="content__detail" name="userDetail">
+                  <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+                </li> -->
+              </ul>
+            </label>
+          </div>
+        </div>
+        <div class="content-list__info-container">
+          <div class="content-list__info-unit">
+            <input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
+            <label for="kus" class="content__checkbox--label">
+              <ul class="content-list__info">
+                <li class="content__id">00030</li>
+                <li class="content__user-id">교차로</li>
+                <li class="content__course">A</li>
+                <li class="content__location">경기도 평택시</li>
+                <li class="content__date">2023-03-23</li>
+                <li class="content__register_date">2023-03-20</li>
+                <li class="content__status">대기중</li>
+                <li class="content__veteran-id">미정</li>
+                <!-- <li class="content__detail" name="userDetail">
+                  <button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+                </li> -->
+              </ul>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- 작성 목록 끝 -->
       <!-- <div class="desktop-only">
         <c:if test="${prev}">
-          <a
-            href="javascript:location.href='${pageContext.request.contextPath}/admin/banner/list.admin?page=${startPage - 1}'"
-            class="paging paging-move">
+          <a href="javascript:location.href='${pageContext.request.contextPath}/admin/banner/list.admin?page=${startPage - 1}'" class="paging paging-move">
             이전
           </a>
         </c:if>
-
         <c:forEach var="i" begin="${startPage}" end="${endPage}">
           <c:choose>
             <c:when test="${i eq page}">
-              <a href="javascript:void(0)" style="cursor: default" class="paging paging-checked"
-                ><c:out value="${i}"
-              /></a>
+              <a href="javascript:void(0)" style="cursor: default" class="paging paging-checked">
+                <c:out value="${i}"/>
+              </a>
             </c:when>
             <c:otherwise>
               <a href="javascript:location.href='${pageContext.request.contextPath}/admin/banner/list.admin?page=${i}'" class="paging">
@@ -317,37 +188,27 @@
           </a>
         </c:if>
       </div> -->
+      <!-- 페이지 이동 버튼 시작 -->
       <div class="desktop-only">
-        <!-- 데스크탑용 버튼 -->
+        <!-- 데스크탑용 이전 버튼 -->
         <button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
           <span class="text-hidden">이전</span>
         </button>
-
         <!-- 데스크탑용 페이지 리스트 -->
-
-
         <a class="current" href="#" onclick="movePage(1)">1</a>
-
         <a href="#" onclick="movePage(2)">2</a>
-  
         <a href="#" onclick="movePage(3)">3</a>
-  
         <a href="#" onclick="movePage(4)">4</a>
-  
         <a href="#" onclick="movePage(5)">5</a>
-  
         <a href="#" onclick="movePage(6)"></a>
-
-        <!-- 데스크탑용 버튼 -->
+        <!-- 데스크탑용 다음 버튼 -->
         <button class="next-page icon-chevron-right" onclick="movePage(7)">
           <span class="text-hidden">다음</span>
         </button>
       </div>
+      <!-- 페이지 이동 버튼 끝 -->
     </article>
   </main>
-  <!-- modal -->
-  <jsp:include page="../../components/banner-modal.html"></jsp:include>
-  <!-- modal fin. -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
@@ -363,3 +224,4 @@
 <script src="../../static/js/admin/admin-checkbox.js"></script>
 <script src="../../static/js/components/admin-modal.js"></script>
 </html>
+

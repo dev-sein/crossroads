@@ -9,7 +9,7 @@ body {
 
 /* main */
 .module-container {
-	min-height: 660px;
+	min-height: 800px;
 	min-width: 1250px;
 	margin-left: 2.5vw;
 	padding: 2.5rem 18rem;
@@ -19,7 +19,7 @@ body {
 	column-gap: 1rem;
 	row-gap: 1rem;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-areas: "w w w w" "b b d g" "e e c c" "k k j j"
+	grid-template-areas: "w w w w" "b b d g" "e e h h" "c c a a" "k k j j"
 }
 
 .module {
