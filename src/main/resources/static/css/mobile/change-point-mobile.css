@@ -1,0 +1,284 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@media all and (max-width:479px) {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans KR',Sans-serif;
+        line-height: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        height: 100%;
+    }
+    html {
+        height: 100%;
+        font-size: 16px;
+    }
+
+    header {
+        height: 61px;
+    }
+    .header {
+        padding: 16px 0;
+        background-color: #fff;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .navigation-center {
+        text-align: center;
+        color: #212121;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        display: block;
+        margin: 0 auto;
+        max-width: calc(100% - 80px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .gaia {
+        min-height: 70%;
+        padding-bottom: 8px;
+        height: auto;
+    }
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .form-section-header {
+        padding: 26px 32px;
+        border-bottom: 1px solid #e0e0e0;
+        position: relative;
+    }
+
+    .form-input-section {
+        padding: 32px;
+        padding-bottom: 20px;
+        margin: 0px 0px 0px -45px;
+    }
+
+    .form-group-light {
+        display: block;
+        margin-bottom: 48px;
+    }
+
+    .form-group-title {
+        margin-bottom: 4px;
+        display: block;
+        margin-top: 16px;
+    }
+
+    .body-1-bold {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .form-content {
+        margin-top: 16px;
+    }
+
+    .text-input-client {
+        position: relative;
+    }
+    
+    
+    .text-input-client>div>input {
+        display: block;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #616161;
+        font-weight: 400;
+        background: #fff;
+        width: 100%;
+        height: inherit;
+        padding: 8px 12px 8px 12px;
+    }
+    
+    .text-input-client>span.helper-text, .text-input-client>span.error-text {
+        float: left;
+        padding: 8px 12px 0 12px;
+    }
+    
+    .text-input-client>span {
+        font-size: 13px;
+        font-weight: 400;
+        bottom: 0;
+        color: #ff0000;
+    }
+
+    name-input{
+        height: 48px;
+        min-height: 44.67px;
+        display: block;
+        outline: none;
+        border: 2px solid #616161;
+        border-radius: 3px;
+        padding-right: 140px;
+        padding-left: 16px;
+        height: auto;
+        line-height: 28px;
+        letter-spacing: -.3px;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Noto Sans KR';
+    }
+
+    /* 에러 메시지 */
+    .error-message {
+        /* ===== 에러 메시지 기본값 초기화 시작 ====== */
+        margin: 0;
+        border: 0;
+        padding: 0;
+        vertical-align: baseline;
+        font: inherit;
+        box-sizing: border-box;
+        /* ===== 에러 메시지 기본값 초기화 끝 =====*/
+        
+        color: #e54545;
+        line-height: 18px;
+        letter-spacing: 0;
+        font-size: 12px;
+        font-weight: 400;
+        display: none; /* 기본값 */
+        margin-top: 4px;
+        font-style: normal;
+    }
+
+    .text900 {
+        color: #212121;
+    }
+
+    .body-2 {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+
+    ul{
+        list-style:none;
+        }
+
+    li{
+        padding: 6px;
+    }
+
+    ul li {
+        padding: 3px;
+        margin: 0;
+    }
+
+    p {
+        display: block;
+        margin: 0 0 10px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    .text-input-client2>div>input {
+        display: block;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #616161;
+        font-weight: 400;
+        background: #fff;
+        width: 100%;
+        height: inherit;
+        padding: 8px 8px 8px 0px;
+        border: none;
+    }
+
+    .btn-client, .btn-client-not-active {
+        background-color: #2e6baa;
+        color: #fff;
+        border: #2e6baa;
+    }
+
+    .btn-11-24 {
+        padding: 11px 24px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 400;
+    }
+
+    .btn-right {
+        float: right;
+    }
+
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border-radius: 4px;
+        border: none;
+    }
+
+    .form-section-footer {
+        padding: 16px 32px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .select-card-content {
+        text-align: center;
+        color: #212121;
+    }
+
+    .select-card .inherit-select-card-img {
+        display: inline-block;
+    }
+
+    .select-card .select-card-img {
+        margin-bottom: 8px;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+    }
+
+    .select-card .active-select-card-img {
+        display: none;
+    }
+
+    .select-card {
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        background-color: #fff;
+        padding: 24px 0;
+        display: inline-block;
+        position: relative;
+    }
+
+    .select-card input[type="checkbox"], .select-card input[type="radio"] {
+        border-radius: 50%;
+        position: absolute;
+        left: 16px;
+        top: 16px;
+    }
+
+    #select-course {
+        width: 141px;
+        height: 140px;
+        margin-bottom: 10px;
+    }
+
+    #select-course .content {
+        margin: 0px;
+        margin-top: 10px;
+    }
+
+
+
+
+}
