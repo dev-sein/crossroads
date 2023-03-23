@@ -156,9 +156,14 @@ a {
     width: 1080px;
 }
 
+
 .page {
     position: absolute;
     left: 21%;
+}
+
+.page-inner{
+    margin-top: 15px;
 }
 
 
