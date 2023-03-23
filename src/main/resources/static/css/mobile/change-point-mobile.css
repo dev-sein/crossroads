@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
 @media all and (max-width:479px) {
+    
     * {
         box-sizing: border-box;
         margin: 0;
@@ -330,5 +331,54 @@
 
 
 
+    /* 모달 창 */
+    .modal-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        width: 400px;
+        text-align: center;
+        margin: 0 auto;
+        top: 40%;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .modal-message {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .modal-close-btn {
+        background-color: #ddd;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .modal-close-btn:hover {
+        background-color: #ccc;
+    }
+    
+    /* 모달 창 */
 
 }
