@@ -1,6 +1,15 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
 @media all and (max-width:479px) {
+    * {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        box-sizing: border-box;
+        font-family: 'Noto Sans KR',Sans-serif;
+    }
+    
     .search-modal {
         background-color: #f7f7f7;
         transition: background-color 0.5s ease;

@@ -1,9 +1,11 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
 @media all and (max-width:479px) {
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'NotoSansKR',Sans-serif;
+        font-family: 'Noto Sans KR',Sans-serif;
         line-height: 1rem;
         -webkit-font-smoothing: antialiased;
         -webkit-tap-highlight-color: transparent;
@@ -129,141 +131,153 @@
     }
 
     /* 에러 메시지 */
-.error-message {
-    /* ===== 에러 메시지 기본값 초기화 시작 ====== */
-    margin: 0;
-    border: 0;
-    padding: 0;
-    vertical-align: baseline;
-    font: inherit;
-    box-sizing: border-box;
-    /* ===== 에러 메시지 기본값 초기화 끝 =====*/
-    
-    color: #e54545;
-    line-height: 18px;
-    letter-spacing: 0;
-    font-size: 12px;
-    font-weight: 400;
-    display: none; /* 기본값 */
-    margin-top: 4px;
-    font-style: normal;
-}
-
-.text900 {
-    color: #212121;
-}
-
-.body-2 {
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 400;
-}
-
-ul{
-    list-style:none;
+    .error-message {
+        /* ===== 에러 메시지 기본값 초기화 시작 ====== */
+        margin: 0;
+        border: 0;
+        padding: 0;
+        vertical-align: baseline;
+        font: inherit;
+        box-sizing: border-box;
+        /* ===== 에러 메시지 기본값 초기화 끝 =====*/
+        
+        color: #e54545;
+        line-height: 18px;
+        letter-spacing: 0;
+        font-size: 12px;
+        font-weight: 400;
+        display: none; /* 기본값 */
+        margin-top: 4px;
+        font-style: normal;
     }
 
-li{
-    padding: 6px;
-}
+    .text900 {
+        color: #212121;
+    }
 
-ul li {
-    padding: 3px;
-    margin: 0;
-}
+    .body-2 {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+    }
 
-p {
-    display: block;
-    margin: 0 0 10px;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
+    ul{
+        list-style:none;
+        }
 
-.text-input-client2>div>input {
-    display: block;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 24px;
-    color: #616161;
-    font-weight: 400;
-    background: #fff;
-    width: 100%;
-    height: inherit;
-    padding: 8px 8px 8px 0px;
-    border: none;
-}
+    li{
+        padding: 6px;
+    }
 
-.btn-client, .btn-client-not-active {
-    background-color: #2e6baa;
-    color: #fff;
-    border: #2e6baa;
-}
+    ul li {
+        padding: 3px;
+        margin: 0;
+    }
 
-.btn-11-24 {
-    padding: 11px 24px;
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
-}
+    p {
+        display: block;
+        margin: 0 0 10px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
 
-.btn-right {
-    float: right;
-}
+    .text-input-client2>div>input {
+        display: block;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #616161;
+        font-weight: 400;
+        background: #fff;
+        width: 100%;
+        height: inherit;
+        padding: 8px 8px 8px 0px;
+        border: none;
+    }
 
-.btn {
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border-radius: 4px;
-    border: none;
-}
+    .btn-client, .btn-client-not-active {
+        background-color: #2e6baa;
+        color: #fff;
+        border: #2e6baa;
+    }
 
-.form-section-footer {
-    padding: 16px 32px;
-    border-top: 1px solid #e0e0e0;
-}
+    .btn-11-24 {
+        padding: 11px 24px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 400;
+    }
 
-.select-card-content {
-    text-align: center;
-    color: #212121;
-}
+    .btn-right {
+        float: right;
+    }
 
-.select-card .inherit-select-card-img {
-    display: inline-block;
-}
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border-radius: 4px;
+        border: none;
+    }
 
-.select-card .select-card-img {
-    margin-bottom: 8px;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-}
+    .form-section-footer {
+        padding: 16px 32px;
+        margin-right: 44px;
+        border-top: 1px solid #e0e0e0;
+    }
 
-.select-card .active-select-card-img {
-    display: none;
-}
+    .select-card-content {
+        text-align: center;
+        color: #212121;
+    }
 
-.select-card {
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
-    background-color: #fff;
-    padding: 24px 0;
-    display: inline-block;
-    position: relative;
-}
+    .select-card .inherit-select-card-img {
+        display: inline-block;
+    }
 
-.select-card input[type="checkbox"], .select-card input[type="radio"] {
-    border-radius: 50%;
-    position: absolute;
-    left: 16px;
-    top: 16px;
-}
+    .select-card .select-card-img {
+        margin-bottom: 8px;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+    }
+
+    .select-card .active-select-card-img {
+        display: none;
+    }
+
+    .select-card {
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        background-color: #fff;
+        padding: 24px 0;
+        display: inline-block;
+        position: relative;
+    }
+
+    .select-card input[type="checkbox"], .select-card input[type="radio"] {
+        border-radius: 50%;
+        position: absolute;
+        left: 16px;
+        top: 16px;
+    }
+
+    #select-course {
+        width: 141px;
+        height: 140px;
+        margin-bottom: 10px;
+    }
+
+    #select-course .content {
+        margin: 0px;
+        margin-top: 10px;
+    }
 
 
 
