@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("board") @Primary
+@Qualifier("board")
 @RequiredArgsConstructor
 public class ReviewBoardService implements BoardService {
 }
