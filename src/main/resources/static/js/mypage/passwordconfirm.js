@@ -76,6 +76,12 @@ $(document).ready(function() {
         })
       });
       
+      
+const btnOpenPopup = document.querySelector('#modal-back');
+const modal = document.querySelector('#modal-background');
+const closeBtn = modal.querySelector(".finish")
+const closegrayBtn = modal.querySelector("#btn_modal_close")
+
 
 /* 비밀번호 동일 확인 */
   function same() {
@@ -90,7 +96,32 @@ $(document).ready(function() {
       test=(btoa(p1));
      /*  blank2.style.display = "block";
       blank2.innerHTML=test; */ /* 암호화 확인 */
-      alert('비밀번호가 변경되었습니다.')
+      modal.style.display = 'block';
+      modal.style.zIndex = "1000";
+      modal.style.opcity = "1";
       return true;
     }
   }
+
+  
+btnOpenPopup.addEventListener('click', () => {
+  alert('들어옴');
+  modal.style.display = 'block';
+  modal.style.zIndex = "1000";
+  modal.style.opcity = "1";
+});
+
+closeBtn.addEventListener("click", e => {
+  modal.style.display = "none"
+});
+
+closegrayBtn.addEventListener("click", e => {
+  modal.style.display = "none"
+});
+
+modal.addEventListener("click", e => {
+  const evTarget = e.target
+  if(evTarget.classList.contains("modal")) {
+      modal.style.display = "none"
+  }
+});
