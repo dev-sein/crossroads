@@ -73,6 +73,10 @@ public class TestController {
     public String test19(){
         return "mypage/review-backup";
     }
+    @GetMapping("/mypage-sidebar")
+    public String test20(){
+        return "mypage/mypage-sidebar";
+    }
 
     @GetMapping("/test-review-backup")
     public String test129(){
