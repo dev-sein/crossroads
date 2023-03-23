@@ -1,0 +1,385 @@
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+
+*, ::before, ::after {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-scroll-snap-strictness: proximity;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+}
+
+.board_view {
+    margin: 0 auto;
+    padding: 0;
+}
+
+*:not(input):not(hr), ::before, ::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}
+
+div {
+    display: block;
+}
+
+.doz_sys div[doz_type="widget"] {
+    font-size: 13px;
+}   
+
+.board_view header {
+    margin-bottom: 15px;
+}
+
+.holder {
+    position: relative;
+}
+
+.board-title {
+    font-size: 20px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+.board_view header .view_tit {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+.post_view .board_summary {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.board_summary {
+    position: relative;
+    margin: 0 auto;
+}
+
+.board_summary .left {
+    float: left;
+    padding: 8px 0 20px;
+    display: table;
+}
+
+.avatar {
+    display: table-cell;
+    padding-right: 16px;
+    vertical-align: top;
+}
+
+.avatar-image {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.board_summary .author {
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.board_summary .write {
+    color: #363636;
+    position: relative;
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.board_summary .author .board_name {
+    float: left;
+    font-size: 13px;
+}
+
+.board_view .board_name {
+    margin-right: 10px;
+}
+
+.board_view .board_name a {
+    color: #757575;
+}
+
+.board_summary .author .date {
+    float: left;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.doz_sys .body_font_color_70 {
+    color: rgba(54,54,54,0.7);
+}
+
+.board_summary .author .hit-count {
+    display: inline-block;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.board_summary .author .hit-count {
+    float: left;
+    font-size: 13px;
+}
+
+.board_summary .tools.txt {
+    display: block;
+}
+
+.board_summary .tools {
+    float: right;
+    font-size: 13px;
+    display: none;
+}
+
+.doz_sys a {
+    color: #363636;
+}
+
+.board_summary .tools > div:last-child {
+    margin-right: -5px;
+}
+
+.board_summary .tools > div {
+    display: inline-block;
+}
+
+.mobile_right {
+    cursor: pointer;
+    margin-top: 0;
+    text-align: center;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.mobile_right .dropdown-toggle {
+    border: none;
+    padding: 5px;
+}
+
+.dropdown button {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.board_summary .tools .board-summary-icon:last-child {
+    margin-right: 0;
+}
+
+.board_summary .tools .board-summary-icon {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.icon-user, .icon-people, .icon-user-female, .icon-user-follow, .icon-user-following, .icon-user-unfollow, .icon-login, .icon-logout, .icon-emotsmile, .icon-phone, .icon-call-end, .icon-call-in, .icon-call-out, .icon-map, .icon-location-pin, .icon-direction, .icon-directions, .icon-compass, .icon-layers, .icon-menu, .icon-list, .icon-options-vertical, .icon-options, .icon-arrow-down, .icon-arrow-left, .icon-arrow-right, .icon-arrow-up, .icon-arrow-up-circle, .icon-arrow-left-circle, .icon-arrow-right-circle, .icon-arrow-down-circle, .icon-check, .icon-clock, .icon-plus, .icon-minus, .icon-close, .icon-event, .icon-exclamation, .icon-organization, .icon-trophy, .icon-screen-smartphone, .icon-screen-desktop, .icon-plane, .icon-notebook, .icon-mustache, .icon-mouse, .icon-magnet, .icon-energy, .icon-disc, .icon-cursor, .icon-cursor-move, .icon-crop, .icon-chemistry, .icon-speedometer, .icon-shield, .icon-screen-tablet, .icon-magic-wand, .icon-hourglass, .icon-graduation, .icon-ghost, .icon-game-controller, .icon-fire, .icon-eyeglass, .icon-envelope-open, .icon-envelope-letter, .icon-bell, .icon-badge, .icon-anchor, .icon-wallet, .icon-vector, .icon-speech, .icon-puzzle, .icon-printer, .icon-present, .icon-playlist, .icon-pin, .icon-picture, .icon-handbag, .icon-globe-alt, .icon-globe, .icon-folder-alt, .icon-folder, .icon-film, .icon-feed, .icon-drop, .icon-drawer, .icon-docs, .icon-doc, .icon-diamond, .icon-cup, .icon-calculator, .icon-bubbles, .icon-briefcase, .icon-book-open, .icon-basket-loaded, .icon-basket, .icon-bag, .icon-action-undo, .icon-action-redo, .icon-wrench, .icon-umbrella, .icon-trash, .icon-tag, .icon-support, .icon-frame, .icon-size-fullscreen, .icon-size-actual, .icon-shuffle, .icon-share-alt, .icon-share, .icon-rocket, .icon-question, .icon-pie-chart, .icon-pencil, .icon-note, .icon-loop, .icon-home, .icon-grid, .icon-graph, .icon-microphone, .icon-music-tone-alt, .icon-music-tone, .icon-earphones-alt, .icon-earphones, .icon-equalizer, .icon-like, .icon-dislike, .icon-control-start, .icon-control-rewind, .icon-control-play, .icon-control-pause, .icon-control-forward, .icon-control-end, .icon-volume-1, .icon-volume-2, .icon-volume-off, .icon-calendar, .icon-bulb, .icon-chart, .icon-ban, .icon-bubble, .icon-camrecorder, .icon-camera, .icon-cloud-download, .icon-cloud-upload, .icon-envelope, .icon-eye, .icon-flag, .icon-heart, .icon-info, .icon-key, .icon-link, .icon-lock, .icon-lock-open, .icon-magnifier, .icon-magnifier-add, .icon-magnifier-remove, .icon-paper-clip, .icon-paper-plane, .icon-power, .icon-refresh, .icon-reload, .icon-settings, .icon-star, .icon-symbol-female, .icon-symbol-male, .icon-target, .icon-credit-card, .icon-paypal, .icon-social-tumblr, .icon-social-twitter, .icon-social-facebook, .icon-social-instagram, .icon-social-linkedin, .icon-social-pinterest, .icon-social-github, .icon-social-google, .icon-social-reddit, .icon-social-skype, .icon-social-dribbble, .icon-social-behance, .icon-social-foursqare, .icon-social-soundcloud, .icon-social-spotify, .icon-social-stumbleupon, .icon-social-youtube, .icon-social-dropbox, .icon-social-vkontakte, .icon-social-steam {
+    font-family: 'simple-line-icons'!important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mobile_right .dropdown-menu {
+    left: -97px;
+    min-width: 113px;
+    z-index: 11000;
+}
+
+.dropdown-menu {
+    padding: 8px 0;
+}
+
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    display: none;
+    float: left;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.dropdown-menu > li > a {
+    background: none;
+    color: #212121;
+    padding: 8px 16px;
+}
+
+.dropdown-menu>li>a {
+    display: block;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    white-space: nowrap;
+}
+
+.board_summary:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.board_view .board_txt_area {
+    padding: 22px 0;
+    margin: 0;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+.fr-view img.fr-dii {
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+    float: none;
+}
+
+.board_txt_area img.fr-dib, .board_txt_area img.fr-dii {
+    max-width: 100% !important;
+    height: auto;
+    left: auto;
+}
+
+.fr-view img.fr-dii {
+    margin: 5px 0;
+    vertical-align: middle !important;
+}
+
+.fr-view img {
+    position: relative;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.comment_section {
+    margin-bottom: 24px;
+}
+
+.clearfix:after, .clearfix:before, .nav.sub-menu ul:before {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.comment-block .btn-gruop-wrap > div {
+    display: inline-block;
+}
+
+.comment-block .comment_num {
+    font-size: 17px;
+    display: inline-block;
+    letter-spacing: 0;
+}
+
+.doz_sys a, .doz_sys a:hover {
+    color: #363636;
+}
+
+.comment-block .btn-gruop-wrap > div .bt-heart {
+    font-size: 16px;
+}
+
+.bts, .btb, .btm, .btl, .fab {
+    display: inline-block;
+    font: normal normal normal 14px/1 "Black Tie";
+    font-family: 'Black Tie'!important;
+    vertical-align: -14.28571429%;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    transform: translate(0,0);
+}
+
+.bt-heart:before {
+    content: "\f017";
+}
+
+em {
+    font-style: normal;
+}
+
+.btn-group-comment .btn {
+    margin-right: 16px;
+}
+
+.comment-block .comment_num {
+    font-size: 17px;
+    display: inline-block;
+    letter-spacing: 0;
+}
+
+.btn-group-comment .btn .icon {
+    transform: none;
+}
+
+.comment-block .tools {
+    float: right !important;
+    text-align: right;
+}
+
+.mobile_right {
+    cursor: pointer;
+    margin-top: 0;
+    text-align: center;
+}
+
+.comment-block .comment_num {
+    font-size: 17px;
+    display: inline-block;
+    letter-spacing: 0;
+}
+
+button.btn-flat, .btn-flat {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.mobile_right button {
+    border: none;
+    background: #fff;
+    padding: 11px 12px;
+}
+
+
+
+
+
+
+

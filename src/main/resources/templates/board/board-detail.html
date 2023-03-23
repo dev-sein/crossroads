@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 목록 페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/board/boardList.css">
+    <link rel="stylesheet" href="../../static/css/board/board-detail.css">
+    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+</head>
+<body>
+<header th:replace="/components/header-main.html :: .header-container"></header>
+    <main>
+        <div class="whole-contents-wrapper">
+            <div class="contents-inner-wrapper">
+                <div class="contents-inner">
+                    <div class="board_view ">
+			
+				<!-- 게시글 출바알~ -->
+                        <header class="board-title holder">
+                            
+                            <p class="view_tit">차박</p>
+                        </header>
+                        <div class="board_summary">
+                            <div class="left">
+                                <div class="avatar"><img alt="" src="/common/img/default_profile.png" class="avatar-image"></div>
+                                <div class="author">
+                                    <div class="write">김욱성</div>
+                                    <div class="board_name">
+                                        <a href="">
+                                            자유게시판
+                                        </a>
+                                    </div>
+                                    <div class="date body_font_color_70">2023.03.23</div>
+                                    <div class="hit-count body_font_color_70">조회수 2</div>
+                                    <div class="tools txt"><a href="" style="margin-right: 10px;">수정</a><a href=""  style="margin-right: 10px;">이동</a><a href="" style="margin-right: 10px;">지우기</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="board_txt_area fr-view">
+                            <p>건물에 차를 들이박고 운전대를 다시 잡을 수 있을까.. 걱정도 되고 &nbsp;자신감이 많이 떨어졌었는데 친절하신 강사님께서 열심히 가르쳐주신 덕분에 &nbsp;자신감도 되찾고 다시 운전대를 잡을 수 있게 되었습니다ㅠㅠ &nbsp;감사합니다 강사님!</p><p style="text-align: left"><img class="fr-dii _img_light_gallery cursor_pointer" src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg" data-src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg"></p>
+                            <div class="file_area"></div>
+                        </div>
+                                 <div class="comment_section" id="comment_area">
+                    <div class="comment-block">
+                       <div class="btn-gruop-wrap clearfix">
+                          <div class="btn-gruop btn-group-comment">
+                             <a onclick="viewLikeClick();" href="javascript:;" class="comment_num btn btn-flat  no-padding-x" data-toggle="tooltip" data-placement="top" id="view_like_btn_p20230323f15c5bcf5f45d" data-original-title="" title=""><i aria-hidden="true" class="btm bt-heart"></i> <em id="view_like_count_p20230323f15c5bcf5f45d">0</em></a>
+                             <span class="comment_num btn btn-flat no-padding-x no-pointer"><i aria-hidden="true" class="icon-bubble icon holder" style="top: 1px;"></i> <em id="comment_count">0</em></span>
+                          </div>
+        
+                          <div class="tools">
+                             <div class="mobile_right">
+                                <button class="comment_num btn btn-flat" type="button" onclick="SITE.setSnsShare()"><i aria-hidden="true" class="btm bt-share board-summary-icon"></i></button>
+                                <button class="comment_num btn btn-flat hidden-xs hidden-sm" type="button" onclick="javascript:window.print();"><i aria-hidden="true" class="btm bt-fax board-summary-icon"></i></button>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    
+                    <div class="comment_list" id="comment_container">
+                       
+                    </div>
+                    <div class="comment_textarea">
+                       <form id="comment_form">
+                          <input type="hidden" name="post_code" value="p20230323f15c5bcf5f45d">
+                          <input type="hidden" name="board_code" value="b2023032344c3125e0d11e">
+                          <div class="postmeta comment-comment"><!--댓글에 댓글을 입력할 경우-->
+                             
+                             <div class="textarea_block">
+                                <textarea title="댓글을 남겨주세요" placeholder="댓글을 남겨주세요" rows="1" name="body" id="comment_body" data-action="btn_c_p20230323f15c5bcf5f45d" data-autosize-on="true" style="overflow: hidden; overflow-wrap: break-word; height: 62px;"></textarea>
+                                <div class="file-add-block" style="display: none" id="comment_image_box"></div>
+                                <button class="btn btn-primary btn-sm" onclick="POST_COMMENT.add(); return false;">작성</button>
+                                <div class="inline-blocked holder">
+                                   <i aria-hidden="true" class="icon-picture icon vertical-middle"></i>
+                                   <input title="comment image upload" type="file" class="comment_image_upload" multiple="" name="comment_images" id="comment_image_upload_btn">
+                                </div>
+                                <!--<i class="zmdi zmdi-play-circle"></i>-->
+                             </div>
+                          </div>
+                       <ul id="image_list" style="display: none"></ul></form>
+                    </div>
+                 </div>
+                        <div class="comment_section">
+                            <div class="list_tap">
+                                <a href="/Diary/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&amp;bmode=view&amp;idx=14551573&amp;t=board"><i aria-hidden="true" class="icon-arrow-up"></i><span class="secret_icon">프론트를 또한다고?! </span></a>
+                                <a href="/Diary/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&amp;bmode=view&amp;idx=14551509&amp;t=board"><i aria-hidden="true" class="icon-arrow-down"></i><span class="secret_icon">에바에요</span></a>
+                            </div>
+                            <div class="table_bottom over_h action-area">
+                                <a class="btn btn-primary btn-sm float_l" href="/Diary/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&amp;page=1" role="button">
+                                    목록
+                                </a>
+                                <a class="btn btn-primary btn-sm float_r" role="button" href="/Diary/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&amp;board=b2023032344c3125e0d11e&amp;bmode=write&amp;back_url=L0RpYXJ5Lz9xPVlUb3hPbnR6T2pFeU9pSnJaWGwzYjNKa1gzUjVjR1VpTzNNNk16b2lZV3hzSWp0OSZibW9kZT12aWV3JmlkeD0xNDU1MTU2OSZ0PWJvYXJk">글쓰기</a>
+                            </div>
+                        </div>
+                        <!-- 게시글 끄ㅡㅌ읏 -->
+
+
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</html>
