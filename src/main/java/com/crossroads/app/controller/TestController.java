@@ -9,4 +9,11 @@ public class TestController {
     public String test(){
         return "index";
     }
+
+    @GetMapping("/maintest")
+    public String maintest(){
+        return "main/main";
+    }
+
+
 }
