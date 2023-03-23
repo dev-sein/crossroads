@@ -11,11 +11,32 @@
 
 </head>
 <body>
+    <!-- 모달 창 -->
+    <div class="modal-wrapper">
+        <div class="modal-content">
+          <p class="modal-message">환전이 완료되었습니다.</p>
+          <button class="modal-close-btn">확인</button>
+        </div>
+      </div>
+    <!-- 모달 창 -->
     <header>
-        <nav class="header">
+        <nav class="header relative flex between">
+            <a class="back-or-logout" href="javascript:history.back();">
+                <span class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="48px" id="Layer_1" style="enable-background:new 0 0 48 48;" version="1.1" viewBox="0 0 512 512" width="48px" xml:space="preserve">
+                        <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " style="     fill: #fff; "/>
+                    </svg>
+                </span>
+            </a>
             <span class="navigation-center">포인트 환전하기</span>
+            <div></div>
         </nav>
-    </header>    
+    </header>
+    <div class="header-btn bottom flex between">
+        <div><a href="change-point-mobile.html">환전</a></div>
+        <div><a href="list-mobile.html">홈</a></div>
+        <div><a href="mypage-mobile.html">MY</a> </div>
+    </div>
     <div class="gaia">
         <div class="container">
                  <!-- 메인시작  -->
@@ -57,12 +78,12 @@
                                 <!-- 코스 -->
                                 <div class="select-card client-input" id="select-course">
                                     <label >
-                                    <input id="category_develop" name="category" type="radio" value="develop" class="error" checked="checked">
-                                    <div class="select-card-content">
-                                        <img class="select-card-img inherit-select-card-img" src="../../static/img/account.png">
-                                        <p class="body-2-medium content">계좌이체</p>
-                                    </div>
-                                </label>
+                                        <input id="category_develop" name="category" type="radio" value="develop" class="error" checked="checked">
+                                        <div class="select-card-content">
+                                            <img class="select-card-img inherit-select-card-img" src="../../static/img/account.png">
+                                            <p class="body-2-medium content">계좌이체</p>
+                                        </div>
+                                    </label>
                                 </div>
 
                             </div>
@@ -72,7 +93,7 @@
 
                     <!-- 다음 -->
                     <div class="form-section-footer" style="position: relative">
-                        <button class="signup-submit-button btn btn-client btn-11-24 btn-right signup-submit-button" name="can_submit" style="pointer-events: none; cursor: default; opacity: 0.45;" type="button" onclick="send()" >
+                        <button class="signup-submit-button btn btn-client btn-11-24 btn-right signup-submit-button" name="can_submit" style="pointer-events: none; cursor: default; opacity: 0.45;" type="button" onclick="send()">
                         환전하기 </button>
                         <div style="clear:both;">
                         </div>
@@ -81,11 +102,11 @@
                  </div>
                 </form>
                  <!-- 메인 끝  -->
-
         </div>
      </div>  
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../../static/js/point/changePoint.js"></script>
+<script src=""></script>
 </html>

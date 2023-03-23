@@ -136,95 +136,92 @@
         color: #616161;
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 24px;
         font-weight: normal;
+        justify-content: space-between;
     }
 
-
-    /* 목록 스타트 */
-    /* border-bottom: solid 1px #e0e0e0; */
-    .list-wrapper {
-        border-top: solid 1px #e0e0e0;
-        flex-direction: column;
+    .main-view .description p {
+        padding: 0px 10px;
     }
-
-    /* detail 전체 */
-    .list-card {
-        width: 100%;
-        height: 106px;
-        margin-top: 16px;
-        box-shadow: 0 1px 4px 0 rgba(230,235,240,.8);
-        border-radius: 12px;
-        border: solid 1px #e6ebf0;
-        background-color: #fff;
-        color: #212121;
-    }
-
-    /* detail이미지 */
-    .list-wrapper .list-card img {
-        margin: -1px -1px 0 -1px;
-        width: 106px;
-        height: 106px;
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
-    }
-
-    /* detail 내용 */
-    .list-wrapper .list-card .content-wrapper {
-        margin: -1px 0;
-        padding: 16px 24px 20px 24px;
-    }
-    .list-wrapper .list-card .content-wrapper .card-name {
-        width: calc(100vw - 203px);
-        margin-bottom: 0px;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        color: #212121;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 26px;
-    }
-    .list-wrapper .list-card .content-wrapper .card-location {
-        margin-bottom: 8px;
-    }
-    .list-wrapper .list-card .content-wrapper .card-detail:not(:last-child) {
-        margin-bottom: 4px;
-    }
-    .list-wrapper .list-card .content-wrapper .card-detail {
-        width: calc(100vw - 203px);
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        font-size: 12px;
-        line-height: 18px;
-        font-weight: normal;
-    }
-    /* 연수 완료 */
-    .list-wrapper .list-card .content-wrapper .card-status .complete {
-        color: #9e9e9e;
-    }
-    /* 연수 대기 */
-    .list-wrapper .list-card .content-wrapper .card-status .incomplete {
+    .main-view .description p:not(:first-child) {
         color: #2099bb;
     }
 
-    .width50 {
-        width: 50%;
+    .description p:nth-child(2) {
+        font-weight: 700;
     }
-    .course-name {
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2em;
-        font-weight: bold;
+
+    /* 포인트 상세 내역 표 */
+    table {
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        line-height: 1;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
     }
+    
+    
+    .tabletitle {
+        background: #f5f5f5;
+        font-size: 17px;
+        text-align: center;
+        height: 35px;
+    }
+     
+    .point {
+        width: 30%;
+    }
+    tr {
+        margin-bottom: 10px;
+    }
+    
+    td {
+        height: 30px;
+    }
+    th {
+        font-weight: 500;
+        border-bottom: 1px solid #2099bb;
+    }
+    
+    .history-body-content {
+        font-size: 16px;
+        color: #2099bb;
+        text-align: right;
+    }
+    
+    .report {
+        padding: 30px;
+        text-align: right;
+    }
+    
+    .date {
+        width: 25%;
+    }
+    
+    .location{
+        width: 25%;
+    }
+    
+    .status{
+        width: 30%;
+    }
+    
+    .status-td{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .earn{
+        color:#2099bb;
+    }
+    
+    .exchange{
+        color:#e54545;
+    }
+
     /* 로그아웃 */
     .footer-logout {
         background-color: #ffffff;

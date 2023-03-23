@@ -41,7 +41,7 @@ function completeAllCheck() {
 	// let nameFlag = false; // 이름
 	// let phoneCheck = false; // 핸드폰
 
-	if (accountFlag ) {
+	if (accountFlag) {
 		console.log("완료");
 		$completeButton.css("pointer-events", "auto");
 		$completeButton.css("cursor", "pointer");
@@ -59,3 +59,10 @@ function completeAllCheck() {
 		$completeButton.css("color", "#fff");
 	}
 }
+
+$completeButton.on("click", function(){
+	$(".modal-wrapper").show();
+});
+$(".modal-close-btn").on("click", function(){
+	location.href='mypage-pointlist-mobile.html'; /* 포인트 내역으로 */
+});
