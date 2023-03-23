@@ -5,12 +5,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>헤더 테스트</title>
+    <title>Document</title>
 </head>
-<body>
-<!--    <th:block th:replace="~{/fix.html :: #main-header}"/>-->
-<header th:insert="~{/fix.html :: mainHeader ('전달된 값')}"></header>
-<h1>본문</h1>
-<th:block th:replace="~{/fix.html :: #main-footer}"/>
+<body>fdsfdsfdsfdss
+
+<header id="main-header" th:fragment="mainHeader (param1)">
+    <h1 th:text="${param1}"></h1>
+</header>
+
+<footer id="main-footer">
+    <h1>푸터</h1>
+</footer>
+
+<h1 style="color: red" id="red-content">헤더</h1>
+
 </body>
 </html>
