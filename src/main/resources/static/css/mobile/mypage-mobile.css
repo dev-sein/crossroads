@@ -34,12 +34,16 @@
     }
     .header {
         padding: 16px 0;
-        background-color: #fff;
+        background-color: #2099bb;
         border-bottom: solid 1px #e0e0e0;
     }
+    .flex {
+        display: flex;
+    }
+
     .navigation-center {
         text-align: center;
-        color: #212121;
+        color: #fff;
         font-weight: 500;
         font-size: 18px;
         line-height: 28px;
