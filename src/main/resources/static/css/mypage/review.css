@@ -272,7 +272,7 @@ a {
 }
 
 .user-name-tag .user-img {
-    height: 50px;
+    height:50px;
     width: 50px;
     border-radius: 50%;
     float: left;
@@ -1656,16 +1656,28 @@ form input:focus {
     float: left;
     width: 514px;
     position: relative;
+    cursor: pointer;
 }
 
 .review-container {
     float: left;
 }
 
+.board-container {
+    float: left;
+    margin-left: 60px;
+}
+
+
 .review-photo {
     width: 120px;
     height: 120px;
 
+}
+
+.board-photo {
+    width: 120px;
+    height: 120px;
 }
 
 .review-button{
@@ -1712,6 +1724,10 @@ form input:focus {
     font-size: 14px;
 }
 
+.board-date{
+    text-align: right;
+}
+
 .base-info-splitter {
     color: #dedede;
     font-size: 14px;
@@ -1725,4 +1741,76 @@ form input:focus {
     margin-bottom: 0;
     font-size: 13px;
     color: #333;
+}
+
+/* 에러 */
+.content-error{
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 1060px;
+}
+
+.error-body {
+    padding-left: 20px;
+    display: inline;
+    float: left;
+    width: 610px;
+    margin-left: 0;
+    margin-right: 9px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+h1, .h1 {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    margin: 0.67em 0;
+
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.btn-large{
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid rgba(0,0,0,0);
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 2px;
+    user-select: none;
+}
+
+.error-aside {
+    padding: 35px;
+    padding-left: 90px;
+    display: inline;
+    float: left;
+    width: 340px;
+    margin-right: 0;
+    margin-left: 9px;
+   
+}
+
+.aside-img {
+    width: 215px;
+    height: 215px;
 }
