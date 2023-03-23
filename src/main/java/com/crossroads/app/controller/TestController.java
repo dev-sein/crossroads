@@ -74,4 +74,9 @@ public class TestController {
         return "mypage/review-backup";
     }
 
+    @GetMapping("/test-review-backup")
+    public String test129(){
+        return "mypage/review-backbackup";
+    }
+
 }
