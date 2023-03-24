@@ -25,6 +25,11 @@ public class TestController {
         return "mypage/review";
     }
 
+    @GetMapping("/review2")
+    public String review2(){
+        return "mypage/review2";
+    }
+
     @GetMapping("/point")
     public String point(){
         return "mypage/point";

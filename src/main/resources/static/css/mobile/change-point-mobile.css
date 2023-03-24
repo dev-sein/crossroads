@@ -276,8 +276,9 @@
     }
 
     .form-section-footer {
-        padding: 16px 32px;
-        margin-right: 44px;
+        padding: 16px 0px;
+        margin-left: -13px;
+        margin-right: 32px;
         border-top: 1px solid #e0e0e0;
     }
 
@@ -350,7 +351,7 @@
         background-color: #fff;
         border-radius: 5px;
         padding: 20px;
-        width: 400px;
+        width: 260px;
         text-align: center;
         margin: 0 auto;
         top: 40%;
