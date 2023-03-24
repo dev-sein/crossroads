@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>검색</title>
     <link rel="stylesheet" href="../../../static/css/modal/mobile/search-modal.css">
+    <link rel="stylesheet" href="../../../static/css/modal/mobile/jquery-ui.css">
 </head>
 <body>
     <div class="search-modal">
@@ -23,7 +24,34 @@
             <div class="header-title">
                 <span class="title">검색</span>
             </div>
+            <input  type="text" name="" id="datepicker" autocomplete="off">
+            <div class="test" style="display: flex; justify-content: space-between;">
+                <span class="date">날짜</span>
+                <span class="value">0</span>
+            </div>
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $.datepicker.setDefaults({
+        dateFormat: 'yy년 m월 d일',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    });
+
+    
+    $('#datepicker').val()
+</script>
 </html>

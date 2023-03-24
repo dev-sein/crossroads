@@ -25,4 +25,17 @@
         font-size: 14px;
         line-height: 1.43;
     }
+    input {
+        margin: 0 16px;
+        width: calc(100% - 32px);
+        height: 32px;
+        font-size: 15px;
+        border: 0;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+        background-color: rgb(233, 233, 233);
+        text-align: center;
+    }
+    
 }
