@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/main/main.css">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="stylesheet" href="../../static/css/components/footer.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="/css/main/main.css">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body class="main">
     <!-- header 시작-->
-
+    <div th:insert="~{/components/header-main :: header-main}"></div>
     <!-- header 끝 -->
     <div class="main-container">
         <!-- 메인배너 -->
@@ -37,7 +37,7 @@
                     <a class="btn-btn btn-style btn-color" href="">연수 신청하기</a>
                 </div>
                 <div class="introduction-img">
-                    <img class="img-size" src="https://www.wishket.com/static/renewal/img/landing/introduction-img.png" alt="">
+                    <img class="img-size" src="/images/main/introduction-img.png" alt="">
                 </div>
             </section>
         </div>
@@ -90,7 +90,7 @@
                             <p class="card-contents">후기글 : 프로젝트의 현재 상황 : - 현 올라핀테크와 유사한 사업 구상 중 "오픈마켓선정산시스템" / 사용자 + 관리자(대리점 또는 관련 지사 포함) 시스템 구축</p>
                         </div>
                         <div class="card-img">
-                            <img src="../../static/images/main/review01.jpeg" class="review-image">
+                            <img src="/images/main/review01.jpeg" class="review-image">
                         </div>
                     </div>
                     <div class="review-card">
@@ -123,7 +123,7 @@
                             <p class="card-contents">후기글 : 프로젝트의 현재 상황 : - 현 올라핀테크와 유사한 사업 구상 중 "오픈마켓선정산시스템" / 사용자 + 관리자(대리점 또는 관련 지사 포함) 시스템 구축</p>
                         </div>
                         <div class="card-img">
-                            <img src="../../static/images/main/review01.jpeg" class="review-image">
+                            <img src="/images/main/review01.jpeg" class="review-image">
                         </div>
                     </div>
                     <div class="review-card">
@@ -156,7 +156,7 @@
                             <p class="card-contents">후기글 : 프로젝트의 현재 상황 : - 현 올라핀테크와 유사한 사업 구상 중 "오픈마켓선정산시스템" / 사용자 + 관리자(대리점 또는 관련 지사 포함) 시스템 구축</p>
                         </div>
                         <div class="card-img">
-                            <img src="../../static/images/main/review01.jpeg" class="review-image">
+                            <img src="/images/main/review01.jpeg" class="review-image">
                         </div>
                     </div>
                     <div class="review-card">
@@ -189,7 +189,7 @@
                             <p class="card-contents">후기글 : 프로젝트의 현재 상황 : - 현 올라핀테크와 유사한 사업 구상 중 "오픈마켓선정산시스템" / 사용자 + 관리자(대리점 또는 관련 지사 포함) 시스템 구축</p>
                         </div>
                         <div class="card-img">
-                            <img src="../../static/images/main/review01.jpeg" class="review-image">
+                            <img src="/images/main/review01.jpeg" class="review-image">
                         </div>
                     </div>
                 </div>
@@ -214,10 +214,10 @@
                         </div>
                         <div class="process-guide-nav">
                             <div class="process-text-group">
-                                <div class="process-text element text-0 active" targetitem="0">연수신청 및 상담</div>
-                                <div class="process-text element text-1" targetitem="1">정보입력 및 코스선택</div>
-                                <div class="process-text element text-2" targetitem="2">연수시간 및 지역</div>
-                                <div class="process-text element text-3" targetitem="3">완료</div>
+                                <div class="process-text element text-0 active">연수신청 및 상담</div>
+                                <div class="process-text element text-1">정보입력 및 코스선택</div>
+                                <div class="process-text element text-2">연수시간 및 지역</div>
+                                <div class="process-text element text-3">완료</div>
                             </div>
                         </div>
                         <div class="process-guide-nav">
@@ -243,7 +243,7 @@
                                         </p>
                                         <ul class="process-guide-content-text-list">
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     초보자가 가장 많이 실수하는 3가지
                                                     <br>
@@ -259,7 +259,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <img class="process-guide-content-img" src="../../static/images/main/process_1.png" alt="">
+                                    <img class="process-guide-content-img" src="/images/main/process_1.png" alt="">
                                 </div>
                                 <div class="process-guide-footer-nav">
                                     <div class="process-paginate">
@@ -292,13 +292,13 @@
                                         </p>
                                         <ul class="process-guide-content-text-list">
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="process-guide-content-text-detail">
                                                     교차로에서는 24시간 내에 평균 5.2명의 수강자가 빠르게 발생합니다.
                                                 </p>
                                             </li>
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     동네 운전부터 시작하고 싶으신 분 또는 출퇴근길 운전하고 싶으신 분
                                                     <br>
@@ -307,7 +307,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <img class="process-guide-content-img" src="../../static/images/main/process_2.png" alt="">
+                                    <img class="process-guide-content-img" src="/images/main/process_2.png" alt="">
                                 </div>
                                 <div class="process-guide-footer-nav">
                                     <p class="process-paginate">
@@ -340,7 +340,7 @@
                                         </p>
                                         <ul class="process-guide-content-text-list">
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     교차로에서는 검증된 강사님과 함꼐하고 있습니다.
                                                     <br>
@@ -348,7 +348,7 @@
                                                 </p>
                                             </li>
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     강사님 수업에 불만족하거나 스케줄 조율이 어려우신 분은
                                                     <br>
@@ -357,7 +357,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <img class="process-guide-content-img" src="../../static/images/main/process_3.png" alt="">
+                                    <img class="process-guide-content-img" src="/images/main/process_3.png" alt="">
                                 </div>
                                 <div class="process-guide-footer-nav">
                                     <p class="process-paginate">
@@ -390,7 +390,7 @@
                                         </p>
                                         <ul class="process-guide-content-text-list">
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     모든 연수차량이 보험 가입되어 있으며,
                                                     <br>
@@ -398,7 +398,7 @@
                                                 </p>
                                             </li>
                                             <li>
-                                                <img class="process-guide-content-text-bullet" src="https://www.wishket.com/static/renewal/img/landing/process_card_bullet.png" alt="">
+                                                <img class="process-guide-content-text-bullet" src="/images/main/process_card_bullet.png" alt="">
                                                 <p class="element process-guide-content-text-detail">
                                                     강사님 수업에 불만족하신 경우는 전화 상담 후 교체 가능합니다.
                                                     <br>
@@ -407,7 +407,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <img class="process-guide-content-img" src="../../static/images/main/process_4.png" alt="">
+                                    <img class="process-guide-content-img" src="/images/main/process_4.png" alt="">
                                 </div>
                                 <div class="process-guide-footer-nav">
                                     <p class="process-paginate">
@@ -429,7 +429,7 @@
                 <p class="appeal-point-title">교차로는 편리하고 안전합니다.</p>
                 <div class="appeal-box-group">
                     <div class="appeal-box with-mb">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_1.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_1.png" alt="">
                         <p class="appeal-text">
                             빠르고 편리하게,
                             <br>
@@ -437,7 +437,7 @@
                         </p>
                     </div>
                     <div class="appeal-box with-mb">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_2.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_2.png" alt="">
                         <p class="appeal-text">
                             검증된 강사진,
                             <br>
@@ -445,7 +445,7 @@
                         </p>
                     </div>
                     <div class="appeal-box with-mb">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_3.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_3.png" alt="">
                         <p class="appeal-text">
                             안전한 대금보호,
                             <br>
@@ -453,7 +453,7 @@
                         </p>
                     </div>
                     <div class="appeal-box">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_4.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_4.png" alt="">
                         <p class="appeal-text">
                             보호받을 수 있는
                             <br>
@@ -461,7 +461,7 @@
                         </p>
                     </div>
                     <div class="appeal-box">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_5.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_5.png" alt="">
                         <p class="appeal-text">
                             신뢰할 수 있는
                             <br>
@@ -469,7 +469,7 @@
                         </p>
                     </div>
                     <div class="appeal-box">
-                        <img class="appeal-image" src="../../static/images/main/appeal_img_6.png" alt="">
+                        <img class="appeal-image" src="/images/main/appeal_img_6.png" alt="">
                         <p class="appeal-text">
                             시작부터 끝까지
                             <br>
@@ -486,9 +486,9 @@
         <div class=""></div>
     </div>
     <!-- footer 시작 -->
-    
+    <div th:insert="~{/components/footer :: footer}"></div>
     <!-- footer 끝-->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/main/main.js"></script>
+<script src="/js/main/main.js"></script>
 </html>

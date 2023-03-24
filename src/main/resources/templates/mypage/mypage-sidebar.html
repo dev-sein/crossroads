@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>관리자 홈</title>
+    <link rel="stylesheet" href="/css/mypage/review.css">
+</head>
+<body>
+    <div th:fragment="mypage-sidebar" class="sidebar">
+        <div class="user-name-tag">
+            <h3 class="user-name-tag-heading">클라이언트</h3>
+            <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
+            <div class="user-name-tag-body">
+                <div class="user-img-box">
+                    <img alt="seinee114 사진" id="modal-back" class="img-circle user-img" onclick="show_img_edit_modal()" src="/images/mypage/main-logo.png">
+                    <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
+                    <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
+                </div>
+                <div class="userid">
+                    <div class="username">seinee114<br></div>
+                </div>
+            </div>
+        </div>
+        <!-- 후기작성 상세 modal -->
+        <div th:insert="~{modal/mypage/mypage-review-modal:: modal-background}"></div>
+        <!-- modal fin. -->
+        <div class="sidebar-nav">
+            <ul>
+                <li class="sidemenu"><a href="/accounts/settings/profile/">프로필 정보 설정</a></li>
+                <li><a href="/client/project-history/"><span>나의 게시글 보기</span></a></li>
+                <li><a href="/client/project-history/"><span>나의 댓글 보기</span></a></li>
+                <li><a href="/client/project-history/"><span>포인트 조회</span></a></li>
+                <li><a href="/client/project-history/"><span>연수 내역</span></a></li>
+                <li class="active sidemenu2">
+                    <a class="active-text" href="/client/project-history/"><span>나의 후기</span></a>
+                </li>
+                <a class="advertisement" id="left_sidebar_advertisement"></a>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/mypage/mypage-select.js"></script>
+</html>
+
