@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
     private final MemberMapper memberMapper;
 
-    public void save(MemberVO memberVO){ memberMapper.insert(memberVO);};
+    public void save(MemberVO memberVO){ memberMapper.insert(memberVO);}
 }
