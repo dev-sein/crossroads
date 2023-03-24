@@ -14,7 +14,8 @@ public class MemberService {
 
     //회원가입
     public void registerMember(MemberVO memberVO){
-        MemberVO memberVO = new MemberVO();
+        MemberDAO memberDAO = new MemberDAO();
+        memberDAO.save(memberVO);
 
     }
 }
