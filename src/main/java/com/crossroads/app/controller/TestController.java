@@ -83,4 +83,10 @@ public class TestController {
         return "mypage/mypage-sidebar";
     }
 
+
+    @GetMapping("/friday-review")
+    public String test1229(){
+        return "mypage/review-friday";
+    }
+
 }
