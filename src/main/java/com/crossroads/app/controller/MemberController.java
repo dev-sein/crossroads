@@ -34,4 +34,10 @@ public class MemberController {
     public String completeChange(){
         return "member/complete-change";
     }
+
+    //비밀번호 변경 완료
+    @GetMapping("find-pwd-send")
+    public String findPwdSend(){
+        return "member/find-pwd-send";
+    }
 }
