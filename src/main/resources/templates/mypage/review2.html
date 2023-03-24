@@ -9,25 +9,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="/css/mypage/review.css">
+    <link rel="stylesheet" href="/css/mypage/review2.css">
     <link rel="stylesheet" href="/css/components/header.css">
     <link rel="stylesheet" href="/css/components/footer.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-    <!-- header 시작 -->
-    <div th:insert="~{/components/header-client :: header-client}"></div>
-    <!-- header 끝 -->
+<!-- header 시작 -->
+<div th:insert="~{/components/header-client :: header-client}"></div>
+<!-- header 끝-->
     <div id="wrap">
-        <div class="container">
+        <div class="mypage-container">
             <div id="message"></div>
         </div>
         <a class="advertisement no_message" id="message_advertisement"></a>
-        <!-- sidebar 시작 -->
-        <div th:insert="~{/mypage/mypage-sidebar :: mypage-sidebar}"></div>
-        <!-- sidebar 끝 -->
         <div class="page">
             <div class="page-inner">
+                <!-- sidebar 시작 -->
+                <div th:insert="~{/mypage/mypage-sidebar :: mypage-sidebar}"></div>
+                <!-- sidebar 끝 -->
                 <div class="content">
                     <div class="content-header action">
                         <h3 class="header-text">나의 후기<br>
@@ -209,10 +209,9 @@
             </div><!-- page inner  -->
         </div><!-- page -->
     </div><!-- wrap -->
-<!--    <a class="advertisement" id="nav_advertisement"></a>-->
-    <!-- footer 시작 -->
-    <div th:insert="~{/components/footer :: footer}"></div>
-    <!-- footer 끝 -->
+<!-- footer 시작 -->
+<div th:insert="~{/components/footer :: footer}"></div>
+<!-- footer 끝 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
