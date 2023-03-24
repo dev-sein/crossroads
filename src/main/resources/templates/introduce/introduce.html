@@ -1,167 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>사업소개</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/introduce/introduce.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/introduce/introduce.css">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-    <main>
-        <div class="whole-wrapper">
-            <div id="inner-header-wrapper">
-                <div class="inner-header">
-                    <div class="header-title">사업소개</div>
-                        <nav>
-                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/faq-icon-home@2x.png" alt="" class="home-img">
-                            <ul class="nav-ul">
-                                <li class="ul-list">
-                                    <a href="#">교차로</a>
-                                    <!-- ::after -->
-                                </li>
-                                <li><a href="#">사업소개</a></li>
-                            </ul>
-                        </nav>
+<!-- header 시작 -->
+<div th:insert="~{/components/header-client :: header-client}"></div>
+<!-- header 끝 -->
+<main>
+    <div class="whole-wrapper">
+        <div id="inner-header-wrapper">
+            <div class="inner-header">
+                <div class="header-title">사업소개</div>
+                <nav>
+                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/faq-icon-home@2x.png" alt="" class="home-img">
+                    <ul class="nav-ul">
+                        <li class="ul-list">
+                            <a href="#">교차로</a>
+                            <!-- ::after -->
+                        </li>
+                        <li><a href="#">사업소개</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="inner-wrapper">
+        <div class="inner">
+            <div class="inner-top-wrapper">
+                <div class="inner-top">
+                    <p class="inner-top-title">
+                        원하는 시간과 장소에 맞추어 교차로를 이용해보세요.
+                    </p>
+                    <p class="inner-top-subtitle">
+                        베테랑강사님은 신청 코스와 시간에 맞추어 랜덤으로 매칭됩니다.
+                        <br>
+                        고객님께서 원하는 시간, 원하는 장소에 맞춰 방문하는 간편 운전연수 고객님께서 원하시는 코스에 맞추어
+                        진행되는 개인맞춤 운전 연수
+                    </p>
+                    <p class="inner-top-link">
+                        <a href="#">운전 연수 신청하러 가기</a>
+                        <!-- ::after -->
+                    </p>
+                    <div class="guide-wrapper">
+                        <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-estimate-c@2x.png" alt="">
+                        <div class="guide-contents">
+                            <p class="contents-question">
+                                운전 연수 비용 지불 방식이 궁금하신가요?
+                            </p>
+                            <p class="contents-answer">
+                                마이페이지의 포인트 충전하기 서비스를 이용하여 포인트 충전 후 사용 가능합니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="guide-wrapper guide-wrapper2">
+                        <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-idea-c@2x.png" alt="">
+                        <div class="guide-contents">
+                            <p class="contents-question">
+                                베테랑 강사님은 어떻게 매칭 되는지 궁금하신가요?
+                            </p>
+                            <p class="contents-answer">
+                                고객님께서 편하신 시간과 지역을 선택하시면 일정에 맞추어 랜덤으로 강사님이 매칭됩니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="guide-wrapper guide-wrapper2">
+                        <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-info-c@2x.png" alt="">
+                        <div class="guide-contents">
+                            <p class="contents-question">
+                                교차로는 어떤 서비스를 제공 하나요?
+                            </p>
+                            <p class="contents-answer">
+                                면허는 취득했지만 운전이 무서워 자신이 없으신 분들에게 자신감과 운전 실력을 향상 시켜드립니다.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="inner-wrapper">
-                <div class="inner">
-                    <div class="inner-top-wrapper">
-                        <div class="inner-top">
-                            <p class="inner-top-title">
-                                원하는 시간과 장소에 맞추어 교차로를 이용해보세요.
+            <!-- 중간 -->
+            <div class="inner-middle-wrapper">
+                <div class="inner-middle">
+                    <p class="middle-title">
+                        엄선한 베테랑 운전자가 초보 운전자에게 운전 연수 서비스를 통해 운전 능력을 향상 시켜드립니다.
+                    </p>
+                    <p class="middle-subtitle">
+                        교차로에는 베테랑 운전자들이 초보 운전자들의 시간과 지역 별 코스에 맞춰 대기중입니다.
+                    </p>
+                    <div class="middle-guide">
+                        <div class="guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-manager-c@2x.png" alt="" class="guide-item-img">
+                            <p class="guide-item-title">
+                                운전연수 신청
                             </p>
-                            <p class="inner-top-subtitle">
-                                베테랑강사님은 신청 코스와 시간에 맞추어 랜덤으로 매칭됩니다.
-                                <br>
-                                고객님께서 원하는 시간, 원하는 장소에 맞춰 방문하는 간편 운전연수 고객님께서 원하시는 코스에 맞추어
-                                진행되는 개인맞춤 운전 연수                            
+                            <p class="guide-item-contents">
+                                날짜, 지역, 코스 등 초보자가 원하는 옵션에 맞추어 베테랑 운전자들이 매칭됩니다
                             </p>
-                            <p class="inner-top-link">
-                                <a href="#">운전 연수 신청하러 가기</a>
-                                <!-- ::after -->
+                        </div>
+                        <div class="guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-estimate-c-2@2x.png" alt="" class="guide-item-img">
+                            <p class="guide-item-title">
+                                포인트 충전
                             </p>
-                            <div class="guide-wrapper">
-                                <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-estimate-c@2x.png" alt="">
-                                <div class="guide-contents">
-                                    <p class="contents-question">
-                                        운전 연수 비용 지불 방식이 궁금하신가요?
-                                    </p>
-                                    <p class="contents-answer">
-                                        마이페이지의 포인트 충전하기 서비스를 이용하여 포인트 충전 후 사용 가능합니다.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="guide-wrapper guide-wrapper2">
-                                <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-idea-c@2x.png" alt="">
-                                <div class="guide-contents">
-                                    <p class="contents-question">
-                                        베테랑 강사님은 어떻게 매칭 되는지 궁금하신가요?
-                                    </p>
-                                    <p class="contents-answer">
-                                        고객님께서 편하신 시간과 지역을 선택하시면 일정에 맞추어 랜덤으로 강사님이 매칭됩니다. 
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="guide-wrapper guide-wrapper2">
-                                <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-info-c@2x.png" alt="">
-                                <div class="guide-contents">
-                                    <p class="contents-question">
-                                        교차로는 어떤 서비스를 제공 하나요?
-                                    </p>
-                                    <p class="contents-answer">
-                                        면허는 취득했지만 운전이 무서워 자신이 없으신 분들에게 자신감과 운전 실력을 향상 시켜드립니다.
-                                    </p>
-                                </div>
-                            </div>
+                            <p class="guide-item-contents">
+                                포인트를 충전하여 사용하는 방식입니다<br>
+                                (A코스: 50,000 / B코스: 100,000)
+                            </p>
+                        </div>
+                        <div class="guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-repair-c@2x.png" alt="" class="guide-item-img">
+                            <p class="guide-item-title">
+                                후기 작성
+                            </p>
+                            <p class="guide-item-contents">
+                                교차로에서 경험한 운전 연수를<br>
+                                다른 초보 운전자들에게 공유해주세요!
+                            </p>
                         </div>
                     </div>
-                    <!-- 중간 -->
-                    <div class="inner-middle-wrapper">
-                        <div class="inner-middle">
-                            <p class="middle-title">
-                                엄선한 베테랑 운전자가 초보 운전자에게 운전 연수 서비스를 통해 운전 능력을 향상 시켜드립니다. 
+                </div>
+            </div>
+            <!-- 밑 -->
+            <div class="inner-bottom-wrapper">
+                <div class="inner-bottom">
+                    <p class="inner-bottom-title">
+                        1대1 운전 연수를 통해 수익을 창출해보세요.
+                    </p>
+                    <p class="inner-bottom-subtitle">
+                        베테랑의 스케줄과 위치에 맞는 초보자들의 운전 연수 신청을 확인 후 선택할 수 있어요
+                    </p>
+                    <div class="inner-bottom-guide">
+                        <div class="bottom-guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-meeting-c@2x.png" alt="" class="bottom-guide-img">
+                            <p class="bottom-guide-contents">
+                                초보자들의 운전 연수 신청을<br>
+                                확인 후 선택할 수 있습니다
                             </p>
-                            <p class="middle-subtitle">
-                                교차로에는 베테랑 운전자들이 초보 운전자들의 시간과 지역 별 코스에 맞춰 대기중입니다.
-                            </p>
-                            <div class="middle-guide">
-                                <div class="guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-manager-c@2x.png" alt="" class="guide-item-img">
-                                    <p class="guide-item-title">
-                                        운전연수 신청
-                                    </p>
-                                    <p class="guide-item-contents">
-                                        날짜, 지역, 코스 등 초보자가 원하는 옵션에 맞추어 베테랑 운전자들이 매칭됩니다
-                                    </p>
-                                </div>
-                                <div class="guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-estimate-c-2@2x.png" alt="" class="guide-item-img">
-                                    <p class="guide-item-title">
-                                        포인트 충전
-                                    </p>
-                                    <p class="guide-item-contents">
-                                        포인트를 충전하여 사용하는 방식입니다<br>
-                                        (A코스: 50,000 / B코스: 100,000)
-                                    </p>
-                                </div>
-                                <div class="guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-repair-c@2x.png" alt="" class="guide-item-img">
-                                    <p class="guide-item-title">
-                                        후기 작성
-                                    </p>
-                                    <p class="guide-item-contents">
-                                        교차로에서 경험한 운전 연수를<br>
-                                        다른 초보 운전자들에게 공유해주세요!
-                                    </p>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <!-- 밑 -->
-                    <div class="inner-bottom-wrapper">
-                        <div class="inner-bottom">
-                            <p class="inner-bottom-title">
-                                1대1 운전 연수를 통해 수익을 창출해보세요.
+                        <div class="bottom-guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-calander-c@2x.png" alt="" class="bottom-guide-img">
+                            <p class="bottom-guide-contents">
+                                운전 연수를 통해 얻은 포인트를<br>
+                                환전 가능합니다
                             </p>
-                            <p class="inner-bottom-subtitle">
-                                베테랑의 스케줄과 위치에 맞는 초보자들의 운전 연수 신청을 확인 후 선택할 수 있어요
+                        </div>
+                        <div class="bottom-guide-item">
+                            <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-manager-check-c@2x.png" alt="" class="bottom-guide-img">
+                            <p class="bottom-guide-contents">
+                                베테랑의 연수에 대한<br>
+                                수강생들의 후기를 확인 해보세요
                             </p>
-                            <div class="inner-bottom-guide">
-                                <div class="bottom-guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-meeting-c@2x.png" alt="" class="bottom-guide-img">
-                                    <p class="bottom-guide-contents">
-                                        초보자들의 운전 연수 신청을<br>
-                                        확인 후 선택할 수 있습니다
-                                    </p>
-                                </div>
-                                <div class="bottom-guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-calander-c@2x.png" alt="" class="bottom-guide-img">
-                                    <p class="bottom-guide-contents">
-                                        운전 연수를 통해 얻은 포인트를<br>
-                                        환전 가능합니다
-                                    </p>
-                                </div>
-                                <div class="bottom-guide-item">
-                                    <img src="https://www.wishket.com/static/renewal/img/acquisition/cs/use-icon-manager-check-c@2x.png" alt="" class="bottom-guide-img">
-                                    <p class="bottom-guide-contents">
-                                        베테랑의 연수에 대한<br>
-                                        수강생들의 후기를 확인 해보세요
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </main>
+    </div>
+    </div>
+    <!-- footer 시작 -->
+    <div th:insert="~{/components/footer :: footer}"></div>
+    <!-- footer 끝 -->
+</main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/components/header-client.js"></script>
 </html>
