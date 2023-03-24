@@ -1522,7 +1522,7 @@ td {
 
 .history-body-title {
     float: left;
-    font-weight: bold;
     font-size: 16px;
     color: #454545;
+    font-weight: 400;
 }
