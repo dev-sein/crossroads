@@ -88,36 +88,58 @@
                                 <div class="addMainImage_wrapper">
                                     <div class="MainImage_wrapper">
                                         <!-- 추가 -->
-                                            <section class="Section_container__photo">
-                                                <div style="max-width: 600px;">
-                                                    <div class="Section_content">
-                                                        <div class="ImageField">
-                                                            <div class="ImageFormField">
-                                                                <div class="ImageFormField_buttonWrapper">
-                                                                </div>
+                                        <section class="Section_container__photo">
+                                            <div style="max-width: 600px;">
+                                                <div class="Section_content">
+                                                    <div class="ImageField">
+                                                        <div class="ImageFormField">
+                                                            <div class="ImageFormField_buttonWrapper">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </section>
-                                        <!-- 추가 -->
-                                        <!-- 이미지 -->
-                                        <label id="button-label">
-                                            <div class="container_imageInput">
-                                                <!-- <label class="ImageFileButton_label" id="button-label"> -->
-                                                    <div class="imgText_container" onclick="">
-                                                        <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                        <input type="file" id="image" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
-                                                        <div>이미지 추가하기</div>
-                                                    </div>
                                                 </div>
-                                            </label>
-                                        <!-- 이미지 -->
-                                        </div>
-                                        <div id="image_container"></div>
-                                        <div class="image_space"></div>
-                                        <em class="helper_ImageFormField">이미지는 1개만 등록 가능합니다. <br>(이미지를 클릭하면 기존 이미지가 삭제되며 재등록이 가능합니다.)</em>
-                                    <!-- <div class="text_detail"> 최소 사이즈: 가로 600px * 세로 600px </div>
-                                    <div class="text_detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF </div> -->
+                                            </section>
+                                    <!-- 추가 -->
+                                    <!-- 이미지 -->
+                                        <label id="button-label">
+                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
+                                                <div class="imgText_container">
+                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
+                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <div>이미지 추가</div>
+                                                    <!-- <div>이미지 추가하기</div> -->
+                                                </div>
+                                            </div>
+                                        </label>
+                                    <!-- 이미지 -->
+                                    <!-- 이미지 -->
+                                        <label id="button-label">
+                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
+                                                <div class="imgText_container">
+                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
+                                                    <input type="file" id="image2" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <div>이미지 추가</div>
+                                                    <!-- <div>이미지 추가하기</div> -->
+                                                </div>
+                                            </div>
+                                        </label>
+                                    <!-- 이미지 -->
+                                    <!-- 이미지 -->
+                                        <label id="button-label">
+                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
+                                                <div class="imgText_container">
+                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
+                                                    <input type="file" id="image3" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <div>이미지 추가</div>
+                                                    <!-- <div>이미지 추가하기</div> -->
+                                                </div>
+                                            </div>
+                                        </label>
+                                    <!-- 이미지 -->
+                                    </div>
+                                    <div id="image_container"></div>
+                                    <div class="image_space"></div>
+                                    <em class="helper_ImageFormField">이미지는 1개만 등록 가능합니다. <br>(이미지를 클릭하면 기존 이미지가 삭제되며 재등록이 가능합니다.)</em>
                                 </div>
                             </div>
                         </div>
@@ -125,6 +147,7 @@
                             <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">작성취소</button>
                             <button type="button" class="registButton_button">작성완료</button>
                         </div>
+                        
                     </form>
                 </div>
             </div>
@@ -133,5 +156,6 @@
     <div id="footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/board/board-write.js"></script>
+<!-- <script src="../../static/js/board/board-write.js"></script> -->
+<script src="../../static/js/board/board-write-test.js"></script>
 </html>
