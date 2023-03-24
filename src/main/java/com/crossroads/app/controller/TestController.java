@@ -83,4 +83,9 @@ public class TestController {
         return "mypage/review-backbackup";
     }
 
+    @GetMapping("/friday-review")
+    public String test1229(){
+        return "mypage/review-friday";
+    }
+
 }
