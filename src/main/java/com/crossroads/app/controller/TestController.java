@@ -78,10 +78,6 @@ public class TestController {
         return "mypage/mypage-sidebar";
     }
 
-    @GetMapping("/test-review-backup")
-    public String test129(){
-        return "mypage/review-backbackup";
-    }
 
     @GetMapping("/friday-review")
     public String test1229(){
