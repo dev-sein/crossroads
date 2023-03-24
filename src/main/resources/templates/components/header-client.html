@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
     <header th:fragment="header-client" class="header">
@@ -29,48 +29,42 @@
                 </div>
                 <div class="right-nav">
                     <div class="right-nav-list">
-                        <!-- <a class="right-nav-item" href="">
-                            <img src="https://www.wishket.com/static/renewal/img/global/gnb-icon-help-normal.png" alt="">
-                        </a>
-                        <a class="right-nav-item" href="">
-                            <img src="https://www.wishket.com/static/renewal/img/global/gnb-icon-alarm-new.png" alt="">
-                        </a> -->
                         <a id="user-icon" class="right-nav-item " href="">
-                            <img alt="" class="user-img" height="32px" width="32px" src="/images/main/main-logo-profile.png" >
+                            <img alt="" class="user-img" height="32px" width="32px" src="/images/components/main-logo-profile.png" >
                         </a>
                         <div id="dropdown" class="nav-dropdown">
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_home.png" alt="">
+                                <img src="/images/header/icon_menu_home.png" alt="">
                                 마이페이지
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_write.png" alt="">
+                                <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 게시글 조회
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_reply.png" alt="">
+                                <img src="/images/header/icon_menu_reply.png" alt="">
                                 나의 댓글 조회
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_payment.png" alt="">
+                                <img src="/images/header/icon_menu_payment.png" alt="">
                                 포인트 조회
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_list.png" alt="">
+                                <img src="/images/header/icon_menu_list.png" alt="">
                                 연수 내역
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_write.png" alt="">
+                                <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 후기
                             </a>
                             <div class="nav-divider"></div>
                             <a class="nav-dropdown-item element" href="">
-                                <img src="../../static/images/main/icon_menu_logout.png" alt="">
+                                <img src="/images/header/icon_menu_logout.png" alt="">
                                 로그아웃
                             </a>
                         </div>
@@ -78,18 +72,8 @@
                 </div>
             </div>
         </section>
-        <!-- <section class="sub-nav-client">
-            <div class="container">
-                <div class="left-nav">
-                    <a class="sub-menu element" href="">검수 중</a>
-                    <a class="sub-menu element" href="">지원자 모집 중</a>
-                    <a class="sub-menu element" href="">진행 중인 프로젝트</a>
-                    <a class="sub-menu element" href="">종료된 프로젝트</a>
-                </div>
-            </div>
-        </section> -->
     </header>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/components/header-client.js"></script>
+<script src="/js/components/header-client.js"></script>
 </html>
