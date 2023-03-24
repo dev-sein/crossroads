@@ -105,7 +105,7 @@
                                             <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
                                                 <div class="imgText_container">
                                                     <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" multiple style="display: none;">
                                                     <div>이미지 추가</div>
                                                     <!-- <div>이미지 추가하기</div> -->
                                                 </div>
@@ -113,41 +113,38 @@
                                         </label>
                                     <!-- 이미지 -->
                                     <!-- 이미지 -->
+                                        <!-- <label id="button-label">
+                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
+                                                <div class="imgText_container">
+                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
+                                                    <input type="file" id="image2" name="upload2" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <div>이미지 추가</div>
+                                                </div>
+                                            </div>
+                                        </label>
                                         <label id="button-label">
                                             <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
                                                 <div class="imgText_container">
                                                     <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image2" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
+                                                    <input type="file" id="image3" name="upload3" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
                                                     <div>이미지 추가</div>
-                                                    <!-- <div>이미지 추가하기</div> -->
                                                 </div>
                                             </div>
-                                        </label>
-                                    <!-- 이미지 -->
-                                    <!-- 이미지 -->
-                                        <label id="button-label">
-                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
-                                                <div class="imgText_container">
-                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image3" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
-                                                    <div>이미지 추가</div>
-                                                    <!-- <div>이미지 추가하기</div> -->
-                                                </div>
-                                            </div>
-                                        </label>
-                                    <!-- 이미지 -->
+                                        </label> -->
                                     </div>
                                     <div id="image_container"></div>
                                     <div class="image_space"></div>
-                                    <em class="helper_ImageFormField">이미지는 1개만 등록 가능합니다. <br>(이미지를 클릭하면 기존 이미지가 삭제되며 재등록이 가능합니다.)</em>
+                                    <em class="helper_ImageFormField">이미지는 최대 3개까지 등록 가능합니다. <br>(이미지를 클릭하면 기존 이미지가 삭제되며 재등록이 가능합니다.)</em>
                                 </div>
                             </div>
                         </div>
+                        <!-- 테스트 -->
+                        <!-- 테스트 -->
                         <div class="bottomButton_wrapper">
                             <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">작성취소</button>
                             <button type="button" class="registButton_button">작성완료</button>
                         </div>
-                        
+                        <button type="button" id="test-button">확인</button>
                     </form>
                 </div>
             </div>
@@ -156,6 +153,6 @@
     <div id="footer"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- <script src="../../static/js/board/board-write.js"></script> -->
 <script src="../../static/js/board/board-write-test.js"></script>
+<!-- <script src="../../static/js/board/board-write.js"></script> -->
 </html>
