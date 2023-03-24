@@ -45,7 +45,7 @@ body {
     margin: -20px 0 10px 0;
 }
 
-.container {
+#wrap.container {
     margin-left: auto;
     margin-right: auto;
     width: 1080px;
@@ -156,9 +156,15 @@ a {
     width: 1080px;
 }
 
+
 .page {
-    position: absolute;
-    left: 21%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1080px;
+}
+
+.page-inner{
+    margin-top: 15px;
 }
 
 
@@ -771,6 +777,7 @@ input[type=checkbox] {
     margin-left: 10px;
     margin-right: 10px;
     width: 790px;
+    margin-bottom: 70px;
 }
 
 

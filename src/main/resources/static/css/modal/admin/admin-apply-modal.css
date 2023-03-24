@@ -79,6 +79,11 @@ section {
 	display: block;
 }
 
+.member-image {
+	width: 140px;
+	height: 140px;
+}
+
 .css-1dcl64i {
 	margin: 18px 0px 10px;
 }

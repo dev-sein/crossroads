@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-    <header class="header">
+<header th:fragment="header-main" class="header">
         <section class="header-section">
             <div class="container">
                 <a class="main-logo" href=""></a>
