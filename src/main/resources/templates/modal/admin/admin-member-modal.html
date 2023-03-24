@@ -1,69 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>유저 상세 정보</title>
 </head>
 <body>
-	<div id="admin-user-modal" class="background modal-custom">
-		<div class="window">
-			<div class="modal">
-				<div class="modal-wrapper">
-					<div id="modal-top">
-						<div id="modal-title">
-							사용자 정보
-							<label>
-								<img id="exit" src="/images/admin/exit.png">
-								<button id="close"></button>
-							</label>
+<div th:fragment="admin-member-modal" class="background modal-custom">
+	<div class="window">
+		<div class="modal">
+			<div class="modal-wrapper">
+				<div id="modal-top">
+					<div id="modal-title">
+						사용자 정보
+						<label>
+							<img id="exit" src="/images/admin/exit.png">
+							<button id="close"></button>
+						</label>
+					</div>
+				</div>
+				<div id="modal-main">
+					<form>
+						<div class="input-wrapper">
+							<div class="input-text">회원 타입</div>
+							<input type="text" id="user-type" value="초보자" class="user-input user-input2" readonly>
 						</div>
-					</div>
-					<div id="modal-main">
-						<form>
-							<div class="input-wrapper">
-								<div class="input-text">회원 타입</div>
-								<input type="text" id="user-type" value="초보자" class="user-input user-input2" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">이름</div>
-								<input type="text" id="user-name" value="김욱성" class="user-input" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">아이디</div>
-								<input type="text" id="user-name" value="rladnrtjdsla" class="user-input" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">이메일</div>
-								<input type="text" id="user-email" value="kus1234@google.com" class="user-input" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">비밀번호</div>
-								<input type="text" id="user-password" value="Asdf1234@" class="user-input user-input2" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">핸드폰번호</div>
-								<input type="text" id="user-phone-number" value="01012345678" class="user-input" readonly>
-							</div>
-							<div class="input-wrapper">
-								<div class="input-text">운전면허취득일자</div>
-								<input type="text" id="driver-license" value="11111111111" class="user-input" readonly>
-							</div>
-							<div id="image">
-								<div class="input-wrapper detail-img">
-									<div class="input-text">프로필</div>
-									<span> 이미지가 없습니다.</span>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div id="modal-bottom">
-						<button id="edit-button1" onclick="changeButton()">확인</button>
-					</div>
+						<div class="input-wrapper">
+							<div class="input-text">이름</div>
+							<input type="text" id="user-name" value="김욱성" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">아이디</div>
+							<input type="text" id="user-name" value="rladnrtjdsla" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">이메일</div>
+							<input type="text" id="user-email" value="kus1234@google.com" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">비밀번호</div>
+							<input type="text" id="user-password" value="Asdf1234@" class="user-input user-input2" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">핸드폰번호</div>
+							<input type="text" id="user-phone-number" value="01012345678" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper">
+							<div class="input-text">운전면허</div>
+							<input type="text" id="driver-license" value="11111111111" class="user-input" readonly>
+						</div>
+						<div class="input-wrapper" style="margin-top: 30px;">
+							<div class="input-text">사진</div>
+							<img src="/images/admin/quokka.jpg" class="member-image">
+						</div>
+					</form>
+				</div>
+				<div id="modal-bottom">
+					<button id="edit-button1" onclick="changeButton()">확인</button>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
