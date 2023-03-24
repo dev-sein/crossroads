@@ -955,4 +955,10 @@ section{
     height: 180px; */
 }
 
+.review-images{
+    margin: 10px;
+    width: 160px;
+    height: 160px;
+}
+
 /* 테스트 */
