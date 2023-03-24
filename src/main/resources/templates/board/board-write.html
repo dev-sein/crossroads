@@ -32,13 +32,12 @@
             <div class="SectionMaker_Wrapper">
                 <div class="SectionMaker_contentWrapper">
                     <form action="#" name="reviewForm">
-                        <div class="formSection_contentContainer">
+                        <!-- <div class="formSection_contentContainer">
                             <div class="formTitle_wrapper">
                                 <div class="formTitle" style="align-items: center !important;">
                                     <legend class="formTitle_legend">
                                         <span>만족도</span>
                                     </legend>
-                                    <!-- 별점  -->
                                     <div class="rating">
                                         <input type="radio" id="star5" name="rating" value="5" />
                                         <label for="star5" id="label5"></label>
@@ -51,11 +50,9 @@
                                         <input type="radio" id="star1" name="rating" value="1" />
                                         <label for="star1" id="label1"></label>
                                     </div>
-                                    <!-- <div class="score">0점</div> -->
                                 </div>
                             </div>
-                        </div>
-                        <hr class="space">
+                        <hr class="space"> -->
                         <div class="formSection_contentContainer">
                             <div class="formTitle_wrapper">
                                 <div class="formTitle">
@@ -105,8 +102,8 @@
                                             <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
                                                 <div class="imgText_container">
                                                     <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" multiple style="display: none;">
-                                                    <div>이미지 추가</div>
+                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, image/png" multiple style="display: none;">
+                                                    <div id="add-image">이미지 추가</div>
                                                     <!-- <div>이미지 추가하기</div> -->
                                                 </div>
                                             </div>
@@ -144,7 +141,6 @@
                             <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">작성취소</button>
                             <button type="button" class="registButton_button">작성완료</button>
                         </div>
-                        <button type="button" id="test-button">확인</button>
                     </form>
                 </div>
             </div>
