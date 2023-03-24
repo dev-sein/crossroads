@@ -1519,10 +1519,13 @@ td {
     color: #2099bb
 }
 
-
 .history-body-title {
     float: left;
     font-size: 16px;
     color: #454545;
     font-weight: 400;
+}
+
+.error-margin {
+    margin-top: 10px;
 }
