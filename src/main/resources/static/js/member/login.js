@@ -71,11 +71,11 @@ $pwdEye.on('click', function(){
     var $pwdImg = $('.pwd img');
     if (!checkPwd) {
         $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '../../static/img/icon_input_slash.png');
+        $pwdImg.attr('src', '/img/icon_input_slash.png');
         checkPwd = true;
     } else {
         $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '../../static/img/icon_input_eye.png');
+        $pwdImg.attr('src', '/img/icon_input_eye.png');
         checkPwd = false;
     }
 });
