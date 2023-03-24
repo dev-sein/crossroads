@@ -120,6 +120,11 @@
 	position: relative;
 }
 
+.member-image {
+	width: 140px;
+	height: 140px;
+}
+
 .profile-image {
 	position: absolute;
 	width: 150px;
