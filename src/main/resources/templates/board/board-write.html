@@ -8,12 +8,17 @@
     <title>게시글 작성</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/board/board-write.css">
-    <link rel="stylesheet" href="../../static/css/board/boardWrite.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="stylesheet" href="/css/board/board-write.css">
+    <link rel="stylesheet" href="/css/board/boardWrite.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
+    <!-- header 시작 -->
+    <div th:insert="~{/components/header-client :: header-client}"></div>
+    <!-- header 끝 -->
     <!-- 모달 창 -->
     <div class="modal-wrapper">
         <div class="modal-content">
@@ -95,7 +100,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </section>
+                                            </div>
+                                        </section>
                                     <!-- 추가 -->
                                     <!-- 이미지 -->
                                         <label id="button-label">
@@ -147,8 +153,12 @@
         </div>
     </div>
     <div id="footer"></div>
+    <!-- footer 시작 -->
+    <div th:insert="~{/components/footer :: footer}"></div>
+    <!-- footer 끝 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/board/board-write-test.js"></script>
-<!-- <script src="../../static/js/board/board-write.js"></script> -->
+<script src="/js/board/board-write-test.js"></script>
+<!-- <script src="/js/board/board-write.js"></script> -->
+<script src="/js/components/header-client.js"></script>
 </html>
