@@ -29,15 +29,15 @@ public class MemberController {
         return "member/change-pwd";
     }
 
+    //비밀번호 변경 이메일
+    @GetMapping("find-pwd-send")
+    public String findPwdSend(){
+        return "member/find-pwd-send";
+    }
+
     //비밀번호 변경 완료
     @GetMapping("complete-change")
     public String completeChange(){
         return "member/complete-change";
-    }
-
-    //비밀번호 변경 완료
-    @GetMapping("find-pwd-send")
-    public String findPwdSend(){
-        return "member/find-pwd-send";
     }
 }

@@ -5,84 +5,76 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MypageController {
-    @GetMapping("/test")
-    public String test(){
-        return "index";
+    //마이페이지 메인
+    @GetMapping("/mypage-main")
+    public String mypageMain(){
+        return "mypage/mypage-main";
     }
 
-    @GetMapping("/maintest")
-    public String maintest(){
-        return "main/main";
+    //마이페이지 프로필 수정
+    @GetMapping("/profile-modify")
+    public String profileModify(){
+        return "mypage/profile-modify";
     }
+
+    //마이페이지 비밀번호 변경
+    @GetMapping("/change-password")
+    public String changePassword(){
+        return "mypage/change-password";
+    }
+
+    //마이페이지 비밀번호 변경 확인
+    @GetMapping("/confirm-password")
+    public String confirmPassword(){
+        return "mypage/confirm-password";
+    }
+
+    //마이페이지 목록
     @GetMapping("/classList")
     public String classList(){
         return "mypage/classList";
     }
 
+    //마이페이지 포인트내역
+    @GetMapping("/point")
+    public String point(){
+        return "mypage/point";
+    }
+
+    //마이페이지 후기
     @GetMapping("/review")
     public String review(){
         return "mypage/review";
     }
 
-    @GetMapping("/point")
-    public String point(){
-        return "mypage/point";
+    //마이페이지 내가 쓴 게시글 목록
+    @GetMapping("/my-board-list")
+    public String myBoardList(){ return "mypage/my-board-list"; }
+    
+    //마이페이지 내가 쓴 댓글 목록
+    @GetMapping("/my-reply-list")
+    public String myReplyList(){
+        return "mypage/my-reply-list";
     }
-    @GetMapping("/profile-modify")
-    public String test14535(){
-        return "mypage/profile-modify";
-    }
-
-    @GetMapping("/change-password")
-    public String test24(){
-        return "mypage/change-password";
-    }
-
-   @GetMapping("/withdraw")
-    public String test4(){
+    
+    //마이페이지 회원탈퇴
+    @GetMapping("/withdraw")
+    public String withdraw(){
         return "mypage/withdraw";
     }
+    
+    //마이페이지 회원탈퇴 동의
     @GetMapping("/withdraw-agree")
-    public String test5(){
+    public String withdrawAgree(){
         return "mypage/withdraw-agree";
     }
 
-   @GetMapping("/withdraw-confirm")
-    public String test3(){
+    //마이페이지 회원탈퇴 확인
+    @GetMapping("/withdraw-confirm")
+    public String withdrawConfirm(){
         return "mypage/withdraw-confirm";
     }
 
-    @GetMapping("/my-board-list")
-    public String test14(){
-        return "mypage/my-board-list";
-    }
-    @GetMapping("/my-reply-list")
-    public String test45(){
-        return "mypage/my-reply-list";
-    }
-    @GetMapping("/confirm-password")
-    public String test16(){
-        return "mypage/confirm-password";
-    }
-    @GetMapping("/mypage-main")
-    public String test17(){
-        return "mypage/mypage-main";
-    }
-
-    @GetMapping("/review-update")
-    public String reviewupdate() {
-        return "review/review-update";
-    }
-
-    @GetMapping("/review-list")
-    public String reviewlist() {
-        return "review/review-list";
-    }
-
-    @GetMapping("/review-write")
-    public String reviewwrite() {
-        return "review/review-write";
-    }
 
 
 
