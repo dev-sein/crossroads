@@ -14,7 +14,6 @@ public class MypageController {
     public String maintest(){
         return "main/main";
     }
-
     @GetMapping("/classList")
     public String classList(){
         return "mypage/classList";
@@ -23,11 +22,6 @@ public class MypageController {
     @GetMapping("/review")
     public String review(){
         return "mypage/review";
-    }
-
-    @GetMapping("/review2")
-    public String review2(){
-        return "mypage/review2";
     }
 
     @GetMapping("/point")
@@ -66,17 +60,13 @@ public class MypageController {
     public String test45(){
         return "mypage/my-reply-list";
     }
-    @GetMapping("/change-confirm")
+    @GetMapping("/confirm-password")
     public String test16(){
-        return "mypage/change-confirm";
+        return "mypage/confirm-password";
     }
     @GetMapping("/mypage-main")
     public String test17(){
         return "mypage/mypage-main";
-    }
-    @GetMapping("/review")
-    public String test19(){
-        return "mypage/review";
     }
 
     @GetMapping("/review-update")
