@@ -89,4 +89,22 @@ public class TestController {
         return "mypage/review-friday";
     }
 
+    @GetMapping("/review-update")
+    public String reviewupdate() {
+        return "review/review-update";
+    }
+
+    @GetMapping("/review-list")
+    public String reviewlist() {
+        return "review/review-list";
+    }
+
+    @GetMapping("/review-write")
+    public String reviewwrite() {
+        return "review/review-write";
+    }
+
+
+
+
 }
