@@ -12,9 +12,4 @@ import org.springframework.stereotype.Service;
 public class MemberService {
     private final MemberDAO memberDAO;
 
-    //회원가입
-    public void registerMember(MemberVO memberVO){
-        MemberVO memberVO = new MemberVO();
-
-    }
 }
