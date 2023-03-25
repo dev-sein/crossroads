@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.ApplyMapper">
     <select id="selectAll" resultType="applyDTO">
-        select m.member_id, member_identification, member_password, member_name,
+        select member_id, member_identification, member_password, member_name,
                 member_phone, member_email, member_file_system_name, member_type, member_drive_register_date,
                 member_point, apply_id, apply_course, apply_location, apply_date, apply_register_date,
                 starter_member_id, veteran_member_id, apply_status
         from tbl_member m join tbl_apply a
-        on m.member = a.starter_member_id
+        on m.member_id = a.starter_member_id
     </select>
 </mapper>
