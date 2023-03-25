@@ -111,16 +111,13 @@ const score = document.querySelector('.score');
 
 
 // 리뷰 작성 확인 및 제출
-$(".registButton_button").on('click', function(){
+$("#complete-button").on('click', function(){
   let flag1 = true;
   let flag2 = true;
-  let flag3 = true;
   console.log("들어옴");
   var $title = $("#input-title");
   var $content = $("#input-content");
-  var $star = $("input[name=rating]:checked");
 
-  console.log("star : " + $star.val());
   if($title.val().length < 1){
     // alert("제목을 작성해주세요.");
     $(".modal-wrapper").css('display', 'block');
@@ -133,15 +130,9 @@ $(".registButton_button").on('click', function(){
     $(".modal-message").text("내용을 작성해주세요.");
     $("#input-content").focus();
     flag2 = false;
-  } else if($star.val() < 1 || $star.val() == null){
-    // alert("만족도를 체크해주세요.");
-    $(".modal-wrapper").css('display', 'block');
-    $(".modal-message").text("만족도를 체크해주세요.");
-    $star.focus();
-    flag3 = false;
   }
   
-  if(flag1 && flag2 && flag3){
+  if(flag1 && flag2){
     // alert("완료");
     document.reviewForm.submit();
   }
