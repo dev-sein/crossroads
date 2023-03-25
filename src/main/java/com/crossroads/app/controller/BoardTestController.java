@@ -10,4 +10,14 @@ public class BoardTestController {
         return "board/board-list";
     }
 
+    @GetMapping("board-update")
+    public String boardUpdate(){
+        return "board/board-update";
+    }
+
+    @GetMapping("board-write")
+    public String boardWrite(){
+        return "board/board-write";
+    }
+
 }
