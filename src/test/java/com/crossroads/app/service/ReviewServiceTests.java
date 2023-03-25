@@ -9,6 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ReviewServiceTests {
 
     @Autowired
-    ReviewService reviewService;
+    ReviewBoardService reviewBoardServiceervice;
 
 }
