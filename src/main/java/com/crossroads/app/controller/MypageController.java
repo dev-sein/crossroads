@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TestController {
+public class MypageController {
     @GetMapping("/test")
     public String test(){
         return "index";
@@ -74,19 +74,9 @@ public class TestController {
     public String test17(){
         return "mypage/mypage-main";
     }
-    @GetMapping("/test-review")
+    @GetMapping("/review")
     public String test19(){
-        return "mypage/review-backup";
-    }
-    @GetMapping("/mypage-sidebar")
-    public String test20(){
-        return "mypage/mypage-sidebar";
-    }
-
-
-    @GetMapping("/friday-review")
-    public String test1229(){
-        return "mypage/review-friday";
+        return "mypage/review";
     }
 
     @GetMapping("/review-update")

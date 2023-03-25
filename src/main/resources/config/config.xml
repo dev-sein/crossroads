@@ -9,5 +9,6 @@
         <typeAlias type="com.crossroads.app.domain.vo.PointVO" alias="PointVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.ReplyVO" alias="ReplyVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.ReviewVO" alias="ReviewVO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.ApplyDTO" alias="ApplyDTO"/>
     </typeAliases>
 </configuration>

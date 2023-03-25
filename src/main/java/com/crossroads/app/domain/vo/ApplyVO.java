@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class ApplyVO {
-    Long applyId;
-    String applyCourse;
-    String applyLocation;
-    String applyDate;
-    String applyRegisterDate;
-    Long starterMemberId;
-    Long veteranMemberId;
-    String applyStatus;
+    private Long applyId;
+    private String applyCourse;
+    private String applyLocation;
+    private String applyDate;
+    private String applyRegisterDate;
+    private Long starterMemberId;
+    private Long veteranMemberId;
+    private String applyStatus;
 }
