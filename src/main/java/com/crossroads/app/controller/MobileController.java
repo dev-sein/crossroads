@@ -19,4 +19,9 @@ public class MobileController {
         return "mobile/join-mobile";
     }
 
+    @GetMapping("list-mobile")
+    public String listMobile(){
+        return "mobile/list-mobile";
+    }
+
 }
