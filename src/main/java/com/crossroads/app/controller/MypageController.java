@@ -5,15 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MypageController {
-    @GetMapping("/test")
-    public String test(){
-        return "index";
-    }
-
-    @GetMapping("/maintest")
-    public String maintest(){
-        return "main/main";
-    }
     @GetMapping("/classList")
     public String classList(){
         return "mypage/classList";
