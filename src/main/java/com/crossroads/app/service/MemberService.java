@@ -10,10 +10,5 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
-    private final MemberDAO memberDAO;
 
-    //회원가입
-    public void registerMember(MemberVO memberVO){
-
-    }
 }
