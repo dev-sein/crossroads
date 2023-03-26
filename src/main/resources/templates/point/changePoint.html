@@ -1,179 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
     />
     <title>포인트 환전</title>
-    <link rel="stylesheet" href="../../static/css/form/form.css">
+    <link rel="stylesheet" href="/css/form/form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/point/buyPoint.css">
-    <link rel="stylesheet" href="../../static/font/NotoSansKR-Regular.woff">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="shortcut icon" href="../../static/images/logo.png">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/point/buyPoint.css">
+    <link rel="stylesheet" href="/font/NotoSansKR-Regular.woff">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 
 </head>
 <body>
-    <!-- header -->
-    <header class="header">
-      <section class="nav-client">
-          <div class="container">
-              <a class="main-logo active" href="" style="font-size:24px; font-weight:700;">
-                  교차로
-              </a>
-              <div class="left-nav">
-                  <a class="menu element" href="">사업소개</a>
-                  <a class="menu element" href="">자주묻는질문</a>
-                  <a class="menu element" href="">연수신청</a>
-                  <a class="menu element" href="">포인트충전</a>
-                  <div class="nav-divider"></div>
-                  <a class="menu element" href="">이용후기</a>
-                  <a class="menu element alert" href=""></a>
-              </div>
-              <div class="right-nav">
-                  <div class="right-nav-list">
-                      <!-- <a class="right-nav-item" href="">
-                          <img src="https://www.wishket.com/static/renewal/img/global/gnb-icon-help-normal.png" alt="">
-                      </a>
-                      <a class="right-nav-item" href="">
-                          <img src="https://www.wishket.com/static/renewal/img/global/gnb-icon-alarm-new.png" alt="">
-                      </a> -->
-                      <a id="user-icon" class="right-nav-item " href="">
-                          <img alt="" class="user-img" height="32px" src="https://www.wishket.com/static/img/default_avatar_c.png" width="32px">
-                      </a>
-                      <div id="dropdown" class="nav-dropdown">
-                          <a class="nav-dropdown-item element" href="">
-                              <img src="https://www.wishket.com/static/renewal/img/global/icon_menu_home.png" alt="">
-                              마이페이지
-                          </a>
-                          <div class="nav-divider"></div>
-                          <a class="nav-dropdown-item element" href="">
-                              <img src="https://www.wishket.com/static/renewal/img/global/icon_menu_user.png" alt="">
-                              포인트조회
-                          </a>
-                          <div class="nav-divider"></div>
-                          <a class="nav-dropdown-item element" href="">
-                              <img src="https://www.wishket.com/static/renewal/img/global/icon_menu_setting.png" alt="">
-                              연수내역
-                          </a>
-                          <div class="nav-divider"></div>
-                          <a class="nav-dropdown-item element" href="">
-                              <img src="https://www.wishket.com/static/renewal/img/global/icon_menu_bell.png" alt="">
-                              나의후기
-                          </a>
-                          <div class="nav-divider"></div>
-                          <a class="nav-dropdown-item element" href="">
-                              <img src="https://www.wishket.com/static/renewal/img/global/icon_menu_logout.png" alt="">
-                              로그아웃
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- <section class="sub-nav-client">
-          <div class="container">
-              <div class="left-nav">
-                  <a class="sub-menu element" href="">검수 중</a>
-                  <a class="sub-menu element" href="">지원자 모집 중</a>
-                  <a class="sub-menu element" href="">진행 중인 프로젝트</a>
-                  <a class="sub-menu element" href="">종료된 프로젝트</a>
-              </div>
-          </div>
-      </section> -->
-  </header>
-<!-- header fin -->
-    <div class="gaia">
-        <div class="container">
-                 <!-- 메인시작  -->
-                 <form method ="post" name="changepoint" id="changepoint">
-                 <div class="project-create-form-section" style="margin: 0 0 0 13.5%">
-                    <div class="form-section-header">
-                        <p class="form-section-title subtitle-1">포인트 환전하기</p>
+<!-- header 시작 -->
+<div th:insert="~{/components/header-client :: header-client}"></div>
+<!-- header 끝 -->
+<div class="gaia">
+    <div class="container">
+        <!-- 메인시작  -->
+        <form method="post" name="changepoint" id="changepoint">
+            <div class="project-create-form-section" style="margin: 0 0 0 13.5%">
+                <div class="form-section-header">
+                    <p class="form-section-title subtitle-1">포인트 환전하기</p>
+                </div>
+                <div class="form-input-section">
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">보유 포인트</label>
+                        <div class="form-content mb16">
+                            <div>
+                                <div class="text-input-client2  ">
+                                    <div>
+                                        <input class="theme-client wishket-text" data-type="text" maxlength="30"
+                                               name="title" placeholder="현재 보유하신 포인트는 1000p입니다." type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-input-section">
-                        <div class="form-group-light">
-                            <label class="form-group-title body-1-bold">보유 포인트</label>
-                            <div class="form-content mb16">
-                                <div>
-                                    <div class="text-input-client2  ">
-                                        <div>
-                                            <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="현재 보유하신 포인트는 1000p입니다." type="text" value="">
-                                        </div>
+
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">계좌 번호</label>
+                        <div class="form-content mb16">
+                            <div>
+                                <div class="text-input-client  ">
+                                    <div>
+                                        <input id="account-number" class="theme-client wishket-text name-input"
+                                               data-type="text" maxlength="15" name="title"
+                                               placeholder="ex) 1100-0111-1111" type="text" value="">
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
+                            <em class="account-error error-message">계좌번호를 입력해주세요.</em>
                         </div>
+                    </div>
 
-                        <div class="form-group-light">
-                            <label class="form-group-title body-1-bold">계좌 번호</label>
-                            <div class="form-content mb16">
-                                <div>
-                                    <div class="text-input-client  ">
-                                        <div>
-                                            <input id="account-number" class="theme-client wishket-text name-input" data-type="text" maxlength="15" name="title" placeholder="ex) 1100-0111-1111" type="text" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <em class="account-error error-message">계좌번호를 입력해주세요.</em>
-                            </div>  
-                        </div>
-                        
 
-                        <div class="form-group-light">
-                            <label class="form-group-title body-1-bold">환전 방법</label>
-                            <p class="body-2 text900 form-group-guide">원하시는 환전 방법을 선택해 주세요.</p>
-                            <div class="form-content">
-                                <!-- 코스 -->
-                                <div class="select-card client-input" style="width: 200px; margin-right: 20px;">
-                                    <label >
-                                    <input id="category_develop" name="category" type="radio" value="develop" class="error" checked="checked">
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">환전 방법</label>
+                        <p class="body-2 text900 form-group-guide">원하시는 환전 방법을 선택해 주세요.</p>
+                        <div class="form-content">
+                            <!-- 코스 -->
+                            <div class="select-card client-input" style="width: 200px; margin-right: 20px;">
+                                <label>
+                                    <input id="category_develop" name="category" type="radio" value="develop"
+                                           class="error" checked="checked">
                                     <div class="select-card-content">
-                                        <img class="select-card-img inherit-select-card-img" src="../../static/img/account.png">
+                                        <img class="select-card-img inherit-select-card-img"
+                                             src="/img/account.png">
                                         <p class="body-2-medium">계좌이체</p>
                                     </div>
                                 </label>
-                                </div>
-                                <div class="select-card client-input div2" style="width: 200px; margin-right: 20px;">
-                                    <label >
-                                    <input id="category_develop" name="category" type="radio" value="" class="error" onclick="return false">
+                            </div>
+                            <div class="select-card client-input div2" style="width: 200px; margin-right: 20px;">
+                                <label>
+                                    <input id="category_develop" name="category" type="radio" value="" class="error"
+                                           onclick="return false">
                                     <div class="select-card-content">
-                                        <img class="select-card-img inherit-select-card-img" src="../../static/img/money.png">
+                                        <img class="select-card-img inherit-select-card-img"
+                                             src="/img/money.png">
                                         <p class="body-2-medium">현금 환전(서비스 종료)</p>
                                     </div>
                                 </label>
-                                </div>
-
                             </div>
-                            <span class="error-text">※수수료는 30% 입니다※</span>
-                        </div>
-                    </div>
 
-                    <!-- 다음 -->
-                    <div class="form-section-footer" style="position: relative">
-                        <button class="signup-submit-button btn btn-client btn-11-24 btn-right signup-submit-button" name="can_submit" style="pointer-events: none; cursor: default; opacity: 0.45;" type="button" onclick="send()" >
-                        환전하기 </button>
-                        <div style="clear:both;">
                         </div>
+                        <span class="error-text">※수수료는 30% 입니다※</span>
                     </div>
-                    
-                 </div>
-                </form>
-                 <!-- 메인 끝  -->
+                </div>
 
-        </div>
-     </div>   
-    </body>
-    <script src="../../static/js/point/changePoint.js"></script>
-    <script src="../../static/js/components/header-client.js"></script>
+                <!-- 다음 -->
+                <div class="form-section-footer" style="position: relative">
+                    <button class="signup-submit-button btn btn-client btn-11-24 btn-right signup-submit-button"
+                            name="can_submit" style="pointer-events: none; cursor: default; opacity: 0.45;"
+                            type="button" onclick="send()">
+                        환전하기
+                    </button>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <!-- 메인 끝  -->
+
+    </div>
+</div>
+</body>
+<script src="/js/point/changePoint.js"></script>
+<script src="/js/components/header-client.js"></script>
 </html>
