@@ -51,78 +51,78 @@
                 <section class="search-result-section">
                     <div class="result-header">
                         <p class="title-wrap result-people">
-                            47,822명의 연수 신청자
+                            <span th:text="${applies.size() == null ? 0 : applies.size()}"></span>명의 연수 신청자
                         </p>
                     </div>
                     <!-- 연수자 목록 -->
                     <div class="result-beginners">
-                        <!-- 연수자 1명 -->
-                        <div class="result-beginner">
-                            <div class="project-status-label">
-                                <div class="status-mark recruiting-mark">신청중</div>
-                                <div class="status-mark new-mark">NEW</div>
-                            </div>
-                            <div class="beginner-title">
-                                <span class="subtitle">
-                                    2023.03.20(월)
-                                </span>
-                            </div>
-                            <div class="beginner-info-box">
-                                <div class="estimated-box">
-                                    <div class="estimated estimated-point">
-                                         <p class="estimated-help-text">
-                                            예상 포인트
-                                         </p>
-                                         <p class="estimated-value">
-                                            100,000
-                                         </p>
-                                    </div>
-                                    <div class="estimated estimated-term">
-                                        <p class="estimated-help-text">
-                                            남은 기간
-                                         </p>
-                                         <p class="estimated-value">
-                                            45일
-                                         </p>
-                                    </div>
-                                </div>
-                                <div class="category-field-box">
-                                    <p class="category-info">
-                                        코스
-                                    </p>
-                                    <div class="pipe"></div>
-                                    <p class="field-info">
-                                        <span th:text="${applies[0].applyCourse}"></span>코스(시내주행)
-                                    </p>
-                                </div>
-                                <div class="license-info-tag">
-                                    <div class="simple-chip">
-                                        초보자
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="driver-info-box">
-                                        <div class="driver-tag">2년차</div>
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
-                                    </div>
-                                </div>
-                                <div class="driver-info-etc">
-                                    <div class="location-tag">
-                                        <span class="driver-location">
-                                            서울특별시
-                                        </span>
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="register-date">
-                                        등록 일자 2023.03.13(월)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ok-wrapper">
-                                <!-- <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> -->
-                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                            </div>
-                        </div> <!-- 연수자 1명 끝 -->
+<!--                        &lt;!&ndash; 연수자 1명 &ndash;&gt;-->
+<!--                        <div class="result-beginner">-->
+<!--                            <div class="project-status-label">-->
+<!--                                <div class="status-mark recruiting-mark">신청중</div>-->
+<!--                                <div class="status-mark new-mark">NEW</div>-->
+<!--                            </div>-->
+<!--                            <div class="beginner-title">-->
+<!--                                <span class="subtitle">-->
+<!--                                    2023.03.20(월)-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="beginner-info-box">-->
+<!--                                <div class="estimated-box">-->
+<!--                                    <div class="estimated estimated-point">-->
+<!--                                         <p class="estimated-help-text">-->
+<!--                                            예상 포인트-->
+<!--                                         </p>-->
+<!--                                         <p class="estimated-value">-->
+<!--                                            100,000-->
+<!--                                         </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="estimated estimated-term">-->
+<!--                                        <p class="estimated-help-text">-->
+<!--                                            남은 기간-->
+<!--                                         </p>-->
+<!--                                         <p class="estimated-value">-->
+<!--                                            45일-->
+<!--                                         </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="category-field-box">-->
+<!--                                    <p class="category-info">-->
+<!--                                        코스-->
+<!--                                    </p>-->
+<!--                                    <div class="pipe"></div>-->
+<!--                                    <p class="field-info">-->
+<!--                                        <span th:text="${applies[0].applyCourse}"></span>코스(시내주행)-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                                <div class="license-info-tag">-->
+<!--                                    <div class="simple-chip">-->
+<!--                                        초보자-->
+<!--                                    </div>-->
+<!--                                    <div class="pipe"></div>-->
+<!--                                    <div class="driver-info-box">-->
+<!--                                        <div class="driver-tag">2년차</div>-->
+<!--                                        <div class="driver-tag">신입</div>-->
+<!--                                        <div class="driver-tag">장롱</div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="driver-info-etc">-->
+<!--                                    <div class="location-tag">-->
+<!--                                        <span class="driver-location">-->
+<!--                                            서울특별시-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="pipe"></div>-->
+<!--                                    <div class="register-date">-->
+<!--                                        등록 일자 2023.03.13(월)-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="ok-wrapper">-->
+<!--                                &lt;!&ndash; <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> &ndash;&gt;-->
+<!--                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; 연수자 1명 끝 &ndash;&gt;-->
 <!--                        &lt;!&ndash; 연수자 1명 &ndash;&gt;-->
 <!--                        <div class="result-beginner">-->
 <!--                            <div class="project-status-label">-->
@@ -331,5 +331,8 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/mobile/list.js"></script>
+<script th:inline="javascript">
+    let applies = [[${applies}]];
+</script>
+<script th:inline="javascript" src="/js/mobile/list.js"></script>
 </html>
