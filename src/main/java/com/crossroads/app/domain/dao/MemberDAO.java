@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
     private final MemberMapper memberMapper;
     public void saveMember(MemberVO memberVO){ memberMapper.join(memberVO);}
+
+    public void findById(Long memberId){memberMapper.select(memberId);}
 }
