@@ -11,10 +11,10 @@ public class MypageController {
         return "mypage/mypage-main";
     }
 
-    //마이페이지 프로필 수정
-    @GetMapping("/profile-modify")
+    //마이페이지 프로필 조회/수정
+    @GetMapping("/my-info")
     public String profileModify(){
-        return "mypage/profile-modify";
+        return "mypage/my-info";
     }
 
     //마이페이지 비밀번호 변경
