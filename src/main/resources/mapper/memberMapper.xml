@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.MemberMapper">
-    <insert id="insert">
+    <insert id="join" parameterType="memberVO">
     insert into tbl_member
     (member_identification, member_password, member_name, member_phone,
-    member_email, member_file_system_name, member_type, member_drive_register_date)
+    member_email, member_file_system_name)
     values (#{memberIdentification}, #{memberPassword}, #{memberName}, #{memberPhone},
-    #{memberEmail}, #{memberFileSystemName},
-    #{memberType}, #{memberDriveRegisterDate})
+    #{memberEmail}, #{memberFileSystemName})
     </insert>
 
+    <select id="mypage" parameterType="memberVO">
+        select member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
+        from tbl_member
+    </select>
 </mapper>
