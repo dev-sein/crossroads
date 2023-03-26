@@ -1,5 +1,6 @@
 
 
+
 package com.crossroads.app.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -15,4 +16,5 @@ public class ExceptionController implements ErrorController {
         return new RedirectView("error/404");
     }
 }
+
 
