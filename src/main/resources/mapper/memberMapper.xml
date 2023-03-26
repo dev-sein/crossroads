@@ -9,7 +9,7 @@
     #{memberEmail}, #{memberFileSystemName})
     </insert>
 
-    <select id="myInfo" parameterType="memberVO">
+    <select id="select" parameterType="memberVO">
         select member_id, member_identification, member_name, member_phone, member_email, member_type
         from tbl_member
     </select>
