@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신청하기</title>
+
+    <link rel="stylesheet" href="/css/form/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"/>
+    <link rel="stylesheet" href="/css/point/buyPoint.css"/>
+    <link rel="stylesheet" href="/font/NotoSansKR-Regular.woff"/>
+    <link rel="stylesheet" href="/css/components/header.css"/>
+    <link rel="shortcut icon" href="/images/logo.png"/>
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+</head>
+<body>
+<!-- header 시작-->
+<div th:insert="~{/components/header-main :: header-main}"></div>
+<!-- header 끝 -->
+<div class="gaia">
+    <div class="container">
+        <!-- 사이드  -->
+        <div class="submit-progress">
+            <div class="project-status-box">
+                <a
+                        class="back-to-before link-text"
+                        onclick="exitWithSubmit('temporary_project_phase_1', 'False')"
+                        style="cursor: pointer"
+                >
+                    <!--  <img
+                       class="back-to-before-img"
+                       src="https://www.wishket.com/static/renewal/img/project/submit/btn_icon_back_s.png"
+                     />
+                     <p class="back-to-before-title body-1-medium">저장 후 나가기</p> -->
+                </a>
+                <p class="menu-title subtitle-1-medium mb4">연수 정보등록</p>
+                <!--  <p class="saved-status body-2" data-saved-time="2023-03-10 16:42:57" id="submit_saved_time_picker">2일 전에 임시 저장</p> -->
+            </div>
+            <div class="input-group-status">
+                <p class="status-main-menu body-2">연수 정보등록 <img class="status-mark" src=""/></p>
+                <div class="status-sub-menu">
+                    <p class="status-sub-menu-title active" style="background-color: #95abee26;">
+                        1. 정보 입력 및 코스 선택
+                        <img
+                                class="status-mark"
+                                src="https://www.wishket.com/static/renewal/img/project/submit/tab_icon_check_on_c.png"
+                                style="display: none"
+                        />
+                        <!-- <img class="status-mark" src="https://www.wishket.com/static/renewal/img/project/submit/tab_icon_check_on_c.png" > -->
+                    </p>
+                    <p class="status-sub-menu-title">
+                        2. 지역 및 요일 선택
+                        <img class="status-mark" src=""/>
+                    </p>
+                    <p class="status-sub-menu-title">
+                        3. 완료
+                        <img class="status-mark" src=""/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- 사이드 끝-->
+
+        <!-- 메인시작  -->
+        <form method="post" name="join" id="join">
+            <div class="project-create-form-section">
+                <div class="form-section-header">
+                    <p class="form-section-title subtitle-1">1. 정보 입력 및 코스 선택</p>
+                </div>
+                <div class="form-input-section">
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold ">신청자 이름</label>
+                        <div class="form-content mb16">
+                            <div>
+                                <div class="text-input-client list">
+                                    <div>
+                                        <input class="name-input" id="name-input" data-type="text" maxlength="5"
+                                               name="title" placeholder="이름을 적어주세요" type="text" value=""/>
+                                    </div>
+                                    <em class="name-error error-message">이름을 입력해주세요.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">핸드폰 번호</label>
+                        <div class="form-content mb16">
+                            <div>
+                                <div class="text-input-client list">
+                                    <div>
+                                        <input
+                                                class="name-input" id="input-phone-number" maxlength="11"
+                                                class="theme-client wishket-text check"
+                                                data-type="text"
+                                                name="userPhone"
+                                                placeholder="ex) 01012341234"
+                                                type="text"
+                                                value=""
+                                        />
+                                    </div>
+                                    <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">신청 코스</label>
+                        <p class="body-2 text900 form-group-guide">원하시는 코스를 선택해 주세요. (기본 A코스입니다)</p>
+                        <div class="form-content">
+                            <!-- 코스 -->
+                            <div class="select-card client-input" style="width: 200px; margin-right: 20px">
+                                <label class="termscheckbox" id="termscheckbox">
+                                    <input
+                                            id="category_develop "
+                                            name="category"
+                                            type="radio"
+                                            value="develop"
+                                            class="error"
+                                            checked="checked"
+                                    />
+                                    <div class="select-card-content">
+                                        <img
+                                                class="select-card-img inherit-select-card-img"
+                                                src="/img/courseA.png"
+                                        />
+                                        <p class="body-2-medium">A코스 (시내주행)<br/>50000p</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div
+                                    class="select-card client-input div2"
+                                    style="width: 200px; margin-right: 20px"
+                            >
+                                <label class="termscheckbox2" id="termscheckbox2">
+                                    <input
+                                            id="category_develop"
+                                            name="category"
+                                            type="radio"
+                                            value="develop"
+                                            class="error"
+                                    />
+                                    <div class="select-card-content">
+                                        <img
+                                                class="select-card-img inherit-select-card-img"
+                                                src="/img/courseB.png"
+                                        />
+                                        <p class="body-2-medium">B코스 (시내,고속주행)<br/>100000p</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- 다음 -->
+                <div class="form-section-footer" style="position: relative">
+                    <button
+                            class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            name="can_submit"
+                            style="pointer-events: none;
+                cursor: default;
+                opacity: 0.45;"
+                            type="button"
+                            onclick="send()"
+                    >
+                        다음
+                    </button>
+                    <button
+                            class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            style="margin: 0px 12px 0 0px;"
+                            name="can_submit"
+                            type="button"
+                    >
+                        이전
+                    </button>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+        </form>
+        <!-- 메인 끝  -->
+    </div>
+</div>
+</body>
+
+<script src="/js/form/Form1.js"></script>
+<script src="/js/components/header-client.js"></script>
+</html>
