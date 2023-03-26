@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
     public void join(MemberVO memberVO);
+
+    public MemberVO select(Long memberId);
 }

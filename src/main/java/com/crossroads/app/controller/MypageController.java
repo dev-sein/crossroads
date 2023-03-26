@@ -1,10 +1,19 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/mypage/*")
+@RequiredArgsConstructor
+@Slf4j
 public class MypageController {
+    private final MemberService memberService;
+
     //마이페이지 메인
     @GetMapping("/mypage-main")
     public String mypageMain(){
