@@ -1,20 +1,47 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.vo.MemberVO;
+import com.crossroads.app.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/members/*")
 public class MemberController {
+
+    private final MemberService memberService;
+
     //회원가입
     @GetMapping("join")
     public String join(){
         return "member/join";
     }
 
+
+    //회원가입 테스트
+    @GetMapping("jointestpage")
+    public ModelAndView jointest(){
+        ModelAndView mav = new ModelAndView("member/jointests");
+        return mav;
+    }
+
+   //회원가입 rest 테스트
+    @PostMapping("jointests")
+    public void write(@RequestBody MemberVO memberVO){
+        memberService.save(memberVO);
+    }
+
     //로그인
     @GetMapping("login")
-    public String login(){
-        return "member/login";
+    public ModelAndView login(){
+        ModelAndView mav = new ModelAndView("member/login");
+        return mav;
     }
 
     //비밀번호 찾기

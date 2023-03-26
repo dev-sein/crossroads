@@ -1,3 +1,4 @@
+
 package com.crossroads.app.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
