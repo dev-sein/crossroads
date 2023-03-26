@@ -9,6 +9,5 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class MemberDAO {
     private final MemberMapper memberMapper;
-
-    public void save(MemberVO memberVO){ memberMapper.insert(memberVO);}
+    public void saveMember(MemberVO memberVO){ memberMapper.join(memberVO);}
 }

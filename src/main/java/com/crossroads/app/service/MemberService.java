@@ -15,7 +15,7 @@ public class MemberService {
 
     //회원가입
     public void save(MemberVO memberVO){
-        memberDAO.save(memberVO);
+        memberDAO.saveMember(memberVO);
     }
 
 }
