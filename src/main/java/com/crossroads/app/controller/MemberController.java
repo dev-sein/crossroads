@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/members/*")
 public class MemberController {
 
     private final MemberService memberService;
@@ -31,11 +30,14 @@ public class MemberController {
         return mav;
     }
 
+
    //회원가입 rest 테스트
-    @PostMapping("jointests")
-    public void write(@RequestBody MemberVO memberVO){
+    @PostMapping("jointestpage")
+    public void joinfinish(@RequestBody MemberVO memberVO){
         memberService.save(memberVO);
     }
+
+
 
     //로그인
     @GetMapping("login")
