@@ -30,14 +30,11 @@ public class MemberController {
         return mav;
     }
 
-
    //회원가입 rest 테스트
     @PostMapping("jointestpage")
     public void joinfinish(@RequestBody MemberVO memberVO){
         memberService.save(memberVO);
     }
-
-
 
     //로그인
     @GetMapping("login")
