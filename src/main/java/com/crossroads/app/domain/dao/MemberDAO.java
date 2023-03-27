@@ -21,5 +21,9 @@ public class MemberDAO {
     //로그인
     public Long login(String memberIdentification, String memberPassword){return memberMapper.login(memberIdentification, memberPassword);}
 
+    //마이페이지 정보 조회
     public MemberVO findById(Long memberId){ return memberMapper.select(memberId);}
+
+    //마이페이지 정보 수정
+    public void setMyInfo(MemberVO memberVO){ memberMapper.update(memberVO);}
 }
