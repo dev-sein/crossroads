@@ -53,9 +53,14 @@ public class MobileController {
         applyService.modifyVeteranId(info);
     }
 
-    @GetMapping("point/changePoint")
+    @GetMapping("point/change-point")
     public String changePoint(){
         return "point/changePoint";
+    }
+
+    @GetMapping("point/change-point-mobile")
+    public String changePointMobile(){
+        return "mobile/change-point-mobile";
     }
 
 }
