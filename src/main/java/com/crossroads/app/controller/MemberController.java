@@ -50,18 +50,16 @@ public class MemberController {
 
     //로그인
     @GetMapping("login")
-    public String login(HttpServletRequest request, Model model){
-        model.addAttribute("memberId", request.getSession().getAttribute("memberId"));
-        log.info("login");
+    public String login(){
         return "member/login";
     }
 
-    //    로그인
+    //   로그인
     @PostMapping("login")
     public RedirectView login(String memberIdentification, String memberPassword, HttpSession session){
         Long id = memberService.login(memberIdentification, memberPassword);
         if(id != null){
-            session.setAttribute("memberId", id);
+           session.setAttribute("memberId", id);
             return new RedirectView("/main");
         }
         return new RedirectView("/member/login");

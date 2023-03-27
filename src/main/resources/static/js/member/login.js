@@ -1,3 +1,8 @@
+// 회원가입 버튼
+const $submitBtn = $("#submit-btn");
+
+
+
 // 아이디 변수
 const $idInput = $('.id .input-text');
 // 아이디 에러 변수
@@ -22,9 +27,6 @@ $idInput.on("blur", function() {
 		$idInput.css("border-color", "#e0e0e0");
 	}
 })
-
-
-/*		$('form').submit();*/
 
 
 // 비밀번호 변수
@@ -64,6 +66,14 @@ $passwordInput.on("blur", function() {
 	}
 });
 
+
+/*$submitBtn.on(click, function(){
+	if($idInput && $passwordInput){
+		$('form').submit();
+	}
+})*/
+
+
 const $pwdEye = $(".pwd i");
 let checkPwd = false;
 $pwdEye.on('click', function(){
@@ -100,5 +110,4 @@ $checkbox.on("click", function(){
         checkbox = false;
     }
 });
-
 

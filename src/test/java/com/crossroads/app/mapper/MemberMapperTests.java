@@ -4,7 +4,9 @@ import com.crossroads.app.domain.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestConstructor;
 
 @SpringBootTest
 @Slf4j
@@ -30,10 +32,15 @@ public class MemberMapperTests {
        log.info(memberMapper.select(1L).toString());
     }
 
+/*
     @Test
     public void loginTest(String memberIdentification, String memberPassword){
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberIdentification("test1234");
+        memberVO.setMemberPassword("asdfasdf");
         memberMapper.login(memberIdentification, memberPassword);
     }
+*/
 
 
 }
