@@ -4,11 +4,14 @@ import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
-@RequestMapping("/mypage/*")
+@RequestMapping("/mypages/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MypageController {
@@ -25,6 +28,15 @@ public class MypageController {
     public String profileModify(){
         return "mypage/my-info";
     }
+
+//    @GetMapping("my-info")
+//    public String myInfo(HttpSession session, Model model)throws Exception {
+////        Long memberId = (Long) session.getAttribute(login);
+//        model.addAttribute("mypages", memberService.getMember();
+//        return "mypage/my-info";
+//    }
+
+
 
     //마이페이지 비밀번호 변경
     @GetMapping("/change-password")
