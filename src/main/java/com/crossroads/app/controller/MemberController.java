@@ -67,7 +67,6 @@ public class MemberController {
         return new RedirectView("/member/login");
     }
 
-
     //비밀번호 찾기
     @GetMapping("find-pwd")
     public String findPwd(){
