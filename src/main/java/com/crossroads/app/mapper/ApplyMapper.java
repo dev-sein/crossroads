@@ -24,4 +24,8 @@ public interface ApplyMapper {
 
 //    신청 상태 수정
     public void updateVeteranId(Map<String, Object> info);
+
+//    나를 제외한 다른 베테랑들이 수락한 신청 개수
+    public Long selectCount(Long memberId);
+
 }

@@ -32,6 +32,7 @@ public class MobileController {
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
         model.addAttribute("applies", applyService.getList());
+        model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
         return "mobile/list-mobile";
     }
 
@@ -50,6 +51,11 @@ public class MobileController {
         info.put("applyId",applyId);
 
         applyService.modifyVeteranId(info);
+    }
+
+    @GetMapping("point/changePoint")
+    public String changePoint(){
+        return "point/changePoint";
     }
 
 }
