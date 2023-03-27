@@ -1,7 +1,10 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
+import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.service.MemberService;
+import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/mypages/*")
@@ -18,18 +22,13 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class MypageController {
     private final MemberService memberService;
+    private final ReviewBoardService reviewBoardService;
 
     //마이페이지 메인
     @GetMapping("/mypage-main")
     public String mypageMain(){
         return "mypage/mypage-main";
     }
-
-//    //마이페이지 프로필 조회, 수정
-//    @GetMapping("/my-info")
-//    public String profileModify(){
-//        return "mypage/my-info";
-//    }
 
 //    @GetMapping("my-info")
 //    public String myInfo(Model model, HttpServletRequest request)throws Exception {
@@ -45,7 +44,6 @@ public class MypageController {
         model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
-
 
     //마이페이지 비밀번호 변경
     @GetMapping("/change-password")
@@ -71,11 +69,9 @@ public class MypageController {
         return "mypage/point";
     }
 
-    //마이페이지 후기
+    //마이페이지 후기 전체 조회
     @GetMapping("/my-review")
-    public String review(){
-        return "mypage/my-review";
-    }
+    public List<ReviewDTO> showListMy(){ return reviewBoardService.getListMy(); }
 
     //마이페이지 내가 쓴 게시글 목록
     @GetMapping("/my-board-list")
