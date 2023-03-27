@@ -16,4 +16,9 @@ public class ApplyService {
 
 //    신청목록 전체조회
     public List<ApplyDTO> getList() {return applyDAO.findAll();}
+
+//    신청 상태 조회
+//    public String getStatus() {}
+
+//    신청 상태 수정
 }

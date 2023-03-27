@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,19 @@ public class ApplyMapperTests {
     public void selectAllTest(){
         log.info(applyMapper.selectAll().toString());
     }
-//    @Test
-//    public List<ApplyDTO> selectAllTest(){
-//        return applyMapper.selectAll();
-//    }
+
+    @Test
+    public void selectTest(){
+        log.info(applyMapper.select(2L).toString());
+    }
+
+    @Test
+    public void selectStatusTest(){
+        log.info((applyMapper.selectStatus(2L)));
+    }
+
+    @Test
+    public void updateStatusTest() {
+        applyMapper.updateStatus(2L);
+    }
 }
