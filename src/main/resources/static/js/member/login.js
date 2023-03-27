@@ -1,3 +1,8 @@
+// 회원가입 버튼
+const $submitBtn = $("#submit-btn");
+
+
+
 // 아이디 변수
 const $idInput = $('.id .input-text');
 // 아이디 에러 변수
@@ -11,6 +16,7 @@ $idInput.on("blur", function() {
 		$idWarning.css("display", "block");
 		$idInput.css("border-color", "#e52929");
 
+
 	} else if ($idInputValue.length < 6) {
 		$idWarning.text("6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다.");
 		$idWarning.css("display", "block");
@@ -20,11 +26,7 @@ $idInput.on("blur", function() {
 		$idWarning.css("display", "none");
 		$idInput.css("border-color", "#e0e0e0");
 	}
-
-
 })
-
-
 
 
 // 비밀번호 변수
@@ -64,6 +66,16 @@ $passwordInput.on("blur", function() {
 	}
 });
 
+
+$submitBtn.on('click', function(){
+	if($idInput && $passwordInput){
+		$passwordInput.val(btoa($passwordInput.val()));
+		alert('submit들어옴')
+		document.loginForm.submit();
+	}
+})
+
+
 const $pwdEye = $(".pwd i");
 let checkPwd = false;
 $pwdEye.on('click', function(){
@@ -100,5 +112,4 @@ $checkbox.on("click", function(){
         checkbox = false;
     }
 });
-
 

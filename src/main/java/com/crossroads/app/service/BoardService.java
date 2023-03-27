@@ -13,4 +13,7 @@ public interface BoardService {
 
     //    마이페이지 리뷰 목록
     public List<ReviewDTO> getListMy();
+
+//    어드민 게시글 삭제
+    public void remove(Long boardId);
 }

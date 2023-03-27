@@ -12,7 +12,13 @@ import java.util.List;
 public class BoardDAO {
     private final BoardMapper boardMapper;
 
+    /* 어드민 게시글 목록 */
     public List<BoardDTO> findAllAdmin() {
         return boardMapper.selectAllAdmin();
     }
+
+    /* 어드민 게시글 삭제 */
+    public void deleteById(Long boardId){
+        boardMapper.deleteAdmin(boardId);
+    };
 }
