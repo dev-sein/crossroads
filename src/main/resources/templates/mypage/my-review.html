@@ -38,7 +38,7 @@
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
                         <div class="userid">
-                            <div class="username">seinee114<br></div>
+                            <div th:text="${member.memberId}" class="username"><br></div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                                 <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
                             </div>
                             <div class="review-content-box">
-                                <a class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
+                                <a th:text="${member.memberId}" class="review-name-link" href="/store/41/">리뷰 제목입니다. 연수가 재미있어요.</a>
                                 <p class="pcontent">
                                     <span class="review-date">2023-03-16</span>
                                     <span class="base-info-splitter">|</span>
