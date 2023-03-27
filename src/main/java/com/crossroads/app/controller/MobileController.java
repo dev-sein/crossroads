@@ -1,15 +1,15 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
+import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,11 +23,8 @@ import java.util.Map;
 public class MobileController {
     private final ApplyService applyService;
     private final PointService pointService;
+    private final MemberService memberService;
 
-    @GetMapping("join-mobile")
-    public String joinMobile(){
-        return "mobile/join-mobile";
-    }
 
     @GetMapping("list-mobile")
     public String listMobile(Model model, HttpServletRequest request) throws Exception{
@@ -70,5 +67,37 @@ public class MobileController {
     }
 
 
+    @GetMapping("join-mobile")
+    public String joinMobile(){
+        return "mobile/join-mobile";
+    }
+
+    //회원가입 post
+    @PostMapping("join-mobile")
+    public RedirectView joinfinishMobile(MemberVO memberVO){
+        memberService.save(memberVO);
+        return new RedirectView("/login-mobile");
+    }
+
+    //아이디 중복체크
+    @PostMapping("/checkId")
+    @ResponseBody
+    public Long checkId(@RequestParam("memberIdentification") String memberIdentification) {
+        Long duplicateId = memberService.checkId(memberIdentification);
+        return duplicateId;
+    }
+
+    //이메일 중복체크
+    @PostMapping("/checkEmail")
+    @ResponseBody
+    public Long checkEmail(@RequestParam("memberEmail") String memberEmail) {
+        Long duplicateEmail = memberService.checkEmail(memberEmail);
+        return duplicateEmail;
+    }
+
+    @GetMapping("login-mobile")
+    public String loginMobile(){
+        return "mobile/login-mobile";
+    }
 
 }

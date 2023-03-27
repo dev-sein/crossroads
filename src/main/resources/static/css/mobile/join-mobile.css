@@ -359,3 +359,27 @@
         cursor: pointer;
     }
 }
+
+.id_ok{
+    color:#008000;
+    display: none;
+    font-size: 13px;
+}
+
+.id_already{
+    color:#6A82FB;
+    display: none;
+    font-size: 13px;
+}
+
+.email_ok{
+    color:#008000;
+    display: none;
+    font-size: 13px;
+}
+
+.email_already{
+    color:#6A82FB;
+    display: none;
+    font-size: 13px;
+}
