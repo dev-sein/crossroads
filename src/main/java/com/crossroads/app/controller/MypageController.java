@@ -72,9 +72,9 @@ public class MypageController {
     }
 
     //마이페이지 후기
-    @GetMapping("/review")
+    @GetMapping("/my-review")
     public String review(){
-        return "mypage/review";
+        return "mypage/my-review";
     }
 
     //마이페이지 내가 쓴 게시글 목록
