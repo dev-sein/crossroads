@@ -7,6 +7,6 @@ import java.util.List;
 
 @Mapper
 public interface ReviewMapper {
-    //마이페이지 내가 쓴 후기 조회
+    //마이페이지 후기 전체 조회
     public List<ReviewDTO> selectAll();
 }
