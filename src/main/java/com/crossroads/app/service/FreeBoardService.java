@@ -31,4 +31,9 @@ public class FreeBoardService implements BoardService {
     public List<ReviewDTO> getListMy() {
         return null;
     }
+
+    @Override
+    public void remove(Long boardId) {
+
+    }
 }
