@@ -14,18 +14,27 @@
     <select id="select" resultType="applyVO" parameterType="long">
         select apply_id, apply_course, apply_location, apply_date, apply_register_date,
                 starter_member_id, veteran_member_id, apply_status
-        where apply_id = #{applyId}
-    </select>
-
-    <select id="selectStatus" resultType="string" parameterType="long">
-        select apply_status
         from tbl_apply
         where apply_id = #{applyId}
     </select>
+
+<!--    <select id="selectStatus" resultType="string" parameterType="long">-->
+<!--        select apply_status-->
+<!--        from tbl_apply-->
+<!--        where apply_id = #{applyId}-->
+<!--    </select>-->
 
     <update id="updateStatus" parameterType="long">
         update tbl_apply
         set apply_status = if(apply_status = '1' , '0', '1')
         where apply_id = #{applyId}
     </update>
+
+    <update id="updateVeteranId" parameterType="hashmap">
+        update tbl_apply
+        set veteran_member_id = if(veteran_member_id, null, #{memberId})
+        where apply_id = #{applyId}
+    </update>
+
+
 </mapper>

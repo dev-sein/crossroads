@@ -4,7 +4,9 @@ import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.vo.ApplyVO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ApplyMapper {
@@ -15,8 +17,11 @@ public interface ApplyMapper {
     public ApplyVO select(Long applyId);
 
 //    신청 상태 조회
-    public String selectStatus(Long applyId);
+//    public String selectStatus(Long applyId);
 
 //    신청 상태 수정
     public void updateStatus(Long applyId);
+
+//    신청 상태 수정
+    public void updateVeteranId(Map<String, Object> info);
 }
