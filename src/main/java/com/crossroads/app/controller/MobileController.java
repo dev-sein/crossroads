@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/applies/*")
 @RequiredArgsConstructor
@@ -21,7 +24,9 @@ public class MobileController {
     }
 
     @GetMapping("list-mobile")
-    public String listMobile(Model model){
+    public String listMobile(Model model, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
         model.addAttribute("applies", applyService.getList());
         return "mobile/list-mobile";
     }
