@@ -7,7 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @Slf4j
@@ -25,13 +28,16 @@ public class ApplyMapperTests {
         log.info(applyMapper.select(2L).toString());
     }
 
-    @Test
-    public void selectStatusTest(){
-        log.info((applyMapper.selectStatus(2L)));
-    }
+//    @Test
+//    public void selectStatusTest(){
+//        log.info((applyMapper.selectStatus(2L)));
+//    }
 
     @Test
-    public void updateStatusTest() {
-        applyMapper.updateStatus(2L);
+    public void updateVeteranIdTest() {
+        Map<String, Object> info = new HashMap<>();
+        info.put("memberId", 1L);
+        info.put("applyId", 2L);
+        applyMapper.updateVeteranId(info);
     }
 }

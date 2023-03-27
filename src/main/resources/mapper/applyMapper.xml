@@ -17,15 +17,23 @@
         where apply_id = #{applyId}
     </select>
 
-    <select id="selectStatus" resultType="string" parameterType="long">
-        select apply_status
-        from tbl_apply
-        where apply_id = #{applyId}
-    </select>
+<!--    <select id="selectStatus" resultType="string" parameterType="long">-->
+<!--        select apply_status-->
+<!--        from tbl_apply-->
+<!--        where apply_id = #{applyId}-->
+<!--    </select>-->
 
     <update id="updateStatus" parameterType="long">
         update tbl_apply
         set apply_status = if(apply_status = '1' , '0', '1')
         where apply_id = #{applyId}
     </update>
+
+    <update id="updateVeteranId" parameterType="hashmap">
+        update tbl_apply
+        set veteran_member_id = if(veteran_member_id = null , #{memberId}, null)
+        where apply_id = #{applyId}
+    </update>
+
+
 </mapper>

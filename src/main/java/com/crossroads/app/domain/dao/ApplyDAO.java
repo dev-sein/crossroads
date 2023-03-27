@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.mapper.ApplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,11 @@ public class ApplyDAO {
         return applyMapper.selectAll();
     }
 
+//    신청 상세 조회
+    public ApplyVO findById(Long applyId) {return applyMapper.select(applyId);};
+
+//    신청 상태 수정
+//    public void setApplyVO(Long applyId){
+//        applyMapper.updateStatus(applyId);
+//    }
 }
