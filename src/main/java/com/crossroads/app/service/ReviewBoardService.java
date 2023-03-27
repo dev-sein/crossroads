@@ -25,4 +25,9 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public List<ReviewDTO> getListMy() { return reviewDAO.findAllMy(); }
+
+    @Override
+    public void remove(Long boardId) {
+
+    }
 }

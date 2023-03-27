@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     public List<BoardDTO> selectAllAdmin();
+    public void deleteAdmin(Long boardId);
 }
