@@ -28,6 +28,11 @@ public class MemberService {
         return memberDAO.checkEmail(memberEmail);
     }
 
+    //로그인
+    public Long login(String memberIdentification, String memberPassword){
+        return memberDAO.login(memberIdentification, memberPassword);
+    }
+
     //마이페이지 프로필 정보조회
     public MemberVO getMember(Long memberId){ return memberDAO.findById(memberId);}
 

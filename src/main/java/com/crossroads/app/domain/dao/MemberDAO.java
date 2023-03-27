@@ -18,5 +18,8 @@ public class MemberDAO {
     //이메일 중복 체크
     public Long checkEmail(String memberEmail){ return memberMapper.checkEmail(memberEmail);}
 
+    //로그인
+    public Long login(String memberIdentification, String memberPassword){return memberMapper.login(memberIdentification, memberPassword);}
+
     public MemberVO findById(Long memberId){ return memberMapper.select(memberId);}
 }
