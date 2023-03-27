@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -30,12 +31,12 @@ public class MypageController {
     }
 
 //    @GetMapping("my-info")
-//    public String myInfo(HttpSession session, Model model)throws Exception {
-//        Long memberId = (Long) session.getAttribute(login);
-//        model.addAttribute("mypages", memberService.getMember();
+//    public String myInfo(Model model, HttpServletRequest request)throws Exception {
+//        HttpSession session = request.getSession();
+//        session.setAttribute("memberId", 1L);
+//        model.addAttribute("mypages", memberService.getMember());
 //        return "mypage/my-info";
 //    }
-
 
 
     //마이페이지 비밀번호 변경
