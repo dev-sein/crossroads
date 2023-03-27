@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,19 +25,26 @@ public class MypageController {
         return "mypage/mypage-main";
     }
 
-    //마이페이지 프로필 조회, 수정
-    @GetMapping("/my-info")
-    public String profileModify(){
-        return "mypage/my-info";
-    }
+//    //마이페이지 프로필 조회, 수정
+//    @GetMapping("/my-info")
+//    public String profileModify(){
+//        return "mypage/my-info";
+//    }
 
 //    @GetMapping("my-info")
 //    public String myInfo(Model model, HttpServletRequest request)throws Exception {
 //        HttpSession session = request.getSession();
 //        session.setAttribute("memberId", 1L);
-//        model.addAttribute("mypages", memberService.getMember());
+//        model.addAttribute("mypages", memberService.getMember(1L));
 //        return "mypage/my-info";
 //    }
+
+    //마이페이지 프로필 조회
+    @GetMapping("/my-info")
+    public String myInfo(Long memberId, Model model){
+        model.addAttribute("member", memberService.getMember(1L));
+        return "mypage/my-info";
+    }
 
 
     //마이페이지 비밀번호 변경

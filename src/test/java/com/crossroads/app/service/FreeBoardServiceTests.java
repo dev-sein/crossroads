@@ -10,14 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Slf4j
-public class BoardServiceTests {
+public class FreeBoardServiceTests {
 
     @Autowired
     FreeBoardService freeBoardService;
 
     @Test
     public void getListAdminTest() {
-        assertThat(freeBoardService.getListAdmin().get(0).getBoardTitle()).isEqualTo("테스트1");
+        assertThat(freeBoardService.getListAdmin().get(0).getBoardTitle()).isEqualTo("테스트제목1");
     }
 
 
