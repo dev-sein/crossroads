@@ -17,7 +17,9 @@ public class FreeBoardServiceTests {
 
     @Test
     public void getListAdminTest() {
-        assertThat(freeBoardService.getListAdmin().get(0).getBoardTitle()).isEqualTo("테스트제목1");
+        log.info(freeBoardService.getListAdmin().toString());
+//        assertThat(freeBoardService.getListAdmin().get(0).getBoardTitle()).isEqualTo("테스트제목1");
+        assertThat(freeBoardService.getListAdmin().get(1).getReplyCount()).isEqualTo(0);
     }
 
 

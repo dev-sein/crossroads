@@ -1,7 +1,9 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.service.FreeBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/admins/*")
 public class AdminController {
+    private final FreeBoardService freeBoardService;
     //관리자 홈
     @GetMapping("admin-home")
     public String adminHome(){
@@ -41,7 +44,8 @@ public class AdminController {
 
     //관리자 게시글 목록
     @GetMapping("admin-board")
-    public String adminBoard(){
+    public String adminBoard(Model model){
+        model.addAttribute("boards", freeBoardService.getListAdmin());
         return "admin/admin-board";
     }
 
