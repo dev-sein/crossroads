@@ -8,5 +8,6 @@
                 starter_member_id, veteran_member_id, apply_status
         from tbl_member m join tbl_apply a
         on m.member_id = a.starter_member_id
+        order by apply_register_date desc
     </select>
 </mapper>
