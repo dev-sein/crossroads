@@ -31,7 +31,7 @@ public class MypageController {
 
 //    @GetMapping("my-info")
 //    public String myInfo(HttpSession session, Model model)throws Exception {
-////        Long memberId = (Long) session.getAttribute(login);
+//        Long memberId = (Long) session.getAttribute(login);
 //        model.addAttribute("mypages", memberService.getMember();
 //        return "mypage/my-info";
 //    }

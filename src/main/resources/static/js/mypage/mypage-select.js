@@ -1,8 +1,8 @@
 /* 모달 */
 const btnOpenPopup = document.querySelector('#modal-back');
 const modal = document.querySelector('#modal-background');
-const closeBtn = modal.querySelector(".modal-close-image-button")
-const closegrayBtn = modal.querySelector("#btn_modal_close")
+const closeBtn = document.querySelector(".modal-close-image-button")
+const closegrayBtn = document.querySelector("#btn_modal_close")
 
 /* 모달 열기 */
 btnOpenPopup.addEventListener('click', () => {
