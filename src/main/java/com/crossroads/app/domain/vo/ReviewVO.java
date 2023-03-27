@@ -11,7 +11,7 @@ public class ReviewVO {
     private String reviewRegisterDate;
     private String reviewUpdateDate;
     private String reviewTitle;
-    private String reviewContents;
+    private String reviewContent;
     private String reviewFileSystemName;
     private String reviewGrade;
     private Long applyId;

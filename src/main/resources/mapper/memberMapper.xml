@@ -9,9 +9,25 @@
     #{memberEmail}, #{memberFileSystemName})
     </insert>
 
-    <select id="select" parameterType="memberVO">
+    <select id="select" parameterType="long" resultType="memberVO">
         select member_id, member_identification, member_name, member_phone, member_email, member_type
         from tbl_member
         where member_id = #{memberId}
     </select>
+
+    <select id="checkId" parameterType="string" resultType="long">
+		select member_id from tbl_member
+		where member_identification = #{memberIdentification}
+	</select>
+
+    <select id="checkEmail" parameterType="string" resultType="long">
+		select member_id from tbl_member
+		where member_email = #{member_Email}
+	</select>
+
+    <select id="login" parameterType="memberVO" resultType="Long">
+	select member_id from tbl_member
+	where member_identification = #{memberIdentification} and member_password = #{memberPassword}
+    </select>
+
 </mapper>

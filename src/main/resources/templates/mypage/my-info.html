@@ -40,7 +40,7 @@
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                         <div class="userid">
-                            <div class="username">seinee114<br></div>
+                            <div th:text="${member.memberIdentification}" class="username"><br></div>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                         <span class="account-setting-category">
                                             <span>회원 형태</span>
                                         </span>
-                                    <span class="account-setting-content-fix">운전 초보자</span>
+                                    <span th:text="${member.memberType}" class="account-setting-content-fix"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -170,12 +170,12 @@
                                             <span>회원 이름</span>
                                         </label>
                                     </span>
-                                    <span class="account-setting-content">${memberId}</span>
+                                    <span th:text="${member.memberName}" class="account-setting-content"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-                                <input class="form-control" id="full_name" name="full_name" type="text" value="정세인">
+                                <input class="form-control" id="full_name" name="memberName" type="text" value="">
                                 <div class="error-message namemsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
@@ -190,7 +190,7 @@
                                                     class="essential" style="display: none;">*</span>
                                                 <span>회원 휴대폰</span></label>
                                         </span>
-                                    <span class="account-setting-content">010-2428-3742</span>
+                                    <span th:text="${member.memberPhone}" class="account-setting-content"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -198,10 +198,11 @@
                                 <span>010&nbsp;-&nbsp;</span>
                                 <span id="cell_phone_global_box" style="display:none;">
                                         <input class="form-control-phone-noncell" id="cell_phone_global"
-                                               name="cell_phone_global"
+                                               name="memberPhone"
                                                style="display:none; width: 247px; *width:208px;"
-                                               type="text" value="01024283742"></span> <span id="cell_phone_local_box"
-                                                                                             style="display:inline;">
+
+                                               type="text" value=""></span>
+                                <span id="cell_phone_local_box" style="display:inline;">
                                         <input class="form-control-phone" data-min-length="3" maxlength="4"
                                                id="cell_phone_number_middle" name="cell_phone_number_middle" type="text"
                                                value="2428" style="display: inline;">
@@ -220,14 +221,14 @@
                                             <label class="control-label required" id="email-input">
                                                 <span class="essential" style="display: none;">*</span>
                                                 <span>회원 이메일</span></label></span>
-                                    <span class="account-setting-content account-setting-content-detail-data">정보를
-                                            입력해주세요</span>
+                                    <span  th:text="${member.memberEmail}" class="account-setting-content account-setting-content-detail-data">
+                                            </span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-                                <input class="form-control" id="email" name="full_name" type="text"
-                                       onclick="checkEmail()" value="이메일 주소">
+                                <input class="form-control" id="email" name="memberEmail" type="text"
+                                       onclick="checkEmail()" value="">
                                 <div class="error-message emailmsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>

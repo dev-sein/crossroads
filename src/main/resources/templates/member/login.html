@@ -29,12 +29,12 @@
         <div class="input-section">
             <div class="input-wrapper">
                 <div class="login-title">로그인</div>
-                <form>
+                <form action="/login" method="post">
                     <!-- 아이디 -->
                     <div class="input-box id">
                         <div class="input-title">교차로 통합회원 아이디 또는 이메일</div>
                         <div class="input-text-wrapper">
-                            <input class="theme-croosroads input-text" id="id" maxlength="100" name="" placeholder="ID@example.com" type="text">
+                            <input class="theme-croosroads input-text" id="id" name="memberIdentification" maxlength="100" placeholder="ID@example.com" type="text">
                         </div>
                         <span class="error-text" style="display: none;" id="id-error">아이디를 입력해 주세요.</span>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="input-box margin-top-16 pwd">
                         <div class="input-title">비밀번호</div>
                         <div class="input-text-wrapper icon-right">
-                            <input class="theme-croosroads input-text" id="password-input" maxlength="32" name="" placeholder="비밀번호를 입력해 주세요." type="password" style="padding-right: 40px;">
+                            <input class="theme-croosroads input-text" id="password-input" name="memberpassword" maxlength="32" placeholder="비밀번호를 입력해 주세요." type="password" style="padding-right: 40px;">
                             <i>
                                 <img class="icon-eyes" src="/images/member/icon_input_eye.png">
                             </i>
