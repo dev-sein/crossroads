@@ -3,6 +3,7 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dao.BoardDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.ReviewDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -25,5 +26,10 @@ public class FreeBoardService implements BoardService {
         boards.stream().forEach(board -> board.setReplyCount(replyDAO.findReplyCount(board.getBoardId())));
 
         return boards;
+    }
+
+    @Override
+    public List<ReviewDTO> getListMy() {
+        return null;
     }
 }
