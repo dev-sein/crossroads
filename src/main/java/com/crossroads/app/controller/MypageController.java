@@ -30,13 +30,13 @@ public class MypageController {
         return "mypage/my-info";
     }
 
-//    @GetMapping("my-info")
-//    public String myInfo(Model model, HttpServletRequest request)throws Exception {
-//        HttpSession session = request.getSession();
-//        session.setAttribute("memberId", 1L);
-//        model.addAttribute("mypages", memberService.getMember());
-//        return "mypage/my-info";
-//    }
+    @GetMapping("my-info")
+    public String myInfo(Model model, HttpServletRequest request)throws Exception {
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
+        model.addAttribute("mypages", memberService.getMember(1L));
+        return "mypage/my-info";
+    }
 
 
     //마이페이지 비밀번호 변경
