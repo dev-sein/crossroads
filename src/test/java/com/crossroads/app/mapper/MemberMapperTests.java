@@ -25,5 +25,8 @@ public class MemberMapperTests {
         memberMapper.join(memberVO);
 
     }
-    
+
+//    @Test
+//    public MemberVO select
+//
 }
