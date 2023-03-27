@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/member/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MemberController {
@@ -58,6 +59,7 @@ public class MemberController {
     @PostMapping("login")
     public RedirectView login(String memberIdentification, String memberPassword, HttpSession session){
         Long id = memberService.login(memberIdentification, memberPassword);
+        log.info(id.toString());
         if(id != null){
            session.setAttribute("memberId", id);
             return new RedirectView("/main");

@@ -67,11 +67,14 @@ $passwordInput.on("blur", function() {
 });
 
 
-/*$submitBtn.on(click, function(){
+$submitBtn.on('click', function(){
 	if($idInput && $passwordInput){
-		$('form').submit();
+		$passwordInput(atoa($passwordInput()));
+		alert('submit들어옴')
+
+		document.loginForm.submit();
 	}
-})*/
+})
 
 
 const $pwdEye = $(".pwd i");
