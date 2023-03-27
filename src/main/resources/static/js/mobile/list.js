@@ -1,7 +1,7 @@
 // 수락 거절 버튼
 function acceptOrReject(object) {
     var check = object.innerText == "거절" ? true : false;
-
+    console.log(object.nextElementSibling.value);
     if (check) {
         object.className = 'ok-btn';
         object.innerText = '수락';
@@ -13,7 +13,41 @@ function acceptOrReject(object) {
         object.style.backgroundColor = "#e52929";
         object.style.borderColor = '#e52929';
     }
+
+    const data = object.nextElementSibling.value;
+    const sendData = {
+        "applyId" : data
+    };
+    $.ajax({
+        url: "/applies/list-mobile/change-status",
+        type: 'post',
+        data: sendData,
+        // dataType: "json",
+        success:function (data) {
+            console.log("성공");
+        },
+        error:function (a, b, c) {
+            console.log(a, b, c);
+        }
+
+    })
 }
+
+// function changeStatus() {
+//     const data = $("#applyId").val();
+//     const sendData = {
+//         result:data
+//     };
+//     $.ajax({
+//         url: "/applies/list-mobile/change-status",
+//         type: 'POST',
+//         data: sendData,
+//         success:function (data) {
+//             console.log("성공");
+//         }
+//     })
+// }
+
 // 요일 계산
 function changeToDate(date) {
     switch (date) {
@@ -59,12 +93,12 @@ function showList(){
     // updateTime2 <- 현재 시간 - 연수 신청 등록시간 | 남은 시간 일수로 표현
     applies.forEach(apply => {
         // 이미 수락이 된 경우는 안뜨게 하고 수락이 되었더라도 베테랑 자신의 수강생이면 목록에 뜨게 해야함
-        console.log('apply.applyStatus');
-        console.log(apply.applyStatus);
-        console.log('apply.veteranMemberId');
-        console.log(apply.veteranMemberId);
-        console.log('MemberId');
-        console.log(memberId);
+        // console.log('apply.applyStatus');
+        // console.log(apply.applyStatus);
+        // console.log('apply.veteranMemberId');
+        // console.log(apply.veteranMemberId);
+        // console.log('MemberId');
+        // console.log(memberId);
 
         if(apply.applyStatus == '0') {
             const nowDateWhole = new Date();
@@ -147,7 +181,7 @@ function showList(){
                                     </p>
                                     <div class="pipe"></div>
                                     <p class="field-info">
-                                        <span "th:text=${apply.applyCourse}">${apply.applyCourse}</span>코스(시내주행)
+                                        <span>${apply.applyCourse}</span>코스(시내주행)
                                     </p>
                                 </div>
                                 <div class="license-info-tag">
@@ -176,12 +210,12 @@ function showList(){
                                 </div>
                                 <div class="driver-info-etc">
                                     <div class="location-tag">
-                                        <span class="driver-location" th:text="${apply.applyLocation}">
+                                        <span class="driver-location">
                                             ${apply.applyLocation}
                                         </span>
                                     </div>
                                     <div class="pipe"></div>
-                                    <div class="register-date" th:text="${apply.applyRegisterDate}">
+                                    <div class="register-date">
                                         <span>등록일자 </span><span>${registerYear}.${registerMonth}.${registerDate}(${changeToDate(registerDay)})</span>
                                     </div>
                                 </div>
@@ -192,10 +226,12 @@ function showList(){
                         if(apply.applyStatus == 0){
                             text += `
                                 <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
+                                <input type="hidden" value="${apply.applyId}">
                                 `;
                         } else {
                             text += `
                                 <button type="button" class="no-btn" onclick="acceptOrReject(this)">거절</button>
+                                <input type="hidden" value="${apply.applyId}">
                                 `;
                         }
 
@@ -284,7 +320,7 @@ function showList(){
                                     </p>
                                     <div class="pipe"></div>
                                     <p class="field-info">
-                                        <span "th:text=${apply.applyCourse}">${apply.applyCourse}</span>코스(시내주행)
+                                        <span>${apply.applyCourse}</span>코스(시내주행)
                                     </p>
                                 </div>
                                 <div class="license-info-tag">
@@ -313,12 +349,12 @@ function showList(){
                                 </div>
                                 <div class="driver-info-etc">
                                     <div class="location-tag">
-                                        <span class="driver-location" th:text="${apply.applyLocation}">
+                                        <span class="driver-location">
                                             ${apply.applyLocation}
                                         </span>
                                     </div>
                                     <div class="pipe"></div>
-                                    <div class="register-date" th:text="${apply.applyRegisterDate}">
+                                    <div class="register-date">
                                         <span>등록일자 </span><span>${registerYear}.${registerMonth}.${registerDate}(${changeToDate(registerDay)})</span>
                                     </div>
                                 </div>
@@ -328,10 +364,12 @@ function showList(){
                              if(apply.applyStatus == 0){
                                     text += `
                                         <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
+                                        <input type="hidden" value="${apply.applyId}">
                                         `;
                              } else {
                                     text += `
                                         <button type="button" class="no-btn" onclick="acceptOrReject(this)">거절</button>
+                                        <input type="hidden" value="${apply.applyId}">
                                         `;
                              }
                              text += `
