@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.service.ApplyService;
+import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.util.Map;
 @Slf4j
 public class MobileController {
     private final ApplyService applyService;
+    private final PointService pointService;
 
     @GetMapping("join-mobile")
     public String joinMobile(){
@@ -59,8 +61,14 @@ public class MobileController {
     }
 
     @GetMapping("point/change-point-mobile")
-    public String changePointMobile(){
+    public String changePointMobile(Model model, HttpServletRequest request){
+        request.getSession().setAttribute("memberId",3L);
+        Long memberId = (Long)request.getSession().getAttribute("memberId");
+        log.info(pointService.getPoint(memberId).toString());
+        model.addAttribute("point", pointService.getPoint(memberId));
         return "mobile/change-point-mobile";
     }
+
+
 
 }
