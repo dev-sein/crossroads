@@ -30,9 +30,9 @@
         where member_id = #{memberId}
     </select>
 
-    <update id="update" parameterType="long">
+    <update id="update">
         update tbl_member
-        set member_identification=#{memberIdentification}, member_password='', member_name='', member_phone='', member_email='', member_file_system_name='', member_type='', member_drive_register_date='', member_point=0
+        set member_name=#{memberName}, member_phone=#{memberPhone}, member_email=#{memberEmail}
         where member_id=#{memberId};
     </update>
 

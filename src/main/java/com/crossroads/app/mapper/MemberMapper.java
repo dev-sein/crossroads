@@ -17,5 +17,9 @@ public interface MemberMapper {
     //로그인
     public Long login(String memberIdentification, String memberPassword);
 
+    //마이페이지 정보 조회
     public MemberVO select(Long memberId);
+
+    //마이페이지 정보 수정
+    public void update(MemberVO memberVO);
 }
