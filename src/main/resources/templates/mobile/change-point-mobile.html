@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,7 +49,7 @@
                                     <div>
                                         <div class="text-input-client2  ">
                                             <div>
-                                                <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="현재 보유하신 포인트는 1000p입니다." type="text" value="">
+                                                <div class="theme-client wishket-text">보유하신 포인트는 총 <span id="points"></span>P 입니다.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                     </div>
 
                                 </div>
-                                <span class="error-text" style="font-size: 13px;">※수수료는 30% 입니다※</span>
+                                <span class="error-text" style="font-size: 13px;">※수수료는 10% 입니다※</span>
                             </div>
                         </div>
 
@@ -106,5 +106,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/point/changePoint.js"></script>
-<script src=""></script>
+<script th:inline="javascript">
+    points = [[${point}]];
+    points = Number(points);
+    points = points.toLocaleString();
+    $("#points").text(points);
+</script>
 </html>
