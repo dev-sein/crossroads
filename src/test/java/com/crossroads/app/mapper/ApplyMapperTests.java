@@ -45,4 +45,12 @@ public class ApplyMapperTests {
         info.put("memberId", 1L);
         applyMapper.updateVeteranId(info);
     }
+
+    @Test
+    public void selectCountTest(){
+        log.info(applyMapper.selectCount(3L).toString());
+    }
+
+    //    나를 제외한 다른 베테랑들이 수락한 신청 개수
+//    public Long selectCount(Long applyId);
 }

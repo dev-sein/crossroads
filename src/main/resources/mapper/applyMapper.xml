@@ -18,6 +18,13 @@
         where apply_id = #{applyId}
     </select>
 
+    <select id="selectCount" resultType="long" parameterType="long">
+        select count(apply_id)
+        from tbl_member m join tbl_apply a
+        on m.member_id = a.starter_member_id
+        and veteran_member_id != #{memberId}
+    </select>
+
 <!--    <select id="selectStatus" resultType="string" parameterType="long">-->
 <!--        select apply_status-->
 <!--        from tbl_apply-->
