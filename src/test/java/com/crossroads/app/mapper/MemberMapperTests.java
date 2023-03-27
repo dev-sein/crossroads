@@ -23,10 +23,14 @@ public class MemberMapperTests {
         memberVO.setMemberEmail("abc@naver.com");
 
         memberMapper.join(memberVO);
-
     }
 
-//    @Test
-//    public MemberVO select
-//
+    @Test
+    public void selectTest(){
+       log.info(memberMapper.select(1L).toString());
+    }
+
+
+
+
 }
