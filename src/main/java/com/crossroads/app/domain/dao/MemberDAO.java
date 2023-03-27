@@ -11,5 +11,5 @@ public class MemberDAO {
     private final MemberMapper memberMapper;
     public void saveMember(MemberVO memberVO){ memberMapper.join(memberVO);}
 
-    public void findById(Long memberId){memberMapper.select(memberId);}
+    public MemberVO findById(Long memberId){ return memberMapper.select(memberId);}
 }
