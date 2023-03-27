@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 @Qualifier("board")
 @RequiredArgsConstructor
 public class ReviewBoardService implements BoardService {
+
 }
