@@ -2,17 +2,19 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.mybatis.spring.SqlSessionUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/member/*")
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
 
     private final MemberService memberService;
@@ -53,15 +55,16 @@ public class MemberController {
         return "member/login";
     }
 
-    //    로그인
+    //   로그인
     @PostMapping("login")
     public RedirectView login(String memberIdentification, String memberPassword, HttpSession session){
         Long id = memberService.login(memberIdentification, memberPassword);
+        log.info(id.toString());
         if(id != null){
-            session.setAttribute("userId", id);
-            return new RedirectView("login");
+           session.setAttribute("memberId", id);
+            return new RedirectView("/main");
         }
-        return new RedirectView("/main");
+        return new RedirectView("/member/login");
     }
 
 
