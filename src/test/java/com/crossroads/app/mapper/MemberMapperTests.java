@@ -30,6 +30,15 @@ public class MemberMapperTests {
        log.info(memberMapper.select(1L).toString());
     }
 
+    @Test
+    public void updateTest(){
+        MemberVO memberVO = memberMapper.select(1L);
+        memberVO.setMemberName("정세인");
+
+        memberMapper.update(memberVO);
+    }
+
+
 
 
 

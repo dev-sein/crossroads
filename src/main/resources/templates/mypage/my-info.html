@@ -50,7 +50,7 @@
                     <div id="cropper-img-box">
                         <img class="cropper-img" hidden=""></div>
                     <div class="profile-image-edit-modal-wrapper">
-                        <form enctype="multipart/form-data" id="profile_image_edit_form">
+                        <form enctype="multipart/form-data" id="profile_image_edit_form" method="post">
                             <div class="modal__title">프로필 사진 등록
                                 <div class="close_modal">
                                     <img class="modal-close-image-button" src="/images/mypage/icon_modal_close.png">
@@ -150,7 +150,7 @@
                     <div class="account-setting" id="base_show_form">
                         <!--     <form action="/accounts/settings/profile/" class="form-horizontal has-validation-callback"
                                enctype="multipart/form-data" id="base_edit_form" method="POST"> -->
-                        <form id="base_edit_form"> <!-- JS 테스트 -->
+                        <form id="base_edit_form" method="post" th:object="${memberVO}"> <!-- JS 테스트 -->
                             <input name="submit_type" type="hidden" value="base">
                             <div class="acoount-setting-row profile-setting-row">
                                 <div class="account-setting-box first">
@@ -175,7 +175,7 @@
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-                                <input class="form-control" id="full_name" name="memberName" type="text" value="">
+                                <input th:field="*{memberName}" class="form-control" id="full_name" name="memberName" type="text" value="">
                                 <div class="error-message namemsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
@@ -186,7 +186,7 @@
                             <div class="acoount-setting-row profile-setting-row">
                                 <div class="account-setting-box">
                                         <span class="account-setting-category">
-                                            <label class="control-label required" id="full_name_label"><span
+                                            <label class="control-label required" id="full_name_label1"><span
                                                     class="essential" style="display: none;">*</span>
                                                 <span>회원 휴대폰</span></label>
                                         </span>
@@ -200,16 +200,16 @@
                                         <input class="form-control-phone-noncell" id="cell_phone_global"
                                                name="memberPhone"
                                                style="display:none; width: 247px; *width:208px;"
-
                                                type="text" value=""></span>
                                 <span id="cell_phone_local_box" style="display:inline;">
-                                        <input class="form-control-phone" data-min-length="3" maxlength="4"
+                                        <input class="form-control-phone" data-min-length="3" maxlength="8"
                                                id="cell_phone_number_middle" name="cell_phone_number_middle" type="text"
-                                               value="2428" style="display: inline;">
+                                               th:field="*{memberPhone}" value="" style="display: inline;">
                                         <span class="form-phone-liner" style="display: inline;">&nbsp;-&nbsp;</span>
                                         <input class="form-control-phone" maxlength="4" id="cell_phone_number_end"
-                                               name="cell_phone_number_end" type="text" value="3742"
-                                               style="display: inline;"></span>
+                                               th:field="*{memberPhone}"  name="cell_phone_number_end" type="text" value=""
+                                               style="display: inline;">
+                                </span>
                                 <div class="error-message phonemsg"><i class="fa fa-exclamation-circle"></i> 이 항목을
                                     채워주십시오.
                                 </div>
@@ -221,14 +221,14 @@
                                             <label class="control-label required" id="email-input">
                                                 <span class="essential" style="display: none;">*</span>
                                                 <span>회원 이메일</span></label></span>
-                                    <span  th:text="${member.memberEmail}" class="account-setting-content account-setting-content-detail-data">
+                                    <span th:text="${member.memberEmail}" class="account-setting-content account-setting-content-detail-data">
                                             </span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
                                 <input class="form-control" id="email" name="memberEmail" type="text"
-                                       onclick="checkEmail()" value="">
+                                       th:field="*{memberEmail}" onclick="checkEmail()" value="">
                                 <div class="error-message emailmsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
