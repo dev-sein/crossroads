@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +46,10 @@ public class MypageController {
         model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
+
+    //마이페이지 프로필 조회
+    @PostMapping("/my-info")
+    public void myInfoUpdate(@RequestBody MemberVO memberVO) { memberService.modify(memberVO); }
 
     //마이페이지 비밀번호 변경
     @GetMapping("/change-password")
