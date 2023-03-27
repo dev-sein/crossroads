@@ -12,5 +12,6 @@
         <typeAlias type="com.crossroads.app.domain.dto.ApplyDTO" alias="applyDTO"/>
         <typeAlias type="com.crossroads.app.domain.dto.BoardDTO" alias="boardDTO"/>
         <typeAlias type="com.crossroads.app.domain.dto.ReplyDTO" alias="replyDTO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.ReviewDTO" alias="reviewDTO"/>
     </typeAliases>
 </configuration>
