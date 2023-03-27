@@ -31,4 +31,7 @@ public class ApplyDAO {
     public void setVeteranId(Map<String, Object> info){
         applyMapper.updateVeteranId(info);
     }
+
+//    나를 제외한 다른 베테랑들이 수락한 신청 개수
+    public Long findCountById(Long memberId){return applyMapper.selectCount(memberId);}
 }
