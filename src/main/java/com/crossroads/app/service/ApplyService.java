@@ -30,4 +30,8 @@ public class ApplyService {
     public void modifyVeteranId(Map<String, Object> info) {
         applyDAO.setVeteranId(info);
     }
+//    나를 제외한 다른 베테랑들이 수락한 신청 개수
+    public Long getCount(Long memberId) {
+        return applyDAO.findCountById(memberId);
+    }
 }
