@@ -1,10 +1,13 @@
 // 이메일
 const $emailInput = $(".email .input-text");
 const $emailWarning = $(".email .error-text");
+const $emailInputvalue = $("#memberEmail");
+
 
 // 아이디
 const $idInput = $('.id .input-text');
 let $idWarning = $("#id-error");
+const $identificationInput = $("#memberIdentification");
 
 // 비밀번호
 const $passwordInput = $("#password-input");
@@ -66,229 +69,272 @@ $emailInput.on("blur", function(){
     }
 });
 
+function checkEmail() {
+	var email = $('#memberEmail').val(); //email 입력란의 값을 저장
+	$.ajax({
+		url: './checkEmail', //Controller에서 요청 받을 주소
+		type: 'post', //POST 방식으로 전달
+		data: {memberEmail: $emailInputvalue.val()},
+		success: function (duplicateEmail) { //컨트롤러에서 넘어온 cnt값을 받는다
+			if (duplicateEmail == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 이메일
+				$('.email_ok').css("display", "inline-block");
+				$('.email_already').css("display", "none");
+			} else { // cnt가 1일 경우 -> 이미 존재하는 이메일
+				$('.email_already').css("display", "inline-block");
+				$('.email_ok').css("display", "none");
+			}
+		},
+		error: function () {
+			alert("에러입니다");
+		}
+	});
+};
+
 // 아이디 정규식 이벤트 사용 및 함수
-$idInput.on("blur", function() {
-    var $idInputValue = $idInput.val();
-	var idInputValue = $idInput.val();
+	$idInput.on("blur", function () {
+		var $idInputValue = $idInput.val();
+		var idInputValue = $idInput.val();
 
-    if ($idInputValue.length < 1) {
-		$idWarning.text("아이디를 입력해 주세요.");
-		$idWarning.css("display", "block");
-		$idInput.css("border-color", "#e52929");
-        checkAll[1] = false;
+		if ($idInputValue.length < 1) {
+			$idWarning.text("아이디를 입력해 주세요.");
+			$idWarning.css("display", "block");
+			$idInput.css("border-color", "#e52929");
+			checkAll[1] = false;
 
-	} else if ($idInputValue.length < 6) {
-		$idWarning.text("6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다.");
-		$idWarning.css("display", "block");
-		$idInput.css("border-color", "#e52929");
-        checkAll[1] = false;
+		} else if ($idInputValue.length < 6) {
+			$idWarning.text("6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다.");
+			$idWarning.css("display", "block");
+			$idInput.css("border-color", "#e52929");
+			checkAll[1] = false;
 
-	} else {
-		$idWarning.css("display", "none");
-		$idInput.css("border-color", "#e0e0e0");
-        checkAll[1] = true;
-	}
-});
+		} else {
+			$idWarning.css("display", "none");
+			$idInput.css("border-color", "#e0e0e0");
+			checkAll[1] = true;
+		}
+	});
+
+
+	function checkId() {
+		var id = $('#memberIdentification').val(); //id값이 "id"인 입력란의 값을 저장
+		$.ajax({
+			url: './checkId', //Controller에서 요청 받을 주소
+			type: 'post', //POST 방식으로 전달
+			data: {memberIdentification: $identificationInput.val()},
+			success: function (duplicateId) { //컨트롤러에서 넘어온 check 받는다
+				if (duplicateId == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
+					$('.id_ok').css("display", "inline-block");
+					$('.id_already').css("display", "none");
+				} else { // check 1일 경우 -> 이미 존재하는 아이디
+					$('.id_already').css("display", "inline-block");
+					$('.id_ok').css("display", "none");
+				}
+			},
+			error: function () {
+				alert("에러입니다");
+			}
+		});
+	};
+
 
 // 비밀번호 정규식 이벤트 사용 및 함수
-$passwordInput.on("blur", function() {
-	var $passwordInputValue = $passwordInput.val();
-	var passwordInputValue = $passwordInput.val();
+	$passwordInput.on("blur", function () {
+		var $passwordInputValue = $passwordInput.val();
+		var passwordInputValue = $passwordInput.val();
 
-	var regExp = /^[A-Za-z\d@$!%*#?&]{8,32}$/;
+		var regExp = /^[A-Za-z\d@$!%*#?&]{8,32}$/;
 
 
-	if ($passwordInputValue.length < 1) {
-		$passwordWarning.text("비밀번호를 입력해주세요.");
-		$passwordWarning.css("display", "block");
-		$passwordInput.css("border-color", "#e52929");
-		checkAll[2] = false;
+		if ($passwordInputValue.length < 1) {
+			$passwordWarning.text("비밀번호를 입력해주세요.");
+			$passwordWarning.css("display", "block");
+			$passwordInput.css("border-color", "#e52929");
+			checkAll[2] = false;
 
-	} else if ($passwordInputValue.length > 31) {
-		$passwordWarning.text("글자수를 초과하였습니다.");
-		$passwordWarning.css("display", "block");
-		$passwordInput.css("border-color", "#e52929");
-		checkAll[2] = false;
+		} else if ($passwordInputValue.length > 31) {
+			$passwordWarning.text("글자수를 초과하였습니다.");
+			$passwordWarning.css("display", "block");
+			$passwordInput.css("border-color", "#e52929");
+			checkAll[2] = false;
 
-	} else if (!regExp.test($passwordInputValue)) {
-		console.log("들어옴");
-		$passwordWarning.text("8글자 이상 입력해 주세요.");
-		$passwordWarning.css("display", "block");
-		$passwordInput.css("border-color", "#e52929");
-		checkAll[2] = false;
+		} else if (!regExp.test($passwordInputValue)) {
+			console.log("들어옴");
+			$passwordWarning.text("8글자 이상 입력해 주세요.");
+			$passwordWarning.css("display", "block");
+			$passwordInput.css("border-color", "#e52929");
+			checkAll[2] = false;
 
-	} else {
-		$passwordWarning.css("display", "none");
-		$passwordInput.css("border-color", "#e0e0e0");
-		checkAll[2] = true;
+		} else {
+			$passwordWarning.css("display", "none");
+			$passwordInput.css("border-color", "#e0e0e0");
+			checkAll[2] = true;
 
-	}
-});
+		}
+	});
 
-/* 비밀번호 눈 아이콘 */
-$pwdEye.on('click', function(){
-    var $pwdInput = $('.pwd input');
-    var $pwdImg = $('.pwd img');
-    if (!checkPwd) {
-        $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '/img/icon_input_slash.png');
-        checkPwd = true;
-    } else {
-        $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '/img/icon_input_eye.png');
-        checkPwd = false;
-    }
-});
+	/* 비밀번호 눈 아이콘 */
+	$pwdEye.on('click', function () {
+		var $pwdInput = $('.pwd input');
+		var $pwdImg = $('.pwd img');
+		if (!checkPwd) {
+			$pwdInput.attr('type', 'text');
+			$pwdImg.attr('src', '/img/icon_input_slash.png');
+			checkPwd = true;
+		} else {
+			$pwdInput.attr('type', 'password');
+			$pwdImg.attr('src', '/img/icon_input_eye.png');
+			checkPwd = false;
+		}
+	});
 
 // 비밀번호 확인 정규식 이벤트 사용 및 함수
-$passwordCheckInput.on("blur", function() {
-	var $passwordInputValue = $passwordInput.val();
-	var $passwordCheckInputValue = $passwordCheckInput.val();
+	$passwordCheckInput.on("blur", function () {
+		var $passwordInputValue = $passwordInput.val();
+		var $passwordCheckInputValue = $passwordCheckInput.val();
 
-	if ($passwordCheckInputValue.length < 1) {
-		$passwordCheckWarning.text("비밀번호를 한 번 더 입력해 주세요.");
-		$passwordCheckWarning.css("display", "block");
-		$passwordCheckInput.css("border-color", "#e52929");
-        checkAll[3] = false;
-        
-	} else if ($passwordCheckInputValue == $passwordInputValue) {
-		$passwordCheckWarning.css("display", "none");
-		$passwordCheckInput.css("border-color", "#e0e0e0");
-        checkAll[3] = true;
+		if ($passwordCheckInputValue.length < 1) {
+			$passwordCheckWarning.text("비밀번호를 한 번 더 입력해 주세요.");
+			$passwordCheckWarning.css("display", "block");
+			$passwordCheckInput.css("border-color", "#e52929");
+			checkAll[3] = false;
 
-	} else {
-		$passwordCheckWarning.text("동일한 비밀번호를 입력해 주세요.");
-		$passwordCheckWarning.css("display", "block");
-		$passwordCheckInput.css("border-color", "#e52929");
-        checkAll[3] = false;
-	}
-});
+		} else if ($passwordCheckInputValue == $passwordInputValue) {
+			$passwordCheckWarning.css("display", "none");
+			$passwordCheckInput.css("border-color", "#e0e0e0");
+			checkAll[3] = true;
+
+		} else {
+			$passwordCheckWarning.text("동일한 비밀번호를 입력해 주세요.");
+			$passwordCheckWarning.css("display", "block");
+			$passwordCheckInput.css("border-color", "#e52929");
+			checkAll[3] = false;
+		}
+	});
 
 
-
-/* 비밀번호 확인 눈 아이콘 */
-$rePwdEye.on('click', function(){
-    var $pwdInput = $('.re-pwd input');
-    var $pwdImg = $('.re-pwd img');
-    if (!checkPwd) {
-        $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '/img/icon_input_slash.png');
-        checkPwd = true;
-    } else {
-        $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '/img/icon_input_eye.png');
-        checkPwd = false;
-    }
-});
+	/* 비밀번호 확인 눈 아이콘 */
+	$rePwdEye.on('click', function () {
+		var $pwdInput = $('.re-pwd input');
+		var $pwdImg = $('.re-pwd img');
+		if (!checkPwd) {
+			$pwdInput.attr('type', 'text');
+			$pwdImg.attr('src', '/img/icon_input_slash.png');
+			checkPwd = true;
+		} else {
+			$pwdInput.attr('type', 'password');
+			$pwdImg.attr('src', '/img/icon_input_eye.png');
+			checkPwd = false;
+		}
+	});
 
 
 // 이름 정규식 이벤트 사용 및 함수
-$nameInput.on("blur", function() {
-	const $nameInputValue = $nameInput.val();
-	const nameInputValue = $nameInput.val();
+	$nameInput.on("blur", function () {
+		const $nameInputValue = $nameInput.val();
+		const nameInputValue = $nameInput.val();
 
-	if ($nameInputValue.length < 1) {
-		$nameWarning.text("이름을 입력해 주세요.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#e52929");
-		checkAll[4] = false;
+		if ($nameInputValue.length < 1) {
+			$nameWarning.text("이름을 입력해 주세요.");
+			$nameWarning.css("display", "block");
+			$nameInput.css("border-color", "#e52929");
+			checkAll[4] = false;
 
-	} else if ($nameInputValue.length < 2) {
-		$nameWarning.text("최소 2자입니다.");
-		$nameWarning.css("display", "block");
-		$nameInput.css("border-color", "#e52929");
-		checkAll[4] = false;
+		} else if ($nameInputValue.length < 2) {
+			$nameWarning.text("최소 2자입니다.");
+			$nameWarning.css("display", "block");
+			$nameInput.css("border-color", "#e52929");
+			checkAll[4] = false;
 
-	} else {
-		$nameWarning.css("display", "none");
-		$nameInput.css("border-color", "#e0e0e0");
-		checkAll[4] = true;
+		} else {
+			$nameWarning.css("display", "none");
+			$nameInput.css("border-color", "#e0e0e0");
+			checkAll[4] = true;
 
-	}
-});
-
+		}
+	});
 
 
 // 핸드폰 정규식 이벤트 함수 사용
-$phoneInput.on("blur", function() {
-	var isPhoneNum = /([01]{2,})([01679]{1,})([0-9]{3,4})([0-9]{4})/;
-	var $phoneInputVal = $phoneInput.val();
-	var phoneInputVal = $phoneInput.val();
+	$phoneInput.on("blur", function () {
+		var isPhoneNum = /([01]{2,})([01679]{1,})([0-9]{3,4})([0-9]{4})/;
+		var $phoneInputVal = $phoneInput.val();
+		var phoneInputVal = $phoneInput.val();
 
-	if ($phoneInputVal.length < 1) {
-		$phoneWarning.text("핸드폰 번호를 입력해 주세요.");
-		$phoneWarning.css("display", "block");
-		$phoneInput.css("border-color", "#e52929");
-		checkAll[5] = false;
+		if ($phoneInputVal.length < 1) {
+			$phoneWarning.text("핸드폰 번호를 입력해 주세요.");
+			$phoneWarning.css("display", "block");
+			$phoneInput.css("border-color", "#e52929");
+			checkAll[5] = false;
 
-	} else if (!isPhoneNum.test($phoneInputVal)) {
-		$phoneWarning.text("잘못된 형식입니다. 다시 입력해 주세요.");
-		$phoneWarning.css("display", "block");
-		$phoneInput.css("border-color", "#e52929");
-		checkAll[5] = false;
+		} else if (!isPhoneNum.test($phoneInputVal)) {
+			$phoneWarning.text("잘못된 형식입니다. 다시 입력해 주세요.");
+			$phoneWarning.css("display", "block");
+			$phoneInput.css("border-color", "#e52929");
+			checkAll[5] = false;
 
-	} else {
-		$phoneWarning.css("display", "none");
-		$phoneInput.css("border-color", "#e0e0e0");
-		checkAll[5] = true;
+		} else {
+			$phoneWarning.css("display", "none");
+			$phoneInput.css("border-color", "#e0e0e0");
+			checkAll[5] = true;
 
-	}
+		}
 
-});
+	});
 
-/* file upload */
-$("#file").on('change', function(){
-    var fileName = $("#file").val().split('/').pop().split('\\').pop();
-    var $fileName = $("#file").val().split('/').pop().split('\\').pop();
+	/* file upload */
+	$("#file").on('change', function () {
+		var fileName = $("#file").val().split('/').pop().split('\\').pop();
+		var $fileName = $("#file").val().split('/').pop().split('\\').pop();
 
-    var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+		var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
 
-    if (fileName.match(reg)) {
-        $("#upload-name").val(fileName);
-        checkAll[6] = true;
+		if (fileName.match(reg)) {
+			$("#upload-name").val(fileName);
+			checkAll[6] = true;
 
-    } else {
-        $("#upload-name").val("이미지 파일이 아닙니다. 다시 등록해 주세요.");
-        checkAll[6] = false;
-    }
-});
+		} else {
+			$("#upload-name").val("이미지 파일이 아닙니다. 다시 등록해 주세요.");
+			checkAll[6] = false;
+		}
+	});
 
-/* 이용약관 동의 */
-$checkbox.on("click", function(){
-    if (!checkbox) {
-        $arrow.css("background", "#3ba3c7");
-        $arrow.css("border-color", "#3ba3c7");
-        $icon.css("stroke-dashoffset", "1");
-        checkbox = true;
+	/* 이용약관 동의 */
+	$checkbox.on("click", function () {
+		if (!checkbox) {
+			$arrow.css("background", "#3ba3c7");
+			$arrow.css("border-color", "#3ba3c7");
+			$icon.css("stroke-dashoffset", "1");
+			checkbox = true;
 
-    } else {
-        $arrow.css("background", "#fff");
-        $arrow.css("border-color", "#e0e0e0");
-        $icon.css("stroke-dashoffset", "29.7833385");
-        checkbox = false;
-    }
-});
+		} else {
+			$arrow.css("background", "#fff");
+			$arrow.css("border-color", "#e0e0e0");
+			$icon.css("stroke-dashoffset", "29.7833385");
+			checkbox = false;
+		}
+	});
 
 // 회원가입 버튼 활성화
-$submitBtn.on("click", function(){
-    var flag = false;
-    if(checkbox) {
-        for (let i = 0; i < checkAll.length; i++) {
-            var check = checkAll[i];
-            if (!check) {
-                flag = true;
-                break;
-            }
-        }
-    }
+	$submitBtn.on("click", function () {
+		var flag = false;
+		if (checkbox) {
+			for (let i = 0; i < checkAll.length; i++) {
+				var check = checkAll[i];
+				if (!check) {
+					flag = true;
+					break;
+				}
+			}
+		}
 
-    if(checkbox && !flag) {
-        /*비밀번호 암호화*/
-        $passwordInput.val(btoa($passwordInput.val()));
-        $passwordCheckInput.val(btoa($passwordCheckInput.val()));
+		if (checkbox && !flag) {
+			/*비밀번호 암호화*/
+			$passwordInput.val(btoa($passwordInput.val()));
+			$passwordCheckInput.val(btoa($passwordCheckInput.val()));
 
-        $submitBtn.attr("type", "submit");
-    } else {
-        $submitBtn.attr("type", "button");
-    }
-});
+			$submitBtn.attr("type", "submit");
+		} else {
+			$submitBtn.attr("type", "button");
+		}
+	});
+

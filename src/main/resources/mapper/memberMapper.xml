@@ -14,4 +14,15 @@
         from tbl_member
         where member_id = #{memberId}
     </select>
+
+    <select id="checkId" parameterType="string" resultType="long">
+		select member_id from tbl_member
+		where member_identification = #{memberIdentification}
+	</select>
+
+    <select id="checkEmail" parameterType="string" resultType="long">
+		select member_id from tbl_member
+		where member_email = #{member_Email}
+	</select>
+
 </mapper>

@@ -22,8 +22,25 @@ public class MemberController {
 
    //회원가입 테스트
     @PostMapping("join")
-    public void joinfinish(MemberVO memberVO){
+    public RedirectView joinfinish(MemberVO memberVO){
         memberService.save(memberVO);
+        return new RedirectView("/login");
+    }
+
+    //아이디 중복체크
+    @PostMapping("/checkId")
+    @ResponseBody
+    public Long checkId(@RequestParam("memberIdentification") String memberIdentification) {
+        Long duplicateId = memberService.checkId(memberIdentification);
+        return duplicateId;
+    }
+
+    //이메일 중복체크
+    @PostMapping("/checkEmail")
+    @ResponseBody
+    public Long checkEmail(@RequestParam("memberEmail") String memberEmail) {
+        Long duplicateEmail = memberService.checkEmail(memberEmail);
+        return duplicateEmail;
     }
 
     //로그인
