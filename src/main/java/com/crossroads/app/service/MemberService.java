@@ -21,6 +21,7 @@ public class MemberService {
     //마이페이지 프로필 정보조회
     public void getMember(Long memberId){memberDAO.findById(memberId);}
 
+    //마이페이지 프로필 수정
 
 
 }
