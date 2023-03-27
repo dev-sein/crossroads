@@ -27,4 +27,6 @@ public class BoardDTO {
     private String memberDriveRegisterDate;
     private Integer memberPoint;
 
+    /*replyVO*/
+    private Integer replyCount;
 }
