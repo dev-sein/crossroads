@@ -22,7 +22,7 @@ public class MemberMapperTests {
         memberVO.setMemberPhone("01011111111");
         memberVO.setMemberEmail("abc@naver.com");
 
-        memberMapper.insert(memberVO);
+        memberMapper.join(memberVO);
 
     }
     
