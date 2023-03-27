@@ -2,10 +2,10 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.mybatis.spring.SqlSessionUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
 
     private final MemberService memberService;
@@ -49,7 +50,9 @@ public class MemberController {
 
     //로그인
     @GetMapping("login")
-    public String login(){
+    public String login(HttpServletRequest request, Model model){
+        model.addAttribute("memberId", request.getSession().getAttribute("memberId"));
+        log.info("login");
         return "member/login";
     }
 
@@ -58,10 +61,10 @@ public class MemberController {
     public RedirectView login(String memberIdentification, String memberPassword, HttpSession session){
         Long id = memberService.login(memberIdentification, memberPassword);
         if(id != null){
-            session.setAttribute("userId", id);
-            return new RedirectView("login");
+            session.setAttribute("memberId", id);
+            return new RedirectView("/main");
         }
-        return new RedirectView("/main");
+        return new RedirectView("/member/login");
     }
 
 

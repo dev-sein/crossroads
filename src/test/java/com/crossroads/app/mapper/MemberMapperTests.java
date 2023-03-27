@@ -30,7 +30,10 @@ public class MemberMapperTests {
        log.info(memberMapper.select(1L).toString());
     }
 
-
+    @Test
+    public void loginTest(String memberIdentification, String memberPassword){
+        memberMapper.login(memberIdentification, memberPassword);
+    }
 
 
 }

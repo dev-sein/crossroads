@@ -11,6 +11,7 @@ $idInput.on("blur", function() {
 		$idWarning.css("display", "block");
 		$idInput.css("border-color", "#e52929");
 
+
 	} else if ($idInputValue.length < 6) {
 		$idWarning.text("6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다.");
 		$idWarning.css("display", "block");
@@ -20,11 +21,10 @@ $idInput.on("blur", function() {
 		$idWarning.css("display", "none");
 		$idInput.css("border-color", "#e0e0e0");
 	}
-
-
 })
 
 
+/*		$('form').submit();*/
 
 
 // 비밀번호 변수
