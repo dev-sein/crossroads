@@ -30,9 +30,9 @@ public class BoardDTO {
     /*replyVO*/
     private Long replyId;
     private Long replyCount; // 댓글 수
-    //    private Long boardId;
+//    private Long boardId;
 //    private Long memberId;
-    private String replyContents;
+    private String replyContent;
     private String replyRegisterDate;
     private String replyUpdateDate;
 }
