@@ -9,12 +9,6 @@
     #{memberEmail}, #{memberFileSystemName})
     </insert>
 
-    <select id="select" parameterType="long" resultType="memberVO">
-        select member_id, member_identification, member_name, member_phone, member_email, member_type
-        from tbl_member
-        where member_id = #{memberId}
-    </select>
-
     <select id="checkId" parameterType="string" resultType="long">
 		select member_id from tbl_member
 		where member_identification = #{memberIdentification}
@@ -29,5 +23,17 @@
 	select member_id from tbl_member
 	where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
+
+    <select id="select" parameterType="long" resultType="memberVO">
+        select member_id, member_identification, member_name, member_phone, member_email, member_type
+        from tbl_member
+        where member_id = #{memberId}
+    </select>
+
+    <update id="update" parameterType="long">
+        update tbl_member
+        set member_identification=#{memberIdentification}, member_password='', member_name='', member_phone='', member_email='', member_file_system_name='', member_type='', member_drive_register_date='', member_point=0
+        where member_id=#{memberId};
+    </update>
 
 </mapper>
