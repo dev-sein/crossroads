@@ -24,7 +24,7 @@ public class MypageController {
         return "mypage/mypage-main";
     }
 
-    //마이페이지 프로필 조회/수정
+    //마이페이지 프로필 조회, 수정
     @GetMapping("/my-info")
     public String profileModify(){
         return "mypage/my-info";

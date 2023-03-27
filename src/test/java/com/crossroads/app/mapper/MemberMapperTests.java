@@ -13,20 +13,24 @@ public class MemberMapperTests {
     MemberMapper memberMapper;
 
     //회원가입 테스트
-   @Test
-    public void insertTest(){
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberIdentification("bcd123");
-        memberVO.setMemberPassword("1234");
-        memberVO.setMemberName("정세인");
-        memberVO.setMemberPhone("01011111111");
-        memberVO.setMemberEmail("abc@naver.com");
+//   @Test
+//    public void insertTest(){
+//        MemberVO memberVO = new MemberVO();
+//        memberVO.setMemberIdentification("bcd123");
+//        memberVO.setMemberPassword("1234");
+//        memberVO.setMemberName("정세인");
+//        memberVO.setMemberPhone("01011111111");
+//        memberVO.setMemberEmail("abc@naver.com");
+//
+//        memberMapper.join(memberVO);
+//    }
 
-        memberMapper.join(memberVO);
-
+    @Test
+    public void selectTest(){
+       log.info(memberMapper.select(1L).toString());
     }
 
-//    @Test
-//    public MemberVO select
-//
+
+
+
 }
