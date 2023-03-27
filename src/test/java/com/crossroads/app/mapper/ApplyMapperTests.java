@@ -34,10 +34,15 @@ public class ApplyMapperTests {
 //    }
 
     @Test
+    public void updateStatusTest(){
+        applyMapper.updateStatus(2L);
+    }
+
+    @Test
     public void updateVeteranIdTest() {
         Map<String, Object> info = new HashMap<>();
+        info.put("applyId", 4L);
         info.put("memberId", 1L);
-        info.put("applyId", 2L);
         applyMapper.updateVeteranId(info);
     }
 }
