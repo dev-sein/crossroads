@@ -31,4 +31,9 @@ public class MobileController {
         return "mobile/list-mobile";
     }
 
+    @GetMapping("list-mobile/search")
+    public String listMobileSearch(){
+        return "mobile/list-mobile/search";
+    }
+
 }
