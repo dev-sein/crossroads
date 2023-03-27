@@ -3,35 +3,35 @@
 <mapper namespace="com.crossroads.app.mapper.BoardMapper">
 
     <!--  PageDTO인지 SearchDTO인지 판별  -->
-    <sql id="searchType">
-        <choose>
-            <when test="page.IS_SEARCH_DTO">
-                <bind name="dto" value="page"/>
-            </when>
-            <otherwise>
-                <bind name="dto" value="page.searchDTO"/>
-            </otherwise>
-        </choose>
-        <include refid="searchContext"/>
-    </sql>
+<!--    <sql id="searchType">-->
+<!--        <choose>-->
+<!--            <when test="page.IS_SEARCH_DTO">-->
+<!--                <bind name="dto" value="page"/>-->
+<!--            </when>-->
+<!--            <otherwise>-->
+<!--                <bind name="dto" value="page.searchDTO"/>-->
+<!--            </otherwise>-->
+<!--        </choose>-->
+<!--        <include refid="searchContext"/>-->
+<!--    </sql>-->
     <!--  조건에 맞는 테이블 검색조건  -->
-    <sql id="searchContext">
-        where
-        <trim prefixOverrides="and">
-            <foreach collection="dto.types" item="type">
-                <trim prefix="and">
-                    <choose>
-                        <when test="type == 'memberId'.toString()">
-                            member_id = #{dto.memberId}
-                        </when>
-                        <when test="type == 'keyword'.toString()">
-                            review_title like concat('%', #{dto.keyword}, '%')
-                        </when>
-                    </choose>
-                </trim>
-            </foreach>
-        </trim>
-    </sql>
+<!--    <sql id="searchContext">-->
+<!--        where-->
+<!--        <trim prefixOverrides="and">-->
+<!--            <foreach collection="dto.types" item="type">-->
+<!--                <trim prefix="and">-->
+<!--                    <choose>-->
+<!--                        <when test="type == 'memberId'.toString()">-->
+<!--                            member_id = #{dto.memberId}-->
+<!--                        </when>-->
+<!--                        <when test="type == 'keyword'.toString()">-->
+<!--                            review_title like concat('%', #{dto.keyword}, '%')-->
+<!--                        </when>-->
+<!--                    </choose>-->
+<!--                </trim>-->
+<!--            </foreach>-->
+<!--        </trim>-->
+<!--    </sql>-->
     <!-- 어드민 목록 조회 -->
     <select id="selectAllAdmin" resultType="boardDTO">
         select b.board_id , m.member_name , b.board_title , b.board_content , b.board_register_date
@@ -40,6 +40,10 @@
         order by b.board_id desc
     </select>
 
+    <delete id="deleteAdmin">
+        delete from tbl_board
+        where board_id = #{boardId}
+    </delete>
 
 
 </mapper>
