@@ -22,8 +22,9 @@ public class MemberController {
 
    //회원가입 테스트
     @PostMapping("join")
-    public void joinfinish(MemberVO memberVO){
+    public RedirectView joinfinish(MemberVO memberVO){
         memberService.save(memberVO);
+        return new RedirectView("/login");
     }
 
     //로그인
