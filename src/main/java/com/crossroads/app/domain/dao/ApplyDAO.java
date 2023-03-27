@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
@@ -22,7 +23,12 @@ public class ApplyDAO {
     public ApplyVO findById(Long applyId) {return applyMapper.select(applyId);};
 
 //    신청 상태 수정
-//    public void setApplyVO(Long applyId){
-//        applyMapper.updateStatus(applyId);
-//    }
+    public void setApplyStatus(Long applyId){
+        applyMapper.updateStatus(applyId);
+    }
+
+//    담당 베테랑 id 수정
+    public void setVeteranId(Map<String, Object> info){
+        applyMapper.updateVeteranId(info);
+    }
 }
