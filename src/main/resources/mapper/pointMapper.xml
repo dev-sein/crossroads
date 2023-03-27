@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.PointMapper">
+    <select id="selectPoint" resultType="long" parameterType="long">
+        select member_point
+        from tbl_member
+        where member_id = #{memberId}
+    </select>
+
+    <update id="updatePoint" parameterType="hashmap">
+        update tbl_member
+        set member_point = #{memberPoint}
+        where member_id = #{memberId}
+    </update>
 </mapper>
