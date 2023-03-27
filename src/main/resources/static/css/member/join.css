@@ -459,3 +459,13 @@ a {
     color:#6A82FB;
     display: none;
 }
+
+.email_ok{
+    color:#008000;
+    display: none;
+}
+
+.email_already{
+    color:#6A82FB;
+    display: none;
+}
