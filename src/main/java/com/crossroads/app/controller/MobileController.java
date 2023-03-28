@@ -38,9 +38,16 @@ public class MobileController {
         return "mobile/list-mobile";
     }
 
-    @GetMapping("list-mobile/search")
-    public String listMobileSearch(){
-        return "/modal/mobile/search-modal";
+    @GetMapping("list-mobile/search/{applyLocation}/{applyDate}")
+    public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
+                                   @RequestParam(value = "applyDate")String applyDate,
+                                   Model model, HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
+        model.addAttribute("applies", applyService.getList());
+        model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
+        return "mobile/list-mobile";
     }
 
     @PostMapping("list-mobile/change-status")
