@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.service.FreeBoardService;
+import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("/admins/*")
 @Slf4j
 public class AdminController {
+    private final MemberService memberService;
     private final FreeBoardService freeBoardService;
     //관리자 홈
     @GetMapping("home")
@@ -25,8 +27,9 @@ public class AdminController {
     }
 
     //관리자 회원 목록
-    @GetMapping("member")
-    public String adminMember(){
+    @GetMapping("member/list")
+    public String adminMember(Model model){
+        model.addAttribute("members", memberService.getList());
         return "admin/admin-member";
     }
 
@@ -53,7 +56,11 @@ public class AdminController {
     public String adminBoard(Model model, Criteria criteria){
         if (criteria.getPage() == 0) {
             criteria = criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
+        } else {
+            criteria = criteria.create(criteria.getPage(), 6);
         }
+
+        log.info(criteria.toString());
 
         List<BoardDTO> boards = freeBoardService.getListAdmin(criteria);
 

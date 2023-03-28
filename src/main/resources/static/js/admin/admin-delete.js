@@ -12,7 +12,7 @@ $('.modal_test').on('click', function() {
 
     $.ajax({
         url: "/admins/board/delete",
-        type: "post",
+        type: "delete",
         data: {"checkedIds": checkedIds},
         success: function(){
             location.reload();

@@ -5,6 +5,8 @@ import com.crossroads.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class MemberDAO {
@@ -26,4 +28,9 @@ public class MemberDAO {
 
     //마이페이지 정보 수정
     public void setMyInfo(MemberVO memberVO){ memberMapper.update(memberVO);}
+
+    //회원 정보 목록
+    public List<MemberVO> findAll(){
+        return memberMapper.selectAll();
+    }
 }

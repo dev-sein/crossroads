@@ -75,34 +75,16 @@
 <!--			</div>-->
 			<!-- 목록 테스트 추가  -->
 		</div>
-		<div class="page-button-box">
-			<div th:object="${pagination}">
-				<div style="text-align: center">
-					<!--이전 버튼-->
-					<a class="page-button" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
-					<!--페이지 수-->
-					<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-						<a class="page-button" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
-						<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
-					</th:block>
-					<!--다음 버튼-->
-					<a class="page-button" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
-				</div>
-				<form th:action="@{/admins/board/list}" th:object="${criteria}" name="pageForm">
-					<input type="hidden" th:field="*{page}">
-				</form>
-			</div>
-		</div>
 		<div class="desktop-only" th:object="${pagination}">
 			<!-- 데스크탑용 버튼 -->
-			<a class="prev-page icon-chevron-left" disabled="" th:href="*{startPage - 1}" th:if="*{prev}">
+			<a class="prev-page icon-chevron-left" disabled="" th:href="'list?page=' + *{startPage - 1}" th:if="*{prev}">
 				<code>
 					<span class="text-hidden">이전</span>
 				</code>
 			</a>
 			<!-- 데스크탑용 페이지 리스트 -->
 			<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-				<a class="current" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
 				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
 			</th:block>
 <!--			<a class="current" href="#" onclick="movePage(1)">1</a>-->
@@ -112,7 +94,7 @@
 <!--			<a href="#" onclick="movePage(5)">5</a>-->
 <!--			<a href="#" onclick="movePage(6)"></a>-->
 			<!-- 데스크탑용 버튼 -->
-			<a class="next-page icon-chevron-right" th:href="*{endPage + 1}" th:if="*{next}">
+			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">
 				<code>
 					<span class="text-hidden">다음</span>
 				</code>
@@ -136,15 +118,15 @@
 <script src="/js/admin/admin-delete.js"></script>
 <script src="/js/admin/admin-modal.js"></script>
 <script>
-	let $pages = $("a.text-hidden");
-
-	$pages.on("click", function(e){
-		e.preventDefault();
-		let page = $(this).attr("href");
-		let amount = 6;
-		let url = "/admins/board/list?page=" + page+"&amount="+amount;
-
-		location.href = url;
-	});
+	// let $pages = $("a.text-hidden");
+	//
+	// $pages.on("click", function(e){
+	// 	e.preventDefault();
+	// 	let page = $(this).attr("href");
+	// 	let amount = 6;
+	// 	let url = "/admins/board/list?page=" + page+"&amount="+amount;
+	//
+	// 	location.href = url;
+	// });
 </script>
 </html>
