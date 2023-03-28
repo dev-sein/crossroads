@@ -10,4 +10,14 @@
         where member_id = #{memberId}
         order by apply_register_date desc
     </select>
+
+    <select id="selectReviewAll" resultType="reviewDTO" >
+        select m.member_id, member_identification, member_file_system_name,
+               a.apply_id, apply_course, apply_location, apply_date, apply_register_date,
+               starter_member_id, review_id, review_register_date, review_update_date, review_title, review_contents, review_file_system_name,review_grade
+        from tbl_member m join tbl_apply a on m.member_id = a.starter_member_id
+        join tbl_review r on r.member_id = a.starter_member_id
+        where member_id = #{memberId}
+        order by review_register_date desc
+    </select>
 </mapper>
