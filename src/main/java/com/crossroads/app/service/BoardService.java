@@ -16,7 +16,7 @@ public interface BoardService {
     public Integer getCountAdmin();
 
     //    마이페이지 리뷰 목록
-    public List<ReviewDTO> getListMy();
+    public List<ReviewDTO> getListMy(Long memberId);
 
 //    어드민 게시글 삭제
     public void remove(List<String> boardIds);

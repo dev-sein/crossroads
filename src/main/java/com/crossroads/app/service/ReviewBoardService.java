@@ -30,7 +30,7 @@ public class ReviewBoardService implements BoardService {
     }
 
     @Override
-    public List<ReviewDTO> getListMy() { return reviewDAO.findAllMy(); }
+    public List<ReviewDTO> getListMy(Long memberId) { return reviewDAO.findAllMy(memberId); }
 
     @Override
     public void remove(List<String> boardIds) {
@@ -41,4 +41,11 @@ public class ReviewBoardService implements BoardService {
     public List<BoardDTO> getList() {
         return null;
     }
+
+   /* @Override
+    public List<ReviewDTO> getListReview() {
+        return reviewDAO.findAllReview();
+    }*/
+
+
 }

@@ -18,7 +18,7 @@ public class PointDAO {
     }
 
     //    포인트 수정
-    public void setPoint(Map<String, Object> info){
-        pointMapper.updatePoint(info);
+    public void setPoint(Long memberId){
+        pointMapper.updatePoint(memberId);
     }
 }
