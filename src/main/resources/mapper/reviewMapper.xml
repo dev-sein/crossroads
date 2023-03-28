@@ -9,4 +9,7 @@
         join tbl_review r on r.member_id = a.starter_member_id
         order by apply_register_date desc
     </select>
+
+
+    
 </mapper>
