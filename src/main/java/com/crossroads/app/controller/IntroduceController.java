@@ -15,11 +15,11 @@ public class IntroduceController {
     public String notice(){
         return "introduce/notice";
     }
-    //404 에러
-    @GetMapping("error")
-    public String error(){
-        return "error/404";
-    }
+//    //404 에러
+//    @GetMapping("error")
+//    public String error(){
+//        return "error/404";
+//    }
 
 
 }
