@@ -48,16 +48,26 @@ $('.modal_test').on('click', function() {
   // $('input:checkbox[name=checkbox]:checked').next('.content__id').each(function(){
   $('input:checkbox[name=checkbox]:checked').next().find('.content__id').each(function(){
     // console.log(this);
-    // console.log(this.innerText);
+    console.log(this.innerText);
     // console.log(typeof this.innerText);
     checkedIds.push(this.innerText);
   });
 
-  // console.log(checkedIds);
+  console.log(checkedIds);
   $('#check-hidden').val(checkedIds);
   // console.log($('#check-hidden').val());
   // console.log(typeof $('#check-hidden').val());
-  document.checkedForm.submit();
+
+  // document.checkedForm.submit();
+  $.ajax({
+    url: "/admins/board/delete",
+    type: "post",
+    data: {"checkedIds": checkedIds},
+    success: function(){
+      location.reload();
+    }
+
+  });
 });
 
 

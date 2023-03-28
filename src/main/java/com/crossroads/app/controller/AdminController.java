@@ -5,9 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -56,11 +54,11 @@ public class AdminController {
     }
 
 //    관리자 게시글 삭제
+    @ResponseBody
     @PostMapping("board/delete")
-    public RedirectView deleteBoard(List<String> checkedIds) {
+    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        log.info("1234" + checkedIds.toString());
         freeBoardService.remove(checkedIds);
-
-        return new RedirectView("/admins/board");
     }
 
     //관리자 댓글 목록
