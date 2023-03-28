@@ -12,7 +12,7 @@
         where m.member_id = #{memberId}
         order by apply_register_date desc
     </select>
-
+    <!-- 마이페이지 후기 목록 -->
     <select id="selectReviewAll" resultType="reviewDTO" >
         select m.member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point,
         a.apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status,

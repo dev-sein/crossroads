@@ -133,9 +133,12 @@ public class MypageController {
     }
     
     //마이페이지 내가 쓴 댓글 목록
-    @GetMapping("/my-reply-list")
-    public String myReplyList(){
-        return "mypage/my-reply-list";
+    @GetMapping("/my-reply")
+    public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        //        session.setAttribute("memberId", 1L);
+        model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
+        return "mypage/my-reply";
     }
     
     //마이페이지 회원탈퇴
