@@ -10,7 +10,7 @@ const selectAll = function () {
   if (checkBoxAll[0].checked) {
     checkBox.forEach((e) => {
       e.checked = true;
-      checkedIds.push(e.nextSibling.firstChild.firstChild.value);
+      // checkedIds.push(e.nextSibling.firstChild.firstChild.checked);
     });
   }
   if (!checkBoxAll[0].checked) {
