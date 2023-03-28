@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dao.BoardDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.vo.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,18 @@ public class FreeBoardService implements BoardService {
     private final ReplyDAO replyDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin() {
-        List<BoardDTO> boards = boardDAO.findAllAdmin();
+    public List<BoardDTO> getListAdmin(Criteria criteria) {
+        List<BoardDTO> boards = boardDAO.findAllAdmin(criteria);
 
 //        게시글 별 댓글 수를 boards에 추가
         boards.stream().forEach(board -> board.setReplyCount(replyDAO.findReplyCount(board.getBoardId())));
 
         return boards;
+    }
+
+    @Override
+    public Integer getCountAdmin() {
+        return boardDAO.findCountAllAdmin();
     }
 
     @Override

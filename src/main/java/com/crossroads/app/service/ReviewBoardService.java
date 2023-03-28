@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.ReviewDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.vo.Criteria;
 import com.crossroads.app.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +20,12 @@ public class ReviewBoardService implements BoardService {
     private final ReviewDAO reviewDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin() {
+    public List<BoardDTO> getListAdmin(Criteria criteria) {
+        return null;
+    }
+
+    @Override
+    public Integer getCountAdmin() {
         return null;
     }
 
