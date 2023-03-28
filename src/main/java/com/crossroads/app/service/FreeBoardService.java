@@ -34,6 +34,6 @@ public class FreeBoardService implements BoardService {
 
     @Override
     public void remove(Long boardId) {
-
+        boardDAO.deleteById(boardId);
     }
 }
