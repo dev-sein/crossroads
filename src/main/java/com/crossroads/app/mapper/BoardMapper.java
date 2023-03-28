@@ -8,6 +8,10 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
+//    관리자 전체 조회
     public List<BoardDTO> selectAllAdmin();
     public void deleteAdmin(Long boardId);
+
+    //    게시글 전체 조회
+    public List<BoardDTO> selectAll();
 }
