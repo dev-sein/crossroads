@@ -18,25 +18,26 @@ import java.util.List;
 public class ReviewBoardService implements BoardService {
     private final ReviewDAO reviewDAO;
 
-    @Override
-    public List<BoardDTO> getListAdmin() {
-        return null;
-    }
-
+//    마이페이지 후기 목록
     @Override
     public List<ReviewDTO> getListMy(Long memberId) {
         return reviewDAO.findAllMy(memberId);
     }
 
     @Override
-    public void remove(List<String> boardIds) {
+    public List<BoardDTO> getListAdmin() { return null; }
 
-    }
+    @Override
+    public void remove(List<String> boardIds) {;}
 
     @Override
     public List<BoardDTO> getList() {
         return null;
     }
+
+//    마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
 
    /* @Override
     public List<ReviewDTO> getListReview() {

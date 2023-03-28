@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.service.ApplyService;
+import com.crossroads.app.service.FreeBoardService;
 import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class MypageController {
     private final MemberService memberService;
     private final ReviewBoardService reviewBoardService;
     private final ApplyService applyService;
+    private final FreeBoardService freeBoardService;
 
     //마이페이지 메인
     @GetMapping("/mypage-main")
@@ -109,7 +111,7 @@ public class MypageController {
 
     //마이페이지 후기 전체 조회
     @GetMapping("/my-review")
-    public String showListMy(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyReview(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
 
 //        Long memberId = 1L;
@@ -122,8 +124,13 @@ public class MypageController {
     }
 
     //마이페이지 내가 쓴 게시글 목록
-    @GetMapping("/my-board-list")
-    public String myBoardList(){ return "mypage/my-board-list"; }
+    @GetMapping("/my-board")
+    public String showListMyBoard(Model model, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        //        session.setAttribute("memberId", 1L);
+        model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
+        return "mypage/my-board";
+    }
     
     //마이페이지 내가 쓴 댓글 목록
     @GetMapping("/my-reply-list")
