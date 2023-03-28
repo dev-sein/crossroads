@@ -33,8 +33,8 @@ public class FreeBoardService implements BoardService {
     }
 
     @Override
-    public void remove(Long boardId) {
-        boardDAO.deleteById(boardId);
+    public void remove(List<String> boardIds) {
+        boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(boardDAO::deleteById);
     }
 
 //    게시글 목록

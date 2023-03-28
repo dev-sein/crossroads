@@ -4,13 +4,16 @@ const checkBox = document.querySelectorAll('input[name = "checkbox"]');
 const checkBoxChecked = document.querySelectorAll(
   'input[name = "checkbox"]:checked'
 );
-let checkedIds = new Array();
+
+
+
 
 const selectAll = function () {
   if (checkBoxAll[0].checked) {
     checkBox.forEach((e) => {
       e.checked = true;
-      // checkedIds.push(e.nextSibling.firstChild.firstChild.checked);
+      // console.log(e.target);
+      // checkedIds.push(e.target.value);
     });
   }
   if (!checkBoxAll[0].checked) {
@@ -37,8 +40,24 @@ checkBox.forEach((e) => {
   e.addEventListener("click", checkSelectAll);
 });
 
-$('.modal_test').on('click', function() {
 
+/* delete 버튼 클릭 시 form태그 전송*/
+$('.modal_test').on('click', function() {
+  var checkedIds = new Array();
+  // 체크 박스 체크된 값
+  // $('input:checkbox[name=checkbox]:checked').next('.content__id').each(function(){
+  $('input:checkbox[name=checkbox]:checked').next().find('.content__id').each(function(){
+    // console.log(this);
+    // console.log(this.innerText);
+    // console.log(typeof this.innerText);
+    checkedIds.push(this.innerText);
+  });
+
+  // console.log(checkedIds);
+  $('#check-hidden').val(checkedIds);
+  // console.log($('#check-hidden').val());
+  // console.log(typeof $('#check-hidden').val());
+  document.checkedForm.submit();
 });
 
 
