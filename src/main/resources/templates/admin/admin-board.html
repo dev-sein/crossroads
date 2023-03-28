@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>게시판 목록</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+	<link rel="stylesheet" href="/css/admin/admin-common.css" />
+	<link rel="stylesheet" href="/css/admin/admin-review.css" />
+	<link rel="stylesheet" href="/css/modal/admin/admin-review-modal.css" />
+	<link rel="stylesheet" href="/css/admin-components/admin-aside.css" />
+	<link rel="stylesheet" href="/css/admin-components/admin-header.css" />
+	<link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
+</head>
+<body>
+<!-- -------------- header -------------- -->
+<div th:insert="~{/admin-components/admin-header:: admin-header}"></div>
+<!-- -------------- header end --------------  -->
+<!-- -------------- aside -------------- -->
+<div th:insert="~{/admin-components/admin-aside:: admin-aside}"></div>
+<!-- -------------- aside end --------------  -->
+<main class="module-container">
+	<article class="module--search">
+		<div class="search__searchbox">
+			<form action="" class="search__searchbox__form">
+				<input id="searchbox" type="text" placeholder="원하시는 키워드로 찾아보세요" />
+				<button type="button" class="search__searchbox__button">
+					<img src="/images/admin/search.png" alt="" />
+				</button>
+			</form>
+		</div>
+	</article>
+	<article class="module module--content-summary">
+		<button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px;">선택 삭제</button>
+	</article>
+
+	<article class="module module--content-list">
+		<input type="hidden" id="check-hidden" name="checkedIds">
+		<div class="content-list__title-container">
+			<div class="content-list__title-unit">
+				<input type="checkbox" id="title__checkbox" name="checkbox-all" />
+				<ul class="content-list__title">
+					<li class="title__id">번호</li>
+					<li class="title__user">작성자</li>
+					<li class="title__title">제목</li>
+					<li class="title__contents">내용</li>
+					<li class="title__date">등록일</li>
+					<li class="title__reply">댓글</li>
+					<li class="title__detail">상세</li>
+				</ul>
+			</div>
+		</div>
+		<div id="scroll">
+<!--			<div class="content-list__info-container">-->
+<!--				<div class="content-list__info-unit">-->
+<!--					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />-->
+<!--					<label for="" class="content__checkbox&#45;&#45;label">-->
+<!--						<ul class="content-list__info">-->
+<!--							<li class="content__id">00030</li>-->
+<!--							<li class="content__user">정세인</li>-->
+<!--							<li class="content__title">꿀팁 공유부탁드려요!</li>-->
+<!--							<li class="content__contents">눈길 운전은 어떻게 하나요?</li>-->
+<!--							<li class="content__date">2023-03-23</li>-->
+<!--							<li class="content__reply">4</li>-->
+<!--							<li class="user__detail" name="userDetail">-->
+<!--								<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>-->
+<!--							</li>-->
+<!--						</ul>-->
+<!--					</label>-->
+<!--				</div>-->
+<!--			</div>-->
+			<!-- 목록 테스트 추가  -->
+		</div>
+		<div class="desktop-only" th:object="${pagination}">
+			<!-- 데스크탑용 버튼 -->
+			<a class="prev-page icon-chevron-left" disabled="" th:href="'list?page=' + *{startPage - 1}" th:if="*{prev}">
+				<code>
+					<span class="text-hidden">이전</span>
+				</code>
+			</a>
+			<!-- 데스크탑용 페이지 리스트 -->
+			<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+			</th:block>
+<!--			<a class="current" href="#" onclick="movePage(1)">1</a>-->
+<!--			<a href="#" onclick="movePage(2)">2</a>-->
+<!--			<a href="#" onclick="movePage(3)">3</a>-->
+<!--			<a href="#" onclick="movePage(4)">4</a>-->
+<!--			<a href="#" onclick="movePage(5)">5</a>-->
+<!--			<a href="#" onclick="movePage(6)"></a>-->
+			<!-- 데스크탑용 버튼 -->
+			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">
+				<code>
+					<span class="text-hidden">다음</span>
+				</code>
+			</a>
+			<form th:action="@{/admins/board/list}" th:object="${criteria}" name="pageForm">
+				<input type="hidden" th:field="*{page}">
+			</form>
+		</div>
+	</article>
+</main>
+<!-- 후기작성 상세 modal -->
+<div th:insert="~{modal/admin/admin-board-modal:: admin-board-modal}"></div>
+<!-- modal fin. -->
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+	let boards = [[${boards}]];
+</script>
+<script src="/js/admin/board-list.js"></script>
+<script src="/js/admin/admin-checkbox.js"></script>
+<script src="/js/admin/board-delete.js"></script>
+<script src="/js/admin/admin-modal.js"></script>
+<script>
+	// let $pages = $("a.text-hidden");
+	//
+	// $pages.on("click", function(e){
+	// 	e.preventDefault();
+	// 	let page = $(this).attr("href");
+	// 	let amount = 6;
+	// 	let url = "/admins/board/list?page=" + page+"&amount="+amount;
+	//
+	// 	location.href = url;
+	// });
+</script>
+</html>

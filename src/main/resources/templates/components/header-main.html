@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,27 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/font/NotoSansKR-Regular.woff">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-    <header class="header">
+<header th:fragment="header-main" class="header">
         <section class="header-section">
             <div class="container">
-                <a class="main-logo" href=""></a>
+                <a class="main-logo" href="/main"></a>
                 <div class="left-nav">
-                    <a class="menu element" href="">사업소개</a>
-                    <a class="menu element" href="">FAQ</a>
-                    <a class="menu element" href="">연수신청</a>
-                    <a class="menu element" href="">포인트충천</a>
-                    <a class="menu element" href="">이용후기</a>
+                    <a class="menu element" href="/introduce">사업 소개</a>
+                    <a class="menu element" href="/forms/formFirst">연수 신청</a>
+                    <a class="menu element" href="/buyPoint">포인트 충전</a>
+                    <a class="menu element" href="/board-list">자유 게시판</a>
+                    <a class="menu element" href="/review-list">이용후기</a>
                     <div class="nav-divider"></div>
-                    <a class="menu element alert" href="">스토어</a>
+                    <a class="menu element" href="/notice">자주 묻는 질문</a>
                 </div>
                 <div class="right-nav">
-                    <a class="btn btn-gray element" href="">로그인</a>
-                    <a class="btn btn-mint element" href="">회원가입</a>
+                    <a class="btn btn-gray element" href="/members/login">로그인</a>
+                    <a class="btn btn-mint element" href="/members/jointest">회원가입</a>
                 </div>
             </div>
         </section>

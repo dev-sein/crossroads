@@ -354,6 +354,11 @@ main{
     margin-right: 6px;
 }
 
+#button-label{
+    position: relative;
+    right: 25px;
+}
+
 .board-box-bottom {
     /* display: flex; */
 }
@@ -919,6 +924,8 @@ section{
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
     text-align: center;
+    position: relative;
+    right: 25px;
 }
 
 #image{
@@ -946,6 +953,12 @@ section{
     margin-bottom: 20px;
     /* width: 180px;
     height: 180px; */
+}
+
+.review-images{
+    margin: 10px;
+    width: 160px;
+    height: 160px;
 }
 
 /* 테스트 */

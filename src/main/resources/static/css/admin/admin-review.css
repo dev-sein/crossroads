@@ -204,6 +204,9 @@ body {
 .title__date {
   flex: 0.5;
 }
+.title__reply {
+  flex: 0.5;
+}
 .title__date-post {
   flex: 1.5;
 }
@@ -274,6 +277,9 @@ body {
     margin: 0px 5px 0 0px;
 }
 .content__date {
+  flex: 0.5;
+}
+.content__reply {
   flex: 0.5;
 }
 .content__date-post {
@@ -452,7 +458,6 @@ span{
 .star-score-box {
   display: inline-block;
   position: relative;
-  top: 4px;
   margin-right: 8px;
   font-size: 16px;
 }

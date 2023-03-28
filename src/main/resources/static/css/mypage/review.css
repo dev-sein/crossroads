@@ -3,12 +3,11 @@
 html {
     font-size: 62.5%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    height: 100%;
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
     -webkit-locale: "ko";
-    display: block;
+   display: block;
 }
 
 body {
@@ -23,12 +22,8 @@ body {
 
 #wrap {
     min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -250px;
-    padding: 0 0 250px;
+    height: fit-content !important;
     min-width: 1080px;
-    position: relative;
 }
 
 .advertisement {
@@ -45,7 +40,7 @@ body {
     margin: -20px 0 10px 0;
 }
 
-.container {
+#wrap.container {
     margin-left: auto;
     margin-right: auto;
     width: 1080px;
@@ -155,10 +150,16 @@ a {
     margin-right: auto;
     width: 1080px;
 }
-
 .page {
-    position: absolute;
-    left: 21%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1080px;
+    height: fit-content;
+    display: flex;
+}
+
+.page-inner{
+    margin-top: 15px;
 }
 
 
@@ -272,7 +273,7 @@ a {
 }
 
 .user-name-tag .user-img {
-    height: 50px;
+    height:50px;
     width: 50px;
     border-radius: 50%;
     float: left;
@@ -398,7 +399,7 @@ li {
 .sidebar .sidebar-nav ul li a {
     border-radius: 2px;
     display: block;
-    padding: 10px 15px;
+    padding: 6px 15px;
     font-size: 14px;
     color: #999;
     width: 100%;
@@ -406,20 +407,21 @@ li {
 
 .sidemenu {
     margin-top: 10px;
+    margin-bottom: -6px;
 }
 
 .sidemenu2 {
     margin-bottom: 10px;
 }
 
-.active {
+.activeblue {
     color: #fff;
     background-color: #446eab;
     line-height: 10px;
     margin-top: 10px;
 }
 
-.active span {
+.activeblue span {
     color: #fff;
 }
 
@@ -494,7 +496,6 @@ img {
     left: 50%;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 32%);
 }
 
 form {
@@ -771,6 +772,7 @@ input[type=checkbox] {
     margin-left: 10px;
     margin-right: 10px;
     width: 790px;
+    margin-bottom: 70px;
 }
 
 
@@ -1192,12 +1194,6 @@ h3 small {
     display: block;
 }
 
-canvas {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-
-    aspect-ratio: auto 212 / 185;
-}
 
 .client.project-history .history-review-summary:after {
     clear: both;
@@ -1522,7 +1518,7 @@ input {
     margin-right: 250px; */
     margin-left: 271px;
     width: 340px;
-    margin-top: -84px;
+    margin-top: -69px;
 }
 
 .form-control {
@@ -1656,16 +1652,28 @@ form input:focus {
     float: left;
     width: 514px;
     position: relative;
+    cursor: pointer;
 }
 
 .review-container {
     float: left;
 }
 
+.board-container {
+    float: left;
+    margin-left: 60px;
+}
+
+
 .review-photo {
     width: 120px;
     height: 120px;
 
+}
+
+.board-photo {
+    width: 120px;
+    height: 120px;
 }
 
 .review-button{
@@ -1712,6 +1720,10 @@ form input:focus {
     font-size: 14px;
 }
 
+.board-date{
+    text-align: right;
+}
+
 .base-info-splitter {
     color: #dedede;
     font-size: 14px;
@@ -1725,4 +1737,76 @@ form input:focus {
     margin-bottom: 0;
     font-size: 13px;
     color: #333;
+}
+
+/* 에러 */
+.content-error{
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 1060px;
+}
+
+.error-body {
+    padding-left: 20px;
+    display: inline;
+    float: left;
+    width: 610px;
+    margin-left: 0;
+    margin-right: 9px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+h1, .h1 {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    margin: 0.67em 0;
+
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.btn-large{
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid rgba(0,0,0,0);
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 2px;
+    user-select: none;
+}
+
+.error-aside {
+    padding: 35px;
+    padding-left: 90px;
+    display: inline;
+    float: left;
+    width: 340px;
+    margin-right: 0;
+    margin-left: 9px;
+   
+}
+
+.aside-img {
+    width: 215px;
+    height: 215px;
 }

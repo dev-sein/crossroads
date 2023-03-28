@@ -11,6 +11,11 @@
         color: #212121;
         -webkit-tap-highlight-color: transparent;
     }
+    a {
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #212121;
+    }
     html {
         height: 100%;
         font-size: 16px;
@@ -21,32 +26,67 @@
     header {
         height: 61px;
     }
-    header nav.header {
-        background-color: #2099bb;
-        border-bottom: 1px solid #e0e0e0;
-        padding: 14px 16px 14px 20px;
+    /* 헤더 버튼 추가사항 */
+    .header {
+        padding: 16px 0;
+        background-color: rgb(32, 153, 187);
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .flex {
+        display: flex;
+    }
+    .between {
+        justify-content: space-between;
+    }
+    .header-btn{
+        height: 30px;
+        padding: 6px 26px 6px 24px;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .header-btn a {
+        background-color: #fff;
+        color: #2099bb;
+    }
+    .top {
+        line-height: 0px;
+    }
+    .bottom {
+        line-height: 0px;
+    }
+    .relative {
+        position: relative;
+    }
+    
+    /* 뒤로가기 버튼 */
+    .header .go-back svg {
+        position: absolute;
+        width: 30px;
+        top: 8px;
+        left: 18px;
+    }
+    header .header .back-or-logout {
+        position: absolute;
+        display: inline-block;
+        width: 68px;
+        height: 61px;
+        top: 0px;
     }
 
-    /* header nav.header .navigation-left {
-        
-        float: left;
-        width: 0;
-        margin-left: -4px;
-    } */
-
-    header nav.header .navigation-center {
-        display: block;
+    /* 헤더 글씨 */
+    .navigation-center {
         text-align: center;
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        display: block;
+        /* margin, max-width준 이유를 모름 */
         margin: 0 auto;
-        line-height: 32px;
         max-width: calc(100% - 80px);
+        /* overflow, white-space, text-overflow준 이유를 모름 */
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        color: #fff;
-
-        font-size: 20px;
-        font-weight: 500;
     }
 
     /* header nav.header .navigation-right {
@@ -82,6 +122,7 @@
     }
 
     .serach-box .text-input-wrap {
+        
         flex: 1;
     }
 
@@ -95,6 +136,24 @@
         width: 100%;
         color: #616161;
     }
+
+    /* input태그 검색모달창 검색결과 div */
+    .search-result {
+        position: absolute;
+        top: 106px;
+        left: 30px;
+    }
+    /* 검색 결과끼리 간격 조정 */
+    .search-result .result+.result {
+        margin-left: 10px;
+    }
+    /* 결과 값 태그 형식 */
+    .search-result  .result {
+        border: 1px solid #2099bb;
+        border-radius: 6px;
+        padding: 5px 10px;
+    }
+
     button {
         -webkit-tap-highlight-color: transparent;
         border: none;
@@ -115,7 +174,7 @@
     .result-header {
         display: flex;
         justify-content: space-between;
-        padding: 10px 16px;
+        /* padding: 10px 16px; */
         height: 55px;
     }
     .title-wrap {
@@ -126,11 +185,7 @@
     }
     .result-header .result-people {
         line-height: 30px;
-    }
-    .search-result {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding: 10px 16px;
     }
 
     /* 신청자 목록 마지막 제외 */
@@ -140,7 +195,8 @@
 
     .result-beginner {
         position: relative;
-        padding: 24px 20px 20px;
+        /* padding: 24px 20px 20px;  */ /*기존*/
+        padding: 24px 20px 35px;
         background: #fff;
         box-shadow: 0 1px 0 #e0e0e0;
     }
@@ -346,13 +402,15 @@
     }
     .ok-wrapper {
         position: absolute;
-        bottom: 50px;
-        right: 20px;
-        width: 50px;
+        bottom: 0px;
+        right: 0px;
+        width: 100%;
+        padding: 0px 18px 10px;
     }
 
     .ok-btn {
         width: 100%;
+        height: 45px; /* 기존X */
         border-radius: 4px;
         border: #2099bb;
         
@@ -364,6 +422,25 @@
         line-height: 26px;
         font-weight: 400;
         
+        padding: 2px 0px 2px;
+        margin: 0px;
+        cursor: pointer;
+    }
+
+    .no-btn {
+        width: 100%;
+        height: 45px; /* 기존X */
+        border-radius: 4px;
+        border: #e52929;
+
+        background-color: #e52929;
+
+        color: #fff;
+        text-align: center;
+        font-size:16px;
+        line-height: 26px;
+        font-weight: 400;
+
         padding: 2px 0px 2px;
         margin: 0px;
         cursor: pointer;

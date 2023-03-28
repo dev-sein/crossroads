@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crossroads.app.mapper.ApplyMapper">
+    <select id="selectAll" resultType="applyDTO">
+        select member_id, member_identification, member_password, member_name,
+                member_phone, member_email, member_file_system_name, member_type, member_drive_register_date,
+                member_point, apply_id, apply_course, apply_location, apply_date, apply_register_date,
+                starter_member_id, veteran_member_id, apply_status
+        from tbl_member m join tbl_apply a
+        on m.member_id = a.starter_member_id
+        <if test="applyLocation!= null">
+            and apply_location = #{applyLocation}
+        </if>
+        <if test="applyDate= null">
+            and apply_date = #{applyDate}
+        </if>
+        order by apply_register_date desc
+<!--        <if test="types != null">-->
+<!--            where-->
+<!--            <trim prefixOverrides="or">-->
+<!--                <foreach item="type" collection="types">-->
+<!--                    <trim prefix="or">-->
+<!--                        <choose>-->
+<!--                            <when test="type == 'title'.toString()">-->
+<!--                                board_title like concat('%', #{keyword}, '%')-->
+<!--                            </when>-->
+<!--                            <when test="type == 'content'.toString()">-->
+<!--                                board_content like concat('%', #{keyword}, '%')-->
+<!--                            </when>-->
+<!--                        </choose>-->
+<!--                    </trim>-->
+<!--                </foreach>-->
+<!--            </trim>-->
+<!--        </if>-->
+    </select>
+
+    <select id="select" resultType="applyVO" parameterType="long">
+        select apply_id, apply_course, apply_location, apply_date, apply_register_date,
+                starter_member_id, veteran_member_id, apply_status
+        from tbl_apply
+        where apply_id = #{applyId}
+    </select>
+
+    <select id="selectCount" resultType="long" parameterType="long">
+        select count(apply_id)
+        from tbl_member m join tbl_apply a
+        on m.member_id = a.starter_member_id
+        and veteran_member_id != #{memberId}
+    </select>
+
+<!--    <select id="selectStatus" resultType="string" parameterType="long">-->
+<!--        select apply_status-->
+<!--        from tbl_apply-->
+<!--        where apply_id = #{applyId}-->
+<!--    </select>-->
+
+    <update id="updateStatus" parameterType="long">
+        update tbl_apply
+        set apply_status = if(apply_status = '1' , '0', '1')
+        where apply_id = #{applyId}
+    </update>
+
+    <update id="updateVeteranId" parameterType="hashmap">
+        update tbl_apply
+        set veteran_member_id = if(veteran_member_id, null, #{memberId})
+        where apply_id = #{applyId}
+    </update>
+</mapper>

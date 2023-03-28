@@ -1,9 +1,12 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
 @media all and (max-width:479px) {
+    
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'NotoSansKR',Sans-serif;
+        font-family: 'Noto Sans KR',Sans-serif;
         line-height: 1rem;
         -webkit-font-smoothing: antialiased;
         -webkit-tap-highlight-color: transparent;
@@ -15,24 +18,73 @@
         height: 100%;
         font-size: 16px;
     }
+    a {
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #212121;
+    }
 
     header {
         height: 61px;
     }
+    /* 헤더 버튼 추가사항 */
     .header {
         padding: 16px 0;
-        background-color: #fff;
+        background-color: #2099bb;
         border-bottom: solid 1px #e0e0e0;
     }
+    .flex {
+        display: flex;
+    }
+    .between {
+        justify-content: space-between;
+    }
+    .header-btn{
+        height: 30px;
+        padding: 6px 26px 6px 24px;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .header-btn a {
+        background-color: #fff;
+        color: #2099bb;
+    }
+    .top {
+        line-height: 0px;
+    }
+    .bottom {
+        line-height: 0px;
+    }
+    .relative {
+        position: relative;
+    }
+    
+    /* 뒤로가기 버튼 */
+    .header .go-back svg {
+        position: absolute;
+        width: 30px;
+        top: 8px;
+        left: 18px;
+    }
+    header .header .back-or-logout {
+        position: absolute;
+        display: inline-block;
+        width: 68px;
+        height: 61px;
+        top: 0px;
+    }
+
+    /* 헤더 글씨 */
     .navigation-center {
         text-align: center;
-        color: #212121;
+        color: #fff;
         font-weight: 500;
         font-size: 18px;
         line-height: 28px;
         display: block;
+        /* margin, max-width준 이유를 모름 */
         margin: 0 auto;
         max-width: calc(100% - 80px);
+        /* overflow, white-space, text-overflow준 이유를 모름 */
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -129,143 +181,210 @@
     }
 
     /* 에러 메시지 */
-.error-message {
-    /* ===== 에러 메시지 기본값 초기화 시작 ====== */
-    margin: 0;
-    border: 0;
-    padding: 0;
-    vertical-align: baseline;
-    font: inherit;
-    box-sizing: border-box;
-    /* ===== 에러 메시지 기본값 초기화 끝 =====*/
-    
-    color: #e54545;
-    line-height: 18px;
-    letter-spacing: 0;
-    font-size: 12px;
-    font-weight: 400;
-    display: none; /* 기본값 */
-    margin-top: 4px;
-    font-style: normal;
-}
-
-.text900 {
-    color: #212121;
-}
-
-.body-2 {
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 400;
-}
-
-ul{
-    list-style:none;
+    .error-message {
+        /* ===== 에러 메시지 기본값 초기화 시작 ====== */
+        margin: 0;
+        border: 0;
+        padding: 0;
+        vertical-align: baseline;
+        font: inherit;
+        box-sizing: border-box;
+        /* ===== 에러 메시지 기본값 초기화 끝 =====*/
+        
+        color: #e54545;
+        line-height: 18px;
+        letter-spacing: 0;
+        font-size: 12px;
+        font-weight: 400;
+        display: none; /* 기본값 */
+        margin-top: 4px;
+        font-style: normal;
     }
 
-li{
-    padding: 6px;
-}
+    .text900 {
+        color: #212121;
+    }
 
-ul li {
-    padding: 3px;
-    margin: 0;
-}
+    .body-2 {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 400;
+    }
 
-p {
-    display: block;
-    margin: 0 0 10px;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
+    ul{
+        list-style:none;
+        }
 
-.text-input-client2>div>input {
-    display: block;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 24px;
-    color: #616161;
-    font-weight: 400;
-    background: #fff;
-    width: 100%;
-    height: inherit;
-    padding: 8px 8px 8px 0px;
-    border: none;
-}
+    li{
+        padding: 6px;
+    }
 
-.btn-client, .btn-client-not-active {
-    background-color: #2e6baa;
-    color: #fff;
-    border: #2e6baa;
-}
+    ul li {
+        padding: 3px;
+        margin: 0;
+    }
 
-.btn-11-24 {
-    padding: 11px 24px;
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
-}
+    p {
+        display: block;
+        margin: 0 0 10px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
 
-.btn-right {
-    float: right;
-}
+    .text-input-client2>div>input {
+        display: block;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #616161;
+        font-weight: 400;
+        background: #fff;
+        width: 100%;
+        height: inherit;
+        padding: 8px 8px 8px 0px;
+        border: none;
+    }
 
-.btn {
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border-radius: 4px;
-    border: none;
-}
+    .btn-client, .btn-client-not-active {
+        background-color: #2e6baa;
+        color: #fff;
+        border: #2e6baa;
+    }
 
-.form-section-footer {
-    padding: 16px 32px;
-    border-top: 1px solid #e0e0e0;
-}
+    .btn-11-24 {
+        padding: 11px 24px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 400;
+    }
 
-.select-card-content {
-    text-align: center;
-    color: #212121;
-}
+    .btn-right {
+        float: right;
+    }
 
-.select-card .inherit-select-card-img {
-    display: inline-block;
-}
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border-radius: 4px;
+        border: none;
+    }
 
-.select-card .select-card-img {
-    margin-bottom: 8px;
-    text-align: center;
-    width: 60px;
-    height: 60px;
-}
+    .form-section-footer {
+        padding: 16px 0px;
+        margin-left: -13px;
+        margin-right: 32px;
+        border-top: 1px solid #e0e0e0;
+    }
 
-.select-card .active-select-card-img {
-    display: none;
-}
+    .select-card-content {
+        text-align: center;
+        color: #212121;
+    }
 
-.select-card {
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
-    background-color: #fff;
-    padding: 24px 0;
-    display: inline-block;
-    position: relative;
-}
+    .select-card .inherit-select-card-img {
+        display: inline-block;
+    }
 
-.select-card input[type="checkbox"], .select-card input[type="radio"] {
-    border-radius: 50%;
-    position: absolute;
-    left: 16px;
-    top: 16px;
-}
+    .select-card .select-card-img {
+        margin-bottom: 8px;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+    }
+
+    .select-card .active-select-card-img {
+        display: none;
+    }
+
+    .select-card {
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        background-color: #fff;
+        padding: 24px 0;
+        display: inline-block;
+        position: relative;
+    }
+
+    .select-card input[type="checkbox"], .select-card input[type="radio"] {
+        border-radius: 50%;
+        position: absolute;
+        left: 16px;
+        top: 16px;
+    }
+
+    #select-course {
+        width: 141px;
+        height: 140px;
+        margin-bottom: 10px;
+    }
+
+    #select-course .content {
+        margin: 0px;
+        margin-top: 10px;
+    }
 
 
 
+    /* 모달 창 */
+    .modal-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        width: 260px;
+        text-align: center;
+        margin: 0 auto;
+        top: 40%;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .modal-message {
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .modal-message2{
+        margin-bottom: 15px;
+    }
+    
+    .modal-close-btn {
+        background-color: #ddd;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .modal-close-btn:hover {
+        background-color: #ccc;
+    }
+    
+    /* 모달 창 */
 
 }

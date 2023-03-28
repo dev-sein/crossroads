@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 상세 페이지</title>
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/board/boardList.css">
+    <link rel="stylesheet" href="/css/board/board-detail.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
+</head>
+<body>
+<header th:replace="/components/header-main.html :: .header-container"></header>
+    <main>
+        <div class="whole-contents-wrapper">
+            <div class="contents-inner-wrapper">
+                <div class="contents-inner">
+                    <div class="board_view ">
+			
+				<!-- 게시글 출바알~ -->
+                        <header class="board-title holder">
+                            
+                            <p class="view_tit">차를 박았습니다..</p>
+                        </header>
+                        <div class="board_summary">
+                            <div class="left">
+                                <div class="avatar box" style="background: #BDBDBD;">
+                                    <img class="profile" src="/img/tiger.jpg">
+                                </div>
+                                <div class="author">
+                                    <div class="write">김욱성</div>
+                                    <div class="check-margin" style="margin: 13px 0px 0 0px;">
+=======
+<!-- header 시작 -->
+<div th:insert="~{/components/header-client :: header-client}"></div>
+<!-- header 끝 -->
+<main>
+    <div class="whole-contents-wrapper">
+        <div class="contents-inner-wrapper">
+            <div class="contents-inner">
+                <div class="board_view ">
+
+                    <!-- 게시글 출바알~ -->
+                    <header class="board-title holder">
+
+                        <p class="view_tit">차를 박았습니다..</p>
+                    </header>
+                    <div class="board_summary">
+                        <div class="left">
+                            <div class="avatar box" style="background: #BDBDBD;">
+                                <img class="profile" src="/img/tiger.jpg">
+                            </div>
+                            <div class="author">
+                                <div class="write">김욱성</div>
+                                <div class="check-margin" style="margin: 13px 0px 0 0px;">
+>>>>>>> luks/detail2
+                                    <div class="board_name">
+                                        <a >
+                                            자유게시판
+                                        </a>
+                                    </div>
+                                    <div class="date body_font_color_70">2023.03.23</div>
+                                    <div class="hit-count body_font_color_70">조회수 2</div>
+                                    <div class="tools txt">
+                                        <a href="../" style="margin-right: 10px; cursor:pointer;" >수정</a>
+                                        <a href="../" style="margin-right: 10px; cursor:pointer;">지우기</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="board_txt_area fr-view">
+                        <p style="width: 80%; font-weight: 300;" >건물에 차를 들이박고 운전대를 다시 잡을 수 있을까.. 걱정도 되고 &nbsp;자신감이 많이 떨어졌었는데 친절하신 강사님께서 열심히 가르쳐주신 덕분에 &nbsp;자신감도 되찾고 다시 운전대를 잡을 수 있게 되었습니다ㅠㅠ &nbsp;감사합니다 강사님!</p><p style="text-align: left"><img class="fr-dii _img_light_gallery cursor_pointer" src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg" data-src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg"></p>
+                        <div class="file_area"></div>
+                    </div>
+                    <div class="comment_section" id="comment_area">
+                        <div class="comment-block">
+                            <div class="btn-gruop-wrap clearfix">
+                                <!-- <div class="btn-gruop btn-group-comment">
+                                   <span class="comment_num btn btn-flat no-padding-x no-pointer">
+                                      <img src="/img/speech-bubble.png" alt="" style="width: 40%;">
+                                      <i aria-hidden="true" class="icon-bubble icon holder" style="top: 1px;"></i> <em id="comment_count">1</em></span>
+                                </div> -->
+
+                                <div class="tools">
+                                    <div class="mobile_right">
+                                        <button class="comment_num btn btn-flat" type="button" onclick="SITE.setSnsShare()"><i aria-hidden="true" class="btm bt-share board-summary-icon"></i></button>
+                                        <button class="comment_num btn btn-flat hidden-xs hidden-sm" type="button" onclick="javascript:window.print();"><i aria-hidden="true" class="btm bt-fax board-summary-icon"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<<<<<<< HEAD
+                        
+                            
+                        <div class="board_txt_area fr-view">
+                            <p style="width: 80%; font-weight: 300;" >건물에 차를 들이박고 운전대를 다시 잡을 수 있을까.. 걱정도 되고 &nbsp;자신감이 많이 떨어졌었는데 친절하신 강사님께서 열심히 가르쳐주신 덕분에 &nbsp;자신감도 되찾고 다시 운전대를 잡을 수 있게 되었습니다ㅠㅠ &nbsp;감사합니다 강사님!</p><p style="text-align: left"><img class="fr-dii _img_light_gallery cursor_pointer" src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg" data-src="https://cdn.imweb.me/upload/S202303231f3ece8edd14e/a52c784e82fdc.jpg"></p>
+                            <div class="file_area"></div>
+                        </div>
+                                 <div class="comment_section" id="comment_area">
+                    <div class="comment-block">
+                       <div class="btn-gruop-wrap clearfix">
+                          <!-- <div class="btn-gruop btn-group-comment">
+                             <span class="comment_num btn btn-flat no-padding-x no-pointer">
+                                <img src="/img/speech-bubble.png" alt="" style="width: 40%;">
+                                <i aria-hidden="true" class="icon-bubble icon holder" style="top: 1px;"></i> <em id="comment_count">1</em></span>
+                          </div> -->
+        
+                          <div class="tools">
+                             <div class="mobile_right">
+                                <button class="comment_num btn btn-flat" type="button" onclick="SITE.setSnsShare()"><i aria-hidden="true" class="btm bt-share board-summary-icon"></i></button>
+                                <button class="comment_num btn btn-flat hidden-xs hidden-sm" type="button" onclick="javascript:window.print();"><i aria-hidden="true" class="btm bt-fax board-summary-icon"></i></button>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    
+                    <div class="comment_list" id="comment_container">
+                        <div class="comment" id="c202303234431dcb6fe608">
+                         <div class=" main_comment _comment_wrap _comment_wrap_c202303234431dcb6fe608">
+                         <div class="block-postmeta">
+                             <div class="avatar2 vertical-top">         
+                                <img src="/img/tiger.jpg" class="avatar-image" alt="">
+                            </div>
+                             <div class="feed-summary vertical-top ">
+                                 <div class="write">호랑이 선생님<span class="_comment_at_nick tag date body_font_color_50 margin-left-lg">2023.03.24</span><i aria-hidden="true" id="icon_c202303234431dcb6fe608" class="simple icon-lock margin-left-xl vertical-middle" style="display:none;"></i></div> 
+                                 <div class="comment_area _comment_area">
+=======
+
+                        <div class="comment_list" id="comment_container">
+                            <div class="comment" id="c202303234431dcb6fe608">
+                                <div class=" main_comment _comment_wrap _comment_wrap_c202303234431dcb6fe608">
+                                    <div class="block-postmeta">
+                                        <div class="avatar2 vertical-top">
+                                            <img src="/img/tiger.jpg" class="avatar-image" alt="">
+                                        </div>
+                                        <div class="feed-summary vertical-top ">
+                                            <div class="write">호랑이 선생님<span class="_comment_at_nick tag date body_font_color_50 margin-left-lg">2023.03.24</span><i aria-hidden="true" id="icon_c202303234431dcb6fe608" class="simple icon-lock margin-left-xl vertical-middle" style="display:none;"></i></div>
+                                            <div class="comment_area _comment_area">
+>>>>>>> luks/detail2
+                                     <span class="_comment_body_m20230323479109efe0dd7  _comment_body_c202303234431dcb6fe608" comment_body_code="c202303234431dcb6fe608" style="font-size: 13px;">
+                                         안녕하세요. 고객님의 연수를 맡았던 강사 입니다. 다음 부터는 안전운전 하시길 바랍니다~^^  안녕하세요. 고객님의 연수를 맡았던 강사 입니다. 다음 부터는 안전운전 하시길 바랍니다~^^ 안녕하세요. 고객님의 연수를 맡았던 강사 입니다. 다음 부터는 안전운전 하시길 바랍니다~^^
+
+                                     </span>
+                                                <div class="tools clearfix">
+                                                    <a href="../"  class="text-gray1">수정</a>
+                                                    <a href="../"  class="text-gray">지우기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment_textarea " style="display: none;">
+                                </div>
+                                <div class="dropdown_comment _sub_comment_wrap sub_comment_wrap">
+                                    <div class="_sub_form _sub_form_c202303234431dcb6fe608" style="display: none">
+                                        <div class="comment_textarea">
+                                            <form class="_add_sub_form _add_sub_form_c202303234431dcb6fe608">
+                                                <input type="hidden" name="board_code" value="b2023032344c3125e0d11e">
+                                                <input type="hidden" name="post_code" value="p20230323f15c5bcf5f45d">
+                                                <input type="hidden" name="parent_code" value="c202303234431dcb6fe608">
+                                                <input type="hidden" name="at_code" value="">
+                                                <input type="hidden" name="child_comment_code" value="c202303234431dcb6fe608">
+
+                                                <div class="postmeta comment-comment">
+
+                                                    <div class="textarea_block">
+                                                        <textarea title="내용을 입력해주세요" placeholder="내용을 입력해주세요" rows="1" name="body" data-action="btn_c_c202303234431dcb6fe608" class="_comment_add_body _comment_textarea _comment_add_body_c202303234431dcb6fe608" data-autosize-on="true" style="overflow: hidden; overflow-wrap: break-word;"></textarea>
+                                                        <div class="file-add-block" style="display: none;" id="comment_image_box_c202303234431dcb6fe608" ></div>
+                                                        <button class="btn btn-primary btn-sm" id="btn_c_c202303234431dcb6fe608" >
+                                                            작성
+                                                        </button>
+                                                        <div class="inline-blocked holder">
+                                                            <input type="hidden" name="use_sub_secret_comment" id="use_sub_secret_comment" value="N">
+                                                            <input type="file" multiple="" name="comment_images" id="comment_image_upload_btn_c202303234431dcb6fe608" class="comment_image_upload" title="comment image upload">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul id="image_list" style="display: none"></ul></form>
+                                        </div>
+                                    </div>
+                                    <div class="comment_comment_wrap _comment_sub_list"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="comment_textarea">
+                            <form id="comment_form">
+                                <input type="hidden" name="post_code" value="p20230323f15c5bcf5f45d">
+                                <input type="hidden" name="board_code" value="b2023032344c3125e0d11e">
+                                <div class="postmeta comment-comment"><!--댓글에 댓글을 입력할 경우-->
+
+                                    <div class="textarea_block">
+                                        <textarea title="댓글을 남겨주세요" placeholder="댓글을 남겨주세요" rows="1" name="body" id="comment_body" data-action="btn_c_p20230323f15c5bcf5f45d" data-autosize-on="true" style="overflow: hidden; overflow-wrap: break-word; height: 62px;"></textarea>
+                                        <div class="file-add-block" style="display: none" id="comment_image_box"></div>
+                                        <button class="btn btn-primary btn-sm"  style="margin: -14px 0px 0px 0px;">작성</button>
+                                        <div class="inline-blocked holder">
+                                            <i aria-hidden="true" class="icon-picture icon vertical-middle"></i>
+                                            <input title="comment image upload" type="file" class="comment_image_upload" multiple="" name="comment_images" id="comment_image_upload_btn">
+                                        </div>
+                                        <!--<i class="zmdi zmdi-play-circle"></i>-->
+                                    </div>
+                                </div>
+                                <ul id="image_list" style="display: none"></ul></form>
+                        </div>
+                    </div>
+<<<<<<< HEAD
+                 </div>
+                        <div class="comment_section">
+                            <div class="list_tap">
+                                <a href=""><i aria-hidden="true" class="icon-arrow-up"><img src="/img/arrow-up.png" alt=""></i><span class="secret_icon">프론트를 또한다고?! </span></a>
+                                <a href=""><i aria-hidden="true" class="icon-arrow-down"><img src="/img/arrow-down.png" alt=""></i><span class="secret_icon">중요한건 꺾이지 않는 마음</span></a>
+                            </div>
+                            <div class="table_bottom over_h action-area">
+                                <a class="btn btn-primary btn-sm float_l"  role="button">
+                                    목록
+                                </a>
+                                <a class="btn btn-primary btn-sm float_r" role="button" >글쓰기</a>
+                            </div>
+=======
+                    <div class="comment_section">
+                        <div class="list_tap">
+                            <a href=""><i aria-hidden="true" class="icon-arrow-up"><img src="/img/arrow-up.png" alt=""></i><span class="secret_icon">프론트를 또한다고?! </span></a>
+                            <a href=""><i aria-hidden="true" class="icon-arrow-down"><img src="/img/arrow-down.png" alt=""></i><span class="secret_icon">중요한건 꺾이지 않는 마음</span></a>
+>>>>>>> luks/detail2
+                        </div>
+                        <div class="table_bottom over_h action-area">
+                            <a class="btn btn-primary btn-sm float_l"  role="button">
+                                목록
+                            </a>
+                            <a class="btn btn-primary btn-sm float_r" role="button" >글쓰기</a>
+                        </div>
+                    </div>
+                    <!-- 게시글 끄ㅡㅌ읏 -->
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- footer 시작 -->
+<div th:insert="~{/components/footer :: footer}"></div>
+<!-- footer 끝 -->
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</html>

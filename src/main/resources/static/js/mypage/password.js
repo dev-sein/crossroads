@@ -53,7 +53,6 @@ $(function(){
    function submitForm(){
     const targetChecked = $('#agreeCheck').is(':checked');
     if (targetChecked) {
-      console.log('탈퇴완료 되었습니다');
       /* $('form').submit(); */
     }else {
       $('.error-text-custom').show();

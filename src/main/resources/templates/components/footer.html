@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/css/components/footer.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
     <div class="footer-margin-remover"></div>
-    <footer class="footer">
+    <footer th:fragment="footer"  class="footer">
         <div class="container">
             <div class="footer-main">
                 <div class="footer-menu-list">
@@ -52,30 +53,29 @@
             </div>
             <div class="footer-company-info">
                 <div class="footer-company-info-logo-wrapper">
-                    <!-- wishket logo -->
                     <a href="">
-                        <img src="../../static/images/components/main-logo.png" style="width: 122px; height: 28px;" alt="">
+                        <img src="/images/components/main-logo.png" style="width: 122px; height: 28px;" alt="">
                     </a>
                 </div>
                 <div class="footer-company-info-detail">
                     <p class="footer-company-info-description">
                         주식회사 교차로 (대표이사: 한동석) / 서울특별시 강남구 테헤란로 211 한국고등교육재단빌딩 3층 (주)교차로<br>
-                        사업자등록번호: 123-12-34567 / 통신판매업신고: 제2018-서울강남-02337 호 / 직업정보제공사업 신고번호: J1200020180019
+                        사업자등록번호: 123-12-34567 / 통신판매업신고: 제2023-서울강남-07777 호 / 직업정보제공사업 신고번호: J1200020180019
                     </p>
                     <p class="footer-company-info-copyright">© 2013 Wishket Corp.</p>
                 </div>
                 <div class="footer-company-info-sns">
                     <!-- facebook icon -->
                     <a href="">
-                        <img src="../../static/images/main/footer_sns_facebook.png" alt="">
+                        <img src="/images/footer/footer_sns_facebook.png" alt="">
                     </a>
                     <!-- blog icon -->
                     <a href="">
-                        <img src="../../static/images/main/footer_sns_blog.png" alt="">
+                        <img src="/images/footer/footer_sns_blog.png" alt="">
                     </a>
                     <!-- naver icon -->
                     <a href="">
-                        <img src="../../static/images/main/footer_sns_naver.png" alt="">
+                        <img src="/images/footer/footer_sns_naver.png" alt="">
                     </a>
                 </div>
             </div>

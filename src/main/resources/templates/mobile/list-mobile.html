@@ -1,327 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>연수자 찾기</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/mobile/list-mobile.css">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="/css/mobile/list-mobile.css">
+    <link rel="stylesheet" href="/css/modal/mobile/search-modal.css">
+    <link rel="stylesheet" href="/css/modal/mobile/jquery-ui.css">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-    <header>
-        <nav class="header">
-            <!-- <span class="navigation-left">로그아웃</span> -->
-            <span class="navigation-center">연수자 찾기</span>
-            <!-- <span class="navigation-right">MY</span> -->
-        </nav>
-    </header>
-    <div class="container">
-        <div class="inner-container">
-            <form action="" id="serach">
-                <section class="serach-header">
-                    <div class="serach-box">
+<header>
+    <nav class="header relative flex between">
+        <a class="back-or-logout" href="login-mobile.html">
+                <span class="go-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="48px" id="Layer_1" style="enable-background:new 0 0 48 48;" version="1.1" viewBox="0 0 512 512" width="48px" xml:space="preserve">
+                        <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " style="     fill: #fff; "/>
+                    </svg>
+                </span>
+        </a>
+        <span class="navigation-center">연수자 찾기</span>
+        <div></div>
+    </nav>
+</header>
+<div class="header-btn bottom flex between">
+    <div><a href="change-point-mobile.html">환전</a></div>
+    <div><a href="list-mobile.html">홈</a></div>
+    <div><a href="mypage-mobile.html">MY</a> </div>
+</div>
+
+<div class="container">
+    <div class="inner-container">
+        <form action="" id="serach">
+            <section class="serach-header">
+                <div class="serach-box">
                         <span class="text-input-wrap">
-                            <input class="text-search-input" autocomplete="off" type="search" >
+                            <input class="text-search-input" autocomplete="off" type="search" readonly>
+                            <div class="search-result flex">
+                                <span class="date-result result">2023년 3월 24일</span>
+                                <span class="location-result result">서울특별시 강남구</span>
+                            </div>
                         </span>
-                        <button class="search-button">
-                            <img src="../../static/img/icon_search_active.png" alt="검색" class="search-img">
-                        </button>
-                    </div>
-                </section>
-                <section class="search-result-section">
-                    <div class="result-header">
-                        <p class="title-wrap result-people">
-                            47,822명의 연수 신청자
-                        </p>
-                        <div class="search-result">
-                            <p class="title-wrap result-date">
-                                2023.03.20(월)
-                            </p>
-                            <p class="title-wrap result-location">
-                                서울특별시
-                            </p>
-                        </div>
-                    </div>
-                    <!-- 연수자 목록 -->
-                    <div class="result-beginners">
-                        <!-- 연수자 1명 -->
-                        <div class="result-beginner">
-                            <div class="project-status-label">
-                                <div class="status-mark recruiting-mark">신청중</div>
-                                <div class="status-mark new-mark">NEW</div>
-                            </div>
-                            <div class="beginner-title">
-                                <span class="subtitle">
-                                    2023.03.20(월)
-                                </span>
-                            </div>
-                            <div class="beginner-info-box">
-                                <div class="estimated-box">
-                                    <div class="estimated estimated-point">
-                                         <p class="estimated-help-text">
-                                            예상 포인트
-                                         </p>
-                                         <p class="estimated-value">
-                                            100,000
-                                         </p>
-                                    </div>
-                                    <div class="estimated estimated-term">
-                                        <p class="estimated-help-text">
-                                            남은 기간
-                                         </p>
-                                         <p class="estimated-value">
-                                            45일
-                                         </p>
-                                    </div>
-                                </div>
-                                <div class="category-field-box">
-                                    <p class="category-info">
-                                        코스
-                                    </p>
-                                    <div class="pipe"></div>
-                                    <p class="field-info">
-                                        A코스(시내주행)
-                                    </p>
-                                </div>
-                                <div class="license-info-tag">
-                                    <div class="simple-chip">
-                                        초보자
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="driver-info-box">
-                                        <div class="driver-tag">2년차</div>
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
-                                    </div>
-                                </div>
-                                <div class="driver-info-etc">
-                                    <div class="location-tag">
-                                        <span class="driver-location">
-                                            서울특별시
-                                        </span>
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="register-date">
-                                        등록 일자 2023.03.13(월)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ok-wrapper">
-                                <!-- <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> -->
-                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                            </div>
-                        </div> <!-- 연수자 1명 끝 -->
-                        <!-- 연수자 1명 -->
-                        <div class="result-beginner">
-                            <div class="project-status-label">
-                                <div class="status-mark recruiting-mark">신청중</div>
-                                <div class="status-mark new-mark">NEW</div>
-                            </div>
-                            <div class="beginner-title">
-                                <span class="subtitle">
-                                    2023.03.20(월)
-                                </span>
-                            </div>
-                            <div class="beginner-info-box">
-                                <div class="estimated-box">
-                                    <div class="estimated estimated-point">
-                                         <p class="estimated-help-text">
-                                            예상 포인트
-                                         </p>
-                                         <p class="estimated-value">
-                                            100,000
-                                         </p>
-                                    </div>
-                                    <div class="estimated estimated-term">
-                                        <p class="estimated-help-text">
-                                            남은 기간
-                                         </p>
-                                         <p class="estimated-value">
-                                            45일
-                                         </p>
-                                    </div>
-                                </div>
-                                <div class="category-field-box">
-                                    <p class="category-info">
-                                        코스
-                                    </p>
-                                    <div class="pipe"></div>
-                                    <p class="field-info">
-                                        A코스(시내주행)
-                                    </p>
-                                </div>
-                                <div class="license-info-tag">
-                                    <div class="simple-chip">
-                                        초보자
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="driver-info-box">
-                                        <div class="driver-tag">2년차</div>
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
-                                    </div>
-                                </div>
-                                <div class="driver-info-etc">
-                                    <div class="location-tag">
-                                        <span class="driver-location">
-                                            서울특별시
-                                        </span>
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="register-date">
-                                        등록 일자 2023.03.13(월)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ok-wrapper">
-                                <!-- <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> -->
-                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                            </div>
-                        </div> <!-- 연수자 1명 끝 -->
-                        <!-- 연수자 1명 -->
-                        <div class="result-beginner">
-                            <div class="project-status-label">
-                                <div class="status-mark recruiting-mark">신청중</div>
-                                <div class="status-mark new-mark">NEW</div>
-                            </div>
-                            <div class="beginner-title">
-                                <span class="subtitle">
-                                    2023.03.20(월)
-                                </span>
-                            </div>
-                            <div class="beginner-info-box">
-                                <div class="estimated-box">
-                                    <div class="estimated estimated-point">
-                                         <p class="estimated-help-text">
-                                            예상 포인트
-                                         </p>
-                                         <p class="estimated-value">
-                                            100,000
-                                         </p>
-                                    </div>
-                                    <div class="estimated estimated-term">
-                                        <p class="estimated-help-text">
-                                            남은 기간
-                                         </p>
-                                         <p class="estimated-value">
-                                            45일
-                                         </p>
-                                    </div>
-                                </div>
-                                <div class="category-field-box">
-                                    <p class="category-info">
-                                        코스
-                                    </p>
-                                    <div class="pipe"></div>
-                                    <p class="field-info">
-                                        A코스(시내주행)
-                                    </p>
-                                </div>
-                                <div class="license-info-tag">
-                                    <div class="simple-chip">
-                                        초보자
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="driver-info-box">
-                                        <div class="driver-tag">2년차</div>
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
-                                    </div>
-                                </div>
-                                <div class="driver-info-etc">
-                                    <div class="location-tag">
-                                        <span class="driver-location">
-                                            서울특별시
-                                        </span>
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="register-date">
-                                        등록 일자 2023.03.13(월)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ok-wrapper">
-                                <!-- <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> -->
-                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                            </div>
-                        </div> <!-- 연수자 1명 끝 -->
-                        <!-- 연수자 1명 -->
-                        <div class="result-beginner">
-                            <div class="project-status-label">
-                                <div class="status-mark recruiting-mark">신청중</div>
-                                <div class="status-mark new-mark">NEW</div>
-                            </div>
-                            <div class="beginner-title">
-                                <span class="subtitle">
-                                    2023.03.20(월)
-                                </span>
-                            </div>
-                            <div class="beginner-info-box">
-                                <div class="estimated-box">
-                                    <div class="estimated estimated-point">
-                                         <p class="estimated-help-text">
-                                            예상 포인트
-                                         </p>
-                                         <p class="estimated-value">
-                                            100,000
-                                         </p>
-                                    </div>
-                                    <div class="estimated estimated-term">
-                                        <p class="estimated-help-text">
-                                            남은 기간
-                                         </p>
-                                         <p class="estimated-value">
-                                            45일
-                                         </p>
-                                    </div>
-                                </div>
-                                <div class="category-field-box">
-                                    <p class="category-info">
-                                        코스
-                                    </p>
-                                    <div class="pipe"></div>
-                                    <p class="field-info">
-                                        A코스(시내주행)
-                                    </p>
-                                </div>
-                                <div class="license-info-tag">
-                                    <div class="simple-chip">
-                                        초보자
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="driver-info-box">
-                                        <div class="driver-tag">2년차</div>
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
-                                    </div>
-                                </div>
-                                <div class="driver-info-etc">
-                                    <div class="location-tag">
-                                        <span class="driver-location">
-                                            서울특별시
-                                        </span>
-                                    </div>
-                                    <div class="pipe"></div>
-                                    <div class="register-date">
-                                        등록 일자 2023.03.13(월)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ok-wrapper">
-                                <!-- <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> -->
-                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                            </div>
-                        </div> <!-- 연수자 1명 끝 -->
-                    </div> <!-- 목록 div 끝 -->
-                </section>
-            </form>
-        </div>
+                    <button class="search-button">
+                        <img src="/images/member/icon_search_active.png" alt="검색" class="search-img">
+                    </button>
+                </div>
+            </section>
+            <section class="search-result-section">
+                <div class="result-header">
+                    <p class="title-wrap result-people">
+                        <span th:text="${applies.size() - others > 0 ? applies.size() - others : 0}"></span>명의 연수 신청자
+                        <!--                            <span th:text="${applies.size() == null ? 0 : applies.size()}"></span>명의 연수 신청자-->
+                    </p>
+                </div>
+                <!-- 연수자 목록 -->
+                <div class="result-beginners">
+                    <!--                        &lt;!&ndash; 연수자 1명 &ndash;&gt;-->
+                    <!--                        <div class="result-beginner">-->
+                    <!--                            <div class="project-status-label">-->
+                    <!--                                <div class="status-mark recruiting-mark">신청중</div>-->
+                    <!--                                <div class="status-mark new-mark">NEW</div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="beginner-title">-->
+                    <!--                                <span class="subtitle">-->
+                    <!--                                    2023.03.20(월)-->
+                    <!--                                </span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="beginner-info-box">-->
+                    <!--                                <div class="estimated-box">-->
+                    <!--                                    <div class="estimated estimated-point">-->
+                    <!--                                         <p class="estimated-help-text">-->
+                    <!--                                            예상 포인트-->
+                    <!--                                         </p>-->
+                    <!--                                         <p class="estimated-value">-->
+                    <!--                                            100,000-->
+                    <!--                                         </p>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="estimated estimated-term">-->
+                    <!--                                        <p class="estimated-help-text">-->
+                    <!--                                            남은 기간-->
+                    <!--                                         </p>-->
+                    <!--                                         <p class="estimated-value">-->
+                    <!--                                            45일-->
+                    <!--                                         </p>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="category-field-box">-->
+                    <!--                                    <p class="category-info">-->
+                    <!--                                        코스-->
+                    <!--                                    </p>-->
+                    <!--                                    <div class="pipe"></div>-->
+                    <!--                                    <p class="field-info">-->
+                    <!--                                        <span th:text="${applies[0].applyCourse}"></span>코스(시내주행)-->
+                    <!--                                    </p>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="license-info-tag">-->
+                    <!--                                    <div class="simple-chip">-->
+                    <!--                                        초보자-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="pipe"></div>-->
+                    <!--                                    <div class="driver-info-box">-->
+                    <!--                                        <div class="driver-tag">2년차</div>-->
+                    <!--                                        <div class="driver-tag">신입</div>-->
+                    <!--                                        <div class="driver-tag">장롱</div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="driver-info-etc">-->
+                    <!--                                    <div class="location-tag">-->
+                    <!--                                        <span class="driver-location">-->
+                    <!--                                            서울특별시-->
+                    <!--                                        </span>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="pipe"></div>-->
+                    <!--                                    <div class="register-date">-->
+                    <!--                                        등록 일자 2023.03.13(월)-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="ok-wrapper">-->
+                    <!--                                &lt;!&ndash; <input type="button" class="ok-btn" onclick="acceptOrReject()" value="수락"/> &ndash;&gt;-->
+                    <!--                                <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>-->
+                    <!--                            </div>-->
+                    <!--                        </div> &lt;!&ndash; 연수자 1명 끝 &ndash;&gt;-->
+                </div> <!-- 목록 div 끝 -->
+            </section>
+        </form>
     </div>
+</div>
+<!--모달 -->
+<div th:insert="~{/modal/mobile/search-modal :: search-modal}"></div>
+<!--모달 -->
 </body>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="../../static/js/mobile/list.js"></script>
+<script th:inline="javascript">
+    let applies = [[${applies}]];
+    let memberId = [[${session.memberId}]];
+</script>
+<script src="/js/mobile/list.js"></script>
+<script src="/js/modal/mobile/search-modal.js"></script>
 </html>
+

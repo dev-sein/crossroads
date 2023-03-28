@@ -1,0 +1,254 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@media all and (max-width: 479px) {
+
+    .mb32 {
+        margin-bottom: 32px;
+    }
+    .mb16 {
+        margin-bottom: 16px;
+    }
+    .mb8 {
+        margin-bottom: 8px;
+    }
+    .mb4 {
+        margin-bottom: 4px;
+    }
+    a {
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #212121;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans KR',Sans-serif;
+        line-height: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    html {
+        height: 100%;
+        font-size: 16px;
+    }
+    body {
+        height: 100%;
+    }
+    header {
+        height: 61px;
+    }
+    /* 헤더 버튼 추가사항 */
+    .header {
+        padding: 16px 0;
+        background-color: #2099bb;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .flex {
+        display: flex;
+    }
+    .between {
+        justify-content: space-between;
+    }
+    .header-btn{
+        height: 30px;
+        padding: 6px 26px 6px 24px;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .header-btn a {
+        background-color: #fff;
+        color: #2099bb;
+    }
+    .top {
+        line-height: 0px;
+    }
+    .bottom {
+        line-height: 0px;
+    }
+    .relative {
+        position: relative;
+    }
+    
+    /* 뒤로가기 버튼 */
+    .header .go-back svg {
+        position: absolute;
+        width: 30px;
+        top: 8px;
+        left: 18px;
+    }
+    header .header .back-or-logout {
+        position: absolute;
+        display: inline-block;
+        width: 68px;
+        height: 61px;
+        top: 0px;
+    }
+
+    /* 헤더 글씨 */
+    .navigation-center {
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        display: block;
+        /* margin, max-width준 이유를 모름 */
+        margin: 0 auto;
+        max-width: calc(100% - 80px);
+        /* overflow, white-space, text-overflow준 이유를 모름 */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+    .flex {
+        display: flex;
+    }
+    
+
+
+    .main-view {
+        background-color: #fff;
+        padding: 24px 24px 32px;
+    }
+
+    .main-view .listicon {
+        vertical-align: middle;
+        border: 0;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+
+    .main-view .title {
+        color: #212121;
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: normal;
+    }
+    .main-view .title span {
+        display: inline-block;
+        line-height: 21px;
+    }
+    
+
+    .main-view .description {
+        color: #616161;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+
+
+    /* 목록 스타트 */
+    /* border-bottom: solid 1px #e0e0e0; */
+    .list-wrapper {
+        border-top: solid 1px #e0e0e0;
+        flex-direction: column;
+    }
+
+    /* detail 전체 */
+    .list-card {
+        width: 100%;
+        height: 106px;
+        margin-top: 16px;
+        box-shadow: 0 1px 4px 0 rgba(230,235,240,.8);
+        border-radius: 12px;
+        border: solid 1px #e6ebf0;
+        background-color: #fff;
+        color: #212121;
+    }
+
+    /* detail이미지 */
+    .list-wrapper .list-card img {
+        margin: -1px -1px 0 -1px;
+        width: 106px;
+        height: 106px;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+    /* detail 내용 */
+    .list-wrapper .list-card .content-wrapper {
+        margin: -1px 0;
+        padding: 16px 24px 20px 24px;
+    }
+    .list-wrapper .list-card .content-wrapper .card-name {
+        width: calc(100vw - 203px);
+        margin-bottom: 0px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        color: #212121;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .list-wrapper .list-card .content-wrapper .card-location {
+        margin-bottom: 8px;
+    }
+    .list-wrapper .list-card .content-wrapper .card-detail:not(:last-child) {
+        margin-bottom: 4px;
+    }
+    .list-wrapper .list-card .content-wrapper .card-detail {
+        width: calc(100vw - 203px);
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: normal;
+    }
+    /* 연수 완료 */
+    .list-wrapper .list-card .content-wrapper .card-status .complete {
+        color: #9e9e9e;
+    }
+    /* 연수 대기 */
+    .list-wrapper .list-card .content-wrapper .card-status .incomplete {
+        color: #2099bb;
+    }
+
+    .width50 {
+        width: 50%;
+    }
+    .course-name {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        font-weight: bold;
+    }
+    /* 로그아웃 */
+    .footer-logout {
+        background-color: #ffffff;
+        /* padding: 24px; */
+        padding: 0px 24px;
+    }
+
+    .footer-logout .logout-btn {
+        width: 100%;
+        color: #616161;
+        border: solid 1px #e0e0e0;
+        padding: 8px 20px;
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+
+
+
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.crossroads.app.domain.vo.ApplyVO" alias="applyVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.MemberVO" alias="memberVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.PointVO" alias="pointVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.ReplyVO" alias="replyVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.ReviewVO" alias="reviewVO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.ApplyDTO" alias="applyDTO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.BoardDTO" alias="boardDTO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.ReplyDTO" alias="replyDTO"/>
+        <typeAlias type="com.crossroads.app.domain.dto.ReviewDTO" alias="reviewDTO"/>
+    </typeAliases>
+</configuration>

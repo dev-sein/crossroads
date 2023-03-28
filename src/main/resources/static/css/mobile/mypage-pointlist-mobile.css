@@ -1,0 +1,251 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
+@media all and (max-width: 479px) {
+
+    .mb32 {
+        margin-bottom: 32px;
+    }
+    .mb16 {
+        margin-bottom: 16px;
+    }
+    .mb8 {
+        margin-bottom: 8px;
+    }
+    .mb4 {
+        margin-bottom: 4px;
+    }
+    a {
+        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #212121;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans KR',Sans-serif;
+        line-height: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    html {
+        height: 100%;
+        font-size: 16px;
+    }
+    body {
+        height: 100%;
+    }
+    header {
+        height: 61px;
+    }
+    /* 헤더 버튼 추가사항 */
+    .header {
+        padding: 16px 0;
+        background-color: #2099bb;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .flex {
+        display: flex;
+    }
+    .between {
+        justify-content: space-between;
+    }
+    .header-btn{
+        height: 30px;
+        padding: 6px 26px 6px 24px;
+        border-bottom: solid 1px #e0e0e0;
+    }
+    .header-btn a {
+        background-color: #fff;
+        color: #2099bb;
+    }
+    .top {
+        line-height: 0px;
+    }
+    .bottom {
+        line-height: 0px;
+    }
+    .relative {
+        position: relative;
+    }
+    
+    /* 뒤로가기 버튼 */
+    .header .go-back svg {
+        position: absolute;
+        width: 30px;
+        top: 8px;
+        left: 18px;
+    }
+    header .header .back-or-logout {
+        position: absolute;
+        display: inline-block;
+        width: 68px;
+        height: 61px;
+        top: 0px;
+    }
+
+    /* 헤더 글씨 */
+    .navigation-center {
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        display: block;
+        /* margin, max-width준 이유를 모름 */
+        margin: 0 auto;
+        max-width: calc(100% - 80px);
+        /* overflow, white-space, text-overflow준 이유를 모름 */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+    .flex {
+        display: flex;
+    }
+    
+
+
+    .main-view {
+        background-color: #fff;
+        padding: 24px 24px 32px;
+    }
+
+    .main-view .listicon {
+        vertical-align: middle;
+        border: 0;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+
+    .main-view .title {
+        color: #212121;
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: normal;
+    }
+    .main-view .title span {
+        display: inline-block;
+        line-height: 21px;
+    }
+    
+
+    .main-view .description {
+        color: #616161;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: normal;
+        justify-content: space-between;
+    }
+
+    .main-view .description p {
+        padding: 0px 10px;
+    }
+    .main-view .description p:not(:first-child) {
+        color: #2099bb;
+    }
+
+    .description p:nth-child(2) {
+        font-weight: 700;
+    }
+
+    /* 포인트 상세 내역 표 */
+    table {
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        line-height: 1;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    
+    .tabletitle {
+        background: #f5f5f5;
+        font-size: 17px;
+        text-align: center;
+        height: 35px;
+    }
+     
+    .point {
+        width: 30%;
+    }
+    tr {
+        margin-bottom: 10px;
+    }
+    
+    td {
+        height: 30px;
+    }
+    th {
+        font-weight: 500;
+        border-bottom: 1px solid #2099bb;
+    }
+    
+    .history-body-content {
+        font-size: 16px;
+        color: #2099bb;
+        text-align: right;
+    }
+    
+    .report {
+        padding: 30px;
+        text-align: right;
+    }
+    
+    .date {
+        width: 25%;
+    }
+    
+    .location{
+        width: 25%;
+    }
+    
+    .status{
+        width: 30%;
+    }
+    
+    .status-td{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .earn{
+        color:#2099bb;
+    }
+    
+    .exchange{
+        color:#e54545;
+    }
+
+    /* 로그아웃 */
+    .footer-logout {
+        background-color: #ffffff;
+        /* padding: 24px; */
+        padding: 0px 24px;
+    }
+
+    .footer-logout .logout-btn {
+        width: 100%;
+        color: #616161;
+        border: solid 1px #e0e0e0;
+        padding: 8px 20px;
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+
+
+
+}
