@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="/css/mobile/list-mobile.css">
-    <link rel="stylesheet" href="/css/modal/mobile/search-modal.css">
     <link rel="stylesheet" href="/css/modal/mobile/jquery-ui.css">
+    <link rel="stylesheet" href="/css/modal/mobile/search-modal.css">
+    <link rel="stylesheet" href="/css/mobile/list-mobile.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
@@ -37,17 +37,17 @@
 
 <div class="container">
     <div class="inner-container">
-        <form action="" id="serach">
+<!--        <form action="" id="serach">-->
             <section class="serach-header">
                 <div class="serach-box">
                         <span class="text-input-wrap">
                             <input class="text-search-input" autocomplete="off" type="search" readonly>
                             <div class="search-result flex">
-                                <span class="date-result result">2023년 3월 24일</span>
-                                <span class="location-result result">서울특별시 강남구</span>
+                                <span class="date-result result" style="display: none">연수 신청일</span>
+                                <span class="location-result result" style="display: none">연수 지역</span>
                             </div>
                         </span>
-                    <button class="search-button">
+                    <button class="search-button" type="button">
                         <img src="/images/member/icon_search_active.png" alt="검색" class="search-img">
                     </button>
                 </div>
@@ -55,8 +55,9 @@
             <section class="search-result-section">
                 <div class="result-header">
                     <p class="title-wrap result-people">
-                        <span th:text="${applies.size() - others > 0 ? applies.size() - others : 0}"></span>명의 연수 신청자
-                        <!--                            <span th:text="${applies.size() == null ? 0 : applies.size()}"></span>명의 연수 신청자-->
+                        <span th:text="${applies.size() > 0 ? applies.size() : 0}"></span>명의 연수 신청자
+<!--                        <span th:text="${applies.size() - others > 0 ? applies.size() - others : 0}"></span>명의 연수 신청자-->
+<!--                        <span th:text="${applies.size() == null ? 0 : applies.size()}"></span>명의 연수 신청자-->
                     </p>
                 </div>
                 <!-- 연수자 목록 -->
@@ -130,20 +131,85 @@
                     <!--                        </div> &lt;!&ndash; 연수자 1명 끝 &ndash;&gt;-->
                 </div> <!-- 목록 div 끝 -->
             </section>
-        </form>
+<!--        </form>-->
+    </div>
+    <div class="modal-search-modal" th:fragment="search-modal" style="display: none;">
+        <!-- 헤더 -->
+        <div class="modal-search-header">
+            <div class="modal-close-btn">
+                <button type="button" class="modal-close">
+                        <span class="modal-close-img">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                <path d="m6 6 20 20"></path>
+                                <path d="m26 6-20 20"></path>
+                            </svg>
+                        </span>
+                </button>
+            </div>
+            <div class="modal-header-title">
+                <span class="modal-title">검색</span>
+            </div>
+        </div>
+        <!-- 메인 -->
+        <div class="modal-main-wrapper">
+            <div class="modal-inner-wrapper">
+                <form action="/applies/list-mobile/search" name="searchForm" method="get">
+                    <div class="modal-btn-wrapper">
+                        <input  type="text" name="applyDate" id="datepicker" class="modal-btn date-wrapper" autocomplete="off" style="position: absolute; display: block; visibility: visible; width: 100%; opacity: 0; z-index: 2;">
+                        <button type="button" class="modal-btn date-wrapper">
+                            <span class="modal-subtitle date">날짜</span>
+                            <span class="modal-value date-value">날짜 추가</span>
+                        </button>
+                    </div>
+                    <div class="modal-btn-wrapper">
+                        <input  type="text" name="applyLocation" id="locationpicker" class="modal-btn date-wrapper" autocomplete="off" style="position: absolute; display: block; visibility: visible; width: 100%; opacity: 0; z-index: 2;">
+                        <button type="button" class="modal-btn date-wrapper">
+                            <span class="modal-subtitle location">지역</span>
+                            <div class="modal-form-content select-box">
+                                <!-- 지역 선택 -->
+                                <select  class="modal-select modal-selectbox" name="sido1" id="sido1"></select>
+                                <select  class="modal-select modal-selectbox" name="gugun1" id="gugun1"></select>
+                                <!-- 지역 선택 끝 -->
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 푸터 -->
+        <div class="modal-footer-wrapper">
+            <footer>
+                <button type="button" class="modal-clear-btn">
+                    <p>검색 초기화</p>
+                </button>
+                <button type="button" class="modal-search-btn">
+                        <span class="modal-span-wrapper">
+                            <div class="modal-search-wrapper">
+                                <div class="modal-search-img">
+                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px; width: 16px; fill: #fff;">
+                                        <path d="M13 0c7.18 0 13 5.82 13 13 0 2.868-.929 5.519-2.502 7.669l7.916 7.917-2.828 2.828-7.917-7.916A12.942 12.942 0 0 1 13 26C5.82 26 0 20.18 0 13S5.82 0 13 0zm0 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" opacity=".8"></path>
+                                    </svg>
+                                </div>
+                                <p class="modal-search-name" style="color: #fff !important;">
+                                    검색
+                                </p>
+                            </div>
+                        </span>
+                </button>
+            </footer>
+        </div>
     </div>
 </div>
-<!--모달 -->
-<div th:insert="~{/modal/mobile/search-modal :: search-modal}"></div>
-<!--모달 -->
+<!--&lt;!&ndash;모달 &ndash;&gt;-->
+<!--<div th:insert="~{/modal/mobile/search-modal :: search-modal}"></div>-->
+<!--&lt;!&ndash;모달 &ndash;&gt;-->
 </body>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script th:inline="javascript">
     let applies = [[${applies}]];
     let memberId = [[${session.memberId}]];
 </script>
-<script src="/js/mobile/list.js"></script>
 <script src="/js/modal/mobile/search-modal.js"></script>
+<script src="/js/mobile/list.js"></script>
 </html>
-
