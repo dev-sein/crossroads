@@ -70,7 +70,6 @@ $passwordInput.on("blur", function() {
 $submitBtn.on('click', function(){
 	if($idInput && $passwordInput){
 		$passwordInput.val(btoa($passwordInput.val()));
-		alert('submit들어옴')
 		document.loginForm.submit();
 	}
 })

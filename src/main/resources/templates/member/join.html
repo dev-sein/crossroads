@@ -29,7 +29,7 @@
         <div class="input-section">
             <div class="input-wrapper">
                 <div class="login-title">교차로 회원가입</div>
-                <form action="/join" method="post">
+                <form action="/member/join" method="post" name="joinForm">
                     <!-- 이메일 -->
                     <div class="input-box email">
                         <div class="input-title">이메일</div>
@@ -89,7 +89,7 @@
                     <div class="input-box margin-top-16 phone">
                         <div class="input-title">핸드폰</div>
                         <div class="input-text-wrapper">
-                            <input class="theme-croosroads input-text" maxlength="11" placeholder="핸드폰 번호를 - 제외하고 입력해 주세요." type="text">
+                            <input class="theme-croosroads input-text" name="memberPhone" maxlength="11" placeholder="핸드폰 번호를 - 제외하고 입력해 주세요." type="text">
                         </div>
                         <!-- 1이상 : 6글자 이상의 영문자, 숫자, 특수기호(_)만 사용 가능합니다. -->
                         <span class="error-text" style="display: none;" id="phone-error">핸드폰 번호를 입력해 주세요.</span>
@@ -99,7 +99,7 @@
                         <div class="input-title">운전면허증</div>
                         <div class="input-text-wrapper" id="upload-name-wrapper" onclick="onclick=document.all.file.click()">
                             <label for="file"></label>
-                            <input class="theme-croosroads input-text" id="upload-name" placeholder="첨부파일" value="첨부파일" readonly>
+                            <input class="theme-croosroads input-text" id="upload-name" name="memberFileSystemName" placeholder="첨부파일" value="첨부파일" readonly>
                             <input class="btn-img" value="파일 찾기" readonly>
                             </label>
                             <input type="file" class="theme-croosroads input-file" id="file" accept="image/png, image/jpeg" style="display: none;">
