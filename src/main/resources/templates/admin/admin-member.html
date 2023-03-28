@@ -55,50 +55,27 @@
 			</div>
 		</div>
 		<div id="scroll">
-			<div class="user-list__info-container">
-				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />
-						   <label for="kus" class="user__checkbox--label">
-					<ul class="user-list__info">
-						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00005</li>
-						<li class="user__type" name="userType">초보자</li>
-						<li class="user__user-id" name="userNickname">dev_luk</li>
-						<li class="user__name" name="userName">김욱성</li>
-						<li class="user__email" name="userEmail">kus1234@naver.com</li>
-						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
-						<li class="user__point" name="userPoint">500,000</li>
-						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__detail" name="userDetail">
-							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-						</li>
-					</ul>
-				</label>
-				</div>
-			</div>
-			<!-- 회원 추가 -->
-			<div class="user-list__info-container">
-				<div class="user-list__info-unit">
-					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />
-					<label for="kus" class="user__checkbox--label">
-					<ul class="user-list__info">
-						<!-- <li>등록된 회원이 없습니다.</li> -->
-						<li class="user__id" name="userId">00004</li>
-						<li class="user__type" name="userType">초보자</li>
-						<li class="user__user-id" name="userNickname">dev_wmin</li>
-						<li class="user__name" name="userName">윤민우</li>
-						<li class="user__email" name="userEmail">ymw1234@naver.com</li>
-						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
-						<li class="user__point" name="userPoint">100,000</li>
-						<li class="user__join" name="userDateJoin">2023.02.22</li>
-						<li class="user__detail" name="userDetail">
-							<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
-						</li>
-					</ul>
-				</label>
-				</div>
-			</div>
-			<!-- 회원 추가 끝 -->
+<!--			<div class="user-list__info-container">-->
+<!--				<div class="user-list__info-unit">-->
+<!--					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />-->
+<!--						   <label for="kus" class="user__checkbox&#45;&#45;label">-->
+<!--					<ul class="user-list__info">-->
+<!--						&lt;!&ndash; <li>등록된 회원이 없습니다.</li> &ndash;&gt;-->
+<!--						<li class="user__id" name="userId">00005</li>-->
+<!--						<li class="user__type" name="userType">초보자</li>-->
+<!--						<li class="user__user-id" name="userNickname">dev_luk</li>-->
+<!--						<li class="user__name" name="userName">김욱성</li>-->
+<!--						<li class="user__email" name="userEmail">kus1234@naver.com</li>-->
+<!--						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>-->
+<!--						<li class="user__point" name="userPoint">500,000</li>-->
+<!--						<li class="user__join" name="userDateJoin">2023.02.22</li>-->
+<!--						<li class="user__detail" name="userDetail">-->
+<!--							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--				</label>-->
+<!--				</div>-->
+<!--			</div>-->
 		</div>
 		<div class="desktop-only">
 			<!-- 데스크탑용 버튼 -->
@@ -122,6 +99,11 @@
 <div th:insert="~{modal/admin/admin-member-modal:: admin-member-modal}"></div>
 <!-- modal fin. -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+	let members = [[${members}]];
+</script>
 <script src="/js/admin/admin-member.js"></script>
 <script src="/js/admin/admin-modal.js"></script>
+<script src="/js/admin/member-list.js"></script>
 </html>
