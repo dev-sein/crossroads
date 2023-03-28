@@ -12,5 +12,11 @@ public class ReviewMapperTests {
     ReviewMapper reviewMapper;
 
     @Test
-    public void selectAllMy(){ reviewMapper.selectAll().toString(); }
+    public void selectAllMy(){ reviewMapper.selectAll(2L).toString();}
+
+    @Test
+    public void selectReviewAll() {
+        log.info(reviewMapper.selectReviewAll().toString());
+    }
+
 }
