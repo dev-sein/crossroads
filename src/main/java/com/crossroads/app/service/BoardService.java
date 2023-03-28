@@ -24,4 +24,7 @@ public interface BoardService {
     //    자유 게시글 목록
     public List<BoardDTO> getList();
 
+//    후기 게시글 전체 목록
+    public List<ReviewDTO> getListReview();
+
 }

@@ -43,6 +43,13 @@
     <select id="selectAll" resultType="memberVO">
         select member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
         from tbl_member
+        order by member_id desc
     </select>
+
+    <delete id="delete">
+        delete from tbl_member
+        where member_id = #{memberId}
+    </delete>
+
 
 </mapper>

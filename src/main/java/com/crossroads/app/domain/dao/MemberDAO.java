@@ -33,4 +33,9 @@ public class MemberDAO {
     public List<MemberVO> findAll(){
         return memberMapper.selectAll();
     }
+
+    //회원 삭제, 탈퇴
+    public void deleteById(Long memberId) {
+        memberMapper.delete(memberId);
+    }
 }

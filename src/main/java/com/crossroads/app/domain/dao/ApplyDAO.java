@@ -34,4 +34,9 @@ public class ApplyDAO {
 
 //    나를 제외한 다른 베테랑들이 수락한 신청 개수
     public Long findCountById(Long memberId){return applyMapper.selectCount(memberId);}
+
+//    신청 삭제(취소)
+    public void deleteById(Long applyId){
+        applyMapper.delete(applyId);
+    }
 }

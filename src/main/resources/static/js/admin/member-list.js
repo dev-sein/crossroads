@@ -13,7 +13,6 @@ function showList(){
 					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />
 					<label for="kus" class="user__checkbox--label">
 						<ul class="user-list__info">
-							<!-- <li>등록된 회원이 없습니다.</li> -->
 							<li class="user__id" name="memberId">${member.memberId}</li>
 							<li class="user__type" name="memberType">${member.memberType}</li>
 							<li class="user__user-id" name="memberIdentification">${member.memberIdentification}</li>

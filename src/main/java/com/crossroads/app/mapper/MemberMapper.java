@@ -27,4 +27,7 @@ public interface MemberMapper {
 
     //회원 정보 목록
     public List<MemberVO> selectAll();
+
+    //회원삭제 회원탈퇴
+    public void delete(Long memberId);
 }

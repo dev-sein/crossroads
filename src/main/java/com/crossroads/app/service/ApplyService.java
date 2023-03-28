@@ -34,4 +34,10 @@ public class ApplyService {
     public Long getCount(Long memberId) {
         return applyDAO.findCountById(memberId);
     }
+
+    //    신청 삭제(취소)
+    public void cancel(Long applyId){
+//        추후 포인트 추가 감소 로직 추가 필요
+        applyDAO.deleteById(applyId);
+    }
 }

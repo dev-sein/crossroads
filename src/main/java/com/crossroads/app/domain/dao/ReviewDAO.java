@@ -21,4 +21,9 @@ public class ReviewDAO {
     public List<ReviewDTO> findAllReview(){
         return reviewMapper.selectReviewAll();
     }
+
+//    후기 삭제
+    public void deleteById(Long reviewId){
+        reviewMapper.delete(reviewId);
+    };
 }

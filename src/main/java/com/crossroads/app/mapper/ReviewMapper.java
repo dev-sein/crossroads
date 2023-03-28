@@ -13,4 +13,6 @@ public interface ReviewMapper {
     //후기 전체 조회
     public List<ReviewDTO> selectReviewAll();
 
+    //후기 삭제
+    public void delete(Long reviewId);
 }

@@ -14,7 +14,7 @@
         <if test="applyDate= null">
             and apply_date = #{applyDate}
         </if>
-        order by apply_register_date desc
+        order by apply_id desc
 <!--        <if test="types != null">-->
 <!--            where-->
 <!--            <trim prefixOverrides="or">-->
@@ -65,4 +65,10 @@
         set veteran_member_id = if(veteran_member_id, null, #{memberId})
         where apply_id = #{applyId}
     </update>
+
+    <delete id="delete">
+        delete from tbl_apply
+        where apply_id = #{applyId}
+    </delete>
+
 </mapper>

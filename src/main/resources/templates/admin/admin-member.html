@@ -35,7 +35,7 @@
 		</div>
 	</article>
 	<article class="module module--user-controller" style="text-align: center; padding: 0;">
-		<button type="button" style="margin: 0 auto; font-size: 16px;">선택 삭제</button>
+		<button type="button" class="modal_test" style="margin: 0 auto; font-size: 16px;">선택 삭제</button>
 	</article>
 	<article class="module module--user-list">
 		<div class="user-list__title-container">
@@ -103,7 +103,8 @@
 <script th:inline="javascript">
 	let members = [[${members}]];
 </script>
-<script src="/js/admin/admin-member.js"></script>
-<script src="/js/admin/admin-modal.js"></script>
 <script src="/js/admin/member-list.js"></script>
+<script src="/js/admin/admin-member.js"></script>
+<script src="/js/admin/member-delete.js"></script>
+<script src="/js/admin/admin-modal.js"></script>
 </html>

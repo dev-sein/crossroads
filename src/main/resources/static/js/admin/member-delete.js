@@ -2,7 +2,7 @@
 $('.modal_test').on('click', function() {
     var checkedIds = new Array();
     // 체크 박스 체크된 값
-    $('input:checkbox[name=checkbox]:checked').next().find('.content__id').each(function(){
+    $('input:checkbox[name=checkbox]:checked').next().find('.user__id').each(function(){
         console.log(this.innerText);
         checkedIds.push(this.innerText);
     });
@@ -10,7 +10,7 @@ $('.modal_test').on('click', function() {
     console.log(checkedIds);
 
     $.ajax({
-        url: "/admins/board/delete",
+        url: "/admins/member/delete",
         type: "delete",
         data: {"checkedIds": checkedIds},
         success: function(){

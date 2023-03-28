@@ -33,7 +33,7 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public void remove(List<String> boardIds) {
-
+        boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(reviewDAO::deleteById);
     }
 
     @Override
@@ -41,10 +41,10 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
-   /* @Override
+    @Override
     public List<ReviewDTO> getListReview() {
         return reviewDAO.findAllReview();
-    }*/
+    }
 
 
 }

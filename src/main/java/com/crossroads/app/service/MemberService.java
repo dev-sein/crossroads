@@ -46,4 +46,9 @@ public class MemberService {
         return memberDAO.findAll();
     }
 
+    //회원 삭제, 탈퇴
+    public void remove(Long memberId) {
+//        게시글 삭제, 댓글 삭제, 파일 삭제 필요
+        memberDAO.deleteById(memberId);
+    }
 }

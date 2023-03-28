@@ -9,3 +9,9 @@ function close () {
 
 document.querySelector("#show").addEventListener('click', show);
 document.querySelector("#close").addEventListener('click', close);
+// document.querySelector("#show").addEventListener('click', function() {
+//   document.querySelector(".background").className = "background show";
+// });
+// document.querySelector("#close").addEventListener('click', function(){
+//   document.querySelector(".background").className = "background";
+// });

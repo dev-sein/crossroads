@@ -3,8 +3,10 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.FreeBoardService;
 import com.crossroads.app.service.MemberService;
+import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import java.util.List;
 public class AdminController {
     private final MemberService memberService;
     private final FreeBoardService freeBoardService;
+    private final ReviewBoardService reviewBoardService;
+    private final ApplyService applyService;
     //관리자 홈
     @GetMapping("home")
     public String adminHome(){
@@ -33,10 +37,25 @@ public class AdminController {
         return "admin/admin-member";
     }
 
+    //관리자 회원 삭제
+    @ResponseBody
+    @DeleteMapping("member/delete")
+    public void deleteMember(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(memberService::remove);
+    }
+
     //관리자 연수신청 목록
-    @GetMapping("apply")
-    public String adminApply(){
+    @GetMapping("apply/list")
+    public String adminApply(Model model){
+        model.addAttribute("applies", applyService.getList());
         return "admin/admin-apply";
+    }
+
+    //    관리자 연수신청 삭제
+    @ResponseBody
+    @DeleteMapping("apply/delete")
+    public void deleteApply(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(applyService::cancel);
     }
 
     //관리자 포인트 목록
@@ -46,9 +65,17 @@ public class AdminController {
     }
 
     //관리자 후기 목록
-    @GetMapping("review")
-    public String adminReview(){
+    @GetMapping("review/list")
+    public String adminReview(Model model){
+        model.addAttribute("reviews", reviewBoardService.getListReview());
         return "admin/admin-review";
+    }
+
+    //    관리자 후기 삭제
+    @ResponseBody
+    @DeleteMapping("review/delete")
+    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        reviewBoardService.remove(checkedIds);
     }
 
     //관리자 게시글 목록
@@ -77,7 +104,12 @@ public class AdminController {
     }
 
     //관리자 댓글 목록
-    @GetMapping("reply")
-    public String adminReply(){ return "admin/reply"; }
+    @GetMapping("reply/list")
+    public String adminReply(){ return "admin/admin-reply"; }
 
+    //    관리자 댓글 삭제
+//    @ResponseBody
+//    @DeleteMapping("reply/delete")
+//    public void deleteReply(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//    }
 }

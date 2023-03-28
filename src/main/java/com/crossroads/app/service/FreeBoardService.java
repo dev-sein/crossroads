@@ -50,4 +50,9 @@ public class FreeBoardService implements BoardService {
         return boards;
     }
 
+    @Override
+    public List<ReviewDTO> getListReview() {
+        return null;
+    }
+
 }
