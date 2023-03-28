@@ -3,11 +3,11 @@
 <mapper namespace="com.crossroads.app.mapper.ReviewMapper">
     <select id="selectAll" parameterType="long" resultType="reviewDTO" >
         select m.member_id, member_identification, member_file_system_name,
-               a.apply_id, apply_course, apply_location, apply_date, apply_register_date,
+               a.apply_id, apply_course, apply_location, apply_date, review_register_date,
                starter_member_id, review_id, review_title, review_contents, review_file_system_name
         from tbl_member m join tbl_apply a on m.member_id = a.starter_member_id
         join tbl_review r on r.member_id = a.starter_member_id
-        where member_id = #{memberId}
+        where m.member_id = #{memberId}
         order by apply_register_date desc
     </select>
 </mapper>
