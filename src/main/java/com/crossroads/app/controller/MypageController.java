@@ -3,6 +3,7 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
+import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ import java.util.List;
 public class MypageController {
     private final MemberService memberService;
     private final ReviewBoardService reviewBoardService;
+    private final ApplyService applyService;
 
     //마이페이지 메인
     @GetMapping("/mypage-main")
@@ -81,9 +83,6 @@ public class MypageController {
         return new RedirectView("my-info");
     }
 
-
-
-
     //마이페이지 비밀번호 변경
     @GetMapping("/change-password")
     public String changePassword(){
@@ -110,7 +109,17 @@ public class MypageController {
 
     //마이페이지 후기 전체 조회
     @GetMapping("/my-review")
-    public List<ReviewDTO> showListMy(){ return reviewBoardService.getListMy(); }
+    public String showListMy(Model model, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+
+//        Long memberId = 1L;
+//        ReviewDTO reviewDTO = new ReviewDTO();
+//        reviewDTO.setMemberId(1L);
+
+//        session.setAttribute("memberId", 1L);
+        model.addAttribute("reviews", reviewBoardService.getListMy());
+        return "mypage/my-review";
+    }
 
     //마이페이지 내가 쓴 게시글 목록
     @GetMapping("/my-board-list")

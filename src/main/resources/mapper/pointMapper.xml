@@ -7,9 +7,9 @@
         where member_id = #{memberId}
     </select>
 
-    <update id="updatePoint" parameterType="hashmap">
+    <update id="updatePoint" parameterType="long">
         update tbl_member
-        set member_point = #{memberPoint}
+        set member_point = 0
         where member_id = #{memberId}
     </update>
 </mapper>
