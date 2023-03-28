@@ -112,12 +112,12 @@ public class MypageController {
     public String showListMy(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
 
-        Long memberId = 1L;
+//        Long memberId = 1L;
 //        ReviewDTO reviewDTO = new ReviewDTO();
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("reviews", reviewBoardService.getListMy(memberId));
+        model.addAttribute("reviews", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
 

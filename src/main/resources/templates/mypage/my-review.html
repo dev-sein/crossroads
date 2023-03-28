@@ -156,10 +156,10 @@
                         </div>
                     </div>
                     <!-- 리뷰 목록 시작 -->
-                    <div class="review-box">
+                    <div class="review-box" th:each="item:${reviews}">
                         <a class="review-modify" href="/store/41">수정</a>
                         <a class="review-delete" href="/store/41">삭제</a>
-                        <div class="review-list" th:each="item:${reviews}">
+                        <div class="review-list" >
                             <div class="review-container">
                                 <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
                             </div>
