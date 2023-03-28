@@ -4,29 +4,41 @@ const checkBox = document.querySelectorAll('input[name = "checkbox"]');
 const checkBoxChecked = document.querySelectorAll(
   'input[name = "checkbox"]:checked'
 );
+let checkedIds = new Array();
 
 const selectAll = function () {
   if (checkBoxAll[0].checked) {
-    checkBox.forEach((e) => (e.checked = true));
+    checkBox.forEach((e) => {
+      e.checked = true;
+      checkedIds.push(e.nextSibling.firstChild.firstChild.value);
+    });
   }
   if (!checkBoxAll[0].checked) {
     checkBox.forEach((e) => (e.checked = false));
   }
 };
 
+/* 개수 모두 전체 선택인지 */
 const checkSelectAll = function () {
-  if (checkBox.length === checkBoxChecked.length) {
-    checkBoxAll[0].checked = true;
-  } else if (checkBox.length != checkBoxChecked.length) {
+
+  var checkedBox = document.querySelectorAll(
+      'input[name = "checkbox"]:checked'
+  );
+  if (checkBox.length != checkedBox.length) {
     checkBoxAll[0].checked = false;
+  } else {
+    checkBoxAll[0].checked = true;
   }
-  console.log(checkBox.length);
 };
 
 checkBoxAll[0].addEventListener("click", selectAll);
+
 checkBox.forEach((e) => {
   e.addEventListener("click", checkSelectAll);
 });
 
-console.log(checkBoxChecked);
+$('.modal_test').on('click', function() {
+
+});
+
 
