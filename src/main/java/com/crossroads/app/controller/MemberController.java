@@ -30,7 +30,7 @@ public class MemberController {
     @PostMapping("join")
     public RedirectView joinfinish(MemberVO memberVO){
         memberService.save(memberVO);
-        return new RedirectView("/login");
+        return new RedirectView("member/login");
     }
 
     //아이디 중복체크
