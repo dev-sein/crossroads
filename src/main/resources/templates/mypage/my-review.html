@@ -156,21 +156,21 @@
                         </div>
                     </div>
                     <!-- 리뷰 목록 시작 -->
-                    <div class="review-box">
+                    <div class="review-box" th:each="review:${reviews}">
                         <a class="review-modify" href="/store/41">수정</a>
                         <a class="review-delete" href="/store/41">삭제</a>
-                        <div class="review-list" th:each="item:${reviews}">
+                        <div class="review-list" >
                             <div class="review-container">
                                 <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
                             </div>
                             <div class="review-content-box">
-                                <a th:text="${reviews.reviewTitle}" class="review-name-link" href="/store/41/"></a>
+                                <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
                                 <p class="pcontent">
-                                    <span th:text="${reviews.reviewRegisterDate}" class="review-date"></span>
+                                    <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
                                     <span class="base-info-splitter">|</span>
-                                    <span class="review-location"></span>
+                                    <span th:text="${review.applyLocation}" class="review-location"></span>
                                 </p>
-                                <p th:text="${reviews.reviewContent}" class="review-description-text">
+                                <p th:text="${review.reviewContent}" class="review-description-text">
                                 </p>
                             </div>
                         </div>
