@@ -115,7 +115,7 @@ public class MemberController {
         //세션 끊기
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/main";
     }
 
 
