@@ -4,10 +4,9 @@ const $accountInput = $('#account-number');
 const $accountWarning = $('.account-error');
 let accountFlag = false;
 // 계좌번호 정규식 이벤트 함수 사용
-$accountInput.on("blur", function() {
+$accountInput.on("keyup", function() {
 	var isaccountNum = /^(\d{1,})(-(\d{1,})){1,}/;
 	var $accountInputVal = $accountInput.val();
-	var accountInputVal = $accountInput.val();
 
 	if ($accountInputVal.length < 1) {
 		$accountWarning.text("계좌번호를 입력해주세요.");
@@ -16,6 +15,11 @@ $accountInput.on("blur", function() {
 		accountFlag = false;
 	} else if (!isaccountNum.test($accountInputVal)) {
 		$accountWarning.text("잘못된 형식입니다. '-'를 사용하여 다시 입력해주세요.");
+		$accountWarning.css("display", "block");
+		$accountInput.css("border-color", "#f66");
+		accountFlag = false;
+	} else if($accountInputVal.length < 12){
+		$accountWarning.text("계좌번호를 입력해주세요.");
 		$accountWarning.css("display", "block");
 		$accountInput.css("border-color", "#f66");
 		accountFlag = false;
@@ -59,10 +63,30 @@ function completeAllCheck() {
 		$completeButton.css("color", "#fff");
 	}
 }
+let check = false;
 
 $completeButton.on("click", function(){
-	$(".modal-wrapper").show();
+	console.log($("#hidden-point").val());
+	if(Number($("#hidden-point").val()) < 10000){
+		check = false;
+		// alert("10000point 부터 환전이 가능합니다.");
+		$("#modal-wrapper2").show();
+	}else {
+		check = true;
+		$("#account").text($('#account-number').val());
+		$("#modal-wrapper1").show();
+	}
 });
-$(".modal-close-btn").on("click", function(){
-	location.href='mypage-pointlist-mobile.html'; /* 포인트 내역으로 */
+
+$("#close-modal-button").on("click", function(){
+	$("#modal-wrapper2").hide();
+	// location.href='/applies/point/change-point-mobile'; /* 포인트 내역으로 */
+});
+
+$("#no-button").on('click', function(){
+	$("#modal-wrapper1").hide();
+});
+
+$("#ok-button").on('click', function(){
+	document.changepointForm.submit();
 });
