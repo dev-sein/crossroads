@@ -57,3 +57,57 @@ $("select[name^=sido]").change(function() {
         });
     }
 });
+
+const $searchButton = $(".search-button");  // 검색 버튼
+const $closeButton = $(".modal-close-btn"); // 검색창 닫기 버튼
+const $searchHeader = $(".serach-header");  // 검색 헤더
+
+const $date = $("#datepicker");             // 날짜 검색 input
+const $location = $("#locationpicker");     // 지역 검색 input
+const $modalSearchButton = $(".modal-search-btn");  // 모달창 안에 검색 버튼
+
+$searchButton.on('click', function(){
+    $('.modal-search-modal').show();
+    // $('.modal-search-modal').css('display', 'flex');
+});
+
+$searchHeader.on('click', function(){
+    $('.modal-search-modal').show();
+    // $('.modal-search-modal').css('display', 'flex');
+});
+
+$closeButton.on('click', function(){
+    $('.modal-search-modal').hide();
+});
+
+$modalSearchButton.on('click', function () {
+    // var regex = /[^0-9]/g;				// 숫자가 아닌 문자열을 선택하는 정규식
+    // $date.val($date.val().replace(regex, ""));	// 원래 문자열에서 숫자가 아닌 모든 문자열을 빈 문자로 변경
+    // console.log($date.val());
+    // 날짜에서 2023월 3월 1일이면 202331 로 나오는데 월이나 일이 2글자가 아닌 1글자이면 앞에 0을 붙여주는 정규식
+    var changedDate = $date.val().replace(/(\d{4})년 (\d{1,2})월 (\d{1,2})일/, function(match, p1, p2, p3) {
+        if (p2.length === 1) {
+            p2 = "0" + p2;
+        }
+        if (p3.length === 1) {
+            p3 = "0" + p3;
+        }
+        return p1 + p2 + p3;
+    });
+    $date.val(changedDate);
+    // console.log($date.val());
+
+    console.log($("#sido1").val());     // 시도
+    console.log($("#gugun1").val());    // 구군
+    $location.val($("#sido1").val() + " " + $("#gugun1").val());    // 지역 값 = 시도 + 구군
+    if($("#sido1").val() == "시/도"){     // 지역의 들어온 값이 없을 경우
+        console.log("들어옴");
+        $("#sido").val('');
+        $location.val('');
+    }
+    // console.log($location.val());
+
+    document.searchForm.submit();
+})
+
+
