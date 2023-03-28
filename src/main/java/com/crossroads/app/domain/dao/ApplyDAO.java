@@ -19,6 +19,11 @@ public class ApplyDAO {
         return applyMapper.selectAll();
     }
 
+//    신청목록 검색조회
+    public List<ApplyDTO> findList(Map<String, Object> info) {
+        return applyMapper.selectList(info);
+    }
+
 //    신청 상세 조회
     public ApplyVO findById(Long applyId) {return applyMapper.select(applyId);};
 

@@ -13,6 +13,9 @@ public interface ApplyMapper {
 //    신청 목록 전체 조회
     public List<ApplyDTO> selectAll();
 
+//    신청 목록 검색 조회
+    public List<ApplyDTO> selectList(Map<String, Object> info);
+
 //    신청 상세 조회
     public ApplyVO select(Long applyId);
 
