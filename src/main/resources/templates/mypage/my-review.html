@@ -164,11 +164,11 @@
                                 <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
                             </div>
                             <div class="review-content-box">
-                                <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/">후기작성제목</a>
+                                <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
                                 <p class="pcontent">
                                     <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
                                     <span class="base-info-splitter">|</span>
-                                    <span class="review-location"></span>
+                                    <span th:text="${review.applyLocation}" class="review-location"></span>
                                 </p>
                                 <p th:text="${review.reviewContent}" class="review-description-text">
                                 </p>
