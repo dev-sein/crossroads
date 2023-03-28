@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,9 +54,13 @@ public class AdminController {
     }
 
 //    관리자 게시글 삭제
-    @PostMapping("delete")
-    public void deleteBoard(Long boardId) {
-        freeBoardService.remove(boardId);
+    @PostMapping("board/delete")
+    public RedirectView deleteBoard(List<String> checkedIds) {
+        String result = String.join(",", checkedIds);
+        freeBoardService.remove(result);
+//        checkedIds.stream().forEach(freeBoardService::remove);
+
+        return new RedirectView("/admins/board");
     }
 
     //관리자 댓글 목록

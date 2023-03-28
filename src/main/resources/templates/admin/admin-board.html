@@ -37,7 +37,9 @@
 	<article class="module module--content-summary">
 		<button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px;">선택 삭제</button>
 	</article>
+
 	<article class="module module--content-list">
+		<form action="/admins/board/delete" method="post" name="checkedForm">
 		<div class="content-list__title-container">
 			<div class="content-list__title-unit">
 				<input type="checkbox" id="title__checkbox" name="checkbox-all" />
@@ -73,6 +75,7 @@
 <!--			</div>-->
 			<!-- 목록 테스트 추가  -->
 		</div>
+		</form>
 		<div class="desktop-only">
 			<!-- 데스크탑용 버튼 -->
 			<button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
