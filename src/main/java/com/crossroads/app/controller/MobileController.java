@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/applies/*")
+//@RequestMapping("/applies/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MobileController {
@@ -40,7 +40,7 @@ public class MobileController {
 
     @GetMapping("list-mobile/search")
     public String listMobileSearch(){
-        return "mobile/list-mobile/search";
+        return "/modal/mobile/search-modal";
     }
 
     @PostMapping("list-mobile/change-status")
