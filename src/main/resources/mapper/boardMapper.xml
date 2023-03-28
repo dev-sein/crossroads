@@ -42,7 +42,7 @@
 
     <delete id="deleteAdmin">
         delete from tbl_board
-        where board_id = #{boardId}
+        where board_id in (#{boardId})
     </delete>
 
     <select id="selectAll" resultType="boardDTO">
