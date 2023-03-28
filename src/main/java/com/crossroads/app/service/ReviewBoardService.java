@@ -35,4 +35,11 @@ public class ReviewBoardService implements BoardService {
     public List<BoardDTO> getList() {
         return null;
     }
+
+   /* @Override
+    public List<ReviewDTO> getListReview() {
+        return reviewDAO.findAllReview();
+    }*/
+
+
 }
