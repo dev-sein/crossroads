@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,14 +44,21 @@ public class MypageController {
 
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
-    public String myInfo(Long memberId, Model model){
+    public String myInfoSelect(Long memberId, Model model){
         model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
-    //마이페이지 프로필 조회
+    //마이페이지 프로필 수정
+//    @PostMapping("/my-info")
+//    public void myInfoUpdate(@RequestBody MemberVO memberVO) { memberService.modify(memberVO); }
+
     @PostMapping("/my-info")
-    public void myInfoUpdate(@RequestBody MemberVO memberVO) { memberService.modify(memberVO); }
+    public RedirectView myInfoUpdate(MemberVO memberVO, RedirectAttributes redirectAttributes){
+        memberService.modify(memberVO);
+        redirectAttributes.addAttribute("member", memberVO.getMemberId());
+        return new RedirectView("/mypage/my-info");
+    }
 
     //마이페이지 비밀번호 변경
     @GetMapping("/change-password")
@@ -64,15 +73,15 @@ public class MypageController {
     }
 
     //마이페이지 목록
-    @GetMapping("/classList")
+    @GetMapping("/my-apply")
     public String classList(){
-        return "mypage/classList";
+        return "mypage/my-apply";
     }
 
     //마이페이지 포인트내역
-    @GetMapping("/point")
+    @GetMapping("/my-point")
     public String point(){
-        return "mypage/point";
+        return "mypage/my-point";
     }
 
     //마이페이지 후기 전체 조회
