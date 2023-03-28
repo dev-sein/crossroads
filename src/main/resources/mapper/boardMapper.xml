@@ -44,7 +44,7 @@
         from tbl_member m join tbl_board b
             on m.member_id = b.member_id
         order by b.board_id desc
-        limit #{criteria.offset}, #{criteria.amount}
+        limit #{offset}, #{amount}
     </select>
 
     <delete id="deleteAdmin">

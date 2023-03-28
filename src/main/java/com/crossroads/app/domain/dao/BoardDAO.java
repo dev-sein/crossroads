@@ -1,7 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.BoardDTO;
-import com.crossroads.app.domain.vo.Criteria;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

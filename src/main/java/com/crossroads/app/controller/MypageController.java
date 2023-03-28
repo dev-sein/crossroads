@@ -117,7 +117,7 @@ public class MypageController {
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("reviews", reviewBoardService.getListMy());
+        model.addAttribute("reviews", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
 

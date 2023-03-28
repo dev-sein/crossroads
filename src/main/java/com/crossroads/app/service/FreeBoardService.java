@@ -4,7 +4,7 @@ import com.crossroads.app.domain.dao.BoardDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.vo.Criteria;
+import com.crossroads.app.domain.dto.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

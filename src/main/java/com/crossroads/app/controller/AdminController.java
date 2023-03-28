@@ -2,14 +2,13 @@ package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.PageDTO;
-import com.crossroads.app.domain.vo.Criteria;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.service.FreeBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 

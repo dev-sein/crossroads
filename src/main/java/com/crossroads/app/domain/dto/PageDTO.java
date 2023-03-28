@@ -1,7 +1,6 @@
 package com.crossroads.app.domain.dto;
 
 
-import com.crossroads.app.domain.vo.Criteria;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

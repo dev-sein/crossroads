@@ -2,7 +2,7 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.vo.Criteria;
+import com.crossroads.app.domain.dto.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
