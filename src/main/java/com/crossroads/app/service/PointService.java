@@ -20,7 +20,7 @@ public class PointService {
     }
 
 //    포인트 수정
-    public void modifyPoint(Map<String, Object> info){
-        pointDAO.setPoint(info);
+    public void modifyPoint(Long memberId){
+        pointDAO.setPoint(memberId);
     }
 }
