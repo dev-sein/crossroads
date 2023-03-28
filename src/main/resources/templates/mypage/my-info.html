@@ -150,7 +150,7 @@
                     <div class="account-setting" id="base_show_form">
                         <!--     <form action="/accounts/settings/profile/" class="form-horizontal has-validation-callback"
                                enctype="multipart/form-data" id="base_edit_form" method="POST"> -->
-                        <form id="base_edit_form" method="post" th:object="${memberVO}"> <!-- JS 테스트 -->
+                        <form id="base_edit_form" method="post"> <!-- JS 테스트 -->
                             <input name="submit_type" type="hidden" value="base">
                             <div class="acoount-setting-row profile-setting-row">
                                 <div class="account-setting-box first">
@@ -175,7 +175,7 @@
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-                                <input th:field="*{memberName}" class="form-control" id="full_name" name="memberName" type="text" value="">
+                                <input class="form-control" id="full_name" name="memberName" type="text" value="">
                                 <div class="error-message namemsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
@@ -195,20 +195,15 @@
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-                                <span>010&nbsp;-&nbsp;</span>
-                                <span id="cell_phone_global_box" style="display:none;">
-                                        <input class="form-control-phone-noncell" id="cell_phone_global"
-                                               name="memberPhone"
-                                               style="display:none; width: 247px; *width:208px;"
-                                               type="text" value=""></span>
+<!--                                <span>010&nbsp;-&nbsp;</span>-->
                                 <span id="cell_phone_local_box" style="display:inline;">
-                                        <input class="form-control-phone" data-min-length="3" maxlength="8"
-                                               id="cell_phone_number_middle" name="cell_phone_number_middle" type="text"
-                                               th:field="*{memberPhone}" value="" style="display: inline;">
-                                        <span class="form-phone-liner" style="display: inline;">&nbsp;-&nbsp;</span>
-                                        <input class="form-control-phone" maxlength="4" id="cell_phone_number_end"
-                                               th:field="*{memberPhone}"  name="cell_phone_number_end" type="text" value=""
-                                               style="display: inline;">
+                                        <input class="form-control-phone" data-min-length="3" maxlength="11"
+                                               id="cell_phone_number_middle" name="memberPhone" type="text"
+                                               value="" style="display: inline;">
+<!--                                        <span class="form-phone-liner" style="display: inline;">&nbsp;-&nbsp;</span>-->
+<!--                                        <input class="form-control-phone" maxlength="4" id="cell_phone_number_end"-->
+<!--                                               name="cell_phone_number_end" type="text" value=""-->
+<!--                                               style="display: inline;">-->
                                 </span>
                                 <div class="error-message phonemsg"><i class="fa fa-exclamation-circle"></i> 이 항목을
                                     채워주십시오.
@@ -228,7 +223,7 @@
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
                                 <input class="form-control" id="email" name="memberEmail" type="text"
-                                       th:field="*{memberEmail}" onclick="checkEmail()" value="">
+                                       onclick="checkEmail()" value="">
                                 <div class="error-message emailmsg">
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
