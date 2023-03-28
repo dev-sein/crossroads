@@ -95,11 +95,13 @@ public class MemberController {
 
     //   로그인
     @PostMapping("login")
-    public RedirectView login(String memberIdentification, String memberPassword, HttpSession session){
+    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+        HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
         log.info(id.toString());
         if(id != null){
             session.setAttribute("memberId", id);
+            log.info(session.getAttribute("memberId").toString());
             return new RedirectView("/main");
 
         }
@@ -113,7 +115,7 @@ public class MemberController {
         //세션 끊기
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/main";
+        return "redirect:/";
     }
 
 
