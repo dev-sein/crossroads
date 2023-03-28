@@ -8,7 +8,30 @@
                 starter_member_id, veteran_member_id, apply_status
         from tbl_member m join tbl_apply a
         on m.member_id = a.starter_member_id
+        <if test="applyLocation!= null">
+            and apply_location = #{applyLocation}
+        </if>
+        <if test="applyDate= null">
+            and apply_date = #{applyDate}
+        </if>
         order by apply_register_date desc
+<!--        <if test="types != null">-->
+<!--            where-->
+<!--            <trim prefixOverrides="or">-->
+<!--                <foreach item="type" collection="types">-->
+<!--                    <trim prefix="or">-->
+<!--                        <choose>-->
+<!--                            <when test="type == 'title'.toString()">-->
+<!--                                board_title like concat('%', #{keyword}, '%')-->
+<!--                            </when>-->
+<!--                            <when test="type == 'content'.toString()">-->
+<!--                                board_content like concat('%', #{keyword}, '%')-->
+<!--                            </when>-->
+<!--                        </choose>-->
+<!--                    </trim>-->
+<!--                </foreach>-->
+<!--            </trim>-->
+<!--        </if>-->
     </select>
 
     <select id="select" resultType="applyVO" parameterType="long">
@@ -42,6 +65,4 @@
         set veteran_member_id = if(veteran_member_id, null, #{memberId})
         where apply_id = #{applyId}
     </update>
-
-
 </mapper>
