@@ -30,4 +30,9 @@ public class ReviewBoardService implements BoardService {
     public void remove(Long boardId) {
 
     }
+
+    @Override
+    public List<BoardDTO> getList() {
+        return null;
+    }
 }

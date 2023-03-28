@@ -36,4 +36,12 @@ public class FreeBoardService implements BoardService {
     public void remove(Long boardId) {
         boardDAO.deleteById(boardId);
     }
+
+//    게시글 목록
+    @Override
+    public List<BoardDTO> getList() {
+        List<BoardDTO> boards = boardDAO.findFreeAll();
+        return boards;
+    }
+
 }

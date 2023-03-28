@@ -16,4 +16,8 @@ public interface BoardService {
 
 //    어드민 게시글 삭제
     public void remove(Long boardId);
+
+    //    자유 게시글 목록
+    public List<BoardDTO> getList();
+
 }
