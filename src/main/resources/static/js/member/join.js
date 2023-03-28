@@ -338,3 +338,57 @@ function checkEmail() {
 		}
 	});
 
+
+/* 파일 */
+globalThis.arrayFile2 = new Array();
+globalThis.j = 0;
+const dataTransfer = new DataTransfer();
+$("input[id='upload-name']").on("change", function() {
+	const $files2 = $("input[id=upload-name]")[0].files[0];
+	console.log($files2)
+//    파일 객체에 접근함
+	let formData = new FormData();
+	globalThis.arrayFile2.push($files2);
+	// 파일 Array의 file들을 하나씩 담아줌
+	console.log(globalThis.arrayFile2)
+	formData.append("file", $files2)
+	$.ajax({
+		url: "/upload",
+		type: "post",
+		data: formData,
+		contentType: false,
+		processData: false,
+		success: function (uuid) {
+			globalThis.uuid = uuid;
+			console.log(globalThis.uuid)
+
+			$("input[id='upload-name']")[0].files = dataTransfer.files;
+			let text2 = "";
+			text2 =
+				`
+                    <input type="hidden" name="memberProfileOriginalName" value="${$files2.name}">
+                    <input type="hidden" name="memberProfileUuid" value="${globalThis.uuid}">
+                    <input type="hidden" name="memberProfilePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="memberProfileSize" value="${$files2.size}">
+                    `
+			$("form[name='joinForm']").append(text2);
+			console.log(text2);
+		}
+	});
+});
+
+function leftPad(value) {
+	if (value >= 10) {
+		return value;
+	}
+
+	return `0${value}`;
+}
+
+function toStringByFormatting(source, delimiter = '/') {
+	const year = source.getFullYear();
+	const month = leftPad(source.getMonth() + 1);
+	const day = leftPad(source.getDate());
+
+	return [year, month, day].join(delimiter);
+}
