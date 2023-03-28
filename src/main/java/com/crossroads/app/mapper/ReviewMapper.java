@@ -9,4 +9,8 @@ import java.util.List;
 public interface ReviewMapper {
     //마이페이지 후기 전체 조회
     public List<ReviewDTO> selectAll();
+
+    //후기 전체 조회
+    public List<ReviewDTO> selectReviewAll();
+
 }
