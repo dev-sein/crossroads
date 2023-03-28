@@ -11,5 +11,5 @@ public interface PointMapper {
     public Long selectPoint(Long memberId);
 
 //  포인트 수정
-    public void updatePoint(Map<String, Object> info);
+    public void updatePoint(Long memberId);
 }
