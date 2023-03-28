@@ -2,6 +2,7 @@ package com.crossroads.app.controller;
 
 import com.crossroads.app.service.FreeBoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admins/*")
+@Slf4j
 public class AdminController {
     private final FreeBoardService freeBoardService;
     //관리자 홈
@@ -56,9 +58,7 @@ public class AdminController {
 //    관리자 게시글 삭제
     @PostMapping("board/delete")
     public RedirectView deleteBoard(List<String> checkedIds) {
-        String result = String.join(",", checkedIds);
-        freeBoardService.remove(result);
-//        checkedIds.stream().forEach(freeBoardService::remove);
+        freeBoardService.remove(checkedIds);
 
         return new RedirectView("/admins/board");
     }
