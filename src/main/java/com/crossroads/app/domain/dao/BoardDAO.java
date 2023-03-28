@@ -18,7 +18,17 @@ public class BoardDAO {
     }
 
     /* 어드민 게시글 삭제 */
-    public void deleteById(Long boardId){
+    public void deleteById(Long boardId) {
         boardMapper.deleteAdmin(boardId);
-    };
+    }
+
+    /* 관리자 게시글 목록*/
+    public List<BoardDTO> findAll() {
+        return boardMapper.selectAll();
+    }
+
+    public List<BoardDTO> findFreeAll() {
+        return boardMapper.selectAll();
+    }
+
 }
