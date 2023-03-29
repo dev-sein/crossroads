@@ -21,7 +21,7 @@
                 <div class="modal-wrapper">
                     <div class="modal-image-wrapper">
                         <div class="inner-wrapper">
-                            <img src="http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg" class="modal-image">
+                            <img class="modal-image" th:src="@{/img/} + ${reviews[0].reviewFileSystemName}" >
                             <!-- <img src="/img/close.png" id="close-button" onclick="closeModal()"> -->
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                                         <div class="user-type">
                                             수강생
                                         </div>
-                                          <div></div><!-- userName여기에 써야함 -->
-<!--                                          <div th:text="${review.memberName}"></div>&lt;!&ndash; userName여기에 써야함 &ndash;&gt;-->
+                                        <span th:text="${reviews[0].memberName}"></span><!-- userName여기에 써야함 -->
+                                        <!--                                          <div th:text="${review.memberName}"></div>&lt;!&ndash; userName여기에 써야함 &ndash;&gt;-->
                                         <!-- <div class="seperator"></div> -->
                                         <!-- <div class="update-buttons-wrapper">
                                             <div class="update-button">수정</div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="user-detail-bottom">
                                         <div class="star-score-box">
-                                            <div class="review-star">
+                                            <div class="review-star" >
                                                 <div class="stars star0"></div>
                                                 <div class="stars star1"></div>
                                                 <div class="stars star2"></div>
@@ -116,7 +116,8 @@
                                 </div>
                                 <div class="image-wrapper">
                                     <!-- <div class="review-image" style="background-color: black;"></div> -->
-                                    <div class="review-image" style="background-image:url(' + ${reviews[0].reviewFileSystemName} + ');'" onclick="showModal()"></div>
+                                    <img class="review-image" th:src="@{/img/} + ${reviews[0].reviewFileSystemName}" onclick="showModal()">
+                                    <!--<div class="review-image" th:style="'background-image:url(@{/img/} + ${reviews[0].reviewFileSystemName});'" onclick="showModal()"></div>-->
                                 </div>
                                 <!-- 댓글 -->
                             </div>
