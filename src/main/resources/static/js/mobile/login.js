@@ -1,3 +1,5 @@
+const $submitBtn = $("#submit-btn");
+
 // 아이디 변수
 const $idInput = $('.id .input-text');
 // 아이디 에러 변수
@@ -100,3 +102,9 @@ $checkbox.on("click", function(){
         checkbox = false;
     }
 });
+$submitBtn.on('click', function(){
+	if($idInput && $passwordInput){
+		$passwordInput.val(btoa($passwordInput.val()));
+		document.loginForm.submit();
+	}
+})

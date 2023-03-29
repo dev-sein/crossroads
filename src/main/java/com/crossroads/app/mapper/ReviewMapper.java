@@ -10,6 +10,7 @@ public interface ReviewMapper {
     //마이페이지 후기 전체 조회
     public List<ReviewDTO> selectAll(Long memberId);
 
+
     //후기 전체 조회
     public List<ReviewDTO> selectReviewAll();
 

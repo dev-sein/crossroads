@@ -40,7 +40,6 @@ public class MobileController {
 
 
     @GetMapping("list-mobile/search")
-//    @ResponseBody
     public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
                                    @RequestParam(value = "applyDate")String applyDate,
                                    Model model, HttpServletRequest request)
@@ -73,16 +72,17 @@ public class MobileController {
         applyService.modifyVeteranId(info);
     }
 
+    //회원가입
     @GetMapping("join-mobile")
     public String joinMobile(){
         return "mobile/join-mobile";
     }
 
-    //회원가입 post
+    //회원가입
     @PostMapping("join-mobile")
     public RedirectView joinfinishMobile(MemberVO memberVO){
         memberService.save(memberVO);
-        return new RedirectView("/login-mobile");
+        return new RedirectView("login-mobile");
     }
 
     //아이디 중복체크
@@ -101,9 +101,34 @@ public class MobileController {
         return duplicateEmail;
     }
 
+    //로그인
     @GetMapping("login-mobile")
-    public String loginMobile(){
+    public String login(){
         return "mobile/login-mobile";
     }
 
+    //   로그인
+    @PostMapping("login-mobile")
+    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Long id = memberService.login(memberIdentification, memberPassword);
+        log.info(id.toString());
+        if(id != null){
+            session.setAttribute("memberId", id);
+            log.info(session.getAttribute("memberId").toString());
+            return new RedirectView("list-mobile");
+
+        }
+        return new RedirectView("/mobile/login");
+    }
+
+    //로그아웃
+    @GetMapping("/logout-mobile")
+    public String logout(HttpServletRequest request) {
+        System.out.println("logout - 진입");
+        //세션 끊기
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/mobile/list-mobile";
+    }
 }

@@ -21,12 +21,12 @@
                     </div>
                     <div class="mobile-container">
                         <div class="mobile-inner">
-                            <form>
+                            <form action="/applies/login-mobile" method="post" name="loginForm">
                                 <!-- 아이디 -->
                                 <div class="input-box id">
                                     <div class="input-title">교차로 통합회원 아이디 또는 이메일</div>
                                     <div class="input-text-wrapper">
-                                        <input class="theme-croosroads input-text" maxlength="100" name="" placeholder="ID@example.com" type="text">
+                                        <input class="theme-croosroads input-text" maxlength="100" name="memberIdentification" placeholder="ID@example.com" type="text">
                                     </div>
                                     <span class="error-text" style="display: none;" id="id-error">아이디를 입력해 주세요.</span>
                                 </div>
@@ -34,7 +34,7 @@
                                 <div class="input-box margin-top-16 pwd">
                                     <div class="input-title">비밀번호</div>
                                     <div class="input-text-wrapper icon-right">
-                                        <input class="theme-croosroads input-text" id="password-input" maxlength="32" name="" placeholder="비밀번호를 입력해 주세요." type="password" style="padding-right: 40px;">
+                                        <input class="theme-croosroads input-text" id="password-input" maxlength="32" name="memberPassword" placeholder="비밀번호를 입력해 주세요." type="password" style="padding-right: 40px;">
                                         <i>
                                             <!-- https://account.wishket.com/static/renewal/images/membernews/icon_input_slash.png -->
                                             <img class="icon-eyes" src="/images/member/icon_input_eye.png">
