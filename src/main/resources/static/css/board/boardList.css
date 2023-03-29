@@ -318,6 +318,8 @@ main{
     -webkit-font-smoothing: antialiased;
 }
 
+/*별점*/
+
 .star-score-box {
     display: flex;
     /* display: inline-block; */
@@ -328,14 +330,20 @@ main{
 }
 
 .stars {
-    color: #ff6b21;
+    color: #FFD700;
     float: left;
-    width: 16px;
     height: 16px;
+    weight: 16px;
     margin-right: 2px;
-    background-repeat: no-repeat;
-    background-image: url(https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star.png);
 }
+
+/*.star0 {
+    background-image: url('https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star_empty@2x.png');
+}
+.star1 {
+    background-image: url('https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star.png');
+}*/
+
 
 .review-score{
     top: -1px;
@@ -561,6 +569,7 @@ main{
 .review{
     margin-top: 24px;
     display: flex;
+    flex-direction: column-reverse;
 }
 
 .bar{

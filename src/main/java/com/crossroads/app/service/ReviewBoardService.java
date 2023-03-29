@@ -48,7 +48,17 @@ public class ReviewBoardService implements BoardService {
         return reviewDAO.findAllReview();
     }
 
+    @Override
+    public List<ReviewDTO> getReviewsByPage(int start, int end) {
+        return reviewDAO.findReviewByPage(start, end);
+    }
+
 //    마이페이지 게시판 목록
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
+
+
+
+
 }
+
