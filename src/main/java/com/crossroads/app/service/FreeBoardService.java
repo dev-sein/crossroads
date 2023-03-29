@@ -51,7 +51,12 @@ public class FreeBoardService implements BoardService {
         return null;
     }
 
-//    마이페이지 리뷰 목록
+    @Override
+    public List<ReviewDTO> getReviewsByPage(int start, int end) {
+        return null;
+    }
+
+    //    마이페이지 리뷰 목록
     @Override
     public List<ReviewDTO> getListMy(Long memberId) {
         return null;
