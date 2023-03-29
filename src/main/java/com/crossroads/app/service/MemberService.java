@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.MemberDAO;
+import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -59,15 +60,16 @@ public class MemberService {
         memberDAO.deleteById(memberId);
     }
 
+    //비밀번호 찾기 인증 이메일
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(MemberVO mail) {
+    public void sendMail(MailTO mailTO) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(mail.getAddress());
-//        message.setFrom(""); from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
-        message.setSubject(mail.getTitle());
-        message.setText(mail.getMessage());
+        message.setTo(mailTO.getAddress());
+//      message.setFrom(""); from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
+        message.setSubject(mailTO.getTitle());
+        message.setText(mailTO.getMessage());
 
         mailSender.send(message);
     }
