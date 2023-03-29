@@ -12,13 +12,14 @@ import java.util.List;
 public class ReviewDAO {
     private final ReviewMapper reviewMapper;
 
-//    마이페이지 후기 전체 조회
-    public List<ReviewDTO> findAllMy(Long memberId){
+    //    마이페이지 후기 전체 조회
+    public List<ReviewDTO> findAllMy(Long memberId) {
         return reviewMapper.selectAll(memberId);
     }
 
-//    후기 목록 조회
-    public List<ReviewDTO> findAllReview(){
-        return reviewMapper.selectReviewAll();
-    }
+    //   후기 목록 전체 조회
+    public List<ReviewDTO> findAllReview() {
+        return reviewMapper.selectReviewAll(); }
+
 }
+
