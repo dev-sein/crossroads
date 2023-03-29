@@ -5,6 +5,8 @@
         <typeAlias type="com.crossroads.app.domain.vo.ApplyVO" alias="applyVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.BoardVO" alias="boardVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.MemberFileVO" alias="memberFileVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.BoardFileVO" alias="boardFileVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.MemberVO" alias="memberVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.ReplyVO" alias="replyVO"/>

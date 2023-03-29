@@ -12,5 +12,4 @@ public class FileVO {
     private String fileUuid;
     private String filePath;
     private String fileSize;
-    private Long boardId;
 }
