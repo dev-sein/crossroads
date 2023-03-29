@@ -42,7 +42,7 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        model.addAttribute("reviews", reviewBoardService.getReviewList());
+        model.addAttribute("reviews", reviewBoardService.getListReview());
         return "review/review-list";
     }
 

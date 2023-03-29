@@ -52,9 +52,6 @@ for (let i = 0; i < 8; i++) {
 // 전체 선택 체크박스
 const checkBoxAll = document.getElementsByName("checkbox-all");
 const checkBox = document.querySelectorAll('input[name = "checkbox"]');
-const checkBoxChecked = document.querySelectorAll(
-  'input[name = "checkbox"]:checked'
-);
 
 const selectAll = function () {
   if (checkBoxAll[0].checked) {
@@ -66,6 +63,11 @@ const selectAll = function () {
 };
 
 const checkSelectAll = function () {
+
+  const checkBoxChecked = document.querySelectorAll(
+      'input[name = "checkbox"]:checked'
+  );
+
   if (checkBox.length === checkBoxChecked.length) {
     checkBoxAll[0].checked = true;
   } else if (checkBox.length != checkBoxChecked.length) {
@@ -79,4 +81,3 @@ checkBox.forEach((e) => {
   e.addEventListener("click", checkSelectAll);
 });
 
-console.log(checkBoxChecked);

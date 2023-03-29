@@ -40,7 +40,6 @@ public class MobileController {
 
 
     @GetMapping("list-mobile/search")
-//    @ResponseBody
     public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
                                    @RequestParam(value = "applyDate")String applyDate,
                                    Model model, HttpServletRequest request)

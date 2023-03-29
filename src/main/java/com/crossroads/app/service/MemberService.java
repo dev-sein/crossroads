@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -39,4 +41,14 @@ public class MemberService {
     //마이페이지 프로필 수정
     public void modify(MemberVO memberVO){ memberDAO.setMyInfo(memberVO); }
 
+    //회원 정보 목록
+    public List<MemberVO> getList(){
+        return memberDAO.findAll();
+    }
+
+    //회원 삭제, 탈퇴
+    public void remove(Long memberId) {
+//        게시글 삭제, 댓글 삭제, 파일 삭제 필요
+        memberDAO.deleteById(memberId);
+    }
 }
