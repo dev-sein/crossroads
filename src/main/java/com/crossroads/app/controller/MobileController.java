@@ -117,7 +117,7 @@ public class MobileController {
         if(id != null){
             session.setAttribute("memberId", id);
             log.info(session.getAttribute("memberId").toString());
-            return new RedirectView("/mobile/list-mobile");
+            return new RedirectView("list-mobile");
 
         }
         return new RedirectView("/mobile/login");
