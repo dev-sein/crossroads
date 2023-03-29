@@ -30,4 +30,7 @@ public interface MemberMapper {
 
     //회원삭제 회원탈퇴
     public void delete(Long memberId);
+
+    //비밀번호 변경
+    public void changePassword(String memberEmail);
 }

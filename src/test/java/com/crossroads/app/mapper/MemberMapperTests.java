@@ -38,8 +38,13 @@ public class MemberMapperTests {
         memberMapper.update(memberVO);
     }
 
+/*    @Test
+    public void changePassword(){
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberPassword("passwordtest");
+        memberMapper.changePassword("filetest13@gmail.com");
 
-
+    }*/
 
 
 }
