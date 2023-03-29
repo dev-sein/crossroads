@@ -8,14 +8,28 @@ $('.modal_test').on('click', function() {
     });
 
     console.log(checkedIds);
-
+        // ?page=${$page}
     $.ajax({
-        url: "/admins/board/delete",
+        url: `/admins/board/delete`,
         type: "delete",
         data: {"checkedIds": checkedIds},
-        success: function(){
-            location.reload();
+        success: function(result){
+            // location.href= result;
+            reload();
         }
 
     });
 });
+
+function reload() {
+    $.ajax({
+        url: `/admins/board/list?page=${$page}`,
+        type: 'get',
+        data: {"boards": boards},
+        success: function(){
+            $('.content-list__info-container').remove();
+
+            showList();
+        }
+    });
+}
