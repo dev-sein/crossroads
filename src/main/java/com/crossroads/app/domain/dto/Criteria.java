@@ -1,4 +1,4 @@
-package com.crossroads.app.domain.vo;
+package com.crossroads.app.domain.dto;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ public class Criteria {
     private int amount;
     private int offset;
 
-    public Criteria create(int page, int amount) {
+    public com.crossroads.app.domain.dto.Criteria create(int page, int amount) {
         this.page = page;
         this.amount = amount;
         this.offset = (page-1) * amount;

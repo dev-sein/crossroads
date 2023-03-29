@@ -17,9 +17,15 @@ public class ReviewDAO {
         return reviewMapper.selectAll(memberId);
     }
 
-    //   후기 목록 전체 조회
-    public List<ReviewDTO> findAllReview() {
-        return reviewMapper.selectReviewAll(); }
+//    후기 목록 조회
+    public List<ReviewDTO> findAllReview(){
+        return reviewMapper.selectReviewAll();
+    }
+
+//    후기 삭제
+    public void deleteById(Long reviewId){
+        reviewMapper.delete(reviewId);
+    };
 
 }
 

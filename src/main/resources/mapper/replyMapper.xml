@@ -16,4 +16,24 @@
         order by r.reply_id desc
     </select>
 
+    <!-- 댓글 개별 삭제 -->
+    <delete id="delete">
+        delete from tbl_reply
+        where reply_id = #{replyId}
+    </delete>
+
+    <!-- 게시글 별 댓글 삭제 -->
+    <delete id="deleteByBoard">
+        delete from tbl_reply
+        where board_id = #{boardId}
+    </delete>
+
+    <!-- 회원 별 댓글 삭제 -->
+    <delete id="deleteByMember">
+        delete from tbl_reply
+        where reply_id = #{replyId}
+    </delete>
+
+
+
 </mapper>

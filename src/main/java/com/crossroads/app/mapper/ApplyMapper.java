@@ -31,4 +31,6 @@ public interface ApplyMapper {
 //    나를 제외한 다른 베테랑들이 수락한 신청 개수
     public Long selectCount(Long memberId);
 
+//    신청 삭제(취소)
+    public void delete(Long applyId);
 }
