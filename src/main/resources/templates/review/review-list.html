@@ -21,7 +21,7 @@
                 <div class="modal-wrapper">
                     <div class="modal-image-wrapper">
                         <div class="inner-wrapper">
-                            <img src="http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg" class="modal-image">
+                            <img class="modal-image" th:src="@{/img/} + ${reviews[0].reviewFileSystemName}" >
                             <!-- <img src="/img/close.png" id="close-button" onclick="closeModal()"> -->
                         </div>
                     </div>
@@ -50,7 +50,8 @@
                                         <div class="user-type">
                                             수강생
                                         </div>
-                                          김욱성<!-- userName여기에 써야함 -->
+                                        <span th:text="${reviews[0].memberName}"></span><!-- userName여기에 써야함 -->
+                                        <!--                                          <div th:text="${review.memberName}"></div>&lt;!&ndash; userName여기에 써야함 &ndash;&gt;-->
                                         <!-- <div class="seperator"></div> -->
                                         <!-- <div class="update-buttons-wrapper">
                                             <div class="update-button">수정</div>
@@ -59,15 +60,15 @@
                                     </div>
                                     <div class="user-detail-bottom">
                                         <div class="star-score-box">
-                                            <div class="review-star">
+                                            <div class="review-star" >
                                                 <div class="stars star0"></div>
                                                 <div class="stars star1"></div>
                                                 <div class="stars star2"></div>
                                                 <div class="stars star3"></div>
                                                 <div class="stars star4"></div>
                                             </div>
-                                            <div class="review-score">
-                                                5.00
+                                            <div class="review-score" th:text="${reviews[0].reviewGrade}">
+
                                             </div>
                                         </div>
                                     </div>
@@ -90,17 +91,17 @@
                                     <div class="middle-middle">
                                         <span class="category-first">연수 지역</span>
                                         <div class="seperator"></div>
-                                        <span class="category-second">서울특별시 송파구 잠실동</span>
+                                        <span class="category-second" th:text="${reviews[0].applyLocation}"></span>
                                     </div>
                                     <div class="middle-bottom">
                                         <!--<span class="detail-title">지불 금액</span>
                                         <span class="detail-first-value">67,000,000원</span>
                                         <div class="seperator"></div>-->
-                                        <span class="detail-title">수강 코스</span>
-                                        <span class="detail-second-value">B 코스</span>
+                                        <span class="detail-title" >수강 코스</span>
+                                        <span class="detail-second-value" th:text="${reviews[0].applyCourse}">코스</span>
                                         <div class="seperator"></div>
-                                        <span class="detail-title">수강일</span>
-                                        <span class="detail-third-value">2023년 03월 14일</span>
+                                        <span class="detail-title" >수강일</span>
+                                        <span class="detail-third-value" th:text="${reviews[0].applyDate}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -108,22 +109,15 @@
                                 <div class="bottom-inner">
                                     <div class="bottom-title">
                                         함께 해본 소감
-                                        <span class="date">2023.03.03</span>
+                                        <span class="date" th:text="${reviews[0].reviewRegisterDate}"></span>
                                     </div>
-                                    <div class="bottom-content">
-                                        건물에 차를 들이박고 운전대를 다시 잡을 수 있을까.. 걱정도 되고
-                                        <br>
-                                        자신감이 많이 떨어졌었는데 친절하신 강사님께서 열심히 가르쳐주신 덕분에
-                                        <br>
-                                        자신감도 되찾고 다시 운전대를 잡을 수 있게 되었습니다ㅠㅠ
-                                        <br>
-                                        감사합니다 강사님!
-                                        <br>
+                                    <div class="bottom-content" th:text="${reviews[0].reviewContent}">
                                     </div>
                                 </div>
                                 <div class="image-wrapper">
                                     <!-- <div class="review-image" style="background-color: black;"></div> -->
-                                    <div class="review-image" style="background-image: url(http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg);" onclick="showModal()"></div>
+                                    <img class="review-image" th:src="@{/img/} + ${reviews[0].reviewFileSystemName}" onclick="showModal()">
+                                    <!--<div class="review-image" th:style="'background-image:url(@{/img/} + ${reviews[0].reviewFileSystemName});'" onclick="showModal()"></div>-->
                                 </div>
                                 <!-- 댓글 -->
                             </div>

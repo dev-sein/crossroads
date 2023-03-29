@@ -51,4 +51,9 @@ public class FreeBoardService implements BoardService {
         return boardDAO.findAllMy(memberId);
     }
 
+    @Override
+    public List<ReviewDTO> getReviewList() {
+        return null;
+    }
+
 }

@@ -39,10 +39,8 @@ public class ReviewBoardService implements BoardService {
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
 
-   /* @Override
-    public List<ReviewDTO> getListReview() {
-        return reviewDAO.findAllReview();
-    }*/
-
+//  후기 게시물 전체 조회
+    @Override
+    public List<ReviewDTO> getReviewList(){ return reviewDAO.findAllReview(); }
 
 }
