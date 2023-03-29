@@ -28,11 +28,6 @@ public class FreeBoardService implements BoardService {
     }
 
     @Override
-    public List<ReviewDTO> getListMy(Long memberId) {
-        return null;
-    }
-
-    @Override
     public void remove(List<String> boardIds) {
         boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(boardDAO::deleteById);
     }
@@ -42,6 +37,18 @@ public class FreeBoardService implements BoardService {
     public List<BoardDTO> getList() {
         List<BoardDTO> boards = boardDAO.findFreeAll();
         return boards;
+    }
+
+//    마이페이지 리뷰 목록
+    @Override
+    public List<ReviewDTO> getListMy(Long memberId) {
+        return null;
+    }
+
+//    마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) {
+        return boardDAO.findAllMy(memberId);
     }
 
     @Override

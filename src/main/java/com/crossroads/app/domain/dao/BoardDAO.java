@@ -31,4 +31,7 @@ public class BoardDAO {
         return boardMapper.selectAll();
     }
 
+    /* 마이페이지 게시글 목록*/
+    public List<BoardDTO> findAllMy(Long memberId) { return boardMapper.selectAllMy(memberId); }
+
 }

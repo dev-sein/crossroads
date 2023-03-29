@@ -6,16 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>내가 쓴 게시글</title>
-    <link rel="stylesheet" href="/css/mypage/point.css">
-    <link rel="stylesheet" href="/css/components/header.css">
-    <link rel="stylesheet" href="/css/components/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="stylesheet" href="/css/mypage/point.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
-
 <body>
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <div id="wrap">
@@ -24,8 +22,7 @@
         </div><a class="advertisement no_message" id="message_advertisement"></a>-->
     <div class="page">
         <div class="page-inner">
-
-            <!--  좌측 사이드바-->
+            <!--  좌측 사이드바 시작-->
             <div class="sidebar">
                 <div class="user-name-tag">
                     <h3 class="user-name-tag-heading">클라이언트</h3>
@@ -38,12 +35,11 @@
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
                         <div class="userid">
-                            <div class="username">seinee114<br></div>
+                            <div class="username" >유저아이디</div>
                         </div>
                     </div>
                 </div>
-
-                <!--모달-->
+                <!-- 모달 시작 -->
                 <div class="profile-container modal fade" id="modal-background">
                     <div id="cropper-img-box">
                         <img class="cropper-img" hidden="">
@@ -55,7 +51,6 @@
                                     <img class="modal-close-image-button" src="/images/mypage/icon_modal_close.png">
                                 </div>
                             </div>
-
                             <div class="modal__body">
                                 <div class="modal-body-wrapper" id="profile_image_edit_modal_body">
                                     <div class="modal-content">
@@ -92,8 +87,6 @@
                                             <img src="/images/mypage/icon_profile_delete.png">사진 지우기
                                         </button>
                                     </div>
-
-
                                     <div class="modal-info-body">
                                         <div class="base-dot-list">
                                             <div class="dot-line">
@@ -122,138 +115,60 @@
                         </form>
                     </div>
                 </div>
-
-                <!--   사이드바 메뉴-->
+                <!-- 모달 끝 -->
+                <!-- 사이드바 시작 -->
                 <div class="sidebar-nav">
                     <ul>
                         <li class="sidemenu"><a th:href="@{/profile-modify}">프로필 정보 설정</a></li>
-                        <li class="activeblue"><a class="active-text" th:href="@{/my-board-list}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/my-reply-list}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{/point}"><span>포인트 조회</span></a></li>
-                        <li><a th:href="@{/classList}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a class="active-text" th:href="@{/review}"><span>나의
-                            후기</span></a>
+                        <li class="activeblue"><a class="active-text" th:href="@{/my-board-list}"><span>나의 게시글 보기</span></a>
+                        </li>
+                            <li><a th:href="@{/my-reply-list}"><span>나의 댓글 보기</span></a></li>
+                            <li><a th:href="@{/point}"><span>포인트 조회</span></a></li>
+                            <li><a th:href="@{/classList}"><span>연수 내역</span></a></li>
+                            <li class="sidemenu2"><a class="active-text" th:href="@{/review}"><span>나의 후기</span></a>
                         </li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
+                    </ul>
                 </div>
-            </div> <!-- sidebar 끝-->
+                <!-- 사이드바 끝-->
+            </div>
+            <!-- 좌측 사이드바 시작 -->
             <div class="gaia">
                 <div class="content-header action">
-                    <h3 class="header-text">내가 쓴 게시글
-                        <br>
-                        <small class="small-text">내가 작성한 게시글을 확인할 수 있습니다.</small></h3></div>
+                    <h3 class="header-text">내가 쓴 게시글<br>
+                        <small class="small-text">내가 작성한 게시글을 확인할 수 있습니다.</small>
+                    </h3>
+                </div>
                 <div class="content-inner">
                     <div class="process-guide-box" style="margin-bottom: 10px;">
                         <div class="process-guide-up">
                             <div class="process-guide-up-content" style="padding-top: 10px;">
-                                <div style="clear:both;"></div></div>
-
-
-                            <div class="review-box">
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="review-box" th:each="board:${boards}">
                                 <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
+                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'">
+                                        <a class="review-name-link" th:text="${board.boardTitle}" >게시글 제목입니다.</a>
                                         <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
+                                            <span class="review-date board-date" th:text="${board.boardRegisterDate}" >게시글 등록일</span>
+                                        </p>
+                                        <p class="review-description-text" th:text="${board.boardContent}" >
+                                            게시글 내용
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="board-container">
                                     <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-                            <div class="review-box">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'" >
-                                        <a class="review-name-link">게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date">2023-03-16</span>
-                                        <p class="review-description-text">
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.<br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다. 테스트<Br>
-                                            자유게시판 내용입니다. 자유게시판 내용입니다.
-                                        </p></div></div></a>
-                                <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
-                                <div style="clear:both;"></div></div>
-
+                                <div style="clear:both;"></div>
+                            </div>
                         </div>
                     </div> <!-- content -->
                 </div> <!-- page inner -->
             </div> <!-- page -->
-        </div> </div> </div>
-        <div th:insert="~{/components/footer :: footer}"></div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
