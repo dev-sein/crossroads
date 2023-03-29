@@ -19,4 +19,12 @@ public interface ReviewMapper {
 
     //후기 삭제
     public void delete(Long reviewId);
+
+    //후기 작성
+    public void insert(ReviewDTO reviewDTO);
+
+    //후기 수정
+    public void update(ReviewDTO reviewDTO);
+
+
 }
