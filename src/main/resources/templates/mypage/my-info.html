@@ -40,7 +40,7 @@
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                         <div class="userid">
-                            <div th:text="${member.memberIdentification}" class="username"><br></div>
+                            <div th:text="${members.memberIdentification}" class="username"><br></div>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                         <span class="account-setting-category">
                                             <span>회원 형태</span>
                                         </span>
-                                    <span th:text="${member.memberType}" class="account-setting-content-fix"></span>
+                                    <span th:text="${members.memberType}" class="account-setting-content-fix"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -170,7 +170,7 @@
                                             <span>회원 이름</span>
                                         </label>
                                     </span>
-                                    <span th:text="${member.memberName}" class="account-setting-content"></span>
+                                    <span th:text="${members.memberName}" class="account-setting-content"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -190,7 +190,7 @@
                                                     class="essential" style="display: none;">*</span>
                                                 <span>회원 휴대폰</span></label>
                                         </span>
-                                    <span th:text="${member.memberPhone}" class="account-setting-content"></span>
+                                    <span th:text="${members.memberPhone}" class="account-setting-content"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -216,7 +216,7 @@
                                             <label class="control-label required" id="email-input">
                                                 <span class="essential" style="display: none;">*</span>
                                                 <span>회원 이메일</span></label></span>
-                                    <span th:text="${member.memberEmail}" class="account-setting-content account-setting-content-detail-data">
+                                    <span th:text="${members.memberEmail}" class="account-setting-content account-setting-content-detail-data">
                                             </span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->

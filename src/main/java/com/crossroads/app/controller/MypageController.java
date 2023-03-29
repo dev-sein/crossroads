@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
@@ -48,7 +49,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("members", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -95,7 +96,7 @@ public class MypageController {
         return "mypage/confirm-password";
     }
 
-    //마이페이지 목록
+    //마이페이지 연수신청 목록
     @GetMapping("/my-apply")
     public String classList(){
         return "mypage/my-apply";
@@ -117,6 +118,7 @@ public class MypageController {
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("reviews", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
@@ -126,6 +128,7 @@ public class MypageController {
     public String showListMyBoard(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
         return "mypage/my-board";
     }
@@ -135,6 +138,7 @@ public class MypageController {
     public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("replies", replyService.getListMyReply(1L));
         return "mypage/my-reply";
     }
