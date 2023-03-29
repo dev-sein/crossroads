@@ -38,9 +38,27 @@ public class MobileController {
         return "mobile/list-mobile";
     }
 
+
     @GetMapping("list-mobile/search")
-    public String listMobileSearch(){
-        return "mobile/list-mobile/search";
+//    @ResponseBody
+    public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
+                                   @RequestParam(value = "applyDate")String applyDate,
+                                   Model model, HttpServletRequest request)
+    {
+        log.info(applyLocation);
+        log.info(applyDate);
+        Map<String, Object> info = new HashMap<>();
+        if(applyDate != null && applyDate != ""){
+            info.put("applyDate", applyDate);
+        }
+        if (applyLocation != null && applyLocation != ""){
+            info.put("applyLocation", applyLocation);
+        }
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
+        model.addAttribute("applies", applyService.getListSearched(info));
+        model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
+        return "mobile/list-mobile";
     }
 
     @PostMapping("list-mobile/change-status")
@@ -55,55 +73,17 @@ public class MobileController {
         applyService.modifyVeteranId(info);
     }
 
-//    @GetMapping("point/exchange-complete")
-//    public String exchangeComplete(){
-//        return "point/changePointFin";
-//    }
-//
-//    @GetMapping("point/exchange-point")
-//    public String changePoint(Model model, HttpServletRequest request){
-//        request.getSession().setAttribute("memberId",3L);   // 세션에 임시로 값 담아둠
-//        Long memberId = (Long)request.getSession().getAttribute("memberId");
-//        log.info(pointService.getPoint(memberId).toString());
-//        model.addAttribute("point", pointService.getPoint(memberId));
-//        return "point/changePoint";
-//    }
-//
-//    @GetMapping("point/exchange-point-mobile")
-//    public String changePointMobile(Model model, HttpServletRequest request){
-//        request.getSession().setAttribute("memberId",3L);   // 세션에 임시로 값 담아둠
-//        Long memberId = (Long)request.getSession().getAttribute("memberId");
-//        log.info(pointService.getPoint(memberId).toString());
-//        model.addAttribute("point", pointService.getPoint(memberId));
-//        return "mobile/change-point-mobile";
-//    }
-//
-//    @PostMapping("point/exchange-to-money")
-//    public RedirectView changeToMoney(HttpServletRequest request){
-//        log.info("post changePoint 들어옴");
-//        Long memberId = (Long)request.getSession().getAttribute("memberId");
-//        pointService.modifyPoint(memberId);
-//        return new RedirectView("/applies/point/exchange-complete");
-//    }
-//
-//    @PostMapping("point/exchange-to-money-mobile")
-//    public RedirectView changeToMoneyMobile(HttpServletRequest request){
-//        Long memberId = (Long)request.getSession().getAttribute("memberId");
-//        pointService.modifyPoint(memberId);
-//        return new RedirectView("/applies/point/change-point-mobile");
-//    }
-
-
+    //회원가입
     @GetMapping("join-mobile")
     public String joinMobile(){
         return "mobile/join-mobile";
     }
 
-    //회원가입 post
+    //회원가입
     @PostMapping("join-mobile")
     public RedirectView joinfinishMobile(MemberVO memberVO){
         memberService.save(memberVO);
-        return new RedirectView("/login-mobile");
+        return new RedirectView("login-mobile");
     }
 
     //아이디 중복체크
@@ -122,9 +102,34 @@ public class MobileController {
         return duplicateEmail;
     }
 
+    //로그인
     @GetMapping("login-mobile")
-    public String loginMobile(){
+    public String login(){
         return "mobile/login-mobile";
     }
 
+    //   로그인
+    @PostMapping("login-mobile")
+    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Long id = memberService.login(memberIdentification, memberPassword);
+        log.info(id.toString());
+        if(id != null){
+            session.setAttribute("memberId", id);
+            log.info(session.getAttribute("memberId").toString());
+            return new RedirectView("list-mobile");
+
+        }
+        return new RedirectView("/mobile/login");
+    }
+
+    //로그아웃
+    @GetMapping("/logout-mobile")
+    public String logout(HttpServletRequest request) {
+        System.out.println("logout - 진입");
+        //세션 끊기
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/mobile/list-mobile";
+    }
 }

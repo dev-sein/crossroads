@@ -11,6 +11,22 @@
         order by apply_register_date desc
     </select>
 
+    <select id="selectList" resultType="applyDTO">
+        select member_id, member_identification, member_password, member_name,
+        member_phone, member_email, member_file_system_name, member_type, member_drive_register_date,
+        member_point, apply_id, apply_course, apply_location, apply_date, apply_register_date,
+        starter_member_id, veteran_member_id, apply_status
+        from tbl_member m join tbl_apply a
+        on m.member_id = a.starter_member_id
+        <if test='applyLocation!= null and !applyLocation.equals("")'>
+            and apply_location like concat('%', #{applyLocation}, '%')
+        </if>
+        <if test='applyDate != null and !applyDate.equals("")'>
+            and apply_date = #{applyDate}
+        </if>
+        order by apply_register_date desc
+    </select>
+
     <select id="select" resultType="applyVO" parameterType="long">
         select apply_id, apply_course, apply_location, apply_date, apply_register_date,
                 starter_member_id, veteran_member_id, apply_status
@@ -42,6 +58,4 @@
         set veteran_member_id = if(veteran_member_id, null, #{memberId})
         where apply_id = #{applyId}
     </update>
-
-
 </mapper>

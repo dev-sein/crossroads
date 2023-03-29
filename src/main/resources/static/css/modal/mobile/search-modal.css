@@ -14,9 +14,9 @@
         font-family: inherit;
         font-size: 100%;
     }
-    
+
     /* 모달 전체 */
-    .search-modal {
+    .modal-search-modal {
         max-height: max(-webkit-fill-available,calc(var(--vh,1vh) * 100));
         background-color: #f7f7f7;
         transition: background-color 0.5s ease;
@@ -32,7 +32,7 @@
         line-height: 1.43;
     }
     /* 모달 헤더 */
-    .search-header {
+    .modal-search-header {
         height: 60px;
         flex-shrink: 0;
         display: grid;
@@ -47,12 +47,12 @@
 
     }
     /* 헤더 x버튼 */
-    .close-btn {
+    .modal-close-btn {
         position: absolute;
         top: 22px;
         left: 20px;
     }
-    .close{
+    .modal-close{
         -webkit-box-pack: center !important;
         -webkit-box-align: center !important;
         appearance: none !important;
@@ -74,14 +74,14 @@
         height: 32px !important;
         width: 32px !important;
     }
-    .close-img {
+    .modal-close-img {
         -webkit-tap-highlight-color: transparent;
         color: #222222 !important;
         cursor: pointer !important;
     }
 
     /* 헤더 타이틀 */
-    .header-title .title {
+    .modal-header-title .modal-title {
         margin-right: 0px;
         margin-left: 0px;
         font-size: 16px !important;
@@ -100,26 +100,26 @@
         cursor: default !important;
     }
     /* 메인div */
-    .main-wrapper {
+    .modal-main-wrapper {
         overflow-y: auto;
         overflow-x: hidden;
         flex-grow: 2;
     }
 
     /* 메인 버튼 wrapper */
-    .btn-wrapper {
+    .modal-btn-wrapper {
         margin: 15px 12px 0 12px;
         position: relative;
     }
-    .btn-wrapper:nth-child(2) {
+    .modal-btn-wrapper:nth-child(2) {
         margin: 15px 12px 0 12px;
         position: relative;
     }
-    .btn-span-wrapper {
+    .modal-btn-span-wrapper {
         position: absolute;
         top: -1px;
     }
-    .btn {
+    .modal-btn {
 
         padding-bottom: 12px;
         animation: fadeInDown-frfrv50 ease 0.5s;
@@ -146,13 +146,13 @@
         border-radius: 16px;
     }
 
-    .subtitle {
+    .modal-subtitle {
         font-size: 14px;
         line-height: 18px;
         font-weight: 500;
         color: #717171;
     }
-    .value {
+    .modal-value {
         padding-left: 16px;
         font-size: 14px;
         line-height: 18px;
@@ -182,14 +182,14 @@
     }
 
     /* 지역 선택 */
-    .form-content {
+    .modal-form-content {
         margin-top: 16px;
         position: absolute;
         right: 15px;
         top: -12px;
         z-index: 2;
     }
-    .select {
+    .modal-select {
         border: none;
         border-radius: 9px;
         padding: 6px 17px 5px 17px;
@@ -199,7 +199,7 @@
     }
 
     /* 푸터 */
-    .footer-wrapper {
+    .modal-footer-wrapper {
         opacity: 1;
 
         animation: fadeInUp-f1275j53 ease 0.5s;
@@ -207,7 +207,7 @@
         animation-delay: var(--staggered_animation_delay, 1 );
     }
 
-    footer {
+    .modal-footer-wrapper footer {
         display: flex;
         justify-content: space-between;
 
@@ -216,7 +216,7 @@
         background: rgba(255,255,255,0.5);
     }
 
-    .clear-btn {
+    .modal-clear-btn {
         font-size: 16px;
         line-height: 20px;
         font-weight: 600;
@@ -239,7 +239,7 @@
         padding-right: 10px;
         padding-left: 10px;
     }
-    .clear-btn p {
+    .modal-clear-btn p {
         cursor: pointer;
         text-align: center;
         font-size: 16px;
@@ -250,11 +250,11 @@
     }
 
     /* 푸터 검색버튼 */
-    footer .search-btn:hover {
+    footer .modal-search-btn:hover {
         border: none;
         color: #ffffff;
     }
-    footer .search-btn {
+    footer .modal-search-btn {
         -webkit-appearance: button;
 
         display: inline-block;
@@ -282,7 +282,7 @@
 
         background: #2099bb;
     }
-    footer .search-btn .span-wrapper {
+    footer .modal-search-btn .modal-span-wrapper {
         font-size: 16px;
         line-height: 20px;
         font-weight: 600;
@@ -293,7 +293,7 @@
         pointer-events: none;
     }
 
-    footer .search-btn .span-wrapper .search-wrapper {
+    footer .modal-search-btn .modal-span-wrapper .modal-search-wrapper {
         pointer-events: none;
 
         cursor: pointer;
@@ -303,26 +303,26 @@
         display: flex;
     }
 
-    footer .search-btn .span-wrapper .search-img {
+    footer .modal-search-btn .modal-span-wrapper .modal-search-img {
         line-height: 18px;
     }
 
-    footer .search-btn .span-wrapper .search-img svg {
+    footer .modal-search-btn .modal-span-wrapper .modal-search-img svg {
         display: block;
         height: 16px;
         width: 16px;
         fill: currentcolor;
     }
 
-    footer .search-btn .span-wrapper .search-name {
+    footer .modal-search-btn .modal-span-wrapper .modal-search-name {
         margin-left: 10px;
         line-height: 18px;
         padding-bottom: 3px;
     }
 
 
-    
 
 
-    
+
+
 }
