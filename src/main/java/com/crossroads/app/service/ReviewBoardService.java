@@ -26,6 +26,7 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
+//    마이페이지 후기 목록
     @Override
     public List<ReviewDTO> getListMy(Long memberId) {
         return reviewDAO.findAllMy(memberId);
@@ -35,6 +36,7 @@ public class ReviewBoardService implements BoardService {
     public void remove(List<String> boardIds) {
         boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(reviewDAO::deleteById);
     }
+    public List<BoardDTO> getListAdmin() { return null; }
 
     @Override
     public List<BoardDTO> getList() {
@@ -46,5 +48,8 @@ public class ReviewBoardService implements BoardService {
         return reviewDAO.findAllReview();
     }
 
+//    마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
 
 }

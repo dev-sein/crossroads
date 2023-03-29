@@ -33,10 +33,6 @@ public class FreeBoardService implements BoardService {
         return boardDAO.findCountAllAdmin();
     }
 
-    @Override
-    public List<ReviewDTO> getListMy(Long memberId) {
-        return null;
-    }
 
     @Override
     public void remove(List<String> boardIds) {
@@ -54,5 +50,18 @@ public class FreeBoardService implements BoardService {
     public List<ReviewDTO> getListReview() {
         return null;
     }
+
+//    마이페이지 리뷰 목록
+    @Override
+    public List<ReviewDTO> getListMy(Long memberId) {
+        return null;
+    }
+
+//    마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) {
+        return boardDAO.findAllMy(memberId);
+    }
+
 
 }
