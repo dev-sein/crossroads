@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
@@ -32,9 +33,10 @@ public class MypageController {
     private final ReplyService replyService;
 
     //마이페이지 메인
-    @GetMapping("/mypage-main")
-    public String mypageMain(){
-        return "mypage/mypage-main";
+    @GetMapping("/my-main")
+    public String mypageMain(Long memberId, Model model){
+        model.addAttribute("members", memberService.getMember(1L));
+        return "mypage/my-main";
     }
 
 //    @GetMapping("my-info")
@@ -48,7 +50,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("members", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -84,18 +86,18 @@ public class MypageController {
     }
 
     //마이페이지 비밀번호 변경
-    @GetMapping("/change-password")
+    @GetMapping("/my-password-change")
     public String changePassword(){
-        return "mypage/change-password";
+        return "mypage/my-password-change";
     }
 
     //마이페이지 비밀번호 변경 확인
-    @GetMapping("/confirm-password")
+    @GetMapping("/my-password-confirm")
     public String confirmPassword(){
-        return "mypage/confirm-password";
+        return "mypage/my-password-confirm";
     }
 
-    //마이페이지 목록
+    //마이페이지 연수신청 목록
     @GetMapping("/my-apply")
     public String classList(){
         return "mypage/my-apply";
@@ -104,6 +106,7 @@ public class MypageController {
     //마이페이지 포인트내역
     @GetMapping("/my-point")
     public String point(){
+
         return "mypage/my-point";
     }
 
@@ -117,6 +120,7 @@ public class MypageController {
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("reviews", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
@@ -126,6 +130,7 @@ public class MypageController {
     public String showListMyBoard(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
         return "mypage/my-board";
     }
@@ -135,29 +140,38 @@ public class MypageController {
     public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
         model.addAttribute("replies", replyService.getListMyReply(1L));
         return "mypage/my-reply";
     }
     
     //마이페이지 회원탈퇴
-    @GetMapping("/withdraw")
+    @GetMapping("/my-withdraw")
     public String withdraw(){
-        return "mypage/withdraw";
+        return "mypage/my-withdraw";
     }
     
     //마이페이지 회원탈퇴 동의
-    @GetMapping("/withdraw-agree")
+    @GetMapping("/my-withdraw-agree")
     public String withdrawAgree(){
-        return "mypage/withdraw-agree";
+        return "mypage/my-withdraw-agree";
     }
 
     //마이페이지 회원탈퇴 확인
-    @GetMapping("/withdraw-confirm")
+    @GetMapping("/my-withdraw-confirm")
     public String withdrawConfirm(){
-        return "mypage/withdraw-confirm";
+        return "mypage/my-withdraw-confirm";
     }
 
-
+    //마이페이지 로그아웃
+    @GetMapping("/my-logout")
+    public String myLogout(HttpServletRequest request) {
+        System.out.println("logout - 진입");
+        //세션 끊기
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "main/main";
+    }
 
 
 
