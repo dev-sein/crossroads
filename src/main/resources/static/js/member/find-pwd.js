@@ -8,6 +8,20 @@ const $emailInputvalue = $("#memberEmail");
 //비밀번호 전송 버튼
 const $submitBtn = $("#submit-btn");
 
+console.log($submitBtn);
+console.log($emailInputvalue);
+console.log($('input[name=memberEmail]').val());
+
+$submitBtn.on("click", function () {
+    if ($emailInput.val()) {
+        $submitBtn.attr("type", "submit");
+    } else {
+        $submitBtn.attr("type", "button");
+    }
+});
+
+
+
 $emailInput.on("blur", function(){
     /* 이메일 중복 확인 */
     /* if (result.check) {
@@ -25,11 +39,3 @@ $emailInput.on("blur", function(){
     }
 });
 
-
-
-
-$submitBtn.on('clcik', function(){
-       if($emailInputvalue){
-           document.passwordForm.submit();
-       }
-    });

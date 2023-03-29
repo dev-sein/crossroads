@@ -16,6 +16,11 @@ public class MemberDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
+    private Long fileId;
+    private String fileOriginalName;
+    private String fileUuid;
+    private String filePath;
+    private String fileSize;
 
     
 }
