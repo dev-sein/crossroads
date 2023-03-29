@@ -9,15 +9,15 @@ function closeModal() {
     document.body.style.removeProperty('overflow'); // 모달창 끄면 스크롤 원상복구
 }
 
-$(window).scroll(function(e) {
-    if(window.scrollY < 100) {
+$(window).scroll(function (e) {
+    if (window.scrollY < 100) {
         $("#board-write-button").css("left", "-15.5%");
         $("#board-write-button").css("width", "45%");
         $("#board-write-button").css("position", "relative");
-        $("#board-write-button").css("top", "0px"); 
+        $("#board-write-button").css("top", "0px");
         $("#board-write-button").css("height", "35px");
         $("#board-write-button").css("line-height", "1rem");
-    }else{
+    } else {
         $("#board-write-button").css("position", "fixed");
         $("#board-write-button").css("height", "70px");
         $("#board-write-button").css("line-height", "52px");
@@ -27,33 +27,43 @@ $(window).scroll(function(e) {
     }
 });
 
+/*모달 클릭시 이미지 뽑기*/
+$('.review-image').on('click', function () {
+    $('.modal-image').attr('src', $(this).attr('src'));
+});
 
-// 무한 스크롤 시작
-var page = 1;
-var isLoading = false;
+/*별점*/
+$(document).ready(function () {
+    $('.review-star').each(function () {
+        const reviewGrade = parseInt($(this).attr('data-review-grade'));
+        let starString = '';
 
-// 스크롤 이벤트 감지
-$('#scrollable-content').scroll(function() {
-    var $this = $(this);
-    var scrollHeight = $this.prop('scrollHeight');
-    var scrollTop = $this.scrollTop();
-    var height = $this.height();
-    var loadHeight = 100; // 데이터를 추가로 불러올 높이
+        for (let i = 1; i <= 5; i++) {
+            starString += i <= reviewGrade ? '★' : '☆';
+        }
 
-    if (scrollHeight - scrollTop - height < loadHeight && !isLoading) {
-        // 다음 페이지 데이터 요청
-        page++;
-        isLoading = true;
-        $.get('/reviews?page=' + page, function(data) {
-            // 데이터 추가
-            var html = '';
-            $.each(data, function(index, review) {
-                html += '<div class="board-box-wrapper">';
-                html += '  <!-- 내용 생략 -->';
-                html += '</div>';
-            });
-            $('#scrollable-content').append(html);
-            isLoading = false;
-        });
+        $(this).html(starString);
+    });
+});
+
+// 무한스크롤
+$(window).scroll(function () {
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        loadMoreReviews();
     }
 });
+
+function loadMoreReviews() {
+    var page = parseInt($("#page").val());
+    $.post("/review-list/more", { start: (page - 1) * 10 + 1, end: page * 10 }, function (data) {
+        if (data && data.length > 0) {
+            // 게시물 추가 코드 작성 (HTML 구조에 따라 수정해야 할 수 있습니다.)
+            // ...
+            $("#page").val(page + 1);
+        }
+    }, "json");
+}
+
+
+
+
