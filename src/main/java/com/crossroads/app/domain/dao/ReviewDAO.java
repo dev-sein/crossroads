@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,15 +18,30 @@ public class ReviewDAO {
         return reviewMapper.selectAll(memberId);
     }
 
-//    후기 목록 조회
-    public List<ReviewDTO> findAllReview(){
+    //    후기 목록 조회
+    public List<ReviewDTO> findAllReview() {
         return reviewMapper.selectReviewAll();
     }
+    // 페이징처리
+    public List<ReviewDTO> findReviewByPage(int start, int end) {
+        return reviewMapper.selectReviewByPage(start, end);
+    }
 
-//    후기 삭제
-    public void deleteById(Long reviewId){
+    // 후기 작성
+    public void save(ReviewDTO reviewDTO) {
+        reviewMapper.insert(reviewDTO);
+    }
+
+    // 후기 수정
+    public void setReviewDTO(ReviewDTO reviewDTO) {
+        reviewMapper.update(reviewDTO);
+    }
+
+    //    후기 삭제
+    public void deleteById(Long reviewId) {
         reviewMapper.delete(reviewId);
-    };
+    }
+
 
 }
 
