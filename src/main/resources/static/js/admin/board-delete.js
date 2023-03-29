@@ -27,8 +27,6 @@ function reload() {
         type: 'get',
         data: {"boards": boards},
         success: function(){
-            $('.content-list__info-container').remove();
-
             showList();
         }
     });

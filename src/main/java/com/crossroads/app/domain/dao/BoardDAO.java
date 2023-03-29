@@ -14,8 +14,8 @@ public class BoardDAO {
     private final BoardMapper boardMapper;
 
     /* 어드민 게시글 목록 */
-    public List<BoardDTO> findAllAdmin(Criteria criteria) {
-        return boardMapper.selectAllAdmin(criteria);
+    public List<BoardDTO> findAllAdmin(Criteria criteria, String keyword) {
+        return boardMapper.selectAllAdmin(criteria, keyword);
     }
 
     /* 어드민 게시글 총 개수 */

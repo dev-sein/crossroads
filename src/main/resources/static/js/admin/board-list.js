@@ -1,6 +1,5 @@
 /*신청 목록*/
 showList();
-let count = 0;
 function showList(){
     console.log(boards);
     const $results = $("#scroll");
@@ -27,6 +26,6 @@ function showList(){
             </div>
         `
     });
-    $results.append(text);
+    $results.html(text);
 }
 

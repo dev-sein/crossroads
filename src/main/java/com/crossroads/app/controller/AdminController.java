@@ -81,7 +81,7 @@ public class AdminController {
 
     //관리자 게시글 목록
     @GetMapping("board/list")
-    public String adminBoard(Model model, Criteria criteria){
+    public String adminBoard(@RequestParam(value = "keyword", required = false) /*required = false를 해야 null값도 들어옴*/ String keyword, Criteria criteria, Model model){
         if (criteria.getPage() == 0) {
             criteria = criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
         } else {
@@ -90,7 +90,7 @@ public class AdminController {
 
         log.info(criteria.toString());
 
-        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria);
+        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
 
         model.addAttribute("boards", boards);
         model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
