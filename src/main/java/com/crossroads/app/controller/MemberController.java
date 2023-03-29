@@ -1,27 +1,17 @@
 package com.crossroads.app.controller;
+import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
+import com.crossroads.app.service.MemberFileService;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.coobird.thumbnailator.Thumbnailator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/member/*")
@@ -30,6 +20,7 @@ import java.util.UUID;
 public class MemberController {
 
     private final MemberService memberService;
+    private final MemberFileService memberFileService;
 
     //회원가입
     @GetMapping("join")
@@ -44,34 +35,6 @@ public class MemberController {
         memberService.save(memberVO);
         return new RedirectView("login");
     }
-
-    //    파일 업로드
-    @PostMapping("upload")
-    @ResponseBody
-    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
-        List<String> uuids = new ArrayList<>();
-        String path = "C:/upload/" + getPath();
-        File file = new File(path);
-        if(!file.exists()) {file.mkdirs();}
-
-        for(int i=0; i<multipartFiles.size(); i++){
-            uuids.add(UUID.randomUUID().toString());
-            multipartFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
-
-            if(multipartFiles.get(i).getContentType().startsWith("image")){
-                FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
-                Thumbnailator.createThumbnail(multipartFiles.get(i).getInputStream(), out, 100, 100);
-                out.close();
-            }
-        }
-        return uuids;
-    }
-
-    //    현재 날짜 경로 구하기
-    private String getPath(){
-        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-    }
-
 
     //아이디 중복체크
     @PostMapping("/checkId")
@@ -95,7 +58,7 @@ public class MemberController {
         return "member/login";
     }
 
-    //   로그인
+    //로그인
     @PostMapping("login")
     public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -122,20 +85,43 @@ public class MemberController {
 
     //비밀번호 찾기 - 이메일 인증
     @GetMapping("find-pwd")
-    public String findPwd(){
+    public String findPwd() {
         return "member/find-pwd";
     }
 
+
     //비밀번호 찾기 - 이메일 인증
-   /* @PostMapping("find-pwd")
-    @ResponseBody
-    public String findPwdtoChangePwd(@RequestParam("memberEmail") String memberEmail) { return "member/change-pwd"; }
-*/
-    //비밀번호 찾기 - 이메일 인증
+//    @PostMapping("find-pwd")
+//    public String findPwdtoChangePwd(String memberEmail) {
+//        Long duplicateEmail = memberService.checkEmail(memberEmail);
+//        if (duplicateEmail == 1) {
+//            return "member/find-pwd";
+//        }
+//        return "member/complete-change";
+//    }
+
     @PostMapping("find-pwd")
-    public String findPwdtoChangePwd(String memberEmail) { return "member/change-pwd"; }
+    public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
+        if(memberService.checkEmail(memberEmail) == null) {
+            return new RedirectView("/member/find-pwd?result=fail");
+        }
 
+        //String randomKey = memberService.randomKey();
 
+        //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
+        //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
+        //userService.updateUserRandomKey(userIdentification, randomKey);
+
+        MailTO mailTO = new MailTO();
+        mailTO.setAddress(memberEmail);
+        mailTO.setTitle("새 비밀번호 설정 링크입니다.");
+   //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
+        mailTO.setMessage("링크: http://localhost:10000/member/changePassword-email?memberIdentification=" + memberIdentification);
+        memberService.sendMail(mailTO);
+
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return new RedirectView("/member/complete-change");
+    }
 
     //비밀번호 변경
     @GetMapping("change-pwd")

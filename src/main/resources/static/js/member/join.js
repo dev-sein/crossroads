@@ -338,44 +338,61 @@ function checkEmail() {
 		}
 	});
 
+FileList.prototype.forEach = Array.prototype.forEach;
+globalThis.arrayFile = new Array();
+/*****************************************************/
 
-/* 파일 */
-globalThis.arrayFile2 = new Array();
-globalThis.j = 0;
-const dataTransfer = new DataTransfer();
-$("input[id='upload-name']").on("change", function() {
-	const $files2 = $("input[id=upload-name]")[0].files[0];
-	console.log($files2)
-//    파일 객체에 접근함
+
+globalThis.i = 0;
+$("input[name='file']").on("change", function(){
+	const $files = $("input[name=file]")[0].files;
 	let formData = new FormData();
-	globalThis.arrayFile2.push($files2);
-	// 파일 Array의 file들을 하나씩 담아줌
-	console.log(globalThis.arrayFile2)
-	formData.append("file", $files2)
+	Array.from($files).forEach(file => globalThis.arrayFile.push(file));
+	console.log(globalThis.arrayFile);
+
+	$files.forEach(file => {
+
+		formData.append("file", file)
+	});
 	$.ajax({
-		url: "/upload",
+		url: "/files/upload",
 		type: "post",
 		data: formData,
 		contentType: false,
 		processData: false,
-		success: function (uuid) {
-			globalThis.uuid = uuid;
-			console.log(globalThis.uuid)
-
-			$("input[id='upload-name']")[0].files = dataTransfer.files;
-			let text2 = "";
-			text2 =
-				`
-                    <input type="hidden" name="memberProfileOriginalName" value="${$files2.name}">
-                    <input type="hidden" name="memberProfileUuid" value="${globalThis.uuid}">
-                    <input type="hidden" name="memberProfilePath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="memberProfileSize" value="${$files2.size}">
+		success: function(uuids) {
+			globalThis.uuids = uuids;
+			$files.forEach((file, i) => {
+				if(file.type.startsWith("image")){
+					$("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/files/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"></a></li>`);
+				}else{
+					$("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/attach.png" width="100"></a></li>`);
+				}
+			});
+			/********************************************************************/
+			/*게시글 추가 부분*/
+			const dataTransfer = new DataTransfer();
+			globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
+			$("input[name='file']")[0].files = dataTransfer.files;
+			console.log(dataTransfer.files);
+			let text = "";
+			$files.forEach(file => {
+				text +=
+					`
+                    <input type="hidden" name="files[${i}].fileName" value="${file.name}">
+                    <input type="hidden" name="files[${i}].fileUuid" value="${globalThis.uuids[i]}">
+                    <input type="hidden" name="files[${i}].filePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="files[${i}].fileSize" value="${file.size}">
+                    <input type="hidden" name="files[${i}].fileType" value="${file.type.startsWith("image")}">
                     `
-			$("form[name='joinForm']").append(text2);
-			console.log(text2);
+				i++;
+			});
+			$("form[name='write-form']").append(text);
 		}
 	});
 });
+
+
 
 function leftPad(value) {
 	if (value >= 10) {
@@ -392,3 +409,4 @@ function toStringByFormatting(source, delimiter = '/') {
 
 	return [year, month, day].join(delimiter);
 }
+/*****************************************************/
