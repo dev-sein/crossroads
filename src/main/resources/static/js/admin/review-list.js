@@ -18,7 +18,7 @@ function showList(){
 							<li class="content__contents">${review.reviewContent}</li>
 							<li class="content__date">${review.reviewRegisterDate}</li>
 							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+								<button class="custom-btn btn-16 show" style="font-weight: 10px;">상세 정보</button>
 							</li>
 						</ul>
 					</label>

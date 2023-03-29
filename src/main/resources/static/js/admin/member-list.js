@@ -22,7 +22,7 @@ function showList(){
 							<li class="user__point" name="memberPoint">${member.memberPoint}</li>
 							<li class="user__join" name="memberDriveRegisterDate">${member.memberDriveRegisterDate}</li>
 							<li class="user__detail" name="memberDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;">상세 정보</button>
+								<button class="custom-btn btn-16 show">상세 정보</button>
 							</li>
 						</ul>
 					</label>
