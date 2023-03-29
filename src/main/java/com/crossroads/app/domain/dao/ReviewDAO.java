@@ -21,5 +21,7 @@ public class ReviewDAO {
     public List<ReviewDTO> findAllReview() {
         return reviewMapper.selectReviewAll(); }
 
+
+
 }
 
