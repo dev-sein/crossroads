@@ -4,6 +4,7 @@ import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -109,7 +111,7 @@ public class MemberController {
     }
 
     //로그아웃
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout(HttpServletRequest request) {
         System.out.println("logout - 진입");
         //세션 끊기
@@ -118,12 +120,22 @@ public class MemberController {
         return "redirect:/main";
     }
 
-
-    //비밀번호 찾기
+    //비밀번호 찾기 - 이메일 인증
     @GetMapping("find-pwd")
     public String findPwd(){
         return "member/find-pwd";
     }
+
+    //비밀번호 찾기 - 이메일 인증
+   /* @PostMapping("find-pwd")
+    @ResponseBody
+    public String findPwdtoChangePwd(@RequestParam("memberEmail") String memberEmail) { return "member/change-pwd"; }
+*/
+    //비밀번호 찾기 - 이메일 인증
+    @PostMapping("find-pwd")
+    public String findPwdtoChangePwd(String memberEmail) { return "member/change-pwd"; }
+
+
 
     //비밀번호 변경
     @GetMapping("change-pwd")
@@ -142,6 +154,8 @@ public class MemberController {
     public String completeChange(){
         return "member/complete-change";
     }
+
+
 
 
 }
