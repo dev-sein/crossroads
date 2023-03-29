@@ -3,10 +3,7 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
-import com.crossroads.app.service.ApplyService;
-import com.crossroads.app.service.FreeBoardService;
-import com.crossroads.app.service.MemberService;
-import com.crossroads.app.service.ReviewBoardService;
+import com.crossroads.app.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -32,6 +29,7 @@ public class MypageController {
     private final ReviewBoardService reviewBoardService;
     private final ApplyService applyService;
     private final FreeBoardService freeBoardService;
+    private final ReplyService replyService;
 
     //마이페이지 메인
     @GetMapping("/mypage-main")
@@ -137,7 +135,7 @@ public class MypageController {
     public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
+        model.addAttribute("replies", replyService.getListMyReply(1L));
         return "mypage/my-reply";
     }
     

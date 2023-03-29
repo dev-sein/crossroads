@@ -16,7 +16,7 @@ import java.util.List;
 public class ReplyService {
     private final ReplyDAO replyDAO;
 
-    //    신청목록 전체조회
+//    신청목록 전체조회
     public List<ReplyDTO> getListMyReply(Long memberId) {return replyDAO.findAllMyReply(memberId);}
 
 }
