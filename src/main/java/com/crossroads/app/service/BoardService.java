@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public interface BoardService {
+
     //    어드민 게시글 목록
     public List<BoardDTO> getListAdmin();
 
@@ -19,5 +20,9 @@ public interface BoardService {
 
     //    자유 게시글 목록
     public List<BoardDTO> getList();
+
+//    후기 게시글 전체 조회
+    public List<ReviewDTO> getReviewList();
+
 
 }

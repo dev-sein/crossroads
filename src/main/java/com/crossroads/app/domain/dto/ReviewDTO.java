@@ -31,5 +31,4 @@ public class ReviewDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
-
 }

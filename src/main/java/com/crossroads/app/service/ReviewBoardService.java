@@ -29,19 +29,18 @@ public class ReviewBoardService implements BoardService {
     }
 
     @Override
-    public void remove(List<String> boardIds) {
-
-    }
-
-    @Override
     public List<BoardDTO> getList() {
         return null;
     }
 
-   /* @Override
-    public List<ReviewDTO> getListReview() {
-        return reviewDAO.findAllReview();
-    }*/
+    @Override
+    public void remove(List<String> boardIds) {
+    }
 
+//  후기 게시물 전체 조회
+    @Override
+    public List<ReviewDTO> getReviewList(){
+        return reviewDAO.findAllReview();
+    }
 
 }
