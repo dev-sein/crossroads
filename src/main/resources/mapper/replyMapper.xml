@@ -9,10 +9,10 @@
     </select>
     <!-- 마이페이지 댓글 목록 -->
     <select id="selectAllMyReply" parameterType="long" resultType="replyDTO">
-        select r.reply_id, board_id, m.member_id, reply_content, reply_register_date
-        from tbl_member m join tbl_reply r
-        on m.member_id = r.member_id
-        where m.member_ic = #{memberId}
+        select r.reply_id, b.board_id, board_title, m.member_id, reply_content, reply_register_date
+        from tbl_member m join tbl_board b on m.member_id = b.member_id
+        join tbl_reply r on b.board_id = r.board_id
+        where m.member_id = #{memberId}
         order by r.reply_id desc
     </select>
 
