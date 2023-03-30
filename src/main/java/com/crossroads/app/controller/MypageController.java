@@ -87,27 +87,50 @@ public class MypageController {
         return new RedirectView("my-info");
     }
 
-    //마이페이지 비밀번호 변경
+    //마이페이지 비밀번호 확인
     @GetMapping("/my-password-change")
-    public String changePassword(){
+    public String myPassword(){
         return "mypage/my-password-change";
     }
 
-    //마이페이지 비밀번호 변경 확인
+    @PostMapping("/my-password-change")
+    public RedirectView myPasswordCheck(String memberPassword, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Long password = memberService.getPassword(memberPassword);
+        log.info(password.toString());
+        if(password != null){
+            session.setAttribute("memberId", 8L);
+            log.info(session.getAttribute("memberId").toString());
+            return new RedirectView("my-password-confirm");
+        }
+        return new RedirectView("my-password-change");
+    }
+
+    //마이페이지 비밀번호 변경
     @GetMapping("/my-password-confirm")
-    public String confirmPassword(){
+    public String myPasswordConfirm(){
         return "mypage/my-password-confirm";
     }
 
+    //마이페이지 비밀번호 변경
+    @PostMapping("/my-password-confirm")
+    public RedirectView myPasswordChange(HttpServletRequest request, String memberPassword){
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 8L);
+
+        return new RedirectView("my-main");
+    }
+
+
     //마이페이지 연수신청 목록
     @GetMapping("/my-apply")
-    public String classList(){
+    public String showListMyApply(){
         return "mypage/my-apply";
     }
 
     //마이페이지 포인트내역
     @GetMapping("/my-point")
-    public String point(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyPoint(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
 
 //        session.setAttribute("memberId", 1L);
