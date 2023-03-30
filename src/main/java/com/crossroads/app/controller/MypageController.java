@@ -201,12 +201,14 @@ public class MypageController {
     }
 
     /*===========================================모바일=================================================*/
-    // 모바일 마이페이지 메인
+    //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
-    public String myMobile(){
+    public String myMobile(Long memberId, Model model){
+        model.addAttribute("members", memberService.getMember(9L));
         return "mobile/my-mobile";
     }
-    // 모바일 마이페이지 비밀번호 확인
+
+    //모바일 마이페이지 비밀번호 확인
     @GetMapping("/my-mobile-password-check")
     public String myPasswordCheckMobile(){
         return "mobile/my-mobile-password-check";
@@ -225,13 +227,13 @@ public class MypageController {
         return new RedirectView("my-mobile-password-check");
     }
 
-    //마이페이지 비밀번호 변경
+    //모바일 마이페이지 비밀번호 변경
     @GetMapping("/my-mobile-password-change")
     public String myPasswordChangeMobile(){
         return "mobile/my-mobile-password-change";
     }
 
-    //마이페이지 비밀번호 변경
+    //모바일 마이페이지 비밀번호 변경
     @PostMapping("/my-mobile-password-change")
     public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
         session.setAttribute("memberId", 9L);
