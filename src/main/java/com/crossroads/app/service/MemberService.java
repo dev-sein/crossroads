@@ -11,7 +11,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Member;
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -60,7 +62,10 @@ public class MemberService {
         memberDAO.deleteById(memberId);
     }
 
-    //비밀번호 찾기 인증 이메일
+    //이메일로 랜덤키 찾기
+    public Long getRandomKey(String memberEmail) { return memberDAO.findRandomKey(memberEmail); }
+
+    //비밀번호 찾기 인증 이메일 발송 서비스
     @Autowired
     private JavaMailSender mailSender;
 
@@ -75,8 +80,8 @@ public class MemberService {
     }
 
     //로그인-비밀번호 변경
-    public void modifyPassword(String memberEmail, String memberPassword){
-        memberDAO.setPassword(memberEmail, memberPassword);
+    public void modifyPassword(MemberVO memberVO){
+        memberDAO.setPassword(memberVO);
     }
 
     //마이페이지 비밀번호 확인
@@ -84,5 +89,16 @@ public class MemberService {
 
     //마이페이지 비밀번호 변경
     public Long modifyPasswordMy(String memberPassword){ return memberDAO.setPasswordMy(memberPassword); }
+
+    //랜덤 난수 생성
+    public Long makeRandomKey() {
+        Random rand = new Random();
+        long randomkey = rand.nextLong()+1;
+        return randomkey;
+    }
+
+    //랜덤키 삽입
+    public void setRandomKey(Long memberRandomKey, String memberEmail){ memberDAO.setRandomKey(memberRandomKey,memberEmail);};
+
 
 }

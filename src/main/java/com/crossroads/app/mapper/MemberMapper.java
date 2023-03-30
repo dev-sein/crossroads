@@ -32,15 +32,18 @@ public interface MemberMapper {
     public void delete(Long memberId);
 
     //비밀번호 변경
-    public void changePassword(String memberEmail, String memberPassword);
+    public void changePassword(MemberVO memberVO);
 
-    //아이디로 이메일 찾기
-    public String selectEmail(String memberIdentification);
+    //아이디로 랜덤키 찾기
+    public Long selectRandomKey(String memberEmail);
 
     //마이페이지 비밀번호 확인
     public Long checkPassword(String memberPassword);
 
     //마이페이지 비밀번호 변경
     public Long changeNewPassword(String memberPassword);
+
+    //랜덤키 삽입
+    public void updateRandomKey(Long memberRandomKey, String memberEmail);
 
 }
