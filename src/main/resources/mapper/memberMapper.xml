@@ -5,9 +5,9 @@
     <insert id="join" parameterType="memberVO">
     insert into tbl_member
     (member_identification, member_password, member_name, member_phone,
-    member_email, member_drive_register_date)
+    member_email, member_drive_register_date, member_type)
     values (#{memberIdentification}, #{memberPassword}, #{memberName}, #{memberPhone},
-    #{memberEmail}, #{memberDriveRegisterDate})
+    #{memberEmail}, #{memberDriveRegisterDate}, #{memberType})
     </insert>
 
     <!--아이디 중복체크-->
@@ -70,14 +70,22 @@
     <update id="changePassword">
     update tbl_member
     set member_password=#{memberPassword}
-    where member_email=#{memberEmail}
+    where member_email=#{memberEmail} and member_random_key=#{memberRandomKey}
     </update>
 
-    <!--아이디로 비밀번호 찾기-->
-    <select id="selectEmail" parameterType="String" resultType="String">
-        select member_email
+    <!--아이디로 이메일 찾기-->
+    <select id="selectRandomKey" parameterType="String" resultType="Long">
+        select member_random_key
         from tbl_member
-        where member_identification=#{memberIdentification}
+        where member_email=#{memberEmail}
     </select>
+
+
+    <!--랜덤키 입력-->
+    <update id="updateRandomKey">
+    update tbl_member
+    set member_random_key = #{memberRandomKey}
+    where member_email = #{memberEmail}
+    </update>
 
 </mapper>

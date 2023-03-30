@@ -43,15 +43,15 @@
                                     </legend>
                                     <!-- 별점  -->
                                     <div class="rating">
-                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <input type="radio" id="star5"  name="reviewGrade" value="5" th:field="${info.reviewGrade}"/>
                                         <label for="star5" id="label5"></label>
-                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <input type="radio" id="star4"  name="reviewGrade" value="4" th:field="${info.reviewGrade}" />
                                         <label for="star4" id="label4"></label>
-                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <input type="radio" id="star3"  name="reviewGrade" value="3" th:field="${info.reviewGrade}" />
                                         <label for="star3" id="label3"></label>
-                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <input type="radio" id="star2"  name="reviewGrade" value="2" th:field="${info.reviewGrade}" />
                                         <label for="star2" id="label2"></label>
-                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <input type="radio" id="star1"  name="reviewGrade" value="1" th:field="${info.reviewGrade}"/>
                                         <label for="star1" id="label1"></label>
                                     </div>
                                     <!-- <div class="score">0점</div> -->
@@ -65,7 +65,7 @@
                                     <legend class="formTitle_legend">
                                         <span>제목</span>
                                     </legend>
-                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요.">
+                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요." th:value="${info.reviewTitle}">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     <legend class="formTitle_legend">
                                         <span>내용</span>
                                     </legend>
-                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요."></textarea>
+                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요." th:text="${info.reviewContent}"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                         </div>
                         <div class="bottomButton_wrapper">
                             <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">수정취소</button>
-                            <button type="button" class="registButton_button">수정완료</button>
+                            <button type="button" class="registButton_button" id="submit-btn">수정완료</button>
                         </div>
                     </form>
                 </div>

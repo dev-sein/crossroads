@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -40,6 +41,11 @@ public class ReviewDAO {
     //    후기 삭제
     public void deleteById(Long reviewId) {
         reviewMapper.delete(reviewId);
+    }
+
+    //  후기 조회
+    public ReviewVO findById(Long reviewId){
+        return reviewMapper.select(reviewId);
     }
 
 

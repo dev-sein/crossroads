@@ -91,21 +91,21 @@ public class MemberController {
 
     @PostMapping("find-pwd")
     public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
-        if(memberService.checkEmail(memberEmail) == null) {
+        if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
             return new RedirectView("/member/find-pwd?result=fail");
         }
 
-        //String randomKey = memberService.randomKey();
+        Long randomKey = memberService.makeRandomKey();
 
         //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
         //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
-        //memberService.updateUserRandomKey(memberIdentification, randomKey);
+        memberService.setRandomKey(randomKey, memberEmail);
 
         MailTO mailTO = new MailTO();
         mailTO.setAddress(memberEmail);
-        mailTO.setTitle("새 비밀번호 설정 링크입니다.");
+        mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
    //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
-        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd-email?memberIdentification=" + memberIdentification);
+        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail"+memberEmail+ "&memberRandomKey="+randomKey);
         memberService.sendMail(mailTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
@@ -115,14 +115,35 @@ public class MemberController {
     //비밀번호 변경
     @GetMapping("change-pwd")
     public String changePwd(){
+        memberService.getRandomKey()
         return "member/change-pwd";
     }
 
+
+ //비밀번호 변경 수정ver
+/*    @GetMapping("change-pwd")
+    public String changePassword(String memberEmail, Long memberRandomKey) {
+        if(!memberService.findRandomKeyByEmail(memberEmail).getMemberRandomKey().equals(memberRandomKey)) {
+            return "/";
+        }
+        if(memberService.findRandomKeyByEmail(memberEmail).equals(memberRandomKey))
+
+        memberService.setRandomKey(memberIdentification, null);
+        return "/complete-change";
+    }*/
+
+/*    @PostMapping("change-pwd")
+    public RedirectView changePasswordOK(MemberVO memberVO) {
+        memberService.modifyPassword(memberVO);
+        return new RedirectView("/member/login");
+    }*/
+
+
     //비밀번호 변경
     @PostMapping("change-pwd")
-    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
-        memberService.modifyPassword(memberEmail, memberPassword);
-        return new RedirectView("member/change-pwd");
+    public RedirectView changePwdtoCompleteChange(MemberVO memberVO, RedirectAttributes redirectAttributes){
+        memberService.modifyPassword(memberVO);
+        return new RedirectView("complete-change");
     }
 
     //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
