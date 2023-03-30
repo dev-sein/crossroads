@@ -87,6 +87,10 @@ $("#no-button").on('click', function(){
 	$("#modal-wrapper1").hide();
 });
 
+$("#close-modal-button2").on('click', function(){
+	$("#modal-wrapper3").hide();
+});
+
 $("#ok-button").on('click', function(){
 	document.changepointForm.submit();
 });
