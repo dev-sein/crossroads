@@ -98,11 +98,17 @@
                     <div class="input-box margin-top-16 license">
                         <div class="input-title">운전면허증</div>
                         <div class="input-text-wrapper" id="upload-name-wrapper" onclick="onclick=document.all.file.click()">
-                            <label for="file"></label>
+                            <label for="license"></label>
                             <input class="theme-croosroads input-text" id="upload-name" name="" placeholder="첨부파일" value="첨부파일" readonly>
                             <input class="btn-img" value="파일 찾기" readonly>
                             </label>
-                            <input type="file" class="theme-croosroads input-file" id="file" name="file" accept="image/png, image/jpeg" style="display: none;">
+                            <input type="file" class="theme-croosroads input-file" id="license" name="file" accept="image/png, image/jpeg" style="display: none;">
+                        </div>
+                        <div class="input-box margin-top-16 name">
+                            <div class="input-title">면허 취득 일자 <span id="result"></span></div>
+                            <div class="input-text-wrapper">
+                                <input class="theme-croosroads input-text registerdate" name="memberDriveRegisterDate" type="text" value="면허증을 등록하면 취득일자가 적용됩니다." readonly/>
+                            </div>
                         </div>
                     </div>
                     <!-- 이용약관 동의 -->
@@ -138,7 +144,7 @@
                 </form>
                 <div class="border-sub-action">
                     이미 교차로 통합회원이신가요?
-                    <a class="sign-up link-href" th:href="@{/login}">로그인</a>
+                    <a class="sign-up link-href" th:href="@{/member/login}">로그인</a>
 
                 </div>
             </div>

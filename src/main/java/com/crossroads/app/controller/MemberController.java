@@ -83,7 +83,7 @@ public class MemberController {
         return "redirect:/main";
     }
 
-    //비밀번호 찾기 - 이메일 인증
+    //비밀번호 찾기 1 - 이메일 인증
     @GetMapping("find-pwd")
     public String findPwd() {
         return "member/find-pwd";

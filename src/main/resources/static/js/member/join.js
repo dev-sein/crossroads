@@ -44,7 +44,6 @@ let checkbox = false;
 const $submitBtn = $("#submit-btn");
 
 
-
 // 이메일 정규식 이벤트 사용 및 함수
 $emailInput.on("blur", function(){
     // 이메일 정규식
@@ -314,6 +313,46 @@ function checkEmail() {
 		}
 	});
 
+
+
+// 파일 첨부 시
+$("#license").on("change", function(e){
+	let reader = new FileReader();
+	reader.readAsDataURL(e.target.files[0]);
+	reader.onload = function (e) {
+		// base64 String으로 이미지 가져오기
+		let img = e.target.result;
+		$.ajax({
+			url: "https://api.ocr.space/parse/image",
+			type: "post",
+			//apikey 작성, base64Image에 base64 String작성, 나머지 노터치
+			data: {apikey: "K83408865188957", base64Image: img, filetype: "jpg", language: "kor", isOverlayRequired: true},
+			success: function(result){
+				console.log(result);
+				//추출된 전체 문자열값에서 줄바꿈문자로 분리하여 12번째 인덱스에 있는 취득 년월일 추출
+				$("#result").html(parseInt(result.ParsedResults[0].ParsedText.split("\r\n")[12].replace(".", "").replace(" ", "")));
+				var registerdate = $('#result').text();
+				/*alert(registerdate); 취득일자를 변수로 받아 취득일자 input value 값 변경*/
+				$('input[name=memberDriveRegisterDate]').attr('value',registerdate);
+				/*$("input[type=text][name=memberDriveRegisterDate]").val(registerdate);*/   // 취득일자
+				/*console.log($("#memberDriveRegisterDate"));
+				$("#memberDriveRegisterDate").text(registerdate);
+				var registerdatee = $('#memberDriveRegisterDate').text();
+				alert(registerdatee);*/
+			}
+		});
+	};
+});
+
+/*값 변경하기*/
+/*console.log($("#result").val());*/
+
+//가져오기
+
+/*	$("#membermemberDriveRegisterDate").text()*/
+/*console.log($("#memberDriveRegisterDate"));
+console.log($("#memberDriveRegisterDate").val());*/
+
 // 회원가입 버튼 활성화
 	$submitBtn.on("click", function () {
 		var flag = false;
@@ -327,20 +366,20 @@ function checkEmail() {
 			}
 		}
 
-		if (checkbox && !flag) {
+		if (checkbox && flag) {
 			/*비밀번호 암호화*/
 			$passwordInput.val(btoa($passwordInput.val()));
 			$passwordCheckInput.val(btoa($passwordCheckInput.val()));
-
-			$submitBtn.attr("type", "submit");
+			document.joinForm.submit();
 		} else {
 			$submitBtn.attr("type", "button");
 		}
 	});
+/*
 
 FileList.prototype.forEach = Array.prototype.forEach;
 globalThis.arrayFile = new Array();
-/*****************************************************/
+/!*****************************************************!/
 
 
 globalThis.i = 0;
@@ -369,8 +408,8 @@ $("input[name='file']").on("change", function(){
 					$("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/attach.png" width="100"></a></li>`);
 				}
 			});
-			/********************************************************************/
-			/*게시글 추가 부분*/
+			/!********************************************************************!/
+			/!*게시글 추가 부분*!/
 			const dataTransfer = new DataTransfer();
 			globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
 			$("input[name='file']")[0].files = dataTransfer.files;
@@ -409,4 +448,7 @@ function toStringByFormatting(source, delimiter = '/') {
 
 	return [year, month, day].join(delimiter);
 }
-/*****************************************************/
+/!*****************************************************!/
+*/
+
+
