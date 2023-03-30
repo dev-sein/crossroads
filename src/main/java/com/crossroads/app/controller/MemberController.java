@@ -114,8 +114,8 @@ public class MemberController {
 
     //비밀번호 변경
     @GetMapping("change-pwd")
-    public String changePwd(){
-        memberService.
+    public String changePwd(String memberEmail){
+        memberService.getRandomKey(memberEmail);
         return "member/change-pwd";
     }
 
