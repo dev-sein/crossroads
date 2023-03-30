@@ -52,4 +52,18 @@
     </delete>
 
 
+    <!-- 비밀번호 변경 -->
+    <update id="changePassword">
+    update tbl_member
+    set member_password=#{memberPassword}
+    where member_email=#{memberEmail}
+    </update>
+
+    <!--아이디로 비밀번호 찾기-->
+    <select id="selectEmail" parameterType="String" resultType="String">
+        select member_email
+        from tbl_member
+        where member_identification=#{memberIdentification}
+    </select>
+
 </mapper>

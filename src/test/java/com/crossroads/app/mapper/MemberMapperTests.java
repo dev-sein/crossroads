@@ -30,16 +30,14 @@ public class MemberMapperTests {
        log.info(memberMapper.select(1L).toString());
     }
 
+
     @Test
     public void updateTest(){
         MemberVO memberVO = memberMapper.select(1L);
-        memberVO.setMemberName("정세인");
-
-        memberMapper.update(memberVO);
+        memberMapper.changePassword("abc123@gmail.com", "asdf");
     }
 
-
-
-
+    @Test
+    public void selectEmail(){ log.info(memberMapper.selectEmail("test11234"));}
 
 }
