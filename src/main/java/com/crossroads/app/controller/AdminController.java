@@ -47,7 +47,7 @@ public class AdminController {
     //관리자 연수신청 목록
     @GetMapping("apply/list")
     public String adminApply(Model model){
-        model.addAttribute("applies", applyService.getList());
+//        model.addAttribute("applies", applyService.getList());
         return "admin/admin-apply";
     }
 
