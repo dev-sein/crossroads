@@ -1,9 +1,9 @@
 /* 비밀번호 빈 문자열 체크 */
 const submit = document.querySelector('#submit'); /* 제출 버튼  */
+const $submit = $("#sumit"); /* 제출 버튼  */
 const passwordinput = document.querySelector('#password-input'); /* password input */
 const error = document.querySelector('#blank'); /* 오류 메세지 */
 const length = document.querySelector('#length'); /* inputvalue길이 */
-
 
 $(document).ready(function() {
   $('#submit').click(function() {
@@ -23,6 +23,18 @@ $(document).ready(function() {
 
   })
 });
+
+
+// 비밀번호 확인
+$submit.on('click', function(){
+    if($passwordInput){
+        $passwordInput.val(btoa($passwordInput.val()));
+        document.passwordForm.submit();
+    }
+})
+
+
+
 
 
 /* 비밀번호 input type 변경  */
