@@ -42,6 +42,12 @@ public class PointController {
         return "point/changePoint";
     }
 
+    //    포인트 환전 완료
+    @GetMapping("/exchange-complete")
+    public String exchangeComplete(){
+        return "point/changePointFin";
+    }
+
     //    포인트 환전 모바일
     @GetMapping("/exchange-point-mobile")
     public String changePointMobile(@RequestParam(value = "exchange", required = false) String exchange, HttpServletRequest request, Model model){
