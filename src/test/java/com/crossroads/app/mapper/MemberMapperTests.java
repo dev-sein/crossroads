@@ -40,4 +40,16 @@ public class MemberMapperTests {
     }*/
 
 
+    @Test
+    public void getRandomKeyTest(){
+        MemberVO memberVO = new MemberVO();
+        memberMapper.selectRandomKey("seinee114@gmail.com");
+    }
+
+    @Test
+    public void changePasswordTest(){
+        MemberVO memberVO = new MemberVO();
+        memberMapper.changePassword("filetest@gmail.com", "passwordtest31");
+    }
+
 }

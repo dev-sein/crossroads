@@ -80,8 +80,8 @@ public class MemberService {
     }
 
     //로그인-비밀번호 변경
-    public void modifyPassword(MemberVO memberVO){
-        memberDAO.setPassword(memberVO);
+    public void modifyPassword(String memberEmail, String memberPassword){
+        memberDAO.setPassword(memberEmail, memberPassword);
     }
 
     //마이페이지 비밀번호 확인
