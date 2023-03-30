@@ -112,12 +112,12 @@ public class MemberController {
         return new RedirectView("/member/find-pwd-send");
     }
 
-//    //비밀번호 변경
-//    @GetMapping("change-pwd")
-//    public String changePwd(){
-//        memberService.getRandomKey()
-//        return "member/change-pwd";
-//    }
+    //비밀번호 변경
+    @GetMapping("change-pwd")
+    public String changePwd(String memberEmail){
+        memberService.getRandomKey(memberEmail);
+        return "member/change-pwd";
+    }
 
 
  //비밀번호 변경 수정ver

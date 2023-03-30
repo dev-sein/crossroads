@@ -12,9 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class ApplyController {
 
-    @GetMapping("applyForm")
-    public String applyFirst(){
-        return "form/formFirst";
+    @GetMapping("formFirst")
+    public String formFirst(){
+        return "form/form-first-test";
+    }
+
+    @GetMapping("formSecond")
+    public String applySecond(){
+        return "form/formSecond";
+    }
+
+    @GetMapping("findThird")
+    public String formThird() {
+        return "form/formThird";
     }
 
 }
