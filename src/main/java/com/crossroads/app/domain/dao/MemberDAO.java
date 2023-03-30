@@ -38,4 +38,7 @@ public class MemberDAO {
     public void deleteById(Long memberId) {
         memberMapper.delete(memberId);
     }
+
+    //마이페이지 비밀번호 변경
+    public Long findByPasswordMy(String memeberPassword) { return memberMapper.checkPassword(memeberPassword); }
 }
