@@ -31,7 +31,7 @@ public interface BoardService {
     public List<ReviewDTO> getReviewsByPage(int start, int end);
 
     //후기 작성
-
+    public void save(ReviewDTO reviewDTO);
 
     //    마이페이지 게시글 목록
     public List<BoardDTO> getListMyBoard(Long memberId);

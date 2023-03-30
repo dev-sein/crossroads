@@ -28,30 +28,94 @@ function setThumbnail(event) {
       document.querySelector("#image").value = null;      // input type:file 에 들어간 이미지 비워주기
       // 테스트
       document.querySelector(".MainImage_wrapper").style.display = "flex";  // 없어진 이미지 넣기 버튼 다시 보여주기
-      // document.querySelector("#button-label").style.display = "inline-block !important";
-      // document.querySelector("#photosubmit").style.display = "block";
-      // document.querySelector(".ImageFileButton_input").style.display = "block";
-
   });
 
-
-  // 별점
-const rating = document.querySelector('.rating');
-const score = document.querySelector('.score');
-
-// rating.addEventListener('change', function(e) {
-//   score.textContent = `${e.target.value}점`;
+// 파일 업로드 기능
+// $(document).ready(function() {
+//   $("#imageUploadForm").submit(function(event) {
+//     event.preventDefault();
+//
+//     var formData = new FormData($(this)[0]);
+//
+//     $.ajax({
+//       url: "/upload",
+//       type: "POST",
+//       data: formData,
+//       async: false,
+//       cache: false,
+//       contentType: false,
+//       processData: false,
+//       success: function(data) {
+//         console.log("File uploaded successfully.");
+//         $("#reviewFileSystemName").val(data.savedFileName);
+//       },
+//       error: function(jqXHR, textStatus, errorThrown) {
+//         console.log("Error uploading file.");
+//       }
+//     });
+//   });
 // });
 
+/*$("input[type='file']").on("change", function () {
+
+  let file = $(this)[0].files[0];
+
+  /!* 강사님 업로드코드 *!/
+    let formData = new FormData();
+    formData.append("file", file);
+
+    $.ajax({
+      url: "/files/upload",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function(uuids) {
+        globalThis.uuids = uuids;
+        $files.forEach((file, i) => {
+          if(file.type.startsWith("image")){
+            $("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/files/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"></a></li>`);
+          }else{
+            $("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/attach.png" width="100"></a></li>`);
+          }
+        })
+      }
+    });
+})*/
+
+
+
+
+// 별점
+const ratingInputs = document.querySelectorAll('.rating input');
+const ratingLabels = document.querySelectorAll('.rating label');
+
+ratingInputs.forEach((input) => {
+  input.addEventListener('click', () => {
+    const checkedValue = input.value;
+    const checkedIndex = parseInt(checkedValue) - 1;
+
+    for (let i = 0; i <= 4; i++) {
+      if (i <= checkedIndex) {
+        ratingLabels[i].classList.add('checked');
+      } else {
+        ratingLabels[i].classList.remove('checked');
+      }
+    }
+  });
+});
+
+
 // 리뷰 작성 확인 및 제출
-$(".registButton_button").on('click', function(){
+$(".registButton_button").on('click', function(e){
+  e.preventDefault();
   let flag1 = true;
   let flag2 = true;
   let flag3 = true;
   console.log("들어옴");
   var $title = $("#input-title");
   var $content = $("#input-content");
-  var $star = $("input[name=rating]:checked");
+  var $star = $("input[name=reviewGrade]:checked");
 
   console.log("star : " + $star.val());
   if($title.val().length < 1){
@@ -75,7 +139,7 @@ $(".registButton_button").on('click', function(){
   }
   
   if(flag1 && flag2 && flag3){
-    // alert("완료");
+    alert("완료");
     document.reviewForm.submit();
   }
 
@@ -85,7 +149,4 @@ $(".modal-close-btn").on("click", function(){
   $(".modal-wrapper").css('display', 'none');
 })
 
-
-
-/* 모달 창 띄우기, 끄기 */
 

@@ -28,6 +28,7 @@ public class FreeBoardService implements BoardService {
         return boards;
     }
 
+
     @Override
     public Integer getCountAdmin() {
         return boardDAO.findCountAllAdmin();
@@ -54,6 +55,11 @@ public class FreeBoardService implements BoardService {
     @Override
     public List<ReviewDTO> getReviewsByPage(int start, int end) {
         return null;
+    }
+
+    @Override
+    public void save(ReviewDTO reviewDTO) {
+
     }
 
     //    마이페이지 리뷰 목록
