@@ -107,7 +107,7 @@ public class MobileController {
         return "mobile/login-mobile";
     }
 
-    //   로그인
+    //로그인
     @PostMapping("login-mobile")
     public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
