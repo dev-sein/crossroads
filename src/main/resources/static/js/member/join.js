@@ -40,6 +40,11 @@ const $arrow = $(".arrow");
 const $icon = $(".checked-icon");
 let checkbox = false;
 
+
+// 멤버 타입
+const $memberTypeInput = $("#memeberType");
+
+
 // 회원가입 버튼
 const $submitBtn = $("#submit-btn");
 
@@ -339,19 +344,38 @@ $("#license").on("change", function(e){
 				$("#memberDriveRegisterDate").text(registerdate);
 				var registerdatee = $('#memberDriveRegisterDate').text();
 				alert(registerdatee);*/
+				console.log(parseInt(registerdate, 10));//취득일자(String)를 int 타입으로 변환
+				var intregisterdate = parseInt(registerdate, 10);
+				/*현재 날짜 계산*/
+				var nowDate = new Date();
+				Date.prototype.YYYYMMDD = function () {
+					var yyyy = this.getFullYear().toString();
+					var MM = pad(this.getMonth() + 1,2);
+					var dd = pad(this.getDate(), 2);
+					return yyyy +  MM + dd;
+				};
+				function pad(number, length) {
+					var str = '' + number;
+					while (str.length < length) {
+						str = '0' + str;
+					}
+					return str;
+				}
+
+				var nowDate = new Date();
+				//console.log(nowDate); Mon Aug 16 2021 19:56:50 GMT+0900 (한국 표준시)
+				console.log(nowDate.YYYYMMDD());
+				var now = nowDate.YYYYMMDD();
+				var year = now - intregisterdate;
+				console.log(year);
+				year > 49999 ? year = 1 : year = 0; //5년 이상이면 1 베테랑, 이하일 경우 0 초보자
+				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
 			}
 		});
 	};
 });
 
-/*값 변경하기*/
-/*console.log($("#result").val());*/
 
-//가져오기
-
-/*	$("#membermemberDriveRegisterDate").text()*/
-/*console.log($("#memberDriveRegisterDate"));
-console.log($("#memberDriveRegisterDate").val());*/
 
 // 회원가입 버튼 활성화
 	$submitBtn.on("click", function () {
@@ -375,80 +399,4 @@ console.log($("#memberDriveRegisterDate").val());*/
 			$submitBtn.attr("type", "button");
 		}
 	});
-/*
-
-FileList.prototype.forEach = Array.prototype.forEach;
-globalThis.arrayFile = new Array();
-/!*****************************************************!/
-
-
-globalThis.i = 0;
-$("input[name='file']").on("change", function(){
-	const $files = $("input[name=file]")[0].files;
-	let formData = new FormData();
-	Array.from($files).forEach(file => globalThis.arrayFile.push(file));
-	console.log(globalThis.arrayFile);
-
-	$files.forEach(file => {
-
-		formData.append("file", file)
-	});
-	$.ajax({
-		url: "/files/upload",
-		type: "post",
-		data: formData,
-		contentType: false,
-		processData: false,
-		success: function(uuids) {
-			globalThis.uuids = uuids;
-			$files.forEach((file, i) => {
-				if(file.type.startsWith("image")){
-					$("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/files/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"></a></li>`);
-				}else{
-					$("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/attach.png" width="100"></a></li>`);
-				}
-			});
-			/!********************************************************************!/
-			/!*게시글 추가 부분*!/
-			const dataTransfer = new DataTransfer();
-			globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
-			$("input[name='file']")[0].files = dataTransfer.files;
-			console.log(dataTransfer.files);
-			let text = "";
-			$files.forEach(file => {
-				text +=
-					`
-                    <input type="hidden" name="files[${i}].fileName" value="${file.name}">
-                    <input type="hidden" name="files[${i}].fileUuid" value="${globalThis.uuids[i]}">
-                    <input type="hidden" name="files[${i}].filePath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="files[${i}].fileSize" value="${file.size}">
-                    <input type="hidden" name="files[${i}].fileType" value="${file.type.startsWith("image")}">
-                    `
-				i++;
-			});
-			$("form[name='write-form']").append(text);
-		}
-	});
-});
-
-
-
-function leftPad(value) {
-	if (value >= 10) {
-		return value;
-	}
-
-	return `0${value}`;
-}
-
-function toStringByFormatting(source, delimiter = '/') {
-	const year = source.getFullYear();
-	const month = leftPad(source.getMonth() + 1);
-	const day = leftPad(source.getDate());
-
-	return [year, month, day].join(delimiter);
-}
-/!*****************************************************!/
-*/
-
 
