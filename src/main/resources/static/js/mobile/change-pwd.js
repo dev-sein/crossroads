@@ -98,7 +98,7 @@ $rePwdEye.on('click', function(){
 
 /* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
 function checkPassword(object){
-	var link = 'mypage-change-pwd-mobile.html';
+	var link = 'my-mobile-password-check.html';
 	if(completePwd) {
 		$("object").attr("type", "submit");
 		location.replace(link);
@@ -108,7 +108,7 @@ function checkPassword(object){
 /* mypage--pwd-mobile 페이지 버튼 클릭 시 */
 function changePassword(object){
 	var msg = "비밀번호가 변경되었습니다.";
-	var link = 'mypage-mobile.html'
+	var link = 'my-mobile.html'
 	if(completePwd&completeRePwd) {
 		$("object").attr("type", "submit");
 		alert(msg);
@@ -118,7 +118,7 @@ function changePassword(object){
 
 /* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
 function checkAccount(object){
-	var link = 'mypage-cancel-account-mobile.html';
+	var link = 'my-mobile-account-cancel.html';
 	if(completePwd) {
 		$("object").attr("type", "submit");
 		location.replace(link);
