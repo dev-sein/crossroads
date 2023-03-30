@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,19 @@ public class ApplyMapperTests {
 
     @Test
     public void selectAllTest(){
-        log.info(applyMapper.selectAll().toString());
+        Criteria criteria = new Criteria();
+        criteria.create(2,5);
+        log.info(applyMapper.selectAll(criteria).toString());
+    }
+
+    @Test
+    public void selectListTest(){
+        Criteria criteria = new Criteria();
+        criteria.create(2,5);
+        Map<String, Object> info = new HashMap<>();
+        info.put("applyLocation", "서울특별시 송파구");
+        info.put("applyDate", "20230401");
+        log.info(applyMapper.selectList(criteria, info).toString());
     }
 
     @Test
@@ -54,13 +67,13 @@ public class ApplyMapperTests {
     //    나를 제외한 다른 베테랑들이 수락한 신청 개수
 //    public Long selectCount(Long applyId);
 
-    @Test
-    public void selectListTest(){
-        Map<String, Object> info = new HashMap<>();
-        info.put("applyLocation", "서울특별시 송파구");
-        info.put("applyDate","20230326");
-        log.info(applyMapper.selectList(info).toString());}
+//    @Test
+//    public void selectListTest(){
+//        Map<String, Object> info = new HashMap<>();
+//        info.put("applyLocation", "서울특별시 송파구");
+//        info.put("applyDate","20230326");
+//        log.info(applyMapper.selectList(info).toString());}
 
-    //    신청 목록 검색 조회
+    }
+//    신청 목록 검색 조회
 //    public List<ApplyDTO> selectList(Map<String, Object> info);
-}

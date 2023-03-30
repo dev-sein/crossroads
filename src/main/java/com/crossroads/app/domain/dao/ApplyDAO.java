@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.mapper.ApplyMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,13 +16,13 @@ public class ApplyDAO {
     private final ApplyMapper applyMapper;
 
 //    신청목록 전체조회
-    public List<ApplyDTO> findAll() {
-        return applyMapper.selectAll();
+    public List<ApplyDTO> findAll(Criteria criteria) {
+        return applyMapper.selectAll(criteria);
     }
 
 //    신청목록 검색조회
-    public List<ApplyDTO> findList(Map<String, Object> info) {
-        return applyMapper.selectList(info);
+    public List<ApplyDTO> findList(Criteria criteria, Map<String, Object> info) {
+        return applyMapper.selectList(criteria, info);
     }
 
 //    신청 상세 조회

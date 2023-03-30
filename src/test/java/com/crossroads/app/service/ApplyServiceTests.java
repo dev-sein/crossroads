@@ -1,5 +1,6 @@
 package com.crossroads.app.service;
 
+import com.crossroads.app.domain.dto.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ public class ApplyServiceTests {
 
     @Test
     public void getListTest(){
-        log.info(applyService.getList().toString());
+        Criteria criteria = new Criteria();
+        criteria.create(3,5);
+        log.info(applyService.getList(criteria).toString());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.crossroads.app.dao;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,9 @@ public class ApplyDAOTests {
 
     @Test
     public void findAllTest(){
-        log.info(applyDAO.findAll().toString());
+        Criteria criteria = new Criteria();
+        criteria.create(2,5);
+        log.info(applyDAO.findAll(criteria).toString());
     }
 
     @Test

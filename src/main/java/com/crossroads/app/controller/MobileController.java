@@ -1,5 +1,7 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,20 +33,42 @@ public class MobileController {
 
 
     @GetMapping("list-mobile")
-    public String listMobile(Model model, HttpServletRequest request) throws Exception{
+    public String listMobile(HttpServletRequest request , Criteria criteria, Model model) throws Exception{
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            criteria = criteria.create(criteria.getPage(),5);
+        }
+
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);
-        model.addAttribute("applies", applyService.getList());
+        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
+
+        model.addAttribute("applies", applyService.getList(criteria));
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
         return "mobile/list-mobile";
+    }
+
+    @GetMapping("list-mobiles/{page}")
+    @ResponseBody
+    public List<ApplyDTO> listMobiles(HttpServletRequest request, @PathVariable("page") Integer page, Criteria criteria, Model model) throws Exception{
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            log.info(page.toString());
+            criteria = criteria.create(page,5);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        return applyService.getList(criteria);
     }
 
 
     @GetMapping("list-mobile/search")
     public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
                                    @RequestParam(value = "applyDate")String applyDate,
-                                   Model model, HttpServletRequest request)
+                                   HttpServletRequest request, Criteria criteria, Model model)
     {
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         log.info(applyLocation);
         log.info(applyDate);
         Map<String, Object> info = new HashMap<>();
@@ -55,9 +80,47 @@ public class MobileController {
         }
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
-        model.addAttribute("applies", applyService.getListSearched(info));
+        model.addAttribute("applyLocation", applyLocation);
+        model.addAttribute("applyDate", applyDate);
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
-        return "mobile/list-mobile";
+        return "mobile/list-mobiles";
+    }
+
+    @GetMapping("list-mobiles/search/{page}")
+    @ResponseBody
+    public Map<String, Object> listMobilesSearch(@RequestParam(value = "applyLocation", required = false) String applyLocation,
+                                                 @RequestParam(value = "applyDate", required = false) String applyDate,
+                                                 @PathVariable(value = "page") Integer page,
+                                                 Model model){
+        log.info("ajax들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        Map<String, Object> result = new HashMap<>(); // return 객체
+        Map<String, Object> info = new HashMap<>(); // date, location값
+
+        Criteria criteria = Criteria.create(page, 5);
+
+        log.info(applyDate);
+        log.info(applyLocation);
+        if (applyDate != null) {
+            info.put("applyDate", applyDate);
+        }
+        if (applyLocation != null) {
+            info.put("applyLocation", applyLocation);
+        }
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            log.info(page.toString());
+            criteria = criteria.create(page,5);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        result.put("info", info);
+        result.put("applies", applyService.getListSearched(criteria, info));
+
+        log.info(info.toString());
+        log.info(result.toString());
+
+        return result;
     }
 
     @PostMapping("list-mobile/change-status")
