@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.vo.ReviewVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,6 +26,9 @@ public interface ReviewMapper {
 
     //후기 수정
     public void update(ReviewDTO reviewDTO);
+
+    // 후기 조회
+    public ReviewVO select(Long reviewId);
 
 
 }

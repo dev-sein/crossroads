@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="user-detail-bottom">
                                             <div class="star-score-box">
-                                                <div class="review-star" th:attr="data-review-grade=${review.reviewGrade}">
+                                                <div class="review-star" th:attr="data-review-grade=${review.reviewGrade}" style="color: #f8f825;">
                                                 </div>
                                                 <span class="review-score" th:text="${review.reviewGrade}">
                                                 </span>
@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="image-wrapper">
-                                        <img class="review-image" th:src="@{/img/} + ${review.reviewFileSystemName}"
+                                        <img class="review-image" th:src="@{/uploads/} + ${review.reviewFileSystemName}"
                                              onclick="showModal()">
                                     </div>
                                 </div>
@@ -127,5 +127,8 @@
 </body>
 <script src="/js/board/boardList.js"></script>
 <script src="/js/components/header-client.js"></script>
+<script>
+    console.log()
+</script>
 
 </html>
