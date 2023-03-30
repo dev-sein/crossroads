@@ -42,6 +42,9 @@ public class MemberDAO {
     //비밀번호 변경
     public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
 
+    //마이페이지 비밀번호 확인
+    public Long findByPasswordMy(String memberPassword) { return memberMapper.checkPassword(memberPassword); }
+
     //마이페이지 비밀번호 변경
-    public Long findByPasswordMy(String memeberPassword) { return memberMapper.checkPassword(memeberPassword); }
+    public Long setPasswordMy(String memberPassword) { return memberMapper.changeNewPassword(memberPassword); }
 }
