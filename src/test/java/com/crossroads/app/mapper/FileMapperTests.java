@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Slf4j
 public class FileMapperTests {
-    @Autowired
-    MemberFileMapper memberFileMapper;
+//    @Autowired
+//    MemberFileMapper memberFileMapper;
 
 /*    //회원가입 테스트
    @Test

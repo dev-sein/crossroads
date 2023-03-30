@@ -8,24 +8,43 @@
                 starter_member_id, veteran_member_id, apply_status
         from tbl_member m join tbl_apply a
         on m.member_id = a.starter_member_id
-        order by apply_register_date desc
+        order by apply_id desc
+        limit #{offset}, #{amount}
     </select>
 
     <select id="selectList" resultType="applyDTO">
-        select member_id, member_identification, member_password, member_name,
+        SELECT
+        member_id, member_identification, member_password, member_name,
         member_phone, member_email, member_file_system_name, member_type, member_drive_register_date,
         member_point, apply_id, apply_course, apply_location, apply_date, apply_register_date,
         starter_member_id, veteran_member_id, apply_status
-        from tbl_member m join tbl_apply a
-        on m.member_id = a.starter_member_id
-        <if test='applyLocation!= null and !applyLocation.equals("")'>
-            and apply_location like concat('%', #{applyLocation}, '%')
+        FROM tbl_member m JOIN tbl_apply a ON m.member_id = a.starter_member_id
+        <if test="info.applyLocation != 'none'.toString()">
+            AND apply_location LIKE CONCAT('%', #{info.applyLocation}, '%')
         </if>
-        <if test='applyDate != null and !applyDate.equals("")'>
-            and apply_date = #{applyDate}
+        <if test="info.applyDate != 'none'.toString()">
+            AND apply_date = #{info.applyDate}
         </if>
-        order by apply_id desc
+        ORDER BY apply_id DESC
+        LIMIT #{criteria.offset}, #{criteria.amount}
     </select>
+
+<!--    <select id="selectList" resultType="applyDTO">-->
+<!--        select member_id, member_identification, member_password, member_name,-->
+<!--        member_phone, member_email, member_file_system_name, member_type, member_drive_register_date,-->
+<!--        member_point, apply_id, apply_course, apply_location, apply_date, apply_register_date,-->
+<!--        starter_member_id, veteran_member_id, apply_status-->
+<!--        from tbl_member m join tbl_apply a-->
+<!--        on m.member_id = a.starter_member_id-->
+<!--        <if test='applyLocation!= null and !applyLocation.equals("")'>-->
+<!--            and apply_location like concat('%', #{applyLocationParam}, '%')-->
+<!--        </if>-->
+<!--        <if test='applyDate != null and !applyDate.equals("")'>-->
+<!--            and apply_date = #{applyDateParam}-->
+<!--        </if>-->
+<!--        order by apply_id desc-->
+<!--        limit #{offset}, #{amount}-->
+<!--    </select>-->
 
     <select id="select" resultType="applyVO" parameterType="long">
         select apply_id, apply_course, apply_location, apply_date, apply_register_date,
