@@ -105,44 +105,32 @@ public class MemberController {
         mailTO.setAddress(memberEmail);
         mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
    //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
-        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail"+memberEmail+ "&memberRandomKey="+randomKey);
+        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
         memberService.sendMail(mailTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        System.out.print(memberEmail);
         return new RedirectView("/member/find-pwd-send");
     }
 
     //비밀번호 변경
     @GetMapping("change-pwd")
-    public String changePwd(String memberEmail){
+    public String changePwd(String memberEmail, Long memberRandomKey){
+        System.out.println(memberRandomKey);
+        System.out.println(memberEmail);
         memberService.getRandomKey(memberEmail);
+        if(!memberService.getRandomKey(memberEmail).equals(memberRandomKey)){
+            return "/";
+        };
+        memberService.setRandomKey(0L, memberEmail);
         return "member/change-pwd";
     }
 
 
- //비밀번호 변경 수정ver
-/*    @GetMapping("change-pwd")
-    public String changePassword(String memberEmail, Long memberRandomKey) {
-        if(!memberService.findRandomKeyByEmail(memberEmail).getMemberRandomKey().equals(memberRandomKey)) {
-            return "/";
-        }
-        if(memberService.findRandomKeyByEmail(memberEmail).equals(memberRandomKey))
-
-        memberService.setRandomKey(memberIdentification, null);
-        return "/complete-change";
-    }*/
-
-/*    @PostMapping("change-pwd")
-    public RedirectView changePasswordOK(MemberVO memberVO) {
-        memberService.modifyPassword(memberVO);
-        return new RedirectView("/member/login");
-    }*/
-
-
     //비밀번호 변경
     @PostMapping("change-pwd")
-    public RedirectView changePwdtoCompleteChange(MemberVO memberVO, RedirectAttributes redirectAttributes){
-        memberService.modifyPassword(memberVO);
+    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
+        memberService.modifyPassword(memberEmail, memberPassword);
         return new RedirectView("complete-change");
     }
 

@@ -2,6 +2,7 @@ package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -194,4 +196,69 @@ public class MobileController {
         session.invalidate();
         return "redirect:/mobile/list-mobile";
     }
+
+    //비밀번호 찾기 1 - 이메일 인증
+    @GetMapping("find-pwd")
+    public String findPwd() {
+        return "member/find-pwd";
+    }
+
+    @PostMapping("find-pwd")
+    public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
+        if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
+            return new RedirectView("/member/find-pwd?result=fail");
+        }
+
+        Long randomKey = memberService.makeRandomKey();
+
+        //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
+        //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
+        memberService.setRandomKey(randomKey, memberEmail);
+
+        MailTO mailTO = new MailTO();
+        mailTO.setAddress(memberEmail);
+        mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
+        //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
+        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
+        memberService.sendMail(mailTO);
+
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        System.out.print(memberEmail);
+        return new RedirectView("/member/find-pwd-send");
+    }
+
+    //비밀번호 변경
+    @GetMapping("change-pwd")
+    public String changePwd(String memberEmail, Long memberRandomKey){
+        System.out.println(memberRandomKey);
+        System.out.println(memberEmail);
+        memberService.getRandomKey(memberEmail);
+        if(!memberService.getRandomKey(memberEmail).equals(memberRandomKey)){
+            return "/";
+        };
+        memberService.setRandomKey(0L, memberEmail);
+        return "member/change-pwd";
+    }
+
+
+    //비밀번호 변경
+    @PostMapping("change-pwd")
+    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
+        memberService.modifyPassword(memberEmail, memberPassword);
+        return new RedirectView("complete-change");
+    }
+
+    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
+    @GetMapping("find-pwd-send")
+    public RedirectView findPwdSend(String memberEmail, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return new RedirectView("member/find-pwd-send");
+    }
+
+    //비밀번호 변경 완료
+    @GetMapping("complete-change")
+    public String completeChange(){
+        return "member/complete-change";
+    }
+
 }

@@ -32,7 +32,7 @@ public interface MemberMapper {
     public void delete(Long memberId);
 
     //비밀번호 변경
-    public void changePassword(MemberVO memberVO);
+    public void changePassword(String memberEmail, String memberPassword);
 
     //아이디로 랜덤키 찾기
     public Long selectRandomKey(String memberEmail);
