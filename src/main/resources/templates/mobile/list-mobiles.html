@@ -18,7 +18,7 @@
 <body>
 <header>
     <nav class="header relative flex between">
-        <a class="back-or-logout" href="login-mobile.html">
+        <a class="back-or-logout" href="javascript:window.history.back();">
                 <span class="go-back">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="48px" id="Layer_1" style="enable-background:new 0 0 48 48;" version="1.1" viewBox="0 0 512 512" width="48px" xml:space="preserve">
                         <polygon points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 " style="     fill: #fff; "/>
@@ -30,9 +30,9 @@
     </nav>
 </header>
 <div class="header-btn bottom flex between">
-    <div><a href="change-point-mobile.html">환전</a></div>
-    <div><a href="list-mobile.html">홈</a></div>
-    <div><a href="mypage-mobile.html">MY</a> </div>
+    <div><a href="/points/exchange-point-mobile">환전</a></div>
+    <div><a href="/applies/list-mobile">홈</a></div>
+    <div><a href="#">MY</a> </div>
 </div>
 
 <div class="container">
@@ -315,7 +315,7 @@
                             </div>
                             <div class="beginner-title">
                                 <span class="subtitle">
-                                    ${applyYear}.${applyMonth}.${applyDate}(${changeToDate(applyDay)})${applies[i].applyId}
+                                    ${applyYear}.${applyMonth}.${applyDate}(${changeToDate(applyDay)})
                                 </span>
                             </div>
                             <div class="beginner-info-box">
@@ -454,7 +454,7 @@
                             </div>
                             <div class="beginner-title">
                                 <span class="subtitle">
-                                    ${applyYear}.${applyMonth}.${applyDate}(${changeToDate(applyDay)})${applies[i].applyId}
+                                    ${applyYear}.${applyMonth}.${applyDate}(${changeToDate(applyDay)})
                                 </span>
                             </div>
                             <div class="beginner-info-box">
