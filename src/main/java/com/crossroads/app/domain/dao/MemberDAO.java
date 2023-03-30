@@ -40,14 +40,19 @@ public class MemberDAO {
     }
 
     //비밀번호 변경
-    public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
+    public void setPassword(MemberVO memberVO){ memberMapper.changePassword(memberVO);};
 
     //마이페이지 비밀번호 확인
     public Long findByPasswordMy(String memberPassword) { return memberMapper.checkPassword(memberPassword); }
 
-    //아이디로 이메일 찾기
-    public String findEmailIdByEmail(String memberIdentification){ return memberMapper.selectEmail(memberIdentification);}
+    //아이디로 랜덤키 찾기
+    public Long findRandomKey(String memberEmail){ return memberMapper.selectRandomKey(memberEmail);}
 
     //마이페이지 비밀번호 변경
+    public Long setPasswordMy(String memberPassword) { return memberMapper.changeNewPassword(memberPassword); }
+    
+    //랜덤키 삽입
+    public void setRandomKey(Long memberRandomKey, String memberEmail){ memberMapper.updateRandomKey(memberRandomKey,memberEmail);};
+
     public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
 }

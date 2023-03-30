@@ -391,3 +391,7 @@
 .registerdate{
     pointer-events : none;
 }
+
+#memberType{
+    display: none;
+}
