@@ -26,8 +26,8 @@ function reload() {
         url: `/admins/board/list?page=${$page}`,
         type: 'get',
         data: {"boards": boards},
-        success: function(){
-            showList();
+        success: function(result){
+            showList(result);
         }
     });
 }

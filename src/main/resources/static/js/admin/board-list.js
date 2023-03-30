@@ -1,10 +1,20 @@
+window.onload = function () {
+    $.ajax({
+        url: "admins/boards/list",
+        type: "POST",
+        success: function(result) {
+            showList(result)
+        }
+
+    })
+}
+
 /*신청 목록*/
 showList();
-function showList(){
-    console.log(boards);
+function showList(result){
     const $results = $("#scroll");
     let text = "";
-    boards.forEach(board => {
+    result.boards.forEach(board => {
         text +=`
             <div class="content-list__info-container">
                 <div class="content-list__info-unit">
@@ -26,6 +36,28 @@ function showList(){
             </div>
         `
     });
+
+
+    text += `
+        <div class="desktop-only">
+            <!-- 데스크탑용 버튼 -->
+            <button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
+                <span class="text-hidden">이전</span>
+            </button>
+            <!-- 데스크탑용 페이지 리스트 -->
+            <a class="current" href="#" onclick="movePage(1)">1</a>
+            <a href="#" onclick="movePage(2)">2</a>
+            <a href="#" onclick="movePage(3)">3</a>
+            <a href="#" onclick="movePage(4)">4</a>
+            <a href="#" onclick="movePage(5)">5</a>
+            <!-- 데스크탑용 버튼 -->
+            <button class="next-page icon-chevron-right" onclick="movePage(7)">
+                <span class="text-hidden">다음</span>
+            </button>
+        </div>
+    `
+    result.pagination.forEach(pagi)
     $results.html(text);
 }
+
 

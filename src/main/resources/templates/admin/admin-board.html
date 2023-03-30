@@ -87,12 +87,6 @@
 				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
 				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
 			</th:block>
-<!--			<a class="current" href="#" onclick="movePage(1)">1</a>-->
-<!--			<a href="#" onclick="movePage(2)">2</a>-->
-<!--			<a href="#" onclick="movePage(3)">3</a>-->
-<!--			<a href="#" onclick="movePage(4)">4</a>-->
-<!--			<a href="#" onclick="movePage(5)">5</a>-->
-<!--			<a href="#" onclick="movePage(6)"></a>-->
 			<!-- 데스크탑용 버튼 -->
 			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">
 				<code>
@@ -112,22 +106,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
 	let boards = [[${boards}]];
-	let $page = [[${pagination.criteria.page}]]
 </script>
 <script src="/js/admin/board-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>
 <script src="/js/admin/board-delete.js"></script>
 <script src="/js/admin/admin-modal.js"></script>
-<script>
-	// let $pages = $("a.text-hidden");
-	//
-	// $pages.on("click", function(e){
-	// 	e.preventDefault();
-	// 	let page = $(this).attr("href");
-	// 	let amount = 6;
-	// 	let url = "/admins/board/list?page=" + page+"&amount="+amount;
-	//
-	// 	location.href = url;
-	// });
-</script>
 </html>
