@@ -79,4 +79,7 @@ public class MemberService {
         memberDAO.setPassword(memberEmail, memberPassword);
     }
 
+    //마이페이지 비밀번호 확인
+    public Long getPassword(String memberPassword) { return memberDAO.findByPasswordMy(memberPassword); }
+
 }

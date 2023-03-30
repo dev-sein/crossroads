@@ -22,11 +22,18 @@
 		where member_email = #{member_Email}
 	</select>
 
-    <!--이메일 중복체크-->
+    <!--마이페이지 비밀번호 확인-->
     <select id="checkPassword" parameterType="string" resultType="long">
-		select member_password from tbl_member
+		select member_id from tbl_member
 		where member_password = #{memberPassword}
 	</select>
+
+    <!-- 마이페이지 비밀번호 변경 -->
+    <update id="changeNewPassword">
+        update tbl_member
+        set member_password=#{memberPassword}
+        where member_id=#{memberId}
+    </update>
 
     <!--로그인-->
     <select id="login" parameterType="memberVO" resultType="long">
