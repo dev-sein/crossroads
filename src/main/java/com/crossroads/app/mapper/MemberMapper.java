@@ -36,4 +36,8 @@ public interface MemberMapper {
 
     //아이디로 이메일 찾기
     public String selectEmail(String memberIdentification);
+
+    //마이페이지 비밀번호 확인
+    public Long checkPassword(String memberPassword);
+
 }
