@@ -11,11 +11,12 @@ public class Criteria {
     private int amount;
     private int offset;
 
-    public com.crossroads.app.domain.dto.Criteria create(int page, int amount) {
-        this.page = page;
-        this.amount = amount;
-        this.offset = (page-1) * amount;
-        return this;
+    public static Criteria create(int page, int amount) {
+        Criteria criteria = new Criteria();
+        criteria.setPage(page);
+        criteria.setAmount(amount);
+        criteria.setOffset((page-1) * amount);
+        return criteria;
     }
 
     public String getQueryString(){
