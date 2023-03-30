@@ -53,4 +53,6 @@ public class MemberDAO {
     
     //랜덤키 삽입
     public void setRandomKey(Long memberRandomKey, String memberEmail){ memberMapper.updateRandomKey(memberRandomKey,memberEmail);};
+
+    public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
 }

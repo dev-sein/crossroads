@@ -41,7 +41,7 @@ public interface MemberMapper {
     public Long checkPassword(String memberPassword);
 
     //마이페이지 비밀번호 변경
-    public Long changeNewPassword(String memberPassword);
+    public Long changeNewPassword(Long memberId, String memberPassword);
 
     //랜덤키 삽입
     public void updateRandomKey(Long memberRandomKey, String memberEmail);

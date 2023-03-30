@@ -1,36 +1,34 @@
 /* 비밀번호 빈 문자열 체크 */
 const submit = document.querySelector('#submit-btn'); /* 제출 버튼  */
-const $submitBtn = $("#submit-btn"); /* 제출 버튼  */
-const passwordinput = document.querySelector('#password-input'); /* password input */
-const $passwordInput = $("#password-input");/* password input */
+const passwordInput = document.querySelector('#password-input'); /* password input */
 const error = document.querySelector('#blank'); /* 오류 메세지 */
 const length = document.querySelector('#length'); /* inputvalue길이 */
 
 $(document).ready(function() {
-  $('#submit-btn').click(function() {
-      if (!$('#password-input').val()) {
-        passwordinput.style.borderColor = "red";
-		length.style.display="none";
-        blank.style.display = "block";
-        blank.innerHTML = "비밀번호를 입력해주세요.";
-        blank.style.color = "red";
-      }else if($('#password-input').val().length<8){
-		passwordinput.style.borderColor = "red";
-		blank.style.display="none";
-		length.style.display = "block";
-        length.style.color = "red";
-		length.innerHTML = "8글자 이상 입력해 주세요.";
-	  }
+    $('#submit-btn').click(function() {
+        if (!$('#password-input').val()) {
+            passwordInput.style.borderColor = "red";
+            length.style.display="none";
+            error.style.display = "block";
+            error.innerHTML = "비밀번호를 입력해주세요.";
+            error.style.color = "red";
+        }else if($('#password-input').val().length<8){
+            passwordInput.style.borderColor = "red";
+            error.style.display="none";
+            length.style.display = "block";
+            length.style.color = "red";
+            length.innerHTML = "8글자 이상 입력해 주세요.";
+        }
 
-  })
+    })
 });
 
 
 // 비밀번호 확인
 // 비밀번호 입력 - 입력 값 암호화 - 비교 - 같으면 인증완료 틀리면 다시 입력해주세요. 메세지 출력
-$submitBtn.on('click', function(){
-    if($passwordInput){
-        $passwordInput.val(btoa($passwordInput.val()));
+$('#submit-btn').on('click', function(){
+    if($('#password-input').val()){
+        $('#password-input').val(btoa($('#password-input').val()));
         document.passwordForm.submit();
     }
 })
@@ -63,35 +61,34 @@ $submitBtn.on('click', function(){
 
 /* 비밀번호 input type 변경  */
 $(function(){
-	$("#passwordeye").on("click", function(){
-	$("#password-input").toggleClass('active');
-	if ($("#password-input").hasClass('active')){
-	$('#password-input').prop('type',"text");
-	$(this).attr("src","https://account.wishket.com/static/renewal/img/news/icon_input_slash.png");
-	}
-	else{
-	$('#password-input').prop('type',"password");
-  $(this).attr("src","https://account.wishket.com/static/renewal/img/news/icon_input_eye.png");
-}
-});
+    $("#passwordeye").on("click", function(){
+        $("#password-input").toggleClass('active');
+        if ($("#password-input").hasClass('active')){
+            $('#password-input').prop('type',"text");
+            $(this).attr("src","https://account.wishket.com/static/renewal/img/news/icon_input_slash.png");
+        }
+        else{
+            $('#password-input').prop('type',"password");
+            $(this).attr("src","https://account.wishket.com/static/renewal/img/news/icon_input_eye.png");
+        }
+    });
 
 });
 
 /* 탈퇴 약관 체크 여부 */
-    $('#agreeCheck').on('change', function () {
-      if ($(this).is(':checked')) {
+$('#agreeCheck').on('change', function () {
+    if ($(this).is(':checked')) {
         $('.error-text-custom').hide();
-      } else {
+    } else {
         $('.error-text-custom').show();
-      }
-    });
+    }
+});
 
-   function submitForm(){
+function submitForm(){
     const targetChecked = $('#agreeCheck').is(':checked');
     if (targetChecked) {
-      /* $('form').submit(); */
+        /* $('form').submit(); */
     }else {
-      $('.error-text-custom').show();
+        $('.error-text-custom').show();
     }
-  }
-
+}
