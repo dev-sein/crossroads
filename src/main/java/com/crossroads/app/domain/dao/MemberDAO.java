@@ -49,5 +49,5 @@ public class MemberDAO {
     public String findEmailIdByEmail(String memberIdentification){ return memberMapper.selectEmail(memberIdentification);}
 
     //마이페이지 비밀번호 변경
-    public Long setPasswordMy(String memberPassword) { return memberMapper.changeNewPassword(memberPassword); }
+    public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
 }
