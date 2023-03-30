@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -131,17 +130,19 @@ public class AdminController {
 
     //관리자 게시글 목록
     @ResponseBody
-    @PostMapping("boards/list")
-    public Map<String, Object> adminBoardList(@RequestBody String keyword, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+    @PostMapping("boards/list/")
+    public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
         Map<String, Object> result = new HashMap<String, Object>();
+        String keyword = (String) requestData.get("keyword");
+//        String keyword = null;
+        Integer page = (Integer) requestData.get("page") == null ? 0 : (Integer) requestData.get("page");
 
-        if (criteria.getPage() == 0) {
+        if (page == 0 || page == null) {
             criteria = criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
         } else {
-            criteria = criteria.create(criteria.getPage(), 6);
+            criteria = criteria.create(page, 10);
         }
 
-        log.info(criteria.toString());
 
         List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
 

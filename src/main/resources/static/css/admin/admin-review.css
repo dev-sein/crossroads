@@ -430,6 +430,11 @@ span{
     font-weight: 500;
 }
 
+.current {
+    color: #34383a;
+    font-weight: 500;
+}
+
 .board-footer .pagination .page a {
     display: inline-block;
     width: 32px;
@@ -438,9 +443,9 @@ span{
 }
 
 .desktop-only {
-	position: absolute;
+    position: absolute;
     grid-area: d;
-    bottom: 13%;
+    bottom: 17%;
     font-size: 17px;
     margin: 0 0 0px 0px;
     letter-spacing: 9px;
@@ -479,4 +484,8 @@ span{
   color: #212121;
   display: flex;
   vertical-align: top;
+}
+
+.desktop-only * {
+    margin-right: 10px;
 }

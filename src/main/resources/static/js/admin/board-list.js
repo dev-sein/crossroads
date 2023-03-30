@@ -1,12 +1,23 @@
 window.onload = load();
 
 function load() {
+    console.log("들어옴");
+    let keyword = $('#searchbox').html();
     $.ajax({
-        url: "/admins/boards/list",
-        type: "POST",
+        url: "/admins/boards/list/",
+        type: "post",
+        contentType: 'application/json',
+        dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
+        data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
+            "keyword" : keyword,
+            "page" : page
+        }),
         success: function(result) {
             showList(result.boards);
-            showBtn(result.pagination);
+            showPage(result.pagination);
+        },
+        error: function (error) {
+            console.log('Error fetching data:', error);
         }
     })
 };
@@ -43,39 +54,55 @@ function showList(boards){
     $listResults.html(content);
 }
 
-function showBtn(pagination){
+function showPage(pagination){
+    // const $btnResults = $(".desktop-only");
+    // var text = "";
+    // text += `
+    //         <button class="prev-page icon-chevron-left" onclick="location.href='${pagination.startPage} - 1'" disabled="">
+    //             <span class="text-hidden">이전</span>
+    //         </button> `
+    // for (var i = pagination.startPage; i<= pagination.endPage; i++) {
+    //     text += `<a class="pages" href="${pagination.criteria.page}"'>i</a>`;
+    // }
+    //
+    // text += `
+    //         <button class="next-page icon-chevron-right" onclick="location.href='${pagination.endPage} + 1'">
+    //             <span class="text-hidden">다음</span>
+    //         </button>
+    // `
+    // pagination.startPage == 1 ? $('.prev-page').css('visibility', 'hidden') : $('.prev-page').css('visibility', 'visible');
+    // pagination.realEnd == pagination.endPage ? $('.next-page').css('visibility', 'hidden') : $('.next-page').css('visibility', 'visible');
+    // $('.pages').on('click', function(object){
+    //     $('.pages').className("pages");
+    //     $(this).className("pages current");
+    // });
+    //
+    // $btnResults.html(text);
+
+
+
     const $btnResults = $(".desktop-only");
-    var text = "";
-    text += `
-            <button class="prev-page icon-chevron-left" onclick="location.href='${pagination.startPage} - 1'" disabled="">
+    var text = `
+<!--            <button class="prev-page icon-chevron-left" onclick="loadPage(${pagination.startPage - 1})" ${pagination.prev ? '' : 'disabled'}>-->
+            <button class="prev-page icon-chevron-left" onclick="load()" ${pagination.prev ? '' : 'disabled'}>
                 <span class="text-hidden">이전</span>
-            </button> `
-    for (var i = pagination.startPage; i<= pagination.endPage; i++) {
-        text += `<a class="pages" href="${pagination.criteria.page}"'>i</a>`;
+            </button>`;
+    for (let i = pagination.startPage; i <= pagination.endPage; i++) {
+        // text += `<a class="pages ${pagination.currentPage === i ? 'current' : ''}" href="${i}">${i}</a>`;
+        text += `<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" href="" onclick="load()">${i}</a>`;
     }
-
     text += `
-            <button class="next-page icon-chevron-right" onclick="location.href='${pagination.endPage} + 1'">
+<!--            <button class="next-page icon-chevron-right" onclick="loadPage(${pagination.endPage + 1})" ${pagination.next ? '' : 'disabled'} style="position: relative; left: -20px;">-->
+            <button class="next-page icon-chevron-right" onclick="load() " ${pagination.next ? '' : 'disabled'} style="position: relative; left: -20px;">
                 <span class="text-hidden">다음</span>
-            </button>
-    `
-    // if(pagination.startPage == 1){
-    //     $('.prev-page').css('visibility', 'hidden');
-    // } else {
-    //     $('.prev-page').css('visibility', 'visible');
-    // }
-    // if(pagination.realEnd == pagination.endPage) {
-    //     $('.next-page').css('visibility', 'hidden');
-    // } else {
-    //     $('.next-page').css('visibility', 'visible');
-    // }
-    pagination.startPage == 1 ? $('.prev-page').css('visibility', 'hidden') : $('.prev-page').css('visibility', 'visible');
-    pagination.realEnd == pagination.endPage ? $('.next-page').css('visibility', 'hidden') : $('.next-page').css('visibility', 'visible');
-    $('.pages').on('click', function(object){
-        $('.pages').className("pages");
-        $(this).className("pages current");
+            </button>`;
+    $('.pages').on('click', function() {
+        page = $(this).val();
     });
+    $('.prev-page').on('click', function(){page = pagination.startPage - 1});
+    $('.next-page').on('click', function(){page = pagination.endPage + 1});
 
+    console.log(page);
     $btnResults.html(text);
 }
 

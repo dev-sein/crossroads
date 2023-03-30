@@ -43,14 +43,14 @@
         select b.board_id , m.member_name , b.board_title , b.board_content , b.board_register_date
         from tbl_member m join tbl_board b
             on m.member_id = b.member_id
-            <if test="keyword != null">
+            <!--<if test="keyword != null">
                 and
                 <trim prefixOverrides="or">
                     or b.member_name like concat('%', #{keyword}, '%')
                     or b.board_title like concat('%', #{keyword}, '%')
                     or b.board_content like concat('%', #{keyword}, '%')
                 </trim>
-            </if>
+            </if>-->
         order by b.board_id desc
         limit #{criteria.offset}, #{criteria.amount}
     </select>
