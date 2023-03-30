@@ -6,25 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
     <title>신청하기</title>
-    <link rel="stylesheet" href="../../static/css/form/form.css">
-
+    <link rel="stylesheet" href="/css/form/form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../static/font/NotoSansKR-Regular.woff">
-    <link rel="stylesheet" href="../../static/css/components/header.css">
-    <link rel="shortcut icon" href="../../static/images/logo.png">
-    <link rel="shortcut icon" href="../../static/images/components/favicon-logo-white.png">
-
+    <link rel="stylesheet" href="/font/NotoSansKR-Regular.woff">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
 <!-- header 시작-->
-<div th:insert="~{/components/header-main :: header-main}"></div>
+<div th:insert="~{/components/header-client :: header-client}"></div>
 <!-- header 끝 -->
     <div class="gaia">
       <div class="container" style="padding: 10px 0 0 0px;">
@@ -97,6 +92,6 @@
     </div>
 
   </body>
-  <script src="../../static/js/form/form.js"></script>
-  <script src="../../static/js/components/header-client.js"></script>
+  <script src="/js/form/form.js"></script>
+  <script src="/js/components/header-client.js"></script>
 </html>
