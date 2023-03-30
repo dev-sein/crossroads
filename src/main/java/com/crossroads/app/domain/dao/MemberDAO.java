@@ -38,4 +38,8 @@ public class MemberDAO {
     public void deleteById(Long memberId) {
         memberMapper.delete(memberId);
     }
+
+    //비밀번호 변경
+    public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
+
 }
