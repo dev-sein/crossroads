@@ -29,7 +29,7 @@
 	</select>
 
     <!-- 마이페이지 비밀번호 변경 -->
-    <update id="changeNewPassword">
+    <update id="changeNewPassword" >
         update tbl_member
         set member_password=#{memberPassword}
         where member_id=#{memberId}
@@ -47,6 +47,7 @@
         where member_id = #{memberId}
     </select>
 
+    <!-- 마이페이지 정보 변경 -->
     <update id="update">
         update tbl_member
         set member_name=#{memberName}, member_phone=#{memberPhone}, member_email=#{memberEmail}

@@ -82,4 +82,7 @@ public class MemberService {
     //마이페이지 비밀번호 확인
     public Long getPassword(String memberPassword) { return memberDAO.findByPasswordMy(memberPassword); }
 
+    //마이페이지 비밀번호 변경
+    public Long modifyPasswordMy(String memberPassword){ return memberDAO.setPasswordMy(memberPassword); }
+
 }

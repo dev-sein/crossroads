@@ -1,6 +1,21 @@
 // 회원가입 버튼
 const $submitBtn = $("#submit-btn");
+// 비밀번호 변수
+const $passwordInput = $("#password-input");
+// 비밀번호 에러 변수
+let $passwordWarning = $(".pwd .error-text");
 
+// 비밀번호
+const $passwordInput = $("#password-input");
+let $passwordWarning = $(".pwd .error-text");
+const $pwdEye = $(".pwd i");
+let checkPwd = false;
+
+// 비밀번호 확인
+const $passwordCheckInput = $("#password-check");
+let $passwordCheckWarning = $(".re-pwd .error-text");
+const $rePwdEye = $(".re-pwd i");
+let checkRePwd = false;
 
 
 // 아이디 변수
@@ -27,12 +42,6 @@ $idInput.on("blur", function() {
 		$idInput.css("border-color", "#e0e0e0");
 	}
 })
-
-
-// 비밀번호 변수
-const $passwordInput = $("#password-input");
-// 비밀번호 에러 변수
-let $passwordWarning = $(".pwd .error-text");
 
 
 // 비밀번호 정규식 이벤트 사용 및 함수
@@ -67,6 +76,7 @@ $passwordInput.on("blur", function() {
 });
 
 
+//비밀번호 암호화
 $submitBtn.on('click', function(){
 	if($idInput && $passwordInput){
 		$passwordInput.val(btoa($passwordInput.val()));
@@ -112,3 +122,31 @@ $checkbox.on("click", function(){
     }
 });
 
+
+
+
+
+
+// 비밀번호 확인 정규식 이벤트 사용 및 함수
+$passwordCheckInput.on("blur", function() {
+	var $passwordInputValue = $passwordInput.val();
+	var $passwordCheckInputValue = $passwordCheckInput.val();
+
+	if ($passwordCheckInputValue.length < 1) {
+		$passwordCheckWarning.text("비밀번호를 한 번 더 입력해 주세요.");
+		$passwordCheckWarning.css("display", "block");
+		$passwordCheckInput.css("border-color", "#e52929");
+		checkAll[3] = false;
+
+	} else if ($passwordCheckInputValue == $passwordInputValue) {
+		$passwordCheckWarning.css("display", "none");
+		$passwordCheckInput.css("border-color", "#e0e0e0");
+		checkAll[3] = true;
+
+	} else {
+		$passwordCheckWarning.text("동일한 비밀번호를 입력해 주세요.");
+		$passwordCheckWarning.css("display", "block");
+		$passwordCheckInput.css("border-color", "#e52929");
+		checkAll[3] = false;
+	}
+});

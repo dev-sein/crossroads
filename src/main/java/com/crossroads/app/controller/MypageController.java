@@ -106,12 +106,20 @@ public class MypageController {
         return new RedirectView("my-password-change");
     }
 
-//    //마이페이지 비밀번호 변경 확인
+    //마이페이지 비밀번호 변경
     @GetMapping("/my-password-confirm")
-    public String confirmPassword(){
+    public String myPasswordConfirm(){
         return "mypage/my-password-confirm";
     }
 
+    //마이페이지 비밀번호 변경
+    @PostMapping("/my-password-confirm")
+    public RedirectView myPasswordChange(HttpServletRequest request, String memberPassword){
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 8L);
+
+        return new RedirectView("my-main");
+    }
 
 
     //마이페이지 연수신청 목록
