@@ -10,24 +10,13 @@ $('.modal_test').on('click', function() {
     console.log(checkedIds);
         // ?page=${$page}
     $.ajax({
-        url: `/admins/board/delete`,
+        url: `/admins/boards/delete`,
         type: "delete",
         data: {"checkedIds": checkedIds},
         success: function(result){
             // location.href= result;
-            reload();
+            load();
         }
 
     });
 });
-
-function reload() {
-    $.ajax({
-        url: `/admins/board/list?page=${$page}`,
-        type: 'get',
-        data: {"boards": boards},
-        success: function(result){
-            showList(result);
-        }
-    });
-}

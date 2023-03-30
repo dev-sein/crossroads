@@ -1,21 +1,24 @@
-window.onload = function () {
+window.onload = load();
+
+function load() {
     $.ajax({
-        url: "admins/boards/list",
+        url: "/admins/boards/list",
         type: "POST",
         success: function(result) {
-            showList(result)
+            showList(result.boards);
+            showBtn(result.pagination);
         }
-
     })
-}
+};
 
-/*신청 목록*/
-showList();
-function showList(result){
-    const $results = $("#scroll");
-    let text = "";
-    result.boards.forEach(board => {
-        text +=`
+
+/*신청 목록 + 페이지 버튼*/
+function showList(boards){
+    const $listResults = $("#scroll");
+    var content = "";
+    
+    boards.forEach(board => {
+        content +=`
             <div class="content-list__info-container">
                 <div class="content-list__info-unit">
                     <input type="checkbox" class="content__checkbox" id="" name="checkbox" />
@@ -37,27 +40,43 @@ function showList(result){
         `
     });
 
+    $listResults.html(content);
+}
+
+function showBtn(pagination){
+    const $btnResults = $(".desktop-only");
+    var text = "";
+    text += `
+            <button class="prev-page icon-chevron-left" onclick="location.href='${pagination.startPage} - 1'" disabled="">
+                <span class="text-hidden">이전</span>
+            </button> `
+    for (var i = pagination.startPage; i<= pagination.endPage; i++) {
+        text += `<a class="pages" href="${pagination.criteria.page}"'>i</a>`;
+    }
 
     text += `
-        <div class="desktop-only">
-            <!-- 데스크탑용 버튼 -->
-            <button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
-                <span class="text-hidden">이전</span>
-            </button>
-            <!-- 데스크탑용 페이지 리스트 -->
-            <a class="current" href="#" onclick="movePage(1)">1</a>
-            <a href="#" onclick="movePage(2)">2</a>
-            <a href="#" onclick="movePage(3)">3</a>
-            <a href="#" onclick="movePage(4)">4</a>
-            <a href="#" onclick="movePage(5)">5</a>
-            <!-- 데스크탑용 버튼 -->
-            <button class="next-page icon-chevron-right" onclick="movePage(7)">
+            <button class="next-page icon-chevron-right" onclick="location.href='${pagination.endPage} + 1'">
                 <span class="text-hidden">다음</span>
             </button>
-        </div>
     `
-    result.pagination.forEach(pagi)
-    $results.html(text);
+    // if(pagination.startPage == 1){
+    //     $('.prev-page').css('visibility', 'hidden');
+    // } else {
+    //     $('.prev-page').css('visibility', 'visible');
+    // }
+    // if(pagination.realEnd == pagination.endPage) {
+    //     $('.next-page').css('visibility', 'hidden');
+    // } else {
+    //     $('.next-page').css('visibility', 'visible');
+    // }
+    pagination.startPage == 1 ? $('.prev-page').css('visibility', 'hidden') : $('.prev-page').css('visibility', 'visible');
+    pagination.realEnd == pagination.endPage ? $('.next-page').css('visibility', 'hidden') : $('.next-page').css('visibility', 'visible');
+    $('.pages').on('click', function(object){
+        $('.pages').className("pages");
+        $(this).className("pages current");
+    });
+
+    $btnResults.html(text);
 }
 
 

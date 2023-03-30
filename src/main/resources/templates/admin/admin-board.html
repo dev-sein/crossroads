@@ -75,27 +75,27 @@
 <!--			</div>-->
 			<!-- 목록 테스트 추가  -->
 		</div>
-		<div class="desktop-only" th:object="${pagination}">
+		<div class="desktop-only" <!--th:object="${pagination}">-->
 			<!-- 데스크탑용 버튼 -->
-			<a class="prev-page icon-chevron-left" disabled="" th:href="'list?page=' + *{startPage - 1}" th:if="*{prev}">
-				<code>
-					<span class="text-hidden">이전</span>
-				</code>
-			</a>
-			<!-- 데스크탑용 페이지 리스트 -->
-			<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
-				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
-			</th:block>
-			<!-- 데스크탑용 버튼 -->
-			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">
-				<code>
-					<span class="text-hidden">다음</span>
-				</code>
-			</a>
-			<form th:action="@{/admins/board/list}" th:object="${criteria}" name="pageForm">
-				<input type="hidden" th:field="*{page}">
-			</form>
+<!--			<a class="prev-page icon-chevron-left" disabled="" th:href="'list?page=' + *{startPage - 1}" th:if="*{prev}">-->
+<!--				<code>-->
+<!--					<span class="text-hidden">이전</span>-->
+<!--				</code>-->
+<!--			</a>-->
+<!--			&lt;!&ndash; 데스크탑용 페이지 리스트 &ndash;&gt;-->
+<!--			<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">-->
+<!--				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>-->
+<!--				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>-->
+<!--			</th:block>-->
+<!--			&lt;!&ndash; 데스크탑용 버튼 &ndash;&gt;-->
+<!--			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">-->
+<!--				<code>-->
+<!--					<span class="text-hidden">다음</span>-->
+<!--				</code>-->
+<!--			</a>-->
+<!--			<form th:action="@{/admins/board/list}" th:object="${criteria}" name="pageForm">-->
+<!--				<input type="hidden" th:field="*{page}">-->
+<!--			</form>-->
 		</div>
 	</article>
 </main>
@@ -105,7 +105,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-	let boards = [[${boards}]];
+	// let boards = [[${boards}]];
 </script>
 <script src="/js/admin/board-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>
