@@ -37,7 +37,7 @@
                                 <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                                 <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                                 <div class="userid">
-                                <div class="username">seinee114<br></div>
+                                <div class="username" th:text="${members.memberIdentification}"></div>
                             </div>
                         </div>
                     </div>
@@ -113,67 +113,55 @@
                     </div>
                 </div>
                 <!-- sidebar 끝 -->
-            <!-- 본문 -->
-            <div class="gaia">
-                <div class="content-header action">
-                    <h3 class="header-text">포인트 조회
-                        <br>
-                <small class="small-text">나의 잔여 포인트를 확인할 수 있습니다.</small></h3></div>
-                <div class="content-inner">
-
-                     <div class="content-header action report">
-                        <div class="history-body-title">나의 현재 포인트</div>
-                        <div class="history-body-content"><strong>100,000점</strong></div></div>
-                            <br> 
-
-                            <!-- 상세 내역 -->
-                            <div class="drive-subtitle">
-                                <img class="listicon" src="/images/member/list.png">
-                                <h4 class="header-text iconnext">포인트 상세 내역</h4>
-                            </div>
-                        
-                                <!-- 상세내역 표  -->
-                                <table>
+                <!-- 본문 -->
+                <div class="gaia">
+                    <div class="content-header action">
+                        <h3 class="header-text">포인트 조회<br>
+                            <small class="small-text">나의 잔여 포인트를 확인할 수 있습니다.</small>
+                        </h3>
+                    </div>
+                    <div class="content-inner">
+                         <div class="content-header action report">
+                            <div class="history-body-title">나의 현재 포인트</div>
+                            <div class="history-body-content"><strong><span id="points"></span>점</strong></div>
+                         </div>
+                         <br>
+                         <!-- 상세 내역 -->
+                         <div class="drive-subtitle">
+                            <img class="listicon" src="/images/member/list.png">
+                            <h4 class="header-text iconnext">포인트 상세 내역</h4>
+                         </div>
+                         <!-- 상세내역 표  -->
+                         <table>
                             <tr class="tabletitle">
                                 <th class="date">날짜</th>
                                 <th class="status">상태</th>
                                 <th class="point">포인트</th>
                             </tr>
-                            <tr>
-                                <td>2023-03-16</td>
-                                <td class="status-td charge">충전</td>
-                                <td>50,000</td>
-                            </tr></a>
-                            <tr>
-                                <td>2023-03-17</td>
-                                <td class="status-td charge">충전</td>
-                                <td>100,000</td>
+                            <tr th:each="point:${points}">
+                                <td><span th:text="${point.pointUpdateDate}"></span></td>
+                                <td class="status-td charge"><span th:text="${point.pointStatus == 0 ? '충전' : '사용'}"></span></td>
+                                <td><span th:text="${point.pointPoint}"></span></td>
                             </tr>
-                            <tr>
-                                <td>2023-03-17</td>
-                                <td class="status-td exchange">환전</td>
-                                <td>100,000</td>
-                            </tr>
-                            <tr>
-                                <td>2023-03-17</td>
-                                <td class="status-td exchange">환전</td>
-                                <td>50,000</td>
-                            </tr>
-                            <tr>
-                                <td>2023-03-17</td>
-                                <td class="status-td charge">충전</td>
-                                <td>50,000</td>
-                            </tr>
-
-                        </table>
-                </div>
-            </div> <!-- content -->
+                         </table>
+                    </div>
+                </div> <!-- content -->
             </div>
         </div><!--page  -->
     </div> <!-- wrap -->
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+    points = [[${point}]];
+    points = Number(points);
+    // $("#hidden-point").val(points); // 총 포인트
+    // let money = Math.floor(points * 0.9);   // 환전 할때 10% 가져가고 총 포인트의 90% 환전
+    // points = points.toLocaleString();       // ex)1,000,000 ,로 끊어주기
+    $("#points").text(points);
+    // $("#money-amount").text(money.toLocaleString()); // ex)1,000,000 ,로 끊어주기
+    // console.log($("#hidden-point").val());
+</script>
 <script src="/js/mypage/mypage-select.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>

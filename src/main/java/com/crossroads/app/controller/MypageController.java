@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
+import com.crossroads.app.mapper.PointMapper;
 import com.crossroads.app.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class MypageController {
     private final ApplyService applyService;
     private final FreeBoardService freeBoardService;
     private final ReplyService replyService;
+    private final PointService pointService;
 
     //마이페이지 메인
     @GetMapping("/my-main")
@@ -105,8 +107,12 @@ public class MypageController {
 
     //마이페이지 포인트내역
     @GetMapping("/my-point")
-    public String point(){
+    public String point(Model model, HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
 
+//        session.setAttribute("memberId", 1L);
+        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("points", pointService.getListMyPoint(1L));
         return "mypage/my-point";
     }
 
