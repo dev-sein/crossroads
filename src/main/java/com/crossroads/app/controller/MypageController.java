@@ -37,7 +37,7 @@ public class MypageController {
     //마이페이지 메인
     @GetMapping("/my-main")
     public String mypageMain(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(9L));
+        model.addAttribute("members", memberService.getMember(1L));
         return "mypage/my-main";
     }
 
@@ -52,7 +52,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(9L));
+        model.addAttribute("members", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -67,11 +67,12 @@ public class MypageController {
 //        return new RedirectView("/mypage/my-info");
 //    }
 
+
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
         log.info("들어옴");
-        Long memberId = 1L;
+        Long memberId = 9L;
         memberVO = memberService.getMember(memberId);
 
         String memberName = request.getParameter("memberName");
@@ -98,7 +99,7 @@ public class MypageController {
         HttpSession session = request.getSession();
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
-        session.setAttribute("memberId", 9L);
+        session.setAttribute("memberId", 1L);
         if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-confirm");
@@ -115,7 +116,7 @@ public class MypageController {
     //마이페이지 비밀번호 변경
     @PostMapping("/my-password-confirm")
     public RedirectView myPasswordChange(String memberPassword, HttpSession session){
-        session.setAttribute("memberId", 9L);
+        session.setAttribute("memberId", 1L);
         memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
         return new RedirectView("my-main");
     }
@@ -201,12 +202,14 @@ public class MypageController {
     }
 
     /*===========================================모바일=================================================*/
-    // 모바일 마이페이지 메인
+    //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
-    public String myMobile(){
+    public String myMobile(Long memberId, Model model){
+        model.addAttribute("members", memberService.getMember(1L));
         return "mobile/my-mobile";
     }
-    // 모바일 마이페이지 비밀번호 확인
+
+    //모바일 마이페이지 비밀번호 확인
     @GetMapping("/my-mobile-password-check")
     public String myPasswordCheckMobile(){
         return "mobile/my-mobile-password-check";
@@ -217,7 +220,7 @@ public class MypageController {
         HttpSession session = request.getSession();
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
-        session.setAttribute("memberId", 9L);
+        session.setAttribute("memberId", 1L);
         if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-mobile-password-change");
@@ -225,20 +228,34 @@ public class MypageController {
         return new RedirectView("my-mobile-password-check");
     }
 
-    //마이페이지 비밀번호 변경
+    //모바일 마이페이지 비밀번호 변경
     @GetMapping("/my-mobile-password-change")
     public String myPasswordChangeMobile(){
         return "mobile/my-mobile-password-change";
     }
 
-    //마이페이지 비밀번호 변경
+    //모바일 마이페이지 비밀번호 변경
     @PostMapping("/my-mobile-password-change")
     public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
-        session.setAttribute("memberId", 9L);
+        session.setAttribute("memberId", 1L);
         memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
         return new RedirectView("my-mobile");
     }
 
+    @GetMapping("/my-mobile-point")
+    public String myPointMobile(){
+        return "mobile/my-mobile-point";
+    }
+
+    @GetMapping("/my-mobile-apply")
+    public String myApplyMobile(){
+        return "mobile/my-mobile-apply";
+    }
+
+    @GetMapping("/my-mobile-complete-cancel")
+    public String myCompleteCancelMobile(){
+        return "mobile/my-mobile-complete-cancel";
+    }
 
 
 }

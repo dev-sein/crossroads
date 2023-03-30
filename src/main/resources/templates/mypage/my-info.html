@@ -122,12 +122,12 @@
                 <!-- 사이드바 메뉴 -->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu activeblue"><a class="active-text" th:href="@{/my-info}"><span>프로필 정보 설정</span></a></li>
-                        <li><a th:href="@{/my-board}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/my-reply}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{/my-point}"><span>포인트 조회</span></a></li>
-                        <li class><a th:href="@{/my-apply}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a th:href="@{/my-review}"><span>나의 후기</span></a></li>
+                        <li class="sidemenu activeblue"><a class="active-text" th:href="@{/mypages/my-info}"><span>프로필 정보 설정</span></a></li>
+                        <li><a th:href="@{/mypages/my-board}"><span>나의 게시글 보기</span></a></li>
+                        <li><a th:href="@{/mypages/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a th:href="@{/mypages/my-point}"><span>포인트 조회</span></a></li>
+                        <li class><a th:href="@{/mypages/my-apply}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu2"><a th:href="@{/mypages/my-review}"><span>나의 후기</span></a></li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
                 </div>
@@ -149,14 +149,14 @@
                     <div class="account-setting" id="base_show_form">
                         <!--     <form action="/accounts/settings/profile/" class="form-horizontal has-validation-callback"
                                enctype="multipart/form-data" id="base_edit_form" method="POST"> -->
-                        <form id="base_edit_form" method="post"> <!-- JS 테스트 -->
+                        <form action="my-info" id="base_edit_form" method="post"> <!-- JS 테스트 -->
                             <input name="submit_type" type="hidden" value="base">
                             <div class="acoount-setting-row profile-setting-row">
                                 <div class="account-setting-box first">
                                         <span class="account-setting-category">
                                             <span>회원 형태</span>
                                         </span>
-                                    <span th:text="${members.memberType}" class="account-setting-content-fix"></span>
+                                    <span th:text="${members.memberType == 0 ? '초보자' : '베테랑'}" class="account-setting-content-fix"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>

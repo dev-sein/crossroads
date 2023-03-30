@@ -98,7 +98,7 @@ $rePwdEye.on('click', function(){
 
 /* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
 function checkPassword(object){
-	var link = 'my-mobile-password-check.html';
+	var link = 'my-mobile-password-change.html';
 	if(completePwd) {
 		$("object").attr("type", "submit");
 		location.replace(link);
