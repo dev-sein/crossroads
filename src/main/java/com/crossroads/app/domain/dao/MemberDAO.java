@@ -49,10 +49,10 @@ public class MemberDAO {
     public Long findRandomKey(String memberEmail){ return memberMapper.selectRandomKey(memberEmail);}
 
     //마이페이지 비밀번호 변경
-    public Long setPasswordMy(String memberPassword) { return memberMapper.changeNewPassword(memberPassword); }
+    public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
     
     //랜덤키 삽입
     public void setRandomKey(Long memberRandomKey, String memberEmail){ memberMapper.updateRandomKey(memberRandomKey,memberEmail);};
 
-    public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
+
 }

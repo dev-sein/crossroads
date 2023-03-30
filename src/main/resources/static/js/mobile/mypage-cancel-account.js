@@ -32,7 +32,7 @@ function cancelCheck(e) {
     } else {
         $errorMsg.css("display", "none");
         $("e").attr("type", "submit");
-        location.replace('mypage-complete-cancel-mobile.html');
+        location.replace('my-mobile-complete-cancel.html');
     }
 }
 

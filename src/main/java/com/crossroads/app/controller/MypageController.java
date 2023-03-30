@@ -37,7 +37,7 @@ public class MypageController {
     //마이페이지 메인
     @GetMapping("/my-main")
     public String mypageMain(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("members", memberService.getMember(9L));
         return "mypage/my-main";
     }
 
@@ -52,7 +52,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("members", memberService.getMember(9L));
         return "mypage/my-info";
     }
 
@@ -69,14 +69,14 @@ public class MypageController {
 
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
-    public RedirectView myInfoUpdate(HttpServletRequest req, MemberVO memberVO){
+    public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
         log.info("들어옴");
         Long memberId = 1L;
         memberVO = memberService.getMember(memberId);
 
-        String memberName = req.getParameter("memberName");
-        String memberPhone = req.getParameter("memberPhone");
-        String memberEmail = req.getParameter("memberEmail");
+        String memberName = request.getParameter("memberName");
+        String memberPhone = request.getParameter("memberPhone");
+        String memberEmail = request.getParameter("memberEmail");
 
         memberVO.setMemberName(memberName);
         memberVO.setMemberPhone(memberPhone);
@@ -98,7 +98,7 @@ public class MypageController {
         HttpSession session = request.getSession();
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
-        session.setAttribute("memberId", 8L);
+        session.setAttribute("memberId", 9L);
         if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-confirm");
@@ -115,7 +115,7 @@ public class MypageController {
     //마이페이지 비밀번호 변경
     @PostMapping("/my-password-confirm")
     public RedirectView myPasswordChange(String memberPassword, HttpSession session){
-        session.setAttribute("memberId", 8L);
+        session.setAttribute("memberId", 9L);
         memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
         return new RedirectView("my-main");
     }
@@ -198,6 +198,45 @@ public class MypageController {
         HttpSession session = request.getSession();
         session.invalidate();
         return "main/main";
+    }
+
+    /*===========================================모바일=================================================*/
+    // 모바일 마이페이지 메인
+    @GetMapping("/my-mobile")
+    public String myMobile(){
+        return "mobile/my-mobile";
+    }
+    // 모바일 마이페이지 비밀번호 확인
+    @GetMapping("/my-mobile-password-check")
+    public String myPasswordCheckMobile(){
+        return "mobile/my-mobile-password-check";
+    }
+
+    @PostMapping("/my-mobile-password-check")
+    public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+//        Long password = memberService.getPassword(memberPassword);
+//        log.info(password.toString());
+        session.setAttribute("memberId", 9L);
+        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
+            log.info(session.getAttribute("memberId").toString());
+            return new RedirectView("my-mobile-password-change");
+        }
+        return new RedirectView("my-mobile-password-check");
+    }
+
+    //마이페이지 비밀번호 변경
+    @GetMapping("/my-mobile-password-change")
+    public String myPasswordChangeMobile(){
+        return "mobile/my-mobile-password-change";
+    }
+
+    //마이페이지 비밀번호 변경
+    @PostMapping("/my-mobile-password-change")
+    public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
+        session.setAttribute("memberId", 9L);
+        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
+        return new RedirectView("my-mobile");
     }
 
 
