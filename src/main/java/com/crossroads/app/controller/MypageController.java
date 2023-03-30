@@ -96,10 +96,10 @@ public class MypageController {
     @PostMapping("/my-password-change")
     public RedirectView myPasswordCheck(String memberPassword, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Long password = memberService.getPassword(memberPassword);
-        log.info(password.toString());
-        if(password != null){
-            session.setAttribute("memberId", 8L);
+//        Long password = memberService.getPassword(memberPassword);
+//        log.info(password.toString());
+        session.setAttribute("memberId", 8L);
+        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-confirm");
         }
@@ -114,13 +114,11 @@ public class MypageController {
 
     //마이페이지 비밀번호 변경
     @PostMapping("/my-password-confirm")
-    public RedirectView myPasswordChange(HttpServletRequest request, String memberPassword){
-        HttpSession session = request.getSession();
+    public RedirectView myPasswordChange(String memberPassword, HttpSession session){
         session.setAttribute("memberId", 8L);
-
+        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
         return new RedirectView("my-main");
     }
-
 
     //마이페이지 연수신청 목록
     @GetMapping("/my-apply")

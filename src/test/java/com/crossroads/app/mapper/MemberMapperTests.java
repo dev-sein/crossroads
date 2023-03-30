@@ -40,4 +40,16 @@ public class MemberMapperTests {
     @Test
     public void selectEmail(){ log.info(memberMapper.selectEmail("test11234"));}
 
+
+    @Test
+    public void checkPasswordTest(){
+        MemberVO memberVO = memberMapper.select(10L);
+        memberMapper.changeNewPassword("22222222");
+    }
+
+    @Test
+    public void checkPasswordTest2(){
+        MemberVO memberVO = memberMapper.select(8L);
+        memberMapper.checkPassword("asdfasdf12");
+    }
 }
