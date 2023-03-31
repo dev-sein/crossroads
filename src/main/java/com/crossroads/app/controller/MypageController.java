@@ -20,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.Clock;
 import java.util.List;
 
 @Controller
@@ -72,7 +73,7 @@ public class MypageController {
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
         log.info("들어옴");
-        Long memberId = 9L;
+        Long memberId = 1L;
         memberVO = memberService.getMember(memberId);
 
         String memberName = request.getParameter("memberName");
@@ -89,12 +90,12 @@ public class MypageController {
     }
 
     //마이페이지 비밀번호 확인
-    @GetMapping("/my-password-change")
-    public String myPassword(){
-        return "mypage/my-password-change";
+    @GetMapping("/my-password-check")
+    public String myPasswordCheckView(){
+        return "mypage/my-password-check";
     }
 
-    @PostMapping("/my-password-change")
+    @PostMapping("/my-password-check")
     public RedirectView myPasswordCheck(String memberPassword, HttpServletRequest request) {
         HttpSession session = request.getSession();
 //        Long password = memberService.getPassword(memberPassword);
@@ -102,22 +103,25 @@ public class MypageController {
         session.setAttribute("memberId", 1L);
         if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
             log.info(session.getAttribute("memberId").toString());
-            return new RedirectView("my-password-confirm");
+            return new RedirectView("my-password-change");
         }
-        return new RedirectView("my-password-change");
+        return new RedirectView("my-password-check");
     }
 
     //마이페이지 비밀번호 변경
-    @GetMapping("/my-password-confirm")
-    public String myPasswordConfirm(){
-        return "mypage/my-password-confirm";
+    @GetMapping("/my-password-change")
+    public String myPasswordChangeView(){
+        return "mypage/my-password-change";
     }
 
     //마이페이지 비밀번호 변경
-    @PostMapping("/my-password-confirm")
+    @PostMapping("/my-password-change")
+    @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChange(String memberPassword, HttpSession session){
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        log.info(memberPassword);
         session.setAttribute("memberId", 1L);
-        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
+        memberService.modifyPasswordMy(1L, memberPassword);
         return new RedirectView("my-main");
     }
 
@@ -202,45 +206,45 @@ public class MypageController {
     }
 
     /*===========================================모바일=================================================*/
-    //모바일 마이페이지 메인
-    @GetMapping("/my-mobile")
-    public String myMobile(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
-        return "mobile/my-mobile";
-    }
-
-    //모바일 마이페이지 비밀번호 확인
-    @GetMapping("/my-mobile-password-check")
-    public String myPasswordCheckMobile(){
-        return "mobile/my-mobile-password-check";
-    }
-
-    @PostMapping("/my-mobile-password-check")
-    public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-//        Long password = memberService.getPassword(memberPassword);
-//        log.info(password.toString());
-        session.setAttribute("memberId", 1L);
-        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
-            log.info(session.getAttribute("memberId").toString());
-            return new RedirectView("my-mobile-password-change");
-        }
-        return new RedirectView("my-mobile-password-check");
-    }
-
-    //모바일 마이페이지 비밀번호 변경
-    @GetMapping("/my-mobile-password-change")
-    public String myPasswordChangeMobile(){
-        return "mobile/my-mobile-password-change";
-    }
-
-    //모바일 마이페이지 비밀번호 변경
-    @PostMapping("/my-mobile-password-change")
-    public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
-        session.setAttribute("memberId", 1L);
-        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
-        return new RedirectView("my-mobile");
-    }
+//    //모바일 마이페이지 메인
+//    @GetMapping("/my-mobile")
+//    public String myMobile(Long memberId, Model model){
+//        model.addAttribute("members", memberService.getMember(1L));
+//        return "mobile/my-mobile";
+//    }
+//
+//    //모바일 마이페이지 비밀번호 확인
+//    @GetMapping("/my-mobile-password-check")
+//    public String myPasswordCheckMobileView(){
+//        return "mobile/my-mobile-password-check";
+//    }
+//
+//    @PostMapping("/my-mobile-password-check")
+//    public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
+//        HttpSession session = request.getSession();
+////        Long password = memberService.getPassword(memberPassword);
+////        log.info(password.toString());
+//        session.setAttribute("memberId", 1L);
+//        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
+//            log.info(session.getAttribute("memberId").toString());
+//            return new RedirectView("my-mobile-password-change");
+//        }
+//        return new RedirectView("my-mobile-password-check");
+//    }
+//
+//    //모바일 마이페이지 비밀번호 변경
+//    @GetMapping("/my-mobile-password-change")
+//    public String myPasswordChangeMobileView(){
+//        return "mobile/my-mobile-password-change";
+//    }
+//
+//    //모바일 마이페이지 비밀번호 변경
+//    @PostMapping("/my-mobile-password-change")
+//    public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
+//        session.setAttribute("memberId", 1L);
+////        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
+//        return new RedirectView("my-mobile");
+//    }
 
     @GetMapping("/my-mobile-point")
     public String myPointMobile(){

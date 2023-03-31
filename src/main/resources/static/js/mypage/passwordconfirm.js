@@ -1,6 +1,6 @@
 const $passwordEye = $('#passwordeye');
 const $passwordEyeConfirm = $('#passwordeye-confirm');
-const $submit = $('#submit'); /* 제출 버튼  */
+const $submitBtn = $('#submit-button'); /* 제출 버튼  */
 const $passwordInput = $('#password-input');
 const $passwordInputConfirm = $('#password-input-confirm');
 const $error = $('#blank');
@@ -42,18 +42,15 @@ $(function(){
 });
 
 
-/* 비밀번호 빈 문자열 체크 */1``
-
-
 /*비밀번호 에러메세지 출력*/
 $(document).ready(function() {
-    $submit.click(function() {
+    $submitBtn.click(function() {
         if (!$passwordInput.val()) {
             $passwordInput.css("border-color", "red");
             $error.css("display", "block");
             $error.css("color", "red");
             $error.text("새 비밀번호를 입력해주세요.");
-           checkAll[0] = false;
+            checkAll[0] = false;
         }else if($passwordInput.val().length<8){
             $passwordInput.css("border-color", "red");
             $error.css("display", "none");
@@ -71,7 +68,7 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    $submit.click(function() {
+    $submitBtn.click(function() {
         if (!$passwordInputConfirm.val()) {
             $passwordInputConfirm.css("border-color", "red");
             $error2.css("display", "block");
@@ -93,74 +90,99 @@ $(document).ready(function() {
     })
 });
 
-// 비밀번호 확인 정규식 이벤트 사용 및 함수
-// $passwordCheckInput.on("blur", function () {
-//     var $passwordInputValue = $passwordInput.val();
-//     var $passwordCheckInputValue = $passwordCheckInput.val();
-//
-//     if ($passwordCheckInputValue.length < 1) {
-//         $passwordCheckWarning.text("비밀번호를 한 번 더 입력해 주세요.");
-//         $passwordCheckWarning.css("display", "block");
-//         $passwordCheckInput.css("border-color", "#e52929");
-//         checkAll[2] = false;
-//
-//     } else if ($passwordCheckInputValue == $passwordInputValue) {
-//         $passwordCheckWarning.css("display", "none");
-//         $passwordCheckInput.css("border-color", "#e0e0e0");
-//         checkAll[2] = true;
-//
-//     } else {
-//         $passwordCheckWarning.text("동일한 비밀번호를 입력해 주세요.");
-//         $passwordCheckWarning.css("display", "block");
-//         $passwordCheckInput.css("border-color", "#e52929");
-//         checkAll[2] = false;
-//     }
-// });
 
-
-const btnOpenPopup = document.querySelector('#modal-back');
+// const btnOpenPopup = document.querySelector('#modal-back');
 const modal = document.querySelector('#modal-background');
 const closeBtn = modal.querySelector(".finish")
-const closegrayBtn = modal.querySelector("#btn_modal_close")
+// const closegrayBtn = modal.querySelector("#btn_modal_close");
 
+let check = false;
 
 /* 비밀번호 동일 확인 */
-function same() {
+function checkPasswords() {
     var p1 = document.getElementById('password-input').value;
     var p2 = document.getElementById('password-input-confirm').value;
     if( p1 != p2 ) {
         $passwordInputConfirm.css("border-color", "red");
+        $passwordInput.css("border-color", "red");
         $error2.css("display", "block");
         $error2.css("color", "red");
         $error2.text("동일한 비밀번호를 입력해주세요.");
-        checkAll[2] = false;
-    } else{
+        // checkAll[2] = false;
+        check = false;
+    } else if(p1.length < 8){
+        $error.css("display", "block");
+        $error.css("color", "red");
+        $error.text("8자 이상 32자 이하로 입력해 주세요.");
+        $error2.text("8자 이상 32자 이하로 입력해 주세요.");
+        $passwordInput.css("border-color", "red");
+    }
+    else {
+        $error.css("display", "none");
+        $error2.css("color", "green");
+        $error2.text("비밀번호가 일치합니다.");
+        $passwordInputConfirm.css("border-color", "green");
+        $passwordInput.css("border-color", "green");
         // test=(btoa(p1));
         // $passwordInputConfirm.css("border-color", "red");
         // $error2.text(test);
         // $error2.css("display", "block");
-        modal.css("display", "block");
-        modal.css("opcity", "1");
-        modal.css("zIndex", "1000");
-
-        checkAll[2] = true;
+        // 모달 창 띄워주는 부분
+        // $(modal).css("display", "block");
+        // $(modal).css("opcity", "1");
+        // $(modal).css("zIndex", "1000");
+        // checkAll[2] = true;
+        check = true;
+    }
+    if (check){
+        // $submitBtn.attr('type', 'submit');
+        $('#submit-button').attr("class", "btn btn-01 btn-wishket submit-button-ok");
+    } else {
+        $submitBtn.attr('type', 'button');
+        $('#submit-button').attr("class", "btn btn-01 btn-wishket");
     }
 }
-
-btnOpenPopup.addEventListener('click', () => {
-    alert('들어옴');
-    modal.style.display = 'block';
-    modal.style.zIndex = "1000";
-    modal.style.opcity = "1";
+// function changePassword(){
+//     $passwordInput.val(btoa($passwordInput.val()));
+//     $passwordInputConfirm.val(btoa($passwordInputConfirm.val()));
+// }
+$('#submit-button').on('click', function () {
+    if($('#submit-button').attr("class").includes("submit-button-ok")){
+        console.log($('#password-input').val());
+        $('#password-input').val(btoa($('#password-input').val()));
+        console.log($('#password-input').val());
+        $("#password-input-confirm").val(btoa($('#password-input-confirm').val()));
+        document.passwordCheckForm.submit();
+    }
 });
+
+// 비밀번호 변경 활성화
+// $submit.on("click", function () {
+//     // same();
+//     if ($passwordInput.val()) {
+//         console.log()
+//         // document.passwordCheckForm.submit();
+//         $("#passwordForm").submit();
+//     } else {
+//         alert('제출안됨')
+//         // $submit.attr("type", "button");
+//     }
+// });
+
+// btnOpenPopup.addEventListener('click', () => {
+//     alert('들어옴');
+//     modal.style.display = 'block';
+//     modal.style.zIndex = "1000";
+//     modal.style.opcity = "1";
+// });
 
 closeBtn.addEventListener("click", e => {
     modal.style.display = "none"
 });
 
-closegrayBtn.addEventListener("click", e => {
-    modal.style.display = "none"
-});
+// closegrayBtn.addEventListener("click", e => {
+//     modal.style.display = "none"
+// });
 
 modal.addEventListener("click", e => {
     const evTarget = e.target
@@ -169,24 +191,23 @@ modal.addEventListener("click", e => {
     }
 });
 
-// 비밀번호 변경 활성화
 
-$submit.on("click", function () {
-    var flag = false;
-        for (let i = 0; i < checkAll.length; i++) {
-            var check = checkAll[i];
-            if (!check) {
-                flag = true;
-                break;
-        }
-    }
-
-    if (flag) {
-        /*비밀번호 암호화*/
-        $passwordInput.val(btoa($passwordInput.val()));
-        $passwordCheckInput.val(btoa($passwordCheckInput.val()));
-        document.passwordForm.submit();
-    } else {
-        $submit.attr("type", "button");
-    }
-});
+// $submit.on("click", function () {
+//     var flag = false;
+//         for (let i = 0; i < checkAll.length; i++) {
+//             var check = checkAll[i];
+//             if (!check) {
+//                 flag = true;
+//                 break;
+//         }
+//     }
+//
+//     if (flag) {
+//         /*비밀번호 암호화*/
+//         $passwordInput.val(btoa($passwordInput.val()));
+//         $passwordCheckInput.val(btoa($passwordCheckInput.val()));
+//         document.passwordForm.submit();
+//     } else {
+//         $submit.attr("type", "button");
+//     }
+// });
