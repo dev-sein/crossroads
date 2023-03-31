@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>후기 목록</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
@@ -42,82 +41,15 @@
                     후기
                 </div>
                 <!-- 후기 작성 버튼 -->
-                <div class="boardList-count" th:text="${reviews.size()} +'개'"></div>
+                <div class="boardList-count" th:text="${totalCount} + 개"></div>
                 <!-- 후기 작성 버튼 -->
                 <div id="scrollable-content">
-                    <div id="review-list" th:each="review : ${reviews}" class="review">
-
-                        <div class="board-box-wrapper">
-                            <div class="board-box">
-                                <div class="board-box-top">
-                                    <img th:src="@{/img/} + ${review.memberFileSystemName}"
-                                         class="user-profile-image">
-                                    <div class="user-detail-wrapper">
-                                        <div class="user-detail-top">
-                                            <div class="user-type">
-                                                수강생
-                                            </div>
-                                            <span th:text="${review.memberName}"></span><!-- userName여기에 써야함 -->
-                                        </div>
-                                        <div class="user-detail-bottom">
-                                            <div class="star-score-box">
-                                                <div class="review-star" th:attr="data-review-grade=${review.reviewGrade}" style="color: #f8f825;">
-                                                </div>
-                                                <span class="review-score" th:text="${review.reviewGrade}">
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 수정 삭제 버튼 -->
-                                    <div class="update-buttons-wrapper">
-                                        <a href="#" class="buttons-wrapper">
-                                            <div class="update-button">수정</div>
-                                        </a>
-                                        <a href="#" class="buttons-wrapper">
-                                            <div class="delete-button">삭제</div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="board-box-middle">
-                                    <div class="box-middle-inner">
-                                        <a href="" class="middle-title">
-                                            연수 정보
-                                        </a>
-                                        <div class="middle-middle">
-                                            <span class="category-first">연수 지역</span>
-                                            <div class="seperator"></div>
-                                            <span class="category-second" th:text="${review.applyLocation}"></span>
-                                        </div>
-                                        <div class="middle-bottom">
-                                            <span class="detail-title">수강 코스</span>
-                                            <span class="detail-second-value"
-                                                  th:text="${review.applyCourse}">코스</span>
-                                            <div class="seperator"></div>
-                                            <span class="detail-title">수강일</span>
-                                            <span class="detail-third-value" th:text="${review.applyDate}"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="board-box-bottom">
-                                    <div class="bottom-inner">
-                                        <div class="bottom-title" th:text="${review.reviewTitle}">
-                                            함께 해본 소감
-                                            <span class="date" th:text="${review.reviewRegisterDate}"></span>
-                                        </div>
-                                        <div class="bottom-content" th:text="${review.reviewContent}">
-                                        </div>
-                                    </div>
-                                    <div class="image-wrapper">
-                                        <img class="review-image" th:src="@{/uploads/} + ${review.reviewFileSystemName}"
-                                             onclick="showModal()">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div id="review-list">
                     </div>
+
                 </div>
                 <!--후기 목록 th:each문-->
+
             </div>
         </div>
     </div>
@@ -125,10 +57,130 @@
 </main>
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/board/boardList.js"></script>
 <script src="/js/components/header-client.js"></script>
 <script>
-    console.log()
-</script>
+    $(document).ready(function () {
+        let page = 1;
+        const size = 10;
+        let isLoading = false;
+        function loadMoreReviews() {
+            if (isLoading) {
+                return;
+            }
+            isLoading = true;
+            $.ajax({
+                url: '/api/reviews',
+                type: 'GET',
+                data: {
+                    page: page,
+                    size: size
+                },
+                success: function (reviews) {
+                    if (reviews.length > 0) {
+                        appendReviews(reviews);
+                        page += 1;
+                    } else {
+                        isLoading = false;
+                    }
+                },
+                error: function (error) {
+                    console.error("Error fetching reviews:", error);
+                    isLoading = false;
+                },
+                complete: function () {
+                    isLoading = false;
+                }
+            });
+        }
 
+        function renderStars(reviewGrade) {
+            let starString = '';
+            for (let i = 1; i <= 5; i++) {
+                starString += i <= reviewGrade ?
+                    '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star@2x.png" style="width:20px;">' :
+                    '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star_empty@2x.png" style="width:20px;">';
+            }
+            return starString;
+        }
+
+
+        function appendReviews(reviews) {
+            let $reviewList = $("#review-list");
+
+            reviews.forEach(review => {
+                // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
+                let reviewElement = `
+    <div class="review">
+        <div class="board-box-wrapper">
+            <div class="board-box">
+                <div class="board-box-top">
+                    <img src="/img/${review.memberFileSystemName}" class="user-profile-image">
+                    <div class="user-detail-wrapper">
+                        <div class="user-detail-top">
+                            <div class="user-type">수강생</div>
+                            <span>${review.memberName}</span>
+                        </div>
+                        <div class="user-detail-bottom">
+                            <div class="star-score-box">
+                                <div class="review-star" data-review-grade="${review.reviewGrade}" >${renderStars(review.reviewGrade)}</div>
+                                <span class="review-score">${review.reviewGrade}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--수정 삭제 버튼-->
+                <div class="update-buttons-wrapper">
+                <a href="#" class="buttons-wrapper">
+                <div class="update-button">수정</div>
+                </a>
+                <a href="#" class="buttons-wrapper">
+                <div class="delete-button">삭제</div>
+                </a>
+                </div>
+                    <!--수정 삭제 버튼 끝-->
+                </div>
+
+                <div class="board-box-middle">
+                <div class="box-middle-inner">
+                <a href="" class="middle-title">연수 정보</a>
+                <div class="middle-middle">
+                <span class="category-first">연수 지역</span>
+                <div class="seperator"></div>
+                <span class="category-second">${review.applyLocation}</span>
+                </div>
+                <div class="middle-bottom">
+                <span class="detail-title">수강 코스</span>
+                <span class="detail-second-value">${review.applyCourse}</span>
+                <div class="seperator"></div>
+                <span class="detail-title">수강일</span>
+                <span class="detail-third-value">${review.applyDate}</span>
+                </div>
+                </div>
+                </div>
+                <div class="board-box-bottom">
+                <div class="bottom-inner">
+                <div class="bottom-title">${review.reviewTitle}<span class="date">${review.reviewRegisterDate}</span></div>
+                <div class="bottom-content">${review.reviewContent}</div>
+                </div>
+                <div class="image-wrapper">
+                <img class="review-image" src="/uploads/${review.reviewFileSystemName}" onclick="showModal()">
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>`;
+                $reviewList.append(reviewElement);
+                });
+        }
+        // 초기 로드
+        loadMoreReviews();
+        // 스크롤 이벤트 핸들러
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+                loadMoreReviews();
+            }
+        });
+    });
+</script>
 </html>

@@ -1,5 +1,6 @@
 package com.crossroads.app.mapper;
 
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,7 +17,8 @@ public interface ReviewMapper {
     //후기 전체 조회
     public List<ReviewDTO> selectReviewAll();
 
-    public List<ReviewDTO> selectReviewByPage(@Param("start") int start, @Param("end") int end);
+    public List<ReviewDTO> getListReview(ReviewCriteria criteria);
+    public int getTotalCount();
 
     //후기 삭제
     public void delete(Long reviewId);

@@ -3,6 +3,7 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dao.BoardDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import lombok.RequiredArgsConstructor;
@@ -48,13 +49,13 @@ public class FreeBoardService implements BoardService {
     }
 
     @Override
-    public List<ReviewDTO> getListReview() {
+    public List<ReviewDTO> getListReview(ReviewCriteria criteria) {
         return null;
     }
 
     @Override
-    public List<ReviewDTO> getReviewsByPage(int start, int end) {
-        return null;
+    public int getTotalCount() {
+        return 0;
     }
 
     @Override

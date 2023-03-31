@@ -1,5 +1,6 @@
 package com.crossroads.app.domain.dao;
 
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.ReviewMapper;
@@ -23,9 +24,12 @@ public class ReviewDAO {
     public List<ReviewDTO> findAllReview() {
         return reviewMapper.selectReviewAll();
     }
-    // 페이징처리
-    public List<ReviewDTO> findReviewByPage(int start, int end) {
-        return reviewMapper.selectReviewByPage(start, end);
+
+    public List<ReviewDTO> getListReview(ReviewCriteria criteria) {
+        return reviewMapper.getListReview(criteria);
+    }
+    public int getTotalCount() {
+        return reviewMapper.getTotalCount();
     }
 
     // 후기 작성

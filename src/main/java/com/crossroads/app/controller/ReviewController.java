@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.service.ReviewBoardService;
@@ -7,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,10 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.awt.print.Pageable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -68,9 +73,21 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        model.addAttribute("reviews", reviewBoardService.getListReview());
+        ReviewCriteria criteria = new ReviewCriteria(1, 10);
+        int totalCount = reviewBoardService.getTotalCount();
+        model.addAttribute("totalCount", totalCount);
+        model.addAttribute("reviews", reviewBoardService.getListReview(criteria));
+
         return "review/review-list";
     }
+    // 무한스크롤
+    @GetMapping("/api/reviews")
+    public ResponseEntity<List<ReviewDTO>> getReviews(@RequestParam("page") int page, @RequestParam("size") int size) {
+        ReviewCriteria criteria = new ReviewCriteria(page, size);
+        List<ReviewDTO> reviews = reviewBoardService.getListReview(criteria);
+        return new ResponseEntity<>(reviews, HttpStatus.OK);
+    }
+
 
     // 후기 수정
     @GetMapping("/review-update")
