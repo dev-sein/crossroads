@@ -19,8 +19,8 @@ public class FreeBoardService implements BoardService {
     private final ReplyDAO replyDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin(Criteria criteria, String keyword) {
-        List<BoardDTO> boards = boardDAO.findAllAdmin(criteria, keyword);
+    public List<BoardDTO> getListAdmin(Criteria criteria/*, String keyword*/) {
+        List<BoardDTO> boards = boardDAO.findAllAdmin(criteria/*, keyword*/);
 
 //        게시글 별 댓글 수를 boards에 추가
         boards.stream().forEach(board -> board.setReplyCount(replyDAO.findReplyCount(board.getBoardId())));

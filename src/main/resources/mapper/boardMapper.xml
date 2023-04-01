@@ -44,8 +44,7 @@
         from tbl_member m join tbl_board b
             on m.member_id = b.member_id
             <!--<if test="keyword != null">
-                and
-                <trim prefixOverrides="or">
+                <trim prefix="and (" suffix=")" prefixOverrides="or">
                     or b.member_name like concat('%', #{keyword}, '%')
                     or b.board_title like concat('%', #{keyword}, '%')
                     or b.board_content like concat('%', #{keyword}, '%')

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface BoardService {
     //    어드민 게시글 목록
-    public List<BoardDTO> getListAdmin(Criteria criteria, String keyword);
+    public List<BoardDTO> getListAdmin(Criteria criteria/*, String keyword*/);
 
 //    어드민 게시글 총 개수
     public Integer getCountAdmin();
