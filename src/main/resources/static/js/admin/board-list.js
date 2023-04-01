@@ -1,37 +1,17 @@
 let page = 1;
-let keyword = $('#searchbox').val();
-
-window.onload = load();
+let keyword;
+load();
 
 function load() {
-    // keyword = $('#searchbox').val();
-
-    $.ajax({
-        url: `/admin/board/list/${page}`,
-        type: "get",
-        // contentType: 'application/json',
-        // dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-        // data : keyword,
-        success: function(result) {
-            page = page == null || 0 ? 1 : result.pagination.criteria.page;
-            console.log(page);
-            showList(result.boards);
-            showPage(result.pagination);
-        },
-        error: function (error) {
-            console.log('Error fetching data:', error);
-        }
-    })
+    // console.log(keyword);
     // $.ajax({
-    //     url: "/admins/boards/list",
-    //     type: "post",
+    //     url: `/admin/board/list/${page}`,
+    //     type: "get",
     //     contentType: 'application/json',
     //     dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-    //     data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-    //         "keyword" : keyword,
-    //         "page" : page
-    //     }),
+    //     data : keyword,
     //     success: function(result) {
+    //         page = page == null || 0 ? 1 : result.pagination.criteria.page;
     //         showList(result.boards);
     //         showPage(result.pagination);
     //     },
@@ -39,6 +19,25 @@ function load() {
     //         console.log('Error fetching data:', error);
     //     }
     // })
+    $.ajax({
+        url: "/admin/boards/list",
+        type: "post",
+        contentType: 'application/json',
+        dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
+        data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
+            "keyword" : keyword,
+            "page" : page
+        }),
+        success: function(result) {
+            console.log(result.pagination.realEnd);
+            console.log(result.pagination.endPage);
+            showList(result.boards);
+            showPage(result.pagination);
+        },
+        error: function (error) {
+            console.log('Error fetching data:', error);
+        }
+    })
 };
 
 /*신청 목록*/
@@ -77,32 +76,36 @@ function showPage(pagination){
     const $btnResults = $(".desktop-only");
     page = pagination.criteria.page;
     var text = `
-            <button class="prev-page icon-chevron-left current-page" onclick="loadPage(list/${pagination.startPage - 1})" ${pagination.prev ? '' : 'disabled'}>
+            <button class="prev-page icon-chevron-left current-page" data-page="${pagination.startPage - 1}" onclick="findPage(this)" ${pagination.prev ? '' : 'disabled'}>
                 <span class="text-hidden">이전</span>
             </button>`;
     for (let i = pagination.startPage; i <= pagination.endPage; i++) {
-        text += `<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" href="${i}">${i}</a>`;
-        // text += `<!--<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" href="" onclick="load()">${i}</a>-->`;
+        text += `<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" data-page="${i}" onclick="findPage(this)">${i}</a>`;
     }
     text += `
-            <button class="next-page icon-chevron-right" onclick="loadPage(list/${pagination.endPage + 1})" ${pagination.next ? '' : 'disabled'} style="position: relative; left: -20px;">
-<!--            <button class="next-page icon-chevron-right" onclick="load() " ${pagination.next ? '' : 'disabled'} style="position: relative; left: -20px;">-->
+            <button class="next-page icon-chevron-right" data-page="${pagination.endPage + 1}" onclick="findPage(this)" ${pagination.next ? '' : 'disabled'}">
                 <span class="text-hidden">다음</span>
             </button>`;
-    // $('.pages').on('click', function() {
-    //     page = $(this).val();
-    // });
-    $('.prev-page').on('click', function(){page = pagination.startPage - 1});
-    $('.next-page').on('click', function(){page = pagination.endPage + 1});
+
+
 
     $btnResults.html(text);
 }
 
-$()
+function findPage(currentPage) {
+    page = currentPage.dataset.page;
+    page *= 1;
+    // console.log(typeof page);
+    load();
+}
 
+$('.search__searchbox__button').on('click', showKeyword)
 
-
-
+function showKeyword() {
+    keyword = $('#searchbox').val();
+    console.log(keyword);
+    load();
+}
 
 
 

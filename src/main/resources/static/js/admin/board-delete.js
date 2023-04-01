@@ -10,7 +10,7 @@ $('.modal_test').on('click', function() {
     console.log(checkedIds);
         // ?page=${$page}
     $.ajax({
-        url: `/admins/boards/delete`,
+        url: `/admin/boards/delete`,
         type: "delete",
         data: {"checkedIds": checkedIds},
         success: function(result){

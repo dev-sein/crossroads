@@ -128,53 +128,59 @@ public class AdminController {
     }
 
 
-    //관리자 게시글 목록
-    @ResponseBody
-    @GetMapping("board/list/{page}")
-    public Map<String, Object> adminBoardList(@PathVariable(value = "page") int page, /*@PathV String keyword, */Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-        log.info("컨트롤러 들어옴");
-        Map<String, Object> result = new HashMap<String, Object>();
-//        String keyword = (String) requestData.get("keyword");
-//        String keyword = null;
-//        page = page == 0 ? 0 : page;
-
-        if (page == 0) {
-            criteria = criteria.create(page, 6); // 1페이지부터 / 화면에 몇개 보일지
-        } else {
-            criteria = criteria.create(page, 6);
-        }
-
-
-        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria/*, keyword*/);
-
-        result.put("boards", boards);
-        result.put("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
-
-        return result;
-    }
-    //관리자 게시글 목록
+//    //관리자 게시글 목록
 //    @ResponseBody
-//    @PostMapping("boards/list")
-//    public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+//    @GetMapping("board/list/{page}")
+//    public Map<String, Object> adminBoardList(@PathVariable(value = "page") int page, /*@PathV String keyword, */Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+//        log.info("컨트롤러 들어옴");
 //        Map<String, Object> result = new HashMap<String, Object>();
-//        String keyword = (String) requestData.get("keyword");
+////        String keyword = (String) requestData.get("keyword");
 ////        String keyword = null;
-//        Integer page = (Integer) requestData.get("page") == null ? 0 : (Integer) requestData.get("page");
+////        page = page == 0 ? 0 : page;
 //
-//        if (page == 0 || page == null) {
-//            criteria = criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
+//        if (page == 0) {
+//            criteria = criteria.create(page, 6); // 1페이지부터 / 화면에 몇개 보일지
 //        } else {
-//            criteria = criteria.create(page, 10);
+//            criteria = criteria.create(page, 6);
 //        }
 //
 //
-//        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
+//        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria/*, keyword*/);
 //
 //        result.put("boards", boards);
 //        result.put("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
 //
 //        return result;
 //    }
+
+//    관리자 게시글 목록
+    @ResponseBody
+    @PostMapping("boards/list")
+    public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+        log.info("post들어옴");
+
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        log.info("keyword: " + keyword);
+        log.info("page: " + page);
+
+        if (page == 0) {
+            criteria = criteria.create(1, 10); // 1페이지부터 / 화면에 몇개 보일지
+        } else {
+            criteria = criteria.create(page, 10);
+        }
+
+
+        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
+
+        result.put("boards", boards);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
+
+        return result;
+    }
 
 //    관리자 게시글 삭제
     @ResponseBody

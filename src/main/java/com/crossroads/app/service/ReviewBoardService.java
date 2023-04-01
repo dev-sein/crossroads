@@ -17,7 +17,7 @@ public class ReviewBoardService implements BoardService {
     private final ReviewDAO reviewDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin(Criteria criteria/*, String keyword*/) {
+    public List<BoardDTO> getListAdmin(Criteria criteria, String keyword) {
         return null;
     }
 
