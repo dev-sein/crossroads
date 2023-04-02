@@ -35,4 +35,7 @@ public interface ApplyMapper {
 
 //    신청 삭제(취소)
     public void delete(Long applyId);
+
+//    연수 신청
+    public void insertApply(ApplyDTO applyDTO);
 }

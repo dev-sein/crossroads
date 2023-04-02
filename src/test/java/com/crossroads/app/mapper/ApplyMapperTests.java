@@ -74,6 +74,18 @@ public class ApplyMapperTests {
 //        info.put("applyDate","20230326");
 //        log.info(applyMapper.selectList(info).toString());}
 
+    @Test
+    public void applyInsertTest(){
+        ApplyDTO applyDTO = new ApplyDTO();
+        applyDTO.setApplyCourse("B");
+        applyDTO.setApplyDate("20230228");
+        applyDTO.setApplyLocation("강남역");
+       applyDTO.setApplyStatus("0");
+       applyDTO.setStarterMemberId(3L);
+
+        applyMapper.insertApply(applyDTO);
+    }
+
     }
 //    신청 목록 검색 조회
 //    public List<ApplyDTO> selectList(Map<String, Object> info);

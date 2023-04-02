@@ -23,7 +23,7 @@
 </head>
 <body>
 <!-- header 시작-->
-<div th:insert="~{/components/header-main :: header-main}"></div>
+<div th:insert="~{/components/header-client :: header-client}"></div>
 <!-- header 끝 -->
 <div class="gaia">
     <div class="container">
@@ -165,8 +165,9 @@
 
                 <!-- 다음 -->
                 <div class="form-section-footer" style="position: relative">
-                    <button
+                    <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            th:href="@{/formSecond}"
                             name="can_submit"
                             style="pointer-events: none;
                 cursor: default;
@@ -175,15 +176,16 @@
                             onclick="send()"
                     >
                         다음
-                    </button>
-                    <button
+                    </a>
+                    <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            th:href="@{/main}"
                             style="margin: 0px 12px 0 0px;"
                             name="can_submit"
                             type="button"
                     >
                         이전
-                    </button>
+                    </a>
                     <div style="clear: both"></div>
                 </div>
             </div>

@@ -45,4 +45,7 @@ public class ApplyDAO {
     public void deleteById(Long applyId){
         applyMapper.delete(applyId);
     }
+
+//   연수 신청
+    public void addApply(ApplyDTO applyDTO) { applyMapper.insertApply((applyDTO));}
 }
