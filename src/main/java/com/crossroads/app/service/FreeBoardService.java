@@ -7,6 +7,8 @@ import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.ReviewCriteria;
+import com.crossroads.app.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -81,8 +83,33 @@ public class FreeBoardService implements BoardService {
     }
 
     @Override
+    public List<ReviewDTO> getListReview(ReviewCriteria criteria) {
+        return null;
+    }
+
+    @Override
+    public int getTotalCount() {
+        return 0;
+    }
+
+    @Override
     public void save(ReviewDTO reviewDTO) {
 
+    }
+
+    @Override
+    public void updateReview(ReviewDTO reviewDTO) {
+
+    }
+
+    @Override
+    public ReviewVO getReview(Long reviewId) {
+        return null;
+    }
+
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) {
+        return null;
     }
 
     //    마이페이지 리뷰 목록

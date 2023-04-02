@@ -34,36 +34,26 @@ $('.review-image').on('click', function () {
 
 /*별점*/
 $(document).ready(function () {
-    $('.review-star').each(function () {
-        const reviewGrade = parseInt($(this).attr('data-review-grade'));
+    function renderStars(reviewGrade) {
         let starString = '';
-
         for (let i = 1; i <= 5; i++) {
             starString += i <= reviewGrade ? '★' : '☆';
         }
+        return starString;
+    }
 
+    $('.review-star').each(function () {
+        const reviewGrade = parseInt($(this).attr('data-review-grade'));
+        const starString = renderStars(reviewGrade);
         $(this).html(starString);
     });
 });
 
+
+
+
+
 // 무한스크롤
-$(window).scroll(function () {
-    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-        loadMoreReviews();
-    }
-});
-
-function loadMoreReviews() {
-    var page = parseInt($("#page").val());
-    $.post("/review-list/more", { start: (page - 1) * 10 + 1, end: page * 10 }, function (data) {
-        if (data && data.length > 0) {
-            // 게시물 추가 코드 작성 (HTML 구조에 따라 수정해야 할 수 있습니다.)
-            // ...
-            $("#page").val(page + 1);
-        }
-    }, "json");
-}
-
 
 
 

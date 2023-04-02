@@ -2,6 +2,7 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ReviewDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
@@ -29,7 +30,7 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
-//    마이페이지 후기 목록
+    //    마이페이지 후기 목록
     @Override
     public List<ReviewDTO> getListMy(Long memberId, Standards standards) {
         standards.create(getTotalMy());
@@ -40,34 +41,53 @@ public class ReviewBoardService implements BoardService {
     public void remove(List<String> boardIds) {
         boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(reviewDAO::deleteById);
     }
-    public List<BoardDTO> getListAdmin() { return null; }
+
+    public List<BoardDTO> getListAdmin() {
+        return null;
+    }
 
     @Override
     public List<BoardDTO> getList() {
         return null;
     }
-// 후기 게시판 목록
-    @Override
+
+    // 후기 게시판 목록
     public List<ReviewDTO> getListReview() {
         return reviewDAO.findAllReview();
     }
 
     @Override
     public List<ReviewDTO> getReviewsByPage(int start, int end) {
-        return reviewDAO.findReviewByPage(start, end);
+        return null;
     }
+
+    @Override
+    public List<ReviewDTO> getListReview(ReviewCriteria criteria) {
+        return reviewDAO.getListReview(criteria);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return reviewDAO.getTotalCount();
+    }
+
     // 후기 작성
     public void save(ReviewDTO reviewDTO) {
         reviewDAO.save(reviewDTO);
     }
 
 
-//   후기 수정
-    public void modify(ReviewDTO reviewDTO){
-        reviewDAO.setReviewDTO(reviewDTO);
+    //   후기 수정
+    @Override
+    public void updateReview(ReviewDTO reviewDTO) {
+        reviewDAO.updateReview(reviewDTO);
     }
 
-//   마이페이지 게시판 목록
+    @Override
+    public ReviewVO getReview(Long reviewId) {
+        return null;
+    }
+
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) { return null; }
 
@@ -77,9 +97,18 @@ public class ReviewBoardService implements BoardService {
         return reviewDAO.findCountAllMy();
     }
 
+
     //   후기 조회
-    public ReviewVO getReviewById(Long reviewId){
+    public ReviewVO getReviewById(Long reviewId) {
         return reviewDAO.findById(reviewId);
     }
+
+    //   마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) {
+        return null;
+    }
+
+
 }
 
