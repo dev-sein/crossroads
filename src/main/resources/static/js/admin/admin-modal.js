@@ -1,4 +1,6 @@
 const $modalButtons = $(".custom-btn");
+const modalClose = document.querySelector("#close");
+const modalCloseOk = document.querySelector("#edit-button1");
 /* 클릭 이벤트 */
 function show (e) {
   document.querySelector(".background").className = "background show";

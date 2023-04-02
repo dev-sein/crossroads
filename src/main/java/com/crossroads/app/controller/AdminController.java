@@ -64,7 +64,7 @@ public class AdminController {
     @ResponseBody
     @PostMapping("applies/list")
     public List<ApplyDTO> adminApplyList(){
-        return applyService.getList();
+        return null;
     }
 
     //관리자 연수신청 삭제

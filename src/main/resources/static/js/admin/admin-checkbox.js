@@ -1,9 +1,9 @@
 // 전체 선택 체크박스
-// const checkBoxAll = document.getElementsByName("checkbox-all");
-// const checkBox = document.querySelectorAll('input[name = "checkbox"]');
-// const checkBoxChecked = document.querySelectorAll(
-//     'input[name = "checkbox"]:checked'
-// );
+const checkBoxAll = document.getElementsByName("checkbox-all");
+const checkBox = document.querySelectorAll('input[name = "checkbox"]');
+const checkBoxChecked = document.querySelectorAll(
+    'input[name = "checkbox"]:checked'
+);
 
 
 function makeName(e) {

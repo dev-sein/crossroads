@@ -13,7 +13,8 @@ let keyword;
 load();
 
 function load() {
-    // console.log(keyword);
+
+
     // $.ajax({
     //     url: `/admin/board/list/${page}`,
     //     type: "get",
@@ -29,6 +30,8 @@ function load() {
     //         console.log('Error fetching data:', error);
     //     }
     // })
+
+    console.log(page);
     $.ajax({
         url: "/admin/boards/list",
         type: "post",
@@ -84,15 +87,9 @@ function showList(boards){
 
     $listResults.html(text);
 
-    const checkBoxAll = document.getElementsByName("checkbox-all");
-    const checkBox = document.querySelectorAll('input[name = "checkbox"]');
-    const checkBoxChecked = document.querySelectorAll(
-        'input[name = "checkbox"]:checked'
-    );
 
-    const $modalButtons = $(".custom-btn");
-    const modalClose = document.querySelector("#close");
-    const modalCloseOk = document.querySelector("#edit-button1");
+
+
 }
 
 /*페이지 버튼*/

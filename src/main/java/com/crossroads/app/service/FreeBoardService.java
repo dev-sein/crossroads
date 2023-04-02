@@ -37,7 +37,7 @@ public class FreeBoardService implements BoardService {
         if (page == 0) {
             page = 1;
         }
-        criteria.create(page, 6);
+        criteria = criteria.create(page, 6);
 
         List<BoardDTO> boards = boardDAO.findAllAdmin(criteria, keyword);
 
