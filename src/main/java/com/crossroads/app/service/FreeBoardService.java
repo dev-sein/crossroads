@@ -6,6 +6,7 @@ import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -90,10 +91,17 @@ public class FreeBoardService implements BoardService {
         return null;
     }
 
-//    마이페이지 게시판 목록
+    //    마이페이지 게시글 목록
     @Override
-    public List<BoardDTO> getListMyBoard(Long memberId) {
-        return boardDAO.findAllMy(memberId);
+    public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) {//주소의 변동이 없음
+        //getTotalMy
+        standards.create(getTotalMy());
+        return boardDAO.findAllMy(memberId, standards);
+    }
+
+    @Override
+    public int getTotalMy() {
+        return boardDAO.findCountAllMy();
     }
 
 

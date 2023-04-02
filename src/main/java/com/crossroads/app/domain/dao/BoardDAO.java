@@ -2,6 +2,7 @@ package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -39,6 +40,11 @@ public class BoardDAO {
     }
 
     /* 마이페이지 게시글 목록*/
-    public List<BoardDTO> findAllMy(Long memberId) { return boardMapper.selectAllMy(memberId); }
+    public List<BoardDTO> findAllMy(Long memberId, Standards standards) { return boardMapper.selectAllMy(memberId, standards); }
+
+    /* 마이페이지 게시글 페이징 전체 개수 */
+    public int findCountAllMy(){
+        return boardMapper.selectTotalMy();
+    }
 
 }

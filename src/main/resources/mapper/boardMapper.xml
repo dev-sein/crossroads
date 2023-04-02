@@ -49,5 +49,10 @@
         order by b.board_id desc
     </select>
 
+    <!-- 마이페이지 게시글 페이징 전제 개수 -->
+    <select id="selectTotalMy" resultType="int">
+        select count(board_id) from tbl_board
+    </select>
+
 
 </mapper>

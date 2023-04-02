@@ -37,7 +37,7 @@
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
                         <div class="userid">
-                            <div class="username" th:text="${members.memberIdentification}"><br></div>
+                            <div class="username" th:text="${member.memberIdentification}"><br></div>
                         </div>
                     </div>
                 </div>
@@ -124,15 +124,13 @@
               <!--   사이드바 메뉴-->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu"><a th:href="@{/profile-modify}">프로필 정보 설정</a></li>
-                        <li><a th:href="@{/my-board-list}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/my-reply-list}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{/point}"><span>포인트 조회</span></a></li>
-                        <li><a  th:href="@{/classList}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
+                        <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
+                        <li><a  th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
                         <li class="activeblue sidemenu2">
-                            <a class="active-text" th:href="@{/review}">
-                            <span>나의 후기</span>
-                            </a>
+                            <a class="active-text" th:href="@{/mypage/my-review}"><span>나의 후기</span></a>
                         </li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
@@ -155,7 +153,7 @@
                         </div>
                     </div>
                     <!-- 리뷰 목록 시작 -->
-                    <div class="review-box" th:each="review:${reviews}">
+                    <div class="review-box" th:each="review:${review}">
                         <a class="review-modify" href="/store/41">수정</a>
                         <a class="review-delete" href="/store/41">삭제</a>
                         <div class="review-list" >
@@ -176,6 +174,11 @@
                         <div style="clear:both;"></div>
                     </div>
                     <!-- 리뷰 목록 끝 -->
+                    <!-- 페이징 시작 -->
+                    <section>
+
+                    </section>
+                    <!-- 페이징 끝 -->
                 </div><!-- content inner -->
             </div><!-- content -->
         </div> <!-- page inner -->

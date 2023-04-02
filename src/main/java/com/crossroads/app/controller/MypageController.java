@@ -2,6 +2,7 @@ package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.PointMapper;
@@ -24,7 +25,7 @@ import java.time.Clock;
 import java.util.List;
 
 @Controller
-@RequestMapping("/mypages/*")
+@RequestMapping("/mypage/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MypageController {
@@ -38,7 +39,7 @@ public class MypageController {
     //마이페이지 메인
     @GetMapping("/my-main")
     public String mypageMain(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-main";
     }
 
@@ -53,7 +54,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -127,18 +128,22 @@ public class MypageController {
 
     //마이페이지 연수신청 목록
     @GetMapping("/my-apply")
-    public String showListMyApply(){
+    public String showListMyApply(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+//        session.setAttribute("memberId", 1L);
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-apply";
     }
 
     //마이페이지 포인트내역
     @GetMapping("/my-point")
-    public String showListMyPoint(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyPoint(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("points", pointService.getListMyPoint(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("point", pointService.getListMyPoint(1L));
         return "mypage/my-point";
     }
 
@@ -152,28 +157,33 @@ public class MypageController {
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("reviews", reviewBoardService.getListMy(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("review", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
 
     //마이페이지 내가 쓴 게시글 목록
     @GetMapping("/my-board")
-    public String showListMyBoard(Model model, HttpServletRequest request) throws Exception{
+    //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
+    public String showListMyBoard(Model model, HttpServletRequest request, Standards standards){
+        //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
+        //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
+        //standard가 getListMyBoard로 전달됨(service로 이동)
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
+        log.info(standards.toString());
         return "mypage/my-board";
     }
     
     //마이페이지 내가 쓴 댓글 목록
     @GetMapping("/my-reply")
-    public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyReply(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("replies", replyService.getListMyReply(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("reply", replyService.getListMyReply(1L));
         return "mypage/my-reply";
     }
     
@@ -204,6 +214,9 @@ public class MypageController {
         session.invalidate();
         return "main/main";
     }
+
+    //페이징 처리
+
 
     /*===========================================모바일=================================================*/
 //    //모바일 마이페이지 메인

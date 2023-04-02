@@ -3,6 +3,7 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +37,11 @@ public interface BoardService {
     public void save(ReviewDTO reviewDTO);
 
     //    마이페이지 게시글 목록
-    public List<BoardDTO> getListMyBoard(Long memberId);
+    public List<BoardDTO> getListMyBoard(Long memberId, Standards standards);
 
-
+    //마이페이지 게시글 페이징 - 전체 개수
+    public int getTotalMy();
 }
+
+
+

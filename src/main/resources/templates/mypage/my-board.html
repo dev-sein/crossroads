@@ -35,7 +35,7 @@
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
                         <div class="userid">
-                            <div class="username" th:text="${members.memberIdentification}"></div>
+                            <div class="username" th:text="${member.memberIdentification}"></div>
                         </div>
                     </div>
                 </div>
@@ -119,12 +119,12 @@
                 <!-- 사이드바 시작 -->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu"><a th:href="@{/my-info}">프로필 정보 설정</a></li>
-                        <li class="activeblue"><a class="active-text" th:href="@{/my-board}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/my-reply}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{/my-point}"><span>포인트 조회</span></a></li>
-                        <li><a th:href="@{/my-apply}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a class="active-text" th:href="@{/my-review}"><span>나의 후기</span></a></li>
+                        <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
+                        <li class="activeblue"><a class="active-text" th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
+                        <li><a th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu2"><a class="active-text" th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
                 </div>
@@ -143,7 +143,7 @@
                             <div class="process-guide-up-content" style="padding-top: 10px;">
                                 <div style="clear:both;"></div>
                             </div>
-                            <div class="review-box" th:each="board:${boards}">
+                            <div class="review-box" th:each="board:${board}">
                                 <div class="review-list">
                                     <div class="review-content-box" onclick="location.href='http://www.wishket.com'">
                                         <a class="review-name-link" th:text="${board.boardTitle}" >게시글 제목입니다.</a>
@@ -159,6 +159,16 @@
                                     <img class="board-photo" src="/images/mypage/review1.png"></a></div>
                                 <div style="clear:both;"></div>
                             </div>
+                            <section>
+                                <a class="change-page" th:href="@{/mypage/my-board(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
+                                <ul id="paging">
+                                    <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                        <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-board(page=${page})}"><li th:text="${page}"></li></a>
+                                        <li th:unless="${standards.page != page}" th:text="${page}"></li>
+                                    </th:block>
+                                </ul>
+                                <a class="change-page" th:href="@{/mypage/my-board(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
+                            </section>
                         </div>
                     </div> <!-- content -->
                 </div> <!-- page inner -->
