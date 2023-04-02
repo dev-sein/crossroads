@@ -197,3 +197,41 @@ drivePeriod.addEventListener("blur", function(){
     	periodmsg.style.display = "none";
     }
 });
+
+/* 프로필 사진 변경 */
+globalThis.arrayFile2 = new Array();
+globalThis.j = 0;
+const dataTransfer = new DataTransfer();
+$("input[id='profile']").on("change", function() {
+    const $files2 = $("input[id=profile]")[0].files[0];
+    console.log($files2)
+//    파일 객체에 접근함
+    let formData = new FormData();
+    globalThis.arrayFile2.push($files2);
+    // 파일 Array의 file들을 하나씩 담아줌
+    console.log(globalThis.arrayFile2)
+    formData.append("file", $files2)
+    $.ajax({
+        url: "/members/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (uuid) {
+            globalThis.uuid = uuid;
+            console.log(globalThis.uuid)
+
+            $("input[id='profile']")[0].files = dataTransfer.files;
+            let text2 = "";
+            text2 =
+                `
+                    <input type="hidden" name="memberProfileOriginalName" value="${$files2.name}">
+                    <input type="hidden" name="memberProfileUuid" value="${globalThis.uuid}">
+                    <input type="hidden" name="memberProfilePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="memberProfileSize" value="${$files2.size}">
+                    `
+            $("form[name='write-form']").append(text2);
+            console.log(text2);
+        }
+    });
+});

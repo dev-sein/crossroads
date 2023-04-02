@@ -6,12 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>운전 연수 내역</title>
-    <link rel="stylesheet" href="/css/mypage/point.css">
-    <link rel="stylesheet" href="/css/components/header.css">
-    <link rel="stylesheet" href="/css/components/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
+    <link rel="stylesheet" href="/css/mypage/point.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
@@ -99,60 +99,59 @@
                             </form>
                         </div>
                     </div>
+                    <!-- 사이드바 메뉴 -->
+                    <div class="sidebar-nav">
+                        <ul>
+                            <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
+                            <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
+                            <li class="activeblue "><a class="active-text" th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
+                            <li class="sidemenu2"><a class="active-text" th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
+                            <a class="advertisement" id="left_sidebar_advertisement"></a>
+                        </ul>
+                    </div>
                 </div>
-                <!-- 사이드바 메뉴 -->
-                <div class="sidebar-nav">
-                    <ul>
-                        <li class="sidemenu"><a th:href="@{/my-info}">프로필 정보 설정</a></li>
-                        <li><a th:href="@{/my-board}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/my-reply}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{/my-point}"><span>포인트 조회</span></a></li>
-                        <li class="activeblue "><a class="active-text" th:href="@{/my-apply}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a th:href="@{/my-review}"><span>나의 후기</span></a></li>
-                        <a class="advertisement" id="left_sidebar_advertisement"></a>
-                    </ul>
-                </div>
+                <!-- sidebar 끝 -->
+                <!-- 본문 -->
+                <div class="gaia">
+                    <div class="content-header action">
+                        <h3 class="header-text">운전연수 내역<br>
+                            <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
+                        </h3>
+                    </div>
+                    <div class="content-inner">
+                        <!-- 상세 내역 -->
+                        <div class="drive-subtitle">
+                            <img class="listicon" src="/images/member/list.png">
+                            <h4 class="header-text iconnext">운전연수 상세 내역</h4>
+                        </div>
+                        <div class="history-body-title driveclass">
+                            <span>운전연수 신청</span><span><strong>5건&nbsp&nbsp&nbsp</strong></span>
+                            <span>수락 대기중</span><span class="permission"><strong> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
+                            <span>연수 진행중</span><span class="ing"><strong> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
+                            <span>완료한 운전연수</span><span><strong> 3건 </strong></span>
+                        </div>
+                        <!-- 상세내역 표  -->
+                        <table>
+                            <tr class="tabletitle">
+                                <th class="date">날짜</th>
+                                <th class="location">지역</th>
+                                <th class="course">코스</th>
+                                <th class="status">상태</th>
+                            </tr>
+                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+                                <td>2023-03-16</td>
+                                <td>경기도 파주시</td>
+                                <td>A코스</td>
+                                <td>수락 대기중</td></a>
+                            </tr>
+                        </table>
+                    </div>
+                </div> <!-- content -->
             </div>
-            <!-- sidebar 끝 -->
-            <!-- 본문 -->
-            <div class="gaia">
-                <div class="content-header action">
-                    <h3 class="header-text">운전연수 내역<br>
-                        <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
-                    </h3>
-                </div>
-                <div class="content-inner">
-                    <!-- 상세 내역 -->
-                    <div class="drive-subtitle">
-                        <img class="listicon" src="/images/member/list.png">
-                        <h4 class="header-text iconnext">운전연수 상세 내역</h4>
-                    </div>
-                    <div class="history-body-title driveclass">
-                        <span>운전연수 신청</span><span><strong>5건&nbsp&nbsp&nbsp</strong></span>
-                        <span>수락 대기중</span><span class="permission"><strong> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
-                        <span>연수 진행중</span><span class="ing"><strong> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
-                        <span>완료한 운전연수</span><span><strong> 3건 </strong></span>
-                    </div>
-                    <!-- 상세내역 표  -->
-                    <table>
-                        <tr class="tabletitle">
-                            <th class="date">날짜</th>
-                            <th class="location">지역</th>
-                            <th class="course">코스</th>
-                            <th class="status">상태</th>
-                        </tr>
-                        <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
-                            <td>2023-03-16</td>
-                            <td>경기도 파주시</td>
-                            <td>A코스</td>
-                            <td>수락 대기중</td></a>
-                        </tr>
-                    </table>
-                </div>
-            </div> <!-- content -->
         </div>
-    </div>
-</div><!--page  -->
+    </div><!--page  -->
 </div> <!-- wrap -->
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>

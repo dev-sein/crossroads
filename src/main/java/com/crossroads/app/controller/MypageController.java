@@ -24,7 +24,7 @@ import java.time.Clock;
 import java.util.List;
 
 @Controller
-@RequestMapping("/mypages/*")
+@RequestMapping("/mypage/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MypageController {
@@ -38,7 +38,7 @@ public class MypageController {
     //마이페이지 메인
     @GetMapping("/my-main")
     public String mypageMain(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-main";
     }
 
@@ -53,7 +53,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("members", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -127,18 +127,22 @@ public class MypageController {
 
     //마이페이지 연수신청 목록
     @GetMapping("/my-apply")
-    public String showListMyApply(){
+    public String showListMyApply(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+//        session.setAttribute("memberId", 1L);
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-apply";
     }
 
     //마이페이지 포인트내역
     @GetMapping("/my-point")
-    public String showListMyPoint(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyPoint(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("points", pointService.getListMyPoint(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("point", pointService.getListMyPoint(1L));
         return "mypage/my-point";
     }
 
@@ -152,8 +156,8 @@ public class MypageController {
 //        reviewDTO.setMemberId(1L);
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("reviews", reviewBoardService.getListMy(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("review", reviewBoardService.getListMy(1L));
         return "mypage/my-review";
     }
 
@@ -162,8 +166,8 @@ public class MypageController {
     public String showListMyBoard(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("boards", freeBoardService.getListMyBoard(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("board", freeBoardService.getListMyBoard(1L));
         return "mypage/my-board";
     }
     
@@ -172,8 +176,8 @@ public class MypageController {
     public String showListMyReply(Model model, HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("members", memberService.getMember(1L));
-        model.addAttribute("replies", replyService.getListMyReply(1L));
+        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("reply", replyService.getListMyReply(1L));
         return "mypage/my-reply";
     }
     
