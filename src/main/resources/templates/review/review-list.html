@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>후기 목록</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
@@ -17,18 +18,7 @@
 </head>
 <body>
 <div th:insert="~{/components/header-client :: header-client}"></div>
-<!-- 모달 -->
-<div class="modal" style="visibility: hidden;" onclick="closeModal()">
-    <div class="modal-wrapper">
-        <div class="modal-image-wrapper">
-            <div class="inner-wrapper">
-                <img class="modal-image" >
-                <!-- <img src="/img/close.png" id="close-button" onclick="closeModal()"> -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 모달 -->
+
 
 <main>
     <!-- 추가 -->
@@ -53,18 +43,31 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="page" value="1" />
+    <input type="hidden" id="page" value="1"/>
 </main>
 <div th:insert="~{/components/footer :: footer}"></div>
+<!-- 모달 -->
+<div class="modal" style="visibility: hidden;" onclick="closeModal()">
+    <div class="modal-wrapper">
+        <div class="modal-image-wrapper">
+            <div class="inner-wrapper">
+                <img class="modal-image">
+                <!-- <img src="/img/close.png" id="close-button" onclick="closeModal()"> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 모달 -->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/board/boardList.js"></script>
 <script src="/js/components/header-client.js"></script>
+<script src="/js/board/boardList.js"></script>
 <script>
     $(document).ready(function () {
         let page = 1;
         const size = 10;
         let isLoading = false;
+
         function loadMoreReviews() {
             if (isLoading) {
                 return;
@@ -110,8 +113,12 @@
             let $reviewList = $("#review-list");
 
             reviews.forEach(review => {
+                let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
+                let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
                 // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
                 let reviewElement = `
+
+
     <div class="review">
         <div class="board-box-wrapper">
             <div class="board-box">
@@ -164,15 +171,16 @@
                 <div class="bottom-content">${review.reviewContent}</div>
                 </div>
                 <div class="image-wrapper">
-                <img class="review-image" src="/uploads/${review.reviewFileSystemName}" onclick="showModal()">
+                    ${imageElement}
                 </div>
                 </div>
                 </div>
                 </div>
                 </div>`;
                 $reviewList.append(reviewElement);
-                });
+            });
         }
+
         // 초기 로드
         loadMoreReviews();
         // 스크롤 이벤트 핸들러
@@ -181,6 +189,10 @@
                 loadMoreReviews();
             }
         });
+    });
+    // 이벤트 위임을 사용한 클릭 이벤트 바인딩
+    $(document).on('click', '.review-image', function () {
+        $('.modal-image').attr('src', $(this).attr('src'));
     });
 </script>
 </html>

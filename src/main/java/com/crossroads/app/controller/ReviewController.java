@@ -33,7 +33,7 @@ import java.util.UUID;
 @Slf4j
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
-    private static String uploadDir = "C:\\uploads\\";
+    private static String uploadDir = "D:\\uploads\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
@@ -89,21 +89,51 @@ public class ReviewController {
     }
 
 
-    // 후기 수정
+    //후기 수정
     @GetMapping("/review-update")
-    public String showReview(@RequestParam(value = "reviewId") Long reviewId, Model model){
-//        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//        log.info(reviewId.toString());
-//        log.info(reviewBoardService.getReviewById(reviewId).toString());
-        model.addAttribute("info", reviewBoardService.getReviewById(reviewId));
+    public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model) {
+        ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
+        model.addAttribute("info", reviewVO);
         return "review/review-update";
     }
 
-    //후기 수정
-    @PostMapping("/review-update")
-    public String reviewupdate(ReviewVO reviewVO) {
-//        reviewBoardService.
-        return "review/review-update";
+    @PostMapping("/review-update/{reviewId}")
+    public String reviewupdate(@PathVariable("reviewId") Long reviewId,
+                               @ModelAttribute @Validated ReviewDTO reviewDTO, BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes, HttpSession session,
+                               @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
+        if (bindingResult.hasErrors()) {
+            // 유효성 검사 에러가 있을 경우
+            redirectAttributes.addFlashAttribute("errorMessage", "입력값을 확인해주세요.");
+            return "redirect:/review-update/" + reviewId;
+        }
+        reviewDTO.setReviewId(reviewId);
+        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
+        reviewDTO.setMemberId(memberId);
+        if (image != null && !image.isEmpty()) {
+            String originalFileName = image.getOriginalFilename();
+            String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+            String savedFileName = UUID.randomUUID().toString() + fileExtension;
+            Path savePath = Paths.get(uploadDir + savedFileName);
+            Files.copy(image.getInputStream(), savePath);
+            reviewDTO.setReviewFileSystemName(savedFileName);
+        } else {
+            reviewDTO.setReviewFileSystemName(null);
+        }
+        reviewBoardService.updateReview(reviewDTO);
+        return "redirect:/review-list";
+    }
+
+    //후기 수정 화면 이동
+    @GetMapping("/review-update/{reviewId}")
+    public String reviewUpdate(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
+        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
+        ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
+        if (reviewVO == null) {
+            return "redirect:/review-list";
+        }
+        model.addAttribute("info", reviewVO);
+        return "/review/review-update";
     }
 
 

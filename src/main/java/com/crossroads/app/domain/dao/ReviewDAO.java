@@ -38,8 +38,12 @@ public class ReviewDAO {
     }
 
     // 후기 수정
-    public void setReviewDTO(ReviewDTO reviewDTO) {
+    public void updateReview(ReviewDTO reviewDTO) {
         reviewMapper.update(reviewDTO);
+    }
+
+    public ReviewVO getReview(Long reviewId) {
+        return reviewMapper.select(reviewId);
     }
 
     //    후기 삭제

@@ -14,8 +14,6 @@ public class BoardDTO {
     private String boardRegisterDate;
     private String boardUpdateDate;
     private Integer boardReadCount;
-
-    /*memberVO*/
 //    private Long memberId;
     private String memberIdentification;
     private String memberPassword;
@@ -26,10 +24,12 @@ public class BoardDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
-
-//    private PageDTO pageDTO;
-//    private List<BoardDTO> board;
-
+    /*file*/
+    private Long fileId;
+    private String fileOriginalName;
+    private String uuid;
+    private String filePath;
+    private String fileSize;
     /*replyVO*/
     private Integer replyCount;
 }

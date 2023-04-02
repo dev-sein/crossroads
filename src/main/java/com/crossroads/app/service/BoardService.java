@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.vo.ReviewVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +33,14 @@ public interface BoardService {
     //후기 작성
     public void save(ReviewDTO reviewDTO);
 
+    //후기 수정
+   public void updateReview(ReviewDTO reviewDTO);
+   public ReviewVO getReview(Long reviewId);
+
     //    마이페이지 게시글 목록
     public List<BoardDTO> getListMyBoard(Long memberId);
+
+
 
 
 

@@ -28,7 +28,7 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
-//    마이페이지 후기 목록
+    //    마이페이지 후기 목록
     @Override
     public List<ReviewDTO> getListMy(Long memberId) {
         return reviewDAO.findAllMy(memberId);
@@ -38,14 +38,17 @@ public class ReviewBoardService implements BoardService {
     public void remove(List<String> boardIds) {
         boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(reviewDAO::deleteById);
     }
-    public List<BoardDTO> getListAdmin() { return null; }
+
+    public List<BoardDTO> getListAdmin() {
+        return null;
+    }
 
     @Override
     public List<BoardDTO> getList() {
         return null;
     }
 
-// 후기 게시판 목록
+    // 후기 게시판 목록
     public List<ReviewDTO> getListReview() {
         return reviewDAO.findAllReview();
     }
@@ -54,29 +57,39 @@ public class ReviewBoardService implements BoardService {
     public List<ReviewDTO> getListReview(ReviewCriteria criteria) {
         return reviewDAO.getListReview(criteria);
     }
+
     @Override
     public int getTotalCount() {
         return reviewDAO.getTotalCount();
     }
+
     // 후기 작성
     public void save(ReviewDTO reviewDTO) {
         reviewDAO.save(reviewDTO);
     }
 
 
-//   후기 수정
-    public void modify(ReviewDTO reviewDTO){
-        reviewDAO.setReviewDTO(reviewDTO);
+    //   후기 수정
+    @Override
+    public void updateReview(ReviewDTO reviewDTO) {
+        reviewDAO.updateReview(reviewDTO);
     }
 
-//   마이페이지 게시판 목록
     @Override
-    public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
+    public ReviewVO getReview(Long reviewId) {
+        return reviewDAO.getReview(reviewId);
+    }
 
-
-//   후기 조회
-    public ReviewVO getReviewById(Long reviewId){
+    //   후기 조회
+    public ReviewVO getReviewById(Long reviewId) {
         return reviewDAO.findById(reviewId);
+    }
+
+
+    //   마이페이지 게시판 목록
+    @Override
+    public List<BoardDTO> getListMyBoard(Long memberId) {
+        return null;
     }
 
 

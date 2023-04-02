@@ -2,36 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.BoardMapper">
 
-    <!--  PageDTO인지 SearchDTO인지 판별  -->
-<!--    <sql id="searchType">-->
-<!--        <choose>-->
-<!--            <when test="page.IS_SEARCH_DTO">-->
-<!--                <bind name="dto" value="page"/>-->
-<!--            </when>-->
-<!--            <otherwise>-->
-<!--                <bind name="dto" value="page.searchDTO"/>-->
-<!--            </otherwise>-->
-<!--        </choose>-->
-<!--        <include refid="searchContext"/>-->
-<!--    </sql>-->
-    <!--  조건에 맞는 테이블 검색조건  -->
-<!--    <sql id="searchContext">-->
-<!--        where-->
-<!--        <trim prefixOverrides="and">-->
-<!--            <foreach collection="dto.types" item="type">-->
-<!--                <trim prefix="and">-->
-<!--                    <choose>-->
-<!--                        <when test="type == 'memberId'.toString()">-->
-<!--                            member_id = #{dto.memberId}-->
-<!--                        </when>-->
-<!--                        <when test="type == 'keyword'.toString()">-->
-<!--                            review_title like concat('%', #{dto.keyword}, '%')-->
-<!--                        </when>-->
-<!--                    </choose>-->
-<!--                </trim>-->
-<!--            </foreach>-->
-<!--        </trim>-->
-<!--    </sql>-->
     <!-- 어드민 목록 총 개수 -->
     <select id="selectCountAllAdmin" resultType="int">
         select count(board_id)
@@ -66,6 +36,17 @@
         where b.member_id = #{memberId}
         order by b.board_id desc
     </select>
+
+
+    <!--자유 게시글 전체 조회-->
+    <select id="selectAllBoards" resultType="boardDTO">
+  SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
+         M.member_name, F.file_uuid, F.file_path
+  FROM tbl_board B
+  LEFT JOIN tbl_member M ON B.member_id = M.member_id
+  LEFT JOIN tbl_file F ON B.board_id = F.board_id
+  ORDER BY B.board_register_date DESC
+</select>
 
 
 </mapper>
