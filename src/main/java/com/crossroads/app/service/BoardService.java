@@ -6,14 +6,16 @@ import com.crossroads.app.domain.dto.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface BoardService {
     //    어드민 게시글 목록
-    public List<BoardDTO> getListAdmin(Criteria criteria, String keyword);
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria);
+
 
 //    어드민 게시글 총 개수
-    public Integer getCountAdmin();
+    public Integer getCountAdmin(String keyword);
 
     //    마이페이지 리뷰 목록
     public List<ReviewDTO> getListMy(Long memberId);

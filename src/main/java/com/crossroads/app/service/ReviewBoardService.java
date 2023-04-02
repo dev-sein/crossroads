@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Qualifier("board")
@@ -17,12 +18,12 @@ public class ReviewBoardService implements BoardService {
     private final ReviewDAO reviewDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin(Criteria criteria, String keyword) {
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
         return null;
     }
 
     @Override
-    public Integer getCountAdmin() {
+    public Integer getCountAdmin(String keyword) {
         return null;
     }
 

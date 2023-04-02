@@ -54,7 +54,7 @@ public class AdminController {
     }
 
     //관리자 연수신청 목록
-    @GetMapping("applies/list")
+    @GetMapping("apply/list")
     public String adminApply(Model model){
 //        model.addAttribute("applies", applyService.getList());
         return "admin/admin-apply";
@@ -157,29 +157,8 @@ public class AdminController {
     @ResponseBody
     @PostMapping("boards/list")
     public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-        log.info("post들어옴");
 
-        Map<String, Object> result = new HashMap<String, Object>();
-
-        String keyword = (String) requestData.get("keyword");
-        int page = (int) requestData.get("page");
-
-        log.info("keyword: " + keyword);
-        log.info("page: " + page);
-
-        if (page == 0) {
-            criteria = criteria.create(1, 10); // 1페이지부터 / 화면에 몇개 보일지
-        } else {
-            criteria = criteria.create(page, 10);
-        }
-
-
-        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
-
-        result.put("boards", boards);
-        result.put("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
-
-        return result;
+        return freeBoardService.getListAdmin(requestData, criteria);
     }
 
 //    관리자 게시글 삭제

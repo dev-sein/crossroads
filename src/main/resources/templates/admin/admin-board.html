@@ -27,8 +27,8 @@
 	<article class="module--search">
 		<div class="search__searchbox">
 			<form action="" class="search__searchbox__form">
-				<input id="searchbox" type="text" placeholder="원하시는 키워드로 찾아보세요" />
-				<button type="button" class="search__searchbox__button">
+				<input id="searchbox" type="text" placeholder="원하시는 키워드로 찾아보세요"/>
+				<button type="button" class="search__searchbox__button" >
 					<img src="/images/admin/search.png" alt="" />
 				</button>
 			</form>
@@ -55,47 +55,42 @@
 			</div>
 		</div>
 		<div id="scroll">
-<!--			<div class="content-list__info-container">-->
-<!--				<div class="content-list__info-unit">-->
-<!--					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />-->
-<!--					<label for="" class="content__checkbox&#45;&#45;label">-->
-<!--						<ul class="content-list__info">-->
-<!--							<li class="content__id">00030</li>-->
-<!--							<li class="content__user">정세인</li>-->
-<!--							<li class="content__title">꿀팁 공유부탁드려요!</li>-->
-<!--							<li class="content__contents">눈길 운전은 어떻게 하나요?</li>-->
-<!--							<li class="content__date">2023-03-23</li>-->
-<!--							<li class="content__reply">4</li>-->
-<!--							<li class="user__detail" name="userDetail">-->
-<!--								<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</label>-->
-<!--				</div>-->
-<!--			</div>-->
+			<div class="content-list__info-container">
+				<div class="content-list__info-unit">
+					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
+					<label for="" class="content__checkbox--label">
+						<ul class="content-list__info">
+							<li class="content__id"></li>
+							<li class="content__user"></li>
+							<li class="content__title"></li>
+							<li class="content__contents"></li>
+							<li class="content__date"></li>
+							<li class="content__reply"></li>
+							<li class="user__detail" name="userDetail">
+								<button class="custom-btn btn-16 show" id="show"></button>
+							</li>
+						</ul>
+					</label>
+				</div>
+			</div>
 			<!-- 목록 테스트 추가  -->
 		</div>
-		<div class="desktop-only"><!--th:object="${pagination}">-->
-			<!-- 데스크탑용 버튼 -->
-<!--			<a class="prev-page icon-chevron-left" disabled="" th:href="'list?page=' + *{startPage - 1}" th:if="*{prev}">-->
-<!--				<code>-->
-<!--					<span class="text-hidden">이전</span>-->
-<!--				</code>-->
-<!--			</a>-->
-<!--			&lt;!&ndash; 데스크탑용 페이지 리스트 &ndash;&gt;-->
-<!--			<th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">-->
-<!--				<a class="current" th:href="'list?page=' + ${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>-->
-<!--				<code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>-->
-<!--			</th:block>-->
-<!--			&lt;!&ndash; 데스크탑용 버튼 &ndash;&gt;-->
-<!--			<a class="next-page icon-chevron-right" th:href="'list?page=' + *{endPage + 1}" th:if="*{next}">-->
-<!--				<code>-->
-<!--					<span class="text-hidden">다음</span>-->
-<!--				</code>-->
-<!--			</a>-->
-<!--			<form th:action="@{/admins/board/list}" th:object="${criteria}" name="pageForm">-->
-<!--				<input type="hidden" th:field="*{page}">-->
-<!--			</form>-->
+		<div class="desktop-only">
+			<!-- 데스크탑용 이전 버튼 -->
+			<button class="prev-page icon-chevron-left" onclick="movePage(0)" disabled="">
+				<span class="text-hidden"></span>
+			</button>
+			<!-- 데스크탑용 페이지 리스트 -->
+			<a class="">1</a>
+			<a href="#" onclick=""></a>
+			<a href="#" onclick=""></a>
+			<a href="#" onclick=""></a>
+			<a href="#" onclick=""></a>
+			<a href="#" onclick=""></a>
+			<!-- 데스크탑용 다음 버튼 -->
+			<button class="next-page icon-chevron-right" onclick="">
+				<span class="text-hidden"></span>
+			</button>
 		</div>
 	</article>
 </main>
@@ -106,7 +101,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
 	// let page = [[${page}]];
-
 </script>
 <script src="/js/admin/board-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>

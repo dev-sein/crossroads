@@ -1,3 +1,13 @@
+$(document).ready(function() {
+    // 검색창에서 키보드를 눌렀을 때
+    $('.search__searchbox__form').on('keydown', function(e) {
+        if (e.keyCode == 13) { // Enter 키를 눌렀을 때
+            e.preventDefault(); // 기본 이벤트 막기
+        }
+    });
+});
+
+
 let page = 1;
 let keyword;
 load();
@@ -29,10 +39,15 @@ function load() {
             "page" : page
         }),
         success: function(result) {
-            console.log(result.pagination.realEnd);
-            console.log(result.pagination.endPage);
+            // console.log(page);
+            // console.log(keyword);
+            // console.log(result.pagination.realEnd);
+            // console.log(result.pagination.endPage);
+            // console.log(result.pagination.prev);
+            // console.log(result.pagination.next);
             showList(result.boards);
             showPage(result.pagination);
+
         },
         error: function (error) {
             console.log('Error fetching data:', error);
@@ -44,12 +59,11 @@ function load() {
 function showList(boards){
     const $listResults = $("#scroll");
     var text = "";
-
     boards.forEach(board => {
         text +=`
             <div class="content-list__info-container">
                 <div class="content-list__info-unit">
-                    <input type="checkbox" class="content__checkbox" id="" name="checkbox" />
+                    <input type="checkbox" class="content__checkbox" id="" name="checkbox" data-id="${board.boardId}" onclick="makeName(this)"/>
                     <label for="" class="content__checkbox--label">
                         <ul class="content-list__info">
                             <li class="content__id">${board.boardId}</li>
@@ -59,7 +73,7 @@ function showList(boards){
                             <li class="content__date">${board.boardRegisterDate}</li>
                             <li class="content__reply">${board.replyCount}</li>
                             <li class="user__detail" name="userDetail">
-                                <button class="custom-btn btn-16 show">상세 정보</button>
+                                <button class="custom-btn btn-16 show" data-id="${board.boardId}" onclick="show(this)">상세 정보</button>
                             </li>
                         </ul>
                     </label>
@@ -69,6 +83,16 @@ function showList(boards){
     });
 
     $listResults.html(text);
+
+    const checkBoxAll = document.getElementsByName("checkbox-all");
+    const checkBox = document.querySelectorAll('input[name = "checkbox"]');
+    const checkBoxChecked = document.querySelectorAll(
+        'input[name = "checkbox"]:checked'
+    );
+
+    const $modalButtons = $(".custom-btn");
+    const modalClose = document.querySelector("#close");
+    const modalCloseOk = document.querySelector("#edit-button1");
 }
 
 /*페이지 버튼*/
@@ -76,14 +100,14 @@ function showPage(pagination){
     const $btnResults = $(".desktop-only");
     page = pagination.criteria.page;
     var text = `
-            <button class="prev-page icon-chevron-left current-page" data-page="${pagination.startPage - 1}" onclick="findPage(this)" ${pagination.prev ? '' : 'disabled'}>
+            <button class="prev-page icon-chevron-left" data-page="${pagination.startPage - 1}" onclick="findPage(this)" ${pagination.prev ? '' : 'disabled'}>
                 <span class="text-hidden">이전</span>
             </button>`;
     for (let i = pagination.startPage; i <= pagination.endPage; i++) {
         text += `<a class="pages ${pagination.criteria.page === i ? 'current' : ''}" data-page="${i}" onclick="findPage(this)">${i}</a>`;
     }
     text += `
-            <button class="next-page icon-chevron-right" data-page="${pagination.endPage + 1}" onclick="findPage(this)" ${pagination.next ? '' : 'disabled'}">
+            <button class="next-page icon-chevron-right" data-page="${pagination.endPage + 1}" onclick="findPage(this)" ${pagination.next ? '' : 'disabled'}>
                 <span class="text-hidden">다음</span>
             </button>`;
 
@@ -99,13 +123,17 @@ function findPage(currentPage) {
     load();
 }
 
+
 $('.search__searchbox__button').on('click', showKeyword)
+$('#searchbox').on('keyup', showKeyword)
 
 function showKeyword() {
     keyword = $('#searchbox').val();
+    page = 1
     console.log(keyword);
     load();
 }
+
 
 
 
