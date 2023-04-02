@@ -11,8 +11,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Slf4j
 public class FormController {
-    @GetMapping("/formFirst")
-    public String formFirst(){
-        return "form/form-first-test";
-    }
+
 }

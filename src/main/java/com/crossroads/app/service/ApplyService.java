@@ -2,6 +2,7 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.Criteria;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,10 @@ public class ApplyService {
     private final ApplyDAO applyDAO;
 
 //    신청목록 전체조회
-    public List<ApplyDTO> getList() {return applyDAO.findAll();}
+    public List<ApplyDTO> getList(Criteria criteria) {return applyDAO.findAll(criteria);}
 
 //    신청목록 검색조회
-    public List<ApplyDTO> getListSearched(Map<String, Object> info){return applyDAO.findList(info);}
+    public List<ApplyDTO> getListSearched(Criteria criteria, Map<String, Object> info){return applyDAO.findList(criteria, info);}
 
 //    신청 상태 조회
 //    public String getStatus() {}

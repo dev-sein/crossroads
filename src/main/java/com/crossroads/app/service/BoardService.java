@@ -29,6 +29,12 @@ public interface BoardService {
 //    후기 게시글 전체 목록
     public List<ReviewDTO> getListReview();
 
+    //페이징처리
+    public List<ReviewDTO> getReviewsByPage(int start, int end);
+
+    //후기 작성
+    public void save(ReviewDTO reviewDTO);
+
     //    마이페이지 게시글 목록
     public List<BoardDTO> getListMyBoard(Long memberId);
 

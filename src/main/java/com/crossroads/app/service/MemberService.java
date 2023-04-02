@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.MemberDAO;
+import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Member;
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -59,17 +62,43 @@ public class MemberService {
         memberDAO.deleteById(memberId);
     }
 
+    //이메일로 랜덤키 찾기
+    public Long getRandomKey(String memberEmail) { return memberDAO.findRandomKey(memberEmail); }
+
+    //비밀번호 찾기 인증 이메일 발송 서비스
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendMail(MemberVO mail) {
+    public void sendMail(MailTO mailTO) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(mail.getAddress());
-//        message.setFrom(""); from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
-        message.setSubject(mail.getTitle());
-        message.setText(mail.getMessage());
+        message.setTo(mailTO.getAddress());
+//      message.setFrom(""); from 값을 설정하지 않으면 application.yml의 username값이 설정됩니다.
+        message.setSubject(mailTO.getTitle());
+        message.setText(mailTO.getMessage());
 
         mailSender.send(message);
     }
+
+    //로그인-비밀번호 변경
+    public void modifyPassword(String memberEmail, String memberPassword){
+        memberDAO.setPassword(memberEmail, memberPassword);
+    }
+
+    //마이페이지 비밀번호 확인
+    public Long getPassword(String memberPassword) { return memberDAO.findByPasswordMy(memberPassword); }
+
+    //마이페이지 비밀번호 변경
+    public Long modifyPasswordMy(Long memberId ,String memberPassword){ return memberDAO.setPasswordMy(memberId, memberPassword); }
+
+    //랜덤 난수 생성
+    public Long makeRandomKey() {
+        Random rand = new Random();
+        long randomkey = rand.nextLong()+1;
+        return randomkey;
+    }
+
+    //랜덤키 삽입
+    public void setRandomKey(Long memberRandomKey, String memberEmail){ memberDAO.setRandomKey(memberRandomKey,memberEmail);};
+
 
 }

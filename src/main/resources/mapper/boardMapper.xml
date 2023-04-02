@@ -45,7 +45,7 @@
         select b.board_id , m.member_name , b.board_title , b.board_content , b.board_register_date
         from tbl_member m join tbl_board b
         on m.member_id = b.member_id
-        where b.member_id = #{member_id}
+        where b.member_id = #{memberId}
         order by b.board_id desc
     </select>
 

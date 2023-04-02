@@ -2,10 +2,12 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.PointDAO;
+import com.crossroads.app.domain.dto.PointDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -23,4 +25,7 @@ public class PointService {
     public void modifyPoint(Long memberId){
         pointDAO.setPoint(memberId);
     }
+
+//    마이페이지 포인트 내역
+    public List<PointDTO> getListMyPoint(Long memberId) { return pointDAO.findByIdMyPoint(memberId); }
 }

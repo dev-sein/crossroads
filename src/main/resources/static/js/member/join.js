@@ -40,9 +40,13 @@ const $arrow = $(".arrow");
 const $icon = $(".checked-icon");
 let checkbox = false;
 
+
+// 멤버 타입
+const $memberTypeInput = $("#memeberType");
+
+
 // 회원가입 버튼
 const $submitBtn = $("#submit-btn");
-
 
 
 // 이메일 정규식 이벤트 사용 및 함수
@@ -314,6 +318,65 @@ function checkEmail() {
 		}
 	});
 
+
+
+// 파일 첨부 시
+$("#license").on("change", function(e){
+	let reader = new FileReader();
+	reader.readAsDataURL(e.target.files[0]);
+	reader.onload = function (e) {
+		// base64 String으로 이미지 가져오기
+		let img = e.target.result;
+		$.ajax({
+			url: "https://api.ocr.space/parse/image",
+			type: "post",
+			//apikey 작성, base64Image에 base64 String작성, 나머지 노터치
+			data: {apikey: "K83408865188957", base64Image: img, filetype: "jpg", language: "kor", isOverlayRequired: true},
+			success: function(result){
+				console.log(result);
+				//추출된 전체 문자열값에서 줄바꿈문자로 분리하여 12번째 인덱스에 있는 취득 년월일 추출
+				$("#result").html(parseInt(result.ParsedResults[0].ParsedText.split("\r\n")[12].replace(".", "").replace(" ", "")));
+				var registerdate = $('#result').text();
+				/*alert(registerdate); 취득일자를 변수로 받아 취득일자 input value 값 변경*/
+				$('input[name=memberDriveRegisterDate]').attr('value',registerdate);
+				/*$("input[type=text][name=memberDriveRegisterDate]").val(registerdate);*/   // 취득일자
+				/*console.log($("#memberDriveRegisterDate"));
+				$("#memberDriveRegisterDate").text(registerdate);
+				var registerdatee = $('#memberDriveRegisterDate').text();
+				alert(registerdatee);*/
+				console.log(parseInt(registerdate, 10));//취득일자(String)를 int 타입으로 변환
+				var intregisterdate = parseInt(registerdate, 10);
+				/*현재 날짜 계산*/
+				var nowDate = new Date();
+				Date.prototype.YYYYMMDD = function () {
+					var yyyy = this.getFullYear().toString();
+					var MM = pad(this.getMonth() + 1,2);
+					var dd = pad(this.getDate(), 2);
+					return yyyy +  MM + dd;
+				};
+				function pad(number, length) {
+					var str = '' + number;
+					while (str.length < length) {
+						str = '0' + str;
+					}
+					return str;
+				}
+
+				var nowDate = new Date();
+				//console.log(nowDate); Mon Aug 16 2021 19:56:50 GMT+0900 (한국 표준시)
+				console.log(nowDate.YYYYMMDD());
+				var now = nowDate.YYYYMMDD();
+				var year = now - intregisterdate;
+				console.log(year);
+				year > 49999 ? year = 1 : year = 0; //5년 이상이면 1 베테랑, 이하일 경우 0 초보자
+				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
+			}
+		});
+	};
+});
+
+
+
 // 회원가입 버튼 활성화
 	$submitBtn.on("click", function () {
 		var flag = false;
@@ -327,68 +390,13 @@ function checkEmail() {
 			}
 		}
 
-		if (checkbox && !flag) {
+		if (checkbox && flag) {
 			/*비밀번호 암호화*/
 			$passwordInput.val(btoa($passwordInput.val()));
 			$passwordCheckInput.val(btoa($passwordCheckInput.val()));
-
-			$submitBtn.attr("type", "submit");
+			document.joinForm.submit();
 		} else {
 			$submitBtn.attr("type", "button");
 		}
 	});
 
-
-/* 파일 */
-globalThis.arrayFile2 = new Array();
-globalThis.j = 0;
-const dataTransfer = new DataTransfer();
-$("input[id='upload-name']").on("change", function() {
-	const $files2 = $("input[id=upload-name]")[0].files[0];
-	console.log($files2)
-//    파일 객체에 접근함
-	let formData = new FormData();
-	globalThis.arrayFile2.push($files2);
-	// 파일 Array의 file들을 하나씩 담아줌
-	console.log(globalThis.arrayFile2)
-	formData.append("file", $files2)
-	$.ajax({
-		url: "/upload",
-		type: "post",
-		data: formData,
-		contentType: false,
-		processData: false,
-		success: function (uuid) {
-			globalThis.uuid = uuid;
-			console.log(globalThis.uuid)
-
-			$("input[id='upload-name']")[0].files = dataTransfer.files;
-			let text2 = "";
-			text2 =
-				`
-                    <input type="hidden" name="memberProfileOriginalName" value="${$files2.name}">
-                    <input type="hidden" name="memberProfileUuid" value="${globalThis.uuid}">
-                    <input type="hidden" name="memberProfilePath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="memberProfileSize" value="${$files2.size}">
-                    `
-			$("form[name='joinForm']").append(text2);
-			console.log(text2);
-		}
-	});
-});
-
-function leftPad(value) {
-	if (value >= 10) {
-		return value;
-	}
-
-	return `0${value}`;
-}
-
-function toStringByFormatting(source, delimiter = '/') {
-	const year = source.getFullYear();
-	const month = leftPad(source.getMonth() + 1);
-	const day = leftPad(source.getDate());
-
-	return [year, month, day].join(delimiter);
-}

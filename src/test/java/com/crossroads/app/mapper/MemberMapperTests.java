@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Member;
+
 @SpringBootTest
 @Slf4j
 public class MemberMapperTests {
@@ -30,16 +32,24 @@ public class MemberMapperTests {
        log.info(memberMapper.select(1L).toString());
     }
 
-    @Test
+
+/*    @Test
     public void updateTest(){
         MemberVO memberVO = memberMapper.select(1L);
-        memberVO.setMemberName("정세인");
+        memberMapper.changePassword("abc123@gmail.com", "asdf");
+    }*/
 
-        memberMapper.update(memberVO);
+
+    @Test
+    public void getRandomKeyTest(){
+        MemberVO memberVO = new MemberVO();
+        memberMapper.selectRandomKey("seinee114@gmail.com");
     }
 
-
-
-
+    @Test
+    public void changePasswordTest(){
+        MemberVO memberVO = new MemberVO();
+        memberMapper.changePassword("filetest@gmail.com", "passwordtest31");
+    }
 
 }

@@ -2,7 +2,7 @@
 const $passwordInput = $("#password-input");
 // 비밀번호 에러 변수
 let $passwordWarning = $(".pwd .error-text");
-
+const $submitBtn = $("#submit-btn");
 
 // 비밀번호 정규식 이벤트 사용 및 함수
 $passwordInput.on("blur", function() {
@@ -92,3 +92,17 @@ $rePwdEye.on('click', function(){
         checkPwd = false;
     }
 });
+
+
+$submitBtn.on("click", function () {
+	alert('들어옴')
+	var $pwdInput = $('.pwd input');
+	if ($pwdInput.val()) {
+		$passwordInput.val(btoa($passwordInput.val()));
+		$passwordCheckInput.val(btoa($passwordCheckInput.val()));
+		$submitBtn.attr("type", "submit");
+	} else {
+		$submitBtn.attr("type", "button");
+	}
+});
+

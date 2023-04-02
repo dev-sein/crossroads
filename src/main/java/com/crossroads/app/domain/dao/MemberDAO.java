@@ -38,4 +38,21 @@ public class MemberDAO {
     public void deleteById(Long memberId) {
         memberMapper.delete(memberId);
     }
+
+    //비밀번호 변경
+    public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
+
+    //마이페이지 비밀번호 확인
+    public Long findByPasswordMy(String memberPassword) { return memberMapper.checkPassword(memberPassword); }
+
+    //아이디로 랜덤키 찾기
+    public Long findRandomKey(String memberEmail){ return memberMapper.selectRandomKey(memberEmail);}
+
+    //마이페이지 비밀번호 변경
+    public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
+    
+    //랜덤키 삽입
+    public void setRandomKey(Long memberRandomKey, String memberEmail){ memberMapper.updateRandomKey(memberRandomKey,memberEmail);};
+
+
 }

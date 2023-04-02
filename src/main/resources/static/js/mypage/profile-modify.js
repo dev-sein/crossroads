@@ -11,7 +11,16 @@ $(document).ready(function() {
   })
 });
 
+/*모달 창 띄우기*/
+function showModal() {
+    $('.modal').css('visibility', 'visible');
+    document.body.style.overflow = 'hidden';    // 모달창 띄웠을 때 스크롤 막기
+}
 
+function closeModal() {
+    $('.modal').css('visibility', 'hidden');
+    document.body.style.removeProperty('overflow'); // 모달창 끄면 스크롤 원상복구
+}
 
 // 저장하기 버튼 필수 입력 공백 확인 
 const formSubmit = document.querySelector('#base_submit_btn');

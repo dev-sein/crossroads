@@ -1,5 +1,8 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
@@ -13,11 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,20 +35,42 @@ public class MobileController {
 
 
     @GetMapping("list-mobile")
-    public String listMobile(Model model, HttpServletRequest request) throws Exception{
+    public String listMobile(HttpServletRequest request , Criteria criteria, Model model) throws Exception{
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            criteria = criteria.create(criteria.getPage(),5);
+        }
+
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);
-        model.addAttribute("applies", applyService.getList());
+        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
+
+        model.addAttribute("applies", applyService.getList(criteria));
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
         return "mobile/list-mobile";
+    }
+
+    @GetMapping("list-mobiles/{page}")
+    @ResponseBody
+    public List<ApplyDTO> listMobiles(HttpServletRequest request, @PathVariable("page") Integer page, Criteria criteria, Model model) throws Exception{
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            log.info(page.toString());
+            criteria = criteria.create(page,5);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        return applyService.getList(criteria);
     }
 
 
     @GetMapping("list-mobile/search")
     public String listMobileSearch(@RequestParam(value = "applyLocation")String applyLocation,
                                    @RequestParam(value = "applyDate")String applyDate,
-                                   Model model, HttpServletRequest request)
+                                   HttpServletRequest request, Criteria criteria, Model model)
     {
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         log.info(applyLocation);
         log.info(applyDate);
         Map<String, Object> info = new HashMap<>();
@@ -55,9 +82,47 @@ public class MobileController {
         }
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
-        model.addAttribute("applies", applyService.getListSearched(info));
+        model.addAttribute("applyLocation", applyLocation);
+        model.addAttribute("applyDate", applyDate);
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
-        return "mobile/list-mobile";
+        return "mobile/list-mobiles";
+    }
+
+    @GetMapping("list-mobiles/search/{page}")
+    @ResponseBody
+    public Map<String, Object> listMobilesSearch(@RequestParam(value = "applyLocation", required = false) String applyLocation,
+                                                 @RequestParam(value = "applyDate", required = false) String applyDate,
+                                                 @PathVariable(value = "page") Integer page,
+                                                 Model model){
+        log.info("ajax들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        Map<String, Object> result = new HashMap<>(); // return 객체
+        Map<String, Object> info = new HashMap<>(); // date, location값
+
+        Criteria criteria = Criteria.create(page, 5);
+
+        log.info(applyDate);
+        log.info(applyLocation);
+        if (applyDate != null) {
+            info.put("applyDate", applyDate);
+        }
+        if (applyLocation != null) {
+            info.put("applyLocation", applyLocation);
+        }
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            log.info(page.toString());
+            criteria = criteria.create(page,5);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        result.put("info", info);
+        result.put("applies", applyService.getListSearched(criteria, info));
+
+        log.info(info.toString());
+        log.info(result.toString());
+
+        return result;
     }
 
     @PostMapping("list-mobile/change-status")
@@ -107,7 +172,7 @@ public class MobileController {
         return "mobile/login-mobile";
     }
 
-    //   로그인
+    //로그인
     @PostMapping("login-mobile")
     public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -131,4 +196,69 @@ public class MobileController {
         session.invalidate();
         return "redirect:/mobile/list-mobile";
     }
+
+    //비밀번호 찾기 1 - 이메일 인증
+    @GetMapping("find-pwd")
+    public String findPwd() {
+        return "member/find-pwd";
+    }
+
+    @PostMapping("find-pwd")
+    public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
+        if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
+            return new RedirectView("/member/find-pwd?result=fail");
+        }
+
+        Long randomKey = memberService.makeRandomKey();
+
+        //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
+        //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
+        memberService.setRandomKey(randomKey, memberEmail);
+
+        MailTO mailTO = new MailTO();
+        mailTO.setAddress(memberEmail);
+        mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
+        //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
+        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
+        memberService.sendMail(mailTO);
+
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        System.out.print(memberEmail);
+        return new RedirectView("/member/find-pwd-send");
+    }
+
+    //비밀번호 변경
+    @GetMapping("change-pwd")
+    public String changePwd(String memberEmail, Long memberRandomKey){
+        System.out.println(memberRandomKey);
+        System.out.println(memberEmail);
+        memberService.getRandomKey(memberEmail);
+        if(!memberService.getRandomKey(memberEmail).equals(memberRandomKey)){
+            return "/";
+        };
+        memberService.setRandomKey(0L, memberEmail);
+        return "member/change-pwd";
+    }
+
+
+    //비밀번호 변경
+    @PostMapping("change-pwd")
+    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
+        memberService.modifyPassword(memberEmail, memberPassword);
+        return new RedirectView("complete-change");
+    }
+
+    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
+    @GetMapping("find-pwd-send")
+    public RedirectView findPwdSend(String memberEmail, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return new RedirectView("member/find-pwd-send");
+    }
+
+    //비밀번호 변경 완료
+    @GetMapping("complete-change")
+    public String completeChange(){
+        return "member/complete-change";
+    }
+
 }

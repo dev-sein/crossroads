@@ -16,16 +16,5 @@ public class JoinController {
     @Autowired
     private final MemberService memberService;
 
-    @GetMapping("/emailsend")
-    public MemberVO sendTestMail(String email) {
-        MemberVO memberVO = new MemberVO();
-
-        memberVO.setAddress(email);
-        memberVO.setTitle("교차로 님이 발송한 이메일입니다.");
-        memberVO.setMessage("안녕하세요. 반가워요!");
-
-        memberService.sendMail(memberVO);
-        return memberVO;
-    }
 
 }

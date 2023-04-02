@@ -28,8 +28,20 @@
     <!-- 모달 창 -->
     <div class="modal-wrapper" id="modal-wrapper2">
         <div class="modal-content">
-          <p class="modal-message" style="font-size: 30px">10000p 이상부터 환전 가능합니다.</p>
-          <button class="modal-close-btn" id="close-modal-button">확인</button>
+          <p class="modal-message" style="display: block; font-size: 30px; height: fit-content; line-height: 50px;">10000p 이상부터<br>환전 가능합니다.</p>
+            <div class="buttons-wrapper">
+                <button class="modal-close-btn" id="close-modal-button">확인</button>
+            </div>
+        </div>
+      </div>
+    <!-- 모달 창 -->
+    <!-- 모달 창 -->
+    <div class="modal-wrapper" id="modal-wrapper3" th:if="${exchange} == 'ok'" style="display: block">
+        <div class="modal-content" style="height: 35%">
+          <p class="modal-message" style="display: block; font-size: 30px; height: fit-content; line-height: 50px;"><p class="modal-message modal-message2" style="font-weight: bold; color: #2A7DE1; font-size: 30px; top: 25px; position: relative;">환전 완료되었습니다.</p>
+            <div class="buttons-wrapper">
+                <button class="modal-close-btn" id="close-modal-button2">확인</button>
+            </div>
         </div>
       </div>
     <!-- 모달 창 -->
@@ -47,9 +59,9 @@
         </nav>
     </header>
     <div class="header-btn bottom flex between">
-        <div><a href="change-point-mobile.html">환전</a></div>
-        <div><a href="list-mobile.html">홈</a></div>
-        <div><a href="mypage-mobile.html">MY</a> </div>
+        <div><a href="/points/exchange-point-mobile">환전</a></div>
+        <div><a href="/applies/list-mobile">홈</a></div>
+        <div><a href="#">MY</a> </div>
     </div>
     <div class="gaia">
         <div class="container">

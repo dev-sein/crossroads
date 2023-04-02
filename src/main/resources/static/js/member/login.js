@@ -8,10 +8,10 @@ const $idInput = $('.id .input-text');
 // 아이디 에러 변수
 let $idWarning = $("#id-error");
 $idInput.on("blur", function() {
-    var $idInputValue = $idInput.val();
+	var $idInputValue = $idInput.val();
 	var idInputValue = $idInput.val();
 
-    if ($idInputValue.length < 1) {
+	if ($idInputValue.length < 1) {
 		$idWarning.text("아이디를 입력해 주세요.");
 		$idWarning.css("display", "block");
 		$idInput.css("border-color", "#e52929");
@@ -78,17 +78,17 @@ $submitBtn.on('click', function(){
 const $pwdEye = $(".pwd i");
 let checkPwd = false;
 $pwdEye.on('click', function(){
-    var $pwdInput = $('.pwd input');
-    var $pwdImg = $('.pwd img');
-    if (!checkPwd) {
-        $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '/img/icon_input_slash.png');
-        checkPwd = true;
-    } else {
-        $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '/img/icon_input_eye.png');
-        checkPwd = false;
-    }
+	var $pwdInput = $('.pwd input');
+	var $pwdImg = $('.pwd img');
+	if (!checkPwd) {
+		$pwdInput.attr('type', 'text');
+		$pwdImg.attr('src', '/img/icon_input_slash.png');
+		checkPwd = true;
+	} else {
+		$pwdInput.attr('type', 'password');
+		$pwdImg.attr('src', '/img/icon_input_eye.png');
+		checkPwd = false;
+	}
 });
 
 
@@ -99,16 +99,15 @@ const $arrow = $(".arrow");
 const $icon = $(".checked-icon");
 
 $checkbox.on("click", function(){
-    if (!checkbox) {
-        $arrow.css("background", "#3ba3c7");
-        $arrow.css("border-color", "#3ba3c7");
-        $icon.css("stroke-dashoffset", "1");
-        checkbox = true;
-    } else {
-        $arrow.css("background", "#fff");
-        $arrow.css("border-color", "#e0e0e0");
-        $icon.css("stroke-dashoffset", "29.7833385");
-        checkbox = false;
-    }
+	if (!checkbox) {
+		$arrow.css("background", "#3ba3c7");
+		$arrow.css("border-color", "#3ba3c7");
+		$icon.css("stroke-dashoffset", "1");
+		checkbox = true;
+	} else {
+		$arrow.css("background", "#fff");
+		$arrow.css("border-color", "#e0e0e0");
+		$icon.css("stroke-dashoffset", "29.7833385");
+		checkbox = false;
+	}
 });
-

@@ -7,14 +7,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/apply/*")
+@RequestMapping("/applies/*")
 @RequiredArgsConstructor
 @Slf4j
 public class ApplyController {
 
-    @GetMapping("applyForm")
-    public String applyFirst(){
-        return "form/formFirst";
+    @GetMapping("formFirst")
+    public String formFirst(){
+        return "form/form-first-test";
+    }
+
+    @GetMapping("formSecond")
+    public String applySecond(){
+        return "form/formSecond";
+    }
+
+    @GetMapping("findThird")
+    public String formThird() {
+        return "form/formThird";
     }
 
 }
