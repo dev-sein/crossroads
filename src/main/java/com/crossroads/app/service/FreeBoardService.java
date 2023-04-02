@@ -87,7 +87,7 @@ public class FreeBoardService implements BoardService {
 
     //    마이페이지 리뷰 목록
     @Override
-    public List<ReviewDTO> getListMy(Long memberId) {
+    public List<ReviewDTO> getListMy(Long memberId, Standards standards) {
         return null;
     }
 

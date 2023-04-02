@@ -151,6 +151,16 @@
                         </div>
                         <div style="clear:both;"></div>
                     </div>
+                    <section>
+                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
+                        <ul id="paging">
+                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-reply(page=${page})}"><li th:text="${page}"></li></a>
+                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
+                            </th:block>
+                        </ul>
+                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
+                    </section>
                 </div>
             </div>
         </div>

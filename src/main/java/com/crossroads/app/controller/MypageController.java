@@ -149,7 +149,7 @@ public class MypageController {
 
     //마이페이지 후기 전체 조회
     @GetMapping("/my-review")
-    public String showListMyReview(Model model, HttpServletRequest request) throws Exception{
+    public String showListMyReview(Model model, HttpServletRequest request, Standards standards) throws Exception{
         HttpSession session = request.getSession();
 
 //        Long memberId = 1L;
@@ -158,7 +158,7 @@ public class MypageController {
 
 //        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
-        model.addAttribute("review", reviewBoardService.getListMy(1L));
+        model.addAttribute("review", reviewBoardService.getListMy(1L, standards));
         return "mypage/my-review";
     }
 
@@ -179,11 +179,11 @@ public class MypageController {
     
     //마이페이지 내가 쓴 댓글 목록
     @GetMapping("/my-reply")
-    public String showListMyReply(Model model, HttpServletRequest request) {
+    public String showListMyReply(Model model, HttpServletRequest request, Standards standards) {
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
-        model.addAttribute("reply", replyService.getListMyReply(1L));
+        model.addAttribute("reply", replyService.getListMyReply(1L, standards));
         return "mypage/my-reply";
     }
     

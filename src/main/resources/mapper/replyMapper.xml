@@ -7,6 +7,7 @@
         from tbl_reply
         where board_id = #{boardId}
     </select>
+
     <!-- 마이페이지 댓글 목록 -->
     <select id="selectAllMyReply" parameterType="long" resultType="replyDTO">
         select r.reply_id, b.board_id, member_identification, board_title, m.member_id, reply_content, reply_register_date
@@ -34,6 +35,10 @@
         where reply_id = #{replyId}
     </delete>
 
+    <!-- 마이페이지 댓글 페이징 전제 개수 -->
+    <select id="selectTotalMy" resultType="int">
+        select count(reply_id) from tbl_reply
+    </select>
 
 
 </mapper>

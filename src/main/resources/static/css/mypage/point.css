@@ -1531,3 +1531,13 @@ td {
 .error-margin {
     margin-top: 10px;
 }
+
+
+/* 페이징 처리 */
+#paging {
+    display: flex;
+}
+
+.paging-list {
+    margin-right: 5px;
+}

@@ -31,8 +31,9 @@ public class ReviewBoardService implements BoardService {
 
 //    마이페이지 후기 목록
     @Override
-    public List<ReviewDTO> getListMy(Long memberId) {
-        return reviewDAO.findAllMy(memberId);
+    public List<ReviewDTO> getListMy(Long memberId, Standards standards) {
+        standards.create(getTotalMy());
+        return reviewDAO.findAllMy(memberId, standards);
     }
 
     @Override
@@ -70,9 +71,11 @@ public class ReviewBoardService implements BoardService {
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) { return null; }
 
+//    마이페이지 후기 페이징 전체 개수
     @Override
-    public int getTotalMy() { return 0; }
-
+    public int getTotalMy(){
+        return reviewDAO.findCountAllMy();
+    }
 
     //   후기 조회
     public ReviewVO getReviewById(Long reviewId){

@@ -17,11 +17,13 @@ public class Standards {
     private boolean prev, next;
     private int total;
     private int offset;
+
     //total : 쿼리가 필요
     public void create(int total) {
         this.rowCount = 10;/* 한 페이지 게시글 갯수*/
         this.pageCount = 10;/* 페이지 갯수 */
         this.total = total;/* 초기화 */
+//        this.offset = (page - 1) * rowCount;
         this.endPage = (int)(Math.ceil(page / (double)pageCount)) * pageCount;/*마지막 페이지*/
         this.startPage = endPage - pageCount + 1;/*시작 페이지*/
         this.realEnd = (int)(Math.ceil(total / (double)rowCount));

@@ -2,6 +2,7 @@ package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,8 +21,13 @@ public class ReplyDAO {
 
 
 //    마이페이지 후기 전체 조회
-    public List<ReplyDTO> findAllMyReply(Long memberId){
-        return replyMapper.selectAllMyReply(memberId);
+    public List<ReplyDTO> findAllMyReply(Long memberId, Standards standards){
+        return replyMapper.selectAllMyReply(memberId, standards);
+    }
+
+//    마이페이지 게시글 페이징 전체 개수
+    public int findCountAllMy(){
+        return replyMapper.selectTotalMy();
     }
 
 }
