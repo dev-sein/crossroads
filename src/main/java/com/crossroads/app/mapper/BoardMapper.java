@@ -2,6 +2,7 @@ package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,7 +22,10 @@ public interface BoardMapper {
 //    게시글 전체 조회
     public List<BoardDTO> selectAll();
 
-//    관리자 전체 조회
-    public List<BoardDTO> selectAllMy(Long memberId);
+//    마이페이지 게시글 전체 조회
+    public List<BoardDTO> selectAllMy(Long memberId, Standards standards);
+
+//    마이페이지 게시글 페이징 - 전체 개수
+    public int selectTotalMy();
 
 }

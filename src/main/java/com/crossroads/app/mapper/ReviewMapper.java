@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ReviewVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -10,8 +11,10 @@ import java.util.List;
 @Mapper
 public interface ReviewMapper {
     //마이페이지 후기 전체 조회
-    public List<ReviewDTO> selectAll(Long memberId);
+    public List<ReviewDTO> selectAll(Long memberId, Standards standards);
 
+    //마이페이지 게시글 페이징 - 전체 개수
+    public int selectTotalMy();
 
     //후기 전체 조회
     public List<ReviewDTO> selectReviewAll();

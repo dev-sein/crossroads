@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ReviewDTO;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class ReviewDAO {
     private final ReviewMapper reviewMapper;
 
     //    마이페이지 후기 전체 조회
-    public List<ReviewDTO> findAllMy(Long memberId) {
-        return reviewMapper.selectAll(memberId);
+    public List<ReviewDTO> findAllMy(Long memberId, Standards standards) {
+        return reviewMapper.selectAll(memberId, standards);
     }
 
     //    후기 목록 조회
@@ -46,6 +47,11 @@ public class ReviewDAO {
     //  후기 조회
     public ReviewVO findById(Long reviewId){
         return reviewMapper.select(reviewId);
+    }
+
+//    마이페이지 게시글 페이징 전체 개수
+    public int findCountAllMy(){
+        return reviewMapper.selectTotalMy();
     }
 
 

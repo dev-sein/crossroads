@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/css/mypage/point.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
-
 <body>
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <div id="wrap">
@@ -33,7 +32,7 @@
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
                         <div class="userid">
-                            <div class="username" th:text="${members.memberIdentification}" ></div>
+                            <div class="username" th:text="${member.memberIdentification}" ></div>
                         </div>
                     </div>
                 </div>
@@ -115,47 +114,58 @@
                 <!--   사이드바 메뉴-->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu"><a th:href="@{/profile-modify}">프로필 정보 설정</a></li>
-                        <li><a th:href="@{/my-board-list}"><span>나의 게시글 보기</span></a></li>
-                        <li class="activeblue"><a class="active-text" th:href="@{/my-reply-list}"><span>나의 댓글 보기</span></a></li>
-                        <li><a  th:href="@{/point}"><span>포인트 조회</span></a></li>
-                        <li><a  th:href="@{/classList}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a th:href="@{/point}"><span>나의 후기</span></a></li>
+                        <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
+                        <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                        <li class="activeblue"><a class="active-text" th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a  th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
+                        <li><a  th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu2"><a th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
                 </div>
-            </div> <!-- sidebar 끝-->
-            <div class="gaia">
-                <div class="content-header action">
-                    <h3 class="header-text">내가 쓴 댓글<br>
-                        <small class="small-text">내가 작성한 댓글을 확인할 수 있습니다.</small>
-                    </h3>
-                </div>
-                <div class="content-inner">
-                    <div class="process-guide-box" style="margin-bottom: 10px;">
-                        <div class="process-guide-up">
-                            <div class="process-guide-up-content" style="padding-top: 10px;">
-                                <div style="clear:both;"></div>
-                            </div>
+            </div>
+        </div> <!-- sidebar 끝-->
+        <div class="gaia">
+            <div class="content-header action">
+                <h3 class="header-text">내가 쓴 댓글<br>
+                    <small class="small-text">내가 작성한 댓글을 확인할 수 있습니다.</small>
+                </h3>
+            </div>
+            <div class="content-inner">
+                <div class="process-guide-box" style="margin-bottom: 10px;">
+                    <div class="process-guide-up">
+                        <div class="process-guide-up-content" style="padding-top: 10px;">
                             <div style="clear:both;"></div>
                         </div>
-                        <div class="review-box" th:each="reply:${replies}" >
-                            <div class="review-list">
-                                <div class="review-content-box">
-                                    <p class="pcontent">
-                                        <span class="review-location" th:text="${reply.boardTitle}" >게시글 제목</span>
-                                        <span class="base-info-splitter">|</span>
-                                        <span class="review-date" th:text="${reply.replyRegisterDate}" >댓글 작성 날짜</span>
-                                    <p class="review-description-text" th:text="${reply.replyContent}" >댓글 내용</p>
-                                </div>
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
+                        <div style="clear:both;"></div>
                     </div>
+                    <div class="review-box" th:each="reply:${reply}" >
+                        <div class="review-list">
+                            <div class="review-content-box">
+                                <p class="pcontent">
+                                    <span class="review-location" th:text="${reply.boardTitle}" >게시글 제목</span>
+                                    <span class="base-info-splitter">|</span>
+                                    <span class="review-date" th:text="${reply.replyRegisterDate}" >댓글 작성 날짜</span>
+                                <p class="review-description-text" th:text="${reply.replyContent}" >댓글 내용</p>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <section>
+                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
+                        <ul id="paging">
+                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-reply(page=${page})}"><li th:text="${page}"></li></a>
+                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
+                            </th:block>
+                        </ul>
+                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
+                    </section>
                 </div>
             </div>
-        </div> <!-- content -->
-    </div> <!-- page inner -->
+        </div>
+    </div> <!-- content -->
+</div> <!-- page inner -->
 </div> <!-- page -->
 </div>
 <div th:insert="~{/components/footer :: footer}"></div>

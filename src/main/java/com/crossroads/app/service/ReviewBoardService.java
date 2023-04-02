@@ -4,6 +4,7 @@ import com.crossroads.app.domain.dao.ReviewDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,8 +31,9 @@ public class ReviewBoardService implements BoardService {
 
 //    마이페이지 후기 목록
     @Override
-    public List<ReviewDTO> getListMy(Long memberId) {
-        return reviewDAO.findAllMy(memberId);
+    public List<ReviewDTO> getListMy(Long memberId, Standards standards) {
+        standards.create(getTotalMy());
+        return reviewDAO.findAllMy(memberId, standards);
     }
 
     @Override
@@ -67,10 +69,15 @@ public class ReviewBoardService implements BoardService {
 
 //   마이페이지 게시판 목록
     @Override
-    public List<BoardDTO> getListMyBoard(Long memberId) { return null; }
+    public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) { return null; }
 
+//    마이페이지 후기 페이징 전체 개수
+    @Override
+    public int getTotalMy(){
+        return reviewDAO.findCountAllMy();
+    }
 
-//   후기 조회
+    //   후기 조회
     public ReviewVO getReviewById(Long reviewId){
         return reviewDAO.findById(reviewId);
     }

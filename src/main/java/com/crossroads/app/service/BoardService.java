@@ -3,6 +3,7 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,23 +11,22 @@ import java.util.Map;
 
 @Service
 public interface BoardService {
-    //    어드민 게시글 목록
+    //어드민 게시글 목록
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria);
 
-
-//    어드민 게시글 총 개수
+    //어드민 게시글 총 개수
     public Integer getCountAdmin(String keyword);
 
-    //    마이페이지 리뷰 목록
-    public List<ReviewDTO> getListMy(Long memberId);
+    //마이페이지 리뷰 목록
+    public List<ReviewDTO> getListMy(Long memberId, Standards standards);
 
-    //    어드민 게시글 삭제
+    //어드민 게시글 삭제
     public void remove(List<String> boardIds);
 
-    //    자유 게시글 목록
+    //자유 게시글 목록
     public List<BoardDTO> getList();
 
-//    후기 게시글 전체 목록
+    //후기 게시글 전체 목록
     public List<ReviewDTO> getListReview();
 
     //페이징처리
@@ -35,8 +35,12 @@ public interface BoardService {
     //후기 작성
     public void save(ReviewDTO reviewDTO);
 
-    //    마이페이지 게시글 목록
-    public List<BoardDTO> getListMyBoard(Long memberId);
+    //마이페이지 게시글 목록
+    public List<BoardDTO> getListMyBoard(Long memberId, Standards standards);
 
-
+    //마이페이지 게시글 페이징 - 전체 개수
+    public int getTotalMy();
 }
+
+
+
