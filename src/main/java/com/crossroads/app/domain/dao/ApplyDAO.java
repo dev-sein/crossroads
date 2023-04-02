@@ -45,4 +45,14 @@ public class ApplyDAO {
     public void deleteById(Long applyId){
         applyMapper.delete(applyId);
     }
+
+//    검색 or 전체 목록 개수
+    public Long findAppliesCount(Map<String, Object> info){
+        return applyMapper.selectAppliesCount(info);
+    }
+
+//    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
+    public Long findOthersCount(Map<String, Object> info){
+        return applyMapper.selectOthersCount(info);
+    }
 }

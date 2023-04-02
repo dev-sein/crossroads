@@ -68,16 +68,19 @@ const $modalSearchButton = $(".modal-search-btn");  // 모달창 안에 검색 �
 
 $searchButton.on('click', function(){
     $('.modal-search-modal').show();
+    document.body.style.overflow = 'hidden';    // 모달창 띄웠을 때 스크롤 막기
     // $('.modal-search-modal').css('display', 'flex');
 });
 
 $searchHeader.on('click', function(){
     $('.modal-search-modal').show();
+    document.body.style.overflow = 'hidden';    // 모달창 띄웠을 때 스크롤 막기
     // $('.modal-search-modal').css('display', 'flex');
 });
 
 $closeButton.on('click', function(){
     $('.modal-search-modal').hide();
+    document.body.style.removeProperty('overflow'); // 모달창 끄면 스크롤 원상복구
 });
 
 $modalSearchButton.on('click', function () {

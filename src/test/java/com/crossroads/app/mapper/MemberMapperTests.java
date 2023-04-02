@@ -44,7 +44,7 @@ public class MemberMapperTests {
     @Test
     public void checkPasswordTest(){
         MemberVO memberVO = memberMapper.select(10L);
-        memberMapper.changeNewPassword("22222222");
+//        memberMapper.changeNewPassword("22222222");
     }
 
     @Test

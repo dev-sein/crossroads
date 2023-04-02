@@ -43,7 +43,12 @@ public class MobileController {
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
 
-        model.addAttribute("applies", applyService.getList(criteria));
+        Map<String, Object> info = new HashMap<>();
+        info.put("memberId", session.getAttribute("memberId"));
+
+        model.addAttribute("applyLength", applyService.getList(criteria));
+//      총 연수신청 개수 - 다른 베테랑들이 수락한 신청들 개수
+        model.addAttribute("applyCount", applyService.getAppliesCount(info) - applyService.getOthersCount(info));
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
         return "mobile/list-mobile";
     }
@@ -68,9 +73,8 @@ public class MobileController {
                                    @RequestParam(value = "applyDate")String applyDate,
                                    HttpServletRequest request, Criteria criteria, Model model)
     {
-        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        log.info(applyLocation);
-        log.info(applyDate);
+        HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);       // 임시로 세션에 1L 담아둠
         Map<String, Object> info = new HashMap<>();
         if(applyDate != null && applyDate != ""){
             info.put("applyDate", applyDate);
@@ -78,9 +82,11 @@ public class MobileController {
         if (applyLocation != null && applyLocation != ""){
             info.put("applyLocation", applyLocation);
         }
-        HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);
+        info.put("memberId",session.getAttribute("memberId"));
+
         model.addAttribute("applyLocation", applyLocation);
+//      총 연수신청 개수 - 다른 베테랑들이 수락한 신청들 개수
+        model.addAttribute("applyCount", applyService.getAppliesCount(info) - applyService.getOthersCount(info));
         model.addAttribute("applyDate", applyDate);
         model.addAttribute("others", applyService.getCount((Long)session.getAttribute("memberId")));
         return "mobile/list-mobiles";
