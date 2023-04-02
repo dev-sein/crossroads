@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.BoardMapper">
-
     <sql id="search">
         <if test="keyword != null">
             <trim prefix="and (" suffix=")" prefixOverrides="or">
@@ -53,6 +52,17 @@
     <select id="selectTotalMy" resultType="int">
         select count(board_id) from tbl_board
     </select>
+
+
+    <!--자유 게시글 전체 조회-->
+    <select id="selectAllBoards" resultType="boardDTO">
+  SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
+         M.member_name, F.file_uuid, F.file_path
+  FROM tbl_board B
+  LEFT JOIN tbl_member M ON B.member_id = M.member_id
+  LEFT JOIN tbl_file F ON B.board_id = F.board_id
+  ORDER BY B.board_register_date DESC
+</select>
 
 
 </mapper>

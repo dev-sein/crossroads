@@ -337,6 +337,29 @@ main{
     margin-right: 2px;
 }
 
+.star-container {
+    display: inline-block;
+}
+
+.star {
+    font-size: 1rem;
+    color: #ffcc00;
+    margin-right: 2px;
+}
+
+.star.half {
+    position: relative;
+}
+
+.star.half::before {
+    content: '\f006';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+}
+
 /*.star0 {
     background-image: url('https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star_empty@2x.png');
 }
@@ -346,8 +369,8 @@ main{
 
 
 .review-score{
-    top: -1px;
-    left: 5px;
+    top: 2.5px;
+    left: 8px;
     font-size: 16px;
     /* line-height: 26px; */
     font-weight: 700;

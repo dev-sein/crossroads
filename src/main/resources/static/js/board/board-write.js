@@ -30,60 +30,6 @@ function setThumbnail(event) {
       document.querySelector(".MainImage_wrapper").style.display = "flex";  // 없어진 이미지 넣기 버튼 다시 보여주기
   });
 
-// 파일 업로드 기능
-// $(document).ready(function() {
-//   $("#imageUploadForm").submit(function(event) {
-//     event.preventDefault();
-//
-//     var formData = new FormData($(this)[0]);
-//
-//     $.ajax({
-//       url: "/upload",
-//       type: "POST",
-//       data: formData,
-//       async: false,
-//       cache: false,
-//       contentType: false,
-//       processData: false,
-//       success: function(data) {
-//         console.log("File uploaded successfully.");
-//         $("#reviewFileSystemName").val(data.savedFileName);
-//       },
-//       error: function(jqXHR, textStatus, errorThrown) {
-//         console.log("Error uploading file.");
-//       }
-//     });
-//   });
-// });
-
-/*$("input[type='file']").on("change", function () {
-
-  let file = $(this)[0].files[0];
-
-  /!* 강사님 업로드코드 *!/
-    let formData = new FormData();
-    formData.append("file", file);
-
-    $.ajax({
-      url: "/files/upload",
-      type: "post",
-      data: formData,
-      contentType: false,
-      processData: false,
-      success: function(uuids) {
-        globalThis.uuids = uuids;
-        $files.forEach((file, i) => {
-          if(file.type.startsWith("image")){
-            $("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/files/display?fileName=${toStringByFormatting(new Date())}/t_${uuids[i]}_${file.name}"></a></li>`);
-          }else{
-            $("#thumbnail").append(`<li><a href="/files/download?fileName=${toStringByFormatting(new Date())}/${uuids[i]}_${file.name}"><img src="/attach.png" width="100"></a></li>`);
-          }
-        })
-      }
-    });
-})*/
-
-
 
 
 // 별점
@@ -144,6 +90,11 @@ $(".registButton_button").on('click', function(e){
   }
 
 })
+
+function cancelWriteReview() {
+  window.location.href = "/review-list";
+}
+
 
 $(".modal-close-btn").on("click", function(){
   $(".modal-wrapper").css('display', 'none');
