@@ -2,8 +2,13 @@
 const checkBoxAll = document.getElementsByName("checkbox-all");
 const checkBox = document.querySelectorAll('input[name = "checkbox"]');
 const checkBoxChecked = document.querySelectorAll(
-  'input[name = "checkbox"]:checked'
+    'input[name = "checkbox"]:checked'
 );
+
+
+function makeName(e) {
+  console.log(e);
+}
 
 
 

@@ -18,10 +18,11 @@ public class PageDTO {
     private boolean prev, next;
     //    전체 게시글 개수
     private int total;
+
     //    화면에서 받아온 page, amount를 필드로 구성한 객체
     private Criteria criteria;
     public PageDTO createPageDTO(Criteria criteria, int total){
-        return createPageDTO(criteria, total, 10);
+        return createPageDTO(criteria, total, 5);
     }
 
     public PageDTO createPageDTO(Criteria criteria, int total, int pageCount){

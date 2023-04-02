@@ -3,13 +3,16 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dao.BoardDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Qualifier("board")
@@ -19,19 +22,38 @@ public class FreeBoardService implements BoardService {
     private final ReplyDAO replyDAO;
 
     @Override
-    public List<BoardDTO> getListAdmin(Criteria criteria) {
-        List<BoardDTO> boards = boardDAO.findAllAdmin(criteria);
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+//        if (page == 0) {
+//            criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
+//        } else {
+//            criteria.create(page, 6);
+//        }
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<BoardDTO> boards = boardDAO.findAllAdmin(criteria, keyword);
 
 //        게시글 별 댓글 수를 boards에 추가
         boards.stream().forEach(board -> board.setReplyCount(replyDAO.findReplyCount(board.getBoardId())));
 
-        return boards;
+        result.put("boards", boards);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, boardDAO.findCountAllAdmin(keyword)));
+
+        return result;
     }
 
 
     @Override
-    public Integer getCountAdmin() {
-        return boardDAO.findCountAllAdmin();
+    public Integer getCountAdmin(String keyword) {
+        return boardDAO.findCountAllAdmin(keyword);
     }
 
 
