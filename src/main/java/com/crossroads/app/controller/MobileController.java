@@ -168,13 +168,13 @@ public class MobileController {
 
     //로그인
     @GetMapping("login-mobile")
-    public String login(){
+    public String loginMobile(){
         return "mobile/login-mobile";
     }
 
     //로그인
     @PostMapping("login-mobile")
-    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+    public RedirectView Mobile(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
         log.info(id.toString());
@@ -189,7 +189,7 @@ public class MobileController {
 
     //로그아웃
     @GetMapping("/logout-mobile")
-    public String logout(HttpServletRequest request) {
+    public String logoutMobile(HttpServletRequest request) {
         System.out.println("logout - 진입");
         //세션 끊기
         HttpSession session = request.getSession();
@@ -199,12 +199,12 @@ public class MobileController {
 
     //비밀번호 찾기 1 - 이메일 인증
     @GetMapping("find-pwd-mobile")
-    public String findPwd() {
+    public String findPwdMobile() {
         return "mobile/find-pwd-mobile";
     }
 
     @PostMapping("find-pwd-mobile")
-    public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
+    public RedirectView findPasswordEmailMobile(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
         if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
             return new RedirectView("applies/find-pwd-mobile?result=fail");
         }
@@ -224,12 +224,19 @@ public class MobileController {
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         System.out.print(memberEmail);
-        return new RedirectView("find-pwd-send-mobile");
+        return new RedirectView("/applies/find-pwd-send-mobile");
+    }
+
+    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
+    @GetMapping("find-pwd-send-mobile")
+    public String findPwdSendMobile(String memberEmail, Model model, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return ("/mobile/find-pwd-send-mobile");
     }
 
     //비밀번호 변경
     @GetMapping("change-pwd-mobile")
-    public String changePwd(String memberEmail, Long memberRandomKey){
+    public String changePwdMobile(String memberEmail, Long memberRandomKey){
         System.out.println(memberRandomKey);
         System.out.println(memberEmail);
         memberService.getRandomKey(memberEmail);
@@ -241,25 +248,19 @@ public class MobileController {
     }
 
 
-
-    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
-    @GetMapping("find-pwd-send-mobile")
-    public RedirectView findPwdSend(String memberEmail, RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
-        return new RedirectView("mobile/find-pwd-send-mobile");
+    //비밀번호 변경
+    @PostMapping("change-pwd-mobile")
+    public RedirectView changePwdtoCompleteChangeMobile(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
+        memberService.modifyPassword(memberEmail, memberPassword);
+        log.info("비밀번호 변경");
+        return new RedirectView("complete-change-mobile");
     }
 
     //비밀번호 변경 완료
     @GetMapping("complete-change-mobile")
-    public String completeChange(){
-        return "mobile/complete-change-mobile";
+    public String completeChangeMobile(){
+        return "mobile/complete-pwd-mobile";
     }
 
-    //비밀번호 변경 //완성 페이지 만들어야함
-    @PostMapping("change-pwd-mobile")
-    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
-        memberService.modifyPassword(memberEmail, memberPassword);
-        return new RedirectView("complete-change-mobile");
-    }
 
 }

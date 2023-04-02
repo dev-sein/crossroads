@@ -47,5 +47,8 @@ public class ApplyDAO {
     }
 
 //   연수 신청
-    public void addApply(ApplyDTO applyDTO) { applyMapper.insertApply((applyDTO));}
+    public void RegisterApply(ApplyDTO applyDTO) { applyMapper.insertApply((applyDTO));}
+
+//  연수 코스
+    public void RegisterCourse(ApplyDTO applyDTO) { applyMapper.insertCourse((applyDTO));}
 }

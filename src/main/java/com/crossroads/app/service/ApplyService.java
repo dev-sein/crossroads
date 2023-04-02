@@ -44,9 +44,12 @@ public class ApplyService {
 //        추후 포인트 추가 감소 로직 추가 필요
         applyDAO.deleteById(applyId);
     }
-//      연수 신청
-    public void saveApply(ApplyDTO applyDTO) { applyDAO.addApply(applyDTO); }
 
+    //      연수 신청 - 코스
+    public void saveCourse(ApplyDTO applyDTO) { applyDAO.RegisterCourse(applyDTO); }
+
+    //      연수 신청 - 코스 신청 건을 수정
+    public void saveApply(ApplyDTO applyDTO) { applyDAO.RegisterApply(applyDTO); }
 
 }
 

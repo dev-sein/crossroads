@@ -74,17 +74,8 @@ $phoneInput.on("blur", function() {
 
 const $completeButton = $(".signup-submit-button");
 /* 모든 정규식 완료 및 전체 동의 체크 시 버튼 활성화 */
-function completeAllCheck() {
-
-	// let identificationFlag = false; // 아이디
-	// let passwordFlag = false; // 비밀번호
-	// let passwordCheckFlag = false; // 비밀번호 확인
-	// let nicknameFlag = false; // 닉네임
-	// let emailFlag = false; // 이메일
-	// let nameFlag = false; // 이름
-	// let phoneCheck = false; // 핸드폰
-
-	if (nameFlag && phoneFlag ) {
+/*$(function(){
+	if ($('#acourse').is(":checked")) {
 		console.log("완료");
 		$completeButton.css("pointer-events", "auto");
 		$completeButton.css("cursor", "pointer");
@@ -101,4 +92,6 @@ function completeAllCheck() {
 		$completeButton.css("opacity", "0.45");  //  비활성화 opacity: 0.45;
 		$completeButton.css("color", "#fff");
 	}
-}
+})*/
+
+

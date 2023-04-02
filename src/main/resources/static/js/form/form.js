@@ -19,7 +19,7 @@ $('document').ready(function() {
       var area16 = ["서귀포시","제주시","남제주군","북제주군"];
    
     // 시/도 선택 박스 초기화
-   
+
     $("select[name^=sido]").each(function() {
      $selsido = $(this);
      $.each(eval(area0), function() {
@@ -31,6 +31,8 @@ $('document').ready(function() {
     // 시/도 선택시 구/군 설정
    
     $("select[name^=sido]").change(function() {
+        let $sidoval = $("select[name=sido1]").val();
+        console.log($sidoval); //시도 select 값
      var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
      var $gugun = $(this).next(); // 선택영역 군구 객체
      $("option",$gugun).remove(); // 구군 초기화
@@ -40,6 +42,9 @@ $('document').ready(function() {
      else {
       $.each(eval(area), function() {
        $gugun.append("<option value='"+this+"'>"+this+"</option>");
+          let $gogunval = $("select[name=gugun1]").val();
+          console.log($gogunval);
+          $('input[name=applyLocation]').attr('value',$sidoval + " " + $gogunval); // 지역 input 값 변경
       });
      }
     });
@@ -88,7 +93,6 @@ $('document').ready(function() {
 
     });    
 });
-
-
-     
-     
+/*const $sidoval = $("#sido1 option:selected").val();*/
+const $sidoval = $("select[name=sido1]").val();
+console.log($sidoval);

@@ -96,6 +96,7 @@ function completeAllCheck() {
 		// $completeButton.css("background-color", "#00c4c4");
 		$completeButton.css("opacity", "0.8");  // 활성화 opacity: 0.8;
 		$completeButton.css("color", "#fff");
+
 	} else {
 		console.log("하나라도 실패 시 들어옴.")
 		$completeButton.css("pointer-events", "none");
@@ -106,3 +107,10 @@ function completeAllCheck() {
 		$completeButton.css("color", "#fff");
 	}
 }
+
+
+const $submitBtn = $(".signup-submit-button");
+
+$submitBtn.on('click', function () {
+	document.join.submit();
+});

@@ -104,13 +104,18 @@ public class MemberController {
         MailTO mailTO = new MailTO();
         mailTO.setAddress(memberEmail);
         mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
-   //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
         mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
         memberService.sendMail(mailTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         System.out.print(memberEmail);
         return new RedirectView("/member/find-pwd-send");
+    }
+
+    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
+    @GetMapping("find-pwd-send")
+    public String findPwdSend(String memberEmail, Model model){
+        return "member/find-pwd-send";
     }
 
     //비밀번호 변경
@@ -132,12 +137,6 @@ public class MemberController {
     public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
         memberService.modifyPassword(memberEmail, memberPassword);
         return new RedirectView("complete-change");
-    }
-
-    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
-    @GetMapping("find-pwd-send")
-    public String findPwdSend(String memberEmail, Model model){
-        return "member/find-pwd-send";
     }
 
     //비밀번호 변경 완료

@@ -38,4 +38,7 @@ public interface ApplyMapper {
 
 //    연수 신청
     public void insertApply(ApplyDTO applyDTO);
+
+//    연수 코스
+    public void insertCourse(ApplyDTO applyDTO);
 }

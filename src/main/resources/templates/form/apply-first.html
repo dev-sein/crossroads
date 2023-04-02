@@ -70,7 +70,7 @@
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
-        <form method="post" name="join" id="join">
+        <form action="/apply/apply-first" method="post" name="join" id="join">
             <div class="project-create-form-section">
                 <div class="form-section-header">
                     <p class="form-section-title subtitle-1">1. 정보 입력 및 코스 선택</p>
@@ -82,8 +82,8 @@
                             <div>
                                 <div class="text-input-client list">
                                     <div>
-                                        <input class="name-input" id="name-input" data-type="text" maxlength="5"
-                                               name="title" placeholder="이름을 적어주세요" type="text" value=""/>
+                                       <!-- <input class="name-input" id="name-input" data-type="text" maxlength="5"
+                                               name="title" placeholder="이름을 적어주세요" type="text" value=""/>-->
                                     </div>
                                     <em class="name-error error-message">이름을 입력해주세요.</em>
                                 </div>
@@ -97,14 +97,14 @@
                             <div>
                                 <div class="text-input-client list">
                                     <div>
-                                        <input
+                                      <!--  <input
                                                 class="name-input theme-client wishket-text check" id="input-phone-number" maxlength="11"
                                                 data-type="text"
                                                 name="userPhone"
                                                 placeholder="ex) 01012341234"
                                                 type="text"
                                                 value=""
-                                        />
+                                        />-->
                                     </div>
                                     <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
                                 </div>
@@ -120,10 +120,10 @@
                             <div class="select-card client-input" style="width: 200px; margin-right: 20px">
                                 <label class="termscheckbox" id="termscheckbox">
                                     <input
-                                            id="category_develop "
+                                            id="acourse "
                                             name="category"
                                             type="radio"
-                                            value="develop"
+                                            value="A"
                                             class="error"
                                             checked="checked"
                                     />
@@ -142,10 +142,10 @@
                             >
                                 <label class="termscheckbox2" id="termscheckbox2">
                                     <input
-                                            id="category_develop"
+                                            id="bcourse"
                                             name="category"
                                             type="radio"
-                                            value="develop"
+                                            value="B"
                                             class="error"
                                     />
                                     <div class="select-card-content">
@@ -154,6 +154,7 @@
                                                 src="/img/courseB.png"
                                         />
                                         <p class="body-2-medium">B코스 (시내,고속주행)<br/>100000p</p>
+                                        <input id="applyCourse" name="applyCourse" type="text" style="display: none;">
                                     </div>
                                 </label>
                             </div>
@@ -167,15 +168,12 @@
                 <div class="form-section-footer" style="position: relative">
                     <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
-                            th:href="@{/formSecond}"
                             name="can_submit"
-                            style="pointer-events: none;
-                cursor: default;
-                opacity: 0.45;"
                             type="button"
                             onclick="send()"
                     >
                         다음
+                        <!--th:href="@{/apply/apply-second}"-->
                     </a>
                     <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
@@ -191,10 +189,28 @@
             </div>
         </form>
         <!-- 메인 끝  -->
+        <script>
+            const $submitBtn = $(".signup-submit-button");
+            $submitBtn.on('click', function () {
+                const $checkVal = $('input[name=category]:checked').val();
+                console.log($checkVal);
+                $('input[name=applyCourse]').attr('value',$checkVal);
+                $.ajax({
+                    url: './apply-second', //Controller에서 요청 받을 주소
+                    type: 'get', //POST 방식으로 전달
+                    data: {applyCourse: $checkVal},
+                    contentType: "application/json; charset=UTF-8",
+                    dataType: "Text",
+                    success : function(data){}
+                })
+                success: document.join.submit()
+            });
+
+
+        </script>
     </div>
 </div>
 </body>
-
-<script src="/js/form/Form1.js"></script>
+<!--<script src="/js/form/Form1.js"></script>-->
 <script src="/js/components/header-client.js"></script>
 </html>
