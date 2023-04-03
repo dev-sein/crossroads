@@ -1,8 +1,6 @@
 package com.crossroads.app.domain.dao;
 
-import com.crossroads.app.domain.dto.ReviewCriteria;
-import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.*;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +57,22 @@ public class ReviewDAO {
 //    마이페이지 게시글 페이징 전체 개수
     public int findCountAllMy(){
         return reviewMapper.selectTotalMy();
+    }
+
+    
+    /* 관리자 게시글 목록 */
+    public List<BoardDTO> findAllAdmin(Criteria criteria, String keyword) {
+        return reviewMapper.selectAllAdmin(criteria, keyword);
+    }
+
+    /* 관리자 게시글 총 개수 */
+    public Integer findCountAllAdmin(String keyword) {
+        return reviewMapper.selectCountAllAdmin(keyword);
+    }
+
+    /* 관리자 게시글 삭제 */
+    public void deleteById(Long reviewId) {
+        reviewMapper.deleteAdmin(reviewId);
     }
 
 

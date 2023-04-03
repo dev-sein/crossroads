@@ -1,16 +1,13 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ReviewDAO;
-import com.crossroads.app.domain.dto.BoardDTO;
-import com.crossroads.app.domain.dto.ReviewCriteria;
-import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.dto.Criteria;
-import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.*;
 import com.crossroads.app.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +19,22 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
-        return null;
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<ReviewDTO> boards = reviewDAO.findAllAdmin(criteria, keyword);
+
+        result.put("boards", boards);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, reviewDAO.findCountAllAdmin(keyword)));
+
+        return result;
     }
 
     @Override

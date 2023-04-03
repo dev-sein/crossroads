@@ -90,55 +90,31 @@ public class AdminController {
 //    관리자 포인트 내역 삭제
 
     /*====================후기 게시판 시작==============================*/
-    //    관리자 자유 게시판 목록 이동
-//    @GetMapping("board/list")
-//    public String adminBoard(){
-//        return "admin/admin-board";
-//    }
-//
-//
-//    //    관리자 자유 게시판 목록
-//    @ResponseBody
-//    @PostMapping("boards/list")
-//    public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-//        return freeBoardService.getListAdmin(requestData, criteria);
-//    }
-
 //    관리자 후기 게시판 목록
     @GetMapping("review/list")
     public String adminReview(){
         return "admin/admin-review";
     }
-////    관리자 후기 게시판 목록
-//    @ResponseBody
-//    @PostMapping("reviews/list")
-//    public Map<String, Object> adminReviewList(@RequestBody Map<String, Object> requestData, Criteria criteria){
-//        return freeBoardService.getListAdmin(requestData, criteria);
-//    }
-//
-//    //    관리자 후기 삭제
-//    @ResponseBody
-//    @DeleteMapping("review/delete")
-//    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
-//        reviewBoardService.remove(checkedIds);
-//    }
-//
-//
-//
-//    //    관리자 자유 게시판 상세 보기
-//    @ResponseBody
-//    @PostMapping("boards/detail")
-//    public Map<String, Object> adminBoardDetail(@RequestParam("boardId") /*@PathVariable("boardId")*/ Long boardId) {
-//        return freeBoardService.getBoardAdmin(boardId);
-//    }
-//
-//
-//    //    관리자 자유 게시판 삭제
-//    @ResponseBody
-//    @DeleteMapping("boards/delete")
-//    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds /*Map<String, List<Integer>> requestData*/ ){
-//        freeBoardService.remove(checkedIds);
-//    }
+//    관리자 후기 게시판 목록
+    @ResponseBody
+    @PostMapping("reviews/list")
+    public Map<String, Object> adminReviewList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return reviewBoardService.getListAdmin(requestData, criteria);
+    }
+
+//    관리자 후기 게시판 상세 보기
+    @ResponseBody
+    @PostMapping("boards/detail")
+    public Map<String, Object> adminReviewDetail(@RequestParam("boardId") Long boardId) {
+        return reviewBoardService.getBoardAdmin(boardId);
+    }
+
+//    관리자 후기 게시판 삭제
+    @ResponseBody
+    @DeleteMapping("reviews/delete")
+    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        reviewBoardService.remove(checkedIds);
+    }
     /*====================후기 게시판 끝==============================*/
 
 

@@ -15,22 +15,21 @@ import java.util.List;
 public class BoardDAO {
     private final BoardMapper boardMapper;
 
-    /* 어드민 게시글 목록 */
+    /* 관리자 게시글 목록 */
     public List<BoardDTO> findAllAdmin(Criteria criteria, String keyword) {
         return boardMapper.selectAllAdmin(criteria, keyword);
     }
 
-    /* 어드민 게시글 총 개수 */
+    /* 관리자 게시글 총 개수 */
     public Integer findCountAllAdmin(String keyword) {
         return boardMapper.selectCountAllAdmin(keyword);
     }
 
-    /* 어드민 게시글 삭제 */
+    /* 관리자 게시글 삭제 */
     public void deleteById(Long boardId) {
         boardMapper.deleteAdmin(boardId);
     }
 
-    /* 관리자 게시글 목록*/
     public List<BoardDTO> findAll() {
         return boardMapper.selectAll();
     }
