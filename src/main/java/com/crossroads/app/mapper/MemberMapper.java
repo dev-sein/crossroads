@@ -44,7 +44,7 @@ public interface MemberMapper {
     public Long changeNewPassword(Long memberId, String memberPassword);
 
     //랜덤키 삽입
-    public void updateRandomKey(Long memberRandomKey, String memberEmail);
+    public void updateRandomKey(String memberEmail, Long memberRandomKey);
 
     //마이페이지 프로필 업로드
     public void updateProfile(MemberVO memberVO);

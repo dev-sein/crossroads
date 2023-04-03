@@ -32,4 +32,14 @@ public class ReplyService {
         return replyDAO.findCountAllMy();
     }
 
+//    게시글 별 댓글 삭제
+    public void deleteByBoardId(Long boardId){
+        replyDAO.deleteByBoardId(boardId);
+    };
+
+//    회원 별 댓글 삭제
+    public void deletByMemberId(Long memberId){
+        replyDAO.deletByMemberId(memberId);
+    };
+
 }

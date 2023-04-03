@@ -74,7 +74,7 @@
     where member_email=#{memberEmail}
     </update>
 
-    <!--아이디로 이메일 찾기-->
+    <!--아이디로 랜덤키 찾기-->
     <select id="selectRandomKey" parameterType="String" resultType="Long">
         select member_random_key
         from tbl_member

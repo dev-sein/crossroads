@@ -84,6 +84,19 @@
         where apply_id = #{applyId}
     </delete>
 
+    <!--연수신청-->
+<!--
+    <insert id="insertCourse">
+    insert into tbl_apply(apply_course)
+    values(#{applyCourse})
+    </insert>-->
+
+    <!--연수신청 2-->
+    <insert id="insertApply">
+        insert into tbl_apply(apply_course, apply_location, apply_date, starter_member_id)
+        values(#{applyCourse}, #{applyLocation}, #{applyDate}, #{memberId})
+    </insert>
+
 <!-- 검색 or 전체 목록 개수-->
     <select id="selectAppliesCount" resultType="long">
         select count(apply_id)

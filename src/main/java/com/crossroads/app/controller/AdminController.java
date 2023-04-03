@@ -89,89 +89,91 @@ public class AdminController {
 
 //    관리자 포인트 내역 삭제
 
-    //관리자 후기 목록
-    @GetMapping("review/list")
-    public String adminReview(Model model){
-        model.addAttribute("reviews", reviewBoardService.getListReview());
-        return "admin/admin-review";
-    }
-
-    //    관리자 후기 삭제
-    @ResponseBody
-    @DeleteMapping("review/delete")
-    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
-        reviewBoardService.remove(checkedIds);
-    }
-
-    //관리자 게시글 목록
+    /*====================후기 게시판 시작==============================*/
+    //    관리자 자유 게시판 목록 이동
 //    @GetMapping("board/list")
-//    public String adminBoard(@RequestParam(value = "keyword", required = false) /*required = false를 해야 null값도 들어옴*/ String keyword, Criteria criteria, Model model){
-//        if (criteria.getPage() == 0) {
-//            criteria = criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
-//        } else {
-//            criteria = criteria.create(criteria.getPage(), 6);
-//        }
-//
-//        log.info(criteria.toString());
-//
-//        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria, keyword);
-//
-//        model.addAttribute("boards", boards);
-//        model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
+//    public String adminBoard(){
 //        return "admin/admin-board";
 //    }
+//
+//
+//    //    관리자 자유 게시판 목록
+//    @ResponseBody
+//    @PostMapping("boards/list")
+//    public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+//        return freeBoardService.getListAdmin(requestData, criteria);
+//    }
 
-    // 관리자 게시글 목록 이동
+//    관리자 후기 게시판 목록
+    @GetMapping("review/list")
+    public String adminReview(){
+        return "admin/admin-review";
+    }
+////    관리자 후기 게시판 목록
+//    @ResponseBody
+//    @PostMapping("reviews/list")
+//    public Map<String, Object> adminReviewList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+//        return freeBoardService.getListAdmin(requestData, criteria);
+//    }
+//
+//    //    관리자 후기 삭제
+//    @ResponseBody
+//    @DeleteMapping("review/delete")
+//    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//        reviewBoardService.remove(checkedIds);
+//    }
+//
+//
+//
+//    //    관리자 자유 게시판 상세 보기
+//    @ResponseBody
+//    @PostMapping("boards/detail")
+//    public Map<String, Object> adminBoardDetail(@RequestParam("boardId") /*@PathVariable("boardId")*/ Long boardId) {
+//        return freeBoardService.getBoardAdmin(boardId);
+//    }
+//
+//
+//    //    관리자 자유 게시판 삭제
+//    @ResponseBody
+//    @DeleteMapping("boards/delete")
+//    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds /*Map<String, List<Integer>> requestData*/ ){
+//        freeBoardService.remove(checkedIds);
+//    }
+    /*====================후기 게시판 끝==============================*/
+
+
+    /*====================자유 게시판 시작==============================*/
+//    관리자 자유 게시판 목록 이동
     @GetMapping("board/list")
     public String adminBoard(){
         return "admin/admin-board";
     }
 
 
-//    //관리자 게시글 목록
-//    @ResponseBody
-//    @GetMapping("board/list/{page}")
-//    public Map<String, Object> adminBoardList(@PathVariable(value = "page") int page, /*@PathV String keyword, */Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-//        log.info("컨트롤러 들어옴");
-//        Map<String, Object> result = new HashMap<String, Object>();
-////        String keyword = (String) requestData.get("keyword");
-////        String keyword = null;
-////        page = page == 0 ? 0 : page;
-//
-//        if (page == 0) {
-//            criteria = criteria.create(page, 6); // 1페이지부터 / 화면에 몇개 보일지
-//        } else {
-//            criteria = criteria.create(page, 6);
-//        }
-//
-//
-//        List<BoardDTO> boards = freeBoardService.getListAdmin(criteria/*, keyword*/);
-//
-//        result.put("boards", boards);
-//        result.put("pagination", new PageDTO().createPageDTO(criteria, freeBoardService.getCountAdmin()));
-//
-//        return result;
-//    }
-
-//    관리자 게시글 목록
+//    관리자 자유 게시판 목록
     @ResponseBody
     @PostMapping("boards/list")
     public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-
         return freeBoardService.getListAdmin(requestData, criteria);
     }
 
-//    관리자 게시글 삭제
+//    관리자 자유 게시판 상세 보기
     @ResponseBody
-    @DeleteMapping("boards/delete")
-    public void deleteBoard(@RequestBody List<String> checkedIds /*, @RequestParam String page*/) {
-        freeBoardService.remove(checkedIds);
-
-//        return new RedirectView("/admins/board/list?page=" + page);
-//        return "/admins/board/list?page=" + page;
+    @PostMapping("boards/detail")
+    public Map<String, Object> adminBoardDetail(@RequestParam("boardId") /*@PathVariable("boardId")*/ Long boardId) {
+        return freeBoardService.getBoardAdmin(boardId);
     }
 
-    //관리자 댓글 목록
+
+//    관리자 자유 게시판 삭제
+    @ResponseBody
+    @DeleteMapping("boards/delete")
+    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds /*Map<String, List<Integer>> requestData*/ ){
+        freeBoardService.remove(checkedIds);
+    }
+    /*====================자유 게시판 끝==============================*/
+
+//    관리자 댓글 목록
     @GetMapping("reply/list")
     public String adminReply(){ return "admin/admin-reply"; }
 

@@ -52,7 +52,7 @@ public class MemberDAO {
     public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
     
     //랜덤키 삽입
-    public void setRandomKey(Long memberRandomKey, String memberEmail){ memberMapper.updateRandomKey(memberRandomKey,memberEmail);}
+    public void setRandomKey(String memberEmail,Long memberRandomKey){ memberMapper.updateRandomKey(memberEmail,memberRandomKey);};
 
     //마이페이지 프로필 업로드
     public void setProfile(MemberVO memberVO){ memberMapper.updateProfile(memberVO);}

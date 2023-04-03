@@ -30,4 +30,15 @@ public class ReplyDAO {
         return replyMapper.selectTotalMy();
     }
 
+//    게시글 별 댓글 삭제
+    public void deleteByBoardId(Long boardId){
+        replyMapper.deleteByBoard(boardId);
+    };
+
+//    회원 별 댓글 삭제
+    public void deletByMemberId(Long memberId){
+        replyMapper.deletByMember(memberId);
+    };
+
+
 }

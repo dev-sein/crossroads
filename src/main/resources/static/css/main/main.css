@@ -333,7 +333,7 @@ body.main .main-review .review-list .review-card .card-info .user-icon, body.mai
 .star-score-box {
     display: inline-block;
     position: relative;
-    top: 4px;
+    top: 1px;
     margin-right: 8px;
     font-size: 16px;
     margin-bottom: 4px;

@@ -95,7 +95,6 @@ $rePwdEye.on('click', function(){
 
 
 $submitBtn.on("click", function () {
-	alert('들어옴')
 	var $pwdInput = $('.pwd input');
 	if ($pwdInput.val()) {
 		$passwordInput.val(btoa($passwordInput.val()));
