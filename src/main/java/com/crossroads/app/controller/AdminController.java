@@ -3,10 +3,7 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.*;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.PointVO;
-import com.crossroads.app.service.ApplyService;
-import com.crossroads.app.service.FreeBoardService;
-import com.crossroads.app.service.MemberService;
-import com.crossroads.app.service.ReviewBoardService;
+import com.crossroads.app.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -26,6 +23,7 @@ public class AdminController {
     private final FreeBoardService freeBoardService;
     private final ReviewBoardService reviewBoardService;
     private final ApplyService applyService;
+    private final ReplyService replyService;
 
     //관리자 홈 및 출력
     @GetMapping("home")
@@ -162,13 +160,33 @@ public class AdminController {
     }
     /*====================자유 게시판 끝==============================*/
 
+
+    /*====================댓글 시작==============================*/
 //    관리자 댓글 목록
     @GetMapping("reply/list")
     public String adminReply(){ return "admin/admin-reply"; }
 
-    //    관리자 댓글 삭제
+//    관리자 댓글 목록
+    @ResponseBody
+    @PostMapping("replies/list")
+    public Map<String, Object> adminReplyList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
+        return replyService.getListAdmin(requestData, criteria);
+    }
+
+    //    관리자 자유 게시판 상세 보기
 //    @ResponseBody
-//    @DeleteMapping("reply/delete")
-//    public void deleteReply(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//    @PostMapping("boards/detail")
+//    public Map<String, Object> adminReplyDetail(@RequestParam("boardId") Long boardId) {
+//        return replyService.getBoardAdmin(boardId);
 //    }
+
+
+//    관리자 댓글 삭제
+    @ResponseBody
+    @DeleteMapping("replies/delete")
+    public void deleteReply(@RequestParam("checkedIds[]") List<String> checkedIds){
+        replyService.removeAdmin(checkedIds);
+    }
+
+    /*====================댓글 끝==============================*/
 }
