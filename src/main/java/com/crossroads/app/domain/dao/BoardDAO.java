@@ -50,4 +50,15 @@ public class BoardDAO {
     public BoardDTO findById(Long boardId) {
         return boardMapper.select(boardId);
     };
+
+    /*맴버 별 게시글 조회*/
+    public List<BoardDTO> findByMemberId(Long memberId){
+        return boardMapper.selectByMemberId(memberId);
+    }
+
+    /*회원 별 게시글 삭제*/
+    public void deleteByMemberId(Long memberId){
+        boardMapper.deleteByMemberId(memberId);
+    };
+
 }

@@ -106,9 +106,16 @@
         limit #{criteria.offset}, #{criteria.amount}
     </select>
 
+    <!--게시글 삭제-->
     <delete id="deleteAdmin">
         delete from tbl_review
         where review_id = #{reviewId}
+    </delete>
+
+    <!--회원별 게시글 삭제-->
+    <delete id="deleteByMemberId">
+        delete from tbl_review
+        where member_id = #{memberId}
     </delete>
 
 

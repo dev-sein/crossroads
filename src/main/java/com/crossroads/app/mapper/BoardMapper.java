@@ -38,4 +38,10 @@ public interface BoardMapper {
 
 //    상세 보기
     public BoardDTO select(Long boardId);
+
+//    맴버별 게시글 조회
+    public List<BoardDTO> selectByMemberId(Long memberId);
+
+//    회원별 게시글 삭제
+    public void deleteByMemberId(Long memberId);
 }

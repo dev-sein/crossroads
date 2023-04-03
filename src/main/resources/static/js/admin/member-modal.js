@@ -5,15 +5,15 @@ const modalCloseOk = document.querySelector("#edit-button1");
 function show (e) {
   document.querySelector(".background").className = "background show";
 
-  var reviewId = e.dataset.id;
-  reviewId *= 1;
+  var memberId = e.dataset.id;
+  memberId *= 1;
 
-  console.log(reviewId);
+  console.log(memberId);
   $.ajax({
-    url: "/admin/reviews/detail",
+    url: "/admin/members/detail",
     type: "post",
     data: {
-      reviewId: reviewId
+      memberId: memberId
     },
     success: function(result) {
       showAdminModal(result);
@@ -24,48 +24,57 @@ function show (e) {
   })
 
 }
+/* 핸드폰 자동 하이픈 */
+function autoHyphen(number) {
+  const regex = /^01(0|1|[6-9])\-?\d{3,4}\-?\d{4}$/;
+  if (regex.test(number)) {
+    return number.replace(/^01(0|1|[6-9])/, "01$1-").replace(/(\d{3,4})(\d{4})/, "$1-$2");
+  }
+  return "Invalid number";
+}
 
-function showAdminModal(result) {
+function showAdminModal(member) {
   var $resultAdminModal = $('#modal-main');
-  var review = result.review;
+  // var member = memberVO;
   var text = "";
-  console.log(review);
-  console.log(review.reviewFileSystemName);
+  var memberPhone = autoHyphen(member.memberPhone);
+  var memberType = member.memberType === 0 ? "초보자" : "베테랑";
+  console.log(member);
+
   text += `
       <form>
           <div class="input-wrapper">
-              <div class="input-text">후기 제목</div>
-              <input type="text" id="text-title" value="${review.reviewTitle}" class="user-input" readonly>
+              <div class="input-text">회원 타입</div>
+              <input type="text" id="user-type" value="${memberType}" class="user-input user-input2" readonly>
           </div>
           <div class="input-wrapper">
-              <div class="input-text">후기 내용</div>
-              <input type="text" id="text-content" value="${review.reviewContent}" class="user-input" readonly >
-          </div>`
-    text += `
-        <div class="input-wrapper" style="margin-bottom: 20px;">
-            <div class="input-text">별점</div>
-            <div class="star-score-box">
-                <div class="review-star"> `
-    for (var i = 0; i < review.reviewGrade; i++) {
-        text += `<div class="stars star${i}"></div>`
-    }
-    text += `
-                </div>
-                <span class="review-score"></span>
-            </div>
-        </div>`;
-  // 리뷰 fileSystemName 가져와야함.
-  if(review.reviewFileSystemName != null) {
+              <div class="input-text">이름</div>
+              <input type="text" id="user-name" value="${member.memberName}" class="user-input" readonly>
+          </div>
+          <div class="input-wrapper">
+              <div class="input-text">아이디</div>
+              <input type="text" id="user-name" value="${member.memberIdentification}" class="user-input" readonly>
+          </div>
+          <div class="input-wrapper">
+              <div class="input-text">이메일</div>
+              <input type="text" id="user-email" value="${member.memberEmail}" class="user-input" readonly>
+          </div>
+          <div class="input-wrapper">
+              <div class="input-text">핸드폰번호</div>
+              <input type="text" id="user-phone-number" value="${memberPhone}" class="user-input" readonly>
+          </div>
+          <div class="input-wrapper">
+              <div class="input-text">면허 취득일자</div>
+              <input type="text" id="driver-license" value="${member.memberDriveRegisterDate}" class="user-input" readonly>
+          </div>`;
+  if(member.memberFileSystemName != null) {
     text += `
           <div class="input-wrapper" style="margin-top: 30px;">
               <div class="input-text">사진</div>
-              <!--<img src="/images/review/${review.reviewFileSystemName}" class="review-image">-->
-              <img src="/images/review/review06.jpeg" class="review-image">
+              <img src="/images/admin/quokka.jpg" class="member-image">
           </div>`;
   }
-  text += `
-      </form>
-  `;
+  text += `</form>`;
 
   $resultAdminModal.html(text);
 }

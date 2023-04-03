@@ -35,30 +35,33 @@ public class AdminController {
 
 
     /*====================회원 게시판 시작==============================*/
-    //관리자 회원 목록
+//    관리자 회원 목록
     @GetMapping("member/list")
-    public String adminMember(){
-//        model.addAttribute("members", memberService.getList());
+    public String adminMemberList(){
         return "admin/admin-member";
     }
-    //관리자 회원 목록
-//    @PostMapping("members/list")
-//    public List<MemberVO> adminMemberList(Model model){
-//        return memberService.getList();
-//    }
 
-    //    관리자 후기 게시판 상세 보기
+//    관리자 회원 목록
+    @ResponseBody
+    @PostMapping("members/list")
+    public Map<String, Object> adminMemberList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return memberService.getListAdmin(requestData, criteria);
+    }
+
+//    관리자 회원 상세 보기
     @ResponseBody
     @PostMapping("members/detail")
-    public Map<String, Object> adminMemberDetail(@RequestParam("reviewId") Long reviewId) {
-        return reviewBoardService.getBoardAdmin(reviewId);
+    public MemberVO adminMemberDetail(@RequestParam("memberId") Long memberId) {
+        return memberService.getMember(memberId);
     }
 
     //관리자 회원 삭제
     @ResponseBody
     @DeleteMapping("members/delete")
-    public void deleteMember(@RequestBody List<String> checkedIds) {
-        checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(memberService::remove);
+    public void deleteMember(@RequestParam("checkedIds[]") List<String> checkedIds) {
+        log.info("delete 들어옴..?");
+        memberService.removeAdmin(checkedIds);
+        log.info("마지막 여긴 안됨.");
     }
     /*====================회원 게시판 끝==============================*/
 

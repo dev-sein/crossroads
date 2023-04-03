@@ -75,6 +75,10 @@ public class ReviewDAO {
         reviewMapper.deleteAdmin(reviewId);
     }
 
+    //    회원별 게시글 삭제
+    public void deleteByMemberId(Long memberId){
+        reviewMapper.deleteByMemberId(memberId);
+    };
 
 }
 

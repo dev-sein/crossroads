@@ -33,8 +33,8 @@ public class ReplyService {
     };
 
 //    회원 별 댓글 삭제
-    public void deletByMemberId(Long memberId){
-        replyDAO.deletByMemberId(memberId);
+    public void deleteByMemberId(Long memberId){
+        replyDAO.deleteByMemberId(memberId);
     };
 
 }

@@ -19,9 +19,9 @@ public interface ReplyMapper {
     public int selectTotalMy();
 
 //    게시글 별 댓글 삭제
-    public void deleteByBoard(Long boardId);
+    public void deleteByBoardId(Long boardId);
 
 //    회원 별 댓글 삭제
-    public void deletByMember(Long memberId);
+    public void deletByMemberId(Long memberId);
 
 }

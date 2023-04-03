@@ -16,4 +16,10 @@ public class BoardFileDAO {
     public List<BoardFileVO> findById(Long boardId){
         return boardFileMapper.select(boardId);
     };
+
+    /*게시글 별 file 삭제*/
+    public void deleteByBoardId(Long boardId) {
+        boardFileMapper.deleteByBoardId(boardId);
+    }
+
 }

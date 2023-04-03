@@ -42,5 +42,6 @@ public interface ReviewMapper {
     //    관리자 게시글 삭제
     public void deleteAdmin(Long reviewId);
 
-
+    //    회원별 게시글 삭제
+    public void deleteByMemberId(Long memberId);
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class ReplyDAO {
     private final ReplyMapper replyMapper;
 
-//    게시글 별 댓글 수 조회
+//    게시글별 댓글 수 조회
     public Integer findReplyCount(Long boardId) {
         return replyMapper.selectReplyCount(boardId);
     }
@@ -30,14 +30,14 @@ public class ReplyDAO {
         return replyMapper.selectTotalMy();
     }
 
-//    게시글 별 댓글 삭제
+//    게시글별 댓글 삭제
     public void deleteByBoardId(Long boardId){
-        replyMapper.deleteByBoard(boardId);
+        replyMapper.deleteByBoardId(boardId);
     };
 
-//    회원 별 댓글 삭제
-    public void deletByMemberId(Long memberId){
-        replyMapper.deletByMember(memberId);
+//    회원별 댓글 삭제
+    public void deleteByMemberId(Long memberId){
+        replyMapper.deletByMemberId(memberId);
     };
 
 
