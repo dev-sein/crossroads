@@ -3,6 +3,7 @@ const $emailInput = $(".input-text");
 // 이메일 에러 변수
 const $emailWarning = $(".error-text");
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+const $submitBtn = $("#submit-btn");
 
 $emailInput.on("blur", function(){
     /* 이메일 중복 확인 */
@@ -18,5 +19,13 @@ $emailInput.on("blur", function(){
     } else {
         $emailWarning.css("display", "none");
         $emailInput.css("border-color", "#e0e0e0");
+    }
+});
+
+$submitBtn.on("click", function () {
+    if ($emailInput.val()) {
+        $submitBtn.attr("type", "submit");
+    } else {
+        $submitBtn.attr("type", "button");
     }
 });

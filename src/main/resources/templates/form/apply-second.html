@@ -79,7 +79,7 @@
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
-        <form>
+        <form action="/apply/apply-second" method="post" name="join" id="join">
             <div class="project-create-form-section">
                 <div class="form-section-header">
                     <p class="form-section-title subtitle-1">지역 및 요일 선택</p>
@@ -91,8 +91,9 @@
                         <p class="body-2 text900 form-group-guide">원하시는 연수지역을 선택해 주세요.</p>
                         <div class="form-content selectBox">
                             <!-- 지역 선택 -->
-                            <select class="select" class="selectbox" name="sido1" id="sido1"></select>
-                            <select class="select" class="selectbox" name="gugun1" id="gugun1"></select>
+                          <select class="select selectbox" name="sido1" id="sido1"></select>
+                            <select class="select selectbox" name="gugun1" id="gugun1"></select>
+                            <input id="applyLocation" name="applyLocation" value="A" type="text" style="display: none;">
                             <!-- 지역 선택 끝 -->
                         </div>
                         <em class="select-error error-message" style="padding: 5px 0 0 0px;">주소를 선택해주세요.</em>
@@ -102,34 +103,34 @@
                     <div class="form-group-light">
                         <div class="form-content">
                             <label class="form-group-title body-1-bold" style="padding: 5px 0 0 0px;">신청 요일</label>
-                            날짜 선택 :&nbsp;&nbsp;&nbsp;<input type="text" id="startDate" placeholder="20230314"
+                            날짜 선택 :&nbsp;&nbsp;&nbsp;<input type="text" id="startDate" placeholder="20230402" name="applyDate"
                                                             class="date-select" autocomplete="off">
                         </div>
                         <em class="date-error error-message" style="padding: 5px 0 0 0px;">주소를 선택해주세요.</em>
                     </div>
 
                 </div>
+                <input type="hidden" th:value="${applyCourse}" id="applyCourse">
 
 
                 <!-- 다음 -->
                 <div class="form-section-footer" style="position: relative">
                     <button
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            th:href="@{/apply/apply-third}"
                             name="can_submit"
                             style="pointer-events: none;
                 cursor: default;
                 opacity: 0.45;"
-                            type="button"
-                            onclick="send()"
-                    >
+                            type="button" onclick="send()">
                         다음
                     </button>
                     <button
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
+                            th:href="@{/apply/apply-first}"
                             style="margin: 0px 12px 0 0px;"
                             name="can_submit"
-                            type="button"
-                    >
+                            type="button">
                         이전
                     </button>
                     <div style="clear: both"></div>
@@ -141,7 +142,7 @@
 </div>
 
 </body>
-<script src="/js/form/Form.js"></script>
+<script src="/js/form/form.js"></script>
 <script src="/js/form/Form2.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>

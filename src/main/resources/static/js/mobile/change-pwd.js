@@ -5,6 +5,7 @@ let $passwordWarning = $(".pwd .error-text");
 
 let completePwd = false;
 let completeRePwd = false;
+const $submitBtn = $("#submit-btn");
 
 // 비밀번호 정규식 이벤트 사용 및 함수
 $passwordInput.on("blur", function() {
@@ -124,3 +125,15 @@ function checkAccount(object){
 		location.replace(link);
 	}
 };
+
+
+$submitBtn.on("click", function () {
+	var $pwdInput = $('.pwd input');
+	if ($pwdInput.val()) {
+		$passwordInput.val(btoa($passwordInput.val()));
+		$passwordCheckInput.val(btoa($passwordCheckInput.val()));
+		$submitBtn.attr("type", "submit");
+	} else {
+		$submitBtn.attr("type", "button");
+	}
+});

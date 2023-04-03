@@ -36,6 +36,11 @@ public interface ApplyMapper {
 //    신청 삭제(취소)
     public void delete(Long applyId);
 
+//    연수 신청
+    public void insertApply(ApplyDTO applyDTO);
+
+//    연수 코스
+    public void insertCourse(ApplyDTO applyDTO);
 //    검색 or 전체 목록 개수
     public Long selectAppliesCount(@Param("info") Map<String, Object> info);
 

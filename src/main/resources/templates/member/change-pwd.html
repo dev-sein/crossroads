@@ -28,11 +28,12 @@
                         교차로 회원의 비밀번호를 변경할 수 있습니다.<br>
                         회원님의 비밀번호를 다시 설정해 주세요.
                     </div>
-                    <form id="/member/change-pwd" method="post">
+                    <form action="/member/change-pwd" method="post">
                         <!-- 비밀번호 -->
                         <div class="input-box margin-top-16 pwd">
                             <div class="input-title">새 비밀번호</div>
                             <div class="input-text-wrapper icon-right">
+
                                 <input class="theme-croosroads input-text" id="password-input" maxlength="32" name="memberPassword" placeholder="8자 이상 32자 이하로 입력해 주세요." type="password" style="padding-right: 40px;">
                                 <i>
                                     <!-- https://account.wishket.com/static/renewal/img/news/icon_input_slash.png -->
@@ -45,7 +46,7 @@
                         <div class="input-box margin-top-16 re-pwd">
                             <div class="input-title">새 비밀번호 확인</div>
                             <div class="input-text-wrapper icon-right">
-                                <input class="theme-croosroads input-text" id="re-password-input" maxlength="32" name="" placeholder="비밀번호를 한 번 더 입력해 주세요." type="password" style="padding-right: 40px;">
+                                <input class="theme-croosroads input-text" id="re-password-input" maxlength="32" placeholder="비밀번호를 한 번 더 입력해 주세요." type="password" style="padding-right: 40px;">
                                 <i>
                                     <!-- https://account.wishket.com/static/renewal/img/news/icon_input_slash.png -->
                                     <img class="icon-eyes" src="/images/member/icon_input_eye.png">
@@ -55,6 +56,7 @@
                             <!-- 글자 수가 0일 때 -->
                             <span class="error-text" style="display: none;">비밀번호를 입력해 주세요.</span>
                         </div>
+                        <input type="hidden" name="memberEmail" th:value="${memberEmail}">
                         <button class="change-btn" type="button" id="submit-btn">변경하기</button>
                     </form>
                 </div>

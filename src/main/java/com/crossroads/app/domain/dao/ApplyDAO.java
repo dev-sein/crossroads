@@ -46,6 +46,11 @@ public class ApplyDAO {
         applyMapper.delete(applyId);
     }
 
+//   연수 신청
+    public void RegisterApply(ApplyDTO applyDTO) { applyMapper.insertApply((applyDTO));}
+
+//  연수 코스
+    public void RegisterCourse(ApplyDTO applyDTO) { applyMapper.insertCourse((applyDTO));}
 //    검색 or 전체 목록 개수
     public Long findAppliesCount(Map<String, Object> info){
         return applyMapper.selectAppliesCount(info);

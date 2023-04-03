@@ -174,18 +174,19 @@ public class MobileController {
 
     //로그인
     @GetMapping("login-mobile")
-    public String login(){
+    public String loginMobile(){
         return "mobile/login-mobile";
     }
 
     //로그인
     @PostMapping("login-mobile")
-    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+    public RedirectView Mobile(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
         log.info(id.toString());
         if(id != null){
             session.setAttribute("memberId", id);
+            //관리자 if()
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("list-mobile");
 
@@ -195,7 +196,7 @@ public class MobileController {
 
     //로그아웃
     @GetMapping("/logout-mobile")
-    public String logout(HttpServletRequest request) {
+    public String logoutMobile(HttpServletRequest request) {
         System.out.println("logout - 진입");
         //세션 끊기
         HttpSession session = request.getSession();
@@ -204,67 +205,73 @@ public class MobileController {
     }
 
     //비밀번호 찾기 1 - 이메일 인증
-    @GetMapping("find-pwd")
-    public String findPwd() {
-        return "member/find-pwd";
+    @GetMapping("find-pwd-mobile")
+    public String findPwdMobile() {
+        return "mobile/find-pwd-mobile";
     }
 
-    @PostMapping("find-pwd")
-    public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
+    @PostMapping("find-pwd-mobile")
+    public RedirectView findPasswordEmailMobile(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
         if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
-            return new RedirectView("/member/find-pwd?result=fail");
+            return new RedirectView("applies/find-pwd-mobile?result=fail");
         }
 
         Long randomKey = memberService.makeRandomKey();
 
         //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
         //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
-        memberService.setRandomKey(randomKey, memberEmail);
+        memberService.setRandomKey(memberEmail, randomKey);
 
         MailTO mailTO = new MailTO();
         mailTO.setAddress(memberEmail);
         mailTO.setTitle("[교차로] 새 비밀번호 설정 링크입니다.");
         //    mailTO.setMessage("링크: http://localhost:10000/user/changePassword-email?memberIdentification=" + memberIdentification + "&memberRandomKey=" + randomKey);
-        mailTO.setMessage("링크: http://localhost:10000/member/change-pwd?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
+        mailTO.setMessage("링크: http://localhost:10000/applies/change-pwd-mobile?memberEmail="+memberEmail+"&memberRandomKey="+randomKey);
         memberService.sendMail(mailTO);
 
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         System.out.print(memberEmail);
-        return new RedirectView("/member/find-pwd-send");
+        return new RedirectView("/applies/find-pwd-send-mobile");
+    }
+
+    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
+    @GetMapping("find-pwd-send-mobile")
+    public String findPwdSendMobile(String memberEmail, Model model, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        log.info(memberEmail);
+        return ("/mobile/find-pwd-send-mobile");
     }
 
     //비밀번호 변경
-    @GetMapping("change-pwd")
-    public String changePwd(String memberEmail, Long memberRandomKey){
+    @GetMapping("change-pwd-mobile")
+    public String changePwdMobile(String memberEmail, Long memberRandomKey, Model model){
         System.out.println(memberRandomKey);
         System.out.println(memberEmail);
         memberService.getRandomKey(memberEmail);
         if(!memberService.getRandomKey(memberEmail).equals(memberRandomKey)){
             return "/";
         };
-        memberService.setRandomKey(0L, memberEmail);
-        return "member/change-pwd";
+        memberService.setRandomKey(memberEmail, 0L);
+        model.addAttribute("memberEmail", memberEmail);
+        return "mobile/change-pwd-mobile";
     }
 
 
     //비밀번호 변경
-    @PostMapping("change-pwd")
-    public RedirectView changePwdtoCompleteChange(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
-        memberService.modifyPassword(memberEmail, memberPassword);
-        return new RedirectView("complete-change");
-    }
-
-    //비밀번호 변경 이메일(입력받은 값 뿌려줘야 함)
-    @GetMapping("find-pwd-send")
-    public RedirectView findPwdSend(String memberEmail, RedirectAttributes redirectAttributes){
+    @PostMapping("change-pwd-mobile")
+    public RedirectView changePwdtoCompleteChangeMobile(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
-        return new RedirectView("member/find-pwd-send");
+        log.info("이메일 출력: " + memberEmail);
+        memberService.modifyPassword(memberEmail, memberPassword);
+        log.info("비밀번호 변경 쿼리");
+        return new RedirectView("complete-change-mobile");
     }
 
     //비밀번호 변경 완료
-    @GetMapping("complete-change")
-    public String completeChange(){
-        return "member/complete-change";
+    @GetMapping("complete-change-mobile")
+    public String completeChangeMobile(){
+        return "mobile/complete-pwd-mobile";
     }
+
 
 }
