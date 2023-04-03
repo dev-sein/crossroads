@@ -33,27 +33,56 @@ $('.review-image').on('click', function () {
 });
 
 /*별점*/
-$(document).ready(function () {
-    function renderStars(reviewGrade) {
-        let starString = '';
-        for (let i = 1; i <= 5; i++) {
-            starString += i <= reviewGrade ? '★' : '☆';
-        }
-        return starString;
+function renderStars(reviewGrade) {
+    let starString = '';
+    for (let i = 1; i <= 5; i++) {
+        starString += i <= reviewGrade ?
+            '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star@2x.png" style="width:20px;">' :
+            '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star_empty@2x.png" style="width:20px;">';
     }
+    return starString;
+}
 
-    $('.review-star').each(function () {
-        const reviewGrade = parseInt($(this).attr('data-review-grade'));
-        const starString = renderStars(reviewGrade);
-        $(this).html(starString);
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    let reviewStars = document.querySelectorAll('.review-star');
+
+    for (let starDiv of reviewStars) {
+        let reviewGrade = starDiv.getAttribute('data-review-grade');
+        starDiv.innerHTML = renderStars(reviewGrade);
+    }
 });
 
+/*date yy-mm-dd만 가져오기*/
+function relativeTime(dateString) {
+    let now = new Date();
+    let date = new Date(dateString);
+    let timeDifference = now - date;
 
+    let seconds = Math.floor(timeDifference / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
 
+    if (days > 0) {
+        return days + '일 전';
+    }
+    if (hours > 0) {
+        return hours + '시간 전';
+    }
+    if (minutes > 0) {
+        return minutes + '분 전';
+    }
+    return '방금 전';
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+    let reviewDates = document.querySelectorAll('.info-date');
 
-// 무한스크롤
+    for (let dateSpan of reviewDates) {
+        let reviewDate = dateSpan.getAttribute('data-review-date');
+        dateSpan.textContent = relativeTime(reviewDate);
+    }
+});
 
 
 
