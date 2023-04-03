@@ -10,6 +10,7 @@
         <typeAlias type="com.crossroads.app.domain.vo.PointVO" alias="pointVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.ReplyVO" alias="replyVO"/>
         <typeAlias type="com.crossroads.app.domain.vo.ReviewVO" alias="reviewVO"/>
+        <typeAlias type="com.crossroads.app.domain.vo.BoardFileVO" alias="boardFileVO"/>
         <typeAlias type="com.crossroads.app.domain.dto.ApplyDTO" alias="applyDTO"/>
         <typeAlias type="com.crossroads.app.domain.dto.BoardDTO" alias="boardDTO"/>
         <typeAlias type="com.crossroads.app.domain.dto.ReplyDTO" alias="replyDTO"/>

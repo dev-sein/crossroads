@@ -157,18 +157,22 @@ public class AdminController {
     @ResponseBody
     @PostMapping("boards/list")
     public Map<String, Object> adminBoardList(@RequestBody Map<String, Object> requestData, Criteria criteria/*@RequestParam(value = "keyword", required = false) required = false를 해야 null값도 들어옴*/ ){
-
         return freeBoardService.getListAdmin(requestData, criteria);
     }
+
+//    게시글 상세 보기
+    @ResponseBody
+    @PostMapping("boards/detail/{boardId}")
+    public Map<String, Object> adminBoardDetail(/*@RequestParam*/ @PathVariable("boardId") Long boardId) {
+        return freeBoardService.getBoardAdmin(boardId);
+    }
+
 
 //    관리자 게시글 삭제
     @ResponseBody
     @DeleteMapping("boards/delete")
-    public void deleteBoard(@RequestBody List<String> checkedIds /*, @RequestParam String page*/) {
+    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds /*Map<String, List<Integer>> requestData*/ ){
         freeBoardService.remove(checkedIds);
-
-//        return new RedirectView("/admins/board/list?page=" + page);
-//        return "/admins/board/list?page=" + page;
     }
 
     //관리자 댓글 목록
