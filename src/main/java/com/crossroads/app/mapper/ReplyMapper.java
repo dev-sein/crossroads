@@ -17,4 +17,11 @@ public interface ReplyMapper {
 
     //마이페이지 게시글 페이징 - 전체 개수
     public int selectTotalMy();
+
+//    게시글 별 댓글 삭제
+    public void deleteByBoard(Long boardId);
+
+//    회원 별 댓글 삭제
+    public void deletByMember(Long memberId);
+
 }

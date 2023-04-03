@@ -6,14 +6,16 @@ function show (e) {
   document.querySelector(".background").className = "background show";
 
   var boardId = e.dataset.id;
+  boardId *= 1;
 
   console.log(boardId);
   $.ajax({
-    url: "/admin/boards/detail/{boardId}",
+    url: "/admin/boards/detail",
     type: "post",
-    // data: boardId,
+    data: {
+      boardId: boardId
+    },
     success: function(result) {
-      alert("되나..?");
       showAdminModal(result);
     },
     error: function (error) {
