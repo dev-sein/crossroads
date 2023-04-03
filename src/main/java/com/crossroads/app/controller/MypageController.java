@@ -3,26 +3,33 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.ReplyDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.vo.FileVO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.PointMapper;
 import com.crossroads.app.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Clock;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/mypage/*")
@@ -170,7 +177,7 @@ public class MypageController {
         //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
         //standard가 getListMyBoard로 전달됨(service로 이동)
         HttpSession session = request.getSession();
-        //        session.setAttribute("memberId", 1L);
+        //session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
         model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
         log.info(standards.toString());
@@ -215,7 +222,53 @@ public class MypageController {
         return "main/main";
     }
 
+    @GetMapping("uploadProfile")
+    public String goUploadForm(){
+        return "/upload";
+    }
 
+//    //마이페이지 파일 저장
+//    @PostMapping("saveProfile")
+//    @ResponseBody
+//    public void save(@RequestBody ListMemberVO memberVO){
+//        log.info("아 ㅇ안오나");
+//        log.info(String.valueOf(memberVO));
+////        memberService.modifyProfile("memberVO");
+//    }
+
+    //    파일 업로드
+    @PostMapping("upload")
+    @ResponseBody
+    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
+        List<String> uuids = new ArrayList<>();
+        String path = "C:/uploads/profiles/" + getPath();
+        File file = new File(path);
+        if(!file.exists()) {file.mkdirs();}
+
+        for(int i=0; i<multipartFiles.size(); i++){
+            uuids.add(UUID.randomUUID().toString());
+            multipartFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
+
+            if(multipartFiles.get(i).getContentType().startsWith("image")){
+                FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
+                Thumbnailator.createThumbnail(multipartFiles.get(i).getInputStream(), out, 100, 100);
+                out.close();
+            }
+        }
+        return uuids;
+    }
+
+//    //    파일 불러오기
+//    @GetMapping("display")
+//    @ResponseBody
+//    public byte[] display(String fileName) throws IOException {
+//        return FileCopyUtils.copyToByteArray(new File("C:/upload/profiles", fileName));
+//    }
+
+    //    현재 날짜 경로 구하기
+    private String getPath(){
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    }
 
 
 

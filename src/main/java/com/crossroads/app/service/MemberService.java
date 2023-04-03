@@ -100,5 +100,9 @@ public class MemberService {
     //랜덤키 삽입
     public void setRandomKey(Long memberRandomKey, String memberEmail){ memberDAO.setRandomKey(memberRandomKey,memberEmail);};
 
+    //마이페이지 프로필 업로드
+    public void modifyProfile(MemberVO memberVO){
+        memberDAO.setProfile(memberVO);
+    }
 
 }

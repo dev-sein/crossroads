@@ -41,8 +41,9 @@
 	where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
 
+    <!-- 마이페이지 정보 조회 -->
     <select id="select" parameterType="long" resultType="memberVO">
-        select member_id, member_identification, member_name, member_phone, member_email, member_type
+        select member_id, member_identification, member_name, member_phone, member_email, member_point, member_type
         from tbl_member
         where member_id = #{memberId}
     </select>
@@ -80,12 +81,20 @@
         where member_email=#{memberEmail}
     </select>
 
-
     <!--랜덤키 입력-->
     <update id="updateRandomKey">
     update tbl_member
     set member_random_key = #{memberRandomKey}
     where member_email = #{memberEmail}
+    </update>
+
+    <!--프로필 사진 업로드-->
+    <update id="updateProfile">
+        update tbl_member
+        set member_file_original_name = #{memberFileOriginalName}, member_file_uuid = #{memberFileUuid},
+            member_file_path = #{memberFilePath}, member_file_size = #{memberFileSize},
+            member_file_type = #{memberFileType}
+        where member_id = #{memberId}
     </update>
 
 </mapper>

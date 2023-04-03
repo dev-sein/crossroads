@@ -12,7 +12,11 @@ public class MemberVO {
     private String memberName;
     private String memberPhone;
     private String memberEmail;
-    private String memberFileSystemName;
+    private String memberFileOriginalName;
+    private String memberFileUuid;
+    private String memberFilePath;
+    private String memberFileSize;
+    private boolean memberFileType;
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
