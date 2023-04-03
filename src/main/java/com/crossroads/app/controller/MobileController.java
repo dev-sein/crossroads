@@ -180,6 +180,7 @@ public class MobileController {
         log.info(id.toString());
         if(id != null){
             session.setAttribute("memberId", id);
+            //관리자 if()
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("list-mobile");
 
@@ -213,7 +214,7 @@ public class MobileController {
 
         //    비밀번호 변경 이메일 발송시 랜덤 키 값 컬럼에 저장
         //    비밀번호 변경 완료 시 랜덤 키 컬럼 값 삭제
-        memberService.setRandomKey(randomKey, memberEmail);
+        memberService.setRandomKey(memberEmail, randomKey);
 
         MailTO mailTO = new MailTO();
         mailTO.setAddress(memberEmail);
@@ -231,19 +232,21 @@ public class MobileController {
     @GetMapping("find-pwd-send-mobile")
     public String findPwdSendMobile(String memberEmail, Model model, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        log.info(memberEmail);
         return ("/mobile/find-pwd-send-mobile");
     }
 
     //비밀번호 변경
     @GetMapping("change-pwd-mobile")
-    public String changePwdMobile(String memberEmail, Long memberRandomKey){
+    public String changePwdMobile(String memberEmail, Long memberRandomKey, Model model){
         System.out.println(memberRandomKey);
         System.out.println(memberEmail);
         memberService.getRandomKey(memberEmail);
         if(!memberService.getRandomKey(memberEmail).equals(memberRandomKey)){
             return "/";
         };
-        memberService.setRandomKey(0L, memberEmail);
+        memberService.setRandomKey(memberEmail, 0L);
+        model.addAttribute("memberEmail", memberEmail);
         return "mobile/change-pwd-mobile";
     }
 
@@ -251,8 +254,10 @@ public class MobileController {
     //비밀번호 변경
     @PostMapping("change-pwd-mobile")
     public RedirectView changePwdtoCompleteChangeMobile(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        log.info("이메일 출력: " + memberEmail);
         memberService.modifyPassword(memberEmail, memberPassword);
-        log.info("비밀번호 변경");
+        log.info("비밀번호 변경 쿼리");
         return new RedirectView("complete-change-mobile");
     }
 

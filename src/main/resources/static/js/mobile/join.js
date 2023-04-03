@@ -40,6 +40,10 @@ const $arrow = $(".arrow");
 const $icon = $(".checked-icon");
 let checkbox = false;
 
+//로딩중
+const $loader = $(".loader");
+const $loadingIcon = $(".loadingImg");
+
 // 회원가입 버튼
 const $submitBtn = $("#submit-btn");
 
@@ -350,6 +354,8 @@ function checkId() {
 
 // 파일 첨부 시
 $("#license").on("change", function(e){
+	$loader.fadeIn(300);
+	$loadingIcon.show();
 	let reader = new FileReader();
 	reader.readAsDataURL(e.target.files[0]);
 	reader.onload = function (e) {
@@ -397,6 +403,8 @@ $("#license").on("change", function(e){
 				var year = now - intregisterdate;
 				console.log(year);
 				year > 49999 ? year = 1 : year = 0; //5년 이상이면 1 베테랑, 이하일 경우 0 초보자
+				$loadingIcon.hide();
+				$loader.fadeOut(300);
 				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
 			}
 		});

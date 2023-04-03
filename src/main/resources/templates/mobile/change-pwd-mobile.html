@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,6 +62,7 @@
                                 <span class="error-text" style="display: none;">새 비밀번호를 입력해 주세요.</span> 
                             </div>
                             <button class="change-btn" id="submit-btn" type="button">변경하기</button>
+                            <input type="hidden" name="memberEmail" th:value="${memberEmail}">
                         </form>
                     </div>
                 </div>

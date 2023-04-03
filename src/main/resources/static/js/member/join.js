@@ -4,6 +4,8 @@ const $emailWarning = $(".email .error-text");
 const $emailInputvalue = $("#memberEmail");
 
 
+
+
 // 아이디
 const $idInput = $('.id .input-text');
 let $idWarning = $("#id-error");
@@ -43,7 +45,9 @@ let checkbox = false;
 
 // 멤버 타입
 const $memberTypeInput = $("#memeberType");
-
+//로딩중
+const $loader = $(".loader");
+const $loadingIcon = $(".loadingImg");
 
 // 회원가입 버튼
 const $submitBtn = $("#submit-btn");
@@ -322,6 +326,8 @@ function checkEmail() {
 
 // 파일 첨부 시
 $("#license").on("change", function(e){
+	$loader.fadeIn(300);
+	$loadingIcon.show();
 	let reader = new FileReader();
 	reader.readAsDataURL(e.target.files[0]);
 	reader.onload = function (e) {
@@ -333,17 +339,13 @@ $("#license").on("change", function(e){
 			//apikey 작성, base64Image에 base64 String작성, 나머지 노터치
 			data: {apikey: "K83408865188957", base64Image: img, filetype: "jpg", language: "kor", isOverlayRequired: true},
 			success: function(result){
+
 				console.log(result);
 				//추출된 전체 문자열값에서 줄바꿈문자로 분리하여 12번째 인덱스에 있는 취득 년월일 추출
 				$("#result").html(parseInt(result.ParsedResults[0].ParsedText.split("\r\n")[12].replace(".", "").replace(" ", "")));
 				var registerdate = $('#result').text();
 				/*alert(registerdate); 취득일자를 변수로 받아 취득일자 input value 값 변경*/
 				$('input[name=memberDriveRegisterDate]').attr('value',registerdate);
-				/*$("input[type=text][name=memberDriveRegisterDate]").val(registerdate);*/   // 취득일자
-				/*console.log($("#memberDriveRegisterDate"));
-				$("#memberDriveRegisterDate").text(registerdate);
-				var registerdatee = $('#memberDriveRegisterDate').text();
-				alert(registerdatee);*/
 				console.log(parseInt(registerdate, 10));//취득일자(String)를 int 타입으로 변환
 				var intregisterdate = parseInt(registerdate, 10);
 				/*현재 날짜 계산*/
@@ -352,7 +354,7 @@ $("#license").on("change", function(e){
 					var yyyy = this.getFullYear().toString();
 					var MM = pad(this.getMonth() + 1,2);
 					var dd = pad(this.getDate(), 2);
-					return yyyy +  MM + dd;
+					return yyyy +  MM + dd; //날짜 형식
 				};
 				function pad(number, length) {
 					var str = '' + number;
@@ -362,14 +364,21 @@ $("#license").on("change", function(e){
 					return str;
 				}
 
+				/*날짜 계산 */
 				var nowDate = new Date();
 				//console.log(nowDate); Mon Aug 16 2021 19:56:50 GMT+0900 (한국 표준시)
-				console.log(nowDate.YYYYMMDD());
-				var now = nowDate.YYYYMMDD();
-				var year = now - intregisterdate;
+				console.log(nowDate.YYYYMMDD()); //현재 날짜 출력
+				var now = nowDate.YYYYMMDD(); //현재 날짜
+				var year = now - intregisterdate; //현재 날짜 -
 				console.log(year);
 				year > 49999 ? year = 1 : year = 0; //5년 이상이면 1 베테랑, 이하일 경우 0 초보자
+
+
+				/*로딩중 */
+				$loadingIcon.hide();
+				$loader.fadeOut(300);
 				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
+
 			}
 		});
 	};
@@ -399,4 +408,5 @@ $("#license").on("change", function(e){
 			$submitBtn.attr("type", "button");
 		}
 	});
+
 
