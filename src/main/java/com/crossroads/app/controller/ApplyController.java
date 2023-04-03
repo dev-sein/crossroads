@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class ApplyController {
     private final ApplyService applyService;
-    private final MemberService memberService;
 
     @GetMapping("apply-first")
     public String formFirst(Model model, HttpServletRequest httpServletRequest) {
@@ -33,19 +32,19 @@ public class ApplyController {
         return "form/apply-first";
     }
 
-    @PostMapping("apply-first")
-    public RedirectView applyFirst(ApplyDTO applyDTO, RedirectAttributes redirectAttributes, Model model, HttpSession session){
+    @PostMapping("apply-first/send")
+    public RedirectView applyFirst(ApplyDTO applyDTO, Model model, HttpSession session, String applyCourse){
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
         session.setAttribute("memberId", 1L);
-        applyService.saveCourse(applyDTO);
-        model.addAttribute("applyDTO", applyDTO);
-        System.out.println("apply-first postmapping");
-        return new RedirectView("/apply/apply-second");
+        model.addAttribute("applyCourse", applyCourse);
+        log.info("apply-first : " + applyCourse);
+        return new RedirectView("/apply/apply-second?applyCourse=" + applyCourse);
     }
 
     @GetMapping("apply-second")
     public String applySecond (Model model, HttpServletRequest httpServletRequest, ApplyDTO applyDTO, @RequestParam(value="applyCourse") String applyCourse) {
-        System.out.println("코스: " + applyCourse);
+        log.info("second 들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        log.info(applyDTO.toString());
         model.addAttribute("applyDTO", applyDTO);
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 1L);
@@ -60,15 +59,14 @@ public class ApplyController {
         applyService.saveApply(applyDTO);
         model.addAttribute("applyDTO", applyDTO);
       /*  redirectAttributes.addAttribute("applyDTO", applyDTO);*/
-        System.out.println("apply-second-postmapping");
+        log.info("apply-second 들어옴@@@@@@@@@@@@@@@@@@@@@@22");
         return new RedirectView("/apply/apply-third");
     }
 
-    @GetMapping("apply-third")
+    @GetMapping("/apply-third")
     public String formThird(Model model, HttpServletRequest httpServletRequest) {
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 1L);
-        System.out.println("third-postmapping");
         return "form/apply-third";
     }
 

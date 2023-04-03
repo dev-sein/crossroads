@@ -70,10 +70,11 @@
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
-        <form action="/apply/apply-first" method="post" name="join" id="join">
+<!--        <form action="/apply/apply-first" method="post" name="join" id="join">-->
+        <form action="/apply/apply-first/send" method="post" name="join" id="join">
             <div class="project-create-form-section">
                 <div class="form-section-header">
-                    <p class="form-section-title subtitle-1">1. 정보 입력 및 코스 선택</p>
+                    <p class="form-section-title subtitle-1">1. 정보 확인 및 코스 선택</p>
                 </div>
                 <div class="form-input-section">
                     <div class="form-group-light">
@@ -169,10 +170,7 @@
                     <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
                             name="can_submit"
-                            type="button"
-                            onclick="send()"
-                    >
-                        다음
+                            type="button">다음
                         <!--th:href="@{/apply/apply-second}"-->
                     </a>
                     <a
@@ -195,15 +193,19 @@
                 const $checkVal = $('input[name=category]:checked').val();
                 console.log($checkVal);
                 $('input[name=applyCourse]').attr('value',$checkVal);
+
                 $.ajax({
-                    url: './apply-second', //Controller에서 요청 받을 주소
-                    type: 'get', //POST 방식으로 전달
+                    url: '/apply/apply-second', //Controller에서 요청 받을 주소
+                    type: 'post',
                     data: {applyCourse: $checkVal},
                     contentType: "application/json; charset=UTF-8",
                     dataType: "Text",
-                    success : function(data){}
+                    success : function(){
+                        console.log("전송성공");
+                        document.join.submit()
+                    }
                 })
-                success: document.join.submit()
+
             });
 
 
