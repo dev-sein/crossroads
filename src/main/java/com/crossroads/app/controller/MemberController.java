@@ -67,6 +67,9 @@ public class MemberController {
         log.info(id.toString());
         if(id != null){
             session.setAttribute("memberId", id);
+            if(id==1L){
+                return new RedirectView("/admin/home");
+            }
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("/main");
         }

@@ -82,11 +82,8 @@
                         <div class="form-content mb16">
                             <div>
                                 <div class="text-input-client list">
-                                    <div>
-                                       <!-- <input class="name-input" id="name-input" data-type="text" maxlength="5"
-                                               name="title" placeholder="이름을 적어주세요" type="text" value=""/>-->
-                                    </div>
-                                    <em class="name-error error-message">이름을 입력해주세요.</em>
+                                    <span th:text="${members.memberName}">
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -97,17 +94,20 @@
                         <div class="form-content mb16">
                             <div>
                                 <div class="text-input-client list">
-                                    <div>
-                                      <!--  <input
-                                                class="name-input theme-client wishket-text check" id="input-phone-number" maxlength="11"
-                                                data-type="text"
-                                                name="userPhone"
-                                                placeholder="ex) 01012341234"
-                                                type="text"
-                                                value=""
-                                        />-->
-                                    </div>
-                                    <em class="phone-error error-message">핸드폰 번호를 입력해주세요.</em>
+                                    <span th:text="${members.memberPhone}">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-light">
+                        <label class="form-group-title body-1-bold">보유포인트</label>
+                        <div class="form-content mb16">
+                            <div>
+                                <div class="text-input-client list">
+                                    <span th:text="${members.memberPoint}">
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -193,8 +193,8 @@
                 const $checkVal = $('input[name=category]:checked').val();
                 console.log($checkVal);
                 $('input[name=applyCourse]').attr('value',$checkVal);
-
-                $.ajax({
+                document.join.submit()
+              /*  $.ajax({
                     url: '/apply/apply-second', //Controller에서 요청 받을 주소
                     type: 'post',
                     data: {applyCourse: $checkVal},
@@ -202,9 +202,9 @@
                     dataType: "Text",
                     success : function(){
                         console.log("전송성공");
-                        document.join.submit()
+
                     }
-                })
+                })*/
 
             });
 

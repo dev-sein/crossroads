@@ -43,3 +43,5 @@ spring:
     static-path-pattern: /uploads/**
    resources:
     static-locations: file:./uploads/
+
+
