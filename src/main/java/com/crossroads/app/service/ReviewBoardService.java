@@ -39,7 +39,8 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public void remove(List<String> boardIds) {
-        boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(reviewDAO::deleteById);
+//        boardIds.stream().map(boardId -> new Long(boardId)).forEach(reviewDAO::deleteById);
+        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(reviewDAO::deleteById);
     }
 
     public List<BoardDTO> getListAdmin() {
@@ -106,6 +107,12 @@ public class ReviewBoardService implements BoardService {
     //   마이페이지 게시판 목록
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId) {
+        return null;
+    }
+
+//    상세보기
+    @Override
+    public Map<String, Object> getBoardAdmin(Long boardId) {
         return null;
     }
 

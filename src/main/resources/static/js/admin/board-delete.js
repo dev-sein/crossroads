@@ -1,10 +1,11 @@
 /* delete 버튼 클릭 시 ajax실행*/
 $('.modal_test').on('click', function() {
+    console.log("delete버튼 들어옴");
     var checkedIds = new Array();
     // 체크 박스 체크된 값
-    $('input:checkbox[name=checkbox]:checked').next().find('.content__id').each(function(){
-        console.log(this.innerText);
-        checkedIds.push(this.innerText);
+    $('input:checkbox[name=checkbox]:checked').each(function(i, e){
+        console.log(e.innerText);
+        checkedIds.push(e.dataset.id);
     });
 
     console.log(checkedIds);
@@ -12,8 +13,11 @@ $('.modal_test').on('click', function() {
     $.ajax({
         url: `/admin/boards/delete`,
         type: "delete",
-        data: {"checkedIds": checkedIds},
-        success: function(result){
+        data: {
+            "checkedIds": checkedIds
+        },
+        success: function(){
+            alert("들어옴?");
             // location.href= result;
             load();
         }
