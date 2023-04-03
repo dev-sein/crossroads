@@ -153,6 +153,7 @@ formSubmit.addEventListener("click", function(e){
 });
 
 
+
 // 공백 -> 문자열 입력 시 인풋 속성 변경
 /* 이름 */
 nameInput.addEventListener("blur", function(){
@@ -257,7 +258,7 @@ $("input[id='remove_image_file']").on("change", function() {
 /* 프로필 사진 변경 */
 globalThis.arrayFile2 = new Array();
 globalThis.j = 0;
-const dataTransfer = new DataTransfer();
+// const dataTransfer = new DataTransfer();
 $("input[id='fileupload']").on("change", function() {
     const $files2 = $("input[id=fileupload]")[0].files[0];
     console.log($files2)

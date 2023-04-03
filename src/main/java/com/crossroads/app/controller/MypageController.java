@@ -215,64 +215,10 @@ public class MypageController {
         return "main/main";
     }
 
-    //페이징 처리
 
 
-    /*===========================================모바일=================================================*/
-//    //모바일 마이페이지 메인
-//    @GetMapping("/my-mobile")
-//    public String myMobile(Long memberId, Model model){
-//        model.addAttribute("members", memberService.getMember(1L));
-//        return "mobile/my-mobile";
-//    }
-//
-//    //모바일 마이페이지 비밀번호 확인
-//    @GetMapping("/my-mobile-password-check")
-//    public String myPasswordCheckMobileView(){
-//        return "mobile/my-mobile-password-check";
-//    }
-//
-//    @PostMapping("/my-mobile-password-check")
-//    public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-////        Long password = memberService.getPassword(memberPassword);
-////        log.info(password.toString());
-//        session.setAttribute("memberId", 1L);
-//        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
-//            log.info(session.getAttribute("memberId").toString());
-//            return new RedirectView("my-mobile-password-change");
-//        }
-//        return new RedirectView("my-mobile-password-check");
-//    }
-//
-//    //모바일 마이페이지 비밀번호 변경
-//    @GetMapping("/my-mobile-password-change")
-//    public String myPasswordChangeMobileView(){
-//        return "mobile/my-mobile-password-change";
-//    }
-//
-//    //모바일 마이페이지 비밀번호 변경
-//    @PostMapping("/my-mobile-password-change")
-//    public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
-//        session.setAttribute("memberId", 1L);
-////        memberService.modifyPasswordMy((Long)session.getAttribute("memberId"), memberPassword);
-//        return new RedirectView("my-mobile");
-//    }
 
-    @GetMapping("/my-mobile-point")
-    public String myPointMobile(){
-        return "mobile/my-mobile-point";
-    }
 
-    @GetMapping("/my-mobile-apply")
-    public String myApplyMobile(){
-        return "mobile/my-mobile-apply";
-    }
-
-    @GetMapping("/my-mobile-complete-cancel")
-    public String myCompleteCancelMobile(){
-        return "mobile/my-mobile-complete-cancel";
-    }
 
 
 }
