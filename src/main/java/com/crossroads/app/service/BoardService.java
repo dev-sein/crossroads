@@ -52,7 +52,8 @@ public interface BoardService {
     //    마이페이지 게시글 목록
     public List<BoardDTO> getListMyBoard(Long memberId);
 
-
+    /* 상세 보기*/
+    public Map<String, Object> getBoardAdmin(Long boardId);
 
 
 

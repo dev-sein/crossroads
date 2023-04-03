@@ -56,13 +56,24 @@
 
     <!--자유 게시글 전체 조회-->
     <select id="selectAllBoards" resultType="boardDTO">
-  SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
-         M.member_name, F.file_uuid, F.file_path
-  FROM tbl_board B
-  LEFT JOIN tbl_member M ON B.member_id = M.member_id
-  LEFT JOIN tbl_file F ON B.board_id = F.board_id
-  ORDER BY B.board_register_date DESC
-</select>
+      SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
+             M.member_name, F.file_uuid, F.file_path
+      FROM tbl_board B
+      LEFT JOIN tbl_member M ON B.member_id = M.member_id
+      LEFT JOIN tbl_file F ON B.board_id = F.board_id
+      ORDER BY B.board_register_date DESC
+    </select>
+
+    <!-- 상세 조회 -->
+    <select id="select" resultType="boardDTO">
+        select b.board_id, board_title, board_content, b.member_id, board_register_date, board_update_date, board_read_count
+        member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
+        from tbl_member m join tbl_board b
+        on m.member_id = b.member_id
+        and board_id = #{boardId}
+    </select>
+
+
 
 
 </mapper>
