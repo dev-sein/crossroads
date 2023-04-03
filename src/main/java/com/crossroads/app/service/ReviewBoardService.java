@@ -2,6 +2,7 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ReviewDAO;
 import com.crossroads.app.domain.dto.*;
+import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class ReviewBoardService implements BoardService {
     private final ReviewDAO reviewDAO;
 
+//    관리자 후기 게시판 목록
     @Override
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
         Map<String, Object> result = new HashMap<String, Object>();
@@ -36,7 +38,25 @@ public class ReviewBoardService implements BoardService {
 
         return result;
     }
+    
+//    관리자 후기 게시판 상세보기
+    @Override
+    public Map<String, Object> getBoardAdmin(Long reviewId) {
+        Map<String, Object> result = new HashMap<>();
 
+        ReviewVO reviewVO = reviewDAO.findById(reviewId);
+
+        result.put("review", reviewVO);
+
+        return result;
+    }
+
+//    관리자 후기 게시판 삭제
+    @Override
+    public void remove(List<String> reviewIds) {
+        reviewIds.stream().map(reviewId -> Long.valueOf(reviewId)).forEach(reviewDAO::deleteByIdAdmin);
+    }
+    
     @Override
     public Integer getCountAdmin(String keyword) {
         return null;
@@ -49,11 +69,7 @@ public class ReviewBoardService implements BoardService {
         return reviewDAO.findAllMy(memberId, standards);
     }
 
-    @Override
-    public void remove(List<String> boardIds) {
-//        boardIds.stream().map(boardId -> new Long(boardId)).forEach(reviewDAO::deleteById);
-        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(reviewDAO::deleteById);
-    }
+
 
     public List<BoardDTO> getListAdmin() {
         return null;
@@ -122,11 +138,7 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
-//    상세보기
-    @Override
-    public Map<String, Object> getBoardAdmin(Long boardId) {
-        return null;
-    }
+
 
 
 }

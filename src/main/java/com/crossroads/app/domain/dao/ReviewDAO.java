@@ -61,7 +61,7 @@ public class ReviewDAO {
 
     
     /* 관리자 게시글 목록 */
-    public List<BoardDTO> findAllAdmin(Criteria criteria, String keyword) {
+    public List<ReviewDTO> findAllAdmin(Criteria criteria, String keyword) {
         return reviewMapper.selectAllAdmin(criteria, keyword);
     }
 
@@ -71,7 +71,7 @@ public class ReviewDAO {
     }
 
     /* 관리자 게시글 삭제 */
-    public void deleteById(Long reviewId) {
+    public void deleteByIdAdmin(Long reviewId) {
         reviewMapper.deleteAdmin(reviewId);
     }
 

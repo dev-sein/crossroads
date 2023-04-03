@@ -1,20 +1,22 @@
 /* delete 버튼 클릭 시 ajax실행*/
 $('.modal_test').on('click', function() {
+    console.log("delete버튼 들어옴");
     var checkedIds = new Array();
     // 체크 박스 체크된 값
-    $('input:checkbox[name=checkbox]:checked').next().find('.content__id').each(function(){
-        console.log(this.innerText);
-        checkedIds.push(this.innerText);
+    $('input:checkbox[name=checkbox]:checked').each(function(i, e){
+        console.log(e.innerText);
+        checkedIds.push(e.dataset.id);
     });
 
     console.log(checkedIds);
-
+    // ?page=${$page}
     $.ajax({
-        url: "/admins/review/delete",
+        url: `/admin/reviews/delete`,
         type: "delete",
         data: {"checkedIds": checkedIds},
         success: function(){
-            location.reload();
+            // location.href= result;
+            load();
         }
 
     });

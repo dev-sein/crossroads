@@ -34,7 +34,7 @@ public interface ReviewMapper {
     public ReviewVO select(Long reviewId);
 
     //    관리자 전체 조회
-    public List<BoardDTO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
+    public List<ReviewDTO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
 
     //    관리자 게시글 총 개수
     public Integer selectCountAllAdmin(@Param("keyword") String keyword);

@@ -34,16 +34,24 @@ public class AdminController {
     }
 
 
+    /*====================회원 게시판 시작==============================*/
     //관리자 회원 목록
-    @GetMapping("members/list")
+    @GetMapping("member/list")
     public String adminMember(){
 //        model.addAttribute("members", memberService.getList());
         return "admin/admin-member";
     }
     //관리자 회원 목록
-    @PostMapping("members/list")
-    public List<MemberVO> adminMemberList(Model model){
-        return memberService.getList();
+//    @PostMapping("members/list")
+//    public List<MemberVO> adminMemberList(Model model){
+//        return memberService.getList();
+//    }
+
+    //    관리자 후기 게시판 상세 보기
+    @ResponseBody
+    @PostMapping("members/detail")
+    public Map<String, Object> adminMemberDetail(@RequestParam("reviewId") Long reviewId) {
+        return reviewBoardService.getBoardAdmin(reviewId);
     }
 
     //관리자 회원 삭제
@@ -52,6 +60,7 @@ public class AdminController {
     public void deleteMember(@RequestBody List<String> checkedIds) {
         checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(memberService::remove);
     }
+    /*====================회원 게시판 끝==============================*/
 
     //관리자 연수신청 목록
     @GetMapping("apply/list")
@@ -95,6 +104,7 @@ public class AdminController {
     public String adminReview(){
         return "admin/admin-review";
     }
+
 //    관리자 후기 게시판 목록
     @ResponseBody
     @PostMapping("reviews/list")
@@ -104,9 +114,9 @@ public class AdminController {
 
 //    관리자 후기 게시판 상세 보기
     @ResponseBody
-    @PostMapping("boards/detail")
-    public Map<String, Object> adminReviewDetail(@RequestParam("boardId") Long boardId) {
-        return reviewBoardService.getBoardAdmin(boardId);
+    @PostMapping("reviews/detail")
+    public Map<String, Object> adminReviewDetail(@RequestParam("reviewId") Long reviewId) {
+        return reviewBoardService.getBoardAdmin(reviewId);
     }
 
 //    관리자 후기 게시판 삭제

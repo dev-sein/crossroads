@@ -88,10 +88,6 @@ function showList(boards){
     });
 
     $listResults.html(text);
-
-
-
-
 }
 
 /*페이지 버튼*/
