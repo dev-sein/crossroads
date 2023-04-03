@@ -41,4 +41,9 @@ public interface ApplyMapper {
 
 //    연수 코스
     public void insertCourse(ApplyDTO applyDTO);
+//    검색 or 전체 목록 개수
+    public Long selectAppliesCount(@Param("info") Map<String, Object> info);
+
+//    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
+    public Long selectOthersCount(@Param("info") Map<String, Object> info);
 }

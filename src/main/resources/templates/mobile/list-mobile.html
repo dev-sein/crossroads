@@ -55,7 +55,8 @@
             <section class="search-result-section">
                 <div class="result-header">
                     <p class="title-wrap result-people">
-                        <span th:text="${applies.size() > 0 ? applies.size() : 0}"></span>명의 연수 신청자
+                        <span th:text="${applyCount}"></span>명의 연수 신청자
+<!--                        <span th:text="${applyLength > 0 ? applyLength : 0}">0</span>명의 연수 신청자-->
 <!--                        <span th:text="${applies.size() - others > 0 ? applies.size() - others : 0}"></span>명의 연수 신청자-->
 <!--                        <span th:text="${applies.size() == null ? 0 : applies.size()}"></span>명의 연수 신청자-->
                         <input type="hidden" id="current-page" value="0">
@@ -134,6 +135,9 @@
             </section>
 <!--        </form>-->
     </div>
+    <!--맨위로 가기 버튼-->
+    <button class="back-to-top"></button>
+    <!--맨위로 가기 버튼-->
     <div class="modal-search-modal" th:fragment="search-modal" style="display: none;">
         <!-- 헤더 -->
         <div class="modal-search-header">
@@ -298,7 +302,9 @@
                 remainingTime2 = remainingTime2.getTime() / (1000 * 60 * 60 * 24);
                 // console.log(remainingTime2);
                 // console.log(remainingTime2.getDate() - 1);
-
+                if (remainingTime2 <= 0){
+                    continue;
+                }
                 text += `
 			            <div class="result-beginner">
                             <div class="project-status-label">
@@ -363,9 +369,16 @@
 
                 }
 
+                if (drivingTime2 > 5) {
+                    text += `
+                                <div class="driver-tag">장롱</div>
+                            `;
+                } else {
+                    text += `
+                                 <div class="driver-tag">신입</div>
+                            `;
+                }
                 text += `
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
                                     </div>
                                 </div>
                                 <div class="driver-info-etc">
@@ -437,7 +450,9 @@
                 remainingTime2 = remainingTime2.getTime() / (1000 * 60 * 60 * 24);
                 // console.log(remainingTime2);
                 // console.log(remainingTime2.getDate() - 1);
-
+                if (remainingTime2 <= 0){
+                    continue;
+                }
                 text += `
 			            <div class="result-beginner">
                             <div class="project-status-label">
@@ -501,10 +516,16 @@
                                         `;
 
                 }
-
+                if (drivingTime2 > 5) {
+                    text += `
+                                <div class="driver-tag">장롱</div>
+                            `;
+                } else {
+                    text += `
+                                 <div class="driver-tag">신입</div>
+                            `;
+                }
                 text += `
-                                        <div class="driver-tag">신입</div>
-                                        <div class="driver-tag">장롱</div>
                                     </div>
                                 </div>
                                 <div class="driver-info-etc">
@@ -578,6 +599,11 @@
 
     $(document).ready(function () {
         fetchData();
+        // 목록 불러올 때 조건식에 막혀서 4개 이하로 가져오면 스크롤 길이가 부족해서 무한 스크롤 기능이 막혀버림
+        // 해결하기 위해 가져온 목록이 3개 이하면 한번 더 데이터를 뿌려 줌
+        if ($(".result-beginners").children().length < 4){
+            fetchData();
+        }
     });
     //    원래 코드
     $(window).scroll(function () {

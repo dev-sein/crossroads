@@ -8,13 +8,14 @@ $('.modal_test').on('click', function() {
     });
 
     console.log(checkedIds);
-
+        // ?page=${$page}
     $.ajax({
-        url: "/admins/board/delete",
+        url: `/admin/boards/delete`,
         type: "delete",
         data: {"checkedIds": checkedIds},
-        success: function(){
-            location.reload();
+        success: function(result){
+            // location.href= result;
+            load();
         }
 
     });

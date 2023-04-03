@@ -34,7 +34,10 @@
             </div>
             <div class="SectionMaker_Wrapper">
                 <div class="SectionMaker_contentWrapper">
-                    <form action="#" name="reviewForm">
+                    <form action="#" th:action="@{/review-update/{reviewId}(reviewId=${info.reviewId})}"
+                          th:object="${info}" method="post" name="reviewForm" enctype="multipart/form-data">
+
+                    <input type="hidden" th:field="*{reviewId}">
                         <div class="formSection_contentContainer">
                             <div class="formTitle_wrapper">
                                 <div class="formTitle" style="align-items: center !important;">
@@ -65,7 +68,7 @@
                                     <legend class="formTitle_legend">
                                         <span>제목</span>
                                     </legend>
-                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요." th:value="${info.reviewTitle}">
+                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요." th:value="${info.reviewTitle}" name="reviewTitle">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +79,7 @@
                                     <legend class="formTitle_legend">
                                         <span>내용</span>
                                     </legend>
-                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요." th:text="${info.reviewContent}"></textarea>
+                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요." th:text="${info.reviewContent}" name="reviewContent"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +112,8 @@
                                                 <!-- <label class="ImageFileButton_label" id="button-label"> -->
                                                     <div class="imgText_container" onclick="">
                                                         <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                        <input type="file" id="image" name="upload1" onchange="setThumbnail(event);" style="display: none;">
+                                                        <input type="file" id="image" name="image" onchange="setThumbnail(event);" style="display: none;">
+
                                                         <div>이미지 추가하기</div>
                                                     </div>
                                                 </div>
@@ -125,7 +129,7 @@
                             </div>
                         </div>
                         <div class="bottomButton_wrapper">
-                            <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">수정취소</button>
+                            <button type="button" class="cancelButton_button" onclick="cancelWriteReview()" style="margin-right: 10px; background-color: #A1A6AD;">수정취소</button>
                             <button type="button" class="registButton_button" id="submit-btn">수정완료</button>
                         </div>
                     </form>

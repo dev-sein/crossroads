@@ -26,3 +26,10 @@ public class Criteria {
         return builder.toUriString();
     }
 }
+
+//    public com.crossroads.app.domain.dto.Criteria create(int page, int amount) {
+//        this.page = page;
+//        this.amount = amount;
+//        this.offset = (page-1) * amount;
+//        return this;
+//    }

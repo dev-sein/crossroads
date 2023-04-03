@@ -877,6 +877,7 @@ h3 small {
 }
 
 .review-list {
+    display: flex;
     float: left;
     width: 514px;
     position: relative;
@@ -924,6 +925,7 @@ h3 small {
 .review-content-box {
     float: left;
     margin-left: 20px;
+    margin-top: 5px;
 }
 
 .review-name-link {
@@ -1528,4 +1530,14 @@ td {
 
 .error-margin {
     margin-top: 10px;
+}
+
+
+/* 페이징 처리 */
+#paging {
+    display: flex;
+}
+
+.paging-list {
+    margin-right: 5px;
 }

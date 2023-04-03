@@ -103,5 +103,29 @@
         insert into tbl_apply(apply_location, apply_date, starter_member_id)
         values(#{applyLocation}, #{applyDate}, #{memberId})
     </insert>
+<!-- 검색 or 전체 목록 개수-->
+    <select id="selectAppliesCount" resultType="long">
+        select count(apply_id)
+        from tbl_member m join tbl_apply a on m.member_id = a.starter_member_id
+            <if test="info.applyLocation != 'none'.toString() and info.applyLocation != null">
+                and apply_location like CONCAT('%', #{info.applyLocation}, '%')
+            </if>
+            <if test="info.applyDate != 'none'.toString() and info.applyDate != null">
+                and apply_date = #{info.applyDate}
+            </if>
+    </select>
+
+<!-- 검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수-->
+    <select id="selectOthersCount" resultType="long">
+        select count(apply_id)
+        from tbl_member m join tbl_apply a on m.member_id = a.starter_member_id
+        <if test="info.applyLocation != 'none'.toString() and info.applyLocation != null">
+            and apply_location like CONCAT('%', #{info.applyLocation}, '%')
+        </if>
+        <if test="info.applyDate != 'none'.toString() and info.applyDate != null">
+            and apply_date = #{info.applyDate}
+        </if>
+        and veteran_member_id != #{info.memberId}
+    </select>
 
 </mapper>

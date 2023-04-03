@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.crossroads.app.mapper.ReviewMapper">
+    <!-- 마이페이지 후기 목록 -->
     <select id="selectAll" parameterType="long" resultType="reviewDTO">
         select
            m.member_id, member_file_system_name,
@@ -10,10 +11,10 @@
         join tbl_review r on m.member_id = r.member_id
         join tbl_apply a on r.apply_id = a.apply_id
         where m.member_id = #{memberId}
-        order by apply_register_date desc
+        order by review_id desc
     </select>
-    <!-- 마이페이지 후기 목록 -->
-    <!--후기 목록 전체 리스트-->
+
+    <!-- 후기 목록 전체 리스트 -->
     <select id="selectReviewAll" resultType="reviewDTO">
         select m.member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point,
         a.apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status,
@@ -22,19 +23,19 @@
 	    join tbl_apply a on r.apply_id = a.apply_id
 	    order by review_id desc
     </select>
-
-    <select id="selectReviewByPage" resultType="reviewDTO">
-    SELECT *
-    FROM (
-        SELECT ROW_NUMBER() OVER (ORDER BY review_id DESC) AS RowNum, *
-        FROM (select m.member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point,
+<!-- 후기 목록 페이징처리 -->
+    <select id="getListReview" resultType="reviewDTO">
+        select m.member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point,
         a.apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status,
         review_id, r.member_id, review_register_date, review_update_date, review_title, review_content, review_file_system_name, review_grade, r.apply_id
         from tbl_member m join tbl_review r on m.member_id = r.member_id
 	    join tbl_apply a on r.apply_id = a.apply_id
-	    order by review_id desc) AS T
-    ) AS T2
-    WHERE RowNum BETWEEN #{start} AND #{end}
+	    order by review_id desc
+	    LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(review_id) FROM tbl_review
     </select>
 
     <delete id="delete">
@@ -66,6 +67,11 @@
                 review_grade
          from tbl_review
         where review_id = #{reviewId}
+    </select>
+
+    <!-- 마이페이지 후기 페이징 전제 개수 -->
+    <select id="selectTotalMy" resultType="int">
+        select count(review_id) from tbl_review
     </select>
 
 </mapper>

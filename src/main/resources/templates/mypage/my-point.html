@@ -37,7 +37,7 @@
                                 <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                                 <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                                 <div class="userid">
-                                <div class="username" th:text="${members.memberIdentification}"></div>
+                                <div class="username" th:text="${member.memberIdentification}"></div>
                             </div>
                         </div>
                     </div>
@@ -101,12 +101,12 @@
                         <!-- 사이드바 메뉴 -->
                         <div class="sidebar-nav">
                             <ul>
-                                <li class="sidemenu"><a th:href="@{/mypages/my-info}"><span>프로필 정보 설정</span></a></li>
-                                <li><a th:href="@{/mypages/my-board}"><span>나의 게시글 보기</span></a></li>
-                                <li><a th:href="@{/mypages/my-reply}"><span>나의 댓글 보기</span></a></li>
-                                <li class="activeblue"><a class="active-text" th:href="@{/mypages/my-point}"><span>포인트 조회</span></a></li>
-                                <li class><a class="active-text" th:href="@{/mypages/my-apply}"><span>연수 내역</span></a></li>
-                                <li class="sidemenu2"><a th:href="@{/mypages/my-review}"><span>나의 후기</span></a></li>
+                                <li class="sidemenu"><a th:href="@{/mypage/my-info}"><span>프로필 정보 설정</span></a></li>
+                                <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                                <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                                <li class="activeblue"><a class="active-text" th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
+                                <li class><a class="active-text" th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
+                                <li class="sidemenu2"><a th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
                                 <a class="advertisement" id="left_sidebar_advertisement"></a>
                             </ul>
                         </div>
@@ -138,7 +138,7 @@
                                 <th class="status">상태</th>
                                 <th class="point">포인트</th>
                             </tr>
-                            <tr th:each="point:${points}">
+                            <tr th:each="point:${point}">
                                 <td><span th:text="${point.pointUpdateDate}"></span></td>
                                 <td class="status-td charge"><span th:text="${point.pointStatus == 0 ? '충전' : '사용'}"></span></td>
                                 <td><span th:text="${point.pointPoint}"></span></td>

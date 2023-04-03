@@ -37,6 +37,14 @@ public class ApplyMapperTests {
     }
 
     @Test
+    public void selectAppliesCountTest(){
+        Map<String, Object> info = new HashMap<>();
+        info.put("applyLocation", "서울특별시 송파구");
+        info.put("applyDate", "20230401");
+        log.info(applyMapper.selectAppliesCount(info).toString());
+    }
+
+    @Test
     public void selectTest(){
         log.info(applyMapper.select(2L).toString());
     }

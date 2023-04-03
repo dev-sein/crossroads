@@ -7,10 +7,10 @@ const $error = $('#blank');
 const $error2 = $('#blank2');
 const $length = $('#length'); /* inputvalue길이 */
 
-// 모든 정규식(약관 제외)
-let checkAll = [false, false, false];
 
-/* 비밀번호 input type 변경  */
+//비밀번호 input type 변경
+//비밀번호 눈 아이콘 이벤트
+//1번째 비밀번호 입력 칸
 $(function(){
     $passwordEye.on("click", function(){
         $passwordInput.toggleClass('active');
@@ -25,7 +25,7 @@ $(function(){
     });
 });
 
-/* 비밀번호 확인 input type 변경 */
+//2번째 비밀번호 입력 칸
 $(function(){
     $passwordEyeConfirm.on("click", function(){
         $passwordInputConfirm.toggleClass('active');
@@ -41,8 +41,8 @@ $(function(){
 
 });
 
-
-/*비밀번호 에러메세지 출력*/
+//비밀번호 에러메세지 출력
+//1번째 비밀번호 입력 : 새 비밀번호 입력 에러메세지
 $(document).ready(function() {
     $submitBtn.click(function() {
         if (!$passwordInput.val()) {
@@ -50,23 +50,20 @@ $(document).ready(function() {
             $error.css("display", "block");
             $error.css("color", "red");
             $error.text("새 비밀번호를 입력해주세요.");
-            checkAll[0] = false;
         }else if($passwordInput.val().length<8){
             $passwordInput.css("border-color", "red");
             $error.css("display", "none");
             $length.css("display", "block");
             $length.css("color", "red");
             $length.text("8글자 이상 입력해 주세요.");
-            checkAll[0] = false;
         } else {
             $passwordInput.css("border-color", "#e0e0e0");
             $length.css("display", "none");
-            checkAll[0] = true;
         }
     })
 });
 
-
+//2번째 비밀번호 입력 : 새 비밀번호 한번 더 입력 에러메세지
 $(document).ready(function() {
     $submitBtn.click(function() {
         if (!$passwordInputConfirm.val()) {
@@ -74,18 +71,15 @@ $(document).ready(function() {
             $error2.css("display", "block");
             $error2.css("color", "red");
             $error2.text("새 비밀번호를 한번 더 입력해주세요.");
-            checkAll[1] = false;
         }else if($passwordInputConfirm.val().length<8){
             $passwordInputConfirm.css("border-color", "red");
             $error2.css("display", "none");
             $length.css("display", "block");
             $length.css("color", "red");
             $length.text("8글자 이상 입력해 주세요.");
-            checkAll[1] = false;
         } else {
             $passwordInputConfirm.css("border-color", "#e0e0e0");
             $length.css("display", "none");
-            checkAll[1] = true;
         }
     })
 });
@@ -102,6 +96,7 @@ let check = false;
 function checkPasswords() {
     var p1 = document.getElementById('password-input').value;
     var p2 = document.getElementById('password-input-confirm').value;
+    //비밀 번호가 다를 때
     if( p1 != p2 ) {
         $passwordInputConfirm.css("border-color", "red");
         $passwordInput.css("border-color", "red");
@@ -110,6 +105,7 @@ function checkPasswords() {
         $error2.text("동일한 비밀번호를 입력해주세요.");
         // checkAll[2] = false;
         check = false;
+    //비밀번호가 8자 이하일 경우
     } else if(p1.length < 8){
         $error.css("display", "block");
         $error.css("color", "red");
@@ -117,6 +113,7 @@ function checkPasswords() {
         $error2.text("8자 이상 32자 이하로 입력해 주세요.");
         $passwordInput.css("border-color", "red");
     }
+    //비밀번호가 일치 할 경우
     else {
         $error.css("display", "none");
         $error2.css("color", "green");
@@ -134,18 +131,20 @@ function checkPasswords() {
         // checkAll[2] = true;
         check = true;
     }
+    //비밀번호가 같을 경우 check = true
     if (check){
+        //class명에 submit-button-ok 추가해 준다.
         // $submitBtn.attr('type', 'submit');
         $('#submit-button').attr("class", "btn btn-01 btn-wishket submit-button-ok");
     } else {
+        // check = false일 경우 버튼이 눌려지지 않도록 한다.
         $submitBtn.attr('type', 'button');
+        //class명은 그대로 이벤트 없음
         $('#submit-button').attr("class", "btn btn-01 btn-wishket");
     }
 }
-// function changePassword(){
-//     $passwordInput.val(btoa($passwordInput.val()));
-//     $passwordInputConfirm.val(btoa($passwordInputConfirm.val()));
-// }
+
+//class명이 btn btn-01 btn-wishket submit-button-ok일 경우 클릭이벤트 발생 -> 암호화 -> submit -> db전달
 $('#submit-button').on('click', function () {
     if($('#submit-button').attr("class").includes("submit-button-ok")){
         console.log($('#password-input').val());
@@ -155,6 +154,11 @@ $('#submit-button').on('click', function () {
         document.passwordCheckForm.submit();
     }
 });
+
+// function changePassword(){
+//     $passwordInput.val(btoa($passwordInput.val()));
+//     $passwordInputConfirm.val(btoa($passwordInputConfirm.val()));
+// }
 
 // 비밀번호 변경 활성화
 // $submit.on("click", function () {
