@@ -31,9 +31,9 @@ public class ReviewBoardService implements BoardService {
         }
         criteria = criteria.create(page, 6);
 
-        List<ReviewDTO> boards = reviewDAO.findAllAdmin(criteria, keyword);
+        List<ReviewDTO> reviews = reviewDAO.findAllAdmin(criteria, keyword);
 
-        result.put("boards", boards);
+        result.put("reviews", reviews);
         result.put("pagination", new PageDTO().createPageDTO(criteria, reviewDAO.findCountAllAdmin(keyword)));
 
         return result;

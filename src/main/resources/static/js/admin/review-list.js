@@ -24,7 +24,7 @@ function load() {
             "page" : page
         }),
         success: function(result) {
-            showList(result.boards);
+            showList(result.reviews);
             showPage(result.pagination);
 
         },
