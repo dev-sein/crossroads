@@ -73,6 +73,7 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
+        session.setAttribute("memberId", 8L);   // 테스트 ( 수정해야함)
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
@@ -93,6 +94,9 @@ public class ReviewController {
     @GetMapping("/review-update")
     public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model) {
         ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
+        if (reviewVO == null) {
+            return "redirect:/review-list";
+        }
         model.addAttribute("info", reviewVO);
         return "review/review-update";
     }

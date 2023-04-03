@@ -529,10 +529,11 @@ main{
 }
 
 .review-image{
-    width: 200px; 
+    width: 200px;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 /* form 안  */
@@ -951,6 +952,8 @@ section{
     width: 250px;
     height: 250px;
     margin-bottom: 20px;
+    right: 25px;
+    position: relative;
     /* width: 180px;
     height: 180px; */
 }
