@@ -115,6 +115,7 @@
             reviews.forEach(review => {
                 let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
                 let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                let reviewRegisterDate = relativeTime(review.reviewRegisterDate);
                 // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
                 let reviewElement = `
 
@@ -138,12 +139,12 @@
                     </div>
                     <!--수정 삭제 버튼-->
                 <div class="update-buttons-wrapper">
-                    <a href="#" class="buttons-wrapper">
-                        <div class="update-button">수정</div>
-                    </a>
-                    <a href="#" class="buttons-wrapper">
-                        <div class="delete-button">삭제</div>
-                    </a>
+                <a href="#" class="buttons-wrapper">
+                <div class="update-button">수정</div>
+                </a>
+                <a href="#" class="buttons-wrapper">
+                <div class="delete-button">삭제</div>
+                </a>
                 </div>
                     <!--수정 삭제 버튼 끝-->
                 </div>
@@ -167,7 +168,7 @@
                 </div>
                 <div class="board-box-bottom">
                 <div class="bottom-inner">
-                <div class="bottom-title">${review.reviewTitle}<span class="date">${review.reviewRegisterDate}</span></div>
+                 <div class="bottom-title">${review.reviewTitle}<span class="date">${reviewRegisterDate}</span></div>
                 <div class="bottom-content">${review.reviewContent}</div>
                 </div>
                 <div class="image-wrapper">
@@ -178,7 +179,7 @@
                 </div>
                 </div>`;
                 $reviewList.append(reviewElement);
-            });
+                });
         }
 
         // 초기 로드

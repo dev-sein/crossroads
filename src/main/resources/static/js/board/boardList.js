@@ -85,4 +85,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡreview-list에서 현재시간ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+function relativeTime(dateString) {
+    let now = new Date();
+    let date = new Date(dateString);
+    let timeDifference = now - date;
+
+    let seconds = Math.floor(timeDifference / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+
+    if (days > 0) {
+        return days + '일 전';
+    }
+    if (hours > 0) {
+        return hours + '시간 전';
+    }
+    if (minutes > 0) {
+        return minutes + '분 전';
+    }
+    return '방금 전';
+}
+
+
 
