@@ -17,7 +17,6 @@ $('.modal_test').on('click', function() {
             "checkedIds": checkedIds
         },
         success: function(){
-            alert("들어옴?");
             // location.href= result;
             load();
         }

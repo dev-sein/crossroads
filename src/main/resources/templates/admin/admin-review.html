@@ -53,23 +53,23 @@
 		</div>
 		<div id="scroll">
 			<!-- 목록 시작  -->
-<!--			<div class="content-list__info-container">-->
-<!--				<div class="content-list__info-unit">-->
-<!--					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />-->
-<!--					<label for="" class="content__checkbox&#45;&#45;label">-->
-<!--						<ul class="content-list__info">-->
-<!--							<li class="content__id">00030</li>-->
-<!--							<li class="content__user">교차로</li>-->
-<!--							<li class="content__title">추천합니다</li>-->
-<!--							<li class="content__contents">처음으로 고속도로 달려봤어요!</li>-->
-<!--							<li class="content__date">2023-03-23</li>-->
-<!--							<li class="user__detail" name="userDetail">-->
-<!--								<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</label>-->
-<!--				</div>-->
-<!--			</div>-->
+			<div class="content-list__info-container">
+				<div class="content-list__info-unit">
+					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
+					<label for="" class="content__checkbox--label">
+						<ul class="content-list__info">
+							<li class="content__id">00030</li>
+							<li class="content__user">교차로</li>
+							<li class="content__title">추천합니다</li>
+							<li class="content__contents">처음으로 고속도로 달려봤어요!</li>
+							<li class="content__date">2023-03-23</li>
+							<li class="user__detail" name="userDetail">
+								<button class="custom-btn btn-16 show" style="font-weight: 10px;" id="show">상세 정보</button>
+							</li>
+						</ul>
+					</label>
+				</div>
+			</div>
 			<!-- 목록 끝  -->
 		</div>
 		<div class="desktop-only">
@@ -99,6 +99,7 @@
 <script th:inline="javascript">
 	let reviews = [[${reviews}]];
 </script>
+<script src="/js/admin/date.js"></script>
 <script src="/js/admin/review-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>
 <script src="/js/admin/review-delete.js"></script>

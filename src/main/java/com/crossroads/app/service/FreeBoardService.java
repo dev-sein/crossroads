@@ -15,6 +15,7 @@ import com.crossroads.app.mapper.BoardFileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -64,9 +65,14 @@ public class FreeBoardService implements BoardService {
     }
 
 
+//    게시글 삭제
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void remove(List<String> boardIds) {
-        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(boardDAO::deleteById);
+        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(boardId -> {
+            replyDAO.deleteByBoardId(boardId); // 댓글 삭제
+            boardDAO.deleteById(boardId); // 게시글 삭제
+        });
     }
 
 //    게시글 목록
