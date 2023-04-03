@@ -1,7 +1,6 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.vo.MemberFileVO;
-import com.crossroads.app.service.MemberFileService;
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,7 @@ import java.util.UUID;
 @RequestMapping("/files/*")
 @RequiredArgsConstructor
 public class FileController {
-    private final MemberFileService memberFileService;
+//    private final MemberFileService memberFileService;
 
     @GetMapping("upload")
     public String goUploadForm(){
@@ -32,7 +31,7 @@ public class FileController {
     @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles, MemberFileVO memberFileVO) throws IOException {
-        memberFileService.fileRegister(memberFileVO);
+//        memberFileService.fileRegister(memberFileVO);
         List<String> uuids = new ArrayList<>();
         String path = "C:/upload/" + getPath();
         File file = new File(path);

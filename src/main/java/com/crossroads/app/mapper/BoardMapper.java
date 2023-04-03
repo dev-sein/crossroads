@@ -39,4 +39,8 @@ public interface BoardMapper {
 
     //    자유게시판 전체 조회
     public List<ReviewDTO> selectAllBoards();
+
+
+//    상세 보기
+    public BoardDTO select(Long boardId);
 }

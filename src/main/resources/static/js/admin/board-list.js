@@ -66,7 +66,7 @@ function showList(boards){
         text +=`
             <div class="content-list__info-container">
                 <div class="content-list__info-unit">
-                    <input type="checkbox" class="content__checkbox" id="" name="checkbox" data-id="${board.boardId}" onclick="makeName(this)"/>
+                    <input type="checkbox" class="content__checkbox" id="" name="checkbox" data-id="${board.boardId}" onclick="isChecked(this)"/>
                     <label for="" class="content__checkbox--label">
                         <ul class="content-list__info">
                             <li class="content__id">${board.boardId}</li>
@@ -74,7 +74,7 @@ function showList(boards){
                             <li class="content__title">${board.boardTitle}</li>
                             <li class="content__contents">${board.boardContent}</li>
                             <li class="content__date">${board.boardRegisterDate}</li>
-                            <li class="content__reply">${board.replyCount}</li>
+                            <li class="contentup__reply">${board.replyCount}</li>
                             <li class="user__detail" name="userDetail">
                                 <button class="custom-btn btn-16 show" data-id="${board.boardId}" onclick="show(this)">상세 정보</button>
                             </li>
