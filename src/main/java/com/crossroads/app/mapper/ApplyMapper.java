@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ApplyVO;
@@ -53,4 +54,9 @@ public interface ApplyMapper {
 
 //    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
     public Long selectCountByStarterIdAndStatus(Long memberId, String applyStatus);
+//    관리자 신청 내역 전체 조회
+    public List<ApplyVO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
+
+//    관리자 신청 내역 총 개수
+    public Integer selectCountAllAdmin(@Param("keyword") String keyword);
 }
