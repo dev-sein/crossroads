@@ -33,7 +33,7 @@ function load() {
 
     console.log(page);
     $.ajax({
-        url: "/admin/members/list",
+        url: "/admin/replies/list",
         type: "post",
         contentType: 'application/json',
         dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
@@ -48,7 +48,8 @@ function load() {
             // console.log(result.pagination.endPage);
             // console.log(result.pagination.prev);
             // console.log(result.pagination.next);
-            showList(result.members);
+            console.log(result);
+            showList(result.replies);
             showPage(result.pagination);
 
         },
@@ -57,39 +58,28 @@ function load() {
         }
     })
 };
-/* 핸드폰 자동 하이픈 */
-function autoHyphen(number) {
-    const regex = /^01(0|1|[6-9])\-?\d{3,4}\-?\d{4}$/;
-    if (regex.test(number)) {
-        return number.replace(/^01(0|1|[6-9])/, "01$1-").replace(/(\d{3,4})(\d{4})/, "$1-$2");
-    }
-    return "Invalid number";
-}
+
 /*신청 목록*/
-function showList(members){
+function showList(replies){
     const $listResults = $("#scroll");
     var text = "";
-    members.forEach(member => {
-        var date = member.memberDriveRegisterDate;
-        var memberType = member.memberType == 0 ? "초보자" : "베테랑";
-        var memberPhone = autoHyphen(member.memberPhone);
+    replies.forEach(reply => {
+        console.log(reply);
+        var date = reply.replyRegisterDate;
         var realDate = changeDate(date);
         text +=`
-            <div class="user-list__info-container">
-                <div class="user-list__info-unit">
-                    <input type="checkbox" class="user__checkbox" id="" name="checkbox" data-id="${member.memberId}" onclick="isChecked(this)"/>
-                    <label for="" class="user__checkbox--label">
-                        <ul class="user-list__info">
-                            <li class="user__id" name="memberId">${member.memberId}</li>
-							<li class="user__type" name="memberType">${memberType}</li>
-							<li class="user__user-id" name="memberIdentification">${member.memberIdentification}</li>
-							<li class="user__name" name="memberName">${member.memberName}</li>
-							<li class="user__email" name="memberEmail">${member.memberEmail}</li>
-							<li class="user__phone" name="memberPhone">${memberPhone}</li>
-							<li class="user__point" name="memberPoint">${member.memberPoint}</li>
-							<li class="user__join" name="memberDriveRegisterDate">${realDate}</li>
+            <div class="content-list__info-container">
+                <div class="content-list__info-unit">
+                    <input type="checkbox" class="content__checkbox" id="" name="checkbox" data-id="${reply.replyId}" onclick="isChecked(this)"/>
+                    <label for="" class="content__checkbox--label">
+                        <ul class="content-list__info">
+                            <li class="content__id">${reply.replyId}</li>
+							<li class="content__user">${reply.memberName}</li>
+							<li class="content__title">${reply.boardTitle}</li>
+							<li class="content__contents">${reply.replyContent}</li>
+							<li class="content__date">${realDate}</li>
                             <li class="user__detail" name="userDetail">
-                                <button class="custom-btn btn-16 show" data-id="${member.memberId}" id="show" onclick="show(this)">상세 정보</button>
+                                <button class="custom-btn btn-16 show" data-name="${reply.memberName}" data-content="${reply.replyContent}" onclick="show(this)">상세 정보</button>
                             </li>
                         </ul>
                     </label>
@@ -100,7 +90,6 @@ function showList(members){
 
     $listResults.html(text);
 }
-
 
 /*페이지 버튼*/
 function showPage(pagination){
@@ -140,8 +129,6 @@ function showKeyword() {
     console.log(keyword);
     load();
 }
-
-
 
 
 

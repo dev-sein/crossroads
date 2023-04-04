@@ -72,11 +72,11 @@ $pwdEye.on('click', function(){
     var $pwdImg = $('.pwd img');
     if (!checkPwd) {
         $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '../../static/img/icon_input_slash.png');
+        $pwdImg.attr('src', '/images/member/icon_input_slash.png');
         checkPwd = true;
     } else {
         $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '../../static/img/icon_input_eye.png');
+        $pwdImg.attr('src', '/images/member/icon_input_eye.png');
         checkPwd = false;
     }
 });
@@ -88,44 +88,52 @@ $rePwdEye.on('click', function(){
     var $pwdImg = $('.re-pwd img');
     if (!checkPwd) {
         $pwdInput.attr('type', 'text');
-        $pwdImg.attr('src', '../../static/img/icon_input_slash.png');
+        $pwdImg.attr('src', '/images/member/icon_input_slash.png');
         checkPwd = true;
     } else {
         $pwdInput.attr('type', 'password');
-        $pwdImg.attr('src', '../../static/img/icon_input_eye.png');
+        $pwdImg.attr('src', '/images/member/icon_input_eye.png');
         checkPwd = false;
     }
 });
 
 /* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
-function checkPassword(object){
-	var link = 'my-mobile-password-change.html';
-	if(completePwd) {
-		$("object").attr("type", "submit");
-		location.replace(link);
-	}
-};
+// function checkPassword(object){
+// 	var link = 'my-mobile-password-change.html';
+// 	if(completePwd) {
+// 		$("object").attr("type", "submit");
+// 		location.replace(link);
+// 	}
+// };
 
 /* mypage--pwd-mobile 페이지 버튼 클릭 시 */
-function changePassword(object){
-	var msg = "비밀번호가 변경되었습니다.";
-	var link = 'my-mobile.html'
-	if(completePwd&completeRePwd) {
-		$("object").attr("type", "submit");
-		alert(msg);
-		location.replace(link);
-	}
-};
+// function changePassword(object){
+// 	var msg = "비밀번호가 변경되었습니다.";
+// 	var link = 'my-mobile.html'
+// 	if(completePwd&completeRePwd) {
+// 		$("object").attr("type", "submit");
+// 		alert(msg);
+// 		location.replace(link);
+// 	}
+// };
 
-/* mypage-check-pwd-mobile 페이지 버튼 클릭 시  */
-function checkAccount(object){
-	var link = 'my-mobile-account-cancel.html';
-	if(completePwd) {
-		$("object").attr("type", "submit");
-		location.replace(link);
-	}
-};
+/* my-mobile-password-check 페이지 버튼 클릭 시  */
+// function checkAccount(object){
+// 	var link = 'my-mobile-account-cancel.html';
+// 	if(completePwd) {
+// 		$("object").attr("type", "submit");
+// 		location.replace(link);
+// 	}
+// };
 
+// 비밀번호 확인
+// 비밀번호 입력 - 입력 값 암호화 - 비교 - 같으면 인증완료 틀리면 다시 입력해주세요. 메세지 출력
+$('#submit-btn').on('click', function(){
+	if($('#password-input').val()){
+		$('#password-input').val(btoa($('#password-input').val()));
+		document.passwordForm.submit();
+	}
+})
 
 $submitBtn.on("click", function () {
 	var $pwdInput = $('.pwd input');

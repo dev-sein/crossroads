@@ -1,5 +1,6 @@
 package com.crossroads.app.domain.dao;
 
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -54,5 +55,16 @@ public class MemberDAO {
     //랜덤키 삽입
     public void setRandomKey(String memberEmail,Long memberRandomKey){ memberMapper.updateRandomKey(memberEmail,memberRandomKey);};
 
+    //마이페이지 프로필 업로드
+    public void setProfile(MemberVO memberVO){ memberMapper.updateProfile(memberVO);}
 
+    /* 관리자 게시글 목록 */
+    public List<MemberVO> findAllAdmin(Criteria criteria, String keyword) {
+        return memberMapper.selectAllAdmin(criteria, keyword);
+    }
+
+    /* 관리자 게시글 총 개수 */
+    public Integer findCountAllAdmin(String keyword) {
+        return memberMapper.selectCountAllAdmin(keyword);
+    }
 }

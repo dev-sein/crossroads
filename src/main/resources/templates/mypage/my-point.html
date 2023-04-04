@@ -123,7 +123,7 @@
                     <div class="content-inner">
                          <div class="content-header action report">
                             <div class="history-body-title">나의 현재 포인트</div>
-                            <div class="history-body-content"><strong><span id="points"></span>점</strong></div>
+                            <div class="history-body-content"><strong><span th:text="${member.memberPoint}" id="points"></span>점</strong></div>
                          </div>
                          <br>
                          <!-- 상세 내역 -->
@@ -152,16 +152,6 @@
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script th:inline="javascript">
-    points = [[${point}]];
-    points = Number(points);
-    // $("#hidden-point").val(points); // 총 포인트
-    // let money = Math.floor(points * 0.9);   // 환전 할때 10% 가져가고 총 포인트의 90% 환전
-    // points = points.toLocaleString();       // ex)1,000,000 ,로 끊어주기
-    $("#points").text(points);
-    // $("#money-amount").text(money.toLocaleString()); // ex)1,000,000 ,로 끊어주기
-    // console.log($("#hidden-point").val());
-</script>
 <script src="/js/mypage/mypage-select.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>

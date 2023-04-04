@@ -36,12 +36,6 @@ public class FreeBoardService implements BoardService {
         String keyword = (String) requestData.get("keyword");
         int page = (int) requestData.get("page");
 
-//        if (page == 0) {
-//            criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
-//        } else {
-//            criteria.create(page, 6);
-//        }
-
         if (page == 0) {
             page = 1;
         }
@@ -147,7 +141,11 @@ public class FreeBoardService implements BoardService {
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) {//주소의 변동이 없음
         //getTotalMy
-        standards.create(getTotalMy());
+        if(standards.getPage() == 0 ) {
+            standards.create(1, 5, 5, getTotalMy());
+        } else {
+            standards.create(standards.getPage(), 5, 5, getTotalMy());
+        }
         return boardDAO.findAllMy(memberId, standards);
     }
 

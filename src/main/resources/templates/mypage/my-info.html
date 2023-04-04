@@ -36,7 +36,7 @@
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
                             <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"
-                                 onclick="show_img_edit_modal()" src="/images/mypage/main-logo.png">
+                                 src="/images/mypage/main-logo.png">
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                         <div class="userid">
@@ -50,7 +50,7 @@
                     <div id="cropper-img-box">
                         <img class="cropper-img" hidden=""></div>
                     <div class="profile-image-edit-modal-wrapper">
-                        <form enctype="multipart/form-data" id="profile_image_edit_form" method="post">
+                        <form enctype="multipart/form-data" id="profile_image_edit_form" method="post" name="write-form">
                             <div class="modal__title">프로필 사진 등록
                                 <div class="close_modal">
                                     <img class="modal-close-image-button" src="/images/mypage/icon_modal_close.png">
@@ -81,8 +81,8 @@
                                         </div>
                                     </div>
                                     <div class="body-btn-group">
-                                        <input accept=".jpg, .jpeg, .png, .gif" id="fileupload" class="img-temp-file"
-                                               hidden="" type="file" onchange="readURL(this);">
+                                        <input accept=".jpg, .jpeg, .png, .gif" id="fileUpload" class="img-temp-file"
+                                               type="file" style="display: none" onchange="readURL(this);">
                                         <input hidden="" id="profile_remove_image_file" name="remove_image_file"
                                                type="checkbox">
                                         <button class="body-btn upload" onclick="upload_image()" type="button">
@@ -111,8 +111,7 @@
                                     <button class="button theme-indigo close__modal" id="btn_modal_close" type="button">
                                         닫기
                                     </button>
-                                    <button class="button theme-client" id="btn_profile_img_modal_submit"
-                                            onclick="submit_form('/profile/api/profile-image/')" type="button">등록 완료
+                                    <button class="button theme-client" id="submit-profile" type="button">등록 완료
                                     </button>
                                 </div>
                             </div>
@@ -194,15 +193,10 @@
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
                             <div class="control-wrapper" style="display: none;">
-<!--                                <span>010&nbsp;-&nbsp;</span>-->
                                 <span id="cell_phone_local_box" style="display:inline;">
                                         <input class="form-control-phone" data-min-length="3" maxlength="11"
                                                id="cell_phone_number_middle" name="memberPhone" type="text"
                                                value="" style="display: inline;">
-<!--                                        <span class="form-phone-liner" style="display: inline;">&nbsp;-&nbsp;</span>-->
-<!--                                        <input class="form-control-phone" maxlength="4" id="cell_phone_number_end"-->
-<!--                                               name="cell_phone_number_end" type="text" value=""-->
-<!--                                               style="display: inline;">-->
                                 </span>
                                 <div class="error-message phonemsg"><i class="fa fa-exclamation-circle"></i> 이 항목을
                                     채워주십시오.
@@ -227,28 +221,6 @@
                                     <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
                                 </div>
                             </div>
-
-
-                            <!--                <div class="acoount-setting-row profile-setting-row">
-                                               <div class="account-setting-box">
-                                                   <span class="account-setting-category">
-                                                       <label class="control-label required" id="drive"><span
-                                                               class="essential" style="display: none;">*</span>
-                                                           <span>운전 경력</span></label>
-                                                   </span>
-                                                   <span class="account-setting-content account-setting-content-detail-data">정보를
-                                                       입력해주세요</span>
-                                               </div>
-                                           </div>
-                                           <span class="blank" style="display: none;"><br><br></span>
-                                           <div class="control-wrapper" style="display: none;">
-                                               <input class="form-control" id="drive-period" name="full_name" type="text"
-                                                   value="운전 경력">
-                                               <div class="error-message periodmsg">
-                                                   <i class="fa fa-exclamation-circle"></i> 이 항목을 채워주십시오.
-                                               </div>
-                                           </div> -->
-
                             <div class="form-group last-form-group">
                                 <div class="last-form-container">
                                     <input class="btn account-btn btn-dark-gray" id="base_submit_btn" type="submit"
@@ -267,4 +239,144 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
 <script src="/js/components/header-client.js"></script>
+<script>
+    FileList.prototype.forEach = Array.prototype.forEach;
+    globalThis.arrayFile2 = new Array();
+    globalThis.j = 0;
+    const dataTransfer = new DataTransfer();
+    globalThis.originalName = ``;
+    globalThis.fileSize = '';
+    globalThis.fileType = '';
+
+
+    $("#fileUpload").on("change", function() {
+        const $files2 = $("#fileUpload")[0].files;
+        console.log($files2)
+//    파일 객체에 접근함
+        originalName = $files2[0].name;
+        fileSize = $files2[0].size;
+        fileType = $files2[0].type;
+        console.log($files2)
+
+
+        let formData = new FormData();
+        globalThis.arrayFile2.push($files2);
+        // 파일 Array의 file들을 하나씩 담아줌
+        $("input[id='fileUpload']")[0].files = dataTransfer.files;
+        $files2.forEach(file => {
+            formData.append("file", file)
+        });
+        formData.append("file", $files2)
+
+        $.ajax({
+            url: "/mypage/upload",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (uuid) {
+                globalThis.originalName = $files2[0].name;
+                globalThis.fileSize = $files2[0].size;
+                globalThis.fileType = $files2[0].type;
+                console.log(originalName)
+                console.log(fileSize)
+                console.log(fileType)
+
+                globalThis.uuid = uuid;
+
+                let text2 = "";
+                text2 =
+                    `
+                    <input type="hidden" name="memberProfileOriginalName" value= "${originalName}">
+                    <input type="hidden" name="memberProfileUuid" value= "${globalThis.uuid}">
+                    <input type="hidden" name="memberProfilePath" value= "${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="memberProfileSize" value= "${fileSize}">
+                    <input type="hidden" name="memberProfileType" value= "${fileType}">
+                    `
+                $("form[name='write-form']").append(text2);
+            }
+        });
+        console.log(originalName)
+        console.log(fileSize)
+        console.log(fileType)
+    });
+
+
+    $("#submit-profile").on("click", function(){
+        // let files = new Array();
+        // const $files2 = $("input[id=fileUpload]")[0].files[0];
+        // // const $files = $('#fileupload')[0].files;
+        // console.log($files2);
+        //
+        // $files2.forEach((file, i) => {
+        //     let memberVO = new Object();
+        //     memberVO.memberFileOriginalName = file.name;
+        //     memberVO.memberFileUuid = globalThis.uuid;
+        //     memberVO.memberFilePath = toStringByFormatting(new Date());
+        //     memberVO.memberFileSize = file.size;
+        //     memberVO.memberFileType = file.type.startsWith("image");
+        //     memberVO.memberId = 1;
+        //     files.push(memberVO);
+        //     console.log(file);
+        // });
+        //
+        //
+        // $.ajax({
+        //     url: "/mypage/saveProfile",
+        //     type: "post",
+        //     data: JSON.stringify(files),
+        //     contentType: "application/json; charset=utf-8",
+        //     success: function(){
+        //         alert("전송 성공");
+        //     }
+        // });
+
+        let files = new Array();
+        const $files2 = $('#fileUpload')[0].files;
+        // const $files = $('#fileupload')[0].files;
+        console.log($files2);
+
+        $files2.forEach((file, i) => {
+        let memberVO = new Object();
+        memberVO.memberFileOriginalName = globalThis.originalName;
+        memberVO.memberFileUuid = globalThis.uuid;
+        memberVO.memberFilePath = toStringByFormatting(new Date());
+        memberVO.memberFileSize = globalThis.fileSize;
+        // memberVO.memberFileType = $files2.type.startsWith("image");
+        memberVO.memberId = 1;
+        files.push(memberVO);
+        console.log(memberVO);
+        });
+
+
+        $.ajax({
+            url: "/mypage/saveProfile",
+            type: "post",
+            data: JSON.stringify($files2),
+            contentType: "application/json; charset=utf-8",
+            success: function(){
+                alert("전송 성공");
+            }
+        });
+    });
+
+
+    /*****************************************************/
+    function leftPad(value) {
+        if (value >= 10) {
+            return value;
+        }
+
+        return `0${value}`;
+    }
+
+    function toStringByFormatting(source, delimiter = '/') {
+        const year = source.getFullYear();
+        const month = leftPad(source.getMonth() + 1);
+        const day = leftPad(source.getDate());
+
+        return [year, month, day].join(delimiter);
+    }
+    /*****************************************************/
+</script>
 </html>
