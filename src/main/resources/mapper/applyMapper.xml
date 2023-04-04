@@ -122,4 +122,19 @@
         and veteran_member_id != #{info.memberId}
     </select>
 
+    <!--  연수 받는 사람의 id로 연수 내역 뽑기  -->
+    <select id="selectByStarterMemberId" resultType="applyVO">
+        select apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status
+        from tbl_apply where starter_member_id = #{memberId}
+        limit #{standards.offset}, #{standards.rowCount}
+    </select>
+
+    <!--  연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)  -->
+    <select id="selectCountByStarterIdAndStatus" resultType="long">
+        select count(apply_id) from tbl_apply where starter_member_id = #{memberId}
+        <if test="applyStatus != null">
+            group by apply_status having apply_status = #{applyStatus}
+        </if>
+    </select>
+
 </mapper>

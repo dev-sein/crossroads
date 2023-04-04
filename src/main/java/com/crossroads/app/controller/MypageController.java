@@ -150,10 +150,18 @@ public class MypageController {
     }
 
     //마이페이지 연수신청 목록
-    @GetMapping("/my-apply")
-    public String showListMyApply(Model model, HttpServletRequest request){
-        HttpSession session = request.getSession();
+    @GetMapping("my-apply")
+    public String showListMyApply(Model model, HttpSession session, Standards standards){
+        session.setAttribute("memberId", 2L);
 
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        model.addAttribute("applyVO", applyService.getApply(memberId, standards));
+        model.addAttribute("applyCountAll", applyService.getApplyCount(memberId, null));
+        model.addAttribute("applyCountReady", applyService.getApplyCount(memberId, "0"));
+        model.addAttribute("applyCountIng", applyService.getApplyCount(memberId, "1"));
+        model.addAttribute("applyCountFinish", applyService.getApplyCount(memberId, "2"));
 //        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mypage/my-apply";
@@ -288,7 +296,6 @@ public class MypageController {
     private String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
-
 
 
 }
