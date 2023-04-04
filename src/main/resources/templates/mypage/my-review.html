@@ -153,12 +153,12 @@
                         </div>
                     </div>
                     <!-- 리뷰 목록 시작 -->
-                        <div class="review-box">
+                        <div class="review-box" th:each="review:${review}">
                             <a class="review-modify" href="/store/41">수정</a>
                             <a class="review-delete" href="/store/41">삭제</a>
-                            <div class="review-list" th:each="review:${review}">
+                            <div class="review-list">
                                 <div class="review-container">
-                                    <a href="/store/41/"><img class="review-photo" th:src="@{/mypage/display(fileName=${reviews.reviewFilePath} + '/' + ${reviews.reviewFileUuid} + '_' + ${reviews.reviewFileOriginalName})}"></a>
+                                    <a href="/store/41/"><img class="review-photo" th:src="@{/mypage/display(fileName=${review.reviewFilePath} + '/' + ${review.reviewFileUuid} + '_' + ${review.reviewFileOriginalName})}"></a>
                                 </div>
                                 <div class="review-content-box">
                                     <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
@@ -176,14 +176,14 @@
                     <!-- 리뷰 목록 끝 -->
                     <!-- 페이징 시작 -->
                     <section>
-                        <a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
+                        <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
                         <ul id="paging">
                             <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
                                 <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-review(page=${page})}"><li th:text="${page}"></li></a>
                                 <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
                             </th:block>
                         </ul>
-                        <a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
+                        <span class="next-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
                     </section>
                     <!-- 페이징 끝 -->
                 </div><!-- content inner -->
