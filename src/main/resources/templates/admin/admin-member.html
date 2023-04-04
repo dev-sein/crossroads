@@ -40,7 +40,7 @@
 	<article class="module module--user-list">
 		<div class="user-list__title-container">
 			<div class="user-list__title-unit">
-				<input type="checkbox" id="title__checkbox" name="checkbox-all"/>
+				<input type="checkbox" id="title__checkbox" name="checkbox-all" onclick="isAllChecked()"/>
 				<ul class="user-list__title">
 					<li class="title__id">고객번호</li>
 					<li class="title__type">회원 타입</li>
@@ -49,33 +49,33 @@
 					<li class="title__email">이메일</li>
 					<li class="title__phone">핸드폰 번호</li>
 					<li class="title__point">포인트</li>
-					<li class="title__join">면허 취득일</li>
+					<li class="title__join">면허 취득일자</li>
 					<li class="title__detail">상세</li>
 				</ul>
 			</div>
 		</div>
 		<div id="scroll">
-<!--			<div class="user-list__info-container">-->
-<!--				<div class="user-list__info-unit">-->
-<!--					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />-->
-<!--						   <label for="kus" class="user__checkbox&#45;&#45;label">-->
-<!--					<ul class="user-list__info">-->
-<!--						&lt;!&ndash; <li>등록된 회원이 없습니다.</li> &ndash;&gt;-->
-<!--						<li class="user__id" name="userId">00005</li>-->
-<!--						<li class="user__type" name="userType">초보자</li>-->
-<!--						<li class="user__user-id" name="userNickname">dev_luk</li>-->
-<!--						<li class="user__name" name="userName">김욱성</li>-->
-<!--						<li class="user__email" name="userEmail">kus1234@naver.com</li>-->
-<!--						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>-->
-<!--						<li class="user__point" name="userPoint">500,000</li>-->
-<!--						<li class="user__join" name="userDateJoin">2023.02.22</li>-->
-<!--						<li class="user__detail" name="userDetail">-->
-<!--							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>-->
-<!--						</li>-->
-<!--					</ul>-->
-<!--				</label>-->
-<!--				</div>-->
-<!--			</div>-->
+			<div class="user-list__info-container">
+				<div class="user-list__info-unit">
+					<input type="checkbox" class="user__checkbox" id="" name="checkbox" />
+						   <label for="kus" class="user__checkbox--label">
+					<ul class="user-list__info">
+						<!-- <li>등록된 회원이 없습니다.</li> -->
+						<li class="user__id" name="userId">00005</li>
+						<li class="user__type" name="userType">초보자</li>
+						<li class="user__user-id" name="userNickname">dev_luk</li>
+						<li class="user__name" name="userName">김욱성</li>
+						<li class="user__email" name="userEmail">kus1234@naver.com</li>
+						<li class="user__phone" name="userPhoneNumber">010-1234-1234</li>
+						<li class="user__point" name="userPoint">500,000</li>
+						<li class="user__join" name="userDateJoin">2023.02.22</li>
+						<li class="user__detail" name="userDetail">
+							<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
+						</li>
+					</ul>
+				</label>
+				</div>
+			</div>
 		</div>
 		<div class="desktop-only">
 			<!-- 데스크탑용 버튼 -->
@@ -101,10 +101,11 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-	let members = [[${members}]];
+	// let members = [[${members}]];
 </script>
+<script src="/js/admin/date.js"></script>
 <script src="/js/admin/member-list.js"></script>
-<script src="/js/admin/admin-member.js"></script>
+<script src="/js/admin/member-checkbox.js"></script>
 <script src="/js/admin/member-delete.js"></script>
-<script src="/js/admin/admin-modal.js"></script>
+<script src="/js/admin/member-modal.js"></script>
 </html>

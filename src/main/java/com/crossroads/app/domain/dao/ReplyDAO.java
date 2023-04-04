@@ -1,8 +1,6 @@
 package com.crossroads.app.domain.dao;
 
-import com.crossroads.app.domain.dto.ReplyDTO;
-import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.*;
 import com.crossroads.app.mapper.ReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -14,7 +12,7 @@ import java.util.List;
 public class ReplyDAO {
     private final ReplyMapper replyMapper;
 
-//    게시글 별 댓글 수 조회
+//    게시글별 댓글 수 조회
     public Integer findReplyCount(Long boardId) {
         return replyMapper.selectReplyCount(boardId);
     }
@@ -30,15 +28,30 @@ public class ReplyDAO {
         return replyMapper.selectTotalMy();
     }
 
-//    게시글 별 댓글 삭제
+//    개별 댓글 삭제
+    public void deleteById(Long replyId){
+        replyMapper.delete(replyId);
+    }
+
+//    게시글별 댓글 삭제
     public void deleteByBoardId(Long boardId){
-        replyMapper.deleteByBoard(boardId);
+        replyMapper.deleteByBoardId(boardId);
     };
 
-//    회원 별 댓글 삭제
-    public void deletByMemberId(Long memberId){
-        replyMapper.deletByMember(memberId);
+//    회원별 댓글 삭제
+    public void deleteByMemberId(Long memberId){
+        replyMapper.deletByMemberId(memberId);
     };
+
+    /* 관리자 댓글 목록 */
+    public List<ReplyDTO> findAllAdmin(Criteria criteria, String keyword) {
+        return replyMapper.selectAllAdmin(criteria, keyword);
+    }
+
+    /* 관리자 댓글 총 개수 */
+    public Integer findCountAllAdmin(String keyword) {
+        return replyMapper.selectCountAllAdmin(keyword);
+    }
 
 
 }

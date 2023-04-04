@@ -463,5 +463,17 @@ span {
 	bottom: 13%;
 	font-size: 17px;
 	maring: 0 0 0px 0px;
-	letter-spacing: 9px;
+	letter-spacing: 0px;
+}
+
+.desktop-only * {
+	margin-right: 10px;
+}
+
+a{
+	cursor: pointer;
+}
+
+.desktop-only .text-hidden {
+	margin-right: 0px;
 }
