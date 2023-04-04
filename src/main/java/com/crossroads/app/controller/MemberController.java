@@ -37,12 +37,18 @@ public class MemberController {
         return new RedirectView("login");
     }
 
-    // 카카오 회원가입
+    //카카오 회원가입
     @GetMapping("join-kakao")
     public String joinKakao(){
-        log.info("카카오 회원가입 get");
-       // kakao_account 를 멤버 email 로 세팅해야함
         return "/member/join";
+    }
+
+    //카카오 회원가입
+    @PostMapping("join-kakao")
+    public RedirectView joinKakaoPost(MemberVO memberVO){
+        log.info("카카오 회원가입 post");
+        memberService.save(memberVO);
+        return new RedirectView("login");
     }
 
     //아이디 중복체크
@@ -84,6 +90,30 @@ public class MemberController {
         return new RedirectView("/member/login");
     }
 
+   @GetMapping("/login-kakao")
+    public void kakaoCallbackLogin(@RequestParam String code, HttpSession session) throws Exception {
+        log.info(code);
+        String token = memberService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+        memberService.getKakaoInfo(token);
+    }
+
+    @PostMapping("/login-kakao")
+    public void kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
+        log.info(code);
+        String token = memberService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+        memberService.getKakaoInfo(token);
+    }
+
+    //로그아웃
+    @GetMapping("/logout-kakao")
+    public void kakaoLogout(HttpSession session){
+        log.info("logout");
+        memberService.logoutKakao((String)session.getAttribute("token"));
+        session.invalidate();
+    }
+
     @GetMapping("callback")
     public String callBack(){
         return "/member/callback";
@@ -91,7 +121,6 @@ public class MemberController {
 
     @PostMapping("login-naver")
     public RedirectView loginNaver(){
-
         return new RedirectView("/main");
     }
 

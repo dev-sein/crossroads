@@ -33,30 +33,10 @@ public class MemberRestController {
         return true;
     }
 
-    @GetMapping("/login")
-    public void  kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
-        log.info(code);
-        String token = memberService.getKaKaoAccessToken(code);
-        session.setAttribute("token", token);
-        memberService.getKakaoInfo(token);
-    }
-
-    @GetMapping("/logout")
-    public void kakaoLogout(HttpSession session){
-        log.info("logout");
-        memberService.logoutKakao((String)session.getAttribute("token"));
-        session.invalidate();
-    }
-
-
     //카카오 회원가입
-    @PostMapping("join-kakao")
-    public RedirectView joinKakaoPost(MemberVO memberVO){
-        log.info("카카오 회원가입 post");
-        memberService.save(memberVO);
-        return new RedirectView("login");
-    }
-
-
+/*    @GetMapping("login-kakao")
+    public String loginkakao(){
+        return "/member/join";
+    }*/
 
 }

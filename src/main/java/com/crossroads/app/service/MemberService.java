@@ -202,7 +202,7 @@ public class MemberService {
         }
     }
 
-    //카카오 로그인
+    //카카오 로그인 //토큰
     public String getKaKaoAccessToken(String code) {
         String access_Token = "";
         String refresh_Token = "";
@@ -211,7 +211,6 @@ public class MemberService {
         try {
             URL url = new URL(reqURL); //자바에서 요청하는 코드
             HttpURLConnection conn = (HttpURLConnection) url.openConnection(); //url 커넥션 객체 얻어옴
-
             //POST 요청을 위해 기본값이 false인 setDoOutput을 true로
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
@@ -219,9 +218,9 @@ public class MemberService {
             //POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
+            sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=ff10441318cc0a2c7e2aa44285fa956c"); // TODO REST_API_KEY 입력
-            sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
@@ -279,6 +278,13 @@ public class MemberService {
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             String result = "";
+
+            //            if("join"){
+//                sb.append("&redirect_uri=http://localhost:10000/members/join"); // TODO 인가코드 받은 redirect_uri 입력
+//            }else("login"){
+//                sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
+//            }
+
 
             while ((line = br.readLine()) != null) {
                 result += line;
