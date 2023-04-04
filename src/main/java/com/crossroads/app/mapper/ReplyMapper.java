@@ -24,7 +24,7 @@ public interface ReplyMapper {
     public void deleteByBoardId(Long boardId);
 
 //    회원 별 댓글 삭제
-    public void deletByMemberId(Long memberId);
+    public void deleteByMemberId(Long memberId);
 
     //    관리자 댓글 전체 조회
     public List<ReplyDTO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
