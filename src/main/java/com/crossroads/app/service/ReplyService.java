@@ -2,14 +2,14 @@ package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
-import com.crossroads.app.domain.dto.ApplyDTO;
-import com.crossroads.app.domain.dto.ReplyDTO;
-import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -33,13 +33,43 @@ public class ReplyService {
     }
 
 //    게시글 별 댓글 삭제
-    public void deleteByBoardId(Long boardId){
+    public void removeByBoardId(Long boardId){
         replyDAO.deleteByBoardId(boardId);
     };
 
 //    회원 별 댓글 삭제
-    public void deletByMemberId(Long memberId){
-        replyDAO.deletByMemberId(memberId);
+    public void removeByMemberId(Long memberId){
+        replyDAO.deleteByMemberId(memberId);
     };
+
+    /* 관리자 댓글 목록 */
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<ReplyDTO> replies = replyDAO.findAllAdmin(criteria, keyword);
+
+        result.put("replies", replies);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, getCountAdmin(keyword)));
+
+        return result;
+    }
+
+    /* 관리자 댓글 총 개수 */
+    public Integer getCountAdmin(String keyword) {
+        return replyDAO.findCountAllAdmin(keyword);
+    }
+
+    //    개별 댓글 삭제
+    public void removeAdmin(List<String> replyIds){
+        replyIds.stream().map(replyId -> Long.valueOf(replyId)).forEach(replyDAO::deleteById);
+    }
 
 }

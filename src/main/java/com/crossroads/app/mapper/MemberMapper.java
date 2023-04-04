@@ -1,7 +1,9 @@
 package com.crossroads.app.mapper;
 
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -48,5 +50,11 @@ public interface MemberMapper {
 
     //마이페이지 프로필 업로드
     public void updateProfile(MemberVO memberVO);
+
+    //    관리자 전체 조회
+    public List<MemberVO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
+
+    //    관리자 게시글 총 개수
+    public Integer selectCountAllAdmin(@Param("keyword") String keyword);
 
 }

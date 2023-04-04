@@ -1,8 +1,6 @@
 package com.crossroads.app.mapper;
 
-import com.crossroads.app.domain.dto.ReviewCriteria;
-import com.crossroads.app.domain.dto.ReviewDTO;
-import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.*;
 import com.crossroads.app.domain.vo.ReviewVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -35,5 +33,15 @@ public interface ReviewMapper {
     // 후기 조회
     public ReviewVO select(Long reviewId);
 
+    //    관리자 전체 조회
+    public List<ReviewDTO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
 
+    //    관리자 게시글 총 개수
+    public Integer selectCountAllAdmin(@Param("keyword") String keyword);
+
+    //    관리자 게시글 삭제
+    public void deleteAdmin(Long reviewId);
+
+    //    회원별 게시글 삭제
+    public void deleteByMemberId(Long memberId);
 }

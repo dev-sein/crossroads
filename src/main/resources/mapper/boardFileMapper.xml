@@ -6,4 +6,9 @@
         from tbl_board_file
         where board_id = #{boardId}
     </select>
+
+    <delete id="deleteByBoardId">
+        delete from tbl_board_file
+        where board_id = #{boardId}
+    </delete>
 </mapper>

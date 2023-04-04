@@ -40,11 +40,11 @@
 	<article class="module module--content-list">
 		<div class="content-list__title-container">
 			<div class="content-list__title-unit">
-				<input type="checkbox" id="title__checkbox" name="checkbox-all" />
+				<input type="checkbox" id="title__checkbox" name="checkbox-all" onclick="isAllChecked()" />
 				<ul class="content-list__title">
 					<li class="title__id">번호</li>
 					<li class="title__user">작성자</li>
-					<li class="title__title">게시판 제목</li>
+					<li class="title__title">게시글 제목</li>
 					<li class="title__contents">댓글 내용</li>
 					<li class="title__date">등록일</li>
 					<li class="title__detail">상세</li>
@@ -53,13 +53,11 @@
 			</div>
 		</div>
 		<div id="scroll">
+			<!--목록 시작-->
 			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
 				<div class="content-list__info-unit">
 					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
+					<label for="" class="content__checkbox--label">
 						<ul class="content-list__info">
 							<li class="content__id">00029</li>
 							<li class="content__user">한동석</li>
@@ -67,112 +65,13 @@
 							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
 							<li class="content__date">2023-02-23</li>
 							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
+								<button class="custom-btn btn-16" id="show">상세 정보</button>
 							</li>
 						</ul>
 					</label>
 				</div>
 			</div>
-			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
-				<div class="content-list__info-unit">
-					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
-						<ul class="content-list__info">
-							<li class="content__id">00029</li>
-							<li class="content__user">한동석</li>
-							<li class="content__title">강사님 최고</li>
-							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
-							<li class="content__date">2023-02-23</li>
-							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-							</li>
-						</ul>
-					</label>
-				</div>
-			</div>
-			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
-				<div class="content-list__info-unit">
-					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
-						<ul class="content-list__info">
-							<li class="content__id">00029</li>
-							<li class="content__user">한동석</li>
-							<li class="content__title">강사님 최고</li>
-							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
-							<li class="content__date">2023-02-23</li>
-							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-							</li>
-						</ul>
-					</label>
-				</div>
-			</div>
-			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
-				<div class="content-list__info-unit">
-					<input type="checkbox" class="content__checkbox" id="" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
-						<ul class="content-list__info">
-							<li class="content__id">00029</li>
-							<li class="content__user">한동석</li>
-							<li class="content__title">강사님 최고</li>
-							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
-							<li class="content__date">2023-02-23</li>
-							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-							</li>
-						</ul>
-					</label>
-				</div>
-			</div>
-			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
-				<div class="content-list__info-unit">
-					<input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
-						<ul class="content-list__info">
-							<li class="content__id">00029</li>
-							<li class="content__user">한동석</li>
-							<li class="content__title">강사님 최고</li>
-							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
-							<li class="content__date">2023-02-23</li>
-							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-							</li>
-						</ul>
-					</label>
-				</div>
-			</div>
-			<div class="content-list__info-container">
-				<!-- <ul class="user-list__info">
-                        <li>등록된 가이드가 없습니다.</li>
-                    </ul> -->
-				<div class="content-list__info-unit">
-					<input type="checkbox" class="content__checkbox" id="hds" name="checkbox" />
-					<label for="kus" class="content__checkbox--label">
-						<ul class="content-list__info">
-							<li class="content__id">00029</li>
-							<li class="content__user">한동석</li>
-							<li class="content__title">강사님 최고</li>
-							<li class="content__contents">감사합니다. 꾸준히 연습하셔서 베스트 드라이버가 되세요^^</li>
-							<li class="content__date">2023-02-23</li>
-							<li class="user__detail" name="userDetail">
-								<button class="custom-btn btn-16" style="font-weight: 10px;" id="show">상세 정보</button>
-							</li>
-						</ul>
-					</label>
-				</div>
-			</div>
+			<!--목록 끝-->
 		</div>
 		</div>
 		<div class="desktop-only">
@@ -197,6 +96,10 @@
 <div th:insert="~{modal/admin/admin-reply-modal:: admin-reply-modal}"></div>
 <!-- modal fin. -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/admin/date.js"></script>
+<script src="/js/admin/reply-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>
-<script src="/js/admin/admin-modal.js"></script>
+<script src="/js/admin/reply-delete.js"></script>
+<script src="/js/admin/reply-modal.js"></script>
 </html>

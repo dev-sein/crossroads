@@ -36,12 +36,6 @@ public class FreeBoardService implements BoardService {
         String keyword = (String) requestData.get("keyword");
         int page = (int) requestData.get("page");
 
-//        if (page == 0) {
-//            criteria.create(1, 6); // 1페이지부터 / 화면에 몇개 보일지
-//        } else {
-//            criteria.create(page, 6);
-//        }
-
         if (page == 0) {
             page = 1;
         }
