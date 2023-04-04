@@ -92,11 +92,12 @@ public class MemberController {
     }
 
    @GetMapping("/login-kakao")
-    public void kakaoCallbackLogin(@RequestParam String code, HttpSession session) throws Exception {
+    public String kakaoCallbackLogin(@RequestParam String code, HttpSession session) throws Exception {
         log.info(code);
         String token = memberService.getKaKaoAccessToken(code);
         session.setAttribute("token", token);
         memberService.getKakaoInfo(token);
+        return "member/login";
     }
 
     @PostMapping("/login-kakao")

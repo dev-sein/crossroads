@@ -71,6 +71,7 @@ public class ApplyDAO {
 //    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
     public Long findCountByStarterIdAndStatus(Long memberId, String applyStatus) {
         return applyMapper.selectCountByStarterIdAndStatus(memberId, applyStatus);
+    }
 
     /* 관리자 게시글 목록 */
     public List<ApplyVO> findAllAdmin(Criteria criteria, String keyword) {

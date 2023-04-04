@@ -33,10 +33,5 @@ public class MemberRestController {
         return true;
     }
 
-    //카카오 회원가입
-/*    @GetMapping("login-kakao")
-    public String loginkakao(){
-        return "/member/join";
-    }*/
 
 }
