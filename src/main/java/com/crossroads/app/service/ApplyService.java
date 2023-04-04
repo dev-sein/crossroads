@@ -5,11 +5,8 @@ import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
-<<<<<<< HEAD
 import com.crossroads.app.domain.dto.Standards;
-=======
 import com.crossroads.app.domain.dto.PageDTO;
->>>>>>> admin
 import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -85,7 +82,7 @@ public class ApplyService {
 //    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
     public Long getApplyCount(Long memberId, String applyStatus) {
         return applyDAO.findCountByStarterIdAndStatus(memberId, applyStatus);
-
+    }
 
 //    관리자 신청내역 목록
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
