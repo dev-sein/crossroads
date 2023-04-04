@@ -20,13 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 public class PointController {
     private final PointService pointService;
     //    포인트 구입
-    @GetMapping("buyPoint")
+    @GetMapping("/buy-point")
     public String buyPoint() {
         return "point/buyPoint";
     }
 
     //    포인트 구입완료
-    @GetMapping("buyPointFin")
+    @GetMapping("/buy-point-fin")
     public String buyPointFin() {
         return "point/buyPointFin";
     }

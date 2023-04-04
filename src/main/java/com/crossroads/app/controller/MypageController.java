@@ -190,6 +190,7 @@ public class MypageController {
 
         model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards));
+        log.info(model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards)).toString());
         return "mypage/my-review";
     }
 
@@ -265,7 +266,7 @@ public class MypageController {
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
-        String path = "C:/upload/profiles/" + getPath();
+        String path = "C:/upload/" + getPath();
         File file = new File(path);
         if(!file.exists()) {file.mkdirs();}
 
@@ -293,7 +294,7 @@ public class MypageController {
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload/profiles", fileName));
+        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
     //현재 날짜 경로 구하기
