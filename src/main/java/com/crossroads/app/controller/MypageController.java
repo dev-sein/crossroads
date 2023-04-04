@@ -64,9 +64,13 @@ public class MypageController {
 
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
-    public String myInfoSelect(Long memberId, Model model){
+    public String myInfoSelect(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMemberInfo(1L));
-//        model.addAttribute("file", memberService.getMemberInfo(memberId));
+        log.info("들어옴");
+        log.info(model.addAttribute("member", memberService.getMemberInfo(1L)).toString());
         return "mypage/my-info";
     }
 
@@ -81,10 +85,10 @@ public class MypageController {
 //        return new RedirectView("/mypage/my-info");
 //    }
 
-
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
+        log.info("들어옴");
         Long memberId = 1L;
         memberVO = memberService.getMemberInfo(memberId);
 
@@ -256,14 +260,7 @@ public class MypageController {
 //        return "mypage/my-info";
 //    }
 
-    //마이페이지 파일 저장
-    @PostMapping("saveProfile")
-    @ResponseBody
-    public void save(@RequestBody List<MemberVO> files){
-        files.forEach(file -> memberService.modifyProfile(file));
-    }
-
-    //파일 업로드
+    //마이페이지 파일 업로드
     @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
@@ -285,7 +282,14 @@ public class MypageController {
         return uuids;
     }
 
-    //파일 불러오기
+    //마이페이지 파일 저장
+    @PostMapping("saveProfile")
+    @ResponseBody
+    public void save(@RequestBody List<MemberVO> files){
+        files.forEach(file -> memberService.modifyProfile(file));
+    }
+
+    //마이페이지 파일 불러오기
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
