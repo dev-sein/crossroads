@@ -63,9 +63,10 @@ public class AdminController {
     }
     /*====================회원 게시판 끝==============================*/
 
+    /*====================연수 신청 게시판 시작==============================*/
     //관리자 연수신청 목록
     @GetMapping("apply/list")
-    public String adminApply(Model model){
+    public String adminApply(){
 //        model.addAttribute("applies", applyService.getList());
         return "admin/admin-apply";
     }
@@ -83,6 +84,7 @@ public class AdminController {
     public void deleteApply(@RequestBody List<String> checkedIds) {
         checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(applyService::cancel);
     }
+    /*====================연수 신청 게시판 끝==============================*/
 
     //관리자 포인트 목록
     @GetMapping("points/list")
