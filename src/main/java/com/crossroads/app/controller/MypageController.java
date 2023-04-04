@@ -185,12 +185,13 @@ public class MypageController {
     //마이페이지 후기 전체 조회
     @GetMapping("/my-review")
     public String showListMyReview(Model model, HttpServletRequest request, Standards standards) throws Exception{
+
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
 
         model.addAttribute("member", memberService.getMemberInfo(1L));
-        model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards));
-        log.info(model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards)).toString());
+        model.addAttribute("review", reviewBoardService.getListMy(1L, standards));
+        log.info(model.addAttribute("review", reviewBoardService.getListMy(1L, standards)).toString());
         return "mypage/my-review";
     }
 
