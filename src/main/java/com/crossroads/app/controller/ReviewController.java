@@ -33,7 +33,7 @@ import java.util.UUID;
 @Slf4j
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
-    private static String uploadDir = "C:\\uploads\\";
+    private static String uploadDir = "D:\\uploads\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
@@ -73,7 +73,7 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 8L);   // 테스트 ( 수정해야함)
+        /* session.setAttribute("memberId", 1L);   // 테스트 ( 수정해야함)*/
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
@@ -138,6 +138,13 @@ public class ReviewController {
         }
         model.addAttribute("info", reviewVO);
         return "/review/review-update";
+    }
+
+    // 후기 삭제
+    @DeleteMapping("/review-delete/{reviewId}")
+    public ResponseEntity<?> deleteReview(@PathVariable("reviewId") Long reviewId) {
+        reviewBoardService.deleteReview(reviewId);
+        return ResponseEntity.ok(reviewId);
     }
 
 
