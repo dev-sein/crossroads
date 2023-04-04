@@ -88,7 +88,7 @@ $('#agreeCheck').on('change', function () {
 function submitForm(){
     const targetChecked = $('#agreeCheck').is(':checked');
     if (targetChecked) {
-        /* $('form').submit(); */
+        $('form').submit();
     }else {
         $('.error-text-custom').show();
     }
