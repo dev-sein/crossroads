@@ -142,12 +142,12 @@
                     reviewElement +=`
                     <!--수정 삭제 버튼-->
                 <div class="update-buttons-wrapper">
-                <a href="#" class="buttons-wrapper">
-                <div class="update-button">수정</div>
-                </a>
-                <a href="#" class="buttons-wrapper">
-                <div class="delete-button">삭제</div>
-                </a>
+                    <a href="#" class="buttons-wrapper">
+                        <div class="update-button">수정</div>
+                    </a>
+                    <a href="#" class="buttons-wrapper">
+                        <div class="delete-button">삭제</div>
+                    </a>
                 </div>
                 `;
                 }
@@ -175,7 +175,6 @@
                 </div>
                 <div class="board-box-bottom">
                 <div class="bottom-inner">
-                 <div class="bottom-title">${review.reviewTitle}<span class="date">${reviewRegisterDate}</span></div>
                 <div class="bottom-title">${review.reviewTitle}<span class="date">${formattedDate}</span></div>
                 <div class="bottom-content">${review.reviewContent}</div>
                 </div>
@@ -187,7 +186,7 @@
                 </div>
                 </div>`;
                 $reviewList.append(reviewElement);
-                });
+            });
         }
 
         // 초기 로드
