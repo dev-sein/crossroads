@@ -85,12 +85,12 @@ public class MypageController {
 //        return new RedirectView("/mypage/my-info");
 //    }
 
-
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
-        HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);
+        log.info("들어옴");
+        Long memberId = 1L;
+        memberVO = memberService.getMemberInfo(memberId);
 
         String memberName = request.getParameter("memberName");
         String memberPhone = request.getParameter("memberPhone");
@@ -285,7 +285,7 @@ public class MypageController {
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+        return FileCopyUtils.copyToByteArray(new File("C:/upload/profiles", fileName));
     }
 
     //현재 날짜 경로 구하기
