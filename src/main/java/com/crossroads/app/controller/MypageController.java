@@ -114,7 +114,7 @@ public class MypageController {
         return new RedirectView("my-main");
     }
 
-    /*마이페이지 연수신청 목록*/
+    /*마이페이지 연수신청 조회*/
     @GetMapping("my-apply")
     public String showListMyApply(Model model, HttpSession session, Standards standards) {
         session.setAttribute("memberId", 2L);
@@ -132,7 +132,7 @@ public class MypageController {
         return "mypage/my-apply";
     }
 
-    /*마이페이지 포인트내역*/
+    /*마이페이지 포인트 조회*/
     @GetMapping("/my-point")
     public String showListMyPoint(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -156,7 +156,7 @@ public class MypageController {
         return "mypage/my-review";
     }
 
-    /*마이페이지 내가 쓴 게시글 목록*/
+    /*마이페이지 내가 쓴 게시글 조회*/
     @GetMapping("/my-board")
     //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
     public String showListMyBoard(Model model, HttpServletRequest request, Standards standards, Long boardId) {
