@@ -22,10 +22,10 @@ public interface MemberMapper {
     public Long login(String memberIdentification, String memberPassword);
 
     //마이페이지 정보 조회
-    public MemberVO select(Long memberId);
+    public MemberVO selectMyInfo(Long memberId);
 
     //마이페이지 정보 수정
-    public void update(MemberVO memberVO);
+    public void updateMyInfo(MemberVO memberVO);
 
     //회원 정보 목록
     public List<MemberVO> selectAll();

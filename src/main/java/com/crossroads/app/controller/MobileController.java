@@ -276,7 +276,7 @@ public class MobileController {
     //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
     public String myMobile(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mobile/my-mobile";
     }
 
