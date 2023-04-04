@@ -7,6 +7,8 @@ import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.*;
 import java.lang.reflect.Member;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +78,9 @@ public class MemberService {
     }
 
     //이메일로 랜덤키 찾기
-    public Long getRandomKey(String memberEmail) { return memberDAO.findRandomKey(memberEmail); }
+    public Long getRandomKey(String memberEmail) {
+        return memberDAO.findRandomKey(memberEmail);
+    }
 
     //비밀번호 찾기 인증 이메일 발송 서비스
     @Autowired
@@ -90,7 +97,7 @@ public class MemberService {
     }
 
     //로그인-비밀번호 변경
-    public void modifyPassword(String memberEmail, String memberPassword){
+    public void modifyPassword(String memberEmail, String memberPassword) {
         memberDAO.setPassword(memberEmail, memberPassword);
     }
 
@@ -98,20 +105,29 @@ public class MemberService {
     public Long getPassword(Long memberId, String memberPassword) { return memberDAO.findByPasswordMy(memberId, memberPassword); }
 
     //마이페이지 비밀번호 변경
-    public Long modifyPasswordMy(Long memberId ,String memberPassword){ return memberDAO.setPasswordMy(memberId, memberPassword); }
+    public Long modifyPasswordMy(Long memberId, String memberPassword) {
+        return memberDAO.setPasswordMy(memberId, memberPassword);
+    }
 
     //랜덤 난수 생성
     public Long makeRandomKey() {
         Random rand = new Random();
-        long randomkey = rand.nextLong()+1;
+        long randomkey = rand.nextLong() + 1;
         return randomkey;
     }
 
     //랜덤키 삽입
-    public void setRandomKey(String memberEmail, Long memberRandomKey){ memberDAO.setRandomKey(memberEmail, memberRandomKey);};
+    public void setRandomKey(String memberEmail, Long memberRandomKey) {
+        memberDAO.setRandomKey(memberEmail, memberRandomKey);
+    }
+
+    ;
 
     //이메일로 VO 찾기
-    public MemberVO getByEmail(String memberEmail) {return memberDAO.findByEmail(memberEmail);}
+    public MemberVO getByEmail(String memberEmail) {
+        return memberDAO.findByEmail(memberEmail);
+    }
+
     //마이페이지 프로필 업로드
     public void modifyProfile(MemberVO memberVO) {
         memberDAO.setProfile(memberVO);
@@ -184,4 +200,142 @@ public class MemberService {
         }
     }
 
+    //카카오 로그인 //토큰
+    public String getKaKaoAccessToken(String code) {
+        String access_Token = "";
+        String refresh_Token = "";
+        String reqURL = "https://kauth.kakao.com/oauth/token";
+
+        try {
+            URL url = new URL(reqURL); //자바에서 요청하는 코드
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); //url 커넥션 객체 얻어옴
+            //POST 요청을 위해 기본값이 false인 setDoOutput을 true로
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            //POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+            StringBuilder sb = new StringBuilder();
+            sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
+            sb.append("grant_type=authorization_code");
+            sb.append("&client_id=ff10441318cc0a2c7e2aa44285fa956c"); // TODO REST_API_KEY 입력
+            sb.append("&code=" + code);
+            bw.write(sb.toString());
+            bw.flush();
+
+            //결과 코드가 200이라면 성공
+            int responseCode = conn.getResponseCode();
+            log.info("responseCode : " + responseCode);
+            //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = "";
+            String result = "";
+
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            log.info("response body : " + result);
+
+            //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+            JsonParser parser = new JsonParser();
+            JsonElement element = parser.parse(result);
+            //gson -> json 세션
+            access_Token = element.getAsJsonObject().get("access_token").getAsString(); //세션을 사용하지 않고 db를 사용
+            refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+
+            log.info("access_token : " + access_Token);
+            log.info("refresh_token : " + refresh_Token);
+
+            br.close();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return access_Token;
+    }
+
+    public void getKakaoInfo(String token) throws Exception {
+
+        String reqURL = "https://kapi.kakao.com/v2/user/me";
+
+        //access_token을 이용하여 사용자 정보 조회
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Authorization", "Bearer " + token); //전송할 header 작성, access_token전송
+
+            //결과 코드가 200이라면 성공
+            int responseCode = conn.getResponseCode();
+            log.info("responseCode : " + responseCode);
+
+            //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = "";
+            String result = "";
+
+            //            if("join"){
+//                sb.append("&redirect_uri=http://localhost:10000/members/join"); // TODO 인가코드 받은 redirect_uri 입력
+//            }else("login"){
+//                sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
+//            }
+
+
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            log.info("response body : " + result);
+
+            //Gson 라이브러리로 JSON파싱 //내 정보 받아오기
+            JsonParser parser = new JsonParser();
+            JsonElement element = parser.parse(result);
+
+            int id = element.getAsJsonObject().get("id").getAsInt();
+            boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
+            String email = "";
+            if (hasEmail) { //email 정보
+                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+            }
+
+            log.info("id : " + id);
+            log.info("email : " + email);
+
+            br.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logoutKakao(String token) {
+        String reqURL = "https://kapi.kakao.com/v1/user/logout";
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+            int responseCode = conn.getResponseCode();
+            log.info("responseCode : " + responseCode);
+
+            if (responseCode == 400)
+                throw new RuntimeException("카카오 로그아웃 도중 오류 발생");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String br_line = "";
+            String result = "";
+            while ((br_line = br.readLine()) != null) {
+                result += br_line;
+            }
+            log.info("결과");
+            log.info(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

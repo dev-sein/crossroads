@@ -27,14 +27,13 @@ public class ApplyController {
     private final MemberService memberService;
     private final PointService pointService;
 
-
-
     //연수신청 첫페이지
     @GetMapping("apply-first")
     public String formFirst(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("applyDTO", new ApplyDTO());
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 2L);
+        //model.addAttribute("members", memberService.getMember(2L));
         model.addAttribute("members", memberService.getMemberInfo(2L));
 
         String memberName = httpServletRequest.getParameter("memberName");
@@ -60,7 +59,7 @@ public class ApplyController {
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 2L);
-        log.info("apply-second getmapping : " + applyCourse); //여기까지 코스 출력됨
+        log.info("apply-second getmapping : " + applyCourse);
         return "form/apply-second";
     }
 
@@ -68,11 +67,11 @@ public class ApplyController {
     public RedirectView applySecondPost(HttpServletRequest httpServletRequest, Model model, ApplyDTO applyDTO, String applyCourse, RedirectAttributes redirectAttributes){
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 2L);
-        model.addAttribute("applyCourse", applyCourse); //못 받아옴
-        redirectAttributes.addFlashAttribute("applyCourse", applyCourse); //못 받아옴
-        log.info("second post 코스" + applyCourse); //코스 출력 안됨
+        model.addAttribute("applyCourse", applyCourse);
+        redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
+        log.info("second post 코스" + applyCourse);
         applyDTO.setMemberId((Long)httpSession.getAttribute("memberId"));
-        applyService.saveApply(applyDTO); //course 빼고 insert 됨
+        applyService.saveApply(applyDTO);
         log.info(applyDTO.toString());
         model.addAttribute("applyDTO", applyDTO);
       /*  redirectAttributes.addAttribute("applyDTO", applyDTO);*/
