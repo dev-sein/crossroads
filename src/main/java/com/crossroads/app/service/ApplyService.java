@@ -80,6 +80,12 @@ public class ApplyService {
     public Long getApplyCount(Long memberId, String applyStatus) {
         return applyDAO.findCountByStarterIdAndStatus(memberId, applyStatus);
     }
+
+//    베테랑의 id로 연수 내역 뽑기
+    public List<ApplyDTO> getApplyVeteran(Long veteranMemberId, Criteria criteria) {
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2" + criteria.getOffset());
+        return applyDAO.findByVeteranMemberId(veteranMemberId, criteria);
+    }
 }
 
 

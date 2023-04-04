@@ -53,4 +53,7 @@ public interface ApplyMapper {
 
 //    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
     public Long selectCountByStarterIdAndStatus(Long memberId, String applyStatus);
+
+//    베테랑의 id로 연수 내역 뽑기
+    public List<ApplyDTO> selectByVeteranMemberId(Long veteranMemberId, Criteria criteria);
 }

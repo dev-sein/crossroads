@@ -71,4 +71,9 @@ public class ApplyDAO {
     public Long findCountByStarterIdAndStatus(Long memberId, String applyStatus) {
         return applyMapper.selectCountByStarterIdAndStatus(memberId, applyStatus);
     }
+
+//    베테랑의 id로 연수 내역 뽑기
+    public List<ApplyDTO> findByVeteranMemberId(Long veteranMemberId, Criteria criteria) {
+        return applyMapper.selectByVeteranMemberId(veteranMemberId, criteria);
+    }
 }

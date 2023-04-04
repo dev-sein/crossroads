@@ -126,6 +126,7 @@
     <select id="selectByStarterMemberId" resultType="applyVO">
         select apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status
         from tbl_apply where starter_member_id = #{memberId}
+        order by apply_id desc
         limit #{standards.offset}, #{standards.rowCount}
     </select>
 
@@ -135,6 +136,17 @@
         <if test="applyStatus != null">
             group by apply_status having apply_status = #{applyStatus}
         </if>
+    </select>
+
+    <!--  베테랑의 id로 연수 내역 뽑기  -->
+    <select id="selectByVeteranMemberId" resultType="applyDTO">
+        select apply_id, apply_course, apply_location, apply_date, apply_register_date,
+        starter_member_id, veteran_member_id, apply_status, member_name
+        from tbl_apply ta join tbl_member tm
+        on ta.starter_member_id = tm.member_id and veteran_member_id = #{veteranMemberId}
+        and apply_status in ('1', '2')
+        order by apply_id desc
+        limit #{criteria.offset}, #{criteria.amount}
     </select>
 
 </mapper>
