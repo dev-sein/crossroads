@@ -643,7 +643,48 @@ main{
     cursor: pointer;
 }
 
-/* .review-image:hover{
-    transform: scale(1.02);
-    transition: transform .4s ease-in-out;
-} */
+/*삭제 모달*/
+.delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-modal-wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.delete-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.delete-modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.delete-modal-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-modal-buttons button:hover {
+    background-color: #0056b3;
+}
+
+
