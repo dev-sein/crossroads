@@ -25,10 +25,10 @@ public class MemberDAO {
     public Long login(String memberIdentification, String memberPassword){return memberMapper.login(memberIdentification, memberPassword);}
 
     //마이페이지 정보 조회
-    public MemberVO findById(Long memberId){ return memberMapper.select(memberId);}
+    public MemberVO findByIdMy(Long memberId){ return memberMapper.selectMyInfo(memberId);}
 
     //마이페이지 정보 수정
-    public void setMyInfo(MemberVO memberVO){ memberMapper.update(memberVO);}
+    public void setMyInfo(MemberVO memberVO){ memberMapper.updateMyInfo(memberVO);}
 
     //회원 정보 목록
     public List<MemberVO> findAll(){
@@ -44,7 +44,7 @@ public class MemberDAO {
     public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
 
     //마이페이지 비밀번호 확인
-    public Long findByPasswordMy(String memberPassword) { return memberMapper.checkPassword(memberPassword); }
+    public Long findByPasswordMy(Long memberId, String memberPassword) { return memberMapper.checkPassword(memberId, memberPassword); }
 
     //아이디로 랜덤키 찾기
     public Long findRandomKey(String memberEmail){ return memberMapper.selectRandomKey(memberEmail);}

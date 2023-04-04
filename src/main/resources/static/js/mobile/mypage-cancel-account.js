@@ -31,8 +31,9 @@ function cancelCheck(e) {
         $("e").attr("type", "button");
     } else {
         $errorMsg.css("display", "none");
-        $("e").attr("type", "submit");
-        location.replace('my-mobile-complete-cancel.html');
+        document.deleteForm.submit();
+        // $("e").attr("type", "submit");
+        // location.replace('my-mobile-complete-cancel.html');
     }
 }
 

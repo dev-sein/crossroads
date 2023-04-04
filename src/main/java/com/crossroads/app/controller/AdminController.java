@@ -50,7 +50,7 @@ public class AdminController {
     @ResponseBody
     @PostMapping("members/detail")
     public MemberVO adminMemberDetail(@RequestParam("memberId") Long memberId) {
-        return memberService.getMember(memberId);
+        return memberService.getMemberInfo(memberId);
     }
 
     //관리자 회원 삭제
