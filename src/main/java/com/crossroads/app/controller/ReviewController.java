@@ -73,7 +73,7 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        /* session.setAttribute("memberId", 1L);   // 테스트 ( 수정해야함)*/
+         session.setAttribute("memberId", 1L);   // 테스트 ( 수정해야함)*/
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
