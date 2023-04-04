@@ -33,7 +33,8 @@
                         <div>
                             <div class="text-input-client2  ">
                                 <div>
-                                    <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="현재 보유하신 포인트는 51000p입니다." type="text" value="">
+                                    <span class="theme-client wishket-text">현재 보유하신 포인트는</span>
+                                    <span class="theme-client wishket-text" th:text="${point} + p입니다"></span>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +48,7 @@
                         <!-- 코스 -->
                         <div class="select-card client-input" style="width: 200px; margin-right: 20px;">
                             <label >
-                                <input id="category_develop" name="category" type="radio" checked="checked" value="develop" class="error">
+                                <input id="category_develop" name="category" type="radio" checked="checked" value="50000" class="error">
                                 <div class="select-card-content">
                                     <img class="select-card-img inherit-select-card-img" src="/img/50000.png">
                                     <p class="body-2-medium">5만 포인트</p>
@@ -56,7 +57,7 @@
                         </div>
                         <div class="select-card client-input div2" style="width: 200px; margin-right: 20px;">
                             <label >
-                                <input id="category_develop" name="category" type="radio" value="develop" class="error">
+                                <input id="category_develop" name="category" type="radio" value="100000" class="error">
                                 <div class="select-card-content">
                                     <img class="select-card-img inherit-select-card-img" src="/img/100000.png">
                                     <p class="body-2-medium">10만 포인트</p>
@@ -70,7 +71,7 @@
 
             <!-- 다음 -->
             <div class="form-section-footer" style="position: relative">
-                <button class="btn btn-client btn-11-24 btn-right" name="can_submit" type="submit" value="False">결제하기</button>
+                <button class="btn btn-client btn-11-24 btn-right" name="can_submit" type="button" value="False">결제하기</button>
                 <div style="clear:both;">
                 </div>
             </div>
@@ -81,6 +82,9 @@
     </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.3.1.min.js" type="application/javascript"></script>
+<script src="/js/point/payment.js"></script>
 <script src="/js/form/form.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>

@@ -41,7 +41,8 @@
                             <div class="form-content mb16">
                                     <div class="text-input-client2  ">
                                         <div>
-                                            <input class="theme-client wishket-text" data-type="text" maxlength="30" name="title" placeholder="현재 보유하신 포인트는 51000p입니다." type="text" value="">
+                                            <span class="theme-client wishket-text">현재 보유하신 포인트는</span>
+                                            <span class="theme-client wishket-text" th:text="${point} + p입니다"></span>
                                         </div>
                                     </div>
                                     <div class="button-space">
