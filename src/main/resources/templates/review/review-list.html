@@ -138,55 +138,58 @@
                             </div>
                         </div>
                     </div>`;
-                if(memberId == `${review.memberId}`){
-                    reviewElement +=`
+                if (memberId == `${review.memberId}`) {
+                    reviewElement += `
                     <!--수정 삭제 버튼-->
-                <div class="update-buttons-wrapper">
-                    <a href="#" class="buttons-wrapper">
-                        <div class="update-button">수정</div>
+                    <div class="update-buttons-wrapper">
+                    <a href="http://localhost:10000/review-update?reviewId=${review.reviewId}"  class="buttons-wrapper">
+                    <div class="update-button">수정</div>
                     </a>
                     <a href="#" class="buttons-wrapper">
-                        <div class="delete-button">삭제</div>
+                    <div class="delete-button" onclick="showDeleteModal(event)">삭제</div>
                     </a>
-                </div>
-                `;
-                }
+                    </div>
+                    `
+                ;
+                                }
 
-                reviewElement +=`
-                    <!--수정 삭제 버튼 끝-->
-                </div>
+                                reviewElement +=
+                    `
+                        <!--수정 삭제 버튼 끝-->
+                    </div>
 
-                <div class="board-box-middle">
-                <div class="box-middle-inner">
-                <a href="" class="middle-title">연수 정보</a>
-                <div class="middle-middle">
-                <span class="category-first">연수 지역</span>
-                <div class="seperator"></div>
-                <span class="category-second">${review.applyLocation}</span>
-                </div>
-                <div class="middle-bottom">
-                <span class="detail-title">수강 코스</span>
-                <span class="detail-second-value">${review.applyCourse}</span>
-                <div class="seperator"></div>
-                <span class="detail-title">수강일</span>
-                <span class="detail-third-value">${review.applyDate}</span>
-                </div>
-                </div>
-                </div>
-                <div class="board-box-bottom">
-                <div class="bottom-inner">
-                <div class="bottom-title">${review.reviewTitle}<span class="date">${formattedDate}</span></div>
-                <div class="bottom-content">${review.reviewContent}</div>
-                </div>
-                <div class="image-wrapper">
-                    ${imageElement}
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>`;
-                $reviewList.append(reviewElement);
-            });
+                    <div class="board-box-middle">
+                    <div class="box-middle-inner">
+                    <a href="" class="middle-title">연수 정보</a>
+                    <div class="middle-middle">
+                    <span class="category-first">연수 지역</span>
+                    <div class="seperator"></div>
+                    <span class="category-second">${review.applyLocation}</span>
+                    </div>
+                    <div class="middle-bottom">
+                    <span class="detail-title">수강 코스</span>
+                    <span class="detail-second-value">${review.applyCourse}</span>
+                    <div class="seperator"></div>
+                    <span class="detail-title">수강일</span>
+                    <span class="detail-third-value">${review.applyDate}</span>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="board-box-bottom">
+                    <div class="bottom-inner">
+                    <div class="bottom-title">${review.reviewTitle}<span class="date">${formattedDate}</span></div>
+                    <div class="bottom-content">${review.reviewContent}</div>
+                    </div>
+                    <div class="image-wrapper">
+                        ${imageElement}
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>`;
+                    $reviewList.append(reviewElement);
+                    }
+            );
         }
 
         // 초기 로드

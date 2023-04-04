@@ -39,7 +39,6 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public void remove(List<String> boardIds) {
-//        boardIds.stream().map(boardId -> new Long(boardId)).forEach(reviewDAO::deleteById);
         boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(reviewDAO::deleteById);
     }
 

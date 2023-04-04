@@ -109,4 +109,44 @@ function relativeTime(dateString) {
 }
 
 
+/* 삭제하기 버튼 모달창*/
+function showDeleteModal(event) {
+    event.preventDefault();
+
+    // 모달창 생성
+    const deleteModal = `
+        <div class="modal" id="delete-modal">
+            <div class="modal-content">
+                <h2>리뷰 삭제</h2>
+                <p>삭제하시겠습니까?</p>
+                <div class="modal-buttons">
+                    <button id="delete-confirm">확인</button>
+                    <button id="delete-cancel">취소</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $('body').append(deleteModal);
+
+    // 삭제 확인 버튼 이벤트
+    $('#delete-confirm').on('click', () => {
+        // 삭제 처리 로직 구현
+        // 예: deleteReview(reviewId);
+
+        // 모달창 닫기
+        closeModal();
+    });
+
+    // 취소 버튼 이벤트
+    $('#delete-cancel').on('click', () => {
+        closeModal();
+    });
+}
+
+function closeModal() {
+    $('#delete-modal').remove();
+}
+
+
 

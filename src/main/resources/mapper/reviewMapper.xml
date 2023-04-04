@@ -74,4 +74,6 @@
         select count(review_id) from tbl_review
     </select>
 
+
+
 </mapper>
