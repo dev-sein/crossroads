@@ -77,4 +77,6 @@ public class PointController {
         pointService.modifyPoint(memberId);
         return new RedirectView("/points/exchange-point-mobile?exchange=ok");
     }
+
+
 }

@@ -100,5 +100,7 @@ public class MemberService {
     //랜덤키 삽입
     public void setRandomKey(String memberEmail, Long memberRandomKey){ memberDAO.setRandomKey(memberEmail, memberRandomKey);};
 
+    //이메일로 VO 찾기
+    public MemberVO getByEmail(String memberEmail) {return memberDAO.findByEmail(memberEmail);}
 
 }

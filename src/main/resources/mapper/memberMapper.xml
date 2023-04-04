@@ -88,4 +88,10 @@
     where member_email = #{memberEmail}
     </update>
 
+    <select id="selectByEmail" resultType="memberVO">
+        select member_id, member_identification, member_name, member_phone, member_email,
+        member_type, member_drive_register_date, member_point, member_status
+        where member_email = #{memberEmail}
+    </select>
+
 </mapper>

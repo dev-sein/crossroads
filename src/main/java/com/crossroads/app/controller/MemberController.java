@@ -67,10 +67,24 @@ public class MemberController {
         log.info(id.toString());
         if(id != null){
             session.setAttribute("memberId", id);
+            if(id == 1L){
+                return new RedirectView("/admin/home");
+            }
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("/main");
         }
         return new RedirectView("/member/login");
+    }
+
+    @GetMapping("callback")
+    public String callBack(){
+        return "/member/callback";
+    }
+
+    @PostMapping("login-naver")
+    public RedirectView loginNaver(){
+
+        return new RedirectView("/main");
     }
 
     //로그아웃

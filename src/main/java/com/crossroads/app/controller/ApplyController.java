@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
 public class ApplyController {
     private final ApplyService applyService;
 
+    //연수신청 첫페이지
     @GetMapping("apply-first")
     public String formFirst(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("applyDTO", new ApplyDTO());
@@ -41,6 +42,7 @@ public class ApplyController {
         return new RedirectView("/apply/apply-second?applyCourse=" + applyCourse);
     }
 
+    //연수신청 두번째 페이지
     @GetMapping("apply-second")
     public String applySecond (Model model, HttpServletRequest httpServletRequest, ApplyDTO applyDTO, @RequestParam(value="applyCourse") String applyCourse) {
         log.info("second 들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -63,6 +65,7 @@ public class ApplyController {
         return new RedirectView("/apply/apply-third");
     }
 
+    //연수신청 세번째 페이지
     @GetMapping("/apply-third")
     public String formThird(Model model, HttpServletRequest httpServletRequest) {
         HttpSession httpSession = httpServletRequest.getSession();

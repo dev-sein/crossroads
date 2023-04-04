@@ -46,4 +46,7 @@ public interface MemberMapper {
     //랜덤키 삽입
     public void updateRandomKey(String memberEmail, Long memberRandomKey);
 
+    //아이디로 셀렉
+    public MemberVO selectByEmail(String memberEmail);
+
 }

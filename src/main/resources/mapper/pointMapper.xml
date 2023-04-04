@@ -12,6 +12,7 @@
         set member_point = 0
         where member_id = #{memberId}
     </update>
+
     <!-- 마이페이지 포인트 내역 -->
     <select id="selectAllMyPoint" parameterType="long" resultType="pointDTO">
         select point_id, m.member_id, member_identification, point_status, point_update_date, point_point
@@ -19,4 +20,12 @@
         where m.member_id = #{memberId}
         order by point_update_date desc
     </select>
+
+    <!--연수신청 포인트 차감 -->
+    <update id="updateAfterApply">
+        update tbl_member
+        set member_point = #{memberPoint}
+        where member_id = #{memberId}
+    </update>
+
 </mapper>
