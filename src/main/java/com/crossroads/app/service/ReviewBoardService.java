@@ -139,6 +139,11 @@ public class ReviewBoardService implements BoardService {
         return null;
     }
 
+    //후기 삭제
+    public void deleteReview(Long reviewId) {
+        reviewDAO.deleteReviewById(reviewId);
+    }
+
 
 
 
