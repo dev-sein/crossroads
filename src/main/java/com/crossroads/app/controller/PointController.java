@@ -5,13 +5,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/points/*")
@@ -21,14 +19,32 @@ public class PointController {
     private final PointService pointService;
     //    포인트 구입
     @GetMapping("/buy-point")
-    public String buyPoint() {
+    public String buyPoint(Model model, HttpSession session) {
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        model.addAttribute("point", pointService.getPoint(memberId));
         return "point/buyPoint";
+    }
+
+    @PostMapping("pay-register")
+    @ResponseBody
+    public String payRegister(Long memberPoint, HttpSession session) {
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        pointService.modifyPointByMemberId(memberId, memberPoint);
+        return "/points/buy-point-fin";
     }
 
     //    포인트 구입완료
     @GetMapping("/buy-point-fin")
-    public String buyPointFin() {
-        return "point/buyPointFin";
+    public String buyPointFin(Model model, HttpSession session) {
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        model.addAttribute("point", pointService.getPoint(memberId));
+        return "/point/buyPointFin";
     }
 
 

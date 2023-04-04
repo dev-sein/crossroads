@@ -85,4 +85,9 @@ public class PointService {
     public PointDTO getDetail(Long pointId) {
         return pointDAO.selectById(pointId);
     }
+
+//    포인트 충전
+    public void modifyPointByMemberId(Long memberId, Long memberPoint) {
+        pointDAO.setPointByMemberId(memberId, memberPoint);
+    }
 }

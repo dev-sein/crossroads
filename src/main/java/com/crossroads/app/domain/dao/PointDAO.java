@@ -54,4 +54,9 @@ public class PointDAO {
     public PointDTO selectById(Long pointId){
         return pointMapper.select(pointId);
     }
+
+    //    포인트 충전
+    public void setPointByMemberId(Long memberId, Long memberPoint) {
+        pointMapper.updatePointByMemberId(memberId, memberPoint);
+    }
 }
