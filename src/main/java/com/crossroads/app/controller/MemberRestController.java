@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,6 +28,13 @@ public class MemberRestController {
         }
         session.setAttribute("member", memberVO);
         return true;
+    }
+
+    @PostMapping("join-naver")
+    public RedirectView joinNaver(MemberVO memberVO) {
+        memberVO.setMemberStatus(3);
+        memberService.save(memberVO);
+        return new RedirectView("login");
     }
 
 }

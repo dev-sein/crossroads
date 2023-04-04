@@ -17,7 +17,7 @@ let $passwordWarning = $(".pwd .error-text");
 const $pwdEye = $(".pwd i");
 let checkPwd = false;
 
-// 비밀번호 확인
+// 비밀번호 확인f
 const $passwordCheckInput = $("#password-check");
 let $passwordCheckWarning = $(".re-pwd .error-text");
 const $rePwdEye = $(".re-pwd i");
@@ -93,7 +93,7 @@ function checkEmail() {
 			}
 		},
 		error: function () {
-			alert("에러입니다");
+			//alert("에러입니다");
 		}
 	});
 };
