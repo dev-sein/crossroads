@@ -62,8 +62,7 @@
 
     <!-- 마이페이지 정보 조회 -->
     <select id="select" parameterType="long" resultType="memberVO">
-        select member_id, member_identification, member_name, member_phone, member_email, member_type, member_point
-        select member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
+        select member_id, member_identification, member_name, member_phone, member_email, member_type, member_drive_register_date, member_point
         from tbl_member
         where member_id = #{memberId}
     </select>
