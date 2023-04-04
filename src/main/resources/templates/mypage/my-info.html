@@ -37,6 +37,7 @@
                         <div class="user-img-box">
                             <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"
                                  src="/images/mypage/main-logo.png">
+<!--                            <img th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">-->
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                         <div class="userid">
@@ -85,7 +86,7 @@
                                         <input hidden="" id="profile_remove_image_file" name="remove_image_file"
                                                type="checkbox">
                                         <button class="body-btn upload" onclick="upload_image()" type="button">
-                                            <img th:src="@{/mypage/display(fileName=${member[0].memberFilePath} + '/' + ${member[0].memberFileUuid} + '_' + ${member[0].memberFileOriginalName})}">사진 올리기
+                                            <img src="/images/mypage/icon_profile_upload.png">사진 올리기
                                         </button>
                                         <button class="body-btn" id="remove-button" type="button">
                                             <img src="/images/mypage/icon_profile_delete.png">사진 지우기
