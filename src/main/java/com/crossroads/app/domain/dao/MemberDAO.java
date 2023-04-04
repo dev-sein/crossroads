@@ -25,10 +25,10 @@ public class MemberDAO {
     public Long login(String memberIdentification, String memberPassword){return memberMapper.login(memberIdentification, memberPassword);}
 
     //마이페이지 정보 조회
-    public MemberVO findById(Long memberId){ return memberMapper.select(memberId);}
+    public MemberVO findByIdMy(Long memberId){ return memberMapper.selectMyInfo(memberId);}
 
     //마이페이지 정보 수정
-    public void setMyInfo(MemberVO memberVO){ memberMapper.update(memberVO);}
+    public void setMyInfo(MemberVO memberVO){ memberMapper.updateMyInfo(memberVO);}
 
     //회원 정보 목록
     public List<MemberVO> findAll(){
