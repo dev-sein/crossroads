@@ -61,7 +61,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -80,7 +80,6 @@ public class MypageController {
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
-        log.info("들어옴");
         Long memberId = 1L;
         memberVO = memberService.getMember(memberId);
 
@@ -227,14 +226,12 @@ public class MypageController {
         return "/upload";
     }
 
-//    //마이페이지 파일 저장
-//    @PostMapping("saveProfile")
-//    @ResponseBody
-//    public void save(@RequestBody ListMemberVO memberVO){
-//        log.info("아 ㅇ안오나");
-//        log.info(String.valueOf(memberVO));
-////        memberService.modifyProfile("memberVO");
-//    }
+    //마이페이지 파일 저장
+    @PostMapping("saveProfile")
+    @ResponseBody
+    public void save(@RequestBody List<MemberVO> files){
+        files.forEach(file -> memberService.modifyProfile(file));
+    }
 
     //    파일 업로드
     @PostMapping("upload")
