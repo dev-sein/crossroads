@@ -8,6 +8,7 @@ import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -201,7 +202,7 @@ public class MemberService {
     }
 
     //카카오 로그인 //토큰
-    public String getKaKaoAccessToken(String code) {
+    public String getKaKaoAccessToken(String code, String type) {
         String access_Token = "";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
@@ -219,6 +220,14 @@ public class MemberService {
             sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=ff10441318cc0a2c7e2aa44285fa956c"); // TODO REST_API_KEY 입력
+
+            //회원가입에서 접근했을 때
+            if(type.equals("join")) {
+                sb.append("&redirect_uri=http://localhost:10000/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
+            } else if (type.equals("login")) {
+            //로그인에서 접근했을 때
+                sb.append("&redirect_uri=http://localhost:10000/member/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
+            }
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
@@ -255,10 +264,10 @@ public class MemberService {
         return access_Token;
     }
 
-    public void getKakaoInfo(String token) throws Exception {
 
+    public MemberVO getKakaoInfo(String token) throws Exception {
+        MemberVO kakaoInfo = new MemberVO();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
-
         //access_token을 이용하여 사용자 정보 조회
         try {
             URL url = new URL(reqURL);
@@ -277,37 +286,34 @@ public class MemberService {
             String line = "";
             String result = "";
 
-            //            if("join"){
-//                sb.append("&redirect_uri=http://localhost:10000/members/join"); // TODO 인가코드 받은 redirect_uri 입력
-//            }else("login"){
-//                sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
-//            }
-
-
             while ((line = br.readLine()) != null) {
                 result += line;
             }
             log.info("response body : " + result);
 
-            //Gson 라이브러리로 JSON파싱 //내 정보 받아오기
+            //Gson 라이브러리로 JSON파싱
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
+            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
             int id = element.getAsJsonObject().get("id").getAsInt();
             boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
-            String email = "";
-            if (hasEmail) { //email 정보
-                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+            String memberEmail = "";
+            if(hasEmail){
+                memberEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
 
             log.info("id : " + id);
-            log.info("email : " + email);
+            log.info("email : " + memberEmail);
+            kakaoInfo.setMemberEmail(memberEmail);
 
             br.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return kakaoInfo;
     }
 
     public void logoutKakao(String token) {
