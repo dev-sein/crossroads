@@ -109,6 +109,7 @@ body {
 #image_container{
     display: flex;
     text-align: center;
+    place-content: center;
 }
 
 .formInputBox {

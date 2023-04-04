@@ -73,8 +73,6 @@ public class ReviewBoardService implements BoardService {
         return reviewDAO.findAllMy(memberId, standards);
     }
 
-
-
     public List<BoardDTO> getListAdmin() {
         return null;
     }
@@ -117,7 +115,7 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public ReviewVO getReview(Long reviewId) {
-        return null;
+        return reviewDAO.getReview(reviewId);
     }
 
     @Override

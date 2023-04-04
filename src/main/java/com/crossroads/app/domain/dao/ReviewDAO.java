@@ -59,7 +59,11 @@ public class ReviewDAO {
         return reviewMapper.selectTotalMy();
     }
 
-    
+    //    리뷰 삭제
+    public void deleteReviewById(Long reviewId) {
+        reviewMapper.delete(reviewId);
+    }
+
     /* 관리자 게시글 목록 */
     public List<ReviewDTO> findAllAdmin(Criteria criteria, String keyword) {
         return reviewMapper.selectAllAdmin(criteria, keyword);

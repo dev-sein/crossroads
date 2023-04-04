@@ -86,7 +86,6 @@
     </select>
 
 
-
     <!-- 어드민 목록 총 개수 -->
     <select id="selectCountAllAdmin" resultType="int">
         select count(review_id)
@@ -117,6 +116,5 @@
         delete from tbl_review
         where member_id = #{memberId}
     </delete>
-
 
 </mapper>

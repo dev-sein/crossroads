@@ -62,7 +62,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/components/header-client.js"></script>
 <script src="/js/board/boardList.js"></script>
-<script>
+<script th:inline="javascript">
+    let memberId = [[${session.memberId}]];
+
     $(document).ready(function () {
         let page = 1;
         const size = 10;
@@ -110,15 +112,15 @@
 
 
         function appendReviews(reviews) {
+            console.log(memberId);
             let $reviewList = $("#review-list");
 
             reviews.forEach(review => {
                 let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
                 let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                let formattedDate = timeSince(new Date(review.reviewRegisterDate));
                 // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
                 let reviewElement = `
-
-
     <div class="review">
         <div class="board-box-wrapper">
             <div class="board-box">
@@ -135,50 +137,59 @@
                                 <span class="review-score">${review.reviewGrade}</span>
                             </div>
                         </div>
-                    </div>
+                    </div>`;
+                if (memberId == `${review.memberId}`) {
+                    reviewElement += `
                     <!--수정 삭제 버튼-->
-                <div class="update-buttons-wrapper">
-                    <a href="#" class="buttons-wrapper">
-                        <div class="update-button">수정</div>
+                    <div class="update-buttons-wrapper">
+                    <a href="http://localhost:10000/review-update?reviewId=${review.reviewId}"  class="buttons-wrapper">
+                    <div class="update-button">수정</div>
                     </a>
                     <a href="#" class="buttons-wrapper">
-                        <div class="delete-button">삭제</div>
+                    <div class="delete-button" onclick="showDeleteModal(event)">삭제</div>
                     </a>
-                </div>
-                    <!--수정 삭제 버튼 끝-->
-                </div>
+                    </div>
+                    `
+                ;
+                                }
 
-                <div class="board-box-middle">
-                <div class="box-middle-inner">
-                <a href="" class="middle-title">연수 정보</a>
-                <div class="middle-middle">
-                <span class="category-first">연수 지역</span>
-                <div class="seperator"></div>
-                <span class="category-second">${review.applyLocation}</span>
-                </div>
-                <div class="middle-bottom">
-                <span class="detail-title">수강 코스</span>
-                <span class="detail-second-value">${review.applyCourse}</span>
-                <div class="seperator"></div>
-                <span class="detail-title">수강일</span>
-                <span class="detail-third-value">${review.applyDate}</span>
-                </div>
-                </div>
-                </div>
-                <div class="board-box-bottom">
-                <div class="bottom-inner">
-                <div class="bottom-title">${review.reviewTitle}<span class="date">${review.reviewRegisterDate}</span></div>
-                <div class="bottom-content">${review.reviewContent}</div>
-                </div>
-                <div class="image-wrapper">
-                    ${imageElement}
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>`;
-                $reviewList.append(reviewElement);
-            });
+                                reviewElement +=
+                    `
+                        <!--수정 삭제 버튼 끝-->
+                    </div>
+
+                    <div class="board-box-middle">
+                    <div class="box-middle-inner">
+                    <a href="" class="middle-title">연수 정보</a>
+                    <div class="middle-middle">
+                    <span class="category-first">연수 지역</span>
+                    <div class="seperator"></div>
+                    <span class="category-second">${review.applyLocation}</span>
+                    </div>
+                    <div class="middle-bottom">
+                    <span class="detail-title">수강 코스</span>
+                    <span class="detail-second-value">${review.applyCourse}</span>
+                    <div class="seperator"></div>
+                    <span class="detail-title">수강일</span>
+                    <span class="detail-third-value">${review.applyDate}</span>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="board-box-bottom">
+                    <div class="bottom-inner">
+                    <div class="bottom-title">${review.reviewTitle}<span class="date">${formattedDate}</span></div>
+                    <div class="bottom-content">${review.reviewContent}</div>
+                    </div>
+                    <div class="image-wrapper">
+                        ${imageElement}
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>`;
+                    $reviewList.append(reviewElement);
+                    }
+            );
         }
 
         // 초기 로드
@@ -190,6 +201,26 @@
             }
         });
     });
+
+    function timeSince(date) {
+        const now = new Date();
+        const secondsPast = (now.getTime() - date.getTime()) / 1000;
+
+        if (secondsPast < 60) {
+            return parseInt(secondsPast) + ' 초 전';
+        }
+        if (secondsPast < 3600) {
+            return parseInt(secondsPast / 60) + ' 분 전';
+        }
+        if (secondsPast <= 86400) {
+            return parseInt(secondsPast / 3600) + ' 시간 전';
+        }
+        if (secondsPast > 86400) {
+            const day = parseInt(secondsPast / 86400);
+            return day + ' 일 전';
+        }
+    }
+
     // 이벤트 위임을 사용한 클릭 이벤트 바인딩
     $(document).on('click', '.review-image', function () {
         $('.modal-image').attr('src', $(this).attr('src'));

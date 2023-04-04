@@ -24,6 +24,7 @@ public interface ReviewMapper {
     //후기 삭제
     public void delete(Long reviewId);
 
+
     //후기 작성
     public void insert(ReviewDTO reviewDTO);
 
@@ -32,6 +33,9 @@ public interface ReviewMapper {
 
     // 후기 조회
     public ReviewVO select(Long reviewId);
+
+    //리뷰 삭제
+    public void deleteReviewById(Long reviewId);
 
     //    관리자 전체 조회
     public List<ReviewDTO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
