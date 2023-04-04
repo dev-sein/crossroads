@@ -108,11 +108,27 @@ public class MypageController {
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
         session.setAttribute("memberId", 1L);
-        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
+        if((Long)session.getAttribute("memberId") == memberService.getPassword((Long)session.getAttribute("memberId"), memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-change");
         }
         return new RedirectView("my-password-check");
+    }
+
+//    회원탈퇴 시 비밀번호 확인
+    @PostMapping("/my-password-check-out")
+    @ResponseBody
+    public boolean myPasswordCheckOut(String memberPassword, HttpSession session) {
+//        Long password = memberService.getPassword(memberPassword);
+        log.info(memberPassword);
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + (memberId == memberService.getPassword(memberId, memberPassword)));
+        if(memberId == memberService.getPassword(memberId, memberPassword)){
+            log.info(session.getAttribute("memberId").toString());
+            return true;
+        }
+        return false;
     }
 
     //마이페이지 비밀번호 변경
@@ -198,7 +214,7 @@ public class MypageController {
     public String withdraw(){
         return "mypage/my-withdraw";
     }
-    
+
     //마이페이지 회원탈퇴 동의
     @GetMapping("/my-withdraw-agree")
     public String withdrawAgree(){
@@ -266,8 +282,6 @@ public class MypageController {
     private String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
-
-
 
 
 
