@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ReplyDTO;
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.FileVO;
@@ -157,14 +158,10 @@ public class MypageController {
     @GetMapping("/my-review")
     public String showListMyReview(Model model, HttpServletRequest request, Standards standards) throws Exception{
         HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
 
-//        Long memberId = 1L;
-//        ReviewDTO reviewDTO = new ReviewDTO();
-//        reviewDTO.setMemberId(1L);
-
-//        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
-        model.addAttribute("review", reviewBoardService.getListMy(1L, standards));
+        model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards));
         return "mypage/my-review";
     }
 

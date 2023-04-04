@@ -154,24 +154,24 @@
                     </div>
                     <!-- 리뷰 목록 시작 -->
                         <div class="review-box" th:each="review:${review}">
-                            <a class="review-modify" href="/store/41">수정</a>
-                            <a class="review-delete" href="/store/41">삭제</a>
-                            <div class="review-list" >
-                                <div class="review-container">
-                                    <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
-                                </div>
-                                <div class="review-content-box">
-                                    <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
-                                    <p class="pcontent">
-                                        <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
-                                        <span class="base-info-splitter">|</span>
-                                        <span th:text="${review.applyLocation}" class="review-location"></span>
-                                    </p>
-                                    <p th:text="${review.reviewContent}" class="review-description-text">
-                                    </p>
-                                </div>
-                            </div>
-                            <div style="clear:both;"></div>
+<!--                            <a class="review-modify" href="/store/41">수정</a>-->
+<!--                            <a class="review-delete" href="/store/41">삭제</a>-->
+<!--                            <div class="review-list" >-->
+<!--                                <div class="review-container">-->
+<!--                                    <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>-->
+<!--                                </div>-->
+<!--                                <div class="review-content-box">-->
+<!--                                    <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>-->
+<!--                                    <p class="pcontent">-->
+<!--                                        <span th:text="${review.reviewRegisterDate}" class="review-date"></span>-->
+<!--                                        <span class="base-info-splitter">|</span>-->
+<!--                                        <span th:text="${review.applyLocation}" class="review-location"></span>-->
+<!--                                    </p>-->
+<!--                                    <p th:text="${review.reviewContent}" class="review-description-text">-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div style="clear:both;"></div>-->
                         </div>
                     <!-- 리뷰 목록 끝 -->
                     <!-- 페이징 시작 -->
@@ -234,51 +234,42 @@
             });
         }
 
-        function renderStars(reviewGrade) {
-            let starString = '';
-            for (let i = 1; i <= 5; i++) {
-                starString += i <= reviewGrade ?
-                    '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star@2x.png" style="width:20px;">' :
-                    '<img src="https://www.wishket.com/static/renewal/img/partner/profile/icon_dashboard_star_empty@2x.png" style="width:20px;">';
-            }
-            return starString;
-        }
-
         function appendReviews(reviews) {
             console.log(memberId);
-            let $reviewList = $("#review-list");
+            let $reviewBox = $("#review-box");
 
             reviews.forEach(review => {
                 let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
                 let imageElement = imageUrl ? `<img class="review-photo" src="${imageUrl}" onclick="showModal()" />` : '';
                 // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
                 let reviewElement = `
-                    <div class="review-box" th:each="review:${review}">
-                        <a class="review-modify" href="/store/41">수정</a>
-                        <a class="review-delete" href="/store/41">삭제</a>
-                        <div class="review-list" >
-                            <div class="review-container">
-                                <a href="/store/41/"><img class="review-photo" src="/images/mypage/review1.png"></a>
+                            <a class="review-modify" href="/store/41">수정</a>
+                            <a class="review-delete" href="/store/41">삭제</a>
+                            <div class="review-list" >
+                                <div class="review-container">
+                                    <a href="/store/41/">${imageElement}</a>
+                                </div>
+                                <div class="review-content-box">
+                                    <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
+                                    <p class="pcontent">
+                                        <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
+                                        <span class="base-info-splitter">|</span>
+                                        <span th:text="${review.applyLocation}" class="review-location"></span>
+                                    </p>
+                                    <p th:text="${review.reviewContent}" class="review-description-text">
+                                    </p>
+                                </div>
                             </div>
-                            <div class="review-content-box">
-                                <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
-                                <p class="pcontent">
-                                    <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
-                                    <span class="base-info-splitter">|</span>
-                                    <span th:text="${review.applyLocation}" class="review-location"></span>
-                                </p>
-                                <p th:text="${review.reviewContent}" class="review-description-text">
-                                </p>
-                            </div>
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
+                            <div style="clear:both;"></div>
                     `;
+                $reviewBox.append(reviewElement);
             });
+        }
 
         // 이벤트 위임을 사용한 클릭 이벤트 바인딩
-        $(document).on('click', '.review-image', function () {
+        $(document).on('click', '.review-photo', function () {
             $('.modal-image').attr('src', $(this).attr('src'));
         });
+    });
 </script>
 </html>
