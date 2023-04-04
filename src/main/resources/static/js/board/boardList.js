@@ -97,6 +97,7 @@ function showDeleteModal(event, reviewId) {
     $("#delete-modal .delete-btn").attr("data-review-id", reviewId);
 }
 
+
 function deleteReview(reviewId) {
     $.ajax({
         url: `/review-delete/${reviewId}`,
@@ -114,7 +115,7 @@ function deleteReview(reviewId) {
 $(document).on("click", "#delete-modal .delete-btn", function () {
     let reviewId = $(this).attr("data-review-id");
     deleteReview(reviewId);
-    closeModal();
+    closeDeleteModal(); // 수정된 부분
 });
 
 function closeDeleteModal() {
