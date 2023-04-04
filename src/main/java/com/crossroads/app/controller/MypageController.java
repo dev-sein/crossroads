@@ -66,6 +66,7 @@ public class MypageController {
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
         model.addAttribute("member", memberService.getMemberInfo(1L));
+//        model.addAttribute("file", memberService.getMemberInfo(memberId));
         return "mypage/my-info";
     }
 
@@ -240,12 +241,12 @@ public class MypageController {
         return "main/main";
     }
 
-    //마이페이지 프로필 업로드
-    @GetMapping("uploadProfile")
-    public String goUploadForm(Long memberId, Model model){
-        model.addAttribute("file", memberService.getMemberInfo(memberId));
-        return "/upload";
-    }
+//    //마이페이지 프로필 업로드
+//    @GetMapping("uploadProfile")
+//    public String goUploadForm(Long memberId, Model model){
+//        model.addAttribute("file", memberService.getMemberInfo(memberId));
+//        return "mypage/my-info";
+//    }
 
     //마이페이지 파일 저장
     @PostMapping("saveProfile")
@@ -280,7 +281,7 @@ public class MypageController {
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload/", fileName));
+        return FileCopyUtils.copyToByteArray(new File("C:/upload/profiles", fileName));
     }
 
     //현재 날짜 경로 구하기
