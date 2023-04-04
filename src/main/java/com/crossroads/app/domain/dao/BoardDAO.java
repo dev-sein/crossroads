@@ -47,4 +47,8 @@ public class BoardDAO {
         return boardMapper.selectTotalMy();
     }
 
+    /* 상세 보기*/
+    public BoardDTO findById(Long boardId) {
+        return boardMapper.select(boardId);
+    };
 }

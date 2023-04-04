@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.BoardDAO;
+import com.crossroads.app.domain.dao.BoardFileDAO;
 import com.crossroads.app.domain.dao.ReplyDAO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.PageDTO;
@@ -8,10 +9,13 @@ import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.dto.ReviewCriteria;
+import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.domain.vo.ReviewVO;
+import com.crossroads.app.mapper.BoardFileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +27,7 @@ import java.util.Map;
 public class FreeBoardService implements BoardService {
     private final BoardDAO boardDAO;
     private final ReplyDAO replyDAO;
+    private final BoardFileDAO boardFileDAO;
 
     @Override
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
@@ -60,9 +65,14 @@ public class FreeBoardService implements BoardService {
     }
 
 
+//    게시글 삭제
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void remove(List<String> boardIds) {
-        boardIds.stream().map(boardId -> Long.parseLong(boardId)).forEach(boardDAO::deleteById);
+        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(boardId -> {
+            replyDAO.deleteByBoardId(boardId); // 댓글 삭제
+            boardDAO.deleteById(boardId); // 게시글 삭제
+        });
     }
 
 //    게시글 목록
@@ -110,6 +120,21 @@ public class FreeBoardService implements BoardService {
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId) {
         return null;
+    }
+
+//    상세 보기
+    @Override
+    public Map<String, Object> getBoardAdmin(Long boardId) {
+        Map<String, Object> result = new HashMap<>();
+
+        BoardDTO boardDTO = boardDAO.findById(boardId);
+        List<BoardFileVO> boardFiles = boardFileDAO.findById(boardId);
+
+
+        result.put("board", boardDTO);
+        result.put("files", boardFiles);
+
+        return result;
     }
 
     //    마이페이지 리뷰 목록
