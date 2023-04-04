@@ -33,6 +33,7 @@ public class MemberController {
    //회원가입
     @PostMapping("join")
     public RedirectView joinfinish(MemberVO memberVO){
+        memberVO.setMemberDriveRegisterDate("2018-12-12");
         memberService.save(memberVO);
         return new RedirectView("login");
     }

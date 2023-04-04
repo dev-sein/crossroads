@@ -95,7 +95,7 @@ public class MemberService {
     }
 
     //마이페이지 비밀번호 확인
-    public Long getPassword(String memberPassword) { return memberDAO.findByPasswordMy(memberPassword); }
+    public Long getPassword(Long memberId, String memberPassword) { return memberDAO.findByPasswordMy(memberId, memberPassword); }
 
     //마이페이지 비밀번호 변경
     public Long modifyPasswordMy(Long memberId ,String memberPassword){ return memberDAO.setPasswordMy(memberId, memberPassword); }

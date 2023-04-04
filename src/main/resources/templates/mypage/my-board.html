@@ -156,7 +156,8 @@
                                     </div>
                                 </div>
                                 <div class="board-container">
-                                    <img class="board-photo" src="/images/mypage/review1.png"></a></div>
+                                    <img th:src="@{/storages/search/files/display(fileName=${file[0].filePath} + '/' + ${file[0].fileUuid} + '_' + ${file[0].fileOrgName})}" />
+                                </div>
                                 <div style="clear:both;"></div>
                             </div>
                             <section>

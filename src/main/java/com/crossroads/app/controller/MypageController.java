@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ReplyDTO;
+import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.FileVO;
@@ -14,6 +15,7 @@ import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -42,6 +44,7 @@ public class MypageController {
     private final FreeBoardService freeBoardService;
     private final ReplyService replyService;
     private final PointService pointService;
+    private final BoardFileService boardFileService;
 
     //마이페이지 메인
     @GetMapping("/my-main")
@@ -61,7 +64,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-
+        model.addAttribute("member", memberService.getMember(1L));
         return "mypage/my-info";
     }
 
@@ -80,7 +83,6 @@ public class MypageController {
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
-        log.info("들어옴");
         Long memberId = 1L;
         memberVO = memberService.getMember(memberId);
 
@@ -109,11 +111,24 @@ public class MypageController {
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
         session.setAttribute("memberId", 1L);
-        if(session.getAttribute("memberId") == memberService.getPassword(memberPassword)){
+        if((Long)session.getAttribute("memberId") == memberService.getPassword((Long)session.getAttribute("memberId"), memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-change");
         }
         return new RedirectView("my-password-check");
+    }
+
+//    회원탈퇴 시 비밀번호 확인
+    @PostMapping("/my-password-check-out")
+    @ResponseBody
+    public boolean myPasswordCheckOut(String memberPassword, HttpSession session) {
+//        Long password = memberService.getPassword(memberPassword);
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        if(memberId == memberService.getPassword(memberId, memberPassword)){
+            return true;
+        }
+        return false;
     }
 
     //마이페이지 비밀번호 변경
@@ -126,7 +141,6 @@ public class MypageController {
     @PostMapping("/my-password-change")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChange(String memberPassword, HttpSession session){
-        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         log.info(memberPassword);
         session.setAttribute("memberId", 1L);
         memberService.modifyPasswordMy(1L, memberPassword);
@@ -158,31 +172,31 @@ public class MypageController {
     @GetMapping("/my-review")
     public String showListMyReview(Model model, HttpServletRequest request, Standards standards) throws Exception{
         HttpSession session = request.getSession();
+        session.setAttribute("memberId", 1L);
 
-//        Long memberId = 1L;
-//        ReviewDTO reviewDTO = new ReviewDTO();
-//        reviewDTO.setMemberId(1L);
-
-//        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
-        model.addAttribute("review", reviewBoardService.getListMy(1L, standards));
+        model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards));
         return "mypage/my-review";
     }
 
     //마이페이지 내가 쓴 게시글 목록
     @GetMapping("/my-board")
+
     //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
-    public String showListMyBoard(Model model, HttpServletRequest request, Standards standards){
+    public String showListMyBoard(Model model, HttpServletRequest request, Standards standards, Long boardId){
         //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
         //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
         //standard가 getListMyBoard로 전달됨(service로 이동)
         HttpSession session = request.getSession();
-        //session.setAttribute("memberId", 1L);
+        session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMember(1L));
         model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
+        model.addAttribute("file", boardFileService.getFile(boardId));
+
         log.info(standards.toString());
         return "mypage/my-board";
     }
+
     
     //마이페이지 내가 쓴 댓글 목록
     @GetMapping("/my-reply")
@@ -195,21 +209,24 @@ public class MypageController {
     }
     
     //마이페이지 회원탈퇴
-    @GetMapping("/my-withdraw")
+    @GetMapping("my-withdraw")
     public String withdraw(){
-        return "mypage/my-withdraw";
+        return "/mypage/my-withdraw";
     }
-    
+
     //마이페이지 회원탈퇴 동의
-    @GetMapping("/my-withdraw-agree")
+    @GetMapping("my-withdraw-agree")
     public String withdrawAgree(){
-        return "mypage/my-withdraw-agree";
+        return "/mypage/my-withdraw-agree";
     }
 
     //마이페이지 회원탈퇴 확인
-    @GetMapping("/my-withdraw-confirm")
-    public String withdrawConfirm(){
-        return "mypage/my-withdraw-confirm";
+    @PostMapping("my-withdraw-confirm")
+    public String withdrawConfirm(HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        session.invalidate();
+        memberService.remove(memberId);
+        return "/mypage/my-withdraw-confirm";
     }
 
     //마이페이지 로그아웃
@@ -227,16 +244,14 @@ public class MypageController {
         return "/upload";
     }
 
-//    //마이페이지 파일 저장
-//    @PostMapping("saveProfile")
-//    @ResponseBody
-//    public void save(@RequestBody ListMemberVO memberVO){
-//        log.info("아 ㅇ안오나");
-//        log.info(String.valueOf(memberVO));
-////        memberService.modifyProfile("memberVO");
-//    }
+    //마이페이지 파일 저장
+    @PostMapping("saveProfile")
+    @ResponseBody
+    public void save(@RequestBody List<MemberVO> files){
+        files.forEach(file -> memberService.modifyProfile(file));
+    }
 
-    //    파일 업로드
+    //파일 업로드
     @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
@@ -258,19 +273,17 @@ public class MypageController {
         return uuids;
     }
 
-//    //    파일 불러오기
-//    @GetMapping("display")
-//    @ResponseBody
-//    public byte[] display(String fileName) throws IOException {
-//        return FileCopyUtils.copyToByteArray(new File("C:/upload/profiles", fileName));
-//    }
+    //파일 불러오기
+    @GetMapping("/display")
+    @ResponseBody
+    public byte[] display(String fileName) throws IOException {
+        return FileCopyUtils.copyToByteArray(new File("C:/upload/board", fileName));
+    }
 
     //    현재 날짜 경로 구하기
     private String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
-
-
 
 
 

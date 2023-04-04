@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,7 +115,7 @@
                             탈퇴 동의에 체크해 주세요.
                         </div>
                     </div>
-                    <form action="" method="post" id="cancel-form">
+                    <form th:action="@{/applies/my-mobile-complete-cancel}" method="post" id="cancel-form" name="deleteForm">
                         <a href="my-mobile.html" class="btn-rollback">취소</a>
                         <button type="button" class="btn-cancel" onclick="cancelCheck(event)">회원 탈퇴 신청</button>
                     </form>
