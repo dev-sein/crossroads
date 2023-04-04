@@ -61,6 +61,13 @@ public class ReviewDAO {
         return reviewMapper.selectTotalMy();
     }
 
+    //    리뷰 삭제
+    public void deleteReviewById(Long reviewId) {
+        reviewMapper.delete(reviewId);
+    }
+
+
+
 
 }
 

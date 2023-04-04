@@ -74,6 +74,12 @@
         select count(review_id) from tbl_review
     </select>
 
+    <!--후기 삭제-->
+    <delete id="deleteReviewById">
+        delete from tbl_review
+        where review_id = #{reviewId}
+    </delete>
+
 
 
 </mapper>
