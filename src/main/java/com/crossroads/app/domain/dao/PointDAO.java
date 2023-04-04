@@ -28,4 +28,7 @@ public class PointDAO {
     public List<PointDTO> findByIdMyPoint(Long memberId){
         return pointMapper.selectAllMyPoint(memberId);
     }
+
+    //     포인트 차감
+    public void setAfterApply(Long memberId, Integer memberPoint) { pointMapper.updateAfterApply(memberId, memberPoint);}
 }

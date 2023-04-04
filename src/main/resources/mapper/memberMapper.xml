@@ -62,6 +62,7 @@
 
     <!-- 마이페이지 정보 조회 -->
     <select id="select" parameterType="long" resultType="memberVO">
+        select member_id, member_identification, member_name, member_phone, member_email, member_type, member_point
         select member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
         from tbl_member
         where member_id = #{memberId}
@@ -106,6 +107,12 @@
     set member_random_key = #{memberRandomKey}
     where member_email = #{memberEmail}
     </update>
+
+    <select id="selectByEmail" resultType="memberVO">
+        select member_id, member_identification, member_name, member_phone, member_email,
+        member_type, member_drive_register_date, member_point, member_status
+        where member_email = #{memberEmail}
+    </select>
 
     <!--프로필 사진 업로드-->
     <update id="updateProfile">

@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
+import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ApplyService {
     private final ApplyDAO applyDAO;
+    private final PointDAO pointDAO;
 
 //    신청목록 전체조회
     public List<ApplyDTO> getList(Criteria criteria) {return applyDAO.findAll(criteria);}

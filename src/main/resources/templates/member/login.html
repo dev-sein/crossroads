@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/member/login.css">
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
+
 </head>
 <body>
 <div class="main-wrap">
@@ -81,7 +82,7 @@
                         카카오톡으로 로그인
                     </a>
                     <div id="naverIdLogin">
-                    <a href="" class="oauth-join">
+                    <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fcallback&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9" class="oauth-join">
                         <img class="oauth-logo" src="/images/member/naver.png">
                         네이버로 로그인
                     </a></div>
@@ -97,56 +98,14 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/member/login.js"></script>
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript">
-
-    const naverLogin = new naver.LoginWithNaverId(
-        {
-            clientId: "Xmy2ZoXDf57LA377L2s4",
-            callbackUrl: "http://localhost:10000/main",
-            loginButton: {color: "green", type: 2, height: 40}
-        }
-    );
-
-
-    naverLogin.init();
-    naverLogin.getLoginStatus(function (status) {
-        if (status) {
-            const email=naverLogin.user.getNickName();
-            const age=naverLogin.user.getAge();
-            const birthday=naverLogin.user.getBirthday();
-
-            if(nickName===null||nickName===undefined ){
-                alert("별명이 필요합니다. 정보제공을 동의해주세요.");
-                naverLogin.reprompt();
-                return ;
-            }else{
-                setLoginStatus();
-            }
-        }
-    });
-    console.log(naverLogin);
-
-    function setLoginStatus(){
-
-        const message_area=document.getElementById('message');
-        message_area.innerHTML=`
-      <h3> Login 성공 </h3>
-      <div>user Nickname : ${naverLogin.user.nickname}</div>
-      <div>user Age(범위) : ${naverLogin.user.age}</div>
-      <div>user Birthday : ${naverLogin.user.birthday}</div>
-      `;
-
-        const button_area=document.getElementById('button_area');
-        button_area.innerHTML="<button id='btn_logout'>로그아웃</button>";
-
-        const logout=document.getElementById('btn_logout');
-        logout.addEventListener('click',(e)=>{
-            naverLogin.logout();
-            location.replace("http://127.0.0.1:5500");
-        })
-    }
-
-
+    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/callback");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2,40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    // naver_id_login.setPopup();
+    // naver_id_login.init_naver_id_login();
 </script>
 </html>
