@@ -58,6 +58,20 @@
     </div>
 </div>
 <!-- 모달 -->
+<!--삭제확인 모달-->
+<!-- 삭제 확인 모달 -->
+<div id="delete-modal" class="delete-modal" style="visibility: hidden;">
+    <div class="delete-modal-wrapper">
+        <div class="delete-modal-content">
+            <p>이 후기를 삭제하시겠습니까?</p>
+            <div class="delete-modal-buttons">
+                <button class="delete-btn" data-review-id="1">확인</button>
+                <button onclick="closeDeleteModal()">취소</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--삭제확인 모달끝-->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/components/header-client.js"></script>
@@ -116,11 +130,11 @@
             let $reviewList = $("#review-list");
 
             reviews.forEach(review => {
-                let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
-                let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
-                let formattedDate = timeSince(new Date(review.reviewRegisterDate));
-                // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
-                let reviewElement = `
+                    let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
+                    let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                    let formattedDate = timeSince(new Date(review.reviewRegisterDate));
+                    // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
+                    let reviewElement = `
     <div class="review">
         <div class="board-box-wrapper">
             <div class="board-box">
@@ -138,23 +152,20 @@
                             </div>
                         </div>
                     </div>`;
-                if (memberId == `${review.memberId}`) {
-                    reviewElement += `
+                    if (memberId == `${review.memberId}`) {
+                        reviewElement += `
                     <!--수정 삭제 버튼-->
                     <div class="update-buttons-wrapper">
                     <a href="http://localhost:10000/review-update?reviewId=${review.reviewId}"  class="buttons-wrapper">
                     <div class="update-button">수정</div>
                     </a>
                     <a href="#" class="buttons-wrapper">
-                    <div class="delete-button" onclick="showDeleteModal(event)">삭제</div>
+                    <div class="delete-button" onclick="showDeleteModal(event, ${review.reviewId})">삭제</div>
                     </a>
                     </div>
-                    `
-                ;
-                                }
-
-                                reviewElement +=
-                    `
+                    `;
+                    }
+                    reviewElement += `
                         <!--수정 삭제 버튼 끝-->
                     </div>
 
@@ -188,7 +199,7 @@
                     </div>
                     </div>`;
                     $reviewList.append(reviewElement);
-                    }
+                }
             );
         }
 
