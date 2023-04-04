@@ -19,7 +19,9 @@ public class MemberVO {
     private boolean memberFileType;
     private String memberType;
     private String memberDriveRegisterDate;
+    private Long memberStatus;
     private Integer memberPoint;
     private Long memberRandomKey;
+
 
 }

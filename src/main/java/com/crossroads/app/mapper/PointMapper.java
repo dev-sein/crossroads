@@ -1,6 +1,7 @@
 package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.PointDTO;
+import com.crossroads.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface PointMapper {
 
 //   마이페이지 포인트 내역
     public List<PointDTO> selectAllMyPoint(Long memberId);
+
+//  포인트 차감
+    public void updateAfterApply(Long memberId, Integer memberPoint);
+
 }

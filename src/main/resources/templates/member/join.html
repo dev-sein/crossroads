@@ -176,4 +176,16 @@
 <script src="/js/member/join.js"></script>
 <script>
 </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/member/login.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/callback");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2,40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    // naver_id_login.setPopup();
+    // naver_id_login.init_naver_id_login();
+</script>
 </html>

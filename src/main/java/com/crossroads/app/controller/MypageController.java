@@ -61,7 +61,7 @@ public class MypageController {
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
     public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+
         return "mypage/my-info";
     }
 
