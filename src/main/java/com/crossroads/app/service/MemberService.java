@@ -1,6 +1,9 @@
 package com.crossroads.app.service;
 
-import com.crossroads.app.domain.dao.MemberDAO;
+import com.crossroads.app.domain.dao.*;
+import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.MemberMapper;
@@ -10,9 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Member;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Slf4j
@@ -20,6 +26,10 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberDAO memberDAO;
+    private final BoardDAO boardDAO;
+    private final ReviewDAO reviewDAO;
+    private final ReplyDAO replyDAO;
+    private final BoardFileDAO boardFileDAO;
 
     //회원가입
     public void save(MemberVO memberVO) {
@@ -102,5 +112,70 @@ public class MemberService {
 
     //이메일로 VO 찾기
     public MemberVO getByEmail(String memberEmail) {return memberDAO.findByEmail(memberEmail);}
+    //관리자 회원 목록
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<MemberVO> members = memberDAO.findAllAdmin(criteria, keyword);
+
+        result.put("members", members);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, getCountAdmin(keyword)));
+
+        return result;
+    }
+
+    //관리자 회원 총 수
+    public Integer getCountAdmin(String keyword) {
+        return memberDAO.findCountAllAdmin(keyword);
+    }
+
+    //관리자 회원 삭제
+    @Transactional(rollbackFor = Exception.class)
+    public void removeAdmin(List<String> memberIds) {
+
+////        리스트에서 memberId 하나씩 삭제
+//        memberIds.stream().map(memberId -> Long.valueOf(memberId)).forEach(memberId -> {
+//            boardDAO.findByMemberId(memberId).stream().map(boardDTO -> boardDTO.getBoardId()).forEach(boardId -> {
+//                boardFileDAO.deleteByBoardId(boardId); // 맴버 별 작성한 자유 게시판 게시글에서 file삭제
+//            });
+//            replyDAO.deletByMemberId(memberId); // 댓글 삭제
+//            boardDAO.deletByMemberId(memberId); // 자유 게시판 게시글 삭제
+//            reviewDAO.deletByMemberId(memberId); // 후기 게시판 게시글 삭제
+//            memberDAO.deleteById(memberId); // 회원 삭제
+//        });
+
+//        리스트의 길이 만큼
+        for (String id : memberIds) {
+            log.info("빠른 for문 들어옴?");
+            Long memberId = Long.valueOf(id);
+
+            List<BoardDTO> boards = boardDAO.findByMemberId(memberId);
+            for (BoardDTO board : boards) { // 작성한 자유 게시글 수 만큼
+                log.info("2번째 빠른 for문 들어옴?");
+                Long boardId = board.getBoardId();
+                boardFileDAO.deleteByBoardId(boardId); // 자유 게시글 파일 삭제
+
+                log.info("게시글 파일 얘는 삭제됨?");
+
+                replyDAO.deleteByBoardId(boardId); // 내가 작성한 자유 게시글에 댓글 삭제
+                log.info("게시글에 댓글 얘는 삭제됨?");
+            }
+            log.info("안쪽 빠른 for문은 끝남?");
+            replyDAO.deleteByMemberId(memberId); // 내가 작성한 댓글 삭제
+            boardDAO.deleteByMemberId(memberId); // 자유 게시글 삭제
+            reviewDAO.deleteByMemberId(memberId); // 후기 게시글 삭제
+            memberDAO.deleteById(memberId); // 회원 삭제
+
+            log.info("메소드 완료는 됨?");
+        }
+    }
 
 }

@@ -9,11 +9,13 @@ $('.modal_test').on('click', function() {
     });
 
     console.log(checkedIds);
-    // ?page=${$page}
+        // ?page=${$page}
     $.ajax({
-        url: `/admin/reviews/delete`,
+        url: `/admin/replies/delete`,
         type: "delete",
-        data: {"checkedIds": checkedIds},
+        data: {
+            "checkedIds": checkedIds
+        },
         success: function(){
             // location.href= result;
             load();

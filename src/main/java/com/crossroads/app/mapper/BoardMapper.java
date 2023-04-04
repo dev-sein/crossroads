@@ -16,11 +16,6 @@ public interface BoardMapper {
 
 //    관리자 게시글 총 개수
     public Integer selectCountAllAdmin(@Param("keyword") String keyword);
-    //    관리자 전체 조회
-    public List<BoardDTO> selectAllAdmin(Criteria criteria);
-
-    //    관리자 게시글 총 개수
-    public Integer selectCountAllAdmin();
 
     //    관리자 게시글 삭제
     public void deleteAdmin(Long boardId);
@@ -43,4 +38,10 @@ public interface BoardMapper {
 
 //    상세 보기
     public BoardDTO select(Long boardId);
+
+//    맴버별 게시글 조회
+    public List<BoardDTO> selectByMemberId(Long memberId);
+
+//    회원별 게시글 삭제
+    public void deleteByMemberId(Long memberId);
 }
