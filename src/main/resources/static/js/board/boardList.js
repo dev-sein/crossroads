@@ -86,67 +86,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡreview-list에서 현재시간ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-function relativeTime(dateString) {
-    let now = new Date();
-    let date = new Date(dateString);
-    let timeDifference = now - date;
-
-    let seconds = Math.floor(timeDifference / 1000);
-    let minutes = Math.floor(seconds / 60);
-    let hours = Math.floor(minutes / 60);
-    let days = Math.floor(hours / 24);
-
-    if (days > 0) {
-        return days + '일 전';
-    }
-    if (hours > 0) {
-        return hours + '시간 전';
-    }
-    if (minutes > 0) {
-        return minutes + '분 전';
-    }
-    return '방금 전';
-}
 
 
-/* 삭제하기 버튼 모달창*/
-function showDeleteModal(event) {
+
+/* 삭제하기 */
+// 삭제 버튼을 클릭하면 모달 창을 표시하는 함수
+function showDeleteModal(event, reviewId) {
     event.preventDefault();
+    $("#delete-modal").css("visibility", "visible");
+    $("#delete-modal .delete-btn").attr("data-review-id", reviewId);
+}
 
-    // 모달창 생성
-    const deleteModal = `
-        <div class="modal" id="delete-modal">
-            <div class="modal-content">
-                <h2>리뷰 삭제</h2>
-                <p>삭제하시겠습니까?</p>
-                <div class="modal-buttons">
-                    <button id="delete-confirm">확인</button>
-                    <button id="delete-cancel">취소</button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    $('body').append(deleteModal);
-
-    // 삭제 확인 버튼 이벤트
-    $('#delete-confirm').on('click', () => {
-        // 삭제 처리 로직 구현
-        // 예: deleteReview(reviewId);
-
-        // 모달창 닫기
-        closeModal();
-    });
-
-    // 취소 버튼 이벤트
-    $('#delete-cancel').on('click', () => {
-        closeModal();
+function deleteReview(reviewId) {
+    $.ajax({
+        url: `/review-delete/${reviewId}`,
+        method: "DELETE",
+        success: function (response) {
+            location.reload();
+        },
+        error: function (error) {
+            console.error(error);
+            alert("삭제 중 오류가 발생했습니다.");
+        },
     });
 }
 
-function closeModal() {
-    $('#delete-modal').remove();
+$(document).on("click", "#delete-modal .delete-btn", function () {
+    let reviewId = $(this).attr("data-review-id");
+    deleteReview(reviewId);
+    closeModal();
+});
+
+function closeDeleteModal() {
+    $("#delete-modal").css("visibility", "hidden");
 }
-
-
-
