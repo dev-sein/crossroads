@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ApplyVO;
@@ -75,5 +76,15 @@ public class ApplyDAO {
 //    베테랑의 id로 연수 내역 뽑기
     public List<ApplyDTO> findByVeteranMemberId(Long veteranMemberId, Criteria criteria) {
         return applyMapper.selectByVeteranMemberId(veteranMemberId, criteria);
+    }
+
+    /* 관리자 게시글 목록 */
+    public List<ApplyVO> findAllAdmin(Criteria criteria, String keyword) {
+        return applyMapper.selectAllAdmin(criteria, keyword);
+    }
+
+    /* 관리자 게시글 총 개수 */
+    public Integer findCountAllAdmin(String keyword) {
+        return applyMapper.selectCountAllAdmin(keyword);
     }
 }

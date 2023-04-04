@@ -35,8 +35,11 @@
                     <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
-                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"
-                                 src="/images/mypage/main-logo.png">
+
+                            <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+<!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+<!--                                 src="/images/mypage/main-logo.png">-->
+
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
                         <div class="userid">
@@ -62,7 +65,8 @@
                                         나를 표현하는 사진을 등록해주세요
                                     </div>
                                     <img class="user-profile-img upload" id="modal_user_img"
-                                         src="/images/mypage/main-logo.png">
+                                         th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+
                                     <div class="loading-circle user-profile-img">
                                         <div class="sk-fading-circle theme-client">
                                             <div class="sk-circle1 sk-circle"></div>
@@ -85,7 +89,7 @@
                                         <input hidden="" id="profile_remove_image_file" name="remove_image_file"
                                                type="checkbox">
                                         <button class="body-btn upload" onclick="upload_image()" type="button">
-                                            <img th:src="@{/mypage/display(fileName=${member[0].memberFilePath} + '/' + ${member[0].memberFileUuid} + '_' + ${member[0].memberFileOriginalName})}">사진 올리기
+                                            <img src="/images/mypage/icon_profile_upload.png">사진 올리기
                                         </button>
                                         <button class="body-btn" id="remove-button" type="button">
                                             <img src="/images/mypage/icon_profile_delete.png">사진 지우기
@@ -324,11 +328,18 @@
             type: "post",
             data: JSON.stringify(files),
             contentType: "application/json; charset=utf-8",
-            success: function(){
-                alert("전송 성공");
+            success: function(data){
+                console.log("success");
+                console.log(data);
+                let url = `/mypage/my-info`
+                console.log(url);
+                location.replace(url);
+
             }
+
         });
     });
+
 
 
     /*****************************************************/

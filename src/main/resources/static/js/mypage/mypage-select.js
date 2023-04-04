@@ -37,8 +37,9 @@ function upload_image() {
 $(document).ready(function() {
   $('#remove-button').click(function() {
   $('#fileupload').empty();
-  $('#modal_user_img').attr('src',"../../static/images/mypage/main-logo.png");
-}) 
+  $('#modal_user_img').attr('src',"/images/mypage/main-logo.png");
+
+  })
 });
 
 

@@ -6,29 +6,29 @@
 </head>
 <body>
 <script type="text/javascript">
-    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/main/");
+    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/login");
     // 접근 토큰 값 출력
     alert(naver_id_login.oauthParams.access_token);
     // 네이버 사용자 프로필 조회
     naver_id_login.get_naver_userprofile("naverSignInCallback()");
     // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
     function naverSignInCallback() {
-        alert(naver_id_login.getProfileData('email'));
-        alert(naver_id_login.getProfileData('nickname'));
-        alert(naver_id_login.getProfileData('age'));
         $.ajax({
             url: "/member/login-naver",
             type: "post",
             data: { memberEmail : naver_id_login.getProfileData('email') },
             success: function(result) {
                 if(result) {
-                    window.location.href = "/main/";
+                    window.location.href = "/main";
                 } else {
                     window.location.href = "/member/login?result=fail";
                 }
             }
         });
     }
+
+
 </script>
+
 </body>
 </html>

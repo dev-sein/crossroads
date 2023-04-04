@@ -24,9 +24,9 @@
     <insert id="join" parameterType="memberVO">
     insert into tbl_member
     (member_identification, member_password, member_name, member_phone,
-    member_email, member_drive_register_date, member_type)
+    member_email, member_drive_register_date, member_type, member_status)
     values (#{memberIdentification}, #{memberPassword}, #{memberName}, #{memberPhone},
-    #{memberEmail}, #{memberDriveRegisterDate}, #{memberType})
+    #{memberEmail}, #{memberDriveRegisterDate}, #{memberType}, #{memberStatus})
     </insert>
 
     <!--아이디 중복체크-->
@@ -70,7 +70,7 @@
     </select>
 
     <!-- 마이페이지 정보 변경 -->
-    <update id="update">
+    <update id="updateMyInfo">
         update tbl_member
         set member_name=#{memberName}, member_phone=#{memberPhone}, member_email=#{memberEmail}
         where member_id=#{memberId};
@@ -109,9 +109,11 @@
     where member_email = #{memberEmail}
     </update>
 
+    <!--이메일로 회원정보 조회-->
     <select id="selectByEmail" resultType="memberVO">
         select member_id, member_identification, member_name, member_phone, member_email,
         member_type, member_drive_register_date, member_point, member_status
+        from tbl_member
         where member_email = #{memberEmail}
     </select>
 

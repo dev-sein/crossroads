@@ -3,13 +3,16 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +52,7 @@ public class ApplyService {
 //        추후 포인트 추가 감소 로직 추가 필요
         applyDAO.deleteById(applyId);
     }
+
     //      연수 신청 - 코스
     public void saveCourse(ApplyDTO applyDTO) { applyDAO.RegisterCourse(applyDTO); }
 
@@ -83,8 +87,42 @@ public class ApplyService {
 
 //    베테랑의 id로 연수 내역 뽑기
     public List<ApplyDTO> getApplyVeteran(Long veteranMemberId, Criteria criteria) {
-        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2" + criteria.getOffset());
         return applyDAO.findByVeteranMemberId(veteranMemberId, criteria);
+    }
+
+//    관리자 신청내역 목록
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<ApplyVO> applies = applyDAO.findAllAdmin(criteria, keyword);
+
+
+        result.put("applies", applies);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, applyDAO.findCountAllAdmin(keyword)));
+
+        return result;
+    }
+
+
+//    관리자 신청내역 목록
+    public Integer getCountAdmin(String keyword) {
+        return applyDAO.findCountAllAdmin(keyword);
+    }
+
+//    신청 삭제(취소)
+    public void cancelAdmin(List<String> applyIds){
+//        추후 포인트 추가 감소 로직을 cancel메소드에 추가 필요
+        applyIds.stream().map(applyId -> Long.valueOf(applyId)).forEach(applyId -> {
+            cancel(applyId);
+        });
     }
 }
 

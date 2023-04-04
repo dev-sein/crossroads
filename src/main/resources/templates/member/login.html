@@ -77,19 +77,19 @@
                     </div>
                     <!-- 로그인 버튼 -->
                     <button id="submit-btn" type="button">로그인</button>
-                    <a href="" class="oauth-join mb16">
+                    <a href=https://kauth.kakao.com/oauth/authorize?client_id=ff10441318cc0a2c7e2aa44285fa956c&redirect_uri=http://localhost:10000/member/login-kakao&response_type=code class="oauth-join mb16">
                         <img class="oauth-logo" src="/images/member/kakao.png">
                         카카오톡으로 로그인
                     </a>
                     <div id="naverIdLogin">
-                    <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fcallback&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9" class="oauth-join">
+                    <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmembers%2Flogin-kakao&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9" class="oauth-join">
                         <img class="oauth-logo" src="/images/member/naver.png">
                         네이버로 로그인
                     </a></div>
                 </form>
                 <div class="border-sub-action">
                     아직 교차로 회원이 아니신가요?
-                    <a class="sign-up link-href" th:href="@{/join}">회원가입</a>
+                    <a class="sign-up link-href" th:href="@{/member/join}">회원가입</a>
                 </div>
             </div>
         </div>
@@ -100,12 +100,35 @@
 <script src="/js/member/login.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/callback");
+    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/login");
     var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
     naver_id_login.setDomain("http://localhost:10000");
     naver_id_login.setState(state);
     // naver_id_login.setPopup();
     // naver_id_login.init_naver_id_login();
+    //const  $memberEmail =  $('#memberEmail');
+    //console.log($memberEmail);
+    // 접근 토큰 값 출력
+    //alert(naver_id_login.oauthParams.access_token);
+    // 네이버 사용자 프로필 조회
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
+    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    function naverSignInCallback() {
+       // alert(naver_id_login.getProfileData('email'));
+        $.ajax({
+            url: "/members/login-naver",
+            type: "post",
+            data: { memberEmail : naver_id_login.getProfileData('email') },
+            success: function(result) {
+                if(result) {
+                    window.location.href = "/main/";
+                } else {
+                    window.location.href = "/member/login?result=fail";
+                }
+            }
+        });
+    }
 </script>
 </html>

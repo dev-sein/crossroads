@@ -75,7 +75,7 @@
     </select>
 
     <!--회원별 게시글 조회-->
-    <select id="selectByMemberId">
+    <select id="selectByMemberId" resultType="boardDTO">
         select b.board_id, board_title, board_content, b.member_id, board_register_date, board_update_date, board_read_count
         member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
         from tbl_member m join tbl_board b
