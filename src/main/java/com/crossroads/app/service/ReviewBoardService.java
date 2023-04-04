@@ -86,7 +86,7 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public ReviewVO getReview(Long reviewId) {
-        return null;
+        return reviewDAO.getReview(reviewId);
     }
 
     @Override
