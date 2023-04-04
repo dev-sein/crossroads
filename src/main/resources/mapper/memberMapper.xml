@@ -70,7 +70,7 @@
     </select>
 
     <!-- 마이페이지 정보 변경 -->
-    <update id="update">
+    <update id="updateMyInfo">
         update tbl_member
         set member_name=#{memberName}, member_phone=#{memberPhone}, member_email=#{memberEmail}
         where member_id=#{memberId};
