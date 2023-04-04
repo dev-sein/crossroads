@@ -24,7 +24,7 @@ public class Standards {
         this.rowCount = rowCount;/* 한 페이지 게시글 갯수*/
         this.pageCount = pageCount;/* 페이지 갯수 */
         this.total = total;/* 초기화 */
-//        this.offset = (page - 1) * rowCount;
+        this.offset = (page - 1) * rowCount;
         this.endPage = (int)(Math.ceil(page / (double)pageCount)) * pageCount;/*마지막 페이지*/
         this.startPage = endPage - pageCount + 1;/*시작 페이지*/
         this.realEnd = (int)(Math.ceil(total / (double)rowCount));

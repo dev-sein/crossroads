@@ -249,6 +249,10 @@
         font-weight: normal;
     }
 
+    .name-span {
+        color: #0d0f14 !important;
+        margin-right: 5px !important;
+    }
 
 
 }

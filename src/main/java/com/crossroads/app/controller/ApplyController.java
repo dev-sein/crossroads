@@ -34,6 +34,7 @@ public class ApplyController {
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 2L);
         //model.addAttribute("members", memberService.getMember(2L));
+        model.addAttribute("members", memberService.getMemberInfo(2L));
 
         String memberName = httpServletRequest.getParameter("memberName");
         String memberPhone = httpServletRequest.getParameter("memberPhone");

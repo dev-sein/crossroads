@@ -50,7 +50,7 @@ public class AdminController {
     @ResponseBody
     @PostMapping("members/detail")
     public MemberVO adminMemberDetail(@RequestParam("memberId") Long memberId) {
-        return memberService.getMember(memberId);
+        return memberService.getMemberInfo(memberId);
     }
 
     //관리자 회원 삭제
@@ -63,9 +63,10 @@ public class AdminController {
     }
     /*====================회원 게시판 끝==============================*/
 
+    /*====================연수 신청 게시판 시작==============================*/
     //관리자 연수신청 목록
     @GetMapping("apply/list")
-    public String adminApply(Model model){
+    public String adminApply(){
 //        model.addAttribute("applies", applyService.getList());
         return "admin/admin-apply";
     }
@@ -73,17 +74,19 @@ public class AdminController {
     //관리자 연수신청 목록
     @ResponseBody
     @PostMapping("applies/list")
-    public List<ApplyDTO> adminApplyList(){
-        return null;
+    public Map<String, Object> adminApplyList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return applyService.getListAdmin(requestData, criteria);
     }
 
-    //관리자 연수신청 삭제
-    @ResponseBody
-    @DeleteMapping("applies/delete")
-    public void deleteApply(@RequestBody List<String> checkedIds) {
-        checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(applyService::cancel);
-    }
+//    //관리자 연수신청 삭제
+//    @ResponseBody
+//    @DeleteMapping("applies/delete")
+//    public void deleteApply(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//        applyService.cancelAdmin(checkedIds);
+//    }
+    /*====================연수 신청 게시판 끝==============================*/
 
+    /*====================포인트 내역 시작==============================*/
     //관리자 포인트 목록
     @GetMapping("points/list")
     public String adminPoint(){
@@ -99,6 +102,7 @@ public class AdminController {
 
 //    관리자 포인트 내역 삭제
 
+    /*====================포인트 내역 끝==============================*/
     /*====================후기 게시판 시작==============================*/
 //    관리자 후기 게시판 목록
     @GetMapping("review/list")
