@@ -65,7 +65,7 @@
                                         나를 표현하는 사진을 등록해주세요
                                     </div>
                                     <img class="user-profile-img upload" id="modal_user_img"
-                                         src="/images/mypage/main-logo.png">
+                                         th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
 
                                     <div class="loading-circle user-profile-img">
                                         <div class="sk-fading-circle theme-client">
@@ -242,10 +242,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
 <script src="/js/components/header-client.js"></script>
-<script th:inline="javascript">
-    let member = [[${member}]];
-    console.log("")
-</script>
 <script>
     FileList.prototype.forEach = Array.prototype.forEach;
     globalThis.arrayFile2 = new Array();
@@ -332,11 +328,18 @@
             type: "post",
             data: JSON.stringify(files),
             contentType: "application/json; charset=utf-8",
-            success: function(){
-                alert("전송 성공");
+            success: function(data){
+                console.log("success");
+                console.log(data);
+                let url = `/mypage/my-info`
+                console.log(url);
+                location.replace(url);
+
             }
+
         });
     });
+
 
 
     /*****************************************************/
