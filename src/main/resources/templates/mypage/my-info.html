@@ -278,11 +278,10 @@
                 globalThis.originalName = $files2[0].name;
                 globalThis.fileSize = $files2[0].size;
                 globalThis.fileType = $files2[0].type;
-                console.log(originalName)
-                console.log(fileSize)
-                console.log(fileType)
 
                 globalThis.uuid = uuid;
+                console.log(uuid)
+                console.log(globalThis.uuid)
 
                 let text2 = "";
                 text2 =
@@ -296,63 +295,35 @@
                 $("form[name='write-form']").append(text2);
             }
         });
-        console.log(originalName)
-        console.log(fileSize)
-        console.log(fileType)
     });
 
 
     $("#submit-profile").on("click", function(){
-        // let files = new Array();
-        // const $files2 = $("input[id=fileUpload]")[0].files[0];
-        // // const $files = $('#fileupload')[0].files;
-        // console.log($files2);
-        //
-        // $files2.forEach((file, i) => {
-        //     let memberVO = new Object();
-        //     memberVO.memberFileOriginalName = file.name;
-        //     memberVO.memberFileUuid = globalThis.uuid;
-        //     memberVO.memberFilePath = toStringByFormatting(new Date());
-        //     memberVO.memberFileSize = file.size;
-        //     memberVO.memberFileType = file.type.startsWith("image");
-        //     memberVO.memberId = 1;
-        //     files.push(memberVO);
-        //     console.log(file);
-        // });
-        //
-        //
-        // $.ajax({
-        //     url: "/mypage/saveProfile",
-        //     type: "post",
-        //     data: JSON.stringify(files),
-        //     contentType: "application/json; charset=utf-8",
-        //     success: function(){
-        //         alert("전송 성공");
-        //     }
-        // });
+        console.log(globalThis.arrayFile2[0]);
+        console.log(globalThis.arrayFile2[0][0].name);
+        console.log(globalThis.arrayFile2[0][0].size);
+        console.log(globalThis.arrayFile2[0][0].type);
+        console.log(globalThis.uuid[0]);
 
         let files = new Array();
-        const $files2 = $('#fileUpload')[0].files;
-        // const $files = $('#fileupload')[0].files;
-        console.log($files2);
 
-        $files2.forEach((file, i) => {
-        let memberVO = new Object();
-        memberVO.memberFileOriginalName = globalThis.originalName;
-        memberVO.memberFileUuid = globalThis.uuid;
-        memberVO.memberFilePath = toStringByFormatting(new Date());
-        memberVO.memberFileSize = globalThis.fileSize;
-        // memberVO.memberFileType = $files2.type.startsWith("image");
-        memberVO.memberId = 1;
-        files.push(memberVO);
-        console.log(memberVO);
+        globalThis.arrayFile2[0].forEach((file, i) => {
+            let memberVO = new Object();
+            memberVO.memberFileOriginalName = globalThis.arrayFile2[0][0].name;
+            memberVO.memberFileUuid = globalThis.uuid[0];
+            memberVO.memberFilePath = toStringByFormatting(new Date());
+            memberVO.memberFileSize = globalThis.arrayFile2[0][0].size;
+            memberVO.memberFileType = globalThis.arrayFile2[0][0].type.startsWith("image");
+            memberVO.memberId = 1;
+            files.push(memberVO);
         });
+        console.log(files);
 
 
         $.ajax({
             url: "/mypage/saveProfile",
             type: "post",
-            data: JSON.stringify($files2),
+            data: JSON.stringify(files),
             contentType: "application/json; charset=utf-8",
             success: function(){
                 alert("전송 성공");
