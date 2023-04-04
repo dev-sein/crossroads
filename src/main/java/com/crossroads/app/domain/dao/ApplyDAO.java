@@ -2,6 +2,7 @@ package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.mapper.ApplyMapper;
 import lombok.RequiredArgsConstructor;
@@ -59,5 +60,15 @@ public class ApplyDAO {
 //    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
     public Long findOthersCount(Map<String, Object> info){
         return applyMapper.selectOthersCount(info);
+    }
+
+//    연수 받는 사람의 id로 연수 내역 뽑기
+    public List<ApplyVO> findByStarterMemberId(Long memeberId, Standards standards) {
+        return applyMapper.selectByStarterMemberId(memeberId, standards);
+    }
+
+//    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
+    public Long findCountByStarterIdAndStatus(Long memberId, String applyStatus) {
+        return applyMapper.selectCountByStarterIdAndStatus(memberId, applyStatus);
     }
 }
