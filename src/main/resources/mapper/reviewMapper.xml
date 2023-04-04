@@ -17,7 +17,8 @@
         select
            m.member_id, member_file_system_name,
            a.apply_id, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status,
-           review_id, r.member_id, review_register_date, review_update_date, review_title, review_content, review_file_system_name, review_grade, r.apply_id
+           review_id, r.member_id, review_register_date, review_update_date, review_title, review_content, review_file_system_name, review_grade, r.apply_id,
+           review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type
         FROM tbl_member m
         join tbl_review r on m.member_id = r.member_id
         join tbl_apply a on r.apply_id = a.apply_id
