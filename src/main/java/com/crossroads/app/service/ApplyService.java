@@ -4,6 +4,8 @@ import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
+import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -61,6 +63,22 @@ public class ApplyService {
 //    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
     public Long getOthersCount(Map<String, Object> info){
         return applyDAO.findOthersCount(info);
+    }
+
+//    연수 받는 사람의 id로 연수 내역 뽑기
+    public List<ApplyVO> getApply(Long memberId, Standards standards) {
+        if(standards.getPage() == 0 ) {
+            standards.create(1, 5, 5, getApplyCount(memberId, null).intValue());
+        } else {
+            standards.create(standards.getPage(), 5, 5, getApplyCount(memberId, null).intValue());
+        }
+
+        return applyDAO.findByStarterMemberId(memberId, standards);
+    }
+
+//    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
+    public Long getApplyCount(Long memberId, String applyStatus) {
+        return applyDAO.findCountByStarterIdAndStatus(memberId, applyStatus);
     }
 }
 

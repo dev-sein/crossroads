@@ -61,7 +61,8 @@
                                     <div class="modal-content">
                                         나를 표현하는 사진을 등록해주세요
                                     </div>
-                                    <img class="user-profile-img upload" id="modal_user_img" th:src="@{/mypage/display(fileName=${file[0].FilePath} + '/' + ${file[0].FileUuid} + '_' + ${file[0].FileOrgName})}" />
+                                    <img class="user-profile-img upload" id="modal_user_img"
+                                         src="/images/mypage/main-logo.png">
                                     <div class="loading-circle user-profile-img">
                                         <div class="sk-fading-circle theme-client">
                                             <div class="sk-circle1 sk-circle"></div>
@@ -84,7 +85,7 @@
                                         <input hidden="" id="profile_remove_image_file" name="remove_image_file"
                                                type="checkbox">
                                         <button class="body-btn upload" onclick="upload_image()" type="button">
-                                            <img src="/images/mypage/icon_profile_upload.png">사진 올리기
+                                            <img th:src="@{/mypage/display(fileName=${member[0].memberFilePath} + '/' + ${member[0].memberFileUuid} + '_' + ${member[0].memberFileOriginalName})}">사진 올리기
                                         </button>
                                         <button class="body-btn" id="remove-button" type="button">
                                             <img src="/images/mypage/icon_profile_delete.png">사진 지우기
