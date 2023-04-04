@@ -4,35 +4,57 @@ const passwordInput = document.querySelector('#password-input'); /* password inp
 const error = document.querySelector('#blank'); /* 오류 메세지 */
 const length = document.querySelector('#length'); /* inputvalue길이 */
 
-$(document).ready(function() {
-    $('#submit-btn').click(function() {
-        if (!$('#password-input').val()) {
-            passwordInput.style.borderColor = "red";
-            length.style.display="none";
-            error.style.display = "block";
-            error.innerHTML = "비밀번호를 입력해주세요.";
-            error.style.color = "red";
-        }else if($('#password-input').val().length<8){
-            passwordInput.style.borderColor = "red";
-            error.style.display="none";
-            length.style.display = "block";
-            length.style.color = "red";
-            length.innerHTML = "8글자 이상 입력해 주세요.";
-        }
+// $(document).ready(function() {
+$('#submit-btn').click(function() {
+    if (!$('#password-input').val()) {
+        passwordInput.style.borderColor = "red";
+        length.style.display="none";
+        error.style.display = "block";
+        error.innerHTML = "비밀번호를 입력해주세요.";
+        error.style.color = "red";
+        return;
+    }else if($('#password-input').val().length<8){
+        passwordInput.style.borderColor = "red";
+        error.style.display="none";
+        length.style.display = "block";
+        length.style.color = "red";
+        length.innerHTML = "8글자 이상 입력해 주세요.";
+        return;
+    }
+    $('#password-input').val(btoa($('#password-input').val()));
+    let $password = $('#password-input').val();
 
-    })
-});
+    $.ajax({
+        url: "/mypage/my-password-check-out",
+        type: "post",
+        data: { memberPassword : $password },
+        success: function(result) {
+            if(result) {
+                location.href = "/mypage/my-withdraw-agree";
+            } else {
+                passwordInput.style.borderColor = "red";
+                error.style.display="none";
+                length.style.display = "block";
+                length.style.color = "red";
+                length.innerHTML = "다시 입력해주세요.";
+            }
+        }
+    });
+    // document.passwordForm.submit();
+
+})
+// });
 
 
 // 비밀번호 확인
 // 비밀번호 입력 - 입력 값 암호화 - 비교 - 같으면 인증완료 틀리면 다시 입력해주세요. 메세지 출력
-$('#submit-btn').on('click', function(){
-    if($('#password-input').val()){
-        $('#password-input').val(btoa($('#password-input').val()));
-        document.passwordForm.submit();
-        alert("들어옴")
-    }
-})
+// $('#submit-btn').on('click', function(){
+//     if($('#password-input').val()){
+//         $('#password-input').val(btoa($('#password-input').val()));
+//         document.passwordForm.submit();
+//         alert("들어옴")
+//     }
+// })
 
 // // 비밀번호 확인 정규식 이벤트 사용 및 함수
 // $passwordCheckInput.on("blur", function () {
@@ -88,7 +110,7 @@ $('#agreeCheck').on('change', function () {
 function submitForm(){
     const targetChecked = $('#agreeCheck').is(':checked');
     if (targetChecked) {
-        $('form').submit();
+        /* $('form').submit(); */
     }else {
         $('.error-text-custom').show();
     }

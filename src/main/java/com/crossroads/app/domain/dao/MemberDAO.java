@@ -44,7 +44,7 @@ public class MemberDAO {
     public void setPassword(String memberEmail, String memberPassword){ memberMapper.changePassword(memberEmail, memberPassword);};
 
     //마이페이지 비밀번호 확인
-    public Long findByPasswordMy(String memberPassword) { return memberMapper.checkPassword(memberPassword); }
+    public Long findByPasswordMy(Long memberId, String memberPassword) { return memberMapper.checkPassword(memberId, memberPassword); }
 
     //아이디로 랜덤키 찾기
     public Long findRandomKey(String memberEmail){ return memberMapper.selectRandomKey(memberEmail);}

@@ -292,7 +292,7 @@ public class MobileController {
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
         session.setAttribute("memberId", 1L);
-        if(((Long)session.getAttribute("memberId")) == memberService.getPassword(memberPassword)){
+        if(((Long)session.getAttribute("memberId")) == memberService.getPassword((Long)session.getAttribute("memberId"), memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-mobile-password-change");
         }
