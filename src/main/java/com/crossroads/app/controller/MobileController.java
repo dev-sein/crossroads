@@ -276,7 +276,7 @@ public class MobileController {
     //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
     public String myMobile(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mobile/my-mobile";
     }
 
@@ -292,7 +292,7 @@ public class MobileController {
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
         session.setAttribute("memberId", 1L);
-        if(((Long)session.getAttribute("memberId")) == memberService.getPassword(memberPassword)){
+        if(((Long)session.getAttribute("memberId")) == memberService.getPassword((Long)session.getAttribute("memberId"), memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-mobile-password-change");
         }
@@ -308,8 +308,6 @@ public class MobileController {
     //모바일 마이페이지 비밀번호 변경
     @PostMapping("/my-mobile-password-change")
     public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
-        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        log.info(memberPassword);
         session.setAttribute("memberId", 1L);
         memberService.modifyPasswordMy(1L, memberPassword);
         return new RedirectView("my-mobile");
@@ -317,18 +315,31 @@ public class MobileController {
 
     @GetMapping("/my-mobile-point")
     public String myPointMobile(){
-        return "mobile/my-mobile-point";
+        return "/mobile/my-mobile-point";
     }
 
     @GetMapping("/my-mobile-apply")
     public String myApplyMobile(){
-        return "mobile/my-mobile-apply";
+        return "/mobile/my-mobile-apply";
     }
 
-    @GetMapping("/my-mobile-complete-cancel")
-    public String myCompleteCancelMobile(){
-        return "mobile/my-mobile-complete-cancel";
+    @GetMapping("my-mobile-account-check")
+    public String myMobileAccountCheck() {
+        return "/mobile/my-mobile-account-check";
     }
 
+    @GetMapping("my-mobile-account-cancel")
+    public String myMobileAccountCancel() {
+        return "/mobile/my-mobile-account-cancel";
+    }
+
+    //마이페이지 회원탈퇴 확인
+    @PostMapping("my-mobile-complete-cancel")
+    public String myMobileAccountCancel(HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        session.invalidate();
+        memberService.remove(memberId);
+        return "/mobile/my-mobile-complete-cancel";
+    }
 
 }

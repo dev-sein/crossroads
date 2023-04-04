@@ -13,4 +13,5 @@ public interface BoardFileMapper {
 
     /*게시글 별 file 삭제*/
     public void deleteByBoardId(Long boardId);
+
 }
