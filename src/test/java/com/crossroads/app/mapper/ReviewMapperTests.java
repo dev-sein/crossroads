@@ -11,8 +11,6 @@ public class ReviewMapperTests {
     @Autowired
     ReviewMapper reviewMapper;
 
-    @Test
-    public void selectAllMy(){ reviewMapper.selectAll(2L).toString();}
 
     @Test
     public void selectReviewAll() {

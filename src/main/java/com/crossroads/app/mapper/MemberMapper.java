@@ -48,6 +48,9 @@ public interface MemberMapper {
     //랜덤키 삽입
     public void updateRandomKey(String memberEmail, Long memberRandomKey);
 
+    //마이페이지 프로필 업로드
+    public void updateProfile(MemberVO memberVO);
+
     //    관리자 전체 조회
     public List<MemberVO> selectAllAdmin(@Param("criteria") Criteria criteria, @Param("keyword") String keyword);
 

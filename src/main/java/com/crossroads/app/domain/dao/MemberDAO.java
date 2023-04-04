@@ -55,6 +55,9 @@ public class MemberDAO {
     //랜덤키 삽입
     public void setRandomKey(String memberEmail,Long memberRandomKey){ memberMapper.updateRandomKey(memberEmail,memberRandomKey);};
 
+    //마이페이지 프로필 업로드
+    public void setProfile(MemberVO memberVO){ memberMapper.updateProfile(memberVO);}
+
     /* 관리자 게시글 목록 */
     public List<MemberVO> findAllAdmin(Criteria criteria, String keyword) {
         return memberMapper.selectAllAdmin(criteria, keyword);

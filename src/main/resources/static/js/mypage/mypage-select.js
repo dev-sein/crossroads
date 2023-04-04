@@ -109,16 +109,16 @@ formSubmit.addEventListener("click", function(e){
     }
 });
 
-formSubmit.addEventListener("click", function(e){
-    var contentInputValue = document.querySelector("#cell_phone_number_end").value;
-    if(contentInputValue.length < 1){
-		phoneEnd.style.borderColor = "red";
-    	phonemsg.style.display = "block";
-        phonemsg.innerHTML = "이 항목을 채워주십시오.";
-        phonemsg.style.color = "red";
-        e.preventDefault();
-    }
-});
+// formSubmit.addEventListener("click", function(e){
+//     var contentInputValue = document.querySelector("#cell_phone_number_end").value;
+//     if(contentInputValue.length < 1){
+// 		phoneEnd.style.borderColor = "red";
+//     	phonemsg.style.display = "block";
+//         phonemsg.innerHTML = "이 항목을 채워주십시오.";
+//         phonemsg.style.color = "red";
+//         e.preventDefault();
+//     }
+// });
 
 /* 이메일  */
 formSubmit.addEventListener("click", function(e){
@@ -153,6 +153,7 @@ formSubmit.addEventListener("click", function(e){
 });
 
 
+
 // 공백 -> 문자열 입력 시 인풋 속성 변경
 /* 이름 */
 nameInput.addEventListener("blur", function(){
@@ -172,13 +173,13 @@ phoneMidldle.addEventListener("blur", function(){
     }
 });
 
-phoneEnd.addEventListener("blur", function(){
-    const phoneEndValue = phoneEnd.value;
-    if(phoneEndValue.length > 1){
-		phoneEnd.style.borderColor = "#dadada";
-    	phonemsg.style.display = "none";
-    }
-});
+// phoneEnd.addEventListener("blur", function(){
+//     const phoneEndValue = phoneEnd.value;
+//     if(phoneEndValue.length > 1){
+// 		phoneEnd.style.borderColor = "#dadada";
+//     	phonemsg.style.display = "none";
+//     }
+// });
 
 /* 이메일 */
 email.addEventListener("blur", function(){
@@ -189,105 +190,11 @@ email.addEventListener("blur", function(){
     }
 });
 
-/* 경력 */
-drivePeriod.addEventListener("blur", function(){
-    const drivePeriodValue = drivePeriod.value;
-    if(drivePeriodValue.length > 1){
-		drivePeriod.style.borderColor = "#dadada";
-    	periodmsg.style.display = "none";
-    }
-});
-
-/* 프로필 기본사진으로 변경 */
-globalThis.arrayFile2 = new Array();
-globalThis.j = 0;
-const dataTransfer = new DataTransfer();
-$("input[id='remove_image_file']").on("change", function() {
-    const $files2 = $("input[id=remove_image_file]")[0].files[0];
-    console.log($files2)
-//    파일 객체에 접근함
-    let formData = new FormData();
-    globalThis.arrayFile2.push($files2);
-    // 파일 Array의 file들을 하나씩 담아줌
-    console.log(globalThis.arrayFile2)
-    formData.append("file", $files2)
-    $.ajax({
-        url: "/board-files/uploadM",
-        type: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (uuid) {
-            globalThis.uuid = uuid;
-            console.log(globalThis.uuid)
-            $("span.cover-txt").hide();
-            $("div.cover-img").hide();
-            $(".img").append(`<img src="/board-files/display?fileName=${toStringByFormatting(new Date())}/m_${uuid}_${$files2.name}" class="mainPhoto">`);
-            $(".img img").css("width", "50%");
-            $(".img img").css("height", "100%");
-
-
-            $("input[id='cover-file']")[0].files = dataTransfer.files;
-            let text2 = "";
-            text2 =
-                `
-                    <input type="hidden" name="fileMainName" value="${$files2.name}">
-                    <input type="hidden" name="fileMainUuid" value="${globalThis.uuid}">
-                    <input type="hidden" name="fileMainPath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="fileMainSize" value="${$files2.size}">
-                    `
-            $("form[name='board']").append(text2);
-
-            let boardFileVO1 = new Object();
-            boardFileVO1.fileOriginalName = $files2.name;
-            boardFileVO1.filePath = toStringByFormatting(new Date());
-            boardFileVO1.fileSize = $files2.size;
-            boardFileVO1.fileUuid = globalThis.uuid;
-
-            files.push(boardFileVO1);
-
-            console.log(boardFileVO1.fileSize)
-            console.log(boardFileVO1.filePath)
-            console.log(boardFileVO1.fileUuid)
-            console.log(boardFileVO1.fileOriginalName)
-        }
-    });
-});
-
-/* 프로필 사진 변경 */
-globalThis.arrayFile2 = new Array();
-globalThis.j = 0;
-const dataTransfer = new DataTransfer();
-$("input[id='fileupload']").on("change", function() {
-    const $files2 = $("input[id=fileupload]")[0].files[0];
-    console.log($files2)
-//    파일 객체에 접근함
-    let formData = new FormData();
-    globalThis.arrayFile2.push($files2);
-    // 파일 Array의 file들을 하나씩 담아줌
-    console.log(globalThis.arrayFile2)
-    formData.append("file", $files2)
-    $.ajax({
-        url: "/members/upload",
-        type: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (uuid) {
-            globalThis.uuid = uuid;
-            console.log(globalThis.uuid)
-
-            $("input[id='profile']")[0].files = dataTransfer.files;
-            let text2 = "";
-            text2 =
-                `
-                    <input type="hidden" name="memberProfileOriginalName" value="${$files2.name}">
-                    <input type="hidden" name="memberProfileUuid" value="${globalThis.uuid}">
-                    <input type="hidden" name="memberProfilePath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="memberProfileSize" value="${$files2.size}">
-                    `
-            $("form[name='write-form']").append(text2);
-            console.log(text2);
-        }
-    });
-});
+// /* 경력 */
+// drivePeriod.addEventListener("blur", function(){
+//     const drivePeriodValue = drivePeriod.value;
+//     if(drivePeriodValue.length > 1){
+// 		drivePeriod.style.borderColor = "#dadada";
+//     	periodmsg.style.display = "none";
+//     }
+// });

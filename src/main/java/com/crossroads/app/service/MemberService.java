@@ -110,6 +110,12 @@ public class MemberService {
     //랜덤키 삽입
     public void setRandomKey(String memberEmail, Long memberRandomKey){ memberDAO.setRandomKey(memberEmail, memberRandomKey);};
 
+    //마이페이지 프로필 업로드
+    public void modifyProfile(MemberVO memberVO) {
+        memberDAO.setProfile(memberVO);
+
+    }
+
     //관리자 회원 목록
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
         Map<String, Object> result = new HashMap<String, Object>();
