@@ -112,6 +112,12 @@ public class MemberService {
 
     //이메일로 VO 찾기
     public MemberVO getByEmail(String memberEmail) {return memberDAO.findByEmail(memberEmail);}
+    //마이페이지 프로필 업로드
+    public void modifyProfile(MemberVO memberVO) {
+        memberDAO.setProfile(memberVO);
+
+    }
+
     //관리자 회원 목록
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
         Map<String, Object> result = new HashMap<String, Object>();

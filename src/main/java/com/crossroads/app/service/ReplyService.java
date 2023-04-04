@@ -19,7 +19,12 @@ public class ReplyService {
 
 //    신청목록 전체조회
     public List<ReplyDTO> getListMyReply(Long memberId, Standards standards) {
-        standards.create(getTotalMy());
+        if(standards.getPage() == 0 ) {
+            standards.create(1, 5, 5, getTotalMy());
+        } else {
+            standards.create(standards.getPage(), 5, 5, getTotalMy());
+        }
+
         return replyDAO.findAllMyReply(memberId, standards);
     }
 

@@ -15,7 +15,7 @@
 
     <!-- 마이페이지 포인트 내역 -->
     <select id="selectAllMyPoint" parameterType="long" resultType="pointDTO">
-        select point_id, m.member_id, member_identification, point_status, point_update_date, point_point
+        select point_id, m.member_id, member_identification, member_point, point_status, point_update_date, point_point
         from tbl_member m join tbl_point p on m.member_id = p.member_id
         where m.member_id = #{memberId}
         order by point_update_date desc

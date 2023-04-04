@@ -60,6 +60,7 @@
 	where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
 
+    <!-- 마이페이지 정보 조회 -->
     <select id="select" parameterType="long" resultType="memberVO">
         select member_id, member_identification, member_name, member_phone, member_email, member_type, member_point
         select member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
@@ -100,7 +101,6 @@
         where member_email=#{memberEmail}
     </select>
 
-
     <!--랜덤키 입력-->
     <update id="updateRandomKey">
     update tbl_member
@@ -112,6 +112,16 @@
         select member_id, member_identification, member_name, member_phone, member_email,
         member_type, member_drive_register_date, member_point, member_status
         where member_email = #{memberEmail}
+    </select>
+
+    <!--프로필 사진 업로드-->
+    <update id="updateProfile">
+        update tbl_member
+        set member_file_original_name = #{memberFileOriginalName}, member_file_uuid = #{memberFileUuid},
+            member_file_path = #{memberFilePath}, member_file_size = #{memberFileSize},
+            member_file_type = #{memberFileType}
+        where member_id = #{memberId}
+    </update>
     <!-- 어드민 목록 총 개수 -->
     <select id="selectCountAllAdmin" resultType="int">
         select count(member_id)

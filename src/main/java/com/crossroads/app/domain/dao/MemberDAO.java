@@ -57,6 +57,9 @@ public class MemberDAO {
 
     //아이디로 vo로 삽입
     public MemberVO findByEmail(String memberEmail) { return memberMapper.selectByEmail(memberEmail);};
+    //마이페이지 프로필 업로드
+    public void setProfile(MemberVO memberVO){ memberMapper.updateProfile(memberVO);}
+
     /* 관리자 게시글 목록 */
     public List<MemberVO> findAllAdmin(Criteria criteria, String keyword) {
         return memberMapper.selectAllAdmin(criteria, keyword);

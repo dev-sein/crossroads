@@ -141,7 +141,11 @@ public class FreeBoardService implements BoardService {
     @Override
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) {//주소의 변동이 없음
         //getTotalMy
-        standards.create(getTotalMy());
+        if(standards.getPage() == 0 ) {
+            standards.create(1, 5, 5, getTotalMy());
+        } else {
+            standards.create(standards.getPage(), 5, 5, getTotalMy());
+        }
         return boardDAO.findAllMy(memberId, standards);
     }
 
