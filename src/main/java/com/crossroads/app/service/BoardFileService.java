@@ -11,15 +11,16 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class BoardFileService implements FileService{
+    private final BoardFileDAO boardFileDAO;
+
     @Override
     public void fileRegister(MemberFileVO memberFileVO) {
 
     }
-//    private final BoardFileDAO boardFileDAO;
-//
-//    public List<BoardFileVO> getFile(Long boardId) {
-//        return boardFileDAO.findById(boardId);
-//    }
+
+    public List<BoardFileVO> getFile(Long boardId) {
+        return boardFileDAO.findById(boardId);
+    }
 
 
 

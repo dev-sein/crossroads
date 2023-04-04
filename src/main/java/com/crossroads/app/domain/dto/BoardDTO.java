@@ -1,7 +1,10 @@
 package com.crossroads.app.domain.dto;
 
+import com.crossroads.app.domain.vo.BoardFileVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Data
@@ -32,4 +35,7 @@ public class BoardDTO {
     private String fileSize;
     /*replyVO*/
     private Integer replyCount;
+
+    /*boardFileVO*/
+    private List<BoardFileVO> files;
 }

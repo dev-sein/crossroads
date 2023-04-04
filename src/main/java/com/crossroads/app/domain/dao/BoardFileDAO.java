@@ -22,4 +22,5 @@ public class BoardFileDAO {
         boardFileMapper.deleteByBoardId(boardId);
     }
 
+
 }
