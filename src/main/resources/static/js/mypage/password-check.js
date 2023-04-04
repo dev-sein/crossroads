@@ -40,9 +40,7 @@ $('#submit-btn').click(function() {
             }
         }
     });
-    // document.passwordForm.submit();
-
-})
+});
 // });
 
 
