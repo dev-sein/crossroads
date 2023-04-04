@@ -3,11 +3,15 @@ package com.crossroads.app.service;
 import com.crossroads.app.domain.dao.ApplyDAO;
 import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.PageDTO;
+import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +65,43 @@ public class ApplyService {
 //    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
     public Long getOthersCount(Map<String, Object> info){
         return applyDAO.findOthersCount(info);
+    }
+
+
+
+//    관리자 신청내역 목록
+    public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
+        Map<String, Object> result = new HashMap<String, Object>();
+
+        String keyword = (String) requestData.get("keyword");
+        int page = (int) requestData.get("page");
+
+        if (page == 0) {
+            page = 1;
+        }
+        criteria = criteria.create(page, 6);
+
+        List<ApplyVO> applies = applyDAO.findAllAdmin(criteria, keyword);
+
+
+        result.put("applies", applies);
+        result.put("pagination", new PageDTO().createPageDTO(criteria, applyDAO.findCountAllAdmin(keyword)));
+
+        return result;
+    }
+
+
+//    관리자 신청내역 목록
+    public Integer getCountAdmin(String keyword) {
+        return applyDAO.findCountAllAdmin(keyword);
+    }
+
+//    신청 삭제(취소)
+    public void cancelAdmin(List<String> applyIds){
+//        추후 포인트 추가 감소 로직을 cancel메소드에 추가 필요
+        applyIds.stream().map(applyId -> Long.valueOf(applyId)).forEach(applyId -> {
+            cancel(applyId);
+        });
     }
 }
 

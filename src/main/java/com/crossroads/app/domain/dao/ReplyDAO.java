@@ -40,7 +40,7 @@ public class ReplyDAO {
 
 //    회원별 댓글 삭제
     public void deleteByMemberId(Long memberId){
-        replyMapper.deletByMemberId(memberId);
+        replyMapper.deleteByMemberId(memberId);
     };
 
     /* 관리자 댓글 목록 */

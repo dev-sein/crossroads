@@ -34,9 +34,9 @@
       </form>
     </div>
   </article>
-  <!-- 선택삭제 -->
-  <article class="module module--content-summary">
-    <button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px">선택 삭제</button>
+  <!-- 선택삭제 , 여기 페이지는 삭제기능이 없는게 맞는거같음. -->
+  <article class="module module--content-summary" style="visibility: hidden">
+    <button type="button" class="modal_test" style="margin: 0 0 0 -33px; font-size: 16px; ">선택 삭제</button>
   </article>
   <!-- 목록 리스트 -->
   <article class="module module--content-list">
@@ -132,11 +132,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script th:inline="javascript">
-  // let applies = [[${applies}]];
 </script>
+<script src="/js/admin/date.js"></script>
 <script src="/js/admin/apply-list.js"></script>
 <script src="/js/admin/admin-checkbox.js"></script>
-<script src="/js/admin/apply-delete.js"></script>
-<script src="/js/admin/admin-modal.js"></script>
 </html>
 

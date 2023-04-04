@@ -1,6 +1,7 @@
 package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.mapper.ApplyMapper;
@@ -59,5 +60,16 @@ public class ApplyDAO {
 //    검색 or 전체 목록에서 나를 제외한 다른 베테랑들이 수락한 연수내역 개수
     public Long findOthersCount(Map<String, Object> info){
         return applyMapper.selectOthersCount(info);
+    }
+
+
+    /* 관리자 게시글 목록 */
+    public List<ApplyVO> findAllAdmin(Criteria criteria, String keyword) {
+        return applyMapper.selectAllAdmin(criteria, keyword);
+    }
+
+    /* 관리자 게시글 총 개수 */
+    public Integer findCountAllAdmin(String keyword) {
+        return applyMapper.selectCountAllAdmin(keyword);
     }
 }

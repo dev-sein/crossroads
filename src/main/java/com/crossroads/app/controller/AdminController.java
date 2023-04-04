@@ -74,16 +74,16 @@ public class AdminController {
     //관리자 연수신청 목록
     @ResponseBody
     @PostMapping("applies/list")
-    public List<ApplyDTO> adminApplyList(){
-        return null;
+    public Map<String, Object> adminApplyList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return applyService.getListAdmin(requestData, criteria);
     }
 
-    //관리자 연수신청 삭제
-    @ResponseBody
-    @DeleteMapping("applies/delete")
-    public void deleteApply(@RequestBody List<String> checkedIds) {
-        checkedIds.stream().map(checkedId -> Long.parseLong(checkedId)).forEach(applyService::cancel);
-    }
+//    //관리자 연수신청 삭제
+//    @ResponseBody
+//    @DeleteMapping("applies/delete")
+//    public void deleteApply(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//        applyService.cancelAdmin(checkedIds);
+//    }
     /*====================연수 신청 게시판 끝==============================*/
 
     //관리자 포인트 목록
