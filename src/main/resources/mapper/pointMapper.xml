@@ -86,4 +86,12 @@
         where point_id = #{pointId}
     </delete>
 
+    <!-- 포인트 상세 -->
+    <select id="select" resultType="pointDTO">
+        select point_id, p.member_id, point_status, point_update_date, point_point
+        member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
+        from tbl_member m join tbl_point p on m.member_id = p.member_id
+        and point_id = #{pointId}
+    </select>
+
 </mapper>

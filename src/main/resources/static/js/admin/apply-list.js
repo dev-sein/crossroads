@@ -63,6 +63,9 @@ function showList(applies){
     const $results = $("#scroll");
     let text = "";
     applies.forEach(apply => {
+        console.log(apply);
+        console.log(apply.starterMemberId);
+
         var today = new Date();
         var realToday = changeDate(today);
         var date = apply.applyRegisterDate;
@@ -70,7 +73,7 @@ function showList(applies){
         var realDate = changeDate(date);
         var status = apply.applyStatus === 0 ? "수락대기중" :
                         realToday < applyDate ? "수락완료" : "진행완료"
-        var veteranMemberId = apply.veteranMemberId === null ? "미정" : String(apply.veteranMemberId);
+        var veteranMemberId = apply.veteranMemberId === 0 ? "미정" : apply.veteranMemberId;
         text +=`
             <div class="content-list__info-container">
                 <div class="content-list__info-unit">
@@ -78,10 +81,10 @@ function showList(applies){
                     <label class="content__checkbox--label">
                         <ul class="content-list__info">
                             <li class="content__id" >${apply.applyId}</li>
-                            <li class="content__user-id">${apply.startMemberId}</li>
+                            <li class="content__user-id">${apply.starterMemberId}</li>
                             <li class="content__course">${apply.applyCourse}</li>
                             <li class="content__location">${apply.applyLocation}</li>
-                            <li class="content__date">${apply.applyDate}</li>
+                            <li class="content__date">${applyDate}</li>
                             <li class="content__register_date">${realDate}</li>
                             <li class="content__status">${status}</li>
                             <li class="content__veteran-id">${veteranMemberId}</li>
