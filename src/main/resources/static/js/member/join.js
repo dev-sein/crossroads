@@ -410,3 +410,47 @@ $("#license").on("change", function(e){
 	});
 
 
+
+
+	//네이버 회원가입
+var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/member/join");
+var state = naver_id_login.getUniqState();
+naver_id_login.setButton("white", 2,40);
+naver_id_login.setDomain("http://localhost:10000");
+naver_id_login.setState(state);
+// naver_id_login.setPopup();
+// naver_id_login.init_naver_id_login();
+//const  $memberEmail =  $('#memberEmail');
+//console.log($memberEmail);
+// 접근 토큰 값 출력
+//alert(naver_id_login.oauthParams.access_token);
+// 네이버 사용자 프로필 조회
+naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
+// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+function naverSignInCallback() {
+	alert(naver_id_login.getProfileData('email'));
+	$.ajax({
+		url: "/member/join",
+		type: "get",
+		data: { memberEmail : naver_id_login.getProfileData('email') },
+		success: function(result) {
+			if(result) {
+				var status=3;
+				var $memberEmail =  $('#memberEmail');
+				console.log('들어옴@')
+				console.log(naver_id_login.getProfileData('email'))
+				$('input[name=memberEmail]').attr('value', naver_id_login.getProfileData('email'));
+				$('input[name=memberStatus]').attr('value', 2);
+				$('#memberEmail').attr('readonly',true);
+				$('input[name=memberEmail]').attr('placeholder',email);
+				console.log($('input[name=memberStatus]').val);
+				window.location.href = "/member/join/";
+			} else {
+				window.location.href = "/member/login?result=fail";
+			}
+		}
+	});
+}
+
+//카카오 회원가입

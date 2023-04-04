@@ -37,6 +37,14 @@ public class MemberController {
         return new RedirectView("login");
     }
 
+    // 카카오 회원가입
+    @GetMapping("join-kakao")
+    public String joinKakao(){
+        log.info("카카오 회원가입 get");
+       // kakao_account 를 멤버 email 로 세팅해야함
+        return "/member/join";
+    }
+
     //아이디 중복체크
     @PostMapping("/checkId")
     @ResponseBody
@@ -103,6 +111,7 @@ public class MemberController {
         return "member/find-pwd";
     }
 
+    //비밀번호 찾기 - 이메일 발송하기
     @PostMapping("find-pwd")
     public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
         if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때
