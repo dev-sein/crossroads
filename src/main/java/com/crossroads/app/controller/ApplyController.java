@@ -5,6 +5,7 @@ import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
+import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpSession;
 public class ApplyController {
     private final ApplyService applyService;
     private final MemberService memberService;
+    private final PointService pointService;
 
 
 

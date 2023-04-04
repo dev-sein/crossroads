@@ -61,11 +61,8 @@
     </select>
 
     <select id="select" parameterType="long" resultType="memberVO">
-<<<<<<< HEAD
         select member_id, member_identification, member_name, member_phone, member_email, member_type, member_point
-=======
         select member_id, member_identification, member_name, member_phone, member_email, member_file_system_name, member_type, member_drive_register_date, member_point
->>>>>>> origin/master
         from tbl_member
         where member_id = #{memberId}
     </select>
