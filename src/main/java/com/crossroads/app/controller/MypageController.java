@@ -126,7 +126,6 @@ public class MypageController {
         session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
         if(memberId == memberService.getPassword(memberId, memberPassword)){
-            log.info(session.getAttribute("memberId").toString());
             return true;
         }
         return false;
