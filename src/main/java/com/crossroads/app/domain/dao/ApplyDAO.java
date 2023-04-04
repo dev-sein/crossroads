@@ -73,6 +73,11 @@ public class ApplyDAO {
         return applyMapper.selectCountByStarterIdAndStatus(memberId, applyStatus);
     }
 
+//    베테랑의 id로 연수 내역 뽑기
+    public List<ApplyDTO> findByVeteranMemberId(Long veteranMemberId, Criteria criteria) {
+        return applyMapper.selectByVeteranMemberId(veteranMemberId, criteria);
+    }
+
     /* 관리자 게시글 목록 */
     public List<ApplyVO> findAllAdmin(Criteria criteria, String keyword) {
         return applyMapper.selectAllAdmin(criteria, keyword);

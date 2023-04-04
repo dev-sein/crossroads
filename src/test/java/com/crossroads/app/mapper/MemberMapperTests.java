@@ -29,7 +29,7 @@ public class MemberMapperTests {
 
     @Test
     public void selectTest(){
-       log.info(memberMapper.select(1L).toString());
+//       log.info(memberMapper.select(1L).toString());
     }
 
 

@@ -52,6 +52,7 @@ public class ApplyService {
 //        추후 포인트 추가 감소 로직 추가 필요
         applyDAO.deleteById(applyId);
     }
+
     //      연수 신청 - 코스
     public void saveCourse(ApplyDTO applyDTO) { applyDAO.RegisterCourse(applyDTO); }
 
@@ -82,6 +83,11 @@ public class ApplyService {
 //    연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)
     public Long getApplyCount(Long memberId, String applyStatus) {
         return applyDAO.findCountByStarterIdAndStatus(memberId, applyStatus);
+    }
+
+//    베테랑의 id로 연수 내역 뽑기
+    public List<ApplyDTO> getApplyVeteran(Long veteranMemberId, Criteria criteria) {
+        return applyDAO.findByVeteranMemberId(veteranMemberId, criteria);
     }
 
 //    관리자 신청내역 목록
