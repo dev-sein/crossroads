@@ -40,7 +40,7 @@ public interface MemberMapper {
     public Long selectRandomKey(String memberEmail);
 
     //마이페이지 비밀번호 확인
-    public Long checkPassword(String memberPassword);
+    public Long checkPassword(Long memberId, String memberPassword);
 
     //마이페이지 비밀번호 변경
     public Long changeNewPassword(Long memberId, String memberPassword);
