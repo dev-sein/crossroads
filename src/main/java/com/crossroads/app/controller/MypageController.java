@@ -63,7 +63,7 @@ public class MypageController {
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO) {
         log.info("들어옴");
-        Long memberId = 1L;
+        Long memberId = 2L;
         memberVO = memberService.getMemberInfo(memberId);
 
         String memberName = request.getParameter("memberName");
