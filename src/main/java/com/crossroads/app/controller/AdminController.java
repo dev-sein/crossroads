@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.*;
+import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.PointVO;
 import com.crossroads.app.service.*;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,10 +28,55 @@ public class AdminController {
     private final ReviewBoardService reviewBoardService;
     private final ApplyService applyService;
     private final ReplyService replyService;
+    private final PointService pointService;
 
     //관리자 홈 및 출력
     @GetMapping("home")
-    public String adminHome(){
+    public String adminHome(Criteria criteria, Model model){
+        Map<String, Object> requestData = new HashMap<>();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        requestData.put("page", criteria.getPage());
+
+        /* 회원 정보 가공 */
+        List<MemberVO> memberVOs =  (List<MemberVO>) memberService.getListAdmin(requestData, criteria).get("members");
+        Long memberId = memberVOs.get(0).getMemberId();
+        Integer memberCount = memberService.getCountAdmin();
+        Integer withdrawMember = memberId.intValue() - memberCount;
+
+        int[] members = {memberId.intValue(), memberCount, withdrawMember};
+
+        /* 연수 신청 현황 가공 */
+        List<ApplyVO> applyVOs = (List<ApplyVO>) applyService.getListAdmin(requestData, criteria).get("applies");
+        Long applyId = applyVOs.get(0).getApplyId();
+        Integer applyCount = applyService.getCountAdmin();
+
+        int[] applies = {applyId.intValue(), applyCount};
+
+        /* 포인트 결제 현황 가공 */
+        Integer paymentCount = pointService.getCountAdmin("결제");
+        Integer exchangeCount = pointService.getCountAdmin("환전");
+
+        int[] points = {paymentCount, exchangeCount};
+
+        /* 후기 게시판 리스트 */
+        List<ReviewDTO> reviews = (List<ReviewDTO>) reviewBoardService.getListAdmin(requestData, criteria).get("reviews");
+
+        /* 자유 게시판 리스트 */
+        List<BoardDTO> boards = (List<BoardDTO>) freeBoardService.getListAdmin(requestData, criteria).get("boards");
+
+        /* 댓글 게시판 리스트 */
+        List<ReplyDTO> replies = (List<ReplyDTO>) replyService.getListAdmin(requestData, criteria).get("replies");
+
+
+
+
+        model.addAttribute("members", members);
+        model.addAttribute("applies", applies);
+        model.addAttribute("points", points);
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("boards", boards);
+        model.addAttribute("replies", replies);
         return "admin/admin-home";
     }
 
@@ -57,9 +106,7 @@ public class AdminController {
     @ResponseBody
     @DeleteMapping("members/delete")
     public void deleteMember(@RequestParam("checkedIds[]") List<String> checkedIds) {
-        log.info("delete 들어옴..?");
         memberService.removeAdmin(checkedIds);
-        log.info("마지막 여긴 안됨.");
     }
     /*====================회원 게시판 끝==============================*/
 
@@ -87,22 +134,28 @@ public class AdminController {
     /*====================연수 신청 게시판 끝==============================*/
 
     /*====================포인트 내역 시작==============================*/
-    //관리자 포인트 목록
-    @GetMapping("points/list")
+    //관리자 포인트 내역
+    @GetMapping("point/list")
     public String adminPoint(){
         return "admin/admin-point";
     }
 
-    //관리자 포인트 목록
+    //관리자 포인트 내역 목록
     @ResponseBody
     @PostMapping("points/list")
-    public List<PointVO> adminPointList(){
-        return null;
+    public Map<String, Object> adminPointList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return pointService.getListAdmin(requestData, criteria);
     }
-
-//    관리자 포인트 내역 삭제
-
+    //    관리자 포인트 내역 삭제
+    @ResponseBody
+    @DeleteMapping("points/delete")
+    public void deletePoint(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//        log.info("여긴 들어옴!");
+//        log.info(checkedIds.toString()); // 이것도 잘 가져옴.
+        pointService.remove(checkedIds);
+    }
     /*====================포인트 내역 끝==============================*/
+
     /*====================후기 게시판 시작==============================*/
 //    관리자 후기 게시판 목록
     @GetMapping("review/list")

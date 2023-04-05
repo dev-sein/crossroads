@@ -11,7 +11,7 @@ $('.modal_test').on('click', function() {
     console.log(checkedIds);
         // ?page=${$page}
     $.ajax({
-        url: `/admin/replies/delete`,
+        url: `/admin/points/delete`,
         type: "delete",
         data: {
             "checkedIds": checkedIds
