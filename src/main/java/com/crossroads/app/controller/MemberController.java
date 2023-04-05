@@ -23,7 +23,10 @@ public class MemberController {
 
     //회원가입
     @GetMapping("join")
-    public String join(){
+    public String join(HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+
         return "member/join";
     }
 
