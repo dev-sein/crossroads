@@ -22,6 +22,7 @@ import java.util.List;
 public class BoardController {
     private FreeBoardService freeboardService;
     private BoardService boardService;
+/*
 
     // 게시판 목록
     @GetMapping("/board-list")
@@ -66,6 +67,7 @@ public class BoardController {
         boardService.saveBoard(boardDTO, files);
         return "redirect:/board-list";
     }
+*/
 
 }
 

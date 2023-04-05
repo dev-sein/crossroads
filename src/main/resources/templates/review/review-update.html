@@ -37,7 +37,7 @@
                 <form action="#" th:action="@{/review/review-update/{reviewId}(reviewId=${info.reviewId ?: ''})}"
                       th:object="${info}" method="post" name="reviewForm" enctype="multipart/form-data">
 
-                    <input type="hidden" th:field="*{reviewId}">
+                    <input type="hidden" th:field="*{reviewId}" id="review-container">
                     <div class="formSection_contentContainer">
                         <div class="formTitle_wrapper">
                             <div class="formTitle" style="align-items: center !important;">
@@ -109,16 +109,16 @@
                                     <!-- 이미지 -->
                                     <label id="button-label">
                                         <div class="container_imageInput">
-                                            <!-- <label class="ImageFileButton_label" id="button-label"> -->
                                             <div class="imgText_container" onclick="">
-                                                <img src="https://frip.host/img/add.85e31315.svg" alt="+">
+                                                <img th:if="${info.reviewFileSystemName != null}" class="review-photo" th:src="@{/upload/{filename}(filename=${info.reviewFileSystemName})}" onclick="removeImage()">
+                                                <img th:if="${info.reviewFileSystemName == null}" src="https://frip.host/img/add.85e31315.svg" alt="+" onclick="openImageSelector()">
                                                 <input type="file" id="image" name="image" onchange="setThumbnail(event);" style="display: none;">
-                                                <img class="review-photo" th:src="@{/mypage/display(fileName=${info.reviewFilePath} + '/' + ${info.reviewFileUuid} + '_' + ${info.reviewFileOriginalName})}">
-
+                                                <!-- 파일 경로 지정 -->
                                                 <div>이미지 추가하기</div>
                                             </div>
                                         </div>
                                     </label>
+
                                     <!-- 이미지 -->
                                 </div>
                                 <div id="image_container"></div>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="bottomButton_wrapper">
                         <button type="button" class="cancelButton_button" onclick="cancelWriteReview()" style="margin-right: 10px; background-color: #A1A6AD;">수정취소</button>
-                        <button type="button" class="registButton_button" id="submit-btn">수정완료</button>
+                        <button type="button" class="registButton_button" id="update-button">수정완료</button>
                     </div>
                 </form>
             </div>
@@ -141,6 +141,6 @@
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/board/board-write.js"></script>
+<script src="/js/board/board-update.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>

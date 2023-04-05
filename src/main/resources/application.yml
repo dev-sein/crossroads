@@ -42,4 +42,4 @@ spring:
     mvc:
       static-path-pattern: /upload/**
     resources:
-      static-locations: file:/c/upload/
+      static-locations: file:///C:/upload/
