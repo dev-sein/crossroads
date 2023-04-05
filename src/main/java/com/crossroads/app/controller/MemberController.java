@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -70,26 +72,58 @@ public class MemberController {
 
     //로그인
     @GetMapping("login")
-    public String login(){
+    public String login(HttpServletRequest request) {
+        String memberIdentification = null, memberPassword = null;
+        HttpSession session = request.getSession();
+        boolean check = false;
+
+        if(request.getHeader("Cookie") != null) {
+            log.info("들어옴");
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if(cookie.getName().equals("memberIdentification")) {
+                    memberIdentification = cookie.getValue();
+                    check = true;
+                }else if(cookie.getName().equals("memberPassword")) {
+                    memberPassword = cookie.getValue();
+                    check = true;
+                }
+            }
+        }
+        if(check) {
+            request.setAttribute("memberIdentification", memberIdentification);
+            request.setAttribute("memberPassword", memberPassword);
+            log.info(String.valueOf(check));
+            return "redirect:/main";
+        }
         return "member/login";
     }
 
     //로그인
     @PostMapping("login")
-    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request){
+    public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request, RedirectAttributes redirectAttributes,  HttpServletResponse response) {
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
+        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
+        log.info(String.valueOf(autoLogin));
         log.info(id.toString());
-        if(id != null){
+        if (id != null) {
             session.setAttribute("memberId", id);
-            if(id == 1L){
-                return new RedirectView("/admin/home");
+            if (id == 1L) {
+                return new RedirectView("/admin/home");}
+                else if(autoLogin) {
+                    Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);
+                    Cookie memberPasswordCookie = new Cookie("memberPassword", memberPassword);
+                    memberIdentificationCookie.setMaxAge(60 * 60 * 24);
+                    memberPasswordCookie.setMaxAge(60 * 60 * 24);
+                    response.addCookie(memberIdentificationCookie);
+                    response.addCookie(memberPasswordCookie);
+                }
+                log.info(session.getAttribute("memberId").toString());
+                return new RedirectView("/main");
             }
-            log.info(session.getAttribute("memberId").toString());
-            return new RedirectView("/main");
+            return new RedirectView("/member/login");
         }
-        return new RedirectView("/member/login");
-    }
 
     //카카오 회원가입
     @GetMapping("kakao")
@@ -111,6 +145,7 @@ public class MemberController {
         return new RedirectView("/main/");
     }
 
+    //카카오 로그인
     @GetMapping("kakao-login")
     public RedirectView kakaoLogin(String code, HttpSession session) throws Exception {
         String token = memberService.getKaKaoAccessToken(code, "login");
@@ -134,14 +169,20 @@ public class MemberController {
 
     //로그아웃
     @GetMapping("logout")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("logout - 진입");
-        //세션 끊기
         HttpSession session = request.getSession();
-        session.invalidate();
+        session.invalidate(); //세션 끊기
+
+        if(request.getHeader("Cookie") != null) { //쿠키 로그아웃
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0); //초단위
+                response.addCookie(cookie);
+            }
+        }
         return "redirect:/main";
     }
-
     //비밀번호 찾기 1 - 이메일 인증
     @GetMapping("find-pwd")
     public String findPwd() {

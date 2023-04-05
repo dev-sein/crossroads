@@ -204,7 +204,7 @@ public class MobileController {
         //세션 끊기
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/applies/list-mobile";
+        return "redirect:/applies/login-mobile";
     }
 
     //비밀번호 찾기 1 - 이메일 인증
