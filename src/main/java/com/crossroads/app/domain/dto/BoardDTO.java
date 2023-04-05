@@ -30,7 +30,7 @@ public class BoardDTO {
     /*file*/
     private Long fileId;
     private String fileOriginalName;
-    private String uuid;
+    private String fileUuid;
     private String filePath;
     private String fileSize;
     /*replyVO*/
