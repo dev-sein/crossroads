@@ -12,7 +12,6 @@ public class PointDTO {
     private Integer pointStatus;
     private String pointUpdateDate;
     private Integer pointPoint;
-
     private String memberIdentification;
     private String memberPassword;
     private String memberName;

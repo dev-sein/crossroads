@@ -5,6 +5,7 @@ import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.PointDTO;
 import com.crossroads.app.mapper.ApplyMapper;
 import com.crossroads.app.mapper.PointMapper;
+import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -54,6 +55,10 @@ public class PointDAO {
     public PointDTO selectById(Long pointId){
         return pointMapper.select(pointId);
     }
+
+
+    //  포인트 내역 등록
+    public void register(PointDTO pointDTO) { pointMapper.insert(pointDTO);}
 
     //    포인트 충전
     public void setPointByMemberId(Long memberId, Long memberPoint) {

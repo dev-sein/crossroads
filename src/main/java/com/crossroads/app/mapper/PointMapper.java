@@ -37,6 +37,9 @@ public interface PointMapper {
 //    포인트 상세
     public PointDTO select(Long pointId);
 
+    //    포인트 내역 업데이트
+      public void insert(PointDTO pointDTO);
+
 //    포인트 충전
     public void updatePointByMemberId(Long memberId, Long memberPoint);
 

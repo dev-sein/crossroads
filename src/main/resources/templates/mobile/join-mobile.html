@@ -23,7 +23,8 @@
                     <div class="input-box email">
                         <div class="input-title">이메일</div>
                         <div class="input-text-wrapper">
-                            <input class="theme-croosroads input-text" maxlength="100" id="memberEmail" name="memberEmail" placeholder="ID@example.com" type="text" oninput="checkEmail()">
+                            <input class="theme-croosroads input-text" th:if="${session.kakaoInfo == null}" id="memberEmail" name="memberEmail" maxlength="100" placeholder="ID@example.com" type="text" value="" oninput="checkEmail()">
+                            <input class="theme-croosroads input-text" th:if="${session.kakaoInfo != null}" th:value="${session.kakaoInfo.getMemberEmail()}" id="memberEmailKakao" name="memberEmail" maxlength="100" placeholder="ID@example.com" type="text" oninput="checkEmail()" readonly/>
                         </div>
                         <!-- 1이상 : 이메일 형식이 올바르지 않습니다. -->
                         <span class="error-text" style="display: none;" id="email-error">이메일을 입력해 주세요.</span>
@@ -104,7 +105,8 @@
                             <div class="input-text-wrapper">
                                 <input class="theme-croosroads input-text registerdate" name="memberDriveRegisterDate" type="text" value="면허증을 등록하면 취득일자가 적용됩니다." readonly/>
                                 <input class="theme-croosroads input-text" id="memberType" name="memberType" value="0" type="text">
-                                <input type="text" name="memberStatus" id="memberStatus" value="0" style="display:none;">
+                                <input type="text" th:if="${session.kakaoInfo == null}" name="memberStatus" id="memberStatus" value="" style="display:none;">
+                                <input class="theme-croosroads input-text" th:if="${session.kakaoInfo != null}" th:value="1" id="memberEmailKakao" name="memberStatus" maxlength="100" placeholder="ID@example.com" type="text" oninput="checkEmail()" readonly/>
                             </div>
                         </div>
                     </div>
@@ -130,7 +132,7 @@
                     </div>
                     <!-- 회원가입 버튼 -->
                     <button id="submit-btn" type="button">회원가입</button>
-                    <a href="" class="oauth-join mb16">
+                    <a href=https://kauth.kakao.com/oauth/authorize?client_id=ff10441318cc0a2c7e2aa44285fa956c&redirect_uri=http://localhost:10000/applies/kakao&response_type=code class="oauth-join mb16">
                         <img class="oauth-logo" src="/images/member/kakao.png">
                         카카오톡으로 회원가입
                     </a>
