@@ -22,6 +22,8 @@ public class MainController {
     @GetMapping("main")
     public String main(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("reviews", reviewBoardService.getListReview());
         return "main/main";
     }
