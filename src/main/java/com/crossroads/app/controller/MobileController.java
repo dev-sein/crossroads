@@ -46,7 +46,7 @@ public class MobileController {
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
+//        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
 
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
