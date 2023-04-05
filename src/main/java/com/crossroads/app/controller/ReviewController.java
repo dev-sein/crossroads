@@ -31,9 +31,10 @@ import java.util.UUID;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/review/*")
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
-    private static String uploadDir = "D:\\uploads\\";
+    private static String uploadDir = "C:\\upload\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
@@ -83,7 +84,9 @@ public class ReviewController {
     }
     // 무한스크롤
     @GetMapping("/api/reviews")
+    @ResponseBody
     public ResponseEntity<List<ReviewDTO>> getReviews(@RequestParam("page") int page, @RequestParam("size") int size) {
+        log.info("reivews 들어옴");
         ReviewCriteria criteria = new ReviewCriteria(page, size);
         List<ReviewDTO> reviews = reviewBoardService.getListReview(criteria);
         return new ResponseEntity<>(reviews, HttpStatus.OK);
@@ -130,7 +133,7 @@ public class ReviewController {
         return "redirect:/review-list";
     }
 
-    //후기 수정 화면 이동
+    /*//후기 수정 화면 이동
     @GetMapping("/review-update/{reviewId}")
     public String reviewUpdate(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
@@ -140,7 +143,7 @@ public class ReviewController {
         }
         model.addAttribute("info", reviewVO);
         return "/review/review-update";
-    }
+    }*/
 
     // 후기 삭제
     @DeleteMapping("/review-delete/{reviewId}")

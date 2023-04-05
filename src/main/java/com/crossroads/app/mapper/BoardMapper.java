@@ -3,7 +3,6 @@ package com.crossroads.app.mapper;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
-import com.crossroads.app.domain.dto.ReviewDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
