@@ -31,9 +31,10 @@ import java.util.UUID;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/review/*")
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
-    private static String uploadDir = "D:\\uploads\\";
+    private static String uploadDir = "C:\\upload\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
@@ -47,8 +48,7 @@ public class ReviewController {
 
     // 후기 저장
     @PostMapping("/review-save")
-    public String saveReview(@ModelAttribute @Validated ReviewDTO reviewDTO, BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes, HttpSession session,
+    public String saveReview(@ModelAttribute @Validated ReviewDTO reviewDTO, HttpSession session,
                              @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
         log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
@@ -66,7 +66,7 @@ public class ReviewController {
             reviewDTO.setReviewFileSystemName(null);
         }
         reviewBoardService.save(reviewDTO);
-        return "redirect:/review-list";
+        return "redirect:/review/review-list";
     }
 
     //   후기 게시물 목록 전체 조회
@@ -125,7 +125,7 @@ public class ReviewController {
             reviewDTO.setReviewFileSystemName(null);
         }
         reviewBoardService.updateReview(reviewDTO);
-        return "redirect:/review-list";
+        return "redirect:/review/review-list";
     }
 
     //후기 수정 화면 이동
