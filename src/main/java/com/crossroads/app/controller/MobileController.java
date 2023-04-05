@@ -79,7 +79,7 @@ public class MobileController {
                                    HttpServletRequest request, Criteria criteria, Model model)
     {
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);       // 임시로 세션에 1L 담아둠
+//        session.setAttribute("memberId", 1L);       // 임시로 세션에 1L 담아둠
         Map<String, Object> info = new HashMap<>();
         if(applyDate != null && applyDate != ""){
             info.put("applyDate", applyDate);
