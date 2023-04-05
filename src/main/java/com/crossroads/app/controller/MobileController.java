@@ -418,6 +418,11 @@ public class MobileController {
         return new RedirectView("list-mobile");
     }
 
+    @GetMapping("error")
+    public String errorTest(){
+        return "error/404-mobile";
+    }
+
 
 
 }

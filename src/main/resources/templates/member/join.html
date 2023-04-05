@@ -146,7 +146,7 @@
                             <img class="oauth-logo" src="/images/member/kakao.png">
                             카카오톡으로 회원가입
                     </a>
-                        <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fjoin&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9" class="oauth-join">
+                        <a class="oauth-join naver mb16" href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fjoin&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9">
                         <img class="oauth-logo" src="/images/member/naver.png">
                         네이버로 회원가입
                     </a>
@@ -185,10 +185,6 @@
     naver_id_login.setButton("white", 2,40);
     naver_id_login.setDomain("http://localhost:10000");
     naver_id_login.setState(state);
-    // naver_id_login.setPopup();
-    // naver_id_login.init_naver_id_login();
-    //const  $memberEmail =  $('#memberEmail');
-    //console.log($memberEmail);
     // 접근 토큰 값 출력
     //alert(naver_id_login.oauthParams.access_token);
     // 네이버 사용자 프로필 조회
