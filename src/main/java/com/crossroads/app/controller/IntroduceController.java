@@ -18,14 +18,16 @@ public class IntroduceController {
     //사업소개
     @GetMapping("/introduce")
     public String introduce(Model model, HttpSession session){
-        model.addAttribute("member", memberService.getMemberInfo(1L));
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "introduce/introduce";
     }
 
     //자주 묻는 질문
     @GetMapping("/notice")
     public String notice(Model model, HttpSession session){
-        model.addAttribute("member", memberService.getMemberInfo(1L));
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "introduce/notice";
     }
 
