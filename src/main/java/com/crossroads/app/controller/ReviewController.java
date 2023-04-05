@@ -133,11 +133,13 @@ public class ReviewController {
     //후기 수정 화면 이동
     @GetMapping("/review-update/{reviewId}")
     public String reviewUpdate(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
-        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
+        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22" + reviewId);
+//        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
         ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
         if (reviewVO == null) {
             return "redirect:/review-list";
         }
+        log.info(reviewVO.toString());
         model.addAttribute("info", reviewVO);
         return "/review/review-update";
     }
@@ -148,6 +150,8 @@ public class ReviewController {
         reviewBoardService.deleteReview(reviewId);
         return ResponseEntity.ok(reviewId);
     }
+
+
 
 
 }

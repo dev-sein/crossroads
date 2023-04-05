@@ -18,13 +18,13 @@
 <body>
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <div id="wrap">
-<!--    <div class="container">
-        <div id="message"></div>
-    </div><a class="advertisement no_message" id="message_advertisement"></a>-->
+    <!--    <div class="container">
+            <div id="message"></div>
+        </div><a class="advertisement no_message" id="message_advertisement"></a>-->
     <div class="page">
         <div class="page-inner">
 
-          <!--  좌측 사이드바-->
+            <!--  좌측 사이드바-->
             <div class="sidebar">
                 <div class="user-name-tag">
                     <h3 class="user-name-tag-heading">클라이언트</h3>
@@ -42,8 +42,8 @@
                     </div>
                 </div>
 
-            <!--모달-->
-               <div class="profile-container modal fade" id="modal-background">
+                <!--모달-->
+                <div class="profile-container modal fade" id="modal-background">
                     <div id="cropper-img-box">
                         <img class="cropper-img" hidden="">
                     </div>
@@ -121,7 +121,7 @@
                         </form>
                     </div>
                 </div>
-              <!--   사이드바 메뉴-->
+                <!--   사이드바 메뉴-->
                 <div class="sidebar-nav">
                     <ul>
                         <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
@@ -153,27 +153,43 @@
                         </div>
                     </div>
                     <!-- 리뷰 목록 시작 -->
-                        <div class="review-box" th:each="review:${review}">
-                            <a class="review-modify" href="/store/41">수정</a>
-                            <a class="review-delete" href="/store/41">삭제</a>
-                            <div class="review-list">
-                                <div class="review-container">
-                                    <a href="/store/41/"><img class="review-photo" th:src="@{/mypage/display(fileName=${review.reviewFilePath} + '/' + ${review.reviewFileUuid} + '_' + ${review.reviewFileOriginalName})}"></a>
-                                </div>
-                                <div class="review-content-box">
-                                    <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
-                                    <p class="pcontent">
-                                        <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
-                                        <span class="base-info-splitter">|</span>
-                                        <span th:text="${review.applyLocation}" class="review-location"></span>
-                                    </p>
-                                    <p th:text="${review.reviewContent}" class="review-description-text">
-                                    </p>
+                    <div class="review-box" th:each="review:${review}">
+                        <a class="review-modify" th:href="@{/review-update/{reviewId}(reviewId=${review.reviewId})}">수정</a>
+                        <form action="/mypage/my-review" method="post" id="deleteForm">
+                            <input type="hidden" th:value="${review.reviewId}">
+                            <a class="review-delete" onclick="submitDelete()">삭제</a>
+                        </form>
+                        <div class="review-list">
+                            <div class="review-container">
+                                <a href="/store/41/"><img class="review-photo" th:src="@{/mypage/display(fileName=${review.reviewFilePath} + '/' + ${review.reviewFileUuid} + '_' + ${review.reviewFileOriginalName})}"></a>
+                            </div>
+                            <div class="review-content-box">
+                                <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
+                                <p class="pcontent">
+                                    <span th:text="${review.reviewRegisterDate}" class="review-date"></span>
+                                    <span class="base-info-splitter">|</span>
+                                    <span th:text="${review.applyLocation}" class="review-location"></span>
+                                </p>
+                                <p th:text="${review.reviewContent}" class="review-description-text">
+                                </p>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <!-- 리뷰 목록 끝 -->
+                    <!-- 삭제 확인 모달 -->
+                    <div id="delete-modal" class="delete-modal" style="visibility: hidden;">
+                        <div class="delete-modal-wrapper">
+                            <div class="delete-modal-content">
+                                <p>이 후기를 삭제하시겠습니까?</p>
+                                <div class="delete-modal-buttons">
+                                    <button class="delete-btn" data-review-id="1">확인</button>
+                                    <button onclick="closeDeleteModal()">취소</button>
                                 </div>
                             </div>
-                            <div style="clear:both;"></div>
                         </div>
-                    <!-- 리뷰 목록 끝 -->
+                    </div>
+                    <!--삭제확인 모달끝-->
                     <!-- 페이징 시작 -->
                     <section>
                         <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
@@ -194,7 +210,11 @@
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="/js/mypage/mypage-select.js"></script>
+<script src="/js/mypage/my-review.js"></script>
 <script src="/js/components/header-client.js"></script>
-
+<script>
+    function submitDelete(){
+        document.querySelector('#deleteForm').submit();
+    }
+</script>
 </html>
