@@ -215,6 +215,8 @@
     // let applies = [[${applies}]];
     let memberId = [[${session.memberId}]];
     let nextPage = 0;
+    memberId = memberId == null ? 0 : memberId;
+    console.log(memberId);
     // let applys = [[${applys}]];
     // applys는 ajax로 받아와서 여기선 못가져오는게 맞나?
     // console.log("applys")
@@ -568,7 +570,7 @@
         let applyDate = [[${applyDate}]] || "none";
         let applyLocation = [[${applyLocation}]] || "none";
         let page = nextPage;
-        console.log("들어옴@@@@@@@@");
+        // console.log("들어옴@@@@@@@@");
         // nowDateWhole <- 현재시간
         // registerDateWhole <- 등록일자
         // applyDateWhole <- 클라이언트가 연수를 요청한 날
@@ -580,7 +582,7 @@
 
         // let currentPage = parseInt($('#current-page').val());
         nextPage++;
-        console.log("ajax위 들어옴");
+        // console.log("ajax위 들어옴");
         // let currentPage = parseInt($('#current-page').val());
         // let nextPage = currentPage + 1;
         // console.log("currentPage : " + currentPage);
