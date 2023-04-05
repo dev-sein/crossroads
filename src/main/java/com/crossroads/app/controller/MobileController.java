@@ -58,7 +58,7 @@ public class MobileController {
         return "mobile/list-mobile";
     }
 
-    @PostMapping("list-mobiles/{page}")
+    @GetMapping("list-mobiles/{page}")
     @ResponseBody
     public List<ApplyDTO> listMobiles(HttpServletRequest request, @PathVariable("page") Integer page, Criteria criteria, Model model) throws Exception{
         if (criteria.getPage() == 0){

@@ -604,6 +604,9 @@
         if ($(".result-beginners").children().length < 4){
             fetchData();
         }
+        if ($(".result-beginners").children().length < 4){
+            fetchData();
+        }
     });
     //    원래 코드
     $(window).scroll(function () {
@@ -613,7 +616,10 @@
         // console.log($(window).height());
         // console.log($(document).height() - $(window).height());
         // console.log(Math.ceil($(window).scrollTop()));
-        if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        // if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        //     fetchData();
+        // }
+        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
             fetchData();
         }
     });
