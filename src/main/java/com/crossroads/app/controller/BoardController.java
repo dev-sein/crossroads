@@ -45,6 +45,30 @@ public class BoardController {
         return "board/board-write";
     }
 
+    // 게시판 작성(저장하기)
+    @PostMapping("board-save")
+    public String saveBoard(@ModelAttribute("boardDTO") BoardDTO boardDTO, @RequestParam("file") List<MultipartFile> multipartFiles, @RequestParam("fileUUIDs") List<String> fileUUIDs, HttpServletRequest request) {
+        // 세션에서 회원 정보 가져오기 (임시로 사용)
+        HttpSession session = request.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+        boardDTO.setMemberId(memberId);
+
+        // Set file information in BoardDTO using BoardFileVO
+        List<BoardFileVO> files = new ArrayList<>();
+        for (int i = 0; i < multipartFiles.size(); i++) {
+            MultipartFile multipartFile = multipartFiles.get(i);
+            BoardFileVO boardFileVO = new BoardFileVO();
+            boardFileVO.setFileUUID(fileUUIDs.get(i));
+            boardFileVO.setOriginalFileName(multipartFile.getOriginalFilename());
+            boardFileVO.setFileSize(multipartFile.getSize());
+            boardFileVO.setContentType(multipartFile.getContentType());
+            files.add(boardFileVO);
+        }
+        boardDTO.setFiles(files);
+
+        boardService.save(boardDTO);
+        return "redirect:/boards/board-list";
+    }
 
 
 

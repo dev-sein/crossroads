@@ -38,4 +38,5 @@ public class BoardDTO {
 
     /*boardFileVO*/
     private List<BoardFileVO> files;
+    private String fileUuid;
 }
