@@ -130,7 +130,7 @@
             let $reviewList = $("#review-list");
 
             reviews.forEach(review => {
-                    let imageUrl = review.reviewFileSystemName ? '/uploads/' + review.reviewFileSystemName : null;
+                    let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
                     let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
                     let formattedDate = timeSince(new Date(review.reviewRegisterDate));
                     // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.

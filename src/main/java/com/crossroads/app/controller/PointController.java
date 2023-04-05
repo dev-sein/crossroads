@@ -22,7 +22,9 @@ public class PointController {
     public String buyPoint(Model model, HttpSession session) {
         session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
-
+        if(memberId == null) {
+            return "member/login";
+        }
         model.addAttribute("point", pointService.getPoint(memberId));
         return "point/buyPoint";
     }
