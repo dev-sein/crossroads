@@ -13,7 +13,7 @@
 <!-- aside -->
 <aside th:fragment="admin-aside" class="sidebar">
 	<header class="sidebar-header">
-		<h1>교차로</h1>
+		<h1><a th:href="@{/admin/home}">교차로</a></h1>
 	</header>
 	<nav>
 		<ul>
@@ -21,8 +21,8 @@
 				<a th:href="@{/admin/home}">
 					<li>
 						<details>
-							<summary class="nav-menu menu--current">
-								<h2 class="menu__title">관리자 홈</h2>
+							<summary class="nav-menu menu--current" onclick="location.href='/admin/home'">
+								<a th:href="@{/admin/home}"><h2 class="menu__title">관리자 홈</h2></a>
 							</summary>
 						</details>
 					</li>
