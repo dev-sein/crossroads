@@ -302,11 +302,23 @@
 
 
     $("#submit-profile").on("click", function(){
-        console.log(globalThis.arrayFile2[0]);
-        console.log(globalThis.arrayFile2[0][0].name);
-        console.log(globalThis.arrayFile2[0][0].size);
-        console.log(globalThis.arrayFile2[0][0].type);
-        console.log(globalThis.uuid[0]);
+        // console.log(globalThis.arrayFile2[0]);
+        // console.log(globalThis.arrayFile2[0][0].name);
+        // console.log(globalThis.arrayFile2[0][0].size);
+        // console.log(globalThis.arrayFile2[0][0].type);
+        // console.log(globalThis.uuid[0]);
+
+        if($('#modal_user_img').attr('src') == "/images/mypage/main-logo.png") {
+            $.ajax({
+                url: "/mypage/delete-profile",
+                type: "post",
+                success: function(data){
+                    let url = `/mypage/my-info`
+                    location.replace(url);
+                }
+
+            });
+        }
 
         let files = new Array();
 
@@ -324,7 +336,7 @@
 
 
         $.ajax({
-            url: "/mypage/saveProfile",
+            url: "/mypage/save-profile",
             type: "post",
             data: JSON.stringify(files),
             contentType: "application/json; charset=utf-8",

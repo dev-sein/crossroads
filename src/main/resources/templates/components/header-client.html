@@ -15,50 +15,50 @@
     <header th:fragment="header-client" class="header">
         <section class="nav-client">
             <div class="container">
-                <a class="main-logo active" href="/main" style="font-size:24px; font-weight:700;">
+                <a class="main-logo active" th:href="@{/main}" style="font-size:24px; font-weight:700;">
                     교차로
                 </a>
                 <div class="left-nav">
-                    <a class="menu element" th:href="@{/introduce}">사업 소개</a>
-                    <a class="menu element" th:href="@{/apply/apply-first}">연수 신청</a>
-                    <a class="menu element" th:href="@{/points/buyPoint}">포인트 충전</a>
+                    <a class="menu element" th:href="@{/introduce/introduce}">사업 소개</a>
+                    <a class="menu element" th:href="@{/applies/apply-first}">연수 신청</a>
+                    <a class="menu element" th:href="@{/points/buy-point}">포인트 충전</a>
                     <a class="menu element" th:href="@{/boards/board-list}">자유 게시판</a>
                     <a class="menu element" th:href="@{/review-list}">이용후기</a>
                     <div class="nav-divider"></div>
-                    <a class="menu element" th:href="@{/notice}">자주 묻는 질문</a>
+                    <a class="menu element" th:href="@{/introduce/notice}">자주 묻는 질문</a>
                 </div>
                 <div class="right-nav">
                     <div class="right-nav-list">
                         <a id="user-icon" class="right-nav-item " href="">
-                            <!--<img alt="" class="user-img" height="32px" width="32px" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}" >-->
+                            <img alt="" class="user-img" height="32px" width="32px" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}" >
                         </a>
                         <div id="dropdown" class="nav-dropdown">
-                            <a class="nav-dropdown-item element" href="/mypage-main">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-info}">
                                 <img src="/images/header/icon_menu_home.png" alt="">
                                 마이페이지
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" href="">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-board}">
                                 <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 게시글 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" href="">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-reply}">
                                 <img src="/images/header/icon_menu_reply.png" alt="">
                                 나의 댓글 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" href="">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-point}">
                                 <img src="/images/header/icon_menu_payment.png" alt="">
                                 포인트 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" href="">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-apply}">
                                 <img src="/images/header/icon_menu_list.png" alt="">
                                 연수 내역
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" href="">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-review}">
                                 <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 후기
                             </a>
