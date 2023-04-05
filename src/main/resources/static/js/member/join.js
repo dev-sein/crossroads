@@ -3,9 +3,6 @@ const $emailInput = $(".email .input-text");
 const $emailWarning = $(".email .error-text");
 const $emailInputvalue = $("#memberEmail");
 
-
-
-
 // 아이디
 const $idInput = $('.id .input-text');
 let $idWarning = $("#id-error");
@@ -289,7 +286,7 @@ function checkEmail() {
 
 	});
 
-	/* file upload */
+	/!* file upload *!/
 	$("#file").on('change', function () {
 		var fileName = $("#file").val().split('/').pop().split('\\').pop();
 		var $fileName = $("#file").val().split('/').pop().split('\\').pop();

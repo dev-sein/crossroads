@@ -204,7 +204,7 @@ public class MobileController {
         //세션 끊기
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/mobile/list-mobile";
+        return "redirect:/applies/list-mobile";
     }
 
     //비밀번호 찾기 1 - 이메일 인증
@@ -416,6 +416,11 @@ public class MobileController {
 
         session.setAttribute("memberVO", memberVO);
         return new RedirectView("list-mobile");
+    }
+
+    @GetMapping("error")
+    public String errorTest(){
+        return "error/404-mobile";
     }
 
 

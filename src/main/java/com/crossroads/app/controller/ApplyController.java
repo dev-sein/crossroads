@@ -33,21 +33,18 @@ public class ApplyController {
     @GetMapping("apply-first")
     public String formFirst(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("applyDTO", new ApplyDTO());
-        HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("memberId", 2L);
-        //model.addAttribute("members", memberService.getMember(2L));
-        model.addAttribute("members", memberService.getMemberInfo(2L));
-
-        String memberName = httpServletRequest.getParameter("memberName");
-        String memberPhone = httpServletRequest.getParameter("memberPhone");
-        String memberPoint = httpServletRequest.getParameter("memberPoint");
+        HttpSession session = httpServletRequest.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+        if(memberId == null) {
+            return "member/login";
+        }
+        model.addAttribute("members", memberService.getMemberInfo(memberId));
         return "form/apply-first";
     }
 
     @PostMapping("apply-first/send")
     public RedirectView applyFirst(ApplyDTO applyDTO, Model model, HttpSession session, String applyCourse){
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
-        session.setAttribute("memberId", 2L);
         model.addAttribute("applyCourse", applyCourse);
         log.info("apply-first : " + applyCourse);
         return new RedirectView("/apply/apply-second?applyCourse=" + applyCourse);
@@ -60,7 +57,6 @@ public class ApplyController {
         model.addAttribute("applyCourse", applyCourse);
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
         HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("memberId", 2L);
         log.info("apply-second getmapping : " + applyCourse);
         return "form/apply-second";
     }
@@ -68,7 +64,7 @@ public class ApplyController {
     @PostMapping("apply-second")
     public RedirectView applySecondPost(HttpServletRequest httpServletRequest, Model model, ApplyDTO applyDTO, String applyCourse, RedirectAttributes redirectAttributes, PointDTO pointDTO){
         HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("memberId", 2L);
+       // httpSession.setAttribute("memberId", 2L);
         model.addAttribute("applyCourse", applyCourse);
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
         applyDTO.setMemberId((Long)httpSession.getAttribute("memberId"));
@@ -77,9 +73,7 @@ public class ApplyController {
         log.info(applyDTO.toString());
         log.info(pointDTO.toString());
         model.addAttribute("applyDTO", applyDTO);
-      /*  redirectAttributes.addAttribute("applyDTO", applyDTO);*/
         log.info("apply-second post 들어옴@@@@@@@@@@@@@@@@@@@@@@22");
-    //    pointService.modifyPoint(applyDTO.getMemberId(), );
         pointService.savePoint(pointDTO);
         return new RedirectView("/apply/apply-third");
     }
@@ -88,7 +82,6 @@ public class ApplyController {
     @GetMapping("/apply-third")
     public String formThird(Model model, HttpServletRequest httpServletRequest) {
         HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("memberId", 2L);
         return "form/apply-third";
     }
 

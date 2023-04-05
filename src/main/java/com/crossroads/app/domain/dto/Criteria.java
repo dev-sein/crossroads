@@ -11,6 +11,10 @@ public class Criteria {
     private int amount;
     private int offset;
 
+    public Criteria() {
+        this.page = 1;
+    }
+
     public static Criteria create(int page, int amount) {
         Criteria criteria = new Criteria();
         criteria.setPage(page);

@@ -14,7 +14,7 @@
 	<div class="page-info">
 		<img src="/images/admin/menubar.png" alt="icon" class="page-info__icon" />
 		<ul>
-			<a href="">
+			<a th:href="@{/admin/home}">
 				<span>
 					<li class="page-info__detail page-info--current">관리자 홈</li>
 				</span>
@@ -24,7 +24,7 @@
 	<div class="page-language">
 		<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
 			<div class="AnnouncementButton_container__1p1gr" role="button">
-				<a href="">
+				<a th:href="@{/main}">
 					<strong>홈페이지</strong>
 				</a>
 			</div>
@@ -32,7 +32,7 @@
 		<button class="Button_button__1e2A2 Button_tertiaryGrey__3gRf4 Button_text__3KyLl Button_md__1FRMG" type="button" href="">
 				<span>
 					<span class="Button_children__q9VCZ">
-						<a href="">
+						<a th:href="@{/member/login}">
 							<strong>LOGOUT</strong>
 						</a>
 					</span>
