@@ -94,6 +94,7 @@ public class ReviewController {
     @GetMapping("/review-update")
     public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model) {
         ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
+       /* model.addAttribute("reviewIds",  reviewBoardService.getReview(reviewId));*/
         if (reviewVO == null) {
             return "redirect:/review-list";
         }
@@ -102,7 +103,7 @@ public class ReviewController {
     }
 
     @PostMapping("/review-update/{reviewId}")
-    public String reviewupdate(@PathVariable("reviewId") Long reviewId,
+    public String reviewupdate(@PathVariable("reviewId") Long reviewId, @PathVariable("file") String filename,
                                @ModelAttribute @Validated ReviewDTO reviewDTO, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes, HttpSession session,
                                @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
@@ -114,6 +115,7 @@ public class ReviewController {
         reviewDTO.setReviewId(reviewId);
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
         reviewDTO.setMemberId(memberId);
+
         if (image != null && !image.isEmpty()) {
             String originalFileName = image.getOriginalFilename();
             String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
