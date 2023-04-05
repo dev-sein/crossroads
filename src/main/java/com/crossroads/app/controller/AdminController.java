@@ -24,10 +24,12 @@ public class AdminController {
     private final ReviewBoardService reviewBoardService;
     private final ApplyService applyService;
     private final ReplyService replyService;
+    private final PointService pointService;
 
     //관리자 홈 및 출력
     @GetMapping("home")
-    public String adminHome(){
+    public String adminHome(Model model){
+        
         return "admin/admin-home";
     }
 
@@ -87,22 +89,28 @@ public class AdminController {
     /*====================연수 신청 게시판 끝==============================*/
 
     /*====================포인트 내역 시작==============================*/
-    //관리자 포인트 목록
-    @GetMapping("points/list")
+    //관리자 포인트 내역
+    @GetMapping("point/list")
     public String adminPoint(){
         return "admin/admin-point";
     }
 
-    //관리자 포인트 목록
+    //관리자 포인트 내역 목록
     @ResponseBody
     @PostMapping("points/list")
-    public List<PointVO> adminPointList(){
-        return null;
+    public Map<String, Object> adminPointList(@RequestBody Map<String, Object> requestData, Criteria criteria){
+        return pointService.getListAdmin(requestData, criteria);
     }
-
-//    관리자 포인트 내역 삭제
-
+    //    관리자 포인트 내역 삭제
+    @ResponseBody
+    @DeleteMapping("points/delete")
+    public void deletePoint(@RequestParam("checkedIds[]") List<String> checkedIds) {
+//        log.info("여긴 들어옴!");
+//        log.info(checkedIds.toString()); // 이것도 잘 가져옴.
+        pointService.remove(checkedIds);
+    }
     /*====================포인트 내역 끝==============================*/
+
     /*====================후기 게시판 시작==============================*/
 //    관리자 후기 게시판 목록
     @GetMapping("review/list")
