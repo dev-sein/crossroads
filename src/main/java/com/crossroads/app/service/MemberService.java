@@ -154,9 +154,13 @@ public class MemberService {
         return result;
     }
 
+
     //관리자 회원 총 수
     public Integer getCountAdmin(String keyword) {
         return memberDAO.findCountAllAdmin(keyword);
+    }
+    public Integer getCountAdmin() {
+        return memberDAO.findCountAllAdmin(null);
     }
 
     //관리자 회원 삭제

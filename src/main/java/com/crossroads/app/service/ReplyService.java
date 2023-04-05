@@ -49,12 +49,23 @@ public class ReplyService {
         String keyword = (String) requestData.get("keyword");
         int page = (int) requestData.get("page");
 
+        log.info("===============================");
+        log.info("되냐?");
+        log.info(page + "");
+        log.info(keyword + "");
+        log.info(criteria.toString());
+        log.info("===============================");
         if (page == 0) {
             page = 1;
         }
         criteria = criteria.create(page, 6);
 
         List<ReplyDTO> replies = replyDAO.findAllAdmin(criteria, keyword);
+
+        log.info("===============================");
+        log.info("되냐?");
+        log.info(replies.toString());
+        log.info("===============================");
 
         result.put("replies", replies);
         result.put("pagination", new PageDTO().createPageDTO(criteria, getCountAdmin(keyword)));

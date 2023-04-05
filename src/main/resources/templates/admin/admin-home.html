@@ -30,40 +30,39 @@
 	<article class="module module--daily-summary">
 		<p class="module__title">
 			회원 정보
-			<span class="text-default-bright header-badge badge-danger">new</span>
 		</p>
 		<div class="card-body border-top today-table">
 			<div class="tt-list">
 				전체 가입자
-				<span class="text-danger">6</span>
-				가입 회원
-				<span class="text-danger">7</span>
+				<span class="text-danger" th:text="${members[0]}"></span>
+				현재 회원
+				<span class="text-danger" th:text="${members[1]}"></span>
 				탈퇴 회원
-				<span class="text-danger">1</span>
+				<span class="text-danger" th:text="${members[2]}"></span>
 			</div>
 		</div>
 	</article>
 	<article class="module module--monthly-statistics">
-		<p class="module__title">연수 신청 현황 <span class="text-default-bright header-badge badge-danger">new</span>
+		<p class="module__title">연수 신청 현황
 		</p>
 		<div class="card-body border-top today-table">
 			<div class="tt-list">
 				전체
-				<span class="text-danger">3</span>
+				<span class="text-danger" th:text="${applies[0]}">3</span>
 				신청수
-				<span class="text-danger">1</span>
+				<span class="text-danger" th:text="${applies[1]}">1</span>
 			</div>
 		</div>
 	</article>
 	<article class="module module--closed-qna">
-		<p class="module__title">포인트 결제 현황 <span class="text-default-bright header-badge badge-danger">new</span>
+		<p class="module__title">포인트 결제 현황
 		</p>
 		<div class="card-body border-top today-table">
 			<div class="tt-list">
 				포인트 결제
-				<span class="text-danger">3</span>
+				<span class="text-danger" th:text="${points[0]}">3</span>
 				포인트 환전
-				<span class="text-danger">1</span>
+				<span class="text-danger" th:text="${points[1]}">1</span>
 			</div>
 		</div>
 	</article>
@@ -71,31 +70,9 @@
 		<p class="module__title">후기 관리</p>
 		<div class="mBoardList notice">
 			<ul>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">
-						<strong>[공지사항] 이용 주의사항</strong>
-					</a>
-					<span class="date">2023-01-31</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test01</a>
-					<span class="date">2023-03-21</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test02</a>
-					<span class="date">2023-03-22</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test03</a>
-					<span class="date">2023-03-23</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test04</a>
-					<span class="date">2023-02-24</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test05</a>
-					<span class="date">2023-02-25</span>
+				<li th:each="review: ${reviews}">
+					<a data-gtm="DATA_notice_contents" href="@{/admin/review/list}" th:text="'[후기] ' + ${review.reviewTitle}"></a>
+					<span class="date" th:text="${review.reviewRegisterDate}"></span>
 				</li>
 			</ul>
 		</div>
@@ -104,27 +81,9 @@
 		<p class="module__title">게시글 관리</p>
 		<div class="mBoardList notice">
 			<ul>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">
-						<strong>[공지사항] 이용 주의사항</strong>
-					</a>
-					<span class="date">2023-01-31</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[게시글] test01</a>
-					<span class="date">2023-03-17</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[게시글] test02</a>
-					<span class="date">2023-03-17</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[게시글] test03</a>
-					<span class="date">2023-03-17</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[후기] test04</a>
-					<span class="date">2023-03-17</span>
+				<li th:each="board: ${boards}">
+					<a data-gtm="DATA_notice_contents" href="@{/admin/board/list}" th:text="'[게시글] ' + ${board.boardTitle}"></a>
+					<span class="date" th:text="${board.boardRegisterDate}"></span>
 				</li>
 			</ul>
 		</div>
@@ -133,36 +92,34 @@
 		<p class="module__title">댓글 관리</p>
 		<div class="mBoardList notice">
 			<ul>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">
-						<strong>[공지사항] 이용 주의사항</strong>
-					</a>
-					<span class="date">2023-01-31</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[댓글] test01</a>
-					<span class="date">2023-03-21</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[댓글] test02</a>
-					<span class="date">2023-03-22</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[댓글] test03</a>
-					<span class="date">2023-03-23</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[댓글]] test04</a>
-					<span class="date">2023-02-24</span>
-				</li>
-				<li>
-					<a data-gtm="DATA_notice_contents" href="#none">[댓글] test05</a>
-					<span class="date">2023-02-25</span>
+				<li th:each="reply: ${replies}">
+					<a data-gtm="DATA_notice_contents" href="@{/admin/reply/list}" th:text="'[댓글] ' + ${reply.replyContent}"></a>
+					<span class="date" th:text="${reply.replyRegisterDate}"></span>
 				</li>
 			</ul>
 		</div>
 	</article>
 </main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:inline="javascript">
+	console.log([[${replies}]]);
+
+	function changeDate(e) {
+		var date = new Date(e);
+		var year = date.getFullYear();
+		var month = ("0" + (1 + date.getMonth())).slice(-2);
+		var day = ("0" + date.getDate()).slice(-2);
+
+		return year + "-" + month + "-" + day;
+	}
+
+	let $date = $(".date");
+
+	$date.each((i, e) => {
+		let newDate = changeDate($(e).text());
+		$(e).text(newDate);
+	});
+</script>
 </html>
 

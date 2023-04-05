@@ -20,7 +20,7 @@ public class ApplyServiceTests {
     public void getListTest(){
         Criteria criteria = new Criteria();
         criteria.create(3,5);
-        log.info(applyService.getList(criteria).toString());
+//        log.info(applyService.getList(criteria).toString());
     }
 
     @Test

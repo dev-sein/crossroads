@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-
 public class ReviewDTO {
     private Long reviewId;
     private Long memberId;

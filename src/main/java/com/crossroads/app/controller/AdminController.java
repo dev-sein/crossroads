@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.*;
+import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.PointVO;
 import com.crossroads.app.service.*;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +32,51 @@ public class AdminController {
 
     //관리자 홈 및 출력
     @GetMapping("home")
-    public String adminHome(Model model){
-        
+    public String adminHome(Criteria criteria, Model model){
+        Map<String, Object> requestData = new HashMap<>();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        requestData.put("page", criteria.getPage());
+
+        /* 회원 정보 가공 */
+        List<MemberVO> memberVOs =  (List<MemberVO>) memberService.getListAdmin(requestData, criteria).get("members");
+        Long memberId = memberVOs.get(0).getMemberId();
+        Integer memberCount = memberService.getCountAdmin();
+        Integer withdrawMember = memberId.intValue() - memberCount;
+
+        int[] members = {memberId.intValue(), memberCount, withdrawMember};
+
+        /* 연수 신청 현황 가공 */
+        List<ApplyVO> applyVOs = (List<ApplyVO>) applyService.getListAdmin(requestData, criteria).get("applies");
+        Long applyId = applyVOs.get(0).getApplyId();
+        Integer applyCount = applyService.getCountAdmin();
+
+        int[] applies = {applyId.intValue(), applyCount};
+
+        /* 포인트 결제 현황 가공 */
+        Integer paymentCount = pointService.getCountAdmin("결제");
+        Integer exchangeCount = pointService.getCountAdmin("환전");
+
+        int[] points = {paymentCount, exchangeCount};
+
+        /* 후기 게시판 리스트 */
+        List<ReviewDTO> reviews = (List<ReviewDTO>) reviewBoardService.getListAdmin(requestData, criteria).get("reviews");
+
+        /* 자유 게시판 리스트 */
+        List<BoardDTO> boards = (List<BoardDTO>) freeBoardService.getListAdmin(requestData, criteria).get("boards");
+
+        /* 댓글 게시판 리스트 */
+        List<ReplyDTO> replies = (List<ReplyDTO>) replyService.getListAdmin(requestData, criteria).get("replies");
+
+
+
+
+        model.addAttribute("members", members);
+        model.addAttribute("applies", applies);
+        model.addAttribute("points", points);
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("boards", boards);
+        model.addAttribute("replies", replies);
         return "admin/admin-home";
     }
 
