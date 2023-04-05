@@ -17,6 +17,6 @@ public class ApplyInterceptor implements HandlerInterceptor {
         if (session.getAttribute("memberId") == null) {
             response.sendRedirect("/member/login");
         }
-        return true;
+        return true; /* 로그인 되지 않은 경우 */
     }
 }
