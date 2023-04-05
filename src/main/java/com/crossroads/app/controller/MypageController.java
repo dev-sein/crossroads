@@ -239,7 +239,7 @@ public class MypageController {
     @ResponseBody
     public boolean myPasswordCheckOut(String memberPassword, HttpSession session) {
 //        Long password = memberService.getPassword(memberPassword);
-        session.setAttribute("memberId", 1L);
+        session.setAttribute("memberId", 2L);
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == memberService.getPassword(memberId, memberPassword)) {
             return true;
