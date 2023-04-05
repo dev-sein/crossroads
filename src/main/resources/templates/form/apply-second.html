@@ -110,7 +110,10 @@
                     </div>
 
                 </div>
-                <input type="text" th:value="${applyCourse}" name="applyCourse" id="applyCourse">
+                <input type="text" th:value="${applyCourse}" name="applyCourse" id="applyCourse" style="display:none;">
+                <input type="text" name="pointStatus" value="1" style="display:none;">
+                <input type="text" th:if="${applyCourse == 'A'}" name="pointPoint" th:value="50000" style="display:none;">
+                <input type="text" th:if="${applyCourse == 'B'}" name="pointPoint" th:value="100000" style="display:none;">
 
 
                 <!-- 다음 -->

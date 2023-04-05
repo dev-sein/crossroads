@@ -122,7 +122,7 @@ public class MemberController {
             return new RedirectView("/member/login?result=fail");
         }
 
-        session.setAttribute("memberVO", memberVO);
+        session.setAttribute("memberId", memberVO.getMemberId());
         return new RedirectView("/main");
     }
 

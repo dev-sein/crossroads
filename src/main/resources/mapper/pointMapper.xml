@@ -94,6 +94,7 @@
         and point_id = #{pointId}
     </select>
 
+    <!-- 포인트 내역 등록 -->
     <insert id="insert">
         insert tbl_point
         (member_id, point_status, point_point)
