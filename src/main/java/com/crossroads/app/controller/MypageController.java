@@ -151,31 +151,31 @@ public class MypageController {
     }
 
     /*마이페이지 내가 쓴 게시글 조회*/
-//    @GetMapping("/my-board")
-//    //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
-//    public String showListMyBoard(Model model, HttpSession session, Standards standards) {
-//        //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
-//        //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
-//        //standard가 getListMyBoard로 전달됨(service로 이동)
-//        Long memberId = (Long) session.getAttribute("memberId");
-//
-//        model.addAttribute("member", memberService.getMemberInfo(memberId));
-//        model.addAttribute("board", freeBoardService.getListMyBoard(memberId, standards));
-//        log.info(model.addAttribute("member", memberService.getMemberInfo(memberId)).toString());
-//        log.info(model.addAttribute("board", freeBoardService.getListMyBoard(memberId, standards)).toString());
-//        log.info(standards.toString());
-//        return "mypage/my-board";
-//    }
+    @GetMapping("/my-board")
+    //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
+    public String showListMyBoard(Model model, HttpSession session, Standards standards) {
+        //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
+        //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
+        //standard가 getListMyBoard로 전달됨(service로 이동)
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        model.addAttribute("board", freeBoardService.getListMyBoard(memberId, standards));
+        log.info(model.addAttribute("member", memberService.getMemberInfo(memberId)).toString());
+        log.info(model.addAttribute("board", freeBoardService.getListMyBoard(memberId, standards)).toString());
+        log.info(standards.toString());
+        return "mypage/my-board";
+    }
 
     /*마이페이지 내가 쓴 댓글 목록*/
-//    @GetMapping("/my-reply")
-//    public String showListMyReply(Model model, HttpSession session, Standards standards) {
-//        Long memberId = (Long) session.getAttribute("memberId");
-//
-//        model.addAttribute("member", memberService.getMemberInfo(memberId));
-//        model.addAttribute("reply", replyService.getListMyReply(memberId, standards));
-//        return "mypage/my-reply";
-//    }
+    @GetMapping("/my-reply")
+    public String showListMyReply(Model model, HttpSession session, Standards standards) {
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        model.addAttribute("reply", replyService.getListMyReply(memberId, standards));
+        return "mypage/my-reply";
+    }
 
     /*마이페이지 파일 업로드*/
     @PostMapping("/upload")

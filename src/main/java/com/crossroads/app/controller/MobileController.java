@@ -279,6 +279,9 @@ public class MobileController {
     @GetMapping("/my-mobile")
     public String myMobile(Model model, HttpSession session){
         Long memberId = (Long)session.getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/applies/login-mobile";
+        }
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "mobile/my-mobile";
     }
