@@ -89,7 +89,7 @@
                         <p class="card-contents" th:text="${reviews[0].reviewContent}"></p>
                     </div>
                     <div class="card-img">
-                        <img th:src="@{/uploads/{filename}(filename=${reviews[0].reviewFileSystemName})}"
+                        <img th:src="@{/upload/{filename}(filename=${reviews[0].reviewFileSystemName})}"
                              class="review-image">
                     </div>
                 </div>
