@@ -2,10 +2,10 @@ package com.crossroads.app.domain.dao;
 
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -60,5 +60,16 @@ public class BoardDAO {
     public void deleteByMemberId(Long memberId){
         boardMapper.deleteByMemberId(memberId);
     };
+
+    /* 게시판 전체 조회*/
+    public List<BoardDTO> findAllBoard() {
+        return boardMapper.selectBoardAll();
+    }
+
+    /*게시판 작성 저장*/
+    // 후기 작성
+    public void save(BoardDTO boardDTO) {
+        boardMapper.insert(boardDTO);
+    }
 
 }

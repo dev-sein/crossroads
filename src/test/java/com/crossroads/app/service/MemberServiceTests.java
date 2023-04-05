@@ -14,6 +14,8 @@ public class MemberServiceTests {
     @Autowired
     MemberService memberService;
 
+//    @Test
+//    public void selectTest(){log.info(memberService.getMember(1L).toString());}
     @Test
     public void selectTest(){
 //        log.info(memberService.getMemberInfo(1L).toString());

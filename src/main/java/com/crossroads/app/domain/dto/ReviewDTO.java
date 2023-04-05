@@ -15,6 +15,12 @@ public class ReviewDTO {
     private String reviewContent;
     private String reviewFileSystemName;
     private String reviewGrade;
+    private String reviewFileOriginalName;
+    private String reviewFileUuid;
+    private String reviewFilePath;
+    private String reviewFileSize;
+    private String reviewFileType;
+
     private String applyCourse;
     private String applyLocation;
     private String applyDate;
@@ -31,5 +37,6 @@ public class ReviewDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
+
 
 }

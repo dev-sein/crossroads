@@ -23,17 +23,14 @@ public interface BoardMapper {
     //    게시글 전체 조회
     public List<BoardDTO> selectAll();
 
-//    마이페이지 게시글 전체 조회
+    /*마이페이지 게시글 전체 조회*/
     public List<BoardDTO> selectAllMy(Long memberId, Standards standards);
 
-//    마이페이지 게시글 페이징 - 전체 개수
+    /*마이페이지 게시글 페이징 - 전체 개수*/
     public int selectTotalMy();
+
     //    관리자 전체 조회
     public List<BoardDTO> selectAllMy(Long memberId);
-
-
-    //    자유게시판 전체 조회
-    public List<ReviewDTO> selectAllBoards();
 
 
 //    상세 보기
@@ -44,4 +41,12 @@ public interface BoardMapper {
 
 //    회원별 게시글 삭제
     public void deleteByMemberId(Long memberId);
+
+    //    게시판 전체 조회
+    public List<BoardDTO> selectBoardAll();
+
+    // 게시판 작성
+    public void insert(BoardDTO boardDTO);
+
+
 }

@@ -51,7 +51,17 @@ public class ReviewBoardService implements BoardService {
         return result;
     }
 
-//    관리자 후기 게시판 삭제
+    @Override
+    public List<BoardDTO> getListBoard() {
+        return null;
+    }
+
+    @Override
+    public void save(BoardDTO boardDTO) {
+
+    }
+
+    //    관리자 후기 게시판 삭제
     @Override
     public void remove(List<String> reviewIds) {
         reviewIds.stream().map(reviewId -> Long.valueOf(reviewId)).forEach(reviewDAO::deleteByIdAdmin);

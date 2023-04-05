@@ -13,6 +13,7 @@ import java.lang.reflect.Member;
 public class MemberMapperTests {
     @Autowired
     MemberMapper memberMapper;
+    PointMapper pointMapper;
 
     //회원가입 테스트
 //   @Test
@@ -25,6 +26,11 @@ public class MemberMapperTests {
 //        memberVO.setMemberEmail("abc@naver.com");
 //
 //        memberMapper.join(memberVO);
+//    }
+//
+//    @Test
+//    public void selectTest(){
+//       log.info(memberMapper.select(1L).toString());
 //    }
 
     @Test
@@ -51,5 +57,8 @@ public class MemberMapperTests {
         MemberVO memberVO = new MemberVO();
         memberMapper.changePassword("filetest@gmail.com", "passwordtest31");
     }
+
+
+
 
 }

@@ -1,7 +1,6 @@
 package com.crossroads.app.controller;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
-import com.crossroads.app.service.MemberFileService;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     private final MemberService memberService;
-    private final MemberFileService memberFileService;
 
     //회원가입
     @GetMapping("join")
@@ -33,7 +31,6 @@ public class MemberController {
    //회원가입
     @PostMapping("join")
     public RedirectView joinfinish(MemberVO memberVO){
-        memberVO.setMemberDriveRegisterDate("2018-12-12");
         memberService.save(memberVO);
         return new RedirectView("login");
     }
@@ -91,34 +88,40 @@ public class MemberController {
         return new RedirectView("/member/login");
     }
 
-   @GetMapping("/login-kakao")
-    public String kakaoCallbackLogin(@RequestParam String code, HttpSession session) throws Exception {
-        log.info(code);
-        String token = memberService.getKaKaoAccessToken(code);
-        session.setAttribute("token", token);
+    //카카오 회원가입
+    @GetMapping("kakao")
+    public RedirectView kakaoJoin(String code, HttpSession session) throws Exception {
+        String token = memberService.getKaKaoAccessToken(code, "join");
+        MemberVO kakaoInfo = memberService.getKakaoInfo(token);
+        kakaoInfo.setMemberStatus(1);
+        //String userIdentification = null;
+        MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
+
+        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+        if (memberVO == null || memberVO.getMemberStatus() != 1) {
+            session.setAttribute("kakaoInfo", kakaoInfo);
+            kakaoInfo.setMemberStatus(1);
+            log.info("카카오 들어옴");
+            return new RedirectView("/member/join");
+        }
+        session.setAttribute("members", memberVO);
+        return new RedirectView("/main/");
+    }
+
+    @GetMapping("kakao-login")
+    public RedirectView kakaoLogin(String code, HttpSession session) throws Exception {
+        String token = memberService.getKaKaoAccessToken(code, "login");
         memberService.getKakaoInfo(token);
-        return "member/login";
-    }
 
-    @PostMapping("/login-kakao")
-    public void kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
-        log.info(code);
-        String token = memberService.getKaKaoAccessToken(code);
-        session.setAttribute("token", token);
-        memberService.getKakaoInfo(token);
-    }
+        MemberVO kakaoInfo = memberService.getKakaoInfo(token);
+        MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
 
-    //로그아웃
-    @GetMapping("/logout-kakao")
-    public void kakaoLogout(HttpSession session){
-        log.info("logout");
-        memberService.logoutKakao((String)session.getAttribute("token"));
-        session.invalidate();
-    }
+        if(memberVO.getMemberStatus() != 1){
+            return new RedirectView("/member/login?result=fail");
+        }
 
-    @GetMapping("callback")
-    public String callBack(){
-        return "/member/callback";
+        session.setAttribute("memberId", memberVO.getMemberId());
+        return new RedirectView("/main");
     }
 
     @PostMapping("login-naver")

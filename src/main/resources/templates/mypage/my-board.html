@@ -17,9 +17,6 @@
 <body>
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <div id="wrap">
-    <!--    <div class="container">
-            <div id="message"></div>
-        </div><a class="advertisement no_message" id="message_advertisement"></a>-->
     <div class="page">
         <div class="page-inner">
             <!--  좌측 사이드바 시작-->
@@ -29,8 +26,7 @@
                     <a class="profile-setting" href="/accounts/settings/profile/"> 클라이언트 정보 </a>
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
-                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"
-                                 onclick="show_img_edit_modal()" src="/images/mypage/main-logo.png">
+                            <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png">
                         </div>
@@ -156,19 +152,19 @@
                                     </div>
                                 </div>
                                 <div class="board-container">
-                                    <img th:src="@{/storages/search/files/display(fileName=${file[0].filePath} + '/' + ${file[0].fileUuid} + '_' + ${file[0].fileOrgName})}" />
+                                    <img th:src="@{/mypage/display(fileName=${file[0].filePath} + '/' + ${file[0].fileUuid} + '_' + ${file[0].fileOriginalName})}" />
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>
                             <section>
-                                <a class="change-page" th:href="@{/mypage/my-board(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
+                                <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
                                 <ul id="paging">
                                     <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
-                                        <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-board(page=${page})}"><li th:text="${page}"></li></a>
+                                        <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-review(page=${page})}"><li th:text="${page}"></li></a>
                                         <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
                                     </th:block>
                                 </ul>
-                                <a class="change-page" th:href="@{/mypage/my-board(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a>
+                                <span class="next-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
                             </section>
                         </div>
                     </div> <!-- content -->

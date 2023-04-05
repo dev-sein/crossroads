@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.crossroads.app.mapper.MemberFileMapper">
-    <insert id="insert" parameterType="memberFileVO">
-        insert into tbl_member_file(file_original_name, file_uuid, file_path, file_size, member_Id)
-        values(#{fileOriginalName}, #{fileUuid}, #{filePath}, #{fileSize}, #{memberId})
-    </insert>
-</mapper>
