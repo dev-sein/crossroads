@@ -16,10 +16,10 @@ public interface BoardFileMapper {
     public void deleteByBoardId(Long boardId);
 
     //    파일 추가
-    public void insert(BoardDTO boardDTO);
+    public void insert(BoardFileVO boardFileVO);
 
     //    파일 전체 조회
-    public List<BoardDTO> selectAll(Long boardId);
+    public List<BoardFileVO> selectAll(Long boardId);
 
     //    파일 삭제
     public void delete(Long boardId);

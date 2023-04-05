@@ -100,7 +100,7 @@ function showDeleteModal(event, reviewId) {
 
 function deleteReview(reviewId) {
     $.ajax({
-        url: `/review-delete/${reviewId}`,
+        url: `/review/review-delete/${reviewId}`,
         method: "DELETE",
         success: function (response) {
             location.reload();

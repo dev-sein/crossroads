@@ -67,7 +67,6 @@ public class BoardDAO {
     }
 
     /*게시판 작성 저장*/
-    // 후기 작성
     public void save(BoardDTO boardDTO) {
         boardMapper.insert(boardDTO);
     }

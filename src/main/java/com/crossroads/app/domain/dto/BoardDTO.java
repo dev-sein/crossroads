@@ -27,15 +27,14 @@ public class BoardDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
-    /*file*/
-    private Long fileId;
-    private String fileOriginalName;
-    private String fileUuid;
-    private String filePath;
-    private String fileSize;
     /*replyVO*/
     private Integer replyCount;
 
     /*boardFileVO*/
     private List<BoardFileVO> files;
+    private Long fileId;
+    private String fileOriginalName;
+    private String fileUuid;
+    private String filePath;
+    private String fileSize;
 }

@@ -34,7 +34,7 @@
         </div>
         <div class="SectionMaker_Wrapper">
             <div class="SectionMaker_contentWrapper">
-                <form action="#" th:action="@{/review-update/{reviewId}(reviewId=${info.reviewId ?: ''})}"
+                <form action="#" th:action="@{/review/review-update/{reviewId}(reviewId=${info.reviewId ?: ''})}"
                       th:object="${info}" method="post" name="reviewForm" enctype="multipart/form-data">
 
                     <input type="hidden" th:field="*{reviewId}">

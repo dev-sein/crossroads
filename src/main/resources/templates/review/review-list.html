@@ -22,7 +22,7 @@
 
 <main>
     <!-- 추가 -->
-    <div class="write-button-top" onclick="location.href='/review-write'">후기 작성하기</div>
+    <div class="write-button-top" onclick="location.href='/review/review-write'">후기 작성하기</div>
     <!-- 추가 -->
     <div class="whole-contents-wrapper">
         <div class="contents-inner-wrapper">
@@ -130,9 +130,9 @@
             let $reviewList = $("#review-list");
 
             reviews.forEach(review => {
-                    let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
-                    let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
-                    let formattedDate = timeSince(new Date(review.reviewRegisterDate));
+                let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
+                let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                let formattedDate = timeSince(new Date(review.reviewRegisterDate));
                     // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
                     let reviewElement = `
     <div class="review">
@@ -163,7 +163,8 @@
                     <div class="delete-button" onclick="showDeleteModal(event, ${review.reviewId})">삭제</div>
                     </a>
                     </div>
-                    `;}
+                    `;
+                    }
                     reviewElement += `
                         <!--수정 삭제 버튼 끝-->
                     </div>
