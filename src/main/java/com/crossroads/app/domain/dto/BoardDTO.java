@@ -36,6 +36,4 @@ public class BoardDTO {
     /*replyVO*/
     private Integer replyCount;
 
-    /*boardFileVO*/
-    private List<BoardFileVO> files;
 }

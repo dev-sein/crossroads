@@ -139,32 +139,33 @@
                             <div class="process-guide-up-content" style="padding-top: 10px;">
                                 <div style="clear:both;"></div>
                             </div>
-                            <div class="review-box" th:each="board:${board}">
-                                <div class="review-list">
-                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'">
-                                        <a class="review-name-link" th:text="${board.boardTitle}" >게시글 제목입니다.</a>
-                                        <p class="pcontent">
-                                            <span class="review-date board-date" th:text="${board.boardRegisterDate}" >게시글 등록일</span>
-                                        </p>
-                                        <p class="review-description-text" th:text="${board.boardContent}" >
-                                            게시글 내용
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="board-container">
-                                    <img th:src="@{/mypage/display(fileName=${file[0].filePath} + '/' + ${file[0].fileUuid} + '_' + ${file[0].fileOriginalName})}" />
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
+                            <div class="board-container-box"></div>
+<!--                            <div class="review-box">-->
+<!--                                <div class="review-list">-->
+<!--                                    <div class="review-content-box" onclick="location.href='http://www.wishket.com'">-->
+<!--                                        <a class="review-name-link" th:text="${board.boardTitle}" >게시글 제목입니다.</a>-->
+<!--                                        <p class="pcontent">-->
+<!--                                            <span class="review-date board-date" th:text="${board.boardRegisterDate}" >게시글 등록일</span>-->
+<!--                                        </p>-->
+<!--                                        <p class="review-description-text" th:text="${board.boardContent}" >-->
+<!--                                            게시글 내용-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="board-container">-->
+<!--                                    <img th:src="@{/mypage/display(fileName=${board[0].filePath} + '/' + ${board[0].fileUuid} + '_' + ${board[0].fileOriginalName})}" />-->
+<!--                                </div>-->
+<!--                                <div style="clear:both;"></div>-->
+<!--                            </div>-->
                             <section>
-                                <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
+                                <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-board(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
                                 <ul id="paging">
                                     <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
-                                        <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-review(page=${page})}"><li th:text="${page}"></li></a>
+                                        <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-board(page=${page})}"><li th:text="${page}"></li></a>
                                         <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
                                     </th:block>
                                 </ul>
-                                <span class="next-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
+                                <span class="next-page"><a class="change-page" th:href="@{/mypage/my-board(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
                             </section>
                         </div>
                     </div> <!-- content -->
@@ -176,6 +177,10 @@
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+    let board = [[${board}]];
+</script>
+<script src="/js/mypage/myboard.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
 <script src="/js/components/header-client.js"></script>
 </html>
