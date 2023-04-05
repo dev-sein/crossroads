@@ -43,10 +43,12 @@
 
     <!-- 마이페이지 게시글 목록 -->
     <select id="selectAllMy" resultType="boardDTO">
-        select b.board_id , m.member_name , b.board_title , b.board_content , b.board_register_date
+        select b.board_id , m.member_name , board_title , board_content , board_register_date,
+        	   file_id, file_original_name, file_uuid, file_path, file_size, f.board_id
         from tbl_member m join tbl_board b
-        on m.member_id = b.member_id
-        order by b.board_id desc
+       	on m.member_id = b.member_id
+       	join tbl_board_file f on b.board_id = f.board_id
+		order by b.board_id desc
         limit #{standards.offset}, #{standards.rowCount}
     </select>
 

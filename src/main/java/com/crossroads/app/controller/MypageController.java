@@ -91,7 +91,7 @@ public class MypageController {
         HttpSession session = request.getSession();
 //        Long password = memberService.getPassword(memberPassword);
 //        log.info(password.toString());
-        session.setAttribute("memberId", 1L);
+        session.setAttribute("memberId", 2L);
         if ((Long) session.getAttribute("memberId") == memberService.getPassword((Long) session.getAttribute("memberId"), memberPassword)) {
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-password-change");
@@ -110,8 +110,8 @@ public class MypageController {
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChange(String memberPassword, HttpSession session) {
         log.info(memberPassword);
-        session.setAttribute("memberId", 1L);
-        memberService.modifyPasswordMy(1L, memberPassword);
+        session.setAttribute("memberId", 6L);
+        memberService.modifyPasswordMy(6L, memberPassword);
         return new RedirectView("my-main");
     }
 
@@ -160,7 +160,7 @@ public class MypageController {
     /*마이페이지 내가 쓴 게시글 조회*/
     @GetMapping("/my-board")
     //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
-    public String showListMyBoard(Model model, HttpServletRequest request, Standards standards, Long boardId) {
+    public String showListMyBoard(Model model, HttpServletRequest request, Standards standards, Long memberId) {
         //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
         //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
         //standard가 getListMyBoard로 전달됨(service로 이동)
@@ -169,11 +169,8 @@ public class MypageController {
         session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
-        model.addAttribute("file", boardFileService.getFile(boardId));
         log.info(model.addAttribute("member", memberService.getMemberInfo(1L)).toString());
         log.info(model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards)).toString());
-        log.info(model.addAttribute("file", boardFileService.getFile(boardId)).toString());
-
         log.info(standards.toString());
         return "mypage/my-board";
     }
@@ -239,7 +236,7 @@ public class MypageController {
     @ResponseBody
     public boolean myPasswordCheckOut(String memberPassword, HttpSession session) {
 //        Long password = memberService.getPassword(memberPassword);
-        session.setAttribute("memberId", 2L);
+        session.setAttribute("memberId", 9L);
         Long memberId = (Long) session.getAttribute("memberId");
         if (memberId == memberService.getPassword(memberId, memberPassword)) {
             return true;
