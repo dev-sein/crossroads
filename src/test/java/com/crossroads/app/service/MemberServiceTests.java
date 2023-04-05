@@ -16,6 +16,8 @@ public class MemberServiceTests {
 
 //    @Test
 //    public void selectTest(){log.info(memberService.getMember(1L).toString());}
+    @Test
+    public void selectTest(){log.info(memberService.getMemberInfo(1L).toString());}
 
     @Test
     public Long randomKey() {

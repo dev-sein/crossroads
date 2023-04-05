@@ -94,4 +94,8 @@ public class PointService {
         pointDAO.setAfterApply(pointDTO.getMemberId(), mypoint);
     }
 
+//    포인트 충전
+    public void modifyPointByMemberId(Long memberId, Long memberPoint) {
+        pointDAO.setPointByMemberId(memberId, memberPoint);
+    }
 }

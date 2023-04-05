@@ -41,9 +41,17 @@
         where member_id = #{memberId}
     </select>
 
-    <update id="updatePoint" parameterType="long">
+<!--  point를 0으로 바꾸는 코드  -->
+    <update id="updatePoint">
         update tbl_member
         set member_point = 0
+        where member_id = #{memberId}
+    </update>
+
+<!--  point 충전  -->
+    <update id="updatePointByMemberId">
+        update tbl_member
+        set member_point = member_point + #{memberPoint}
         where member_id = #{memberId}
     </update>
 

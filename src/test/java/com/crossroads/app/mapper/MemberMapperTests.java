@@ -33,6 +33,11 @@ public class MemberMapperTests {
 //       log.info(memberMapper.select(1L).toString());
 //    }
 
+    @Test
+    public void selectTest(){
+//       log.info(memberMapper.select(1L).toString());
+    }
+
 
 /*    @Test
     public void updateTest(){

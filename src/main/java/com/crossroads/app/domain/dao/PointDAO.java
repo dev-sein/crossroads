@@ -60,4 +60,8 @@ public class PointDAO {
     //  포인트 내역 등록
     public void register(PointDTO pointDTO) { pointMapper.insert(pointDTO);}
 
+    //    포인트 충전
+    public void setPointByMemberId(Long memberId, Long memberPoint) {
+        pointMapper.updatePointByMemberId(memberId, memberPoint);
+    }
 }

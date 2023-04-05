@@ -2,6 +2,7 @@ package com.crossroads.app.mapper;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.ApplyVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -101,10 +102,21 @@ public class ApplyMapperTests {
 //    public void selectByStarterMemberId() {
 //        applyMapper.selectByStarterMemberId(2L);
 //    }
+    @Test
+    public void selectByStarterMemberId() {
+//        applyMapper.selectByStarterMemberId(2L, Standards sta);
+    }
 
     @Test
     public void selectCountByStarterIdAndStatus() {
         applyMapper.selectCountByStarterIdAndStatus(2L, "2");
+    }
+
+    @Test
+    public void selectByVeteranMemberId() {
+        Criteria criteria = new Criteria();
+        criteria.create(3, 5);
+        log.info(applyMapper.selectByVeteranMemberId(3L, criteria).toString());
     }
 
 }

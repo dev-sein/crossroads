@@ -15,4 +15,11 @@ public class ReviewVO {
     private String reviewFileSystemName;
     private String reviewGrade;
     private Long applyId;
+
+    /* reviewFile */
+    private String reviewFileOriginalName;
+    private String reviewFileUuid;
+    private String reviewFilePath;
+    private String reviewFileSize;
+    private String reviewFileType;
 }

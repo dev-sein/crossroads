@@ -53,10 +53,11 @@ public class MemberDAO {
     public Long setPasswordMy(Long memberId, String memberPassword) { return memberMapper.changeNewPassword(memberId, memberPassword); }
     
     //랜덤키 삽입
-    public void setRandomKey(String memberEmail,Long memberRandomKey){ memberMapper.updateRandomKey(memberEmail,memberRandomKey);};
+    public void setRandomKey(String memberEmail,Long memberRandomKey){ memberMapper.updateRandomKey(memberEmail,memberRandomKey);}
 
     //아이디로 vo로 삽입
-    public MemberVO findByEmail(String memberEmail) { return memberMapper.selectByEmail(memberEmail);};
+    public MemberVO findByEmail(String memberEmail) { return memberMapper.selectByEmail(memberEmail);}
+
     //마이페이지 프로필 업로드
     public void setProfile(MemberVO memberVO){ memberMapper.updateProfile(memberVO);}
 

@@ -6,7 +6,6 @@ import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
-import com.crossroads.app.mapper.MemberMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

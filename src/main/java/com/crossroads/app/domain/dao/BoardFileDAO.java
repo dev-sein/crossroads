@@ -1,5 +1,6 @@
 package com.crossroads.app.domain.dao;
 
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.mapper.BoardFileMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,26 @@ public class BoardFileDAO {
     /*게시글 별 file 삭제*/
     public void deleteByBoardId(Long boardId) {
         boardFileMapper.deleteByBoardId(boardId);
+    }
+
+    //    파일 추가
+    public void save(BoardDTO boardDTO){
+        boardFileMapper.insert(boardDTO);
+    }
+
+    //    파일 전체 조회
+    public List<BoardDTO> findByBoardId(Long boardId){
+        return boardFileMapper.selectAll(boardId);
+    }
+
+    //    파일 삭제
+    public void delete(Long boardId){
+        boardFileMapper.delete(boardId);
+    }
+
+    //    전일 등록된 파일 조회
+    public List<BoardDTO> findByFilePath(){
+        return boardFileMapper.selectYesterday();
     }
 
 
