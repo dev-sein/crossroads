@@ -36,35 +36,16 @@
             </div>
             <div class="SectionMaker_Wrapper">
                 <div class="SectionMaker_contentWrapper">
-                    <form action="#" name="reviewForm">
-                        <!-- <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper">
-                                <div class="formTitle" style="align-items: center !important;">
-                                    <legend class="formTitle_legend">
-                                        <span>만족도</span>
-                                    </legend>
-                                    <div class="rating">
-                                        <input type="radio" id="star5" name="rating" value="5" />
-                                        <label for="star5" id="label5"></label>
-                                        <input type="radio" id="star4" name="rating" value="4" />
-                                        <label for="star4" id="label4"></label>
-                                        <input type="radio" id="star3" name="rating" value="3" />
-                                        <label for="star3" id="label3"></label>
-                                        <input type="radio" id="star2" name="rating" value="2" />
-                                        <label for="star2" id="label2"></label>
-                                        <input type="radio" id="star1" name="rating" value="1" />
-                                        <label for="star1" id="label1"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        <hr class="space"> -->
+                    <form action="#" th:action="@{/board-save}" method="post" th:object="${boardDTO}" name="boardForm"
+                          enctype="multipart/form-data">
                         <div class="formSection_contentContainer">
                             <div class="formTitle_wrapper">
                                 <div class="formTitle">
                                     <legend class="formTitle_legend">
                                         <span>제목</span>
                                     </legend>
-                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요.">
+                                    <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요."
+                                           th:field="*{boardTitle}">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +56,8 @@
                                     <legend class="formTitle_legend">
                                         <span>내용</span>
                                     </legend>
-                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요."></textarea>
+                                    <textarea id="input-content" class="detailText_text" placeholder="함께한 경험을 작성해주세요."
+                                              th:field="*{boardContent}"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -116,24 +98,6 @@
                                         </label>
                                     <!-- 이미지 -->
                                     <!-- 이미지 -->
-                                        <!-- <label id="button-label">
-                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
-                                                <div class="imgText_container">
-                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image2" name="upload2" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
-                                                    <div>이미지 추가</div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                        <label id="button-label">
-                                            <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
-                                                <div class="imgText_container">
-                                                    <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image3" name="upload3" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, img/png" style="display: none;">
-                                                    <div>이미지 추가</div>
-                                                </div>
-                                            </div>
-                                        </label> -->
                                     </div>
                                     <div id="image_container"></div>
                                     <div class="image_space"></div>
@@ -159,6 +123,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/board/board-write-test.js"></script>
-<!-- <script src="/js/board/board-write.js"></script> -->
 <script src="/js/components/header-client.js"></script>
 </html>

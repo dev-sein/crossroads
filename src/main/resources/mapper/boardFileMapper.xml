@@ -18,4 +18,23 @@
 <!--        from tbl_board_file-->
 <!--        where board_id = #{boardId};-->
 <!--    </select>-->
+
+    <insert id="insert">
+        insert into tbl_file(file_original_name, file_uuid, file_path, file_size, board_id)
+        values(#{fileOriginalName}, #{fileUuid}, #{filePath}, #{fileSize}, #{boardId})
+    </insert>
+
+    <select id="selectAll" resultType="boardDTO">
+        select file_id, file_original_name, file_uuid, file_path, file_size, board_id
+        from tbl_file where board_id = #{boardId}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_file where board_id = #{boardId}
+    </delete>
+
+    <select id="selectYesterday" resultType="boardDTO">
+        select file_id, file_original_name, file_uuid, file_path, file_size, board_id
+        from tbl_file where file_path = date_format(current_timestamp() - interval 1 day, '%Y/%m/%d')
+    </select>
 </mapper>
