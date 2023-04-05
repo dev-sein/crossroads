@@ -85,4 +85,7 @@ public class PointService {
     public PointDTO getDetail(Long pointId) {
         return pointDAO.selectById(pointId);
     }
+
+//    포인트 등록
+    public void savePoint(PointDTO pointDTO) { pointDAO.register(pointDTO);}
 }

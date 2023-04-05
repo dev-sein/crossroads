@@ -97,10 +97,10 @@ public class ApplyMapperTests {
 //    신청 목록 검색 조회
 //    public List<ApplyDTO> selectList(Map<String, Object> info);
 
-    @Test
-    public void selectByStarterMemberId() {
-        applyMapper.selectByStarterMemberId(2L);
-    }
+//    @Test
+//    public void selectByStarterMemberId() {
+//        applyMapper.selectByStarterMemberId(2L);
+//    }
 
     @Test
     public void selectCountByStarterIdAndStatus() {

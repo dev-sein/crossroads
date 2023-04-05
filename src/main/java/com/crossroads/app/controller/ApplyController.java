@@ -76,6 +76,8 @@ public class ApplyController {
         model.addAttribute("applyDTO", applyDTO);
       /*  redirectAttributes.addAttribute("applyDTO", applyDTO);*/
         log.info("apply-second post 들어옴@@@@@@@@@@@@@@@@@@@@@@22");
+//        pointService.modifyPoint(applyDTO.getMemberId(), );
+//        pointService.
         return new RedirectView("/apply/apply-third");
     }
 

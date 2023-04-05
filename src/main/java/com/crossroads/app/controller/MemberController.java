@@ -33,7 +33,6 @@ public class MemberController {
    //회원가입
     @PostMapping("join")
     public RedirectView joinfinish(MemberVO memberVO){
-        memberVO.setMemberDriveRegisterDate("2018-12-12");
         memberService.save(memberVO);
         return new RedirectView("login");
     }
@@ -91,6 +90,7 @@ public class MemberController {
         return new RedirectView("/member/login");
     }
 
+    //카카오 회원가입
     @GetMapping("kakao")
     public RedirectView kakaoJoin(String code, HttpSession session) throws Exception {
         String token = memberService.getKaKaoAccessToken(code, "join");
@@ -123,7 +123,7 @@ public class MemberController {
         }
 
         session.setAttribute("memberVO", memberVO);
-        return new RedirectView("/main/");
+        return new RedirectView("/main");
     }
 
     @PostMapping("login-naver")

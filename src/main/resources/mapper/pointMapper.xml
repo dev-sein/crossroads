@@ -94,4 +94,10 @@
         and point_id = #{pointId}
     </select>
 
+    <insert id="insert">
+        insert tbl_point
+        (member_id, point_status, point_point)
+        values(#{memberId}, #{pointStatus}, #{pointPoint})
+    </insert>
+
 </mapper>

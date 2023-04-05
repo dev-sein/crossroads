@@ -201,15 +201,15 @@ public class MemberService {
         }
     }
 
-    //카카오 로그인 //토큰
-    public String getKaKaoAccessToken(String code, String type) {
-        String access_Token = "";
-        String refresh_Token = "";
+    public String getKaKaoAccessToken(String code, String type){
+        String access_Token="";
+        String refresh_Token ="";
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
-        try {
-            URL url = new URL(reqURL); //자바에서 요청하는 코드
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); //url 커넥션 객체 얻어옴
+        try{
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
             //POST 요청을 위해 기본값이 false인 setDoOutput을 true로
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
@@ -217,17 +217,23 @@ public class MemberService {
             //POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
-            sb.append("&redirect_uri=http://localhost:10000/members/login"); // TODO 인가코드 받은 redirect_uri 입력
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=ff10441318cc0a2c7e2aa44285fa956c"); // TODO REST_API_KEY 입력
 
-            //회원가입에서 접근했을 때
+//            회원가입에서 접근했을 때
             if(type.equals("join")) {
                 sb.append("&redirect_uri=http://localhost:10000/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("login")) {
-            //로그인에서 접근했을 때
+//            로그인에서 접근했을 때
                 sb.append("&redirect_uri=http://localhost:10000/member/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
+            } else if (type.equals("mobilejoin")) {
+//            모바일 회원가입 접근했을 때
+                sb.append("&redirect_uri=http://localhost:10000/applies/kakao"); // TODO 인가코드 받은 redirect_uri 입력
+            } else if (type.equals("mobilelogin")) {
+//            모바일 로그인에서 접근했을 때
+                sb.append("&redirect_uri=http://localhost:10000/applies/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
             }
+
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
@@ -248,8 +254,8 @@ public class MemberService {
             //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
-            //gson -> json 세션
-            access_Token = element.getAsJsonObject().get("access_token").getAsString(); //세션을 사용하지 않고 db를 사용
+
+            access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
             log.info("access_token : " + access_Token);
@@ -257,7 +263,7 @@ public class MemberService {
 
             br.close();
             bw.close();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
 

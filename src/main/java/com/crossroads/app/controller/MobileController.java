@@ -342,4 +342,42 @@ public class MobileController {
         return "/mobile/my-mobile-complete-cancel";
     }
 
+    //모바일 카카오 회원가입
+    @GetMapping("kakao")
+    public RedirectView kakaoJoin(String code, HttpSession session) throws Exception {
+        String token = memberService.getKaKaoAccessToken(code, "mobilejoin");
+        MemberVO kakaoInfo = memberService.getKakaoInfo(token);
+        kakaoInfo.setMemberStatus(1);
+        //String userIdentification = null;
+        MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
+
+        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+        if (memberVO == null || memberVO.getMemberStatus() != 1) {
+            session.setAttribute("kakaoInfo", kakaoInfo);
+            log.info("카카오 들어옴");
+            return new RedirectView("/applies/join-mobile");
+        }
+        session.setAttribute("members", memberVO);
+        return new RedirectView("/applies/list-mobile");
+    }
+
+    //카카오 로그인
+    @GetMapping("kakao-login")
+    public RedirectView kakaoLogin(String code, HttpSession session) throws Exception {
+        String token = memberService.getKaKaoAccessToken(code, "mobilelogin");
+        memberService.getKakaoInfo(token);
+
+        MemberVO kakaoInfo = memberService.getKakaoInfo(token);
+        MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
+
+        if(memberVO.getMemberStatus() != 1){
+            return new RedirectView("/applies/login?result=fail");
+        }
+
+        session.setAttribute("memberVO", memberVO);
+        return new RedirectView("list-mobile");
+    }
+
+
+
 }
