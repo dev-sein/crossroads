@@ -3,9 +3,6 @@ const $emailInput = $(".email .input-text");
 const $emailWarning = $(".email .error-text");
 const $emailInputvalue = $("#memberEmail");
 
-
-
-
 // 아이디
 const $idInput = $('.id .input-text');
 let $idWarning = $("#id-error");

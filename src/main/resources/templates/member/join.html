@@ -98,19 +98,20 @@
                     </div>
                     <!-- 운전면허증 이미지 첨부 -->
                     <div class="input-box margin-top-16 license">
-                        <div class="input-title">운전면허증</div>
-                        <div class="input-text-wrapper" id="upload-name-wrapper" onclick="onclick=document.all.file.click()">
-                            <label for="license"></label>
+                        <div class="input-title">운전면허증&nbsp;&nbsp;<img class="loadingImg" src="/images/member/loadingImg.gif" style="display: none;"></div>
+                        <!--<div class="input-text-wrapper" id="upload-name-wrapper" onclick="onclick=document.all.file.click()">-->
+                        <div class="input-text-wrapper" id="upload-name-wrapper" onclick="document.all.file.click()">
+                            <label for="license">
                             <input class="theme-croosroads input-text" id="upload-name" name="" placeholder="첨부파일" value="첨부파일" readonly>
                             <input class="btn-img" value="파일 찾기" readonly>
-                            </label>
                             <input type="file" class="theme-croosroads input-file" id="license" name="file" accept="image/png, image/jpeg" style="display: none;">
+                            </label>
+                            <!-- <div class="loader" style="display:none;">
+                           </div>-->
                         </div>
                         <div class="input-box margin-top-16 name">
                             <div class="input-title">면허 취득 일자 <span id="result"></span></div>
-                           <div class="loader" style="display: none;">
-                                <img class="loadingImg" src="/images/member/loadingImg.gif"></img>
-                            </div>
+
                             <div class="input-text-wrapper">
                                 <input class="theme-croosroads input-text registerdate" name="memberDriveRegisterDate" id="memberDriveRegisterDate" type="text" value="면허증을 등록하면 취득일자가 적용됩니다." readonly/>
                                 <input class="theme-croosroads input-text" id="memberType" name="memberType" value="0" type="text">
@@ -146,7 +147,7 @@
                             <img class="oauth-logo" src="/images/member/kakao.png">
                             카카오톡으로 회원가입
                     </a>
-                        <a class="oauth-join naver mb16" href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fjoin&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9">
+                        <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fjoin&amp;state=1808b001-9b42-4532-9900-e11bb1a919c9" class="oauth-join">
                         <img class="oauth-logo" src="/images/member/naver.png">
                         네이버로 회원가입
                     </a>
