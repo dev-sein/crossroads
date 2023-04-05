@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.*;
@@ -164,10 +165,14 @@ public class MypageController {
         //외부에서 page를 전달받음. setter를 사용해서 standard에 저장되어 있는 page값을 전달받은 page=>3으로 변경
         //standard가 getListMyBoard로 전달됨(service로 이동)
         HttpSession session = request.getSession();
+
         session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
         model.addAttribute("file", boardFileService.getFile(boardId));
+        log.info(model.addAttribute("member", memberService.getMemberInfo(1L)).toString());
+        log.info(model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards)).toString());
+        log.info(model.addAttribute("file", boardFileService.getFile(boardId)).toString());
 
         log.info(standards.toString());
         return "mypage/my-board";
@@ -177,7 +182,7 @@ public class MypageController {
     @GetMapping("/my-reply")
     public String showListMyReply(Model model, HttpServletRequest request, Standards standards) {
         HttpSession session = request.getSession();
-        //        session.setAttribute("memberId", 1L);
+        //session.setAttribute("memberId", 1L);
         model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("reply", replyService.getListMyReply(1L, standards));
         return "mypage/my-reply";
@@ -224,6 +229,10 @@ public class MypageController {
     /*현재 날짜 경로 구하기*/
     private String getPath() { return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")); }
 
+    @GetMapping("/my-password-check-out")
+    public String myPasswordCheckOut(){
+        return "/mypage/my-withdraw";
+    }
 
     /*회원탈퇴 시 비밀번호 확인*/
     @PostMapping("/my-password-check-out")

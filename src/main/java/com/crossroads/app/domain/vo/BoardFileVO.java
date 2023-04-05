@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 @Data
 public class BoardFileVO extends FileVO{
     private Long boardId;
+
 }
