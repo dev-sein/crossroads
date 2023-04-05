@@ -53,9 +53,12 @@ public class PointController {
     //    포인트 환전
     @GetMapping("/exchange-point")
     public String changePoint(Model model, HttpServletRequest request){
-        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
+//        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
 
         Long memberId = (Long)request.getSession().getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/member/login";
+        }
         log.info(pointService.getPoint(memberId).toString());
         model.addAttribute("point", pointService.getPoint(memberId));
         return "point/changePoint";
@@ -71,9 +74,12 @@ public class PointController {
     @GetMapping("/exchange-point-mobile")
     public String changePointMobile(@RequestParam(value = "exchange", required = false) String exchange, HttpServletRequest request, Model model){
 
-        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
+//        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
 
         Long memberId = (Long)request.getSession().getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/applies/login-mobile";
+        }
         log.info(pointService.getPoint(memberId).toString());
         model.addAttribute("exchange",exchange);
         model.addAttribute("point", pointService.getPoint(memberId));
