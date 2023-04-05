@@ -17,6 +17,7 @@ $('.modal_test').on('click', function() {
         },
         success: function(){
             load();
+            $('#title__checkbox').prop("checked", false);
         }
 
     });
