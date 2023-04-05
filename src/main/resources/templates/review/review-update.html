@@ -113,6 +113,7 @@
                                             <div class="imgText_container" onclick="">
                                                 <img src="https://frip.host/img/add.85e31315.svg" alt="+">
                                                 <input type="file" id="image" name="image" onchange="setThumbnail(event);" style="display: none;">
+                                                <img class="review-photo" th:src="@{/mypage/display(fileName=${info.reviewFilePath} + '/' + ${info.reviewFileUuid} + '_' + ${info.reviewFileOriginalName})}">
 
                                                 <div>이미지 추가하기</div>
                                             </div>

@@ -338,7 +338,7 @@ public class MobileController {
             log.info(String.valueOf(criteria.getOffset()));
         }
 
-        session.setAttribute("memberId", 3L);
+        session.setAttribute("memberId", 6L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         model.addAttribute("applies", applyService.getApplyVeteran(memberId, criteria));
