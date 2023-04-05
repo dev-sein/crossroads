@@ -106,9 +106,7 @@ public class AdminController {
     @ResponseBody
     @DeleteMapping("members/delete")
     public void deleteMember(@RequestParam("checkedIds[]") List<String> checkedIds) {
-        log.info("delete 들어옴..?");
         memberService.removeAdmin(checkedIds);
-        log.info("마지막 여긴 안됨.");
     }
     /*====================회원 게시판 끝==============================*/
 
