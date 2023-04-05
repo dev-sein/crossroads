@@ -21,7 +21,7 @@ body {
     color: #555;
     background-color: #f5f5f5;
     height: 100%;
-    line-height : normal;
+    white-space: normal;
 }
 
 #wrap {
@@ -965,6 +965,10 @@ h3 small {
     margin-bottom: 0;
     font-size: 13px;
     color: #333;
+    line-height: normal;
+    white-space : normal;
+
+
 }
 /* profile-modify */
 
@@ -1344,7 +1348,7 @@ form input:focus {
 }
 
 .review-description-text {
-    margin-bottom: 0;
+    margin-bottom: 1px;
     font-size: 13px;
     color: #333;
 }

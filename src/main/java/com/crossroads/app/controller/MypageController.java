@@ -37,7 +37,6 @@ public class MypageController {
     private final FreeBoardService freeBoardService;
     private final ReplyService replyService;
     private final PointService pointService;
-    private final BoardFileService boardFileService;
 
     /*마이페이지 메인*/
     @GetMapping("/my-main")
@@ -210,7 +209,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 저장*/
-    @PostMapping("saveProfile")
+    @PostMapping("save-profile")
     @ResponseBody
     public void save(@RequestBody List<MemberVO> files) {
         files.forEach(file -> memberService.modifyProfile(file));
@@ -273,4 +272,27 @@ public class MypageController {
         return "main/main";
     }
 
+    /*프로필 사진 삭제*/
+    @PostMapping("delete-profile")
+    @ResponseBody
+    public void deleteProfile(MemberVO memberVO, HttpSession session) {
+        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        memberVO.setMemberId(memberId);
+        memberVO.setMemberFileOriginalName(null);
+        memberVO.setMemberFileUuid(null);
+        memberVO.setMemberFilePath(null);
+        memberVO.setMemberFileSize(null);
+        memberVO.setMemberFileType(false);
+        memberService.modifyProfile(memberVO);
+    }
+
+    /*마이페이지 리뷰 삭제*/
+    @PostMapping("delete-review")
+    public RedirectView removeMyReview(@RequestParam("reviewId") Long reviewId){
+        log.info("들어옴*******************************************************");
+        reviewBoardService.deleteReview(reviewId);
+        return new RedirectView("/mypage/my-review");
+    }
 }

@@ -8,10 +8,6 @@ function createDOM(reviews) {
         console.log(review)
         text += `
                 <div class="review-box">
-                <div>
-                    <a class="review-modify" href="/store/41">수정</a>
-                    <a class="review-delete" href="/store/41">삭제</a>
-                </div>
                     <div class="review-list">
                         <div class="review-content-box" onclick="location.href='http://www.wishket.com'">
                             <a class="review-name-link">${review.boardTitle}</a>
