@@ -13,16 +13,16 @@
 <!-- aside -->
 <aside th:fragment="admin-aside" class="sidebar">
 	<header class="sidebar-header">
-		<h1>교차로</h1>
+		<h1><a th:href="@{/admin/home}">교차로</a></h1>
 	</header>
 	<nav>
 		<ul>
 			<label>
-				<a href="">
+				<a th:href="@{/admin/home}">
 					<li>
 						<details>
-							<summary class="nav-menu menu--current">
-								<h2 class="menu__title">관리자 홈</h2>
+							<summary class="nav-menu menu--current" onclick="location.href='/admin/home'">
+								<a th:href="@{/admin/home}"><h2 class="menu__title">관리자 홈</h2></a>
 							</summary>
 						</details>
 					</li>
@@ -35,7 +35,7 @@
 						<img src="/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
 					</summary>
 					<ul class="nav-menu-submenu">
-						<a href="">
+						<a th:href="@{/admin/member/list}">
 							<span id="sidelist">
 								<li class="submenu__item">회원 정보</li>
 							</span>
@@ -50,7 +50,7 @@
 						<img src="/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
 					</summary>
 					<ul class="nav-menu-submenu">
-						<a href="">
+						<a th:href="@{/admin/apply/list}">
 							<span id="side-apply-list">
 								<li class="submenu__item">신청 내역</li>
 							</span>
@@ -65,7 +65,7 @@
 						<img src="/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
 					</summary>
 					<ul class="nav-menu-submenu">
-						<a href="">
+						<a th:href="@{/admin/point/list}">
 							<span id="side-payment-list">
 								<li class="submenu__item">결제 내역</li>
 							</span>
@@ -80,7 +80,7 @@
 						<img src="/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
 					</summary>
 					<ul class="nav-menu-submenu">
-						<a href="">
+						<a th:href="@{/admin/review/list}">
 							<span id="side-review-list">
 								<li class="submenu__item">후기 관리</li>
 							</span>
@@ -95,12 +95,12 @@
 						<img src="/images/admin/dropdown.png" alt="icon" class="menu__icon--drop-down" />
 					</summary>
 					<ul class="nav-menu-submenu">
-						<a href="">
+						<a th:href="@{/admin/board/list}">
 							<span id="side-board-list">
 								<li class="submenu__item">게시글 관리</li>
 							</span>
 						</a>
-						<a href="">
+						<a th:href="@{/admin/reply/list}">
 							<span id="side-reply-list">
 								<li class="submenu__item">댓글 관리</li>
 							</span>
