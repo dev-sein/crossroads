@@ -2,6 +2,7 @@ package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.Criteria;
+import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
@@ -55,7 +56,7 @@ public class MobileController {
         return "mobile/list-mobile";
     }
 
-    @GetMapping("list-mobiles/{page}")
+    @PostMapping("list-mobiles/{page}")
     @ResponseBody
     public List<ApplyDTO> listMobiles(HttpServletRequest request, @PathVariable("page") Integer page, Criteria criteria, Model model) throws Exception{
         if (criteria.getPage() == 0){
@@ -276,7 +277,7 @@ public class MobileController {
     //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
     public String myMobile(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mobile/my-mobile";
     }
 
@@ -319,8 +320,37 @@ public class MobileController {
     }
 
     @GetMapping("/my-mobile-apply")
-    public String myApplyMobile(){
+    public String myApplyMobile(Model model, HttpSession session, Criteria criteria){
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,5);
+        } else {
+            criteria = criteria.create(criteria.getPage(),5);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        session.setAttribute("memberId", 3L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        model.addAttribute("applies", applyService.getApplyVeteran(memberId, criteria));
+
         return "/mobile/my-mobile-apply";
+    }
+
+
+    @PostMapping("my-mobile-apply/{page}")
+    @ResponseBody
+    public List<ApplyDTO> mobileApply(@PathVariable("page") Integer page, HttpSession session, Criteria criteria) {
+        if (criteria.getPage() == 0){
+            criteria = criteria.create(1,4);
+        } else {
+            log.info(page.toString());
+            criteria = criteria.create(page,4);
+            log.info(String.valueOf(criteria.getOffset()));
+        }
+
+        session.setAttribute("member", 3L);
+        Long memberId = (Long)session.getAttribute("memberId");
+        return applyService.getApplyVeteran(memberId, criteria);
     }
 
     @GetMapping("my-mobile-account-check")
@@ -341,5 +371,6 @@ public class MobileController {
         memberService.remove(memberId);
         return "/mobile/my-mobile-complete-cancel";
     }
+
 
 }

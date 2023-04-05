@@ -41,41 +41,41 @@
                 <!-- 리스트 목록 시작 -->
                 <div class="list-wrapper flex">
                     <!-- detail 시작 -->
-                    <div class="list-card flex">
-                        <img src="/images/member/courseA.png" alt="">
-                        <div class="content-wrapper flex">
-                            <div class="width50">
-                                <p class="card-name card-date">2023-03-16</p>
-                                <p class="card-name card-location">경기도 파주시</p>
-                                <!-- 연수 완료, 연수 진행중 -->
-                                <p class="card-detail card-status"><span class="complete">연수 완료</span></p>
-                                <!-- <p class="card-detail card-status"><span class="incomplete">연수 대기</span></p> -->
-                            </div>
-                            <p class="course-name">
-                                A코스
-                            </p>
-                        </div>
-                    </div>
-                    <!-- detail 끝 -->
-                    <!-- detail 시작 -->
-                    <div class="list-card flex">
-                        <img src="/images/member/courseA.png" alt="">
-                        <div class="content-wrapper flex">
-                            <div class="width50">
-                                <p class="card-name card-date">2023-03-16</p>
-                                <p class="card-name card-location">경기도 파주시</p>
-                                <!-- 연수 완료, 연수 진행중 -->
-                                <!-- <p class="card-detail card-status"><span class="complete">연수 완료</span></p> -->
-                                <p class="card-detail card-status">
-                                    <span class="incomplete name-span">정현진 님</span>
-                                    <span class="incomplete">연수 대기</span>
-                                </p>
-                            </div>
-                            <p class="course-name">
-                                A코스
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="list-card flex">-->
+<!--                        <img src="/images/member/courseA.png" alt="">-->
+<!--                        <div class="content-wrapper flex">-->
+<!--                            <div class="width50">-->
+<!--                                <p class="card-name card-date">2023-03-16</p>-->
+<!--                                <p class="card-name card-location">경기도 파주시</p>-->
+<!--                                &lt;!&ndash; 연수 완료, 연수 진행중 &ndash;&gt;-->
+<!--                                <p class="card-detail card-status"><span class="complete">연수 완료</span></p>-->
+<!--                                &lt;!&ndash; <p class="card-detail card-status"><span class="incomplete">연수 대기</span></p> &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <p class="course-name">-->
+<!--                                A코스-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; detail 끝 &ndash;&gt;-->
+<!--                    &lt;!&ndash; detail 시작 &ndash;&gt;-->
+<!--                    <div class="list-card flex">-->
+<!--                        <img src="/images/member/courseA.png" alt="">-->
+<!--                        <div class="content-wrapper flex">-->
+<!--                            <div class="width50">-->
+<!--                                <p class="card-name card-date">2023-03-16</p>-->
+<!--                                <p class="card-name card-location">경기도 파주시</p>-->
+<!--                                &lt;!&ndash; 연수 완료, 연수 진행중 &ndash;&gt;-->
+<!--                                &lt;!&ndash; <p class="card-detail card-status"><span class="complete">연수 완료</span></p> &ndash;&gt;-->
+<!--                                <p class="card-detail card-status">-->
+<!--                                    <span class="incomplete name-span">정현진 님</span>-->
+<!--                                    <span class="incomplete">연수 대기</span>-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                            <p class="course-name">-->
+<!--                                A코스-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <!-- detail 끝 -->
                 </div>
             </div>
@@ -83,7 +83,12 @@
     </div>
 
     <div class="footer-logout">
-        <a href="login-mobile.html" class="logout-btn">로그아웃</a>
+        <a th:href="@{/applies/logout-mobile}" class="logout-btn">로그아웃</a>
     </div>
 </body>
+<script th:inline="javascript">
+    let applies = [[${applies}]];
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/mobile/apply-list.js"></script>
 </html>

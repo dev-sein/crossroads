@@ -9,6 +9,7 @@ import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.mapper.PointMapper;
 import com.crossroads.app.service.*;
+import com.sun.mail.auth.MD4;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -49,7 +50,7 @@ public class MypageController {
     //마이페이지 메인
     @GetMapping("/my-main")
     public String mypageMain(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mypage/my-main";
     }
 
@@ -57,14 +58,19 @@ public class MypageController {
 //    public String myInfo(Model model, HttpServletRequest request)throws Exception {
 //        HttpSession session = request.getSession();
 //        session.setAttribute("memberId", 1L);
-//        model.addAttribute("mypages", memberService.getMember(1L));
+//        model.addAttribute("mypages", memberService.getMemberInfo(1L));
 //        return "mypage/my-info";
 //    }
 
     //마이페이지 프로필 조회
     @GetMapping("/my-info")
-    public String myInfoSelect(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMember(1L));
+    public String myInfoSelect(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+
+        session.setAttribute("memberId", 1L);
+        model.addAttribute("member", memberService.getMemberInfo(1L));
+        log.info("들어옴");
+        log.info(model.addAttribute("member", memberService.getMemberInfo(1L)).toString());
         return "mypage/my-info";
     }
 
@@ -75,16 +81,16 @@ public class MypageController {
 //    @PostMapping("/my-info")
 //    public RedirectView myInfoUpdate(MemberVO memberVO, RedirectAttributes redirectAttributes){
 //        memberService.modify(memberVO);
-//        redirectAttributes.addAttribute("member", memberVO.getMemberId());
+//        redirectAttributes.addAttribute("member", memberVO.getMemberInfoId());
 //        return new RedirectView("/mypage/my-info");
 //    }
-
 
     @PostMapping("/my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO){
+        log.info("들어옴");
         Long memberId = 1L;
-        memberVO = memberService.getMember(memberId);
+        memberVO = memberService.getMemberInfo(memberId);
 
         String memberName = request.getParameter("memberName");
         String memberPhone = request.getParameter("memberPhone");
@@ -148,12 +154,20 @@ public class MypageController {
     }
 
     //마이페이지 연수신청 목록
-    @GetMapping("/my-apply")
-    public String showListMyApply(Model model, HttpServletRequest request){
-        HttpSession session = request.getSession();
+    @GetMapping("my-apply")
+    public String showListMyApply(Model model, HttpSession session, Standards standards){
+        session.setAttribute("memberId", 2L);
 
+        Long memberId = (Long)session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        model.addAttribute("applyVO", applyService.getApply(memberId, standards));
+        model.addAttribute("applyCountAll", applyService.getApplyCount(memberId, null));
+        model.addAttribute("applyCountReady", applyService.getApplyCount(memberId, "0"));
+        model.addAttribute("applyCountIng", applyService.getApplyCount(memberId, "1"));
+        model.addAttribute("applyCountFinish", applyService.getApplyCount(memberId, "2"));
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         return "mypage/my-apply";
     }
 
@@ -163,7 +177,7 @@ public class MypageController {
         HttpSession session = request.getSession();
 
 //        session.setAttribute("memberId", 1L);
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("point", pointService.getListMyPoint(1L));
         return "mypage/my-point";
     }
@@ -174,8 +188,9 @@ public class MypageController {
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
 
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards));
+        log.info(model.addAttribute("reviews", reviewBoardService.getListMy(1L, standards)).toString());
         return "mypage/my-review";
     }
 
@@ -189,7 +204,7 @@ public class MypageController {
         //standard가 getListMyBoard로 전달됨(service로 이동)
         HttpSession session = request.getSession();
         session.setAttribute("memberId", 1L);
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("board", freeBoardService.getListMyBoard(1L, standards));
         model.addAttribute("file", boardFileService.getFile(boardId));
 
@@ -203,7 +218,7 @@ public class MypageController {
     public String showListMyReply(Model model, HttpServletRequest request, Standards standards) {
         HttpSession session = request.getSession();
         //        session.setAttribute("memberId", 1L);
-        model.addAttribute("member", memberService.getMember(1L));
+        model.addAttribute("member", memberService.getMemberInfo(1L));
         model.addAttribute("reply", replyService.getListMyReply(1L, standards));
         return "mypage/my-reply";
     }
@@ -239,24 +254,19 @@ public class MypageController {
         return "main/main";
     }
 
-    @GetMapping("uploadProfile")
-    public String goUploadForm(){
-        return "/upload";
-    }
+//    //마이페이지 프로필 업로드
+//    @GetMapping("uploadProfile")
+//    public String goUploadForm(Long memberId, Model model){
+//        model.addAttribute("file", memberService.getMemberInfo(memberId));
+//        return "mypage/my-info";
+//    }
 
-    //마이페이지 파일 저장
-    @PostMapping("saveProfile")
-    @ResponseBody
-    public void save(@RequestBody List<MemberVO> files){
-        files.forEach(file -> memberService.modifyProfile(file));
-    }
-
-    //파일 업로드
+    //마이페이지 파일 업로드
     @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
-        String path = "C:/uploads/profiles/" + getPath();
+        String path = "C:/upload/" + getPath();
         File file = new File(path);
         if(!file.exists()) {file.mkdirs();}
 
@@ -273,18 +283,24 @@ public class MypageController {
         return uuids;
     }
 
-    //파일 불러오기
+    //마이페이지 파일 저장
+    @PostMapping("saveProfile")
+    @ResponseBody
+    public void save(@RequestBody List<MemberVO> files){
+        files.forEach(file -> memberService.modifyProfile(file));
+    }
+
+    //마이페이지 파일 불러오기
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload/board", fileName));
+        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
-    //    현재 날짜 경로 구하기
+    //현재 날짜 경로 구하기
     private String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
-
 
 
 }

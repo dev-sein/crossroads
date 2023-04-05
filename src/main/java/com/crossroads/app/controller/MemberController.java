@@ -38,6 +38,20 @@ public class MemberController {
         return new RedirectView("login");
     }
 
+    //카카오 회원가입
+    @GetMapping("join-kakao")
+    public String joinKakao(){
+        return "/member/join";
+    }
+
+    //카카오 회원가입
+    @PostMapping("join-kakao")
+    public RedirectView joinKakaoPost(MemberVO memberVO){
+        log.info("카카오 회원가입 post");
+        memberService.save(memberVO);
+        return new RedirectView("login");
+    }
+
     //아이디 중복체크
     @PostMapping("/checkId")
     @ResponseBody
@@ -77,6 +91,31 @@ public class MemberController {
         return new RedirectView("/member/login");
     }
 
+   @GetMapping("/login-kakao")
+    public String kakaoCallbackLogin(@RequestParam String code, HttpSession session) throws Exception {
+        log.info(code);
+        String token = memberService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+        memberService.getKakaoInfo(token);
+        return "member/login";
+    }
+
+    @PostMapping("/login-kakao")
+    public void kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
+        log.info(code);
+        String token = memberService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+        memberService.getKakaoInfo(token);
+    }
+
+    //로그아웃
+    @GetMapping("/logout-kakao")
+    public void kakaoLogout(HttpSession session){
+        log.info("logout");
+        memberService.logoutKakao((String)session.getAttribute("token"));
+        session.invalidate();
+    }
+
     @GetMapping("callback")
     public String callBack(){
         return "/member/callback";
@@ -84,7 +123,6 @@ public class MemberController {
 
     @PostMapping("login-naver")
     public RedirectView loginNaver(){
-
         return new RedirectView("/main");
     }
 
@@ -104,6 +142,7 @@ public class MemberController {
         return "member/find-pwd";
     }
 
+    //비밀번호 찾기 - 이메일 발송하기
     @PostMapping("find-pwd")
     public RedirectView findPasswordEmail(String memberEmail, String memberIdentification, RedirectAttributes redirectAttributes) {
         if(memberService.checkEmail(memberEmail) == null) { //조회 이메일 없을 때

@@ -513,3 +513,7 @@ a {
     margin-left: 890px;
     margin-top: 300px;
 }
+
+#memeberStatus{
+    display: none;
+}

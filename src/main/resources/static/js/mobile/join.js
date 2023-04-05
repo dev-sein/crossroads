@@ -323,7 +323,7 @@ function checkEmail() {
 			}
 		},
 		error: function () {
-			alert("에러입니다");
+			//("에러입니다");
 		}
 	});
 };
@@ -344,7 +344,7 @@ function checkId() {
 			}
 		},
 		error: function () {
-			alert("에러입니다");
+			//alert("에러입니다");
 		}
 	});
 };
