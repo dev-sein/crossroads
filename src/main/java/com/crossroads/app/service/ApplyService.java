@@ -92,7 +92,7 @@ public class ApplyService {
 
 //    관리자 신청내역 목록
     public Map<String, Object> getListAdmin(Map<String, Object> requestData, Criteria criteria) {
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<>();
 
         String keyword = (String) requestData.get("keyword");
         int page = (int) requestData.get("page");
@@ -115,6 +115,9 @@ public class ApplyService {
 //    관리자 신청내역 목록
     public Integer getCountAdmin(String keyword) {
         return applyDAO.findCountAllAdmin(keyword);
+    }
+    public Integer getCountAdmin() {
+        return applyDAO.findCountAllAdmin(null);
     }
 
 //    신청 삭제(취소)

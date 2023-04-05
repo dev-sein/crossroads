@@ -44,6 +44,12 @@ public class BoardController {
         return "board/board-write";
     }
 
+    //게시판 삭제
+    @DeleteMapping("board-delete")
+    public void boardDelete(@RequestParam("boardId") Long boardId){
+
+    }
+
 
 
 }

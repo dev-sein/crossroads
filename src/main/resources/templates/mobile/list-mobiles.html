@@ -615,7 +615,10 @@
         // console.log($(window).height());
         // console.log($(document).height() - $(window).height());
         // console.log(Math.ceil($(window).scrollTop()));
-        if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        // if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        //     fetchData();
+        // }
+        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
             fetchData();
         }
     });

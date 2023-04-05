@@ -28,7 +28,7 @@ public class MemberRestController {
         }
         session.setAttribute("memberId", memberVO.getMemberId());
         log.info("true 들어옴");
-        log.info(session.getAttribute("memberVO").toString());
+        log.info(session.getAttribute("memberId").toString());
         log.info(memberVO.getMemberId().toString()); //id 출력됨
         return true;
     }

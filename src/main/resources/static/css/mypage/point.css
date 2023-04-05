@@ -1531,8 +1531,10 @@ td {
 .error-margin {
     margin-top: 10px;
 }
-
-
+.error-margin-mobile {
+    margin-top: 10px;
+    display: flex;
+}
 
 
 /*페이징 처리*/
@@ -1564,4 +1566,30 @@ section {
 .change-page {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.aside-img-mobile {
+    width: 75px;
+    height: 75px;
+    margin-left: 120px;
+}
+
+.error-container-mobile{
+    padding: 50px;
+}
+
+.sorry{
+    line-height: 20px;
+}
+
+.btn-large-error-mobile{
+    margin-bottom: 8px;
+}
+
+.error-p{
+    text-align: center;
+}
+
+.error-title{
+    margin-left: 20px;
 }

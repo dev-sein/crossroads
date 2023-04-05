@@ -41,32 +41,32 @@
                     <div class="sub-title">
                         자유 게시판
                     </div>
-                    <div class="boardList-count" th:text="'게시글 수: ' + ${boards.size()}">5개</div>
+                    <div class="boardList-count" <!--th:text="'게시글 수: ' + ${boards.size()}"-->>5개</div>
                     <div th:each="board : ${boards}" class="board-box">
                         <div class="board-inner-info">
-                            <a href="" class="inner-info-top" th:text="${board.board_title}">
+                            <a href="" class="inner-info-top" <!--th:text="${board.board_title}"-->>
                                 게시글 제목
                             </a>
                             <p class="inner-info-middle">
-                            <span class="middle-span1" th:text="${board.member_name}">
+                            <span class="middle-span1" <!--th:text="${board.member_name}"-->>
                                 작성자 이름
                             </span>
                                 <span class="span-between">|</span>
-                                <span class="middle-span2" th:text="${board.board_register_date}">
+                                <span class="middle-span2" <!--th:text="${board.board_register_date}"-->>
                                 2023.03.05
                             </span>
                             </p>
-                            <p class="inner-info-bottom" th:text="${board.board_content}">
+                            <p class="inner-info-bottom" <!--th:text="${board.board_content}"-->>
                                 게시글 내용
                             </p>
                         </div>
                         <div class="board-inner-image">
                             <!-- 첨부파일 개수 표시 -->
                             <div class="board-inner-image-count">
-                                <span th:text="'+' + ${board.file_uuid.size()}">+ 4</span>
+                                <span <!--th:text="'+' + ${board.file_uuid.size()}"-->>+ 4</span>
                             </div>
                             <a href="" class="image-wrapper">
-                                <img class="board-images" th:src="@{'/images/board/' + ${board.file_path}}" src="/images/board/003.jpg">
+                                <img class="board-images" <!--th:src="@{'/images/board/' + ${board.file_path}}"--> src="/images/board/003.jpg">
                             </a>
                         </div>
                     </div>
