@@ -118,7 +118,7 @@ public class MypageController {
     /*마이페이지 연수신청 조회*/
     @GetMapping("my-apply")
     public String showListMyApply(Model model, HttpSession session, Standards standards) {
-        session.setAttribute("memberId", 2L);
+        session.setAttribute("memberId", 1L);
 
         Long memberId = (Long) session.getAttribute("memberId");
 

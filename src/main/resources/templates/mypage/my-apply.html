@@ -127,10 +127,10 @@
                             <h4 class="header-text iconnext">운전연수 상세 내역</h4>
                         </div>
                         <div class="history-body-title driveclass">
-                            <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} + '건&nbsp&nbsp&nbsp'">5건&nbsp&nbsp&nbsp</strong></span>
-                            <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} + '건&nbsp&nbsp&nbsp'"> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
-                            <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} + '건&nbsp&nbsp&nbsp'"> 1건&nbsp&nbsp&nbsp&nbsp&nbsp</strong></span>
-                            <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} + '건&nbsp&nbsp&nbsp'"> 3건 </strong></span>
+                            <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} ? ${applyCountAll} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                            <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} ? ${applyCountReady} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                            <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} ? ${applyCountIng} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                            <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} ? ${applyCountFinish} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
                         </div>
                         <!-- 상세내역 표  -->
                         <table class="append-table">
@@ -140,14 +140,17 @@
                                 <th class="course">코스</th>
                                 <th class="status">상태</th>
                             </tr>
-<!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
+                            <tr th:if="${applyCountAll == 0}">
+                                <td colspan="4">내역이 없습니다.</td>
+                            </tr>
+                            <!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
 <!--                                <td>2023-03-16</td>-->
 <!--                                <td>경기도 파주시</td>-->
 <!--                                <td>A코스</td>-->
 <!--                                <td>수락 대기중</td></a>-->
 <!--                            </tr>-->
                         </table>
-                        <section>
+                        <section th:if="${applyCountAll != 0}">
                             <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
                             <ul id="paging">
                                 <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
@@ -155,7 +158,7 @@
                                     <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
                                 </th:block>
                             </ul>
-                            <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a>
+                            <span class="next-page"><a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
                         </section>
                     </div>
                 </div> <!-- content -->
