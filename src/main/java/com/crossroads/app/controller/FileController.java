@@ -1,7 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.BoardDTO;
-import com.crossroads.app.domain.vo.MemberFileVO;
+import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.service.BoardFileService;
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -41,7 +41,7 @@ public class FileController {
     //    파일 업로드
     @PostMapping("upload")
     @ResponseBody
-    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles, MemberFileVO memberFileVO) throws IOException {
+    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles, BoardFileVO boardFileVO) throws IOException {
         List<String> uuids = new ArrayList<>();
         String path = "C:/upload/" + getPath();
         File file = new File(path);

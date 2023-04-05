@@ -1,7 +1,6 @@
 package com.crossroads.app.controller;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
-import com.crossroads.app.service.MemberFileService;
 import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     private final MemberService memberService;
-    private final MemberFileService memberFileService;
 
     //회원가입
     @GetMapping("join")
