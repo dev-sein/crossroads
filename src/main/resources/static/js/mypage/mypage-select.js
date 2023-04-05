@@ -36,7 +36,7 @@ function upload_image() {
 /* button으로 파일 삭제 */
 $(document).ready(function() {
   $('#remove-button').click(function() {
-  $('#fileupload').empty();
+  $('#fileUpload').empty();
   $('#modal_user_img').attr('src',"/images/mypage/main-logo.png");
 
   })
@@ -201,35 +201,3 @@ email.addEventListener("blur", function(){
 // });
 
 
-/* 삭제하기 */
-// 삭제 버튼을 클릭하면 모달 창을 표시하는 함수
-function showDeleteModal(event, reviewId) {
-    event.preventDefault();
-    $("#delete-modal").css("visibility", "visible");
-    $("#delete-modal .delete-btn").attr("data-review-id", reviewId);
-}
-
-
-function deleteReview(reviewId) {
-    $.ajax({
-        url: `/review-delete/${reviewId}`,
-        method: "DELETE",
-        success: function (response) {
-            location.reload();
-        },
-        error: function (error) {
-            console.error(error);
-            alert("삭제 중 오류가 발생했습니다.");
-        },
-    });
-}
-
-$(document).on("click", "#delete-modal .delete-btn", function () {
-    let reviewId = $(this).attr("data-review-id");
-    deleteReview(reviewId);
-    closeDeleteModal(); // 수정된 부분
-});
-
-function closeDeleteModal() {
-    $("#delete-modal").css("visibility", "hidden");
-}

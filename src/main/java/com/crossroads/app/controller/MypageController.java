@@ -81,7 +81,9 @@ public class MypageController {
 
     /*마이페이지 비밀번호 확인*/
     @GetMapping("/my-password-check")
-    public String myPasswordCheckView() {
+    public String myPasswordCheckView(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "mypage/my-password-check";
     }
 
@@ -100,7 +102,9 @@ public class MypageController {
 
     /*마이페이지 비밀번호 변경*/
     @GetMapping("/my-password-change")
-    public String myPasswordChangeView() {
+    public String myPasswordChangeView(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "mypage/my-password-change";
     }
 
@@ -205,6 +209,7 @@ public class MypageController {
     @PostMapping("/save-profile")
     @ResponseBody
     public void save(@RequestBody List<MemberVO> files) {
+
         files.forEach(file -> memberService.modifyProfile(file));
     }
 
@@ -220,7 +225,9 @@ public class MypageController {
 
     /*회원탈퇴 시 비밀번호 확인*/
     @GetMapping("/my-password-check-out")
-    public String myPasswordCheckOut(){
+    public String myPasswordCheckOut(Model model, HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "/mypage/my-withdraw";
     }
 
@@ -237,7 +244,9 @@ public class MypageController {
 
     /*마이페이지 회원탈퇴*/
     @GetMapping("my-withdraw")
-    public String withdraw() {
+    public String withdraw(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "/mypage/my-withdraw";
     }
 
