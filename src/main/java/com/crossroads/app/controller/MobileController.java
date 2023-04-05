@@ -188,9 +188,13 @@ public class MobileController {
         Long id = memberService.login(memberIdentification, memberPassword);
         log.info(id.toString());
         if(id != null){
+            MemberVO memberVO = new MemberVO();
             session.setAttribute("memberId", id);
-            //관리자 if()
             log.info(session.getAttribute("memberId").toString());
+            System.out.println(memberService.getMemberInfo(id).getMemberType());
+            if(memberService.getMemberInfo(id).getMemberType() == String.valueOf('1')){
+                log.info("초보자 회원은 웹으로 이용 가능합니다.");
+            };
             return new RedirectView("list-mobile");
 
         }
