@@ -86,6 +86,14 @@ public class PointService {
         return pointDAO.selectById(pointId);
     }
 
+//    포인트 등록 및 차감
+    public void savePoint(PointDTO pointDTO) {
+        pointDAO.register(pointDTO); //포인트 내역 등록
+        int mypoint = pointDAO.findPointById(pointDTO.getMemberId()).intValue() - pointDTO.getPointPoint();
+        log.info(String.valueOf(mypoint));
+        pointDAO.setAfterApply(pointDTO.getMemberId(), mypoint);
+    }
+
 //    포인트 충전
     public void modifyPointByMemberId(Long memberId, Long memberPoint) {
         pointDAO.setPointByMemberId(memberId, memberPoint);

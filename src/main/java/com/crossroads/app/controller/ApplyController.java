@@ -1,6 +1,7 @@
 package com.crossroads.app.controller;
 
 import com.crossroads.app.domain.dto.ApplyDTO;
+import com.crossroads.app.domain.dto.PointDTO;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.print.attribute.standard.PresentationDirection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 
 @Controller
 @RequestMapping("/apply/*")
@@ -64,18 +66,21 @@ public class ApplyController {
     }
 
     @PostMapping("apply-second")
-    public RedirectView applySecondPost(HttpServletRequest httpServletRequest, Model model, ApplyDTO applyDTO, String applyCourse, RedirectAttributes redirectAttributes){
+    public RedirectView applySecondPost(HttpServletRequest httpServletRequest, Model model, ApplyDTO applyDTO, String applyCourse, RedirectAttributes redirectAttributes, PointDTO pointDTO){
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 2L);
         model.addAttribute("applyCourse", applyCourse);
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
-        log.info("second post 코스" + applyCourse);
         applyDTO.setMemberId((Long)httpSession.getAttribute("memberId"));
+        pointDTO.setMemberId((Long)httpSession.getAttribute("memberId"));
         applyService.saveApply(applyDTO);
         log.info(applyDTO.toString());
+        log.info(pointDTO.toString());
         model.addAttribute("applyDTO", applyDTO);
       /*  redirectAttributes.addAttribute("applyDTO", applyDTO);*/
         log.info("apply-second post 들어옴@@@@@@@@@@@@@@@@@@@@@@22");
+    //    pointService.modifyPoint(applyDTO.getMemberId(), );
+        pointService.savePoint(pointDTO);
         return new RedirectView("/apply/apply-third");
     }
 
