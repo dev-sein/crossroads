@@ -35,272 +35,44 @@
         <!-- 추가 -->
         <div class="write-button-top" style="left: -15.5%; width: 45%;" id="board-write-button">게시글 작성하기</div>
         <!-- 추가 -->
-        <div class="whole-wrapper">
-            <div class="whole-contents-wrapper" style="position: relative; left: 12%; margin: 0 !important; width: 45% !important; max-width: 55% !important;">
-                <div class="contents-inner-wrapper">
-                    <div class="contents-inner">
-                        <div class="sub-title">
-                            자유 게시판
+        <div class="whole-contents-wrapper" style="position: relative; left: 12%; margin: 0 !important; width: 45% !important; max-width: 55% !important;">
+            <div class="contents-inner-wrapper">
+                <div class="contents-inner">
+                    <div class="sub-title">
+                        자유 게시판
+                    </div>
+                    <div class="boardList-count" th:text="'게시글 수: ' + ${boards.size()}">5개</div>
+                    <div th:each="board : ${boards}" class="board-box">
+                        <div class="board-inner-info">
+                            <a href="" class="inner-info-top" th:text="${board.board_title}">
+                                게시글 제목
+                            </a>
+                            <p class="inner-info-middle">
+                            <span class="middle-span1" th:text="${board.member_name}">
+                                작성자 이름
+                            </span>
+                                <span class="span-between">|</span>
+                                <span class="middle-span2" th:text="${board.board_register_date}">
+                                2023.03.05
+                            </span>
+                            </p>
+                            <p class="inner-info-bottom" th:text="${board.board_content}">
+                                게시글 내용
+                            </p>
                         </div>
-                        <!-- 후기 작성 버튼 -->
-                        <div class="boardList-count">5개</div>
-                        <!-- 후기 작성 버튼 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
+                        <div class="board-inner-image">
+                            <!-- 첨부파일 개수 표시 -->
+                            <div class="board-inner-image-count">
+                                <span th:text="'+' + ${board.file_uuid.size()}">+ 4</span>
                             </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/003.jpg">
-                                </a>
-                            </div>
+                            <a href="" class="image-wrapper">
+                                <img class="board-images" th:src="@{'/images/board/' + ${board.file_path}}" src="/images/board/003.jpg">
+                            </a>
                         </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 2</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="http://www.headlinejeju.co.kr/news/photo/202112/471732_364576_1042.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/002.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/001.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/003.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/003.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        <!-- 시작 -->
-                        <div class="board-box">
-                            <div class="board-inner-info">
-                                <a href="" class="inner-info-top">
-                                    게시글 제목
-                                </a>
-                                <p class="inner-info-middle">
-                                    <span class="middle-span1">
-                                        작성자 이름
-                                    </span>
-                                    <span class="span-between">|</span>
-                                    <span class="middle-span2">
-                                        2023.03.05
-                                    </span>
-                                </p>
-                                <p class="inner-info-bottom">
-                                    아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                </p>
-                            </div>
-                            <div class="board-inner-image">
-                                <!-- 첨부파일 개수 표시 -->
-                                <div class="board-inner-image-count">
-                                    <span>+ 4</span>
-                                </div>
-                                <a href="" class="image-wrapper">
-                                    <img class="board-images" src="/images/board/003.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- 끝 -->
-                        
                     </div>
                 </div>
             </div>
+        </div>
 
             <!-- 인기 게시글 목록 -->
             <div class="whole-contents-wrapper" id="contents-wrapper2" style="margin: 0 0 0 30px !important; width: 20% !important; max-width: 20% !important; height: fit-content !important; position: fixed; right: 12%; top: 9.4%;">
@@ -334,99 +106,6 @@
                                 </div>
                             </div>
                             <!-- 끝 -->
-                            <!-- 시작 -->
-                            <div class="board-box" style="height: fit-content !important; margin-bottom: 15px !important; padding: 12px 15px;">
-                                <div class="board-box-inner">
-                                    <div class="board-inner-info" style="width: 230px !important; padding: 0;">
-                                        <a href="" class="inner-info-top" style="font-size: 17px;">
-                                            2. 게시글 제목
-                                        </a>
-                                        <p class="inner-info-middle" style="margin: 5px 0 5px;">
-                                            <span class="middle-span1" style="font-size: 13px !important;">
-                                                작성자 이름
-                                            </span>
-                                            <span class="span-between" style="font-size: 13px !important;">|</span>
-                                            <span class="middle-span2" style="font-size: 13px !important;">
-                                                조회수 97
-                                            </span>
-                                        </p>
-                                        <p class="inner-info-bottom" style="font-size: 13px;">
-                                            아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 끝 -->
-                            <!-- 시작 -->
-                            <div class="board-box" style="height: fit-content !important; margin-bottom: 15px !important; padding: 12px 15px;">
-                                <div class="board-box-inner">
-                                    <div class="board-inner-info" style="width: 230px !important; padding: 0;">
-                                        <a href="" class="inner-info-top" style="font-size: 17px;">
-                                            3. 게시글 제목
-                                        </a>
-                                        <p class="inner-info-middle" style="margin: 5px 0 5px;">
-                                            <span class="middle-span1" style="font-size: 13px !important;">
-                                                작성자 이름
-                                            </span>
-                                            <span class="span-between" style="font-size: 13px !important;">|</span>
-                                            <span class="middle-span2" style="font-size: 13px !important;">
-                                                조회수 97
-                                            </span>
-                                        </p>
-                                        <p class="inner-info-bottom" style="font-size: 13px;">
-                                            아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 끝 -->
-                            <!-- 시작 -->
-                            <div class="board-box" style="height: fit-content !important; margin-bottom: 15px !important; padding: 12px 15px;">
-                                <div class="board-box-inner">
-                                    <div class="board-inner-info" style="width: 230px !important; padding: 0;">
-                                        <a href="" class="inner-info-top" style="font-size: 17px;">
-                                            4. 게시글 제목
-                                        </a>
-                                        <p class="inner-info-middle" style="margin: 5px 0 5px;">
-                                            <span class="middle-span1" style="font-size: 13px !important;">
-                                                작성자 이름
-                                            </span>
-                                            <span class="span-between" style="font-size: 13px !important;">|</span>
-                                            <span class="middle-span2" style="font-size: 13px !important;">
-                                                조회수 97
-                                            </span>
-                                        </p>
-                                        <p class="inner-info-bottom" style="font-size: 13px;">
-                                            아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 끝 -->
-                            <!-- 시작 -->
-                            <div class="board-box" style="height: fit-content !important; margin-bottom: 15px !important; padding: 12px 15px;">
-                                <div class="board-box-inner">
-                                    <div class="board-inner-info" style="width: 230px !important; padding: 0;">
-                                        <a href="" class="inner-info-top" style="font-size: 17px;">
-                                            5. 게시글 제목
-                                        </a>
-                                        <p class="inner-info-middle" style="margin: 5px 0 5px;">
-                                            <span class="middle-span1" style="font-size: 13px !important;">
-                                                작성자 이름
-                                            </span>
-                                            <span class="span-between" style="font-size: 13px !important;">|</span>
-                                            <span class="middle-span2" style="font-size: 13px !important;">
-                                                조회수 97
-                                            </span>
-                                        </p>
-                                        <p class="inner-info-bottom" style="font-size: 13px;">
-                                            아임포트를 통해 원하는 결제 환경을 쉽고 빠르게 구현하세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 끝 -->
-                           
                         </div>
                     </div>
                 </div>

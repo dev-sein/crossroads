@@ -39,6 +39,7 @@ public interface BoardService {
 
     //후기 작성
     public void save(ReviewDTO reviewDTO);
+
     //마이페이지 게시글 목록
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards);
 
@@ -55,6 +56,12 @@ public interface BoardService {
     /* 상세 보기*/
     public Map<String, Object> getBoardAdmin(Long boardId);
 
+
+    //게시판 전체 조회
+   public List<BoardDTO> getListBoard();
+
+    //게시판 작성(저장)
+    public void save(BoardDTO boardDTO);
 
 
 }

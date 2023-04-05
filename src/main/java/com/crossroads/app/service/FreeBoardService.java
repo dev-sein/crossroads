@@ -155,4 +155,15 @@ public class FreeBoardService implements BoardService {
     }
 
 
+    //게시판 전체 목록 조회
+    public List<BoardDTO> getListBoard() {
+        return boardDAO.findAllBoard();
+    }
+
+    //게시판 내용 저장
+    public void save(BoardDTO boardDTO) {
+        boardDAO.save(boardDTO);
+    }
+
+
 }
