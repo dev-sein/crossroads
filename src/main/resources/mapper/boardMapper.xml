@@ -23,8 +23,8 @@
     <select id="selectAllAdmin" resultType="boardDTO">
         select b.board_id , m.member_name , b.board_title , b.board_content , b.board_register_date
         from tbl_member m join tbl_board b
-            on m.member_id = b.member_id
-            <include refid="searchAdmin"/>
+        on m.member_id = b.member_id
+        <include refid="searchAdmin"/>
         order by b.board_id desc
         limit #{criteria.offset}, #{criteria.amount}
     </select>
@@ -90,31 +90,18 @@
         where member_id = #{memberId}
     </delete>
 
-<!--게시판 목록 전체조회-->
+    <!--게시판 목록 전체조회-->
     <select id="selectBoardAll" resultType="boardDTO">
       SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
-             M.member_name, F.file_uuid, F.file_path
-      FROM tbl_board B
-      LEFT JOIN tbl_member M ON B.member_id = M.member_id
-      LEFT JOIN tbl_file F ON B.board_id = F.board_id
+             M.member_name
+      FROM tbl_board b
+      INNER JOIN tbl_member m ON b.member_id = m.member_id;
       ORDER BY B.board_register_date DESC
     </select>
     <!-- 게시물 작성 -->
-    <insert id="insert" >
+    <insert id="insert">
     INSERT INTO tbl_board (member_id, board_title, board_content)
     VALUES (#{memberId}, #{reviewTitle}, #{reviewContent})
   </insert>
-
-<!--게시판 조회순-->
-    <!--<select id="selectBoardAll" resultType="boardDTO">
-      SELECT B.board_id, B.board_title, B.board_content,B.board_register_date,B.board_update_date,B.board_read_count,
-             M.member_name, F.file_uuid, F.file_path
-      FROM tbl_board B
-      LEFT JOIN tbl_member M ON B.member_id = M.member_id
-      LEFT JOIN tbl_file F ON B.board_id = F.board_id
-      ORDER BY B.board_read_count DESC
-    </select>-->
-
-
-
+    
 </mapper>

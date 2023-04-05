@@ -20,12 +20,12 @@ public class BoardFileService {
 
 
     //    파일 추가
-    public void write(List<BoardDTO> files){
+    public void write(List<BoardFileVO> files){
         files.forEach(file -> boardFileDAO.save(file));
     }
 
     //    파일 전체 조회
-    public List<BoardDTO> getList(Long boardId){
+    public List<BoardFileVO> getList(Long boardId){
         return boardFileDAO.findByBoardId(boardId);
     }
 

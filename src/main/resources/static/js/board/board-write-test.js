@@ -78,40 +78,61 @@ document.querySelector("#image_container").addEventListener("click", function(ev
 const rating = document.querySelector('.rating');
 const score = document.querySelector('.score');
 
-/* 별점 옆에 점수 */
-// rating.addEventListener('change', function(e) {
-//   score.textContent = `${e.target.value}점`;
-// });
 
 
 // 리뷰 작성 확인 및 제출
-$("#complete-button").on('click', function(){
+$("#completeButton").on("click", function () {
     let flag1 = true;
     let flag2 = true;
     console.log("들어옴");
     var $title = $("#input-title");
     var $content = $("#input-content");
 
-    if($title.val().length < 1){
-        // alert("제목을 작성해주세요.");
-        $(".modal-wrapper").css('display', 'block');
+    if ($title.val().length < 1) {
+        $(".modal-wrapper").css("display", "block");
         $(".modal-message").text("제목을 작성해주세요.");
         $("#input-title").focus();
         flag1 = false;
-    } else if($content.val().length < 1){
-        // alert("내용을 작성해주세요.");
-        $(".modal-wrapper").css('display', 'block');
+    } else if ($content.val().length < 1) {
+        $(".modal-wrapper").css("display", "block");
         $(".modal-message").text("내용을 작성해주세요.");
         $("#input-content").focus();
         flag2 = false;
     }
 
-    if(flag1 && flag2){
-        // alert("완료");
-        document.reviewForm.submit();
-    }
+    if (flag1 && flag2) {
+        const formData = new FormData(document.querySelector("form[name='boardForm']"));
 
-})
+        const files = $("#image1")[0].files;
+        if (files.length > 3) {
+            alert("이미지는 최대 3개까지 등록 가능합니다.");
+            return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+            formData.append("upload" + (i + 1), files[i]);
+        }
+
+        $.ajax({
+            url: "/boards/board-save", // 변경된 부분
+            type: "POST",
+            enctype: "multipart/form-data",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function () {
+                alert("게시글이 작성되었습니다.");
+                location.href = "/board-list"; // 작성이 완료되면 게시글 목록으로 이동
+            },
+            error: function (xhr, status, error) {
+                console.log("error:", error);
+                alert("게시글 작성에 실패하였습니다. 다시 시도해주세요.");
+            },
+        });
+    }
+});
+
+
 
 
 /* 모달 창 띄우기, 끄기 */
@@ -120,39 +141,8 @@ $(".modal-close-btn").on("click", function(){
 })
 
 
-/*게시판 작성 저장하기*/
-$('#complete-button').on('click', function () {
-    // 이미지 업로드 및 UUID 받기
-    var formData = new FormData();
-    $('input[type=file]').each(function (index, fileInput) {
-        $.each(fileInput.files, function (i, file) {
-            formData.append('file', file);
-        });
-    });
 
-    var uuids = [];
-    $.ajax({
-        url: '/files/upload',
-        type: 'POST',
-        enctype: 'multipart/form-data',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (data) {
-            uuids = data;
-            // 이미지 UUID를 hidden input에 저장
-            for (var i = 0; i < uuids.length; i++) {
-                var hiddenInput = $('<input>')
-                    .attr('type', 'hidden')
-                    .attr('name', 'fileUUIDs')
-                    .val(uuids[i]);
-                $('form[name=boardForm]').append(hiddenInput);
-            }
-            // 게시글 저장 요청
-            $('form[name=boardForm]').submit();
-        },
-        error: function (e) {
-            console.log("ERROR: ", e);
-        }
-    });
-});
+
+
+
+

@@ -23,13 +23,14 @@ public class BoardFileDAO {
         boardFileMapper.deleteByBoardId(boardId);
     }
 
+
     //    파일 추가
-    public void save(BoardDTO boardDTO){
-        boardFileMapper.insert(boardDTO);
+    public void save(BoardFileVO boardFileVO){
+        boardFileMapper.insert(boardFileVO);
     }
 
     //    파일 전체 조회
-    public List<BoardDTO> findByBoardId(Long boardId){
+    public List<BoardFileVO> findByBoardId(Long boardId){
         return boardFileMapper.selectAll(boardId);
     }
 
