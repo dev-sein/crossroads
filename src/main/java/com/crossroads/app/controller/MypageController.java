@@ -1,15 +1,8 @@
 package com.crossroads.app.controller;
 
-import com.crossroads.app.domain.dto.ReplyDTO;
-import com.crossroads.app.domain.dto.ReviewCriteria;
-import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.dto.Standards;
-import com.crossroads.app.domain.vo.FileVO;
 import com.crossroads.app.domain.vo.MemberVO;
-import com.crossroads.app.domain.vo.ReviewVO;
-import com.crossroads.app.mapper.PointMapper;
 import com.crossroads.app.service.*;
-import com.sun.mail.auth.MD4;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -19,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.Clock;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

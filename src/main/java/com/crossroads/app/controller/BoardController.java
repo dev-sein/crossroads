@@ -53,7 +53,7 @@ public class BoardController {
         Long memberId = (Long) session.getAttribute("memberId");
         boardDTO.setMemberId(memberId);
 
-        // Set file information in BoardDTO
+        // Set file information in BoardDTO using BoardFileVO
         List<BoardFileVO> files = new ArrayList<>();
         for (int i = 0; i < multipartFiles.size(); i++) {
             MultipartFile multipartFile = multipartFiles.get(i);
