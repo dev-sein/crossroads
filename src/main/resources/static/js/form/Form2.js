@@ -109,7 +109,7 @@ function completeAllCheck() {
 }
 
 
-const $submitBtn = $(".signup-submit-button");
+const $submitBtn = $("#nextbtn");
 
 $submitBtn.on('click', function () {
 	document.join.submit();
