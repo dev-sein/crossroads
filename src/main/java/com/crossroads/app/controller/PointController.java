@@ -56,6 +56,9 @@ public class PointController {
 //        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
 
         Long memberId = (Long)request.getSession().getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/member/login";
+        }
         log.info(pointService.getPoint(memberId).toString());
         model.addAttribute("point", pointService.getPoint(memberId));
         return "point/changePoint";
@@ -74,6 +77,9 @@ public class PointController {
 //        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
 
         Long memberId = (Long)request.getSession().getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/applies/login-mobile";
+        }
         log.info(pointService.getPoint(memberId).toString());
         model.addAttribute("exchange",exchange);
         model.addAttribute("point", pointService.getPoint(memberId));
