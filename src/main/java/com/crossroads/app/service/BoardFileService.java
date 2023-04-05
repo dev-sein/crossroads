@@ -19,6 +19,7 @@ public class BoardFileService implements FileService{
 
     }
 
+    /* 게시글 별 file 조회 */
     public List<BoardFileVO> getFile(Long boardId) {
         return boardFileDAO.findById(boardId);
     }

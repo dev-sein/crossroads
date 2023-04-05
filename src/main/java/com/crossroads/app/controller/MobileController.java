@@ -11,6 +11,7 @@ import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ import java.util.Map;
 public class MobileController {
     private final ApplyService applyService;
     private final MemberService memberService;
+    private final PointService pointService;
 
 
     @GetMapping("list-mobile")
@@ -257,7 +259,6 @@ public class MobileController {
         return "mobile/change-pwd-mobile";
     }
 
-
     //비밀번호 변경
     @PostMapping("change-pwd-mobile")
     public RedirectView changePwdtoCompleteChangeMobile(String memberEmail, String memberPassword, RedirectAttributes redirectAttributes){
@@ -287,6 +288,7 @@ public class MobileController {
         return "mobile/my-mobile-password-check";
     }
 
+    //모바일 마이페이지 비밀번호 확인
     @PostMapping("/my-mobile-password-check")
     public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -308,17 +310,25 @@ public class MobileController {
 
     //모바일 마이페이지 비밀번호 변경
     @PostMapping("/my-mobile-password-change")
+    @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
         session.setAttribute("memberId", 1L);
         memberService.modifyPasswordMy(1L, memberPassword);
         return new RedirectView("my-mobile");
     }
 
+    //모바일 마이페이지 포인트 조회
     @GetMapping("/my-mobile-point")
-    public String myPointMobile(){
+    public String myPointMobile(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+//        session.setAttribute("memberId", 1L);
+        model.addAttribute("member", memberService.getMemberInfo(1L));
+        model.addAttribute("point", pointService.getListMyPoint(1L));
         return "/mobile/my-mobile-point";
     }
 
+
+    //모바일 마이페이지 연수신청 조회
     @GetMapping("/my-mobile-apply")
     public String myApplyMobile(Model model, HttpSession session, Criteria criteria){
         if (criteria.getPage() == 0){

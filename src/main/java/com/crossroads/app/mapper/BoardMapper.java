@@ -23,11 +23,12 @@ public interface BoardMapper {
     //    게시글 전체 조회
     public List<BoardDTO> selectAll();
 
-//    마이페이지 게시글 전체 조회
+    /*마이페이지 게시글 전체 조회*/
     public List<BoardDTO> selectAllMy(Long memberId, Standards standards);
 
-//    마이페이지 게시글 페이징 - 전체 개수
+    /*마이페이지 게시글 페이징 - 전체 개수*/
     public int selectTotalMy();
+
     //    관리자 전체 조회
     public List<BoardDTO> selectAllMy(Long memberId);
 

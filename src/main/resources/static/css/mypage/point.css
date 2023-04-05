@@ -1532,11 +1532,35 @@ td {
 }
 
 
-/* 페이징 처리 */
+
+
+/*페이징 처리*/
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.prev-page {
+    margin-top: 13px;
+    margin-right: 10px;
+}
+
+.next-page {
+    margin-top: 13px;
+    margin-left: 10px;
+}
+
 #paging {
     display: flex;
+    padding-inline-start: 0px;
 }
 
 .paging-list {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.change-page {
+    margin-left: 5px;
     margin-right: 5px;
 }

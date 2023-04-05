@@ -13,7 +13,7 @@
     </sql>
 
     <!-- 마이페이지 후기 목록 -->
-    <select id="selectAll" parameterType="long" resultType="reviewDTO">
+    <select id="selectAll" resultType="reviewDTO">
         select
            m.member_id, member_file_system_name,
            a.apply_id, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status,
@@ -22,8 +22,8 @@
         FROM tbl_member m
         join tbl_review r on m.member_id = r.member_id
         join tbl_apply a on r.apply_id = a.apply_id
-        where m.member_id = #{memberId}
         order by review_id desc
+        limit #{standards.offset}, #{standards.rowCount}
     </select>
 
     <!-- 후기 목록 전체 리스트 -->
