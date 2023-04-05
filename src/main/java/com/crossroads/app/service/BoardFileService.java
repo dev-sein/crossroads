@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.BoardFileDAO;
+import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.domain.vo.MemberFileVO;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,27 @@ public class BoardFileService implements FileService{
 
     public List<BoardFileVO> getFile(Long boardId) {
         return boardFileDAO.findById(boardId);
+    }
+
+
+    //    파일 추가
+    public void write(List<BoardDTO> files){
+        files.forEach(file -> boardFileDAO.save(file));
+    }
+
+    //    파일 전체 조회
+    public List<BoardDTO> getList(Long boardId){
+        return boardFileDAO.findByBoardId(boardId);
+    }
+
+    //    파일 삭제
+    public void remove(Long boardId){
+        boardFileDAO.delete(boardId);
+    }
+
+    //    전일 등록된 파일 조회
+    public List<BoardDTO> getListFromYesterday(){
+        return boardFileDAO.findByFilePath();
     }
 
 

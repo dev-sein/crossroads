@@ -37,5 +37,6 @@ public class BoardDTO {
     private Integer replyCount;
 
     /*boardFileVO*/
-    private List<BoardFileVO> files;
+    private List<BoardFileDTO> files;
+    private String fileUuid;
 }

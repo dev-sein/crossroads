@@ -114,19 +114,45 @@ $("#complete-button").on('click', function(){
 })
 
 
-
-/* 파일 목록 출력*/
-// var files = fileInput.files;
-//             var file;
-
-//             for (var i = 0; i < files.length; i++) {
-
-//                 file = files[i];
-
-//                 alert(file.name);
-//             }
-
 /* 모달 창 띄우기, 끄기 */
 $(".modal-close-btn").on("click", function(){
     $(".modal-wrapper").css('display', 'none');
 })
+
+
+/*게시판 작성 저장하기*/
+$('#complete-button').on('click', function () {
+    // 이미지 업로드 및 UUID 받기
+    var formData = new FormData();
+    $('input[type=file]').each(function (index, fileInput) {
+        $.each(fileInput.files, function (i, file) {
+            formData.append('file', file);
+        });
+    });
+
+    var uuids = [];
+    $.ajax({
+        url: '/files/upload',
+        type: 'POST',
+        enctype: 'multipart/form-data',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            uuids = data;
+            // 이미지 UUID를 hidden input에 저장
+            for (var i = 0; i < uuids.length; i++) {
+                var hiddenInput = $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'fileUUIDs')
+                    .val(uuids[i]);
+                $('form[name=boardForm]').append(hiddenInput);
+            }
+            // 게시글 저장 요청
+            $('form[name=boardForm]').submit();
+        },
+        error: function (e) {
+            console.log("ERROR: ", e);
+        }
+    });
+});
