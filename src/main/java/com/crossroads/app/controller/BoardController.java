@@ -2,6 +2,7 @@ package com.crossroads.app.controller;
 
 
 import com.crossroads.app.domain.dto.BoardDTO;
+import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.BoardFileVO;
 import com.crossroads.app.service.BoardService;
@@ -31,8 +32,8 @@ public class BoardController {
     //    게시판 목록 전체조회
     @GetMapping("board-list")
     public String selectAllBoards(Model model) {
-        List<BoardDTO> boards = boardService.getListBoard();
-        model.addAttribute("boards", boards);
+//        List<BoardDTO> boards = boardService.getListBoard();
+//        model.addAttribute("boards", boards);
         return "board/board-list";
     }
 
@@ -43,6 +44,12 @@ public class BoardController {
         HttpSession httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("memberId", 1l);
         return "board/board-write";
+    }
+
+    //게시판 삭제
+    @DeleteMapping("board-delete")
+    public void boardDelete(@RequestParam("boardId") Long boardId){
+
     }
 
 

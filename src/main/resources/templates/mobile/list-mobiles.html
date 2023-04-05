@@ -215,6 +215,8 @@
     // let applies = [[${applies}]];
     let memberId = [[${session.memberId}]];
     let nextPage = 0;
+    memberId = memberId == null ? 0 : memberId;
+    console.log(memberId);
     // let applys = [[${applys}]];
     // applys는 ajax로 받아와서 여기선 못가져오는게 맞나?
     // console.log("applys")
@@ -568,7 +570,7 @@
         let applyDate = [[${applyDate}]] || "none";
         let applyLocation = [[${applyLocation}]] || "none";
         let page = nextPage;
-        console.log("들어옴@@@@@@@@");
+        // console.log("들어옴@@@@@@@@");
         // nowDateWhole <- 현재시간
         // registerDateWhole <- 등록일자
         // applyDateWhole <- 클라이언트가 연수를 요청한 날
@@ -580,7 +582,7 @@
 
         // let currentPage = parseInt($('#current-page').val());
         nextPage++;
-        console.log("ajax위 들어옴");
+        // console.log("ajax위 들어옴");
         // let currentPage = parseInt($('#current-page').val());
         // let nextPage = currentPage + 1;
         // console.log("currentPage : " + currentPage);
@@ -603,6 +605,13 @@
         fetchData();
         // 목록 불러올 때 조건식에 막혀서 4개 이하로 가져오면 스크롤 길이가 부족해서 무한 스크롤 기능이 막혀버림
         // 해결하기 위해 가져온 목록이 3개 이하면 한번 더 데이터를 뿌려 줌
+        // while문으로 해결 하려고 했는데 조건식을 걸어도 break가 안되고 무한으로 돌아서 if문 여러개 작성함
+        if ($(".result-beginners").children().length < 4){
+            fetchData();
+        }
+        if ($(".result-beginners").children().length < 4){
+            fetchData();
+        }
         if ($(".result-beginners").children().length < 4){
             fetchData();
         }
@@ -615,7 +624,10 @@
         // console.log($(window).height());
         // console.log($(document).height() - $(window).height());
         // console.log(Math.ceil($(window).scrollTop()));
-        if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        // if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+        //     fetchData();
+        // }
+        if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height() - 50) {
             fetchData();
         }
     });

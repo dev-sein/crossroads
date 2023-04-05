@@ -33,7 +33,7 @@ import java.util.UUID;
 @Slf4j
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
-    private static String uploadDir = "D:\\uploads\\";
+    private static String uploadDir = "C:\\upload\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
