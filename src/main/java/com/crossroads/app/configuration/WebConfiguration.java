@@ -1,4 +1,4 @@
-/*
+
 package com.crossroads.app.configuration;
 
 import com.crossroads.app.interceptor.LoginInterceptor;
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfiguration implements WebMvcConfgurer {
+public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -18,4 +18,4 @@ public class WebConfiguration implements WebMvcConfgurer {
 //                .addPathPatterns("/apply/**");
     }
 }
-*/
+
