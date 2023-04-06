@@ -287,7 +287,7 @@ function checkEmail() {
 	});
 
 	/!* file upload *!/
-	$("#file").on('change', function () {
+	$("#license").on('change', function () {
 		var fileName = $("#file").val().split('/').pop().split('\\').pop();
 		var $fileName = $("#file").val().split('/').pop().split('\\').pop();
 
