@@ -134,58 +134,58 @@
                     </div>
                 </div>
                 <!-- sidebar 끝 -->
-                <!-- 본문 -->
-                <div class="gaia">
-                    <div class="content-header action">
-                        <h3 class="header-text">운전연수 내역<br>
-                            <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
-                        </h3>
+            <!-- 본문 -->
+            <div class="gaia">
+                <div class="content-header action">
+                    <h3 class="header-text">운전연수 내역<br>
+                        <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
+                    </h3>
+                </div>
+                <div class="content-inner">
+                    <!-- 상세 내역 -->
+                    <div class="drive-subtitle">
+                        <img class="listicon" src="/images/member/list.png">
+                        <h4 class="header-text iconnext">운전연수 상세 내역</h4>
                     </div>
-                    <div class="content-inner">
-                        <!-- 상세 내역 -->
-                        <div class="drive-subtitle">
-                            <img class="listicon" src="/images/member/list.png">
-                            <h4 class="header-text iconnext">운전연수 상세 내역</h4>
-                        </div>
-                        <div class="history-body-title driveclass">
-                            <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} ? ${applyCountAll} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} ? ${applyCountReady} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} ? ${applyCountIng} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} ? ${applyCountFinish} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                        </div>
-                        <!-- 상세내역 표  -->
-                        <table class="append-table">
-                            <tr class="tabletitle">
-                                <th class="date">날짜</th>
-                                <th class="location">지역</th>
-                                <th class="course">코스</th>
-                                <th class="status">상태</th>
-                            </tr>
-                            <tr th:if="${applyCountAll == 0}">
-                                <td colspan="4">내역이 없습니다.</td>
-                            </tr>
-                            <!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
-<!--                                <td>2023-03-16</td>-->
-<!--                                <td>경기도 파주시</td>-->
-<!--                                <td>A코스</td>-->
-<!--                                <td>수락 대기중</td></a>-->
-<!--                            </tr>-->
-                        </table>
-                        <section th:if="${applyCountAll != 0}">
-                            <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
-                            <ul id="paging">
-                                <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
-                                    <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-apply(page=${page})}"><li th:text="${page}"></li></a>
-                                    <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
-                                </th:block>
-                            </ul>
-                            <span class="next-page"><a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
-                        </section>
+                    <div class="history-body-title driveclass">
+                        <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} ? ${applyCountAll} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} ? ${applyCountReady} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} ? ${applyCountIng} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} ? ${applyCountFinish} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
                     </div>
-                </div> <!-- content -->
-            </div>
+                    <!-- 상세내역 표  -->
+                    <table class="append-table">
+                        <tr class="tabletitle">
+                            <th class="date">날짜</th>
+                            <th class="location">지역</th>
+                            <th class="course">코스</th>
+                            <th class="status">상태</th>
+                        </tr>
+                        <tr th:if="${applyCountAll == 0}">
+                            <td colspan="4">내역이 없습니다.</td>
+                        </tr>
+                        <!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
+                        <!--                                <td>2023-03-16</td>-->
+                        <!--                                <td>경기도 파주시</td>-->
+                        <!--                                <td>A코스</td>-->
+                        <!--                                <td>수락 대기중</td></a>-->
+                        <!--                            </tr>-->
+                    </table>
+                    <section th:if="${applyCountAll != 0}">
+                        <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
+                        <ul id="paging">
+                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-apply(page=${page})}"><li th:text="${page}"></li></a>
+                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
+                            </th:block>
+                        </ul>
+                        <span class="next-page"><a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
+                    </section>
+                </div>
+            </div> <!-- content -->
         </div>
-    </div><!--page  -->
+    </div>
+</div><!--page  -->
 </div> <!-- wrap -->
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
@@ -323,6 +323,9 @@
         return [year, month, day].join(delimiter);
     }
     /*****************************************************/
+</script>
+<script th:inline="javascript">
+    let applys = [[${applyVO}]];
 </script>
 <script src="/js/mypage/list.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
