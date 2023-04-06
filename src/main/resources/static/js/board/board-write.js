@@ -100,10 +100,13 @@ $(".registButton_button").on('click', function(e){
   let flag1 = true;
   let flag2 = true;
   let flag3 = true;
+  let flag4 = true;
+
   console.log("들어옴");
   var $title = $("#input-title");
   var $content = $("#input-content");
   var $star = $("input[name=reviewGrade]:checked");
+  const $imageInput = $('#image');
 
   console.log("star : " + $star.val());
   if($title.val().length < 1){
@@ -124,10 +127,15 @@ $(".registButton_button").on('click', function(e){
     $(".modal-message").text("만족도를 체크해주세요.");
     $star.focus();
     flag3 = false;
+  }else if($imageInput.val().length < 1){
+    $(".modal-wrapper").css('display', 'block');
+    $(".modal-message").text("이미지를 입력해주세요.");
+    $imageInput.focus();
+    flag4 = false;
   }
   
-  if(flag1 && flag2 && flag3){
-    alert("완료");
+  if(flag1 && flag2 && flag3 && flag4){
+    // alert("완료");
     document.reviewForm.submit();
   }
 
