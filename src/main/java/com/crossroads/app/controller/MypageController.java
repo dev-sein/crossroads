@@ -182,7 +182,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 업로드*/
-    @PostMapping("/upload")
+    @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
@@ -206,7 +206,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 저장*/
-    @PostMapping("/save-profile")
+    @PostMapping("save-profile")
     @ResponseBody
     public void save(@RequestBody List<MemberVO> files) {
 
@@ -214,7 +214,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 불러오기*/
-    @GetMapping("/display")
+    @GetMapping("display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
