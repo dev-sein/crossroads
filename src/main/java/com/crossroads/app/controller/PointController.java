@@ -1,5 +1,6 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +18,16 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class PointController {
     private final PointService pointService;
-    //    포인트 구입
+    private final MemberService memberService;
+
+    /*포인트 구입*/
     @GetMapping("/buy-point")
     public String buyPoint(Model model, HttpSession session) {
-        session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
         if(memberId == null) {
             return "member/login";
         }
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("point", pointService.getPoint(memberId));
         return "point/buyPoint";
     }
@@ -32,55 +35,58 @@ public class PointController {
     @PostMapping("pay-register")
     @ResponseBody
     public String payRegister(Long memberPoint, HttpSession session) {
-        session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
 
         pointService.modifyPointByMemberId(memberId, memberPoint);
         return "/points/buy-point-fin";
     }
 
-    //    포인트 구입완료
+    /*포인트 구입완료*/
     @GetMapping("/buy-point-fin")
     public String buyPointFin(Model model, HttpSession session) {
-        session.setAttribute("memberId", 1L);
         Long memberId = (Long)session.getAttribute("memberId");
 
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("point", pointService.getPoint(memberId));
         return "/point/buyPointFin";
     }
 
 
-    //    포인트 환전
+    /*포인트 환전*/
     @GetMapping("/exchange-point")
     public String changePoint(Model model, HttpServletRequest request){
-        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
-
         Long memberId = (Long)request.getSession().getAttribute("memberId");
-        log.info(pointService.getPoint(memberId).toString());
+        if (memberId == null){
+            return "redirect:/member/login";
+        }
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("point", pointService.getPoint(memberId));
+        log.info(pointService.getPoint(memberId).toString());
         return "point/changePoint";
     }
 
-    //    포인트 환전 완료
+    /*포인트 환전 완료*/
     @GetMapping("/exchange-complete")
-    public String exchangeComplete(){
+    public String exchangeComplete(Model model, HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "point/changePointFin";
     }
 
-    //    포인트 환전 모바일
+    /*포인트 환전 - 모바일*/
     @GetMapping("/exchange-point-mobile")
     public String changePointMobile(@RequestParam(value = "exchange", required = false) String exchange, HttpServletRequest request, Model model){
-
-        request.getSession().setAttribute("memberId",1L);   // 세션에 임시로 값 담아둠
-
         Long memberId = (Long)request.getSession().getAttribute("memberId");
-        log.info(pointService.getPoint(memberId).toString());
+        if (memberId == null){
+            return "redirect:/applies/login-mobile";
+        }
         model.addAttribute("exchange",exchange);
         model.addAttribute("point", pointService.getPoint(memberId));
+        log.info(pointService.getPoint(memberId).toString());
         return "mobile/change-point-mobile";
     }
 
-    //    포인트 환전 완료
+    /*포인트 환전 완료*/
     @PostMapping("/exchange-to-money")
     public RedirectView changeToMoney(HttpServletRequest request){
         Long memberId = (Long)request.getSession().getAttribute("memberId");
@@ -88,7 +94,7 @@ public class PointController {
         return new RedirectView("/points/exchange-complete");
     }
 
-    //    포인트 환전 완료 모바일
+    /*포인트 환전 완료 모바일*/
     @PostMapping("/exchange-to-money-mobile")
     public RedirectView changeToMoneyMobile(HttpServletRequest request){
         Long memberId = (Long)request.getSession().getAttribute("memberId");

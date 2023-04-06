@@ -46,7 +46,7 @@ public class MobileController {
         }
 
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
+//        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
 
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
@@ -79,7 +79,7 @@ public class MobileController {
                                    HttpServletRequest request, Criteria criteria, Model model)
     {
         HttpSession session = request.getSession();
-        session.setAttribute("memberId", 1L);       // 임시로 세션에 1L 담아둠
+//        session.setAttribute("memberId", 1L);       // 임시로 세션에 1L 담아둠
         Map<String, Object> info = new HashMap<>();
         if(applyDate != null && applyDate != ""){
             info.put("applyDate", applyDate);
@@ -188,9 +188,13 @@ public class MobileController {
         Long id = memberService.login(memberIdentification, memberPassword);
         log.info(id.toString());
         if(id != null){
+            MemberVO memberVO = new MemberVO();
             session.setAttribute("memberId", id);
-            //관리자 if()
             log.info(session.getAttribute("memberId").toString());
+            System.out.println(memberService.getMemberInfo(id).getMemberType());
+            if(memberService.getMemberInfo(id).getMemberType() == String.valueOf('1')){
+                log.info("초보자 회원은 웹으로 이용 가능합니다.");
+            };
             return new RedirectView("list-mobile");
 
         }
@@ -204,7 +208,7 @@ public class MobileController {
         //세션 끊기
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:/applies/list-mobile";
+        return "redirect:/applies/login-mobile";
     }
 
     //비밀번호 찾기 1 - 이메일 인증
@@ -277,8 +281,9 @@ public class MobileController {
 
     //모바일 마이페이지 메인
     @GetMapping("/my-mobile")
-    public String myMobile(Long memberId, Model model){
-        model.addAttribute("member", memberService.getMemberInfo(1L));
+    public String myMobile(Model model, HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "mobile/my-mobile";
     }
 
@@ -292,9 +297,8 @@ public class MobileController {
     @PostMapping("/my-mobile-password-check")
     public RedirectView myPasswordCheckMobile(String memberPassword, HttpServletRequest request) {
         HttpSession session = request.getSession();
-//        Long password = memberService.getPassword(memberPassword);
-//        log.info(password.toString());
-        session.setAttribute("memberId", 1L);
+        Long memberId = (Long)session.getAttribute("memberId");
+
         if(((Long)session.getAttribute("memberId")) == memberService.getPassword((Long)session.getAttribute("memberId"), memberPassword)){
             log.info(session.getAttribute("memberId").toString());
             return new RedirectView("my-mobile-password-change");
@@ -312,21 +316,19 @@ public class MobileController {
     @PostMapping("/my-mobile-password-change")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChangeMobile(String memberPassword, HttpSession session){
-        session.setAttribute("memberId", 1L);
-        memberService.modifyPasswordMy(1L, memberPassword);
+        Long memberId = (Long)session.getAttribute("memberId");
+        memberService.modifyPasswordMy(memberId, memberPassword);
         return new RedirectView("my-mobile");
     }
 
     //모바일 마이페이지 포인트 조회
     @GetMapping("/my-mobile-point")
-    public String myPointMobile(Model model, HttpServletRequest request){
-        HttpSession session = request.getSession();
-//        session.setAttribute("memberId", 1L);
-        model.addAttribute("member", memberService.getMemberInfo(1L));
-        model.addAttribute("point", pointService.getListMyPoint(1L));
+    public String myPointMobile(Model model, HttpSession session){
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        model.addAttribute("point", pointService.getListMyPoint(memberId));
         return "/mobile/my-mobile-point";
     }
-
 
     //모바일 마이페이지 연수신청 조회
     @GetMapping("/my-mobile-apply")
@@ -338,11 +340,8 @@ public class MobileController {
             log.info(String.valueOf(criteria.getOffset()));
         }
 
-        session.setAttribute("memberId", 6L);
         Long memberId = (Long)session.getAttribute("memberId");
-
         model.addAttribute("applies", applyService.getApplyVeteran(memberId, criteria));
-
         return "/mobile/my-mobile-apply";
     }
 
@@ -357,8 +356,6 @@ public class MobileController {
             criteria = criteria.create(page,4);
             log.info(String.valueOf(criteria.getOffset()));
         }
-
-        session.setAttribute("member", 3L);
         Long memberId = (Long)session.getAttribute("memberId");
         return applyService.getApplyVeteran(memberId, criteria);
     }

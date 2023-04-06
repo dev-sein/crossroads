@@ -54,7 +54,7 @@ public class ReviewDAO {
         return reviewMapper.select(reviewId);
     }
 
-//    마이페이지 게시글 페이징 전체 개수
+    /*마이페이지 게시글 페이징 전체 개수*/
     public int findCountAllMy(){
         return reviewMapper.selectTotalMy();
     }
