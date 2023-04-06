@@ -104,25 +104,14 @@ public class MemberController {
     public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request, RedirectAttributes redirectAttributes,  HttpServletResponse response) {
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
-        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
-        log.info(String.valueOf(autoLogin));
-        log.info(id.toString());
         if (id != null) {
             session.setAttribute("memberId", id);
             if (id == 23L) {
                 return new RedirectView("/admin/home");}
-                else if(autoLogin) {
-                    Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);
-                    Cookie memberPasswordCookie = new Cookie("memberPassword", memberPassword);
-                    memberIdentificationCookie.setMaxAge(60 * 60 * 24);
-                    memberPasswordCookie.setMaxAge(60 * 60 * 24);
-                    response.addCookie(memberIdentificationCookie);
-                    response.addCookie(memberPasswordCookie);
-                }
                 log.info(session.getAttribute("memberId").toString());
                 return new RedirectView("/main");
             }
-            return new RedirectView("/member/login");
+           return new RedirectView("/member/login?result=fail");
         }
 
     //카카오 회원가입
