@@ -69,9 +69,9 @@
 	<article class="module module--new-articles">
 		<p class="module__title">후기 관리</p>
 		<div class="mBoardList notice">
-			<ul>
+			<ul><x></x>
 				<li th:each="review: ${reviews}">
-					<a data-gtm="DATA_notice_contents" href="@{/admin/review/list}" th:text="'[후기] ' + ${review.reviewTitle}"></a>
+					<a data-gtm="DATA_notice_contents" th:href="@{/admin/review/list}" th:text="'[후기] ' + ${review.reviewTitle}"></a>
 					<span class="date" th:text="${review.reviewRegisterDate}"></span>
 				</li>
 			</ul>

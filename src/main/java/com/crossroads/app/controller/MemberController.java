@@ -106,7 +106,7 @@ public class MemberController {
         Long id = memberService.login(memberIdentification, memberPassword);
         if (id != null) {
             session.setAttribute("memberId", id);
-            if (id == 23L) {
+            if (id == 1L) {
                 return new RedirectView("/admin/home");}
                 log.info(session.getAttribute("memberId").toString());
                 return new RedirectView("/main");
