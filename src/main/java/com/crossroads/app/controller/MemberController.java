@@ -109,7 +109,7 @@ public class MemberController {
         log.info(id.toString());
         if (id != null) {
             session.setAttribute("memberId", id);
-            if (id == 1L) {
+            if (id == 23L) {
                 return new RedirectView("/admin/home");}
                 else if(autoLogin) {
                     Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);

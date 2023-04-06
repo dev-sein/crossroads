@@ -3,6 +3,7 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
+import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,15 +30,18 @@ import java.util.UUID;
 @RequestMapping("/review/*")
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
+    private final MemberService memberService;
+
     private static String uploadDir = "C:\\upload\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
     public String reviewWrite(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("reviewDTO", new ReviewDTO());
-        HttpSession httpSession = httpServletRequest.getSession();
-        httpSession.setAttribute("memberId", 1L);
+        HttpSession session = httpServletRequest.getSession();
 //        httpSession.getAttribute("memberId");
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "review/review-write";
     }
 
@@ -67,14 +71,19 @@ public class ReviewController {
     @GetMapping("/review-list")
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-         session.setAttribute("memberId", 1L);   // 테스트 ( 수정해야함)*/
+        Long memberId = (Long)session.getAttribute("memberId");
+        // memberId가 null이면 (로그인이 안됐을 때) 페이지 오류는 안나게 임의로 0 값으로 담아준다.
+        memberId = memberId == null ? 0 : memberId;
+
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("reviews", reviewBoardService.getListReview(criteria));
 
         return "review/review-list";
     }
+
     // 무한스크롤
     @GetMapping("/api/reviews")
     @ResponseBody
@@ -88,12 +97,13 @@ public class ReviewController {
 
     //후기 수정
     @GetMapping("/review-update")
-    public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model) {
+    public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model, HttpSession session) {
         ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
-
         if (reviewVO == null) {
             return "redirect:/review/review-list";
         }
+        Long memberId = (Long)session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("info", reviewVO);
         model.addAttribute("filename", reviewVO.getReviewFileSystemName()); // 파일 이름 추가
         return "review/review-update";

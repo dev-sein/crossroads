@@ -64,7 +64,8 @@
     <select id="selectMyInfo" parameterType="long" resultType="memberVO">
         select  member_id, member_identification, member_password, member_name, member_phone, member_email, member_file_system_name,
                 member_type, member_drive_register_date, member_point,
-                member_file_original_name, member_file_uuid, member_file_path, member_file_size
+                member_file_original_name, member_file_uuid,
+                 member_file_path, member_file_size
         from tbl_member
         where member_id = #{memberId}
     </select>
@@ -86,6 +87,7 @@
         delete from tbl_member
         where member_id = #{memberId}
     </delete>
+
 
 
     <!-- 비밀번호 변경 -->

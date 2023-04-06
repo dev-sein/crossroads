@@ -139,7 +139,8 @@
         <div class="board-box-wrapper">
             <div class="board-box">
                 <div class="board-box-top">
-                    <img src="/img/${review.memberFileSystemName}" class="user-profile-image">
+                <img th:src="@{/upload/{filename}(filename=${review.memberFileSystemName})}" class="user-profile-image">
+<!--                    <img src="/mypage/display(fileName=${review.memberFilePath + '/' + review.memberFileUuid + '_' + review.memberFileOriginalName})" class="user-profile-image">-->
                     <div class="user-detail-wrapper">
                         <div class="user-detail-top">
                             <div class="user-type">수강생</div>

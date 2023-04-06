@@ -147,10 +147,12 @@ public class MypageController {
     @GetMapping("/my-review")
     public String showListMyReview(Model model, HttpSession session, Standards standards) {
         Long memberId = (Long) session.getAttribute("memberId");
+        log.info("들어옴@@@@@@@@@@@@@@@@@");
+        log.info(reviewBoardService.getListMy(memberId, standards).toString());
 
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("review", reviewBoardService.getListMy(memberId, standards));
-        log.info(model.addAttribute("review", reviewBoardService.getListMy(memberId, standards)).toString());
+//        log.info(model.addAttribute("review", reviewBoardService.getListMy(memberId, standards)).toString());
         return "mypage/my-review";
     }
 
