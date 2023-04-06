@@ -57,8 +57,8 @@
 
     <!-- 후기 작성-->
     <insert id="insert" >
-    INSERT INTO tbl_review (member_id, review_title, review_content, review_file_system_name, review_grade, apply_id)
-    VALUES (#{memberId}, #{reviewTitle}, #{reviewContent}, #{reviewFileSystemName}, #{reviewGrade}, #{applyId})
+    INSERT INTO tbl_review (member_id, review_title, review_content, review_file_system_name, review_grade, apply_id, review_file_original_name, review_file_uuid, review_file_path, review_file_size)
+    VALUES (#{memberId}, #{reviewTitle}, #{reviewContent}, #{reviewFileSystemName}, #{reviewGrade}, #{applyId}, #{reviewFileSystemName}, 0, 'C:\upload', 0)
   </insert>
 
     <!--업데이트-->
@@ -73,7 +73,7 @@
   </update>
 
     <select id="select" resultType="reviewVO">
-        select review_title,
+        select review_id, review_title,
                 review_content,
                 review_file_system_name,
                 review_grade, review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type
