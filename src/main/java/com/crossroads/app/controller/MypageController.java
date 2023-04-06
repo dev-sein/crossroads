@@ -49,7 +49,9 @@ public class MypageController {
     /*마이페이지 프로필 조회*/
     @GetMapping("/my-info")
     public String myInfoSelect(Model model, HttpSession session) {
+        session.setAttribute("memberId", 2L);
         Long memberId = (Long)session.getAttribute("memberId");
+        log.info("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         log.info("들어옴");
         log.info( model.addAttribute("member", memberService.getMemberInfo(memberId)).toString());
