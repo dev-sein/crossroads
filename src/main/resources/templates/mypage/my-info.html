@@ -31,14 +31,14 @@
             <!-- 좌측 사이드바 시작 -->
             <div class="sidebar">
                 <div class="user-name-tag">
-                    <h3 class="user-name-tag-heading">초보자</h3>
-                    <a class="profile-setting"><!-- 클라이언트 정보 --></a>
+                    <h3 class="user-name-tag-heading">클라이언트</h3>
+                    <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
 
                             <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
-<!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
-<!--                                 src="/images/mypage/main-logo.png">-->
+                            <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+                            <!--                                 src="/images/mypage/main-logo.png">-->
 
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
@@ -306,18 +306,15 @@
         // console.log(globalThis.arrayFile2[0][0].name);
         // console.log(globalThis.arrayFile2[0][0].size);
         // console.log(globalThis.arrayFile2[0][0].type);
-        console.log("여기@@@@@@@@@@@@@");
-        console.log(globalThis.uuid);
-        console.log(globalThis.uuid[0]);
+        // console.log(globalThis.uuid[0]);
 
         if($('#modal_user_img').attr('src') == "/images/mypage/main-logo.png") {
             $.ajax({
                 url: "/mypage/delete-profile",
                 type: "post",
                 success: function(data){
-                    // let url = `/mypage/my-info`;
-                    // location.replace(url);
-                    alert("들어옴")
+                    let url = `/mypage/my-info`
+                    location.replace(url);
                 }
 
             });
@@ -346,7 +343,7 @@
             success: function(data){
                 console.log("success");
                 console.log(data);
-                let url = `/mypage/my-info`;
+                let url = `/mypage/my-info`
                 console.log(url);
                 location.replace(url);
 

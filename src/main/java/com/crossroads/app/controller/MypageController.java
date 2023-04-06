@@ -49,7 +49,9 @@ public class MypageController {
     /*마이페이지 프로필 조회*/
     @GetMapping("/my-info")
     public String myInfoSelect(Model model, HttpSession session) {
+        session.setAttribute("memberId", 2L);
         Long memberId = (Long)session.getAttribute("memberId");
+        log.info("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         log.info("들어옴");
         log.info( model.addAttribute("member", memberService.getMemberInfo(memberId)).toString());
@@ -184,7 +186,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 업로드*/
-    @PostMapping("upload")
+    @PostMapping("/upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
@@ -208,15 +210,14 @@ public class MypageController {
     }
 
     /*마이페이지 파일 저장*/
-    @PostMapping("save-profile")
+    @PostMapping("/save-profile")
     @ResponseBody
     public void save(@RequestBody List<MemberVO> files) {
-
         files.forEach(file -> memberService.modifyProfile(file));
     }
 
     /*마이페이지 파일 불러오기*/
-    @GetMapping("display")
+    @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
