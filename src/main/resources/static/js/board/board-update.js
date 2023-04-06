@@ -53,6 +53,20 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
 });
 
 
+function updateReview() {
+    const title = document.getElementById("input-title").value;
+    const content = document.getElementById("input-content").value;
+
+    if (title === "" || content === "") {
+        alert("제목과 내용을 입력해주세요.");
+        return;
+    }
+
+    document.reviewForm.submit();
+}
+
+
+
 /*사진 첨부*/
 function setThumbnail(event) {
     var reader = new FileReader();
