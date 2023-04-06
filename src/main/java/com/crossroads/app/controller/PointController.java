@@ -1,5 +1,7 @@
 package com.crossroads.app.controller;
 
+import com.crossroads.app.domain.vo.MemberVO;
+import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/points/*")
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class PointController {
     private final PointService pointService;
+    private final ApplyService applyService;
     //    포인트 구입
     @GetMapping("/buy-point")
     public String buyPoint(Model model, HttpSession session) {
@@ -80,6 +85,7 @@ public class PointController {
         if (memberId == null){
             return "redirect:/applies/login-mobile";
         }
+
         log.info(pointService.getPoint(memberId).toString());
         model.addAttribute("exchange",exchange);
         model.addAttribute("point", pointService.getPoint(memberId));
@@ -96,8 +102,13 @@ public class PointController {
 
     //    포인트 환전 완료 모바일
     @PostMapping("/exchange-to-money-mobile")
-    public RedirectView changeToMoneyMobile(HttpServletRequest request){
+    public RedirectView changeToMoneyMobile(HttpServletRequest request, String point){
         Long memberId = (Long)request.getSession().getAttribute("memberId");
+        Map <String, Object> pointDetail = new HashMap<>();
+        pointDetail.put("pointPoint",point);
+        pointDetail.put("memberId",memberId);
+
+        applyService.savePointDetails(pointDetail);
         pointService.modifyPoint(memberId);
         return new RedirectView("/points/exchange-point-mobile?exchange=ok");
     }

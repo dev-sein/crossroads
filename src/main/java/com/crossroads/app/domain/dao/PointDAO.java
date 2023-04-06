@@ -3,6 +3,7 @@ package com.crossroads.app.domain.dao;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.PointDTO;
+import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.mapper.ApplyMapper;
 import com.crossroads.app.mapper.PointMapper;
 import com.crossroads.app.service.PointService;
@@ -63,5 +64,10 @@ public class PointDAO {
     //    포인트 충전
     public void setPointByMemberId(Long memberId, Long memberPoint) {
         pointMapper.updatePointByMemberId(memberId, memberPoint);
+    }
+
+    //    포인트 환전 시 기록
+    public void registerPointDetail(Map<String, Object> pointDetail){
+        pointMapper.insertPointDetail(pointDetail);
     }
 }

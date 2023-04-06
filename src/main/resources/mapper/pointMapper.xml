@@ -110,4 +110,10 @@
         values(#{memberId}, #{pointStatus}, #{pointPoint})
     </insert>
 
+    <insert id="insertPointDetail">
+        insert tbl_point
+        (member_id, point_status, point_point)
+        values(#{memberId}, 1, #{pointPoint})
+    </insert>
+
 </mapper>
