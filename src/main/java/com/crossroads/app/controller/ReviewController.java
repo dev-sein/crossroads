@@ -97,11 +97,15 @@ public class ReviewController {
 
     //후기 수정
     @GetMapping("/review-update")
-    public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model, HttpSession session) {
-        ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
+    public String getReviewUpdatePage(@RequestParam(value = "reviewId") String reviewId, Model model, HttpSession session) {
+        log.info("reviewId@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22");
+        log.info(reviewId);
+        ReviewVO reviewVO = reviewBoardService.getReview(Long.parseLong(reviewId));
         if (reviewVO == null) {
             return "redirect:/review/review-list";
         }
+        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        log.info(reviewVO.toString());
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("info", reviewVO);
@@ -112,12 +116,14 @@ public class ReviewController {
 
     // 후기 수정 처리
     @PostMapping("/review-update/{reviewId}")
-    public String updateReview(@PathVariable("reviewId") Long reviewId, @ModelAttribute @Validated ReviewDTO reviewDTO,
+    public String updateReview(@PathVariable("reviewId") String reviewId, @ModelAttribute @Validated ReviewDTO reviewDTO,
                                HttpSession session,
                                @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
-        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
+        Long memberId = (Long)session.getAttribute("memberId");
+        log.info("reviewId@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        log.info(reviewId);
         reviewDTO.setMemberId(memberId);
-        reviewDTO.setReviewId(reviewId);
+        reviewDTO.setReviewId(Long.parseLong(reviewId));
 
         if (image != null && !image.isEmpty()) {
             log.info(image.toString());
@@ -129,7 +135,7 @@ public class ReviewController {
             Files.copy(image.getInputStream(), savePath);
             reviewDTO.setReviewFileSystemName(savedFileName);
         } else {
-            ReviewVO currentReview = reviewBoardService.getReview(reviewId);
+            ReviewVO currentReview = reviewBoardService.getReview(Long.parseLong(reviewId));
             reviewDTO.setReviewFileSystemName(currentReview.getReviewFileSystemName());
         }
         reviewBoardService.updateReview(reviewDTO);
