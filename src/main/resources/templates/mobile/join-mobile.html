@@ -101,13 +101,15 @@
                             <!-- <div class="loader" style="display:none;">
                            </div>-->
                         </div>
+                        <div class="error-text" style="display: none;" id="file-error">운전면허증을 등록해주세요.</div>
                         <div class="input-box margin-top-16 name">
                             <div class="input-title">면허 취득 일자 <span id="result"></span></div>
+
                             <div class="input-text-wrapper">
-                                <input class="theme-croosroads input-text registerdate" name="memberDriveRegisterDate" type="text" value="면허증을 등록하면 취득일자가 적용됩니다." readonly/>
+                                <input class="theme-croosroads input-text registerdate" name="memberDriveRegisterDate" type="text" placeholder="면허증을 등록하면 취득일자가 적용됩니다." readonly/>
                                 <input class="theme-croosroads input-text" id="memberType" name="memberType" value="0" type="text" style="display:none;">
                                 <input type="text" th:if="${session.kakaoInfo == null}" name="memberStatus" id="memberStatus" value="" style="display:none;">
-                                <input class="theme-croosroads input-text" th:if="${session.kakaoInfo != null}" th:value="1" id="memberEmailKakao" name="memberStatus" maxlength="100" placeholder="ID@example.com" type="text" oninput="checkEmail()" style="display:none;" readonly/>
+                                <input class="theme-croosroads input-text" th:if="${session.kakaoInfo != null}" th:value="1" name="memberStatus" maxlength="100" placeholder="ID@example.com" type="text" oninput="checkEmail()" style="display:none;" readonly/>
                             </div>
                         </div>
                     </div>
