@@ -251,6 +251,9 @@
     globalThis.fileSize = '';
     globalThis.fileType = '';
 
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
 
     $("#fileUpload").on("change", function() {
         const $files2 = $("#fileUpload")[0].files;
@@ -313,6 +316,7 @@
                 url: "/mypage/delete-profile",
                 type: "post",
                 success: function(data){
+                    $('.user-img').attr('src', "/images/mypage/main-logo.png");
                     let url = `/mypage/my-info`
                     location.replace(url);
                 }
@@ -329,7 +333,6 @@
             memberVO.memberFilePath = toStringByFormatting(new Date());
             memberVO.memberFileSize = globalThis.arrayFile2[0][0].size;
             memberVO.memberFileType = globalThis.arrayFile2[0][0].type.startsWith("image");
-            memberVO.memberId = 1;
             files.push(memberVO);
         });
         console.log(files);
@@ -346,6 +349,7 @@
                 let url = `/mypage/my-info`
                 console.log(url);
                 location.replace(url);
+                alert("들어옴");
 
             }
 

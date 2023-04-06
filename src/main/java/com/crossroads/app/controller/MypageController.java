@@ -49,7 +49,7 @@ public class MypageController {
     /*마이페이지 프로필 조회*/
     @GetMapping("/my-info")
     public String myInfoSelect(Model model, HttpSession session) {
-        session.setAttribute("memberId", 2L);
+//        session.setAttribute("memberId", 2L);
         Long memberId = (Long)session.getAttribute("memberId");
         log.info("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
@@ -212,8 +212,11 @@ public class MypageController {
     /*마이페이지 파일 저장*/
     @PostMapping("/save-profile")
     @ResponseBody
-    public void save(@RequestBody List<MemberVO> files) {
-        files.forEach(file -> memberService.modifyProfile(file));
+    public void save(@RequestBody List<MemberVO> files, HttpSession session) {
+        files.forEach(file -> {
+            file.setMemberId((Long)session.getAttribute("memberId"));
+            memberService.modifyProfile(file);
+        });
     }
 
     /*마이페이지 파일 불러오기*/
