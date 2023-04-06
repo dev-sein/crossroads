@@ -306,15 +306,18 @@
         // console.log(globalThis.arrayFile2[0][0].name);
         // console.log(globalThis.arrayFile2[0][0].size);
         // console.log(globalThis.arrayFile2[0][0].type);
-        // console.log(globalThis.uuid[0]);
+        console.log("여기@@@@@@@@@@@@@");
+        console.log(globalThis.uuid);
+        console.log(globalThis.uuid[0]);
 
         if($('#modal_user_img').attr('src') == "/images/mypage/main-logo.png") {
             $.ajax({
                 url: "/mypage/delete-profile",
                 type: "post",
                 success: function(data){
-                    let url = `/mypage/my-info`
-                    location.replace(url);
+                    // let url = `/mypage/my-info`;
+                    // location.replace(url);
+                    alert("들어옴")
                 }
 
             });
@@ -343,7 +346,7 @@
             success: function(data){
                 console.log("success");
                 console.log(data);
-                let url = `/mypage/my-info`
+                let url = `/mypage/my-info`;
                 console.log(url);
                 location.replace(url);
 
