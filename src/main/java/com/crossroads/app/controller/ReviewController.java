@@ -76,6 +76,8 @@ public class ReviewController {
         memberId = memberId == null ? 0 : memberId;
 
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
+        List<ReviewDTO> reviewDTOS = reviewBoardService.getListReview();
+
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
         model.addAttribute("member", memberService.getMemberInfo(memberId));
