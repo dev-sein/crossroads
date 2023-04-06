@@ -636,9 +636,9 @@ textarea::placeholder{
 
 /* 사진 추가 */
 
-section{
-    margin-top: 30px;
-}
+/*section{*/
+/*    !*margin-top: 30px;*!*/
+/*}*/
 
 .photo_submit_section{
     display: none;
