@@ -39,15 +39,18 @@ public class MobileController {
 
     @GetMapping("list-mobile")
     public String listMobile(HttpServletRequest request , Criteria criteria, Model model) throws Exception{
+
         if (criteria.getPage() == 0){
             criteria = criteria.create(1,5);
         } else {
             criteria = criteria.create(criteria.getPage(),5);
         }
-
         HttpSession session = request.getSession();
 //        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
-
+        Long memberId = (Long) session.getAttribute("memberId");
+        if(memberId == null) {
+            return "redirect:/applies/login-mobile";
+        }
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
 
