@@ -129,17 +129,17 @@
             console.log(memberId);
             let $reviewList = $("#review-list");
             reviews.forEach(review => {
-                console.log(review.memberFilePath)
-                let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
-                let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
-                let formattedDate = timeSince(new Date(review.reviewRegisterDate));
-                // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
-                let reviewElement = `
+                    console.log(review.memberFilePath)
+                    let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
+                    let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                    let formattedDate = timeSince(new Date(review.reviewRegisterDate));
+                    // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
+                    let reviewElement = `
     <div class="review">
         <div class="board-box-wrapper">
             <div class="board-box">
                 <div class="board-box-top">
-                 <img th:src="@{/upload/{filename}(filename=${review.memberFileSystemName})}" class="user-profile-image">
+                    <img src="/mypage/display?fileName=${review.memberFilePath + '/' + review.memberFileUuid + '_' + review.memberFileOriginalName}" class="user-profile-image">
                     <div class="user-detail-wrapper">
                         <div class="user-detail-top">
                             <div class="user-type">수강생</div>
@@ -152,8 +152,8 @@
                             </div>
                         </div>
                     </div>`;
-                if (memberId == `${review.memberId}`) {
-                    reviewElement += `
+                    if (memberId == `${review.memberId}`) {
+                        reviewElement += `
                     <!--수정 삭제 버튼-->
                     <div class="update-buttons-wrapper">
                     <a href="http://localhost:10000/review/review-update?reviewId=${review.reviewId}"  class="buttons-wrapper">
@@ -164,10 +164,10 @@
                     </a>
                     </div>
                     `
-                ;
-                                    }
-                                    reviewElement +=
-                    `
+                        ;
+                    }
+                    reviewElement +=
+                        `
                         <!--수정 삭제 버튼 끝-->
                     </div>
 
@@ -201,7 +201,7 @@
                     </div>
                     </div>`;
                     $reviewList.append(reviewElement);
-                    }
+                }
             );
         }
 
