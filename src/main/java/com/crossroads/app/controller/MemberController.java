@@ -40,7 +40,7 @@ public class MemberController {
         return new RedirectView("login");
     }
 
-    //카카오 회원가입
+/*    //카카오 회원가입
     @GetMapping("join-kakao")
     public String joinKakao(){
         return "/member/join";
@@ -52,7 +52,7 @@ public class MemberController {
         log.info("카카오 회원가입 post");
         memberService.save(memberVO);
         return new RedirectView("login");
-    }
+    }*/
 
     //아이디 중복체크
     @PostMapping("/checkId")
@@ -127,7 +127,7 @@ public class MemberController {
         if (memberVO == null || memberVO.getMemberStatus() != 1) {
             session.setAttribute("kakaoInfo", kakaoInfo);
             kakaoInfo.setMemberStatus(1);
-            log.info("카카오 들어옴");
+            log.info("카카오 DB 없을 때 들어옴");
             return new RedirectView("/member/join");
         }
         session.setAttribute("members", memberVO);
