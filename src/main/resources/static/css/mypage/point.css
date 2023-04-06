@@ -1604,3 +1604,10 @@ section {
 .error-title{
     margin-left: 20px;
 }
+
+.review-form {
+    float: right;
+    margin-right: 35px;
+
+}
+

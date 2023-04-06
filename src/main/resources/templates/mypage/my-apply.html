@@ -29,15 +29,21 @@
             <!-- 좌측 사이드바 시작 -->
             <div class="sidebar">
                 <div class="user-name-tag">
-                    <h3 class="user-name-tag-heading">클라이언트</h3>
-                    <a class="profile-setting" href="/accounts/settings/profile/"><!-- 클라이언트 정보 --></a>
-                    <div class="user-name-tag-body">
-                        <div class="user-img-box">
-                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img" onclick="show_img_edit_modal()" src="/images/mypage/main-logo.png">
-                            <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
-                            <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
-                        <div class="userid">
-                            <div class="username" th:text="${member.memberIdentification}"></div>
+                    <div class="user-name-tag">
+                        <h3 class="user-name-tag-heading">초보자</h3>
+                        <a class="profile-setting"><!-- 클라이언트 정보 --></a>
+                        <div class="user-name-tag-body">
+                            <div class="user-img-box">
+
+                                <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                                <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+                                <!--                                 src="/images/mypage/main-logo.png">-->
+
+                                <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
+                                <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
+                            <div class="userid">
+                                <div th:text="${member.memberIdentification}" class="username"><br></div>
+                            </div>
                         </div>
                     </div>
                 </div>
