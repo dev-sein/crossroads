@@ -71,7 +71,7 @@
 		<div class="mBoardList notice">
 			<ul>
 				<li th:each="review: ${reviews}">
-					<a data-gtm="DATA_notice_contents" href="@{/admin/review/list}" th:text="'[후기] ' + ${review.reviewTitle}"></a>
+					<a data-gtm="DATA_notice_contents" th:href="@{/admin/review/list}" th:text="'[후기] ' + ${review.reviewTitle}"></a>
 					<span class="date" th:text="${review.reviewRegisterDate}"></span>
 				</li>
 			</ul>
