@@ -72,6 +72,9 @@ public class ReviewController {
     public String showReviewList(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
+        // memberId가 null이면 (로그인이 안됐을 때) 페이지 오류는 안나게 임의로 0 값으로 담아준다.
+        memberId = memberId == null ? 0 : memberId;
+
         ReviewCriteria criteria = new ReviewCriteria(1, 10);
         int totalCount = reviewBoardService.getTotalCount();
         model.addAttribute("totalCount", totalCount);
