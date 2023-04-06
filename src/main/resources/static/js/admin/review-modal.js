@@ -59,8 +59,7 @@ function showAdminModal(result) {
     text += `
           <div class="input-wrapper" style="margin-top: 30px;">
               <div class="input-text">사진</div>
-              <!--<img src="/images/review/${review.reviewFileSystemName}" class="review-image">-->
-              <img src="/images/review/review06.jpeg" class="review-image">
+              <img src="/upload/${review.reviewFileSystemName}" class="review-image">
           </div>`;
   }
   text += `

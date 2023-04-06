@@ -156,14 +156,16 @@
                     </div>
                     <!-- 리뷰 목록 시작 -->
                     <div class="review-box" th:each="review:${review}">
-                        <a class="review-modify" th:href="@{/review-update/{reviewId}(reviewId=${review.reviewId})}">수정</a>
+<!--                        <a class="review-modify" th:href="@{/review/review-update} + '?' ">수정</a>-->
+                        <a class="review-modify" th:href="@{'/review/review-update?reviewId=' + ${review.reviewId}}">수정</a>
+<!--                        @{'/review/review-update/' + ${info.reviewId}}"-->
                         <form action="/mypage/my-review" method="post" id="deleteForm" class="review-form">
                             <input type="hidden" th:value="${review.reviewId}">
                             <a class="review-delete" onclick="submitDelete()">삭제</a>
                         </form>
                         <div class="review-list">
                             <div class="review-container">
-                                <a href="/store/41/"><img class="review-photo" th:src="@{/mypage/display(fileName=${review.reviewFilePath} + '/' + ${review.reviewFileUuid} + '_' + ${review.reviewFileOriginalName})}"></a>
+                                <a href="/store/41/"><img class="review-photo" th:src="@{/upload/{filename}(filename=${review.reviewFileSystemName})}"></a>
                             </div>
                             <div class="review-content-box">
                                 <a th:text="${review.reviewTitle}" class="review-name-link" href="/store/41/"></a>
