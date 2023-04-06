@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-<!--<div th:insert="~{/components/header-client :: header-client}"></div>-->
+<div th:insert="~{/components/header-client :: header-client}"></div>
 <!-- 모달 창 -->
 <div class="modal-wrapper">
     <div class="modal-content">
@@ -34,7 +34,7 @@
         </div>
         <div class="SectionMaker_Wrapper">
             <div class="SectionMaker_contentWrapper">
-                <form action="#" th:action="@{/review/review-update/{reviewId}(reviewId=${info.reviewId ?: ''})}"
+                <form action="#" th:action="@{'/review/review-update/' + ${info.reviewId}}"
                       th:object="${info}" method="post" name="reviewForm" enctype="multipart/form-data">
 
                     <input type="hidden" th:field="*{reviewId}" id="review-container">
@@ -68,7 +68,7 @@
                                 <legend class="formTitle_legend">
                                     <span>제목</span>
                                 </legend>
-                                <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요." th:value="${info.reviewTitle}" name="reviewTitle">
+                                <input class="formInputBox" id="input-title" type="text" placeholder="제목을 작성해주세요." th:value="${info.reviewTitle}" name="reviewTitle" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -131,6 +131,7 @@
                     </div>
                     <div class="bottomButton_wrapper">
                         <button type="button" class="cancelButton_button" onclick="cancelWriteReview()" style="margin-right: 10px; background-color: #A1A6AD;">수정취소</button>
+<!--                        <button type="button" class="registButton_button" id="update-button">수정완료</button>-->
                         <button type="button" class="registButton_button" id="update-button" onclick="updateReview()">수정완료</button>
 
                     </div>

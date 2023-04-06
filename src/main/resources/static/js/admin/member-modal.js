@@ -16,6 +16,7 @@ function show (e) {
       memberId: memberId
     },
     success: function(result) {
+      console.log(result);
       showAdminModal(result);
     },
     error: function (error) {
@@ -67,11 +68,11 @@ function showAdminModal(member) {
               <div class="input-text">면허 취득일자</div>
               <input type="text" id="driver-license" value="${member.memberDriveRegisterDate}" class="user-input" readonly>
           </div>`;
-  if(member.memberFileSystemName != null) {
+  if(member.memberFileOriginalName != null) {
     text += `
           <div class="input-wrapper" style="margin-top: 30px;">
               <div class="input-text">사진</div>
-              <img src="/images/admin/quokka.jpg" class="member-image">
+              <img src="/upload/${member.memberFileOriginalName}" class="member-image">
           </div>`;
   }
   text += `</form>`;
