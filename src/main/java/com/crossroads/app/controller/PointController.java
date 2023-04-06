@@ -1,11 +1,8 @@
 package com.crossroads.app.controller;
 
-<<<<<<< HEAD
 import com.crossroads.app.service.MemberService;
-=======
 import com.crossroads.app.domain.vo.MemberVO;
 import com.crossroads.app.service.ApplyService;
->>>>>>> ksy
 import com.crossroads.app.service.PointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
