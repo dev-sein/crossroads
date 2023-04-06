@@ -21,77 +21,77 @@
 <!-- header 시작-->
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <!-- header 끝 -->
-    <div class="gaia">
-      <div class="container" style="padding: 10px 0 0 0px;">
+<div class="gaia">
+    <div class="container" >
         <!-- 사이드  -->
         <div class="submit-progress">
-          <div class="project-status-box">
-            <a
-              class="back-to-before link-text"
-              onclick="exitWithSubmit('temporary_project_phase_1', 'False')"
-              style="cursor: pointer"
-            >
-              <!-- <img
-                class="back-to-before-img"
-                src="https://www.wishket.com/static/renewal/img/project/submit/btn_icon_back_s.png"
-              />
-              <p class="back-to-before-title body-1-medium">저장 후 나가기</p> -->
-            </a>
-            <p class="menu-title subtitle-1-medium mb4">연수 정보등록</p>
-            <!--  <p class="saved-status body-2" data-saved-time="2023-03-10 16:42:57" id="submit_saved_time_picker">2일 전에 임시 저장</p> -->
-          </div>
-          <div class="input-group-status">
-            <p class="status-main-menu body-2">
-              연수 정보등록 <img class="status-mark" src="" />
-            </p>
-            <div class="status-sub-menu">
-              <p class="status-sub-menu-title active">
-                1. 정보 입력 및 코스 선택 
-                <img
-                  class="status-mark"
-                  src=""
-                />
-                <!-- <img class="status-mark" src="https://www.wishket.com/static/renewal/img/project/submit/tab_icon_check_on_c.png" > -->
-              </p>
-              <p class="status-sub-menu-title">
-                2. 지역 및 요일 선택
-                <img class="status-mark" src="" />
-              </p>
-              <p class="status-sub-menu-title" style="background-color: #95abee26;">
-                3. 완료
-                <img class="status-mark" src="" />
-              </p>
+            <div class="project-status-box">
+                <a
+                        class="back-to-before link-text"
+                        onclick="exitWithSubmit('temporary_project_phase_1', 'False')"
+                        style="cursor: pointer"
+                >
+                    <!-- <img
+                      class="back-to-before-img"
+                      src="https://www.wishket.com/static/renewal/img/project/submit/btn_icon_back_s.png"
+                    />
+                    <p class="back-to-before-title body-1-medium">저장 후 나가기</p> -->
+                </a>
+                <p class="menu-title subtitle-1-medium mb4">연수 정보등록</p>
+                <!--  <p class="saved-status body-2" data-saved-time="2023-03-10 16:42:57" id="submit_saved_time_picker">2일 전에 임시 저장</p> -->
             </div>
-          </div>
+            <div class="input-group-status">
+                <p class="status-main-menu body-2">
+                    연수 정보등록 <img class="status-mark" src="" />
+                </p>
+                <div class="status-sub-menu">
+                    <p class="status-sub-menu-title active">
+                        1. 정보 입력 및 코스 선택
+                        <img
+                                class="status-mark"
+                                src=""
+                        />
+                        <!-- <img class="status-mark" src="https://www.wishket.com/static/renewal/img/project/submit/tab_icon_check_on_c.png" > -->
+                    </p>
+                    <p class="status-sub-menu-title">
+                        2. 지역 및 요일 선택
+                        <img class="status-mark" src="" />
+                    </p>
+                    <p class="status-sub-menu-title" style="background-color: #95abee26;">
+                        3. 완료
+                        <img class="status-mark" src="" />
+                    </p>
+                </div>
+            </div>
         </div>
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
-        <div class="project-create-form-section" style="margin-top: 10%;">
-          <div class="form-section-header">
-            <p class="form-section-title subtitle-1">신청이 완료됐습니다.</p>
-          </div>
-          <div class="form-input-section">
-            <div class="form-group-light">
-              <div class="button-space">
-                <a class="btn btn-client btn-11-24 btn-right" th:href="@{/main}" name="can_submit" type="submit" value="False" style="margin-left: 2%;">
-               메인화면
-              </a>
-              </div>
-              <div class="button-space">
-                <a class="btn btn-client btn-11-24 btn-right" th:href="@{/points/buy-point}" name="can_submit" type="submit" value="False">
-               포인트 충전
-              </a>
-              </div>
+        <div class="project-create-form-section">
+            <div class="form-section-header">
+                <p class="form-section-title subtitle-1">신청이 완료됐습니다.</p>
             </div>
-          </div>
-          </div>
+            <div class="form-input-section">
+                <div class="form-group-light">
+                    <div class="button-space">
+                        <a class="btn btn-client btn-11-24 btn-right" th:href="@{/main}" name="can_submit" type="submit" value="False" style="margin-left: 2%;">
+                            메인화면
+                        </a>
+                    </div>
+                    <div class="button-space">
+                        <a class="btn btn-client btn-11-24 btn-right" th:href="@{/points/buy-point}" name="can_submit" type="submit" value="False">
+                            포인트 충전
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- 메인 끝  -->
-      </div>
     </div>
+    <!-- 메인 끝  -->
+</div>
+</div>
 
-  </body>
-  <script src="/js/form/form.js"></script>
-  <script src="/js/components/header-client.js"></script>
+</body>
+<script src="/js/form/form.js"></script>
+<script src="/js/components/header-client.js"></script>
 </html>

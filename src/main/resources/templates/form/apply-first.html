@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="/css/point/buyPoint.css"/>
     <link rel="stylesheet" href="/font/NotoSansKR-Regular.woff"/>
     <link rel="stylesheet" href="/css/components/header.css"/>
-    <link rel="stylesheet" href="/css/board/board-write.css">
-    <link rel="stylesheet" href="/css/board/boardWrite.css">
     <link rel="shortcut icon" href="/images/logo.png"/>
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -27,15 +25,6 @@
 <!-- header 시작-->
 <div th:insert="~{/components/header-client :: header-client}"></div>
 <!-- header 끝 -->
-<!-- 모달 창 -->
-<div class="modal-wrapper">
-    <div class="modal-content">
-        <!-- <h2 class="modal-title">경고</h2> -->
-        <p class="modal-message" style="margin-bottom: 35px;">포인트가 부족합니다.</p>
-        <a class="modal-close-btn" href="/points/buy-point">충전하러 가기</a>
-    </div>
-</div>
-<!-- 모달 창 -->
 <div class="gaia">
     <div class="container">
         <!-- 사이드  -->
@@ -81,7 +70,7 @@
         <!-- 사이드 끝-->
 
         <!-- 메인시작  -->
-<!--        <form action="/apply/apply-first" method="post" name="join" id="join">-->
+        <!--        <form action="/apply/apply-first" method="post" name="join" id="join">-->
         <form action="/apply/apply-first/send" method="post" name="join" id="join">
             <div class="project-create-form-section">
                 <div class="form-section-header">
@@ -93,7 +82,7 @@
                         <div class="form-content mb16">
                             <div>
                                 <div class="text-input-client list">
-                                    <span th:text="${members.memberName}">
+                                    <span th:text="${member.memberName}">
                                     </span>
                                 </div>
                             </div>
@@ -105,7 +94,7 @@
                         <div class="form-content mb16">
                             <div>
                                 <div class="text-input-client list">
-                                    <span th:text="${members.memberPhone}">
+                                    <span th:text="${member.memberPhone}">
                                     </span>
                                 </div>
                             </div>
@@ -117,7 +106,7 @@
                         <div class="form-content mb16">
                             <div>
                                 <div class="text-input-client list">
-                                    <span th:text="${members.memberPoint}" id="memberPoint">
+                                    <span th:text="${member.memberPoint}">
                                     </span>
                                 </div>
                             </div>
@@ -198,35 +187,29 @@
             </div>
         </form>
         <!-- 메인 끝  -->
-        <script th:inline="javascript">
+        <script>
             const $submitBtn = $(".signup-submit-button");
             $submitBtn.on('click', function () {
                 const $checkVal = $('input[name=category]:checked').val();
                 console.log($checkVal);
                 $('input[name=applyCourse]').attr('value',$checkVal);
                 document.join.submit()
-              /*  $.ajax({
-                    url: '/apply/apply-second', //Controller에서 요청 받을 주소
-                    type: 'post',
-                    data: {applyCourse: $checkVal},
-                    contentType: "application/json; charset=UTF-8",
-                    dataType: "Text",
-                    success : function(){
-                        console.log("전송성공");
+                /*  $.ajax({
+                      url: '/apply/apply-second', //Controller에서 요청 받을 주소
+                      type: 'post',
+                      data: {applyCourse: $checkVal},
+                      contentType: "application/json; charset=UTF-8",
+                      dataType: "Text",
+                      success : function(){
+                          console.log("전송성공");
 
-                    }
-                })*/
+                      }
+                  })*/
 
             });
-            var memberPoint = $('#memberPoint').text(); //멤버 포인트 출력
-            console.log(memberPoint);
 
-            if(memberPoint <= 0){
-                $('.modal-wrapper').show();
-            }
 
         </script>
-
     </div>
 </div>
 </body>
