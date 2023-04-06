@@ -128,8 +128,8 @@
         function appendReviews(reviews) {
             console.log(memberId);
             let $reviewList = $("#review-list");
-
             reviews.forEach(review => {
+                console.log(review.memberFilePath)
                 let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
                 let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
                 let formattedDate = timeSince(new Date(review.reviewRegisterDate));
@@ -140,7 +140,7 @@
             <div class="board-box">
                 <div class="board-box-top">
                  <img th:src="@{/upload/{filename}(filename=${review.memberFileSystemName})}" class="user-profile-image">
-<!--                    <img src="/mypage/display(fileName=${review.memberFilePath + '/' + review.memberFileUuid + '_' + review.memberFileOriginalName})" class="user-profile-image">-->
+                    <img  th:href="@{'/mypage/display?fileName=' + ${review.memberFilePath + '/' + review.memberFileUuid + '_' + review.memberFileOriginalName}}" class="user-profile-image">
                     <div class="user-detail-wrapper">
                         <div class="user-detail-top">
                             <div class="user-type">수강생</div>
