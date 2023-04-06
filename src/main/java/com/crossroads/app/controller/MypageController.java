@@ -217,6 +217,8 @@ public class MypageController {
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
+        log.info("들어옴************************************************************");
+        log.info(fileName);
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
