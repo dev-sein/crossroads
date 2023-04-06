@@ -288,12 +288,12 @@ function checkEmail() {
 
 	/!* file upload *!/
 	$("#license").on('change', function () {
-		var fileName = $("#file").val().split('/').pop().split('\\').pop();
-		var $fileName = $("#file").val().split('/').pop().split('\\').pop();
+		var fileName = $("#license").val().split('/').pop().split('\\').pop();
+		var $fileName = $("#license").val().split('/').pop().split('\\').pop();
 
 		var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
 
-		if (fileName.match(reg)) {
+		if ($fileName.match(reg)) {
 			$("#upload-name").val(fileName);
 			checkAll[6] = true;
 
@@ -375,12 +375,12 @@ $("#license").on("change", function(e){
 				$loadingIcon.hide();
 				$loader.fadeOut(300);
 				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
+				$('#file-error').css('display', 'none');
 
 			}
 		});
 	};
 });
-
 
 
 // 회원가입 버튼 활성화
@@ -394,6 +394,15 @@ $("#license").on("change", function(e){
 					break;
 				}
 			}
+		}
+
+		if($('input[name=memberDriveRegisterDate]').val().length == 0 || $('input[name=memberDriveRegisterDate]').val().length == null ){
+			$('#file-error').css('display', 'block');
+			$submitBtn.attr("type", "button");
+			flag = false;
+		} else {
+			$('#file-error').css('display', 'none');
+			flag= true;
 		}
 
 		if (checkbox && flag) {
@@ -450,4 +459,3 @@ function naverSignInCallback() {
 	});
 }
 
-//카카오 회원가입
