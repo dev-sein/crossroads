@@ -143,10 +143,12 @@ public class MemberController {
         MemberVO kakaoInfo = memberService.getKakaoInfo(token);
         MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
 
+        if(memberVO.getMemberId() == null){
+            return new RedirectView("/member/join");
+        }
         if(memberVO.getMemberStatus() != 1){
             return new RedirectView("/member/login?result=fail");
         }
-
         session.setAttribute("memberId", memberVO.getMemberId());
         return new RedirectView("/main");
     }
