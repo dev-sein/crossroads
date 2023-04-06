@@ -37,9 +37,10 @@ public class ReviewDTO {
     private String memberType;
     private String memberDriveRegisterDate;
     private Integer memberPoint;
-    private String member_file_original_name;
-    private String member_file_uuid;
-    private String member_file_path;
-    private String member_file_size;
+
+    private String memberFileOriginalName;
+    private String memberFileUuid;
+    private String memberFilePath;
+    private String memberFileSize;
 
 }
