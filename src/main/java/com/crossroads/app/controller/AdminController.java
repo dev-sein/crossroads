@@ -96,11 +96,11 @@ public class AdminController {
     }
 
 //    관리자 회원 상세 보기
-//    @ResponseBody
-//    @PostMapping("members/detail")
-//    public MemberVO adminMemberDetail(@RequestParam("memberId") Long memberId) {
-//        return memberService.getMemberInfo(memberId);
-//    }
+    @ResponseBody
+    @PostMapping("members/detail")
+    public MemberVO adminMemberDetail(@RequestParam("memberId") Long memberId) {
+        return memberService.getMemberInfo(memberId);
+    }
 
     //관리자 회원 삭제
     @ResponseBody
