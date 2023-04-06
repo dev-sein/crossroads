@@ -4,23 +4,18 @@ import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
 import com.crossroads.app.service.ReviewBoardService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.awt.print.Pageable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,6 +26,7 @@ import java.util.UUID;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/review/*")
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
     private static String uploadDir = "C:\\upload\\";
@@ -47,10 +43,8 @@ public class ReviewController {
 
     // 후기 저장
     @PostMapping("/review-save")
-    public String saveReview(@ModelAttribute @Validated ReviewDTO reviewDTO, BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes, HttpSession session,
+    public String saveReview(@ModelAttribute @Validated ReviewDTO reviewDTO, HttpSession session,
                              @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
-        log.info("들어옴@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
         reviewDTO.setMemberId(memberId);
         if (image != null && !image.isEmpty()) {
@@ -66,7 +60,7 @@ public class ReviewController {
             reviewDTO.setReviewFileSystemName(null);
         }
         reviewBoardService.save(reviewDTO);
-        return "redirect:/review-list";
+        return "redirect:/review/review-list";
     }
 
     //   후기 게시물 목록 전체 조회
@@ -83,7 +77,9 @@ public class ReviewController {
     }
     // 무한스크롤
     @GetMapping("/api/reviews")
+    @ResponseBody
     public ResponseEntity<List<ReviewDTO>> getReviews(@RequestParam("page") int page, @RequestParam("size") int size) {
+        log.info("reivews 들어옴");
         ReviewCriteria criteria = new ReviewCriteria(page, size);
         List<ReviewDTO> reviews = reviewBoardService.getListReview(criteria);
         return new ResponseEntity<>(reviews, HttpStatus.OK);
@@ -94,54 +90,40 @@ public class ReviewController {
     @GetMapping("/review-update")
     public String getReviewUpdatePage(@RequestParam("reviewId") Long reviewId, Model model) {
         ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
-       /* model.addAttribute("reviewIds",  reviewBoardService.getReview(reviewId));*/
+
         if (reviewVO == null) {
-            return "redirect:/review-list";
+            return "redirect:/review/review-list";
         }
         model.addAttribute("info", reviewVO);
+        model.addAttribute("filename", reviewVO.getReviewFileSystemName()); // 파일 이름 추가
         return "review/review-update";
     }
 
+
+    // 후기 수정 처리
     @PostMapping("/review-update/{reviewId}")
-    public String reviewupdate(@PathVariable("reviewId") Long reviewId, @PathVariable("file") String filename,
-                               @ModelAttribute @Validated ReviewDTO reviewDTO, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes, HttpSession session,
+    public String updateReview(@PathVariable("reviewId") Long reviewId, @ModelAttribute @Validated ReviewDTO reviewDTO,
+                               HttpSession session,
                                @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
-        if (bindingResult.hasErrors()) {
-            // 유효성 검사 에러가 있을 경우
-            redirectAttributes.addFlashAttribute("errorMessage", "입력값을 확인해주세요.");
-            return "redirect:/review-update/" + reviewId;
-        }
-        reviewDTO.setReviewId(reviewId);
         Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
         reviewDTO.setMemberId(memberId);
+        reviewDTO.setReviewId(reviewId);
 
         if (image != null && !image.isEmpty()) {
+            log.info(image.toString());
             String originalFileName = image.getOriginalFilename();
+            log.info(image.getOriginalFilename());
             String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
             String savedFileName = UUID.randomUUID().toString() + fileExtension;
             Path savePath = Paths.get(uploadDir + savedFileName);
             Files.copy(image.getInputStream(), savePath);
             reviewDTO.setReviewFileSystemName(savedFileName);
         } else {
-            reviewDTO.setReviewFileSystemName(null);
+            ReviewVO currentReview = reviewBoardService.getReview(reviewId);
+            reviewDTO.setReviewFileSystemName(currentReview.getReviewFileSystemName());
         }
         reviewBoardService.updateReview(reviewDTO);
-        return "redirect:/review-list";
-    }
-
-    //후기 수정 화면 이동
-    @GetMapping("/review-update/{reviewId}")
-    public String reviewUpdate(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
-        log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22" + reviewId);
-//        Long memberId = Long.parseLong(session.getAttribute("memberId").toString());
-        ReviewVO reviewVO = reviewBoardService.getReview(reviewId);
-        if (reviewVO == null) {
-            return "redirect:/review-list";
-        }
-        log.info(reviewVO.toString());
-        model.addAttribute("info", reviewVO);
-        return "/review/review-update";
+        return "redirect:/review/review-list";
     }
 
     // 후기 삭제

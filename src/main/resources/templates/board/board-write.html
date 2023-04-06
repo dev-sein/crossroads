@@ -90,7 +90,8 @@
                                             <div class="container_imageInput" style="width: 160px; height: 160px; margin: 10px;">
                                                 <div class="imgText_container">
                                                     <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);" accept="image/gif, image/jpg, image/jpeg, image/png" multiple style="display: none;">
+                                                    <input type="file" id="image1" name="upload1" onchange="setThumbnail(event);"
+                                                           accept="image/gif, image/jpg, image/jpeg, image/png" multiple style="display: none;">
                                                     <div id="add-image">이미지 추가</div>
                                                     <!-- <div>이미지 추가하기</div> -->
                                                 </div>
@@ -108,8 +109,8 @@
                         <!-- 테스트 -->
                         <!-- 테스트 -->
                         <div class="bottomButton_wrapper">
-                            <button type="button" class="registButton_button" style="margin-right: 10px; background-color: #A1A6AD;">작성취소</button>
-                            <button type="button" class="registButton_button" id="complete-button">작성완료</button>
+                            <button type="button" class="cancelButton_button" style="margin-right: 10px; background-color: #A1A6AD;">작성취소</button>
+                            <button type="button" class="registButton_button" id="completeButton">작성완료</button>
                         </div>
                     </form>
                 </div>
@@ -124,4 +125,64 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/board/board-write-test.js"></script>
 <script src="/js/components/header-client.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // 기존 코드는 그대로 유지하며, 게시글 저장 요청 부분만 수정합니다.
+
+    $('#complete-button').on('click', function () {
+        // 이미지 업로드 및 UUID 받기
+        var formData = new FormData();
+        $('input[type=file]').each(function (index, fileInput) {
+            $.each(fileInput.files, function (i, file) {
+                formData.append('file', file);
+            });
+        });
+        var uuids = [];
+        $.ajax({
+            url: '/files/upload',
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                uuids = data;
+                // 이미지 UUID를 hidden input에 저장
+                for (var i = 0; i < uuids.length; i++) {
+                    var hiddenInput = $('<input>')
+                        .attr('type', 'hidden')
+                        .attr('name', 'fileUUIDs')
+                        .val(uuids[i]);
+                    $('form[name=boardForm]').append(hiddenInput);
+                }
+                // 게시글 저장 요청
+                saveBoard();
+            },
+            error: function (e) {
+                console.log("ERROR: ", e);
+            }
+        });
+    });
+    function saveBoard() {
+        const form = document.forms.boardForm;
+        const formData = new FormData(form);
+        fetch('/board-save', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('게시글이 성공적으로 저장되었습니다.');
+                    location.href = '/'; // 저장 후 원하는 페이지로 리다이렉션
+                } else {
+                    alert('게시글 저장에 실패하였습니다. 다시 시도해주세요.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('게시글 저장 중 오류가 발생하였습니다. 다시 시도해주세요.');
+            });
+    }
+</script>
+
 </html>

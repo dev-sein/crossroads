@@ -16,10 +16,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Service
 @Qualifier("board")
@@ -163,6 +166,46 @@ public class FreeBoardService implements BoardService {
     //게시판 내용 저장
     public void save(BoardDTO boardDTO) {
         boardDAO.save(boardDTO);
+    }
+
+    @Transactional
+    public void saveBoard(BoardDTO boardDTO, List<MultipartFile> files) throws IOException {
+        // 게시판 내용 저장
+        save(boardDTO);
+
+        // 게시판 내용 저장 후 boardId 가져오기
+        Long boardId = boardDTO.getBoardId();
+
+        // 파일 저장
+        if (files != null && !files.isEmpty()) {
+            List<BoardFileVO> boardFiles = new ArrayList<>();
+
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    String uuid = UUID.randomUUID().toString();
+                    String path = "C:/upload/" + getPath();
+                    File dest = new File(path, uuid + "_" + file.getOriginalFilename());
+                    file.transferTo(dest);
+
+                    BoardFileVO boardFileVO = new BoardFileVO();
+                    boardFileVO.setFileOriginalName(file.getOriginalFilename());
+                    boardFileVO.setFileUuid(uuid);
+                    boardFileVO.setFilePath(path);
+                    boardFileVO.setBoardId(boardId); // 수정된 부분
+                    boardFiles.add(boardFileVO);
+                }
+            }
+
+            // 파일 정보 저장
+            for (BoardFileVO boardFileVO : boardFiles) {
+                boardFileDAO.save(boardFileVO); // 수정된 부분
+            }
+        }
+    }
+
+    // 현재 날짜 경로 구하기
+    private String getPath() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
 
 

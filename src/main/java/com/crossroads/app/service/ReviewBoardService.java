@@ -7,7 +7,9 @@ import com.crossroads.app.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +60,11 @@ public class ReviewBoardService implements BoardService {
 
     @Override
     public void save(BoardDTO boardDTO) {
+
+    }
+
+    @Override
+    public void saveBoard(BoardDTO boardDTO, List<MultipartFile> files) throws IOException {
 
     }
 

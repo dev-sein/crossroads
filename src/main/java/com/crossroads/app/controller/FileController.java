@@ -23,36 +23,39 @@ import java.util.UUID;
 @RequestMapping("/files/*")
 @RequiredArgsConstructor
 public class FileController {
-//    private final MemberFileService memberFileService;
     private final BoardFileService boardFileService;
 
     @GetMapping("upload")
-    public String goUploadForm(){
+    public String goUploadForm() {
         return "/upload";
     }
 
-    //    파일 저장
-    @PostMapping("save")
-    @ResponseBody
-    public void save(@RequestBody List<BoardDTO> files) {
-        boardFileService.write(files);
-    }
-
-    //    파일 업로드
+    // 파일 업로드
     @PostMapping("upload")
     @ResponseBody
-    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles, BoardFileVO boardFileVO) throws IOException {
+    public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
         String path = "C:/upload/" + getPath();
         File file = new File(path);
-        if(!file.exists()) {file.mkdirs();}
+        if (!file.exists()) {
+            file.mkdirs();
+        }
 
-        for(int i=0; i<multipartFiles.size(); i++){
-            uuids.add(UUID.randomUUID().toString());
-            multipartFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
+        List<BoardFileVO> files = new ArrayList<>();
+        for (int i = 0; i < multipartFiles.size(); i++) {
+            String uuid = UUID.randomUUID().toString();
+            uuids.add(uuid);
+            multipartFiles.get(i).transferTo(new File(path, uuid + "_" + multipartFiles.get(i).getOriginalFilename()));
 
-            if(multipartFiles.get(i).getContentType().startsWith("image")){
-                FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + multipartFiles.get(i).getOriginalFilename()));
+            BoardFileVO boardFileVO = new BoardFileVO();
+            boardFileVO.setFileOriginalName(multipartFiles.get(i).getOriginalFilename());
+            boardFileVO.setFileUuid(uuid);
+            boardFileVO.setFilePath(path);
+            boardFileVO.setFileSize(String.valueOf(multipartFiles.get(i).getSize()));
+            files.add(boardFileVO);
+
+            if (multipartFiles.get(i).getContentType().startsWith("image")) {
+                FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuid + "_" + multipartFiles.get(i).getOriginalFilename()));
                 Thumbnailator.createThumbnail(multipartFiles.get(i).getInputStream(), out, 100, 100);
                 out.close();
             }
@@ -60,17 +63,15 @@ public class FileController {
         return uuids;
     }
 
-
-    //    파일 불러오기
+    // 파일 불러오기
     @GetMapping("display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
-    //    현재 날짜 경로 구하기
-    private String getPath(){
+    // 현재 날짜 경로 구하기
+    private String getPath() {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
-
 }

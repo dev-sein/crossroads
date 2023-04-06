@@ -12,19 +12,12 @@
         where board_id = #{boardId}
     </delete>
 
-<!--    &lt;!&ndash; 마이페이지 파일 불러오기 &ndash;&gt;-->
-<!--    <select id="selectByBoardId" resultType="boardFileVO">-->
-<!--        select board_file_id, board_file_original_name, board_file_uuid, board_file_path, board_file_size, board_id-->
-<!--        from tbl_board_file-->
-<!--        where board_id = #{boardId};-->
-<!--    </select>-->
-
     <insert id="insert">
         insert into tbl_file(file_original_name, file_uuid, file_path, file_size, board_id)
         values(#{fileOriginalName}, #{fileUuid}, #{filePath}, #{fileSize}, #{boardId})
     </insert>
 
-    <select id="selectAll" resultType="boardDTO">
+    <select id="selectAll" resultType="boardFileVO">
         select file_id, file_original_name, file_uuid, file_path, file_size, board_id
         from tbl_file where board_id = #{boardId}
     </select>

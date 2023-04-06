@@ -415,4 +415,13 @@ body {
     background-color: #ccc;
   }
   
-/* 모달 창 */
+/* 번호에 맞는 이미지 css*/
+.review-photo{
+    margin: 0px;
+    width: 260px;
+    height: 260px;
+    margin-bottom: 20px;
+    right: 5px;
+    top: 15px;
+    position: relative;
+}
