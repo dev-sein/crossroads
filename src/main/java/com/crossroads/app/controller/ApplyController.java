@@ -38,7 +38,7 @@ public class ApplyController {
         if(memberId == null) {
             return "member/login";
         }
-        model.addAttribute("members", memberService.getMemberInfo(memberId));
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "form/apply-first";
     }
 
@@ -53,10 +53,12 @@ public class ApplyController {
     //연수신청 두번째 페이지
     @GetMapping("apply-second")
     public String applySecond (Model model, HttpServletRequest httpServletRequest, ApplyDTO applyDTO, @RequestParam(value="applyCourse") String applyCourse, RedirectAttributes redirectAttributes ) {
+        HttpSession session = httpServletRequest.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         log.info(applyDTO.toString());
         model.addAttribute("applyCourse", applyCourse);
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
-        HttpSession httpSession = httpServletRequest.getSession();
         log.info("apply-second getmapping : " + applyCourse);
         return "form/apply-second";
     }
@@ -64,7 +66,7 @@ public class ApplyController {
     @PostMapping("apply-second")
     public RedirectView applySecondPost(HttpServletRequest httpServletRequest, Model model, ApplyDTO applyDTO, String applyCourse, RedirectAttributes redirectAttributes, PointDTO pointDTO){
         HttpSession httpSession = httpServletRequest.getSession();
-       // httpSession.setAttribute("memberId", 2L);
+        // httpSession.setAttribute("memberId", 2L);
         model.addAttribute("applyCourse", applyCourse);
         redirectAttributes.addFlashAttribute("applyCourse", applyCourse);
         applyDTO.setMemberId((Long)httpSession.getAttribute("memberId"));
@@ -81,7 +83,9 @@ public class ApplyController {
     //연수신청 세번째 페이지
     @GetMapping("/apply-third")
     public String formThird(Model model, HttpServletRequest httpServletRequest) {
-        HttpSession httpSession = httpServletRequest.getSession();
+        HttpSession session = httpServletRequest.getSession();
+        Long memberId = (Long) session.getAttribute("memberId");
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "form/apply-third";
     }
 
