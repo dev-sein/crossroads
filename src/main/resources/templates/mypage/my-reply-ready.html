@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>나의 댓글 보기</title>
+    <title>나의 게시글 보기</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
@@ -29,7 +29,7 @@
             <div class="content-error container-mobile">
                 <div class="content-header">
                     <div class="header-mobile error-econtainer-mobile">
-                        <h3 class="header-text">나의 댓글 보기<br>
+                        <h3 class="header-text">나의 게시글 보기<br>
                             <small class="small-text">준비중입니다.</small>
                         </h3>
                     </div>
@@ -38,13 +38,14 @@
                     <section class="error-body">
                         <aside section="error-aside error-aside-mobile">
                             <div class="error-text">
-                                <h1 class="error-title">나의 댓글 보기</h1>
-                                <p class="sorry">죄송합니다. 현재 나의 댓글 보기는 준비중입니다.</p>
+                                <h1 class="error-title">나의 게시글 보기</h1>
+                                <p class="sorry">죄송합니다. 현재 나의 게시글 보기는 준비중입니다.</p>
                                 <p class="error-margin error-margin-mobile">
                                     <a class="btn btn-primary btn-large" onclick="javascript:history.go(-1);" style="margin-right: 10px;">이전 화면으로 돌아가기</a>
-                                    <a class="btn btn-primary btn-large" href="/">초기 화면으로 돌아가기</a>
+                                    <a class="btn btn-primary btn-large" th:href="@{/main}">초기 화면으로 돌아가기</a>
                                 </p>
                             </div>
+                        </aside>
                     </section>
                     <aside section="error-aside">
                         <img class="aside-img" src="/images/board/sorry.png">
@@ -60,4 +61,18 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
+<script src="/js/components/header-client.js"></script>
+<script>
+    FileList.prototype.forEach = Array.prototype.forEach;
+    globalThis.arrayFile2 = new Array();
+    globalThis.j = 0;
+    const dataTransfer = new DataTransfer();
+    globalThis.originalName = ``;
+    globalThis.fileSize = '';
+    globalThis.fileType = '';
+
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
+</script>
 </html>

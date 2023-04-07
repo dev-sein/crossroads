@@ -295,20 +295,20 @@ public class MypageController {
     }
 
     /*나의 게시글 준비중*/
-    @GetMapping("mypage-board-ready")
+    @GetMapping("my-board-ready")
     public String boardready(Model model, HttpSession session){
         Long memberId = (Long) session.getAttribute("memberId");
 
         model.addAttribute("member", memberService.getMemberInfo(memberId));
-        return "mypage/mypage-board-ready";
+        return "mypage/my-board-ready";
     }
 
     /*나의 댓글 준비중*/
-    @GetMapping("mypage-reply-ready")
+    @GetMapping("my-reply-ready")
     public String replyready(Model model, HttpSession session){
         Long memberId = (Long) session.getAttribute("memberId");
 
         model.addAttribute("member", memberService.getMemberInfo(memberId));
-        return "mypage/mypage-reply-ready";
+        return "mypage/my-reply-ready";
     }
 }

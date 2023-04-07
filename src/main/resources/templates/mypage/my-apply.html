@@ -29,21 +29,19 @@
             <!-- 좌측 사이드바 시작 -->
             <div class="sidebar">
                 <div class="user-name-tag">
-                    <div class="user-name-tag">
-                        <h3 class="user-name-tag-heading">초보자</h3>
-                        <a class="profile-setting"><!-- 클라이언트 정보 --></a>
-                        <div class="user-name-tag-body">
-                            <div class="user-img-box">
+                    <h3 class="user-name-tag-heading">초보자</h3>
+                    <a class="profile-setting"><!-- 클라이언트 정보 --></a>
+                    <div class="user-name-tag-body">
+                        <div class="user-img-box">
 
-                                <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
-                                <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
-                                <!--                                 src="/images/mypage/main-logo.png">-->
+                            <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                            <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+                            <!--                                 src="/images/mypage/main-logo.png">-->
 
-                                <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
-                                <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
-                            <div class="userid">
-                                <div th:text="${member.memberIdentification}" class="username"><br></div>
-                            </div>
+                            <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
+                            <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
+                        <div class="userid">
+                            <div th:text="${member.memberIdentification}" class="username"><br></div>
                         </div>
                     </div>
                 </div>
@@ -124,8 +122,8 @@
                     <div class="sidebar-nav">
                         <ul>
                             <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
-                            <li><a th:href="@{/boards/board-ready}"><span>나의 게시글 보기</span></a></li>
-                            <li><a th:href="@{/boards/board-ready}"><span>나의 댓글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-board-ready}"><span>나의 게시글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-reply-ready}"><span>나의 댓글 보기</span></a></li>
                             <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
                             <li class="activeblue "><a class="active-text" th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
                             <li class="sidemenu2"><a class="active-text" th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>

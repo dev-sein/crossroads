@@ -42,9 +42,10 @@
                                 <p class="sorry">죄송합니다. 현재 나의 게시글 보기는 준비중입니다.</p>
                                 <p class="error-margin error-margin-mobile">
                                     <a class="btn btn-primary btn-large" onclick="javascript:history.go(-1);" style="margin-right: 10px;">이전 화면으로 돌아가기</a>
-                                    <a class="btn btn-primary btn-large" href="/">초기 화면으로 돌아가기</a>
+                                    <a class="btn btn-primary btn-large" th:href="@{/main}">초기 화면으로 돌아가기</a>
                                 </p>
                             </div>
+                        </aside>
                     </section>
                     <aside section="error-aside">
                         <img class="aside-img" src="/images/board/sorry.png">
@@ -60,4 +61,18 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
+<script src="/js/components/header-client.js"></script>
+<script>
+    FileList.prototype.forEach = Array.prototype.forEach;
+    globalThis.arrayFile2 = new Array();
+    globalThis.j = 0;
+    const dataTransfer = new DataTransfer();
+    globalThis.originalName = ``;
+    globalThis.fileSize = '';
+    globalThis.fileType = '';
+
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
+</script>
 </html>
