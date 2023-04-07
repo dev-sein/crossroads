@@ -29,21 +29,19 @@
             <!-- 좌측 사이드바 시작 -->
             <div class="sidebar">
                 <div class="user-name-tag">
-                    <div class="user-name-tag">
-                        <h3 class="user-name-tag-heading">초보자</h3>
-                        <a class="profile-setting"><!-- 클라이언트 정보 --></a>
-                        <div class="user-name-tag-body">
-                            <div class="user-img-box">
+                    <h3 class="user-name-tag-heading">초보자</h3>
+                    <a class="profile-setting"><!-- 클라이언트 정보 --></a>
+                    <div class="user-name-tag-body">
+                        <div class="user-img-box">
 
-                                <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
-                                <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
-                                <!--                                 src="/images/mypage/main-logo.png">-->
+                            <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                            <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+                            <!--                                 src="/images/mypage/main-logo.png">-->
 
-                                <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
-                                <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
-                            <div class="userid">
-                                <div th:text="${member.memberIdentification}" class="username"><br></div>
-                            </div>
+                            <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
+                            <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
+                        <div class="userid">
+                            <div th:text="${member.memberIdentification}" class="username"><br></div>
                         </div>
                     </div>
                 </div>
@@ -51,66 +49,81 @@
                 <div class="profile-container modal fade" id="modal-background">
                     <div id="cropper-img-box">
                         <img class="cropper-img" hidden=""></div>
-                        <div class="profile-image-edit-modal-wrapper">
-                            <form enctype="multipart/form-data" id="profile_image_edit_form">
-                                <div class="modal__title">프로필 사진 등록
-                                    <div class="close_modal">
-                                        <img class="modal-close-image-button" src="/images/mypage/icon_modal_close.png">
-                                    </div>
+                    <div class="profile-image-edit-modal-wrapper">
+                        <form enctype="multipart/form-data" id="profile_image_edit_form" method="post" name="write-form">
+                            <div class="modal__title">프로필 사진 등록
+                                <div class="close_modal">
+                                    <img class="modal-close-image-button" src="/images/mypage/icon_modal_close.png">
                                 </div>
-                                <div class="modal__body">
-                                    <div class="modal-body-wrapper" id="profile_image_edit_modal_body">
-                                        <div class="modal-content">
-                                            나를 표현하는 사진을 등록해주세요
-                                        </div>
-                                        <img class="user-profile-img upload" id="modal_user_img" src="/images/mypage/main-logo.png">
+                            </div>
+                            <div class="modal__body">
+                                <div class="modal-body-wrapper" id="profile_image_edit_modal_body">
+                                    <div class="modal-content">
+                                        나를 표현하는 사진을 등록해주세요
+                                    </div>
+                                    <img class="user-profile-img upload" id="modal_user_img"
+                                         th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
 
-                                        <div class="loading-circle user-profile-img">
-                                            <div class="sk-fading-circle theme-client">
-                                                <div class="sk-circle1 sk-circle"></div>
-                                                <div class="sk-circle2 sk-circle"></div>
-                                                <div class="sk-circle3 sk-circle"></div>
-                                                <div class="sk-circle4 sk-circle"></div>
-                                                <div class="sk-circle5 sk-circle"></div>
-                                                <div class="sk-circle6 sk-circle"></div>
-                                                <div class="sk-circle7 sk-circle"></div>
-                                                <div class="sk-circle8 sk-circle"></div>
-                                                <div class="sk-circle9 sk-circle"></div>
-                                                <div class="sk-circle10 sk-circle"></div>
-                                                <div class="sk-circle11 sk-circle"></div>
-                                                <div class="sk-circle12 sk-circle"></div></div></div>
-                                        <div class="body-btn-group">
-                                            <input accept=".jpg, .jpeg, .png, .gif" id="fileupload" class="img-temp-file" hidden="" type="file" onchange="readURL(this);">
-                                            <input hidden="" id="profile_remove_image_file" name="remove_image_file" type="checkbox">
-                                            <button class="body-btn upload" onclick="upload_image()" type="button">
-                                                <img src="/images/mypage/icon_profile_upload.png">사진 올리기</button>
-                                            <button class="body-btn" id="remove-button" type="button">
-                                                <img src="/images/mypage/icon_profile_delete.png">사진 지우기</button>
+                                    <div class="loading-circle user-profile-img">
+                                        <div class="sk-fading-circle theme-client">
+                                            <div class="sk-circle1 sk-circle"></div>
+                                            <div class="sk-circle2 sk-circle"></div>
+                                            <div class="sk-circle3 sk-circle"></div>
+                                            <div class="sk-circle4 sk-circle"></div>
+                                            <div class="sk-circle5 sk-circle"></div>
+                                            <div class="sk-circle6 sk-circle"></div>
+                                            <div class="sk-circle7 sk-circle"></div>
+                                            <div class="sk-circle8 sk-circle"></div>
+                                            <div class="sk-circle9 sk-circle"></div>
+                                            <div class="sk-circle10 sk-circle"></div>
+                                            <div class="sk-circle11 sk-circle"></div>
+                                            <div class="sk-circle12 sk-circle"></div>
                                         </div>
                                     </div>
-                                    <div class="modal-info-body">
-                                        <div class="base-dot-list">
-                                            <div class="dot-line">
-                                                <div class="dot">·</div>프로필 사진은 교차로 서비스에 표시됩니다.</div>
-                                            <div class="dot-line"><div class="dot">·</div>.jpg, .jpeg, .png, .gif 파일만 업로드 가능합니다.</div>
+                                    <div class="body-btn-group">
+                                        <input accept=".jpg, .jpeg, .png, .gif" id="fileUpload" class="img-temp-file"
+                                               type="file" style="display: none" onchange="readURL(this);">
+                                        <input hidden="" id="profile_remove_image_file" name="remove_image_file"
+                                               type="checkbox">
+                                        <button class="body-btn upload" onclick="upload_image()" type="button">
+                                            <img src="/images/mypage/icon_profile_upload.png">사진 올리기
+                                        </button>
+                                        <button class="body-btn" id="remove-button" type="button">
+                                            <img src="/images/mypage/icon_profile_delete.png">사진 지우기
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal-info-body">
+                                    <div class="base-dot-list">
+                                        <div class="dot-line">
+                                            <div class="dot">·</div>
+                                            프로필 사진은 교차로 서비스에 표시됩니다.
+                                        </div>
+                                        <div class="dot-line">
+                                            <div class="dot">·</div>
+                                            .jpg, .jpeg, .png, .gif 파일만 업로드 가능합니다.
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal__footer">
-                                    <div class="modal__button group-block-button">
-                                        <button class="button theme-indigo close__modal" id="btn_modal_close" type="button">닫기</button>
-                                        <button class="button theme-client" id="btn_profile_img_modal_submit" onclick="submit_form('/profile/api/profile-image/')" type="button">등록 완료</button>
-                                    </div>
+                            </div>
+                            <div class="modal__footer">
+                                <div class="modal__button group-block-button">
+                                    <button class="button theme-indigo close__modal" id="btn_modal_close" type="button">
+                                        닫기
+                                    </button>
+                                    <button class="button theme-client" id="submit-profile" type="button">등록 완료
+                                    </button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
+                </div>
                     <!-- 사이드바 메뉴 -->
                     <div class="sidebar-nav">
                         <ul>
                             <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
-                            <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
-                            <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-board-ready}"><span>나의 게시글 보기</span></a></li>
+                            <li><a th:href="@{/mypage/my-reply-ready}"><span>나의 댓글 보기</span></a></li>
                             <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
                             <li class="activeblue "><a class="active-text" th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
                             <li class="sidemenu2"><a class="active-text" th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
@@ -119,62 +132,196 @@
                     </div>
                 </div>
                 <!-- sidebar 끝 -->
-                <!-- 본문 -->
-                <div class="gaia">
-                    <div class="content-header action">
-                        <h3 class="header-text">운전연수 내역<br>
-                            <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
-                        </h3>
+            <!-- 본문 -->
+            <div class="gaia">
+                <div class="content-header action">
+                    <h3 class="header-text">운전연수 내역<br>
+                        <small class="small-text">운전연수 내역을 확인할 수 있습니다.</small>
+                    </h3>
+                </div>
+                <div class="content-inner">
+                    <!-- 상세 내역 -->
+                    <div class="drive-subtitle">
+                        <img class="listicon" src="/images/member/list.png">
+                        <h4 class="header-text iconnext">운전연수 상세 내역</h4>
                     </div>
-                    <div class="content-inner">
-                        <!-- 상세 내역 -->
-                        <div class="drive-subtitle">
-                            <img class="listicon" src="/images/member/list.png">
-                            <h4 class="header-text iconnext">운전연수 상세 내역</h4>
-                        </div>
-                        <div class="history-body-title driveclass">
-                            <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} ? ${applyCountAll} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} ? ${applyCountReady} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} ? ${applyCountIng} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                            <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} ? ${applyCountFinish} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
-                        </div>
-                        <!-- 상세내역 표  -->
-                        <table class="append-table">
-                            <tr class="tabletitle">
-                                <th class="date">날짜</th>
-                                <th class="location">지역</th>
-                                <th class="course">코스</th>
-                                <th class="status">상태</th>
-                            </tr>
-                            <tr th:if="${applyCountAll == 0}">
-                                <td colspan="4">내역이 없습니다.</td>
-                            </tr>
-                            <!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
-<!--                                <td>2023-03-16</td>-->
-<!--                                <td>경기도 파주시</td>-->
-<!--                                <td>A코스</td>-->
-<!--                                <td>수락 대기중</td></a>-->
-<!--                            </tr>-->
-                        </table>
-                        <section th:if="${applyCountAll != 0}">
-                            <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
-                            <ul id="paging">
-                                <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
-                                    <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-apply(page=${page})}"><li th:text="${page}"></li></a>
-                                    <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
-                                </th:block>
-                            </ul>
-                            <span class="next-page"><a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
-                        </section>
+                    <div class="history-body-title driveclass">
+                        <span>운전연수 신청 </span><span><strong th:text="${applyCountAll} ? ${applyCountAll} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>수락 대기중 </span><span class="permission"><strong th:text="${applyCountReady} ? ${applyCountReady} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>연수 진행중 </span><span class="ing"><strong th:text="${applyCountIng} ? ${applyCountIng} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
+                        <span>완료한 운전연수 </span><span><strong th:text="${applyCountFinish} ? ${applyCountFinish} + '건&nbsp&nbsp&nbsp' : '0건&nbsp&nbsp&nbsp'"></strong></span>
                     </div>
-                </div> <!-- content -->
-            </div>
+                    <!-- 상세내역 표  -->
+                    <table class="append-table">
+                        <tr class="tabletitle">
+                            <th class="date">날짜</th>
+                            <th class="location">지역</th>
+                            <th class="course">코스</th>
+                            <th class="status">상태</th>
+                        </tr>
+                        <tr th:if="${applyCountAll == 0}">
+                            <td colspan="4">내역이 없습니다.</td>
+                        </tr>
+                        <!--                            <tr onclick="location.href=''" style="cursor:pointer;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">-->
+                        <!--                                <td>2023-03-16</td>-->
+                        <!--                                <td>경기도 파주시</td>-->
+                        <!--                                <td>A코스</td>-->
+                        <!--                                <td>수락 대기중</td></a>-->
+                        <!--                            </tr>-->
+                    </table>
+                    <section th:if="${applyCountAll != 0}">
+                        <a class="change-page" th:href="@{/mypage/my-apply(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a>
+                        <ul id="paging">
+                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-apply(page=${page})}"><li th:text="${page}"></li></a>
+                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
+                            </th:block>
+                        </ul>
+                        <span class="next-page"><a class="change-page" th:href="@{/mypage/my-apply(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
+                    </section>
+                </div>
+            </div> <!-- content -->
         </div>
-    </div><!--page  -->
+    </div>
+</div><!--page  -->
 </div> <!-- wrap -->
 <div th:insert="~{/components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    FileList.prototype.forEach = Array.prototype.forEach;
+    globalThis.arrayFile2 = new Array();
+    globalThis.j = 0;
+    const dataTransfer = new DataTransfer();
+    globalThis.originalName = ``;
+    globalThis.fileSize = '';
+    globalThis.fileType = '';
+
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
+
+    $("#fileUpload").on("change", function() {
+        const $files2 = $("#fileUpload")[0].files;
+        console.log($files2)
+//    파일 객체에 접근함
+        originalName = $files2[0].name;
+        fileSize = $files2[0].size;
+        fileType = $files2[0].type;
+        console.log($files2)
+
+
+        let formData = new FormData();
+        globalThis.arrayFile2.push($files2);
+        // 파일 Array의 file들을 하나씩 담아줌
+        $("input[id='fileUpload']")[0].files = dataTransfer.files;
+        $files2.forEach(file => {
+            formData.append("file", file)
+        });
+        formData.append("file", $files2)
+
+        $.ajax({
+            url: "/mypage/upload",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (uuid) {
+                globalThis.originalName = $files2[0].name;
+                globalThis.fileSize = $files2[0].size;
+                globalThis.fileType = $files2[0].type;
+
+                globalThis.uuid = uuid;
+                console.log(uuid)
+                console.log(globalThis.uuid)
+
+                let text2 = "";
+                text2 =
+                    `
+                    <input type="hidden" name="memberProfileOriginalName" value= "${originalName}">
+                    <input type="hidden" name="memberProfileUuid" value= "${globalThis.uuid}">
+                    <input type="hidden" name="memberProfilePath" value= "${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="memberProfileSize" value= "${fileSize}">
+                    <input type="hidden" name="memberProfileType" value= "${fileType}">
+                    `
+                $("form[name='write-form']").append(text2);
+            }
+        });
+    });
+
+
+    $("#submit-profile").on("click", function(){
+        // console.log(globalThis.arrayFile2[0]);
+        // console.log(globalThis.arrayFile2[0][0].name);
+        // console.log(globalThis.arrayFile2[0][0].size);
+        // console.log(globalThis.arrayFile2[0][0].type);
+        // console.log(globalThis.uuid[0]);
+
+        if($('#modal_user_img').attr('src') == "/images/mypage/main-logo.png") {
+            $.ajax({
+                url: "/mypage/delete-profile",
+                type: "post",
+                success: function(data){
+                    $('.user-img').attr('src', "/images/mypage/main-logo.png");
+                    let url = `/mypage/my-info`
+                    location.replace(url);
+                }
+
+            });
+        }
+
+        let files = new Array();
+
+        globalThis.arrayFile2[0].forEach((file, i) => {
+            let memberVO = new Object();
+            memberVO.memberFileOriginalName = globalThis.arrayFile2[0][0].name;
+            memberVO.memberFileUuid = globalThis.uuid[0];
+            memberVO.memberFilePath = toStringByFormatting(new Date());
+            memberVO.memberFileSize = globalThis.arrayFile2[0][0].size;
+            memberVO.memberFileType = globalThis.arrayFile2[0][0].type.startsWith("image");
+            files.push(memberVO);
+        });
+        console.log(files);
+
+
+        $.ajax({
+            url: "/mypage/save-profile",
+            type: "post",
+            data: JSON.stringify(files),
+            contentType: "application/json; charset=utf-8",
+            success: function(data){
+                console.log("success");
+                console.log(data);
+                let url = `/mypage/my-info`
+                console.log(url);
+                location.replace(url);
+                alert("들어옴");
+
+            }
+
+        });
+    });
+
+
+
+    /*****************************************************/
+    function leftPad(value) {
+        if (value >= 10) {
+            return value;
+        }
+
+        return `0${value}`;
+    }
+
+    function toStringByFormatting(source, delimiter = '/') {
+        const year = source.getFullYear();
+        const month = leftPad(source.getMonth() + 1);
+        const day = leftPad(source.getDate());
+
+        return [year, month, day].join(delimiter);
+    }
+    /*****************************************************/
+</script>
 <script th:inline="javascript">
     let applys = [[${applyVO}]];
 </script>

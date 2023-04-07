@@ -293,4 +293,22 @@ public class MypageController {
         reviewBoardService.deleteReview(reviewId);
         return new RedirectView("/mypage/my-review");
     }
+
+    /*나의 게시글 준비중*/
+    @GetMapping("my-board-ready")
+    public String boardready(Model model, HttpSession session){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        return "mypage/my-board-ready";
+    }
+
+    /*나의 댓글 준비중*/
+    @GetMapping("my-reply-ready")
+    public String replyready(Model model, HttpSession session){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        return "mypage/my-reply-ready";
+    }
 }
