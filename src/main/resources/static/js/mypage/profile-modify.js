@@ -156,7 +156,6 @@ const closeBtn = modal.querySelector(".modal-close-image-button")
 const closegrayBtn = modal.querySelector("#btn_modal_close")
 
 btnOpenPopup.addEventListener('click', () => {
-  alert('들어옴');
   modal.style.display = 'block';
   modal.style.zIndex = "1000";
   modal.style.opcity = "1";
@@ -178,7 +177,6 @@ modal.addEventListener("click", e => {
 });
 
 function upload_image() {
-  alert('들어옴');
   let myInput = document.querySelector("#img-temp-file");
   myInput.click();
 }

@@ -16,7 +16,6 @@ function checkStatus(status) {
       result = '거절';
       break;
     default:
-      alert('상태 표시 오류');
       break;
   }
 

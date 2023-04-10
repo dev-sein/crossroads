@@ -230,7 +230,6 @@ function deleteReview(reviewId) {
         },
         error: function (error) {
             console.error(error);
-            alert("삭제 중 오류가 발생했습니다.");
         },
     });
 }

@@ -47,15 +47,12 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("수정 완료");
                     window.location.href = "/review/review-list";
                 } else {
-                    alert("수정 실패");
                 }
             })
             .catch((error) => {
                 console.error("Error:", error);
-                alert("수정 실패");
             });
     }
 });
