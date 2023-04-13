@@ -5,9 +5,12 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
     let flag1 = true;
     let flag2 = true;
     let flag3 = true;
+    let flag4 = true;
 
     const reviewId = document.querySelector("#review-container").dataset.reviewId;
     const updateUrl = `/review/review-update/${reviewId}`;
+    const $imageInput = $('#image');
+    console.log($imageInput.val().length);
 
     var $title = $("#input-title");
     var $content = $("#input-content");
@@ -28,9 +31,14 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
         $(".modal-message").text("만족도를 체크해주세요.");
         $star.focus();
         flag3 = false;
+    } else if($imageInput.val().length < 1){
+        $(".modal-wrapper").css("display", "block");
+        $(".modal-message").text("이미지를 넣어주세요.");
+        $imageInput.focus();
+        flag4 = false;
     }
 
-    if (flag1 && flag2 && flag3) {
+    if (flag1 && flag2 && flag3 && flag4) {
         // Submit the form data using AJAX
         var formData = new FormData(document.querySelector("#review-form"));
         fetch(updateUrl, {
@@ -39,15 +47,12 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("수정 완료");
                     window.location.href = "/review/review-list";
                 } else {
-                    alert("수정 실패");
                 }
             })
             .catch((error) => {
                 console.error("Error:", error);
-                alert("수정 실패");
             });
     }
 });
@@ -56,9 +61,10 @@ document.querySelector("#update-button").addEventListener("click", function (e) 
 function updateReview() {
     const title = document.getElementById("input-title").value;
     const content = document.getElementById("input-content").value;
+    const $imageWrapper = $("#image").val();
 
-    if (title === "" || content === "") {
-        alert("제목과 내용을 입력해주세요.");
+    if (title === "" || content === "" || $imageWrapper.length == 0) {
+        // alert("제목과 내용을 입력해주세요.");
         return;
     }
 

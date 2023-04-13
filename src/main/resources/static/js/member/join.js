@@ -136,8 +136,8 @@ function checkEmail() {
 				}
 			},
 			error: function () {
-				alert("에러입니다");
 			}
+
 		});
 	};
 
@@ -287,13 +287,13 @@ function checkEmail() {
 	});
 
 	/!* file upload *!/
-	$("#file").on('change', function () {
-		var fileName = $("#file").val().split('/').pop().split('\\').pop();
-		var $fileName = $("#file").val().split('/').pop().split('\\').pop();
+	$("#license").on('change', function () {
+		var fileName = $("#license").val().split('/').pop().split('\\').pop();
+		var $fileName = $("#license").val().split('/').pop().split('\\').pop();
 
 		var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
 
-		if (fileName.match(reg)) {
+		if ($fileName.match(reg)) {
 			$("#upload-name").val(fileName);
 			checkAll[6] = true;
 
@@ -375,12 +375,12 @@ $("#license").on("change", function(e){
 				$loadingIcon.hide();
 				$loader.fadeOut(300);
 				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
+				$('#file-error').css('display', 'none');
 
 			}
 		});
 	};
 });
-
 
 
 // 회원가입 버튼 활성화
@@ -394,6 +394,15 @@ $("#license").on("change", function(e){
 					break;
 				}
 			}
+		}
+
+		if($('input[name=memberDriveRegisterDate]').val().length == 0 || $('input[name=memberDriveRegisterDate]').val().length == null ){
+			$('#file-error').css('display', 'block');
+			$submitBtn.attr("type", "button");
+			flag = false;
+		} else {
+			$('#file-error').css('display', 'none');
+			flag= true;
 		}
 
 		if (checkbox && flag) {
@@ -426,7 +435,6 @@ naver_id_login.get_naver_userprofile("naverSignInCallback()");
 
 // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 function naverSignInCallback() {
-	alert(naver_id_login.getProfileData('email'));
 	$.ajax({
 		url: "/member/join",
 		type: "get",
@@ -450,4 +458,3 @@ function naverSignInCallback() {
 	});
 }
 
-//카카오 회원가입

@@ -43,4 +43,7 @@ public interface PointMapper {
 //    포인트 충전
     public void updatePointByMemberId(Long memberId, Long memberPoint);
 
+//    포인트 환전 시 기록
+    public void insertPointDetail(Map<String, Object> pointDetail);
+
 }

@@ -40,7 +40,7 @@ public class MemberController {
         return new RedirectView("login");
     }
 
-    //카카오 회원가입
+/*    //카카오 회원가입
     @GetMapping("join-kakao")
     public String joinKakao(){
         return "/member/join";
@@ -52,7 +52,7 @@ public class MemberController {
         log.info("카카오 회원가입 post");
         memberService.save(memberVO);
         return new RedirectView("login");
-    }
+    }*/
 
     //아이디 중복체크
     @PostMapping("/checkId")
@@ -104,25 +104,14 @@ public class MemberController {
     public RedirectView login(String memberIdentification, String memberPassword, HttpServletRequest request, RedirectAttributes redirectAttributes,  HttpServletResponse response) {
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
-        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
-        log.info(String.valueOf(autoLogin));
-        log.info(id.toString());
         if (id != null) {
             session.setAttribute("memberId", id);
             if (id == 1L) {
                 return new RedirectView("/admin/home");}
-                else if(autoLogin) {
-                    Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);
-                    Cookie memberPasswordCookie = new Cookie("memberPassword", memberPassword);
-                    memberIdentificationCookie.setMaxAge(60 * 60 * 24);
-                    memberPasswordCookie.setMaxAge(60 * 60 * 24);
-                    response.addCookie(memberIdentificationCookie);
-                    response.addCookie(memberPasswordCookie);
-                }
                 log.info(session.getAttribute("memberId").toString());
                 return new RedirectView("/main");
             }
-            return new RedirectView("/member/login");
+           return new RedirectView("/member/login?result=fail");
         }
 
     //카카오 회원가입
@@ -138,7 +127,7 @@ public class MemberController {
         if (memberVO == null || memberVO.getMemberStatus() != 1) {
             session.setAttribute("kakaoInfo", kakaoInfo);
             kakaoInfo.setMemberStatus(1);
-            log.info("카카오 들어옴");
+            log.info("카카오 DB 없을 때 들어옴");
             return new RedirectView("/member/join");
         }
         session.setAttribute("members", memberVO);
@@ -153,11 +142,11 @@ public class MemberController {
 
         MemberVO kakaoInfo = memberService.getKakaoInfo(token);
         MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
+        log.info("카카오 이메일" + kakaoInfo.toString());
 
         if(memberVO.getMemberStatus() != 1){
             return new RedirectView("/member/login?result=fail");
         }
-
         session.setAttribute("memberId", memberVO.getMemberId());
         return new RedirectView("/main");
     }

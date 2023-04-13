@@ -30,7 +30,6 @@ $('#submit-btn').on('click', function(){
     if($('#password-input').val()){
         $('#password-input').val(btoa($('#password-input').val()));
         document.passwordForm.submit();
-        alert("들어옴")
     }
 })
 

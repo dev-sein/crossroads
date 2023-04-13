@@ -49,7 +49,9 @@ public class MypageController {
     /*마이페이지 프로필 조회*/
     @GetMapping("/my-info")
     public String myInfoSelect(Model model, HttpSession session) {
+//        session.setAttribute("memberId", 2L);
         Long memberId = (Long)session.getAttribute("memberId");
+        log.info("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         log.info("들어옴");
         log.info( model.addAttribute("member", memberService.getMemberInfo(memberId)).toString());
@@ -204,14 +206,19 @@ public class MypageController {
     /*마이페이지 파일 저장*/
     @PostMapping("/save-profile")
     @ResponseBody
-    public void save(@RequestBody List<MemberVO> files) {
-        files.forEach(file -> memberService.modifyProfile(file));
+    public void save(@RequestBody List<MemberVO> files, HttpSession session) {
+        files.forEach(file -> {
+            file.setMemberId((Long)session.getAttribute("memberId"));
+            memberService.modifyProfile(file);
+        });
     }
 
     /*마이페이지 파일 불러오기*/
     @GetMapping("/display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
+        log.info("들어옴************************************************************");
+        log.info(fileName);
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
@@ -285,5 +292,23 @@ public class MypageController {
         log.info("들어옴*******************************************************");
         reviewBoardService.deleteReview(reviewId);
         return new RedirectView("/mypage/my-review");
+    }
+
+    /*나의 게시글 준비중*/
+    @GetMapping("my-board-ready")
+    public String boardready(Model model, HttpSession session){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        return "mypage/my-board-ready";
+    }
+
+    /*나의 댓글 준비중*/
+    @GetMapping("my-reply-ready")
+    public String replyready(Model model, HttpSession session){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        return "mypage/my-reply-ready";
     }
 }

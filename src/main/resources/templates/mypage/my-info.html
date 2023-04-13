@@ -37,8 +37,8 @@
                         <div class="user-img-box">
 
                             <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
-<!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
-<!--                                 src="/images/mypage/main-logo.png">-->
+                            <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
+                            <!--                                 src="/images/mypage/main-logo.png">-->
 
                             <img class="user-img-edit-icon off" src="/images/mypage/icon_edit_s.png">
                             <img class="user-img-edit-icon on" src="/images/mypage/icon_edit_s_hover.png"></div>
@@ -125,8 +125,8 @@
                 <div class="sidebar-nav">
                     <ul>
                         <li class="sidemenu activeblue"><a class="active-text" th:href="@{/mypage/my-info}"><span>프로필 정보 설정</span></a></li>
-                        <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-board-ready}"><span>나의 게시글 보기</span></a></li>
+                        <li><a th:href="@{/mypage/my-reply-ready}"><span>나의 댓글 보기</span></a></li>
                         <li><a th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
                         <li class><a th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
                         <li class="sidemenu2"><a th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
@@ -251,6 +251,9 @@
     globalThis.fileSize = '';
     globalThis.fileType = '';
 
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
 
     $("#fileUpload").on("change", function() {
         const $files2 = $("#fileUpload")[0].files;
@@ -313,6 +316,7 @@
                 url: "/mypage/delete-profile",
                 type: "post",
                 success: function(data){
+                    $('.user-img').attr('src', "/images/mypage/main-logo.png");
                     let url = `/mypage/my-info`
                     location.replace(url);
                 }
@@ -329,7 +333,6 @@
             memberVO.memberFilePath = toStringByFormatting(new Date());
             memberVO.memberFileSize = globalThis.arrayFile2[0][0].size;
             memberVO.memberFileType = globalThis.arrayFile2[0][0].type.startsWith("image");
-            memberVO.memberId = 1;
             files.push(memberVO);
         });
         console.log(files);

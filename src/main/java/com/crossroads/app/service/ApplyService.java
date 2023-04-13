@@ -8,6 +8,7 @@ import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.Standards;
 import com.crossroads.app.domain.dto.PageDTO;
 import com.crossroads.app.domain.vo.ApplyVO;
+import com.crossroads.app.domain.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -126,6 +127,11 @@ public class ApplyService {
         applyIds.stream().map(applyId -> Long.valueOf(applyId)).forEach(applyId -> {
             cancel(applyId);
         });
+    }
+
+//    포인트 환전 시 기록
+    public void savePointDetails(Map<String, Object> pointDetail){
+        pointDAO.registerPointDetail(pointDetail);
     }
 }
 

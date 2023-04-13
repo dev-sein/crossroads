@@ -4,6 +4,7 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.service.BoardService;
 import com.crossroads.app.service.FreeBoardService;
+import com.crossroads.app.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import java.util.List;
 public class BoardController {
     private FreeBoardService freeboardService;
     private BoardService boardService;
+    private final MemberService memberService;
 /*
 
     // 게시판 목록
@@ -69,6 +71,14 @@ public class BoardController {
     }
 */
 
+    //준비중
+    @GetMapping("board-ready")
+    public String boardready(Model model, HttpSession session){
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
+        return "board/board-ready";
+    }
 }
 
 

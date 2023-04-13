@@ -39,15 +39,18 @@ public class MobileController {
 
     @GetMapping("list-mobile")
     public String listMobile(HttpServletRequest request , Criteria criteria, Model model) throws Exception{
+
         if (criteria.getPage() == 0){
             criteria = criteria.create(1,5);
         } else {
             criteria = criteria.create(criteria.getPage(),5);
         }
-
         HttpSession session = request.getSession();
 //        session.setAttribute("memberId", 1L);   // 임의로 세션에 담아둠
-
+        Long memberId = (Long) session.getAttribute("memberId");
+        if(memberId == null) {
+            return "redirect:/applies/login-mobile";
+        }
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
 
@@ -186,15 +189,18 @@ public class MobileController {
     public RedirectView Mobile(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
-        log.info(id.toString());
+      //  log.info(id.toString());
         if(id != null){
             MemberVO memberVO = new MemberVO();
             session.setAttribute("memberId", id);
             log.info(session.getAttribute("memberId").toString());
             System.out.println(memberService.getMemberInfo(id).getMemberType());
-            if(memberService.getMemberInfo(id).getMemberType() == String.valueOf('1')){
+            if(memberVO.getMemberType() == String.valueOf("0")){
+                log.info("초보자 들어옴.");
                 log.info("초보자 회원은 웹으로 이용 가능합니다.");
+                return new RedirectView("login-mobile");
             };
+            log.info("초보자 안 들어옴.");
             return new RedirectView("list-mobile");
 
         }
@@ -283,6 +289,9 @@ public class MobileController {
     @GetMapping("/my-mobile")
     public String myMobile(Model model, HttpSession session){
         Long memberId = (Long)session.getAttribute("memberId");
+        if (memberId == null){
+            return "redirect:/applies/login-mobile";
+        }
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         return "mobile/my-mobile";
     }

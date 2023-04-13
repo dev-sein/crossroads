@@ -105,7 +105,6 @@ $("#completeButton").on("click", function () {
 
         const files = $("#image1")[0].files;
         if (files.length > 3) {
-            alert("이미지는 최대 3개까지 등록 가능합니다.");
             return;
         }
 
@@ -121,13 +120,12 @@ $("#completeButton").on("click", function () {
             contentType: false,
             data: formData,
             success: function () {
-                alert("게시글이 작성되었습니다.");
                 location.href = "/board-list"; // 작성이 완료되면 게시글 목록으로 이동
             },
             error: function (xhr, status, error) {
                 console.log("error:", error);
-                alert("게시글 작성에 실패하였습니다. 다시 시도해주세요.");
             },
+
         });
     }
 });

@@ -243,28 +243,24 @@ $phoneInput.on("blur", function() {
 
 });
 
-/* file upload */
-$("#file").on('change', function(){
-    var fileName = $("#file").val().split('/').pop().split('\\').pop();
-    var $fileName = $("#file").val().split('/').pop().split('\\').pop();
+/!* file upload *!/
+$("#license").on('change', function () {
+	var fileName = $("#license").val().split('/').pop().split('\\').pop();
+	var $fileName = $("#license").val().split('/').pop().split('\\').pop();
 
-    var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+	var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
 
-    if (fileName.match(reg)) {
-        $("#upload-name").val(fileName);
-        checkAll[6] = true;
+	if ($fileName.match(reg)) {
+		$("#upload-name").val(fileName);
+		checkAll[6] = true;
 
-    } else {
-        $("#upload-name").val("이미지 파일이 아닙니다.");
-        checkAll[6] = false;
-    }
+	} else {
+		$("#upload-name").val("이미지 파일이 아닙니다. 다시 등록해 주세요.");
+		checkAll[6] = false;
+	}
 });
 
-// // 이용약관 동의
-// const $checkbox = $(".crossroads-checkbox");
-// const $arrow = $(".arrow");
-// const $icon = $(".checked-icon");
-// let checkbox = false;
+
 /* 이용약관 동의 */
 $checkbox.on("click", function(){
     if (!checkbox) {
@@ -282,28 +278,7 @@ $checkbox.on("click", function(){
 });
 
 
-// 회원가입 버튼 활성화
-$submitBtn.on("click", function () {
-	var flag = false;
-	if (checkbox) {
-		for (let i = 0; i < checkAll.length; i++) {
-			var check = checkAll[i];
-			if (!check) {
-				flag = true;
-				break;
-			}
-		}
-	}
 
-	if (checkbox && flag) {
-		/*비밀번호 암호화*/
-		$passwordInput.val(btoa($passwordInput.val()));
-		$passwordCheckInput.val(btoa($passwordCheckInput.val()));
-		document.joinForm.submit();
-	} else {
-		$submitBtn.attr("type", "button");
-	}
-});
 
 
 
@@ -406,7 +381,40 @@ $("#license").on("change", function(e){
 				$loadingIcon.hide();
 				$loader.fadeOut(300);
 				$('input[name=memberType]').attr('value',year); //type 값으로 넣어주기
+				$('#file-error').css('display', 'none');
 			}
 		});
 	};
+});
+
+// 회원가입 버튼 활성화
+$submitBtn.on("click", function () {
+	var flag = false;
+	if (checkbox) {
+		for (let i = 0; i < checkAll.length; i++) {
+			var check = checkAll[i];
+			if (!check) {
+				flag = true;
+				break;
+			}
+		}
+	}
+
+	if($('input[name=memberDriveRegisterDate]').val().length == 0 || $('input[name=memberDriveRegisterDate]').val().length == null ){
+		$('#file-error').css('display', 'block');
+		$submitBtn.attr("type", "button");
+		flag = false;
+	} else {
+		$('#file-error').css('display', 'none');
+		flag= true;
+	}
+
+	if (checkbox && flag) {
+		/*비밀번호 암호화*/
+		$passwordInput.val(btoa($passwordInput.val()));
+		$passwordCheckInput.val(btoa($passwordCheckInput.val()));
+		document.joinForm.submit();
+	} else {
+		$submitBtn.attr("type", "button");
+	}
 });

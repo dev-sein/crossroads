@@ -22,8 +22,8 @@
                     <a class="menu element" th:href="@{/introduce/introduce}">사업 소개</a>
                     <a class="menu element" th:href="@{/apply/apply-first}">연수 신청</a>
                     <a class="menu element" th:href="@{/points/buy-point}">포인트 충전</a>
-                    <a class="menu element" th:href="@{/boards/board-list}">자유 게시판</a>
-                    <a class="menu element" th:href="@{/review-list}">이용후기</a>
+                    <a class="menu element" th:href="@{/boards/board-ready}">자유 게시판</a>
+                    <a class="menu element" th:href="@{/review/review-list}">이용후기</a>
                     <div class="nav-divider"></div>
                     <a class="menu element" th:href="@{/introduce/notice}">자주 묻는 질문</a>
                 </div>
@@ -33,17 +33,17 @@
                             <img alt="" class="user-img" height="32px" width="32px" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}" >
                         </a>
                         <div id="dropdown" class="nav-dropdown">
-                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-info}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-main}">
                                 <img src="/images/header/icon_menu_home.png" alt="">
                                 마이페이지
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-board}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-board-ready}">
                                 <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 게시글 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-reply}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-reply-ready}">
                                 <img src="/images/header/icon_menu_reply.png" alt="">
                                 나의 댓글 조회
                             </a>
@@ -76,4 +76,17 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/components/header-client.js"></script>
+<script>
+    FileList.prototype.forEach = Array.prototype.forEach;
+    globalThis.arrayFile2 = new Array();
+    globalThis.j = 0;
+    const dataTransfer = new DataTransfer();
+    globalThis.originalName = ``;
+    globalThis.fileSize = '';
+    globalThis.fileType = '';
+
+    if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+        $('.user-img').attr('src', '/images/mypage/main-logo.png');
+    }
+</script>
 </html>
