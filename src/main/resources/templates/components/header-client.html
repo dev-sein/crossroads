@@ -30,40 +30,40 @@
                 <div class="right-nav">
                     <div class="right-nav-list">
                         <a id="user-icon" class="right-nav-item " href="">
-                            <img alt="" class="user-img" height="32px" width="32px" th:src="@{mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}" >
+                            <img alt="" class="user-img" height="32px" width="32px" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}" >
                         </a>
                         <div id="dropdown" class="nav-dropdown">
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-main}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-main}">
                                 <img src="/images/header/icon_menu_home.png" alt="">
                                 마이페이지
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-board-ready}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-board-ready}">
                                 <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 게시글 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-reply-ready}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-reply-ready}">
                                 <img src="/images/header/icon_menu_reply.png" alt="">
                                 나의 댓글 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-point}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-point}">
                                 <img src="/images/header/icon_menu_payment.png" alt="">
                                 포인트 조회
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-apply}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-apply}">
                                 <img src="/images/header/icon_menu_list.png" alt="">
                                 연수 내역
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-review}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-review}">
                                 <img src="/images/header/icon_menu_write.png" alt="">
                                 나의 후기
                             </a>
                             <div class="nav-divider"></div>
-                            <a class="nav-dropdown-item element" th:href="@{mypage/my-logout}">
+                            <a class="nav-dropdown-item element" th:href="@{/mypage/my-logout}">
                                 <img src="/images/header/icon_menu_logout.png" alt="">
                                 로그아웃
                             </a>
