@@ -23,7 +23,7 @@
 </head>
 <body>
 <!-- header 시작-->
-<div th:insert="~{/components/header-client :: header-client}"></div>
+<div th:insert="~{components/header-client :: header-client}"></div>
 <!-- header 끝 -->
 <div class="modal-wrapper">
     <div class="modal-content">
@@ -182,7 +182,7 @@
                     </a>
                     <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
-                            th:href="@{/main}"
+                            th:href="@{main}"
                             style="margin: 0px 12px 0 0px;"
                             name="can_submit"
                             type="button"
@@ -201,6 +201,9 @@
 <script src="/js/components/header-client.js"></script>
 <script>
     const $submitBtn = $(".signup-submit-button");
+    var memberPoint = $('#memberPoint').text(); //멤버 포인트 출력
+    var applyCourse =  $('#applyCourse').text();
+
     $submitBtn.on('click', function () {
         const $checkVal = $('input[name=category]:checked').val();
         console.log($checkVal);
@@ -220,11 +223,12 @@
 
     });
 
-    var memberPoint = $('#memberPoint').text(); //멤버 포인트 출력
+
     console.log(memberPoint);
 
     if(memberPoint <= 0){
         $('.modal-wrapper').show();
     }
+
 </script>
 </html>

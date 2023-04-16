@@ -1,4 +1,4 @@
-package com.crossroads.app.controller;
-
-public class PointControllerTests {
-}
+//package com.crossroads.app.controller;
+//
+//public class PointControllerTests {
+//}
