@@ -35,6 +35,7 @@ public class ApplyController {
         model.addAttribute("applyDTO", new ApplyDTO());
         HttpSession session = httpServletRequest.getSession();
         Long memberId = (Long) session.getAttribute("memberId");
+
         if(memberId == null) {
             return "member/login";
         }

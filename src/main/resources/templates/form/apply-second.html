@@ -30,7 +30,7 @@
 </head>
 <body>
 <!-- header 시작-->
-<div th:insert="~{/components/header-client :: header-client}"></div>
+<div th:insert="~{components/header-client :: header-client}"></div>
 <!-- header 끝 -->
 
 <div class="gaia">
@@ -120,7 +120,7 @@
                 <div class="form-section-footer" style="position: relative">
                     <button
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
-                            th:href="@{/apply/apply-third}"
+                            th:href="@{apply-third}"
                             name="can_submit" id="nextbtn"
                             style="pointer-events: none;
                 cursor: default;
@@ -130,7 +130,7 @@
                     </button>
                     <a
                             class="signup-submit-button btn btn-client btn-11-24 btn-right"
-                            th:href="@{/apply/apply-first}"
+                            th:href="@{apply-first}"
                             style="margin: 0px 12px 0 0px;"
                             name="can_submit"
                             type="button">
