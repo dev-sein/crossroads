@@ -144,4 +144,12 @@
         limit #{criteria.offset}, #{criteria.amount}
     </select>
 
+    <!-- 연수 수락,취소시 포인트 획득,차감-->
+    <update id="updatePoint">
+        update tbl_member
+        set member_point = member_point + #{pointAmount}
+        where member_id = #{memberId}
+    </update>
+
+
 </mapper>

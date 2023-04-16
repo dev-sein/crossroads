@@ -1,6 +1,7 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.ApplyDAO;
+import com.crossroads.app.domain.dao.MemberDAO;
 import com.crossroads.app.domain.dao.PointDAO;
 import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.BoardDTO;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class ApplyService {
     private final ApplyDAO applyDAO;
     private final PointDAO pointDAO;
+    private final MemberDAO memberDAO;
 
 //    신청목록 전체조회
     public List<ApplyDTO> getList(Criteria criteria) {return applyDAO.findAll(criteria);}
@@ -132,6 +134,14 @@ public class ApplyService {
 //    포인트 환전 시 기록
     public void savePointDetails(Map<String, Object> pointDetail){
         pointDAO.registerPointDetail(pointDetail);
+    }
+
+//    포인트 획득 차감
+    public void modifyPoint(Map<String, Object> info){
+        // 포인트 추가, 감소
+        memberDAO.setPoint(info);
+        // 포인트 테이블에 추가 감소 기록 등록
+        pointDAO.register(info);
     }
 }
 
