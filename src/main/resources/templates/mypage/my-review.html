@@ -189,16 +189,16 @@
                     </div>
                     <!--삭제확인 모달끝-->
                     <!-- 페이징 시작 -->
-<!--                    <section>-->
-<!--                        <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>-->
-<!--                        <ul id="paging">-->
-<!--                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">-->
-<!--                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-review(page=${page})}"><li th:text="${page}"></li></a>-->
-<!--                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>-->
-<!--                            </th:block>-->
-<!--                        </ul>-->
-<!--                        <span class="next-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>-->
-<!--                    </section>-->
+                    <section>
+                        <span class="prev-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.startPage - 1})}" th:if="${standards.prev}"> < </a></span>
+                        <ul id="paging">
+                            <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-review(page=${page})}"><li th:text="${page}"></li></a>
+                                <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
+                            </th:block>
+                        </ul>
+                        <span class="next-page"><a class="change-page" th:href="@{/mypage/my-review(page=${standards.endPage + 1})}" th:if="${standards.next}"> > </a></span>
+                    </section>
                     <!-- 페이징 끝 -->
                 </div><!-- content inner -->
             </div><!-- content -->

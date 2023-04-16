@@ -47,7 +47,7 @@ public interface BoardService {
 
     //마이페이지 게시글 페이징 - 전체 개수
 
-    public int getTotalMy();
+    public int getTotalMy(Long memberId);
     //후기 수정
    public void updateReview(ReviewDTO reviewDTO);
    public ReviewVO getReview(Long reviewId);
