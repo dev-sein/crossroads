@@ -190,25 +190,14 @@ public class MobileController {
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
         Long memberId = (Long) session.getAttribute("memberId");
-        String memberType = memberService.getMemberInfo(memberId).getMemberType().toString();
-        String starter = "0";
-        //  log.info(id.toString());
         if(id != null){
-            MemberVO memberVO = new MemberVO();
             session.setAttribute("memberId", id);
-            log.info(session.getAttribute("memberId").toString());
-            System.out.println("멤버타입" + memberService.getMemberInfo(id).getMemberType());
-
-      /*      if(memberType == "0"){
-                log.info("초보자 들어옴.");
-                log.info("초보자 회원은 웹으로 이용 가능합니다.");
-                return new RedirectView("login-mobile");
-            };*/
-            log.info("초보자 안 들어옴.");
+            if(id ==1L){
+                return new RedirectView("/applies/login-mobile?result=fail");
+            }
             return new RedirectView("list-mobile");
-
         }
-        return new RedirectView("/mobile/login");
+        return new RedirectView("/applies/login-mobile?result=fail");
     }
 
     //로그아웃
@@ -419,9 +408,9 @@ public class MobileController {
 
         MemberVO kakaoInfo = memberService.getKakaoInfo(token);
         MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
-
-        if(memberVO.getMemberStatus() != 1){
-            return new RedirectView("/applies/login?result=fail");
+        Long memberId = kakaoInfo.getMemberId();
+        if(memberId == null){
+            return new RedirectView("/applies/login-mobile?result=fail");
         }
 
         session.setAttribute("memberVO", memberVO);

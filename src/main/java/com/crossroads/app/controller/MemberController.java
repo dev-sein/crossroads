@@ -28,7 +28,6 @@ public class MemberController {
     public String join(HttpServletRequest httpServletRequest){
         HttpSession session = httpServletRequest.getSession();
         Long memberId = (Long) session.getAttribute("memberId");
-
         return "member/join";
     }
 
@@ -39,20 +38,6 @@ public class MemberController {
         memberService.save(memberVO);
         return new RedirectView("login");
     }
-
-/*    //카카오 회원가입
-    @GetMapping("join-kakao")
-    public String joinKakao(){
-        return "/member/join";
-    }
-
-    //카카오 회원가입
-    @PostMapping("join-kakao")
-    public RedirectView joinKakaoPost(MemberVO memberVO){
-        log.info("카카오 회원가입 post");
-        memberService.save(memberVO);
-        return new RedirectView("login");
-    }*/
 
     //아이디 중복체크
     @PostMapping("/checkId")
@@ -143,8 +128,8 @@ public class MemberController {
         MemberVO kakaoInfo = memberService.getKakaoInfo(token);
         MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
         log.info("카카오 이메일" + kakaoInfo.toString());
-
-        if(memberVO.getMemberStatus() != 1){
+        Long memberId = kakaoInfo.getMemberId();
+        if(memberId == null){
             return new RedirectView("/member/login?result=fail");
         }
         session.setAttribute("memberId", memberVO.getMemberId());
