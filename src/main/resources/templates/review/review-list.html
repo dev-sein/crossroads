@@ -17,10 +17,30 @@
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-<div th:insert="~{/components/header-client :: header-client}"></div>
+<!--<div th:insert="~{/components/header-client :: header-client}"></div>-->
+<!--<div th:insert="~{/components/header-client :: header-main}"></div>-->
+<div th:if="${session.memberId != null}">
+    <div th:insert="~{components/header-client :: header-client}"></div>
+</div>
+<div th:if="${session.memberId == null}">
+    <div th:insert="~{components/header-main :: header-main}"></div>
+</div>
 
 
 <main>
+    <!--작성하기 모달-->
+    <!--    <div id="write-modal" class="write-modal" style="visibility: hidden;">-->
+    <!--        <div class="write-modal-wrapper">-->
+    <!--            <div class="write-modal-content">-->
+    <!--                <p>이 후기를 삭제하시겠습니까?</p>-->
+    <!--                <div class="write-modal-buttons">-->
+    <!--                    <button class="write-btn" data-review-id="1"    >확인</button>-->
+    <!--                    <button onclick="closeDeleteModal()">취소</button>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--  작성하기 모달 끝-->
     <!-- 추가 -->
     <div class="write-button-top" onclick="location.href='/review/review-write'">후기 작성하기</div>
     <!-- 추가 -->
@@ -45,7 +65,7 @@
     </div>
     <input type="hidden" id="page" value="1"/>
 </main>
-<div th:insert="~{/components/footer :: footer}"></div>
+<div th:insert="~{components/footer :: footer}"></div>
 <!-- 모달 -->
 <div class="modal" style="visibility: hidden;" onclick="closeModal()">
     <div class="modal-wrapper">
@@ -129,12 +149,12 @@
             console.log(memberId);
             let $reviewList = $("#review-list");
             reviews.forEach(review => {
-                    console.log(review.memberFilePath)
-                    let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
-                    let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
-                    let formattedDate = timeSince(new Date(review.reviewRegisterDate));
-                    // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
-                    let reviewElement = `
+                console.log(review.memberFilePath)
+                let imageUrl = review.reviewFileSystemName ? '/upload/' + review.reviewFileSystemName : null;
+                let imageElement = imageUrl ? `<img class="review-image" src="${imageUrl}" onclick="showModal()" />` : '';
+                let formattedDate = timeSince(new Date(review.reviewRegisterDate));
+                // 여기에서 각 리뷰를 HTML 요소로 추가하십시오.
+                let reviewElement = `
     <div class="review">
         <div class="board-box-wrapper">
             <div class="board-box">
@@ -152,8 +172,8 @@
                             </div>
                         </div>
                     </div>`;
-                    if (memberId == `${review.memberId}`) {
-                        reviewElement += `
+                if (memberId == `${review.memberId}`) {
+                    reviewElement += `
                     <!--수정 삭제 버튼-->
                     <div class="update-buttons-wrapper">
                     <a href="http://localhost:10000/review/review-update?reviewId=${review.reviewId}"  class="buttons-wrapper">
@@ -164,10 +184,14 @@
                     </a>
                     </div>
                     `
-                        ;
-                    }
-                    reviewElement +=
-                        `
+
+
+                                                        ;
+                                                    }
+                                                    reviewElement +=
+
+
+                    `
                         <!--수정 삭제 버튼 끝-->
                     </div>
 
@@ -201,7 +225,7 @@
                     </div>
                     </div>`;
                     $reviewList.append(reviewElement);
-                }
+                    }
             );
         }
 

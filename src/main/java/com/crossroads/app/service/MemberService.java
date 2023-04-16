@@ -102,7 +102,9 @@ public class MemberService {
     }
 
     //마이페이지 비밀번호 확인
-    public Long getPassword(Long memberId, String memberPassword) { return memberDAO.findByPasswordMy(memberId, memberPassword); }
+    public Long getPassword(Long memberId, String memberPassword) {
+        return memberDAO.findByPasswordMy(memberId, memberPassword);
+    }
 
     //마이페이지 비밀번호 변경
     public Long modifyPasswordMy(Long memberId, String memberPassword) {
@@ -159,6 +161,7 @@ public class MemberService {
     public Integer getCountAdmin(String keyword) {
         return memberDAO.findCountAllAdmin(keyword);
     }
+
     public Integer getCountAdmin() {
         return memberDAO.findCountAllAdmin(null);
     }
@@ -204,12 +207,12 @@ public class MemberService {
         }
     }
 
-    public String getKaKaoAccessToken(String code, String type){
-        String access_Token="";
-        String refresh_Token ="";
+    public String getKaKaoAccessToken(String code, String type) {
+        String access_Token = "";
+        String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
-        try{
+        try {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -224,7 +227,7 @@ public class MemberService {
             sb.append("&client_id=ff10441318cc0a2c7e2aa44285fa956c"); // TODO REST_API_KEY 입력
 
 //            회원가입에서 접근했을 때
-            if(type.equals("join")) {
+            if (type.equals("join")) {
                 sb.append("&redirect_uri=http://localhost:10000/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("login")) {
 //            로그인에서 접근했을 때
@@ -266,7 +269,7 @@ public class MemberService {
 
             br.close();
             bw.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -309,7 +312,7 @@ public class MemberService {
             int id = element.getAsJsonObject().get("id").getAsInt();
             boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
             String memberEmail = "";
-            if(hasEmail){
+            if (hasEmail) {
                 memberEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
 
@@ -353,4 +356,6 @@ public class MemberService {
         }
 
     }
+
+
 }

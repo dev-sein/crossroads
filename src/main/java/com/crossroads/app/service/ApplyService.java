@@ -133,6 +133,11 @@ public class ApplyService {
     public void savePointDetails(Map<String, Object> pointDetail){
         pointDAO.registerPointDetail(pointDetail);
     }
+
+    //   applyId 가져오기
+    public Long getApplyIdByMemberId(Long memberId) {
+        return applyDAO.getApplyIdByMemberId(memberId);
+    }
 }
 
 

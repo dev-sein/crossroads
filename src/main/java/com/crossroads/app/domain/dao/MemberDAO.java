@@ -70,4 +70,5 @@ public class MemberDAO {
     public Integer findCountAllAdmin(String keyword) {
         return memberMapper.selectCountAllAdmin(keyword);
     }
+
 }
