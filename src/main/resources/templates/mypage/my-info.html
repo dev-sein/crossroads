@@ -36,7 +36,7 @@
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
 
-                            <img id="modal-back" class="img-circle user-img" th:src="@{mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                            <img id="modal-back" class="img-circle user-img" th:src="@{display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
                             <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
                             <!--                                 src="/images/mypage/main-logo.png">-->
 
@@ -65,7 +65,7 @@
                                         나를 표현하는 사진을 등록해주세요
                                     </div>
                                     <img class="user-profile-img upload" id="modal_user_img"
-                                         th:src="@{mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                                         th:src="@{display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
 
                                     <div class="loading-circle user-profile-img">
                                         <div class="sk-fading-circle theme-client">
@@ -124,12 +124,12 @@
                 <!-- 사이드바 메뉴 -->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu activeblue"><a class="active-text" th:href="@{mypage/my-info}"><span>프로필 정보 설정</span></a></li>
-                        <li><a th:href="@{mypage/my-board-ready}"><span>나의 게시글 보기</span></a></li>
-                        <li><a th:href="@{mypage/my-reply-ready}"><span>나의 댓글 보기</span></a></li>
-                        <li><a th:href="@{mypage/my-point}"><span>포인트 조회</span></a></li>
-                        <li class><a th:href="@{mypage/my-apply}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a th:href="@{mypage/my-review}"><span>나의 후기</span></a></li>
+                        <li class="sidemenu activeblue"><a class="active-text" th:href="@{my-info}"><span>프로필 정보 설정</span></a></li>
+                        <li><a th:href="@{my-board-ready}"><span>나의 게시글 보기</span></a></li>
+                        <li><a th:href="@{my-reply-ready}"><span>나의 댓글 보기</span></a></li>
+                        <li><a th:href="@{my-point}"><span>포인트 조회</span></a></li>
+                        <li class><a th:href="@{my-apply}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu2"><a th:href="@{my-review}"><span>나의 후기</span></a></li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
                 </div>
@@ -158,7 +158,7 @@
                                         <span class="account-setting-category">
                                             <span>회원 형태</span>
                                         </span>
-                                    <span th:text="${member.memberType == 0 ? '베테랑' : '초보자'}" class="account-setting-content-fix"></span>
+                                    <span th:text="${member.memberType == '0' ? '초보자' : '베테랑'}" class="account-setting-content-fix"></span>
                                 </div> <!-- account-setting-box -->
                             </div> <!-- acoount-setting-row profile-setting-row -->
                             <span class="blank" style="display: none;"><br><br></span>
@@ -237,7 +237,7 @@
         </div>
     </div><!--page  -->
 </div> <!-- wrap -->
-<div th:insert="~{/components/footer :: footer}"></div>
+<div th:insert="~{components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
