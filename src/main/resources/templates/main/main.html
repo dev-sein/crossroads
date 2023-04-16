@@ -16,8 +16,8 @@
 </head>
 <body class="main">
 <!-- header 시작-->
-<div th:if="${session.memberId == null}" th:insert="~{/components/header-main :: header-main}"></div>
-<div th:unless="${session.memberId == null}" th:insert="~{/components/header-client :: header-client}"></div>
+<div th:if="${session.memberId == null}" th:insert="~{components/header-main :: header-main}"></div>
+<div th:unless="${session.memberId == null}" th:insert="~{components/header-client :: header-client}"></div>
 <!-- header 끝 -->
 <div class="main-container">
     <!-- 메인배너 -->
@@ -36,7 +36,7 @@
                     <br>
                     여자강사님 최다보유, 평균 만족도 4.9점
                 </p>
-                <a class="btn-btn btn-style btn-color" th:href="@{/apply/apply-first}">연수 신청하기</a>
+                <a class="btn-btn btn-style btn-color" th:href="@{apply/apply-first}">연수 신청하기</a>
             </div>
             <div class="introduction-img">
                 <img class="img-size" src="/images/main/introduction-img.png" alt="">
@@ -49,7 +49,7 @@
         <section class="container">
             <div class="signup-guide">
                 <p class="guide-text">운전연수 프로그램을 찾고 있으신가요?</p>
-                <a class="btn-btn guide-btn" th:href="@{/member/join}">회원가입하기</a>
+                <a class="btn-btn guide-btn" th:href="@{member/join}">회원가입하기</a>
             </div>
         </section>
     </div>
@@ -89,7 +89,7 @@
                         <p class="card-contents" th:text="${reviews[0].reviewContent}"></p>
                     </div>
                     <div class="card-img">
-                        <img th:src="@{/upload/{filename}(filename=${reviews[0].reviewFileSystemName})}"
+                        <img th:src="@{upload/{filename}(filename=${reviews[0].reviewFileSystemName})}"
                              class="review-image">
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                         <p class="card-contents" th:text="  ${reviews[1].reviewContent}"></p>
                     </div>
                     <div class="card-img">
-                        <img th:src="@{/upload/{filename}(filename=${reviews[1].reviewFileSystemName})}"
+                        <img th:src="@{upload/{filename}(filename=${reviews[1].reviewFileSystemName})}"
                              class="review-image">
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                         <p class="card-contents" th:text="  ${reviews[2].reviewContent}"></p>
                     </div>
                     <div class="card-img">
-                        <img th:src="@{/upload/{filename}(filename=${reviews[2].reviewFileSystemName})}"
+                        <img th:src="@{upload/{filename}(filename=${reviews[2].reviewFileSystemName})}"
                              class="review-image">
                     </div>
                 </div>
@@ -180,7 +180,7 @@
                         <p class="card-contents" th:text="  ${reviews[3].reviewContent}"></p>
                     </div>
                     <div class="card-img">
-                        <img th:src="@{/upload/{filename}(filename=${reviews[3].reviewFileSystemName})}"
+                        <img th:src="@{upload/{filename}(filename=${reviews[3].reviewFileSystemName})}"
                              class="review-image">
                     </div>
                 </div>
@@ -422,7 +422,7 @@
                                     </svg>
                                     4/4
                                 </p>
-                                <a class="apply-btn" th:href="@{/apply/apply-first}">연수 신청하기</a>
+                                <a class="apply-btn" th:href="@{apply/apply-first}">연수 신청하기</a>
                             </div>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
     <div class=""></div>
 </div>
 <!-- footer 시작 -->
-<div th:insert="~{/components/footer :: footer}"></div>
+<div th:insert="~{components/footer :: footer}"></div>
 <!-- footer 끝-->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
