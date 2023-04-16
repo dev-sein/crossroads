@@ -87,4 +87,9 @@ public class ApplyDAO {
     public Integer findCountAllAdmin(String keyword) {
         return applyMapper.selectCountAllAdmin(keyword);
     }
+
+    /*applyId 가져오기*/
+    public Long getApplyIdByMemberId(Long memberId) {
+        return applyMapper.getApplyIdByMemberId(memberId);
+    }
 }

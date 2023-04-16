@@ -136,6 +136,11 @@ public class ApplyService {
         pointDAO.registerPointDetail(pointDetail);
     }
 
+    //   applyId 가져오기
+    public Long getApplyIdByMemberId(Long memberId) {
+        return applyDAO.getApplyIdByMemberId(memberId);
+    }
+
 //    포인트 획득 차감
     public void modifyPoint(Map<String, Object> info){
         // 포인트 추가, 감소
