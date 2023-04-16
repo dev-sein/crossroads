@@ -19,7 +19,7 @@
 </head>
 <body>
 <!-- header 시작-->
-<div th:insert="~{/components/header-client :: header-client}"></div>
+<div th:insert="~{components/header-client :: header-client}"></div>
 <!-- header 끝 -->
 <div class="gaia">
     <div class="container" >
@@ -74,12 +74,12 @@
             <div class="form-input-section">
                 <div class="form-group-light">
                     <div class="button-space">
-                        <a class="btn btn-client btn-11-24 btn-right" th:href="@{/main}" name="can_submit" type="submit" value="False" style="margin-left: 2%;">
+                        <a class="btn btn-client btn-11-24 btn-right" href="/main" name="can_submit" type="submit" value="False" style="margin-left: 2%;">
                             메인화면
                         </a>
                     </div>
                     <div class="button-space">
-                        <a class="btn btn-client btn-11-24 btn-right" th:href="@{/points/buy-point}" name="can_submit" type="submit" value="False">
+                        <a class="btn btn-client btn-11-24 btn-right" href="/points/buy-point" name="can_submit" type="submit" value="False">
                             포인트 충전
                         </a>
                     </div>

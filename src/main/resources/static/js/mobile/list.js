@@ -1,7 +1,14 @@
 // 수락 거절 버튼
 function acceptOrReject(object) {
+    $(object).next().next().next().val($(object).next().next().next().val() == 1 ? 0 : 1);
     var check = object.innerText == "거절" ? true : false;
+    console.log("applyId")
     console.log(object.nextElementSibling.value);
+    console.log("point")
+    console.log($(object).next().next().val());
+    console.log("applyStatus")
+    console.log($(object).next().next().next().val());
+
     if (check) {
         object.className = 'ok-btn';
         object.innerText = '수락';
@@ -15,8 +22,11 @@ function acceptOrReject(object) {
     }
 
     const data = object.nextElementSibling.value;
+    const data2 = $(object).next().next().val();
+    let pointAmount = $(object).next().next().next().val() == 1 ? data2 : -(data2);
     const sendData = {
-        "applyId" : data
+        "applyId" : data,
+        "pointAmount" : pointAmount
     };
     $.ajax({
         url: "/applies/list-mobile/change-status",

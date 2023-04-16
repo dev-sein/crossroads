@@ -63,4 +63,8 @@ public interface ApplyMapper {
 
 //    관리자 신청 내역 총 개수
     public Integer selectCountAllAdmin(@Param("keyword") String keyword);
+
+
+    /*applyId 가져오기*/
+    Long getApplyIdByMemberId(Long memberId);
 }

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,7 +30,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/mypage/*")
+@RequestMapping("mypage/*")
 @RequiredArgsConstructor
 @Slf4j
 public class MypageController {
@@ -40,7 +42,7 @@ public class MypageController {
     private final PointService pointService;
 
     /*마이페이지 메인*/
-    @GetMapping("/my-main")
+    @GetMapping("my-main")
     public String mypageMain(Model model, HttpSession session) {
         Long memberId = (Long)session.getAttribute("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
@@ -48,7 +50,7 @@ public class MypageController {
     }
 
     /*마이페이지 프로필 조회*/
-    @GetMapping("/my-info")
+    @GetMapping("my-info")
     public String myInfoSelect(Model model, HttpSession session) {
 //        session.setAttribute("memberId", 2L);
         Long memberId = (Long)session.getAttribute("memberId");
@@ -60,7 +62,7 @@ public class MypageController {
     }
 
     /*마이프로필 수정*/
-    @PostMapping("/my-info")
+    @PostMapping("my-info")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myInfoUpdate(HttpServletRequest request, MemberVO memberVO) {
         HttpSession session = request.getSession();
@@ -83,13 +85,13 @@ public class MypageController {
     }
 
     /*마이페이지 비밀번호 확인*/
-    @GetMapping("/my-password-check")
+    @GetMapping("my-password-check")
     public String myPasswordCheckView() {
         return "mypage/my-password-check";
     }
 
     /*마이페이지 비밀번호 확인*/
-    @PostMapping("/my-password-check")
+    @PostMapping("my-password-check")
     public RedirectView myPasswordCheck(String memberPassword, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Long memberId = (Long)session.getAttribute("memberId");
@@ -102,13 +104,13 @@ public class MypageController {
     }
 
     /*마이페이지 비밀번호 변경*/
-    @GetMapping("/my-password-change")
+    @GetMapping("my-password-change")
     public String myPasswordChangeView() {
         return "mypage/my-password-change";
     }
 
     /*마이페이지 비밀번호 변경*/
-    @PostMapping("/my-password-change")
+    @PostMapping("my-password-change")
     @Transactional(rollbackFor = Exception.class)
     public RedirectView myPasswordChange(String memberPassword, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -133,7 +135,7 @@ public class MypageController {
     }
 
     /*마이페이지 포인트 조회*/
-    @GetMapping("/my-point")
+    @GetMapping("my-point")
     public String showListMyPoint(Model model, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
 
@@ -143,7 +145,7 @@ public class MypageController {
     }
 
     /*마이페이지 후기 전체 조회*/
-    @GetMapping("/my-review")
+    @GetMapping("my-review")
     public String showListMyReview(Model model, HttpSession session, Standards standards) {
         Long memberId = (Long) session.getAttribute("memberId");
 
@@ -154,7 +156,7 @@ public class MypageController {
     }
 
     /*마이페이지 내가 쓴 게시글 조회*/
-//    @GetMapping("/my-board")
+//    @GetMapping("my-board")
 //    //Controller에서 Standards는 모델 객체에 안담아도 전달 가능하다. standards key값
 //    public String showListMyBoard(Model model, HttpSession session, Standards standards) {
 //        //외부에서 standard 받음, IOC컨테이너에 기본생성자를 통해 객체화가 되어 있는 객체의 주소가 있음
@@ -171,7 +173,7 @@ public class MypageController {
 //    }
 
     /*마이페이지 내가 쓴 댓글 목록*/
-//    @GetMapping("/my-reply")
+//    @GetMapping("my-reply")
 //    public String showListMyReply(Model model, HttpSession session, Standards standards) {
 //        Long memberId = (Long) session.getAttribute("memberId");
 //
@@ -181,7 +183,7 @@ public class MypageController {
 //    }
 
     /*마이페이지 파일 업로드*/
-    @PostMapping("/upload")
+    @PostMapping("upload")
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
@@ -205,7 +207,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 저장*/
-    @PostMapping("/save-profile")
+    @PostMapping("save-profile")
     @ResponseBody
     public void save(@RequestBody List<MemberVO> files, HttpSession session) {
         files.forEach(file -> {
@@ -215,7 +217,7 @@ public class MypageController {
     }
 
     /*마이페이지 파일 불러오기*/
-    @GetMapping("/display")
+    @GetMapping("display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
         log.info("들어옴************************************************************");
@@ -235,13 +237,13 @@ public class MypageController {
     private String getPath() { return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")); }
 
     /*회원탈퇴 시 비밀번호 확인*/
-    @GetMapping("/my-password-check-out")
+    @GetMapping("my-password-check-out")
     public String myPasswordCheckOut(){
-        return "/mypage/my-withdraw";
+        return "mypage/my-withdraw";
     }
 
     /*회원탈퇴 시 비밀번호 확인*/
-    @PostMapping("/my-password-check-out")
+    @PostMapping("my-password-check-out")
     @ResponseBody
     public boolean myPasswordCheckOut(String memberPassword, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
@@ -254,12 +256,12 @@ public class MypageController {
     /*마이페이지 회원탈퇴*/
     @GetMapping("my-withdraw")
     public String withdraw() {
-        return "/mypage/my-withdraw";
+        return "mypage/my-withdraw";
     }
 
     /*마이페이지 회원탈퇴 동의*/
     @GetMapping("my-withdraw-agree")
-    public String withdrawAgree() { return "/mypage/my-withdraw-agree"; }
+    public String withdrawAgree() { return "mypage/my-withdraw-agree"; }
 
     /*마이페이지 회원탈퇴 확인*/
     @PostMapping("my-withdraw-confirm")
@@ -267,21 +269,20 @@ public class MypageController {
         Long memberId = (Long) session.getAttribute("memberId");
         session.invalidate();
         memberService.remove(memberId);
-        return "/mypage/my-withdraw-confirm";
+        return "mypage/my-withdraw-confirm";
     }
 
     /*마이페이지 로그아웃*/
-    @GetMapping("/my-logout")
-    public String myLogout(HttpServletRequest request) {
+    @GetMapping("my-logout")
+    public String mylogout(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("logout - 진입");
-        //세션 끊기
         HttpSession session = request.getSession();
-        session.invalidate();
-        return "main/main";
+        session.invalidate(); //세션 끊기
+        return "redirect:/main";
     }
 
     /*프로필 사진 삭제*/
-    @PostMapping("/delete-profile")
+    @PostMapping("delete-profile")
     @ResponseBody
     public void deleteProfile(MemberVO memberVO, HttpSession session) {
         Long memberId = (Long)session.getAttribute("memberId");
@@ -296,11 +297,11 @@ public class MypageController {
     }
 
     /*마이페이지 리뷰 삭제*/
-    @PostMapping("/delete-review")
+    @PostMapping("delete-review")
     public RedirectView removeMyReview(@RequestParam("reviewId") Long reviewId){
         log.info("들어옴*******************************************************");
         reviewBoardService.deleteReview(reviewId);
-        return new RedirectView("/mypage/my-review");
+        return new RedirectView("mypage/my-review");
     }
 
     /*나의 게시글 준비중*/

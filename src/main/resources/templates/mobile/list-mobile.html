@@ -402,11 +402,15 @@
                     text += `
                                 <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
                                 <input type="hidden" value="${applies[i].applyId}">
+                                <input type="hidden" value="${applies[i].applyCourse == "A" ? 50000 : 100000}"/>
+                                <input type="hidden" value="${applies[i].applyStatus}"/>
                                 `;
                 } else {
                     text += `
                                 <button type="button" class="no-btn" onclick="acceptOrReject(this)">거절</button>
                                 <input type="hidden" value="${applies[i].applyId}">
+                                <input type="hidden" value="${applies[i].applyCourse == "A" ? 50000 : 100000}"/>
+                                <input type="hidden" value="${applies[i].applyStatus}"/>
                                 `;
                 }
 
@@ -547,12 +551,16 @@
                 if (applies[i].applyStatus == 0) {
                     text += `
                                         <button type="button" class="ok-btn" onclick="acceptOrReject(this)">수락</button>
-                                        <input type="hidden" value="${applies[i].applyId}">
+                                        <input type="hidden" value="${applies[i].applyId}"/>
+                                        <input type="hidden" value="${applies[i].applyCourse == "A" ? 50000 : 100000}"/>
+                                        <input type="hidden" value="${applies[i].applyStatus}"/>
                                         `;
                 } else {
                     text += `
                                         <button type="button" class="no-btn" onclick="acceptOrReject(this)">거절</button>
-                                        <input type="hidden" value="${applies[i].applyId}">
+                                        <input type="hidden" value="${applies[i].applyId}"/>
+                                        <input type="hidden" value="${applies[i].applyCourse == "A" ? 50000 : 100000}"/>
+                                        <input type="hidden" value="${applies[i].applyStatus}"/>
                                         `;
                 }
                 text += `

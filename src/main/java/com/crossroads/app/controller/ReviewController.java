@@ -3,10 +3,12 @@ package com.crossroads.app.controller;
 import com.crossroads.app.domain.dto.ReviewCriteria;
 import com.crossroads.app.domain.dto.ReviewDTO;
 import com.crossroads.app.domain.vo.ReviewVO;
+import com.crossroads.app.service.ApplyService;
 import com.crossroads.app.service.MemberService;
 import com.crossroads.app.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,7 @@ import java.util.UUID;
 public class ReviewController {
     private final ReviewBoardService reviewBoardService;
     private final MemberService memberService;
+    private final ApplyService applyService;
 
     private static String uploadDir = "C:\\upload\\";
 
@@ -39,9 +42,12 @@ public class ReviewController {
     public String reviewWrite(Model model, HttpServletRequest httpServletRequest) {
         model.addAttribute("reviewDTO", new ReviewDTO());
         HttpSession session = httpServletRequest.getSession();
-//        httpSession.getAttribute("memberId");
-        Long memberId = (Long)session.getAttribute("memberId");
+        Long memberId = (Long) session.getAttribute("memberId");
         model.addAttribute("member", memberService.getMemberInfo(memberId));
+        // applyId를 가져옵니다.
+        Long applyId = applyService.getApplyIdByMemberId(memberId);
+        model.addAttribute("applyId", applyId);
+
         return "review/review-write";
     }
 

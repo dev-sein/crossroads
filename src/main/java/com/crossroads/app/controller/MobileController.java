@@ -139,13 +139,32 @@ public class MobileController {
 
     @PostMapping("list-mobile/change-status")
     @ResponseBody
-    public void changeStatus(Long applyId, HttpServletRequest request){
+    public void changeStatus(Long applyId, Long pointAmount, HttpServletRequest request){
         HttpSession session = request.getSession();
         applyService.modifyStatus(applyId);
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
         info.put("applyId",applyId);
+        
+//      수락, 거절 눌렀을 때 포인트 획득, 차감되도록 해야하고 기록 남아야 함
+        info.put("pointAmount", pointAmount);
+        log.info("@@@@@@POINT AMOUNT@@@@@@@@@@");
+        log.info(pointAmount.toString());
 
+        int pointStatus = 0;
+        Long pointPoint = 0L;
+//      pointStatus, pointPoint 필요
+        if (pointAmount >= 0){
+            pointStatus = 0;
+            pointPoint = pointAmount;
+        } else {
+            pointStatus = 1;
+            pointPoint = -(pointAmount);
+        }
+        info.put("pointPoint", pointPoint);
+        info.put("pointStatus", pointStatus);
+
+        applyService.modifyPoint(info);
         applyService.modifyVeteranId(info);
     }
 
@@ -189,22 +208,15 @@ public class MobileController {
     public RedirectView Mobile(String memberIdentification, String memberPassword, HttpServletRequest request){
         HttpSession session = request.getSession();
         Long id = memberService.login(memberIdentification, memberPassword);
-      //  log.info(id.toString());
+        Long memberId = (Long) session.getAttribute("memberId");
         if(id != null){
-            MemberVO memberVO = new MemberVO();
             session.setAttribute("memberId", id);
-            log.info(session.getAttribute("memberId").toString());
-            System.out.println(memberService.getMemberInfo(id).getMemberType());
-            if(memberVO.getMemberType() == String.valueOf("0")){
-                log.info("초보자 들어옴.");
-                log.info("초보자 회원은 웹으로 이용 가능합니다.");
-                return new RedirectView("login-mobile");
-            };
-            log.info("초보자 안 들어옴.");
+            if(id ==1L){
+                return new RedirectView("/applies/login-mobile?result=fail");
+            }
             return new RedirectView("list-mobile");
-
         }
-        return new RedirectView("/mobile/login");
+        return new RedirectView("/applies/login-mobile?result=fail");
     }
 
     //로그아웃
@@ -370,12 +382,14 @@ public class MobileController {
     }
 
     @GetMapping("my-mobile-account-check")
-    public String myMobileAccountCheck() {
+    public String myMobileAccountCheck(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
         return "/mobile/my-mobile-account-check";
     }
 
     @GetMapping("my-mobile-account-cancel")
-    public String myMobileAccountCancel() {
+    public String myMobileAccountCancel(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
         return "/mobile/my-mobile-account-cancel";
     }
 
@@ -415,9 +429,9 @@ public class MobileController {
 
         MemberVO kakaoInfo = memberService.getKakaoInfo(token);
         MemberVO memberVO = memberService.getByEmail(kakaoInfo.getMemberEmail());
-
-        if(memberVO.getMemberStatus() != 1){
-            return new RedirectView("/applies/login?result=fail");
+        Long memberId = kakaoInfo.getMemberId();
+        if(memberId == null){
+            return new RedirectView("/applies/login-mobile?result=fail");
         }
 
         session.setAttribute("memberVO", memberVO);

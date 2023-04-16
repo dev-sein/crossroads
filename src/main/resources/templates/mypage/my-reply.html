@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="/images/components/favicon-logo-white.png">
 </head>
 <body>
-<div th:insert="~{/components/header-client :: header-client}"></div>
+<div th:insert="~{components/header-client :: header-client}"></div>
 <div id="wrap">
     <div class="page">
         <div class="page-inner">
@@ -27,7 +27,7 @@
                     <div class="user-name-tag-body">
                         <div class="user-img-box">
 
-                            <img id="modal-back" class="img-circle user-img" th:src="@{/mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
+                            <img id="modal-back" class="img-circle user-img" th:src="@{mypage/display(fileName=${member.memberFilePath} + '/' + ${member.memberFileUuid} + '_' + ${member.memberFileOriginalName})}">
                             <!--                            <img alt="seinee114 사진" id="modal-back" class="img-circle user-img"-->
                             <!--                                 src="/images/mypage/main-logo.png">-->
 
@@ -116,12 +116,12 @@
                 <!--   사이드바 메뉴-->
                 <div class="sidebar-nav">
                     <ul>
-                        <li class="sidemenu"><a th:href="@{/mypage/my-info}">프로필 정보 설정</a></li>
-                        <li><a th:href="@{/mypage/my-board}"><span>나의 게시글 보기</span></a></li>
-                        <li class="activeblue"><a class="active-text" th:href="@{/mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
-                        <li><a  th:href="@{/mypage/my-point}"><span>포인트 조회</span></a></li>
-                        <li><a  th:href="@{/mypage/my-apply}"><span>연수 내역</span></a></li>
-                        <li class="sidemenu2"><a th:href="@{/mypage/my-review}"><span>나의 후기</span></a></li>
+                        <li class="sidemenu"><a th:href="@{mypage/my-info}">프로필 정보 설정</a></li>
+                        <li><a th:href="@{mypage/my-board}"><span>나의 게시글 보기</span></a></li>
+                        <li class="activeblue"><a class="active-text" th:href="@{mypage/my-reply}"><span>나의 댓글 보기</span></a></li>
+                        <li><a  th:href="@{mypage/my-point}"><span>포인트 조회</span></a></li>
+                        <li><a  th:href="@{mypage/my-apply}"><span>연수 내역</span></a></li>
+                        <li class="sidemenu2"><a th:href="@{mypage/my-review}"><span>나의 후기</span></a></li>
                         <a class="advertisement" id="left_sidebar_advertisement"></a>
                     </ul>
                 </div>
@@ -154,14 +154,14 @@
                         <div style="clear:both;"></div>
                     </div>
                     <section>
-                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
+                        <a class="change-page" th:href="@{mypage/my-reply(page=${standards.startPage - 1})}" th:if="${standards.prev}">[이전]</a>
                         <ul id="paging">
                             <th:block th:each="page : ${#numbers.sequence(standards.startPage, standards.endPage)}">
-                                <a class="change-page" th:if="${standards.page != page}" th:href="@{/mypage/my-reply(page=${page})}"><li th:text="${page}"></li></a>
+                                <a class="change-page" th:if="${standards.page != page}" th:href="@{mypage/my-reply(page=${page})}"><li th:text="${page}"></li></a>
                                 <li class="paging-list" th:unless="${standards.page != page}" th:text="${page}"></li>
                             </th:block>
                         </ul>
-                        <a class="change-page" th:href="@{/mypage/my-reply(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
+                        <a class="change-page" th:href="@{mypage/my-reply(page=${standards.endPage + 1})}" th:if="${standards.next}">[다음]</a>
                     </section>
                 </div>
             </div>
@@ -170,7 +170,7 @@
 </div> <!-- page inner -->
 </div> <!-- page -->
 </div>
-<div th:insert="~{/components/footer :: footer}"></div>
+<div th:insert="~{components/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/mypage/mypage-select.js"></script>
