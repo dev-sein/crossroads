@@ -5,7 +5,9 @@ import com.crossroads.app.domain.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface MemberMapper {
@@ -58,5 +60,8 @@ public interface MemberMapper {
 
     //    관리자 게시글 총 개수
     public Integer selectCountAllAdmin(@Param("keyword") String keyword);
+
+    // 포인트 획득, 차감
+    public void updatePoint(Map<String, Object> info);
 
 }
