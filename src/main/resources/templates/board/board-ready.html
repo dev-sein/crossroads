@@ -18,8 +18,8 @@
 <body>
 <div class="header">
     <!-- header 시작-->
-    <!--    <div th:insert="~{/components/header-client :: header-client}"></div>-->
-    <div th:insert="~{/components/header-main :: header-main}"></div>
+        <div th:insert="~{components/header-client :: header-client}"></div>
+<!--    <div th:insert="~{/components/header-main :: header-main}"></div>-->
     <!-- header 끝 --></div>
 <a class="advertisement" id="nav_advertisement"></a>
 <div id="wrap">
@@ -42,7 +42,7 @@
                                 <p class="sorry">죄송합니다. 현재 자유게시판은 준비중입니다.</p>
                                 <p class="error-margin error-margin-mobile">
                                     <a class="btn btn-primary btn-large" onclick="javascript:history.go(-1);" style="margin-right: 10px;">이전 화면으로 돌아가기</a>
-                                    <a class="btn btn-primary btn-large" th:href="@{/main}">초기 화면으로 돌아가기</a>
+                                    <a class="btn btn-primary btn-large" th:href="@{main}">초기 화면으로 돌아가기</a>
                                 </p>
                             </div>
                     </section>
@@ -55,7 +55,7 @@
     </div><!--page  -->
 </div> <!-- wrap -->
 <!-- footer 시작 -->
-<div th:insert="~{/components/footer :: footer}"></div>
+<div th:insert="~{components/footer :: footer}"></div>
 <!-- footer 끝-->
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>

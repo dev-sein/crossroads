@@ -7,7 +7,7 @@ userIcon.addEventListener("click", e => {
     $(dropdown).slideToggle();
 });
 
-if($('.user-img').attr('src') == '/mypage/display?fileName=null/null_null') {
+if($('.user-img').attr('src') == 'mypage/display?fileName=null/null_null') {
     $('.user-img').attr('src', '/images/mypage/main-logo.png');
 }
 
