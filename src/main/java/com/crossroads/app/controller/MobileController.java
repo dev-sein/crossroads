@@ -139,13 +139,32 @@ public class MobileController {
 
     @PostMapping("list-mobile/change-status")
     @ResponseBody
-    public void changeStatus(Long applyId, HttpServletRequest request){
+    public void changeStatus(Long applyId, Long pointAmount, HttpServletRequest request){
         HttpSession session = request.getSession();
         applyService.modifyStatus(applyId);
         Map<String, Object> info = new HashMap<>();
         info.put("memberId", session.getAttribute("memberId"));
         info.put("applyId",applyId);
+        
+//      수락, 거절 눌렀을 때 포인트 획득, 차감되도록 해야하고 기록 남아야 함
+        info.put("pointAmount", pointAmount);
+        log.info("@@@@@@POINT AMOUNT@@@@@@@@@@");
+        log.info(pointAmount.toString());
 
+        int pointStatus = 0;
+        Long pointPoint = 0L;
+//      pointStatus, pointPoint 필요
+        if (pointAmount >= 0){
+            pointStatus = 0;
+            pointPoint = pointAmount;
+        } else {
+            pointStatus = 1;
+            pointPoint = -(pointAmount);
+        }
+        info.put("pointPoint", pointPoint);
+        info.put("pointStatus", pointStatus);
+
+        applyService.modifyPoint(info);
         applyService.modifyVeteranId(info);
     }
 
