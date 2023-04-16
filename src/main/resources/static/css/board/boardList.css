@@ -688,3 +688,51 @@ main{
 }
 
 
+
+/*작성 모달*/
+.write-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.write-modal-wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.write-modal-content p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.write-modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.write-modal-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.write-modal-buttons button:hover {
+    background-color: #0056b3;
+}
+
+
+
+

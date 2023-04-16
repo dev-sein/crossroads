@@ -1,3 +1,0 @@
-# crossroads
-
-readme
