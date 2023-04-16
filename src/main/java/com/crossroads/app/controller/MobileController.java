@@ -382,12 +382,14 @@ public class MobileController {
     }
 
     @GetMapping("my-mobile-account-check")
-    public String myMobileAccountCheck() {
+    public String myMobileAccountCheck(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
         return "/mobile/my-mobile-account-check";
     }
 
     @GetMapping("my-mobile-account-cancel")
-    public String myMobileAccountCancel() {
+    public String myMobileAccountCancel(Model model, HttpSession session) {
+        Long memberId = (Long)session.getAttribute("memberId");
         return "/mobile/my-mobile-account-cancel";
     }
 
