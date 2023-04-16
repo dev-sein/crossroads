@@ -114,3 +114,5 @@ WebSocketSession을 list에 담지 않고, map의 value 값으로 담았다. map
 <h2>ERD</h2>
 <img width="100%" alt="erd" src="https://user-images.githubusercontent.com/109493547/209980568-1cf4273c-fc51-4615-8703-e11562ba5892.png">
 
+# crossroads
+readme

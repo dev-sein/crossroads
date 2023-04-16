@@ -6,7 +6,9 @@ import com.crossroads.app.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
@@ -71,4 +73,8 @@ public class MemberDAO {
         return memberMapper.selectCountAllAdmin(keyword);
     }
 
+    /* 포인트 획득 차감*/
+    public void setPoint(Map<String, Object> info){
+        memberMapper.updatePoint(info);
+    }
 }

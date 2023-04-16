@@ -39,6 +39,8 @@ public interface PointMapper {
 
     //    포인트 내역 업데이트
       public void insert(PointDTO pointDTO);
+//      오버로딩
+      public void insert(Map<String, Object> info);
 
 //    포인트 충전
     public void updatePointByMemberId(Long memberId, Long memberPoint);
