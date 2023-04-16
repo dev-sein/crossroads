@@ -105,7 +105,7 @@ public class AdminController {
     //관리자 회원 삭제
     @ResponseBody
     @DeleteMapping("members/delete")
-    public void deleteMember(@RequestParam("checkedIds[]") List<String> checkedIds) {
+    public void deleteMember(@RequestParam("checkedIds[]") List<Long> checkedIds) {
         memberService.removeAdmin(checkedIds);
     }
     /*====================회원 게시판 끝==============================*/
@@ -125,12 +125,12 @@ public class AdminController {
         return applyService.getListAdmin(requestData, criteria);
     }
 
-//    //관리자 연수신청 삭제
-//    @ResponseBody
-//    @DeleteMapping("applies/delete")
-//    public void deleteApply(@RequestParam("checkedIds[]") List<String> checkedIds) {
-//        applyService.cancelAdmin(checkedIds);
-//    }
+    //관리자 연수신청 삭제
+    @ResponseBody
+    @DeleteMapping("applies/delete")
+    public void deleteApply(@RequestParam("checkedIds[]") List<Long> checkedIds) {
+        applyService.cancelAdmin(checkedIds);
+    }
     /*====================연수 신청 게시판 끝==============================*/
 
     /*====================포인트 내역 시작==============================*/
@@ -149,7 +149,7 @@ public class AdminController {
     //    관리자 포인트 내역 삭제
     @ResponseBody
     @DeleteMapping("points/delete")
-    public void deletePoint(@RequestParam("checkedIds[]") List<String> checkedIds) {
+    public void deletePoint(@RequestParam("checkedIds[]") List<Long> checkedIds) {
 //        log.info("여긴 들어옴!");
 //        log.info(checkedIds.toString()); // 이것도 잘 가져옴.
         pointService.remove(checkedIds);
@@ -180,7 +180,7 @@ public class AdminController {
 //    관리자 후기 게시판 삭제
     @ResponseBody
     @DeleteMapping("reviews/delete")
-    public void deleteReview(@RequestParam("checkedIds[]") List<String> checkedIds) {
+    public void deleteReview(@RequestParam("checkedIds[]") List<Long> checkedIds) {
         reviewBoardService.remove(checkedIds);
     }
     /*====================후기 게시판 끝==============================*/
@@ -212,7 +212,7 @@ public class AdminController {
 //    관리자 자유 게시판 삭제
     @ResponseBody
     @DeleteMapping("boards/delete")
-    public void deleteBoard(@RequestParam("checkedIds[]") List<String> checkedIds /*Map<String, List<Integer>> requestData*/ ){
+    public void deleteBoard(@RequestParam("checkedIds[]") List<Long> checkedIds /*Map<String, List<Integer>> requestData*/ ){
         freeBoardService.remove(checkedIds);
     }
     /*====================자유 게시판 끝==============================*/
@@ -241,7 +241,7 @@ public class AdminController {
 //    관리자 댓글 삭제
     @ResponseBody
     @DeleteMapping("replies/delete")
-    public void deleteReply(@RequestParam("checkedIds[]") List<String> checkedIds){
+    public void deleteReply(@RequestParam("checkedIds[]") List<Long> checkedIds){
         replyService.removeAdmin(checkedIds);
     }
 

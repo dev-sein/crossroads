@@ -65,8 +65,8 @@ public class FreeBoardService implements BoardService {
 //    게시글 삭제
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void remove(List<String> boardIds) {
-        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(boardId -> {
+    public void remove(List<Long> boardIds) {
+        boardIds.stream().forEach(boardId -> {
             replyDAO.deleteByBoardId(boardId); // 댓글 삭제
             boardDAO.deleteById(boardId); // 게시글 삭제
         });

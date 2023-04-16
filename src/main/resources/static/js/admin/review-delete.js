@@ -5,7 +5,8 @@ $('.modal_test').on('click', function() {
     // 체크 박스 체크된 값
     $('input:checkbox[name=checkbox]:checked').each(function(i, e){
         console.log(e.innerText);
-        checkedIds.push(e.dataset.id);
+        var checkedId = e.dataset.id * 1;
+        checkedIds.push(checkedId);
     });
 
     console.log(checkedIds);

@@ -25,7 +25,7 @@ public interface BoardService {
     public List<ReviewDTO> getListMy(Long memberId, Standards standards);
 
     //어드민 게시글 삭제
-    public void remove(List<String> boardIds);
+    public void remove(List<Long> boardIds);
 
     //자유 게시글 목록
     public List<BoardDTO> getList();

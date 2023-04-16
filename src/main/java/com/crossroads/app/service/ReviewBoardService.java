@@ -70,8 +70,8 @@ public class ReviewBoardService implements BoardService {
 
     //    관리자 후기 게시판 삭제
     @Override
-    public void remove(List<String> reviewIds) {
-        reviewIds.stream().map(reviewId -> Long.valueOf(reviewId)).forEach(reviewDAO::deleteByIdAdmin);
+    public void remove(List<Long> reviewIds) {
+        reviewIds.stream().forEach(reviewDAO::deleteByIdAdmin);
     }
     
     @Override

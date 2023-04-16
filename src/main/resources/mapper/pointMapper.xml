@@ -5,7 +5,7 @@
     <sql id="searchAdmin">
         <if test="keyword != null">
             <trim prefix="and (" suffix=")" prefixOverrides="or">
-                or p.member_id like concat('%', #{keyword}, '%')
+                or p.point_id like concat('%', #{keyword}, '%')
                 or member_identification like concat('%', #{keyword}, '%')
                 or member_name like concat('%', #{keyword}, '%')
                 or point_point like concat('%', #{keyword}, '%')

@@ -1,9 +1,11 @@
 package com.crossroads.app.service;
 
 import com.crossroads.app.domain.dao.*;
+import com.crossroads.app.domain.dto.ApplyDTO;
 import com.crossroads.app.domain.dto.BoardDTO;
 import com.crossroads.app.domain.dto.Criteria;
 import com.crossroads.app.domain.dto.PageDTO;
+import com.crossroads.app.domain.vo.ApplyVO;
 import com.crossroads.app.domain.vo.MailTO;
 import com.crossroads.app.domain.vo.MemberVO;
 import com.google.gson.JsonElement;
@@ -21,6 +23,8 @@ import java.io.*;
 import java.lang.reflect.Member;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +39,10 @@ public class MemberService {
     private final ReviewDAO reviewDAO;
     private final ReplyDAO replyDAO;
     private final BoardFileDAO boardFileDAO;
+    private final ApplyDAO applyDAO;
+
+    private final PointService pointService;
+
 
     //회원가입
     public void save(MemberVO memberVO) {
@@ -165,7 +173,7 @@ public class MemberService {
 
     //관리자 회원 삭제
     @Transactional(rollbackFor = Exception.class)
-    public void removeAdmin(List<String> memberIds) {
+    public void removeAdmin(List<Long> memberIds) {
 
 ////        리스트에서 memberId 하나씩 삭제
 //        memberIds.stream().map(memberId -> Long.valueOf(memberId)).forEach(memberId -> {
@@ -179,28 +187,47 @@ public class MemberService {
 //        });
 
 //        리스트의 길이 만큼
-        for (String id : memberIds) {
-            log.info("빠른 for문 들어옴?");
-            Long memberId = Long.valueOf(id);
-
+        for (Long memberId : memberIds) {
             List<BoardDTO> boards = boardDAO.findByMemberId(memberId);
+            MemberVO memberVO = getMemberInfo(memberId);
+            List<ApplyVO> applyVOs = applyDAO.findByStarterMemberId(memberId, null); // 초보자 회원의 연수 신청 내역 목록
+
             for (BoardDTO board : boards) { // 작성한 자유 게시글 수 만큼
-                log.info("2번째 빠른 for문 들어옴?");
                 Long boardId = board.getBoardId();
+
                 boardFileDAO.deleteByBoardId(boardId); // 자유 게시글 파일 삭제
-
-                log.info("게시글 파일 얘는 삭제됨?");
-
                 replyDAO.deleteByBoardId(boardId); // 내가 작성한 자유 게시글에 댓글 삭제
-                log.info("게시글에 댓글 얘는 삭제됨?");
             }
-            log.info("안쪽 빠른 for문은 끝남?");
+
+//            초보자일 때
+            if(memberVO.getMemberType() == "0") {
+                // 해당 초보자의 신청 내역 목록에서 아이디 하나씩을 뽑아 내역 삭제
+                applyVOs.stream().map(ApplyVO::getApplyId).forEach(applyDAO::deleteById);
+            } else { // 베테랑일 때
+                for (ApplyVO applyVO: applyVOs) {
+                    // String to LocalDateTime
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    LocalDateTime strToLocalDateTime = LocalDateTime.parse(applyVO.getApplyDate(), format);
+                    boolean status = strToLocalDateTime.isBefore(LocalDateTime.now());
+                    // 수락을 한 상태
+                    if(applyVO.getApplyStatus() == "1" && status) {
+                        Map<String, Object> info = new HashMap<>();
+
+                        info.put("memberId", null);
+                        info.put("applyId", applyVO.getApplyId());
+
+                        applyDAO.setApplyStatus(applyVO.getApplyId()); // 신청 내역 상태값 변경
+                        applyDAO.setVeteranId(info); // 베테랑 아이디 변경
+                        applyDAO.deleteById(applyVO.getApplyId()); // 내역 삭제
+                    }
+                }
+            }
+
+
             replyDAO.deleteByMemberId(memberId); // 내가 작성한 댓글 삭제
             boardDAO.deleteByMemberId(memberId); // 자유 게시글 삭제
             reviewDAO.deleteByMemberId(memberId); // 후기 게시글 삭제
             memberDAO.deleteById(memberId); // 회원 삭제
-
-            log.info("메소드 완료는 됨?");
         }
     }
 
