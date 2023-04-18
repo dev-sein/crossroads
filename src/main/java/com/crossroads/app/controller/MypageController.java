@@ -187,7 +187,7 @@ public class MypageController {
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
-        String path = "C:/upload/" + getPath();
+        String path = "/C:/upload/" + getPath();
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();

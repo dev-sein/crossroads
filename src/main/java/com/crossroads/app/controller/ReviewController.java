@@ -35,17 +35,19 @@ public class ReviewController {
     private final MemberService memberService;
     private final ApplyService applyService;
 
-    private static String uploadDir = "C:\\upload\\";
+    private static String uploadDir = "/C:\\upload\\";
 
     // 후기 작성 페이지
     @GetMapping("/review-write")
     public String reviewWrite(Model model, HttpServletRequest httpServletRequest) {
-        model.addAttribute("reviewDTO", new ReviewDTO());
         HttpSession session = httpServletRequest.getSession();
         Long memberId = (Long) session.getAttribute("memberId");
-        model.addAttribute("member", memberService.getMemberInfo(memberId));
         // applyId를 가져옵니다.
         Long applyId = applyService.getApplyIdByMemberId(memberId);
+
+
+        model.addAttribute("reviewDTO", new ReviewDTO());
+        model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("applyId", applyId);
 
         return "review/review-write";

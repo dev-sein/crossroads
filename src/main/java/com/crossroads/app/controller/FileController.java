@@ -67,7 +67,7 @@ public class FileController {
     @GetMapping("display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+        return FileCopyUtils.copyToByteArray(new File("/C:/upload", fileName));
     }
 
     // 현재 날짜 경로 구하기
