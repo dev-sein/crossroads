@@ -46,41 +46,60 @@ STEP 3. 이렇듯 초보운전자들의 운전경험이 많아진다면 결국 �
 
   
 <h2>5. 담당 업무</h2>
-5-1 프론트엔드
+5-1 프론트엔드<br>
+<img src="https://lh3.googleusercontent.com/fife/APg5EOYxNYHTDUowAoBF_lySeXMALleA2wBGa1cOOuS0EMmy3xj7jhGU4E04cOKCdf018-CvUoX4WUJK1uv4iTiGox_qJktWonBkUl1j8NIL7pMtP6nH8qkxvT7Kf871sK8eCITjOtg0All6vT4NDP--M7-jaQHSu1vzhnjoNGyzHqZ3n3NX0nBE_kLVuic2e4ML6R6gTJ8m9pCYpEyZFqA6KtKM04At04gmGMuVr1qo6xyp71eklgc3Yjn6bhXa66JogKwrubcYRiZ-jz9gNd03PNGsOg1KZownjWMu0976z1bJzudMwuSnfNXxhC74hoZbtjG1AnQBl-C51XpZvB2aOtP55PPfaSahfZnXfyg69TF0IHBJvtBr4tsWpaNyq_6YvDhqjVq-EQh5O8tKxrBLr0iIqWm1_d7AFIUqkp2qZr-83oW1hP4mZXlphcn0ywXiXZ-l_OJiobyOZ_jqM3mOVfeEu_-GMTpod7ahUgO8EGSbEl6ElQDBnPxJ6qwguL8wLOC5eM23ps5K2BLd8CeHbNX9XLPgMDRzTKAH11r52JXy8eI6_hr-ATGaMVqNfHlPmeT-ipyvrZIAvQaqgmAqeC348229FcASXFXj_MjhowVqCu83eO7lDVrFVlT22Na5Ray3dBG6LMyylwkYbMsqAIzpunggHbD92qoVYH5hBp-qP8BQjNoxp2lEKX6SdFIpzeghjnyooo4poUxNZ5y2-gMRbMG82ClmN8fmdgImW1LHUj9F7FYOtnUy5gYkDbyIOcFvc7jvWXPW1uFOVrCMv8k-ygTH1xpIOnOUy1UkXBI5x5QLK3Skp7l50iVSYa5LelzQ2Hicj13DZ38pppp9P3SrtbpL6JnvM1Ydab1OjMx43ZkktnnCq_62fQyQHOmwt5KxlsGFNx-JZSmXd1Ns2Ky2IwxCm--9bY0ig7osCF1DW0TUMvBdRCnL6udj-UbYb0dq60PzsTIInuJi5_l2xxmwZAQZiXu-W6gaFm7c44HwDfEFyLzcgZm8CUbr9XzA_FnQGuHQdxoVLUjM3_9aoM8pGIGqfsV3DkO5saV6QssdvIVbRg3A1hmWXE5B2VSpCwwPjXDfo_Db8mhxNT_LIGihbXcTVJ-yZORAGD7XdFebbjkfCvd_wirPzXxH6CP4PrEojnFFtjzOI9QI1Hnev93qBkFSghQ5MGz33So_lSrQQgPaidigzjZRjAkKOWclW0Mpe8uYlUiN02VcP_gaDpfktCdbXvPTbCZEWYFsfSPjpU7SiL38of9uaEiEGI26JP_bfg4O3SroEYxJ2sAzpXXVn1gaOriIYX2qX0-WFm58eKEIJc_mHD7H3e2ILX8uXTU4qzSSUgT3Lis057pdulnYp1H7-1B10lg9pRGS24a2wMoLl2-y887RGWAdu-Z-_HCHGoDuaQ1iIxPzNNGdLL1zWbZv54YvPqposf5SKzRr1v2KEyea-efY40PYPglOXTGiFJzWwslC1sBmfR91gceQR40C3tWbKVBxJFySVhN2jrxW5zfF1r33qUGY=w1920-h892" style = "width: 90%;">
+
+▶ 회원정보 확인 및 수정
+- 연수 내역
+- 나의 후기
+- 포인트 조회
+- 내가 쓴 게시글
+- 내가 쓴 댓글
+
+▶ 비밀번호 변경
+- 이메일 등록
+- 이메일 발송 완료
+- 비밀번호 변경
+
+▶ 회원 탈퇴
+- 비밀번호 인증
+- 탈퇴 약관 동의
+
+▶ 오류페이지
+- 404 오류(웹)
+- 404 오류(모바일)
+- 자유게시판 준비중 
+
+<br>
+5-2 백엔드<br>
+<img src="https://lh3.googleusercontent.com/fife/APg5EObvLBxUpxUuoAQxMdFfOwbTSEI0CVJ9v00be8DDKu76tIIG-tFMj16Qp7lFGGX6JpPpCiElLoWU6zPzdiGfFQTO4U-6pl7CaqL5H6w-J8vf-WEH1H6ZrT8sFD0YAdOEA0wYbl0-vQB_kH-9LDukqoSV_JSbB4K71372HHBdRrpkTE9D7q6KpxsasIjsm3y5DtTj-7nPhQkX5Ewwkp3V3sbk-9cLHDW9G9VZCF-4UMwGgBE5Ner2ay-kDzbeJ3mHJbZWxbqkXMnEQySsoBjhhuA9u3v4DD0qPYfr4Nj65ZiykfeT9QaewUiiWYVqA_rzgnRTIgacWofRvljlTVJpu8iFqmSle19PM2jEEjPshcLM-UEp4w2NSceE_ko-jA1y1TB6vJ_PYgR21XYN7FCE6JgR34uJUmM8V3SlYSH7GeUPjKonLoA3tMxTFU919vyv9spLz3wduytUeAhIU6qd_dFi5CzU_fiLzHzudS9A10oYkItx2dF0t2qxcMbTSt20tJM2PR__fTu4h9By_0_y_022I5IMhZt2xBpA67sapfHLUqF0q8nh_SRhcR94slUMlFFzcVCUCIzKyz85tPUuAksQMH-GqqXw_-8OnSe0ZiZ4IJlESUoBe9WTcRarBSuPWdxSzOl2qX_9eAiaBg8qeckEayjQBTK_U6NrefvJhs9zJuNas1soUheAj2cPpkSilhsakq16COi2XgcnXU6qT2r7AxEoko0XcNiHL31wfKbGfC9vtvjn3scol3_dYIXKrSMEBkReA4OGnU0hRLpM3xQbICyItL1gamEh2BF46zjxQozluBjpKqZyzr0o3gA0N41GMGXOHx82eLvKR1lO9TmR6AoKiMCSoG5Wfd8i0A2_ZpsA6B97PQ2JgNuHqOaTXjSDbT4mCk4OKnKOnLo1rSq8RdoAuTXIHXS-VGt9pxrZxOLgbiKHjOlpCa4m1wVrN-mujsE39mFptbYcsTOlBeafe_7EK2GMSKfy12p0IH4cWhF05KpjfaTcAflN5SjHZ8JMeQsNVA-8RlYicJGDoTmnTi-D_Md--uvkSgTZnKa7A1jk-mOr87gRJ22mtwGLcjA9p-QkHqpqYaH7PptQDNA3pf3tYGRPykAW0rzYv5JZFw8Bf1SaENDXFjc5RPamCCPtpDKUxk_9xDfXnnfdwiZKztkXytDS80ltm7ujhi1qdKSTkgXBii3RkUQPQklrFfbv4ySIsWPD7N509iygpybIQoeX7ydRJDoXqsIerAETf2YGZWozEqgHZMd4emFVPdkHHgkjVJoX_xwFA7g4LdgKl8Jf0gBZaKJrlpv2qJb0ARJZuXDf_IoYZJgTzdAwB_g0D5rIK6iOOVxM5f9TwSQH66T94TIrfsxLCFDFcwWfm8LmIiSuUYzGn0b95Oo8FQ6Nr_jerCvMCCEanW8qcTjFmpU0U78mDEbms2nIznP2pMYEf26KgiWNeaQ5TUD3zmsSvFhKYVbbWvxWah2Mi-qoTfTUVTSPZ8evwNh_t9tdZLtw4zbRxKXFvz-E=w1920-h892" style = "width: 90%;">
 
 
+▶ 회원가입
+- 아이디, 이메일 중복 검사
+- 아이디, 이메일, 이름, 휴대폰 입력 형식 검사
+- 구글 클라우드 비전 API를 통해 운전면허증 하단의 취득일 자동 감지 및 회원구분
+- 필수 정보 입력 여부 검사
+- 조건 충족 시 회원가입
+- 카카오 API를 이용한 간편 회원가입
+- 네이버 API를 이용한 간편 회원가입
 
+▶ 로그인
+- 아이디, 비밀번호 DB 비교 로그인 기능 구현
+- 카카오 API를 이용한 간편 로그인
+- 네이버 API를 이용한 간편 로그인
+- 로그아웃 기능 구현
 
-5-2 백엔드
-1-1 회원가입
-- 필수정보 
-- 카카오 API를 통하여 
+▶ 비밀번호 찾기
+- 사용자가 입력한 이메일과 DB 비교
+- 정보 일치할 경우 SMTP API 이용하여 비밀번호 변경 링크 발송
+- 비밀번호 변경 구현
 
-1-2 로그인
-
-1-3 
-4-1. 채팅
-- 소속된 그룹을 조회해 채팅방 개설
-- pure WebSocket을 사용해 그룹채팅 기능 구현
-- 기존 채팅 내용 DB 조회
-- 채팅 읽음 상태 DB 업데이트
-  
-4-2. 마이페이지 - 오늘의 퀘스트
-  - 오늘의 퀘스트 불러오기
-  - 오늘의 퀘스트 완료 처리
-  - 퀘스트 달성에 따른 뱃지, 포인트 지급
-  - 퀘스트 달성 여부 업데이트
-  - 퀘스트 달성 여부에 따라 화면 변화
-
-4-3. 마이페이지 - 완료한 퀘스트
-  - 완료한 퀘스트 내역 조회
-  - 완료한 퀘스트 내역 페이징 처리
-
-4-4. 마이페이지 - 획득한 뱃지
-  - 획득한 뱃지 조회
-  - 뱃지별 정보 조회
-  - 회원 정보 조회
-  - 월별 퀘스트 달성률에 따른 월별 뱃지 상태 조회
+▶ 연수신청
+-  로그인 여부 확인하여 페이지 이동
+- 이름, 보유 포인트, 휴대폰 번호 조회
+- 보유 포인트 0일 경우 충전하기 페이지 이동
+ 
 
 
 <h2>5. 느낀점</h2>
@@ -147,6 +166,4 @@ WebSocketSession을 list에 담지 않고, map의 value 값으로 담았다. map
 해당 프로젝트를 진행하면서, 프론트엔드 작업을 진행할 때 우리 팀의 팀장이 국비 교육에서 중도탈락했다. 나는 얼떨결에 부팀장에서 팀장이 됐고, 프로젝트 기간 동안 리더의 역할을 수행했다. 약 한달간 팀장으로서의 역할을 수행하면서 중간 관리자의 고충을 약간이나마 알게 된 것 같다. 특히, 커뮤니케이션에 미숙한 팀원을 어떻게 이끌어야 할까? 라는 질문에 대해 고민하게 됐다. 몇 주간의 고민 끝에 나온 나의 답은 '더 친해지자!'였다. 친하지 않으면 같은 말도 서로 더 날서게 받아들이기 쉽다. 따라서 팀원의 업무 태도를 지적하고, 해결하려는 자세에 앞서서 그 사람의 마음을 얻는 것이 더 먼저라는 생각이 들었다. 앞으로 리더가 될 때까지는 많은 시간이 남았지만, 항상 이 경험을 되새기면서 팀원들에게 먼저 다가갈 수 있는 우호적인 사람이 돼야겠다.    
 
 
-<h2>ERD</h2>
-<img width="100%" alt="erd" src="https://user-images.githubusercontent.com/109493547/209980568-1cf4273c-fc51-4615-8703-e11562ba5892.png">
 
