@@ -245,16 +245,16 @@ public class MemberService {
 
 //            회원가입에서 접근했을 때
             if (type.equals("join")) {
-                sb.append("&redirect_uri=http://localhost:10000/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
+                sb.append("&redirect_uri=www.crossroads-drive.site/member/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("login")) {
 //            로그인에서 접근했을 때
-                sb.append("&redirect_uri=http://localhost:10000/member/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
+                sb.append("&redirect_uri=www.crossroads-drive.site/member/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("mobilejoin")) {
 //            모바일 회원가입 접근했을 때
-                sb.append("&redirect_uri=http://localhost:10000/applies/kakao"); // TODO 인가코드 받은 redirect_uri 입력
+                sb.append("&redirect_uri=www.crossroads-drive.site/applies/kakao"); // TODO 인가코드 받은 redirect_uri 입력
             } else if (type.equals("mobilelogin")) {
 //            모바일 로그인에서 접근했을 때
-                sb.append("&redirect_uri=http://localhost:10000/applies/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
+                sb.append("&redirect_uri=www.crossroads-drive.site/applies/kakao-login"); // TODO 인가코드 받은 redirect_uri 입력
             }
 
             sb.append("&code=" + code);
