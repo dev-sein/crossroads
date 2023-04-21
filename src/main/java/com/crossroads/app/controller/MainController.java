@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,11 @@ public class MainController {
     private final MemberService memberService;
     private final ReviewBoardService reviewBoardService;
 
+    @GetMapping("")
+    public RedirectView goToMain() {
+        return new RedirectView("main");
+    }
+
     @GetMapping("main")
     public String main(Model model, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
@@ -27,5 +33,11 @@ public class MainController {
         model.addAttribute("reviews", reviewBoardService.getListReview());
         return "main/main";
     }
+
+//    @GetMapping("introduce")
+//    public String goIntroduce(){
+//        return "introduce/introduce";
+//    }
+
 
 }

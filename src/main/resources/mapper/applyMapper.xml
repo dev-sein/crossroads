@@ -156,7 +156,9 @@
         select apply_id, apply_course, apply_location, apply_date, apply_register_date, starter_member_id, veteran_member_id, apply_status
         from tbl_apply where starter_member_id = #{memberId}
         order by apply_id desc
-        limit #{standards.offset}, #{standards.rowCount}
+        <if test="standards != null">
+            limit #{standards.offset}, #{standards.rowCount}
+        </if>
     </select>
 
     <!--  연수 받는 사람의 id로 연수 신청 개수 받기(status별로도 뽑기)  -->
@@ -199,9 +201,9 @@
     <!--applyId 가져오기-->
     <select id="getApplyIdByMemberId" resultType="applyDTO">
      SELECT a.apply_id
-  FROM tbl_apply a
-  INNER JOIN tbl_member m ON a.starter_member_id = m.member_id OR a.veteran_member_id = m.member_id
-  WHERE m.member_id = #{memberId}
+      FROM tbl_apply a
+      INNER JOIN tbl_member m ON a.starter_member_id = m.member_id OR a.veteran_member_id = m.member_id
+      WHERE m.member_id = #{memberId}
   </select>
 
 

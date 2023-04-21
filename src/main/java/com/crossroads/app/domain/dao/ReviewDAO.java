@@ -55,8 +55,8 @@ public class ReviewDAO {
     }
 
     /*마이페이지 게시글 페이징 전체 개수*/
-    public int findCountAllMy(){
-        return reviewMapper.selectTotalMy();
+    public int findCountAllMy(Long memberId){
+        return reviewMapper.selectTotalMy(memberId);
     }
 
     //    리뷰 삭제

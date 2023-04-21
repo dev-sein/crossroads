@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -150,7 +151,7 @@ public class MypageController {
 
         model.addAttribute("member", memberService.getMemberInfo(memberId));
         model.addAttribute("review", reviewBoardService.getListMy(memberId, standards));
-        log.info(model.addAttribute("review", reviewBoardService.getListMy(memberId, standards)).toString());
+
         return "mypage/my-review";
     }
 
@@ -186,7 +187,7 @@ public class MypageController {
     @ResponseBody
     public List<String> upload(@RequestParam("file") List<MultipartFile> multipartFiles) throws IOException {
         List<String> uuids = new ArrayList<>();
-        String path = "C:/upload/" + getPath();
+        String path = "/C:/upload/" + getPath();
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
@@ -221,7 +222,15 @@ public class MypageController {
     public byte[] display(String fileName) throws IOException {
         log.info("들어옴************************************************************");
         log.info(fileName);
-        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+
+        try {
+            return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+        } catch (NoSuchFileException e) {
+            e.printStackTrace();
+            return FileCopyUtils.copyToByteArray(new File("/images/mypage/main-logo.png"));
+        }
+
+//        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
     /*현재 날짜 경로 구하기*/

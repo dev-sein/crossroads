@@ -70,8 +70,8 @@ public class ReviewBoardService implements BoardService {
 
     //    관리자 후기 게시판 삭제
     @Override
-    public void remove(List<String> reviewIds) {
-        reviewIds.stream().map(reviewId -> Long.valueOf(reviewId)).forEach(reviewDAO::deleteByIdAdmin);
+    public void remove(List<Long> reviewIds) {
+        reviewIds.stream().forEach(reviewDAO::deleteByIdAdmin);
     }
     
     @Override
@@ -83,9 +83,9 @@ public class ReviewBoardService implements BoardService {
     @Override
     public List<ReviewDTO> getListMy(Long memberId, Standards standards) {
         if(standards.getPage() == 0 ) {
-            standards.create(1, 5, 5, getTotalMy());
+            standards.create(1, 5, 5, getTotalMy(memberId));
         } else {
-            standards.create(standards.getPage(), 5, 5, getTotalMy());
+            standards.create(standards.getPage(), 5, 5, getTotalMy(memberId));
         }
         return reviewDAO.findAllMy(memberId, standards);
     }
@@ -140,8 +140,8 @@ public class ReviewBoardService implements BoardService {
 
     //마이페이지 후기 페이징 전체 개수
     @Override
-    public int getTotalMy(){
-        return reviewDAO.findCountAllMy();
+    public int getTotalMy(Long memberId){
+        return reviewDAO.findCountAllMy(memberId);
     }
 
 
