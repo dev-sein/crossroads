@@ -124,9 +124,10 @@ public class ApplyService {
     }
 
 //    신청 삭제(취소)
-    public void cancelAdmin(List<String> applyIds){
+    public void cancelAdmin(List<Long> applyIds){
 //        추후 포인트 추가 감소 로직을 cancel메소드에 추가 필요
-        applyIds.stream().map(applyId -> Long.valueOf(applyId)).forEach(applyId -> {
+//        포인트 추가 감소 로직은 포인트 테이블 컬럼에 연관지을 부분이 없음.. 컬럼을 추가해야함. 베테랑기준.
+        applyIds.stream().forEach(applyId -> {
             cancel(applyId);
         });
     }
