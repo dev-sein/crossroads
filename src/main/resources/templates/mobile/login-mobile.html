@@ -68,11 +68,11 @@
                                 </div>
                                 <!-- 로그인 버튼 -->
                                 <button id="submit-btn" type="button">로그인</button>
-                                <a href=https://kauth.kakao.com/oauth/authorize?client_id=ff10441318cc0a2c7e2aa44285fa956c&redirect_uri=http://localhost:10000/applies/kakao-login&response_type=code class="oauth-join mb16">
+                                <a href=https://kauth.kakao.com/oauth/authorize?client_id=ff10441318cc0a2c7e2aa44285fa956c&redirect_uri=http://www.crossroads-drive.site/applies/kakao-login&response_type=code class="oauth-join mb16">
                                     <img class="oauth-logo" src="/images/member/kakao.png">
                                     카카오톡으로 로그인
                                 </a>
-                                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fapplies%2Flogin-mobile&amp;state=9b601d34-3417-454f-ad52-7a80b7b08c4a" class="oauth-join">
+                                <a href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=Xmy2ZoXDf57LA377L2s4&amp;redirect_uri=http%3A%2F%2Fwww.crossroads-drive.site%2Fapplies%2Flogin-mobile&amp;state=9b601d34-3417-454f-ad52-7a80b7b08c4a" class="oauth-join">
                                     <img class="oauth-logo" src="/images/member/naver.png">
                                     네이버로 로그인
                                 </a>
@@ -92,10 +92,10 @@
 <script src="/js/mobile/login.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://localhost:10000/applies/login-mobile");
+    var naver_id_login = new naver_id_login("Xmy2ZoXDf57LA377L2s4", "http://www.crossroads-drive.site/applies/login-mobile");
     var state = naver_id_login.getUniqState();
     naver_id_login.setButton("white", 2,40);
-    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setDomain("http://www.crossroads-drive.site");
     naver_id_login.setState(state);
     // naver_id_login.setPopup();
     // naver_id_login.init_naver_id_login();
