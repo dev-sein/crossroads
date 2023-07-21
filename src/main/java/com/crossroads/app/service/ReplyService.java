@@ -79,8 +79,8 @@ public class ReplyService {
     }
 
     //    개별 댓글 삭제
-    public void removeAdmin(List<String> replyIds){
-        replyIds.stream().map(replyId -> Long.valueOf(replyId)).forEach(replyDAO::deleteById);
+    public void removeAdmin(List<Long> replyIds){
+        replyIds.stream().forEach(replyDAO::deleteById);
     }
 
 }

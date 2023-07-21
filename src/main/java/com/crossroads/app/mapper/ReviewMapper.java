@@ -13,7 +13,7 @@ public interface ReviewMapper {
     public List<ReviewDTO> selectAll(Long memberId, Standards standards);
 
     //마이페이지 게시글 페이징 - 전체 개수
-    public int selectTotalMy();
+    public int selectTotalMy(Long memberId);
 
     //후기 전체 조회
     public List<ReviewDTO> selectReviewAll();

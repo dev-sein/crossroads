@@ -69,25 +69,12 @@ public class PointService {
 
 //    관리자 포인트 내역 삭제
     @Transactional(rollbackFor = Exception.class)
-    public void remove(List<String> pointIds) {
-        log.info("1여기 잘 들어옴?");
-        log.info(pointIds.toString());
-        pointIds.stream().map(pointId -> Long.valueOf(pointId)).forEach(pointId -> {
+    public void remove(List<Long> pointIds) {
+        pointIds.stream().forEach(pointId -> {
             PointDTO pointDTO = null;
             Integer currentPoint = null;
-            log.info("2여기 잘 들어옴?");
-            log.info(pointId + "");
             pointDTO = getDetail(pointId); // 현재 객체 설정
-            log.info("===================================================");
-            log.info(pointDTO.toString());
-            log.info("===================================================");
-//            currentPoint = pointDTO.getPointStatus() == 0 ? // status가 0이면 초보자는 결제, 베테랑은 적립 즉, 대상자는 포인트가 + 됐었다
-//                    getPoint(pointDTO.getMemberId()).intValue() - pointDTO.getPointPoint() : // + 됐었던 포인트를 차감 시켜줌.
-//                    getPoint(pointDTO.getMemberId()).intValue() + pointDTO.getPointPoint(); // + 됐었던 포인트를 증감 시켜줌.
-            log.info("===================================================");
-            log.info(getPoint(pointDTO.getMemberId()) + "");
-            log.info(pointDTO.getPointPoint() + "");
-            log.info("===================================================");
+
             // status가 0이면 초보자는 결제, 베테랑은 적립 즉, 대상자는 포인트가 + 됐었다
             if (pointDTO.getPointStatus() == 0) {
                 // + 됐었던 포인트를 차감 시켜줌.
@@ -97,13 +84,30 @@ public class PointService {
                 currentPoint = getPoint(pointDTO.getMemberId()).intValue() + pointDTO.getPointPoint();
             }
 
-            log.info("===================================================");
-            log.info(currentPoint + "");
-            log.info("===================================================");
             modifyAfterApply(pointDTO.getMemberId(), currentPoint); // 현재 포인트 변경
             pointDAO.deleteById(pointId); // 포인트 내역 삭제
         });
     }
+//    일반 포인트 내역 삭제
+    @Transactional(rollbackFor = Exception.class)
+    public void remove(Long pointId) {
+        PointDTO pointDTO = null;
+        Integer currentPoint = null;
+        pointDTO = getDetail(pointId); // 현재 객체 설정
+
+        // status가 0이면 초보자는 결제, 베테랑은 적립 즉, 대상자는 포인트가 + 됐었다
+        if (pointDTO.getPointStatus() == 0) {
+            // + 됐었던 포인트를 차감 시켜줌.
+            currentPoint = getPoint(pointDTO.getMemberId()).intValue() - pointDTO.getPointPoint();
+        } else {
+            // + 됐었던 포인트를 증감 시켜줌.
+            currentPoint = getPoint(pointDTO.getMemberId()).intValue() + pointDTO.getPointPoint();
+        }
+
+        modifyAfterApply(pointDTO.getMemberId(), currentPoint); // 현재 포인트 변경
+        pointDAO.deleteById(pointId); // 포인트 내역 삭제
+    }
+
 
 //    포인트 상세
     public PointDTO getDetail(Long pointId) {

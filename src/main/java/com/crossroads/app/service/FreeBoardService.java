@@ -65,8 +65,8 @@ public class FreeBoardService implements BoardService {
 //    게시글 삭제
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void remove(List<String> boardIds) {
-        boardIds.stream().map(boardId -> Long.valueOf(boardId)).forEach(boardId -> {
+    public void remove(List<Long> boardIds) {
+        boardIds.stream().forEach(boardId -> {
             replyDAO.deleteByBoardId(boardId); // 댓글 삭제
             boardDAO.deleteById(boardId); // 게시글 삭제
         });
@@ -145,15 +145,15 @@ public class FreeBoardService implements BoardService {
     public List<BoardDTO> getListMyBoard(Long memberId, Standards standards) {//주소의 변동이 없음
         //getTotalMy
         if(standards.getPage() == 0 ) {
-            standards.create(1, 5, 5, getTotalMy());
+            standards.create(1, 5, 5, getTotalMy(memberId));
         } else {
-            standards.create(standards.getPage(), 5, 5, getTotalMy());
+            standards.create(standards.getPage(), 5, 5, getTotalMy(memberId));
         }
         return boardDAO.findAllMy(memberId, standards);
     }
 
     @Override
-    public int getTotalMy() {
+    public int getTotalMy(Long memberId) {
         return boardDAO.findCountAllMy();
     }
 
